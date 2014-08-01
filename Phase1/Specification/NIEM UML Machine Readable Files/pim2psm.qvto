@@ -1,0 +1,24 @@
+//import niemcommonPim2psm;
+import NIEMpim2psm;
+//import niemcommonBase;
+//import niemcommonPim2psm;
+modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+modeltype ECORE  uses 'http://www.eclipse.org/emf/2002/Ecore';
+modeltype CHANGELOG uses 'http://reference.niem.gov/niem/resource/mpd/changelog/1.0/';
+
+transformation pim2psm(
+	inout niemUml:UML,
+	inout blackboxAdapter:ECORE
+	,out changeLog:CHANGELOG
+	)
+//	extends transformation niemcommonPim2psm
+//	extends niemcommonBase,NIEMpim2psm(UML)
+	extends NIEMpim2psm(UML)
+	;
+	main() {
+	log('pim2psm');
+		blackboxHook:=blackboxAdapter.objectsOfType(ECORE::EPackage)->asSequence()->first();
+		pim2psmMain();
+	}
+	
+/////////////////////platform-specific abstract bindings

@@ -1,0 +1,644 @@
+/*
+NIEM UML 
+Copyright � 2011, ModelDriven.org and Tom Digre, all rights reserved worldwide.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0-standalone.html.
+
+There are also commercial licenses available for this software.
+Contact ModelDriven.org for more information.
+*/
+import NIEMmpdartifact2model;
+
+modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+//modeltype ECORE  uses 'http://www.eclipse.org/emf/2002/Ecore';
+modeltype CMOF  uses 'http://www.eclipse.org/emf/2002/Ecore';
+modeltype XSD  uses 'http://www.eclipse.org/xsd/2002/XSD';
+modeltype CAT  uses 'http://reference.niem.gov/niem/resource/mpd/catalog/1.0/';
+//modeltype CAT  uses 'urn:oasis:names:tc:entity:xmlns:xml:catalog';
+
+
+transformation mpd2pim(in cat:CAT,inout pimUml:UML,inout blackboxAdapter:CMOF)
+	extends transformation NIEMmpdartifact2model(inout UML)
+		;
+	main() {
+	mpd2pim_run();
+}	
+property catalog:CAT::CatalogType=null;
+property documentRoot:CAT::DocumentRoot=null;
+property schemaTargetNamespaces:Sequence(Tuple(schema:UML::Package,targetNamespace:String)) = Sequence{};
+property allSchemaTargetNamespaces:Sequence(Tuple(schema:UML::Package,targetNamespace:String)) = Sequence{};
+property instanceRefs:Sequence(Tuple(instanceValue:UML::InstanceValue,ref:String)) = Sequence{};
+property metadataRefs:Sequence(Tuple(instanceValue:UML::InstanceValue,ref:String)) = Sequence{};
+	
+helper mpd2pim_run() {
+		log('mpd2pim starting now '+pimUml.repr());
+		blackboxHook:=blackboxAdapter.objectsOfType(CMOF::EPackage)->asSequence()->first();
+		documentRoot:=cat.objectsOfType(CAT::DocumentRoot)->asSequence()->first();
+		catalog:=cat.objectsOfType(CAT::CatalogType)->asSequence()->first();
+		rootDirectory:=documentRoot.oclAsType(CMOF::EObject).getRootFileName();
+		log('mpd2pim starting NIEMmpd2pim_run root at '+rootDirectory);
+		expandSchemaContent:=false;
+		NIEMmpd2pim_run();
+		// we could try to populate xml instances now
+		gatherAllSchemas(mpdRootPackage);
+		mpdComponent.clientDependency
+		->select(d|d.isStereotypeApplied(NIEMModelPackageDescriptionFileStereotype) 
+			and (d.getStereotypeApplication(NIEMModelPackageDescriptionFileStereotype).getFileTypePurposeURI()=purposeSampleInstanceURI))
+		->forEach(mpdFile){
+			mpdFile.supplier->select(s|s.oclIsKindOf(Package)).oclAsType(Package)->forEach(xmlInstancePackage){
+				var relativePathName:String=xmlInstancePackage.getMpdRelativePathForPackage(mpdRootPackage);
+				var domDocument:OclAny=catalog.oclAsType(CMOF::EObject).getDocumentAtRelativeURI(relativePathName);
+				log('sample instance '+xmlInstancePackage.qualifiedName+', '+relativePathName+', '+domDocument.repr());
+				domDocument.xmlInstanceDocumentTopElement(xmlInstancePackage);
+			};
+		};
+		
+		
+		mapInit();
+		// remove component if reference model
+		log('mpd2pim end ');
+	}
+///////////////////
+helper 		gatherAllSchemas(mpdRootPackage:UML::Package){
+		mpdRootPackage.allSubobjectsOfType(UML::Package).oclAsType(UML::Package)
+			->select(p|p.isStereotypeApplied(NIEMSchemaStereotype))
+			->forEach(schemaPackage){
+				var schemaTuple:Tuple(schema:UML::Package,
+						targetNamespace:String)=
+						Tuple{schema:UML::Package=schemaPackage,
+						targetNamespace:String=schemaPackage.getStereotypeApplication(NIEMSchemaStereotype).oclAsType(Stdlib::Element).getSchemaTargetNamespace()};
+				log('Schema proxy for '+schemaTuple.targetNamespace+', '+schemaTuple.schema.qualifiedName);		
+				allSchemaTargetNamespaces+=schemaTuple;		
+			};
+		log('schemaTuple proxies '+allSchemaTargetNamespaces->size().repr());	
+		return;
+}
+
+helper OclAny::xmlInstanceDocumentTopElement(inout xmlInstancePackage:Package){
+	var topLevelElement:Property=self.getTopLevelElement();
+	if(topLevelElement.oclIsUndefined())then{
+		log('ERROR: failed to located top level element '+self.getElementNamespace()+" : "+self.getElementName());
+		return;
+	}endif;
+	var  instanceSpecification:InstanceSpecification=new InstanceSpecification();
+	instanceSpecification.name:=xmlInstancePackage.name;
+	instanceSpecification.classifier+=topLevelElement.classifier;
+	xmlInstancePackage.packagedElement+=instanceSpecification;
+	var  slot:Slot=new Slot();
+	instanceSpecification.slot+=slot;
+	// definedFeature from an exchange
+	
+	slot.definingFeature:=topLevelElement;
+	var instanceValue:InstanceValue=new InstanceValue();
+	slot.value+=instanceValue;
+	var instance:InstanceSpecification=new InstanceSpecification();
+	instanceValue.instance:=instance;
+	instance.classifier+=topLevelElement.type.oclAsType(Classifier);
+	xmlInstancePackage.packagedElement+=instance;
+	// content : in conjunction with feature type
+	instanceRefs:= Sequence{};
+	metadataRefs:= Sequence{};
+	/*
+	*/
+	self.xmlInstanceDocumentElement(instance,topLevelElement.type.oclAsType(Classifier));
+	// now resolve references
+	instanceRefs->forEach(instanceRef){
+		var id:String=instanceRef.ref;
+		xmlInstancePackage.packagedElement->select(i|(i.name=id) and i.oclIsKindOf(InstanceSpecification)).oclAsType(InstanceSpecification)
+		->forEach(instanceSpec){
+			instanceRef.instanceValue.instance:=instanceSpec;
+		};
+	};
+	log('metadataRefs '+metadataRefs->size().repr());
+	metadataRefs->forEach(instanceRef){
+		var id:String=instanceRef.ref;
+		xmlInstancePackage.packagedElement->select(i|(i.name=id) and i.oclIsKindOf(InstanceSpecification)).oclAsType(InstanceSpecification)
+		->forEach(instanceSpec){
+			// make a metadata dependency
+			var dependency:Dependency=new Dependency();
+			xmlInstancePackage.packagedElement+=dependency;
+			dependency.name:='metadata';
+			dependency.client+=instanceRef.instanceValue;
+			dependency.supplier+=instanceSpec;
+		};
+	};
+	return;
+	}
+helper OclAny::xmlInstanceDocumentElement(inout instance:InstanceSpecification,classifier:Classifier){
+	// determine slot, either existing or create new
+	// determine value: either InstanceValue or Literal
+	// process attributes; if id then use for name; if metadata then handle later as a dependency
+	// recurse for instances
+	self.getElementAttributes()->forEach(attribute){
+		var attributeName:String=attribute.getAttributeName();
+		var attributeNamespace:String=attribute.getAttributeNamespace();
+		if(attribute.isId())then{
+			instance.name:=attribute.getAttributeValue();
+		}else{
+		
+			if(
+				(attributeNamespace='http://www.w3.org/2000/xmlns/')
+				or(attributeNamespace=schemaForSchemaInstanceNamespace)
+			)then{
+				// ignore xmlns:*
+			}else{
+				if(attribute.isRef())then{
+				}else{
+					if(attribute.isMetadata())then{
+					}else{
+			//			attribute.xmlInstanceDocumentAttribute();
+						var  slot:Slot=attribute.getElementSlot(instance,classifier);
+						if(not(slot.oclIsUndefined()))then{
+							var value:ValueSpecification=attribute.getAttributeValue(slot);
+						}endif;
+					}endif;
+				}endif;
+			}endif;
+		}endif;
+	};
+	self.getElementElements()->forEach(element){
+		var  slot:Slot=element.getElementSlot(instance,classifier);
+		if(not(slot.oclIsUndefined()))then{
+			var value:ValueSpecification=element.getElementValue(slot);
+			if(value.oclIsKindOf(InstanceValue) and not(value.oclAsType(InstanceValue).instance.oclIsKindOf(EnumerationLiteral)))then{
+				var instanceValue:InstanceValue=value.oclAsType(InstanceValue);
+				var instanceSpecification:InstanceSpecification=instanceValue.instance;
+					// look for metadata
+					element.getElementAttributes()->forEach(attribute){
+						if(attribute.isMetadata())then{
+							var refId:String=attribute.getAttributeValue();
+							var instanceRefPair:Tuple(instanceValue:UML::InstanceValue,ref:String)= 
+								Tuple{instanceValue:UML::InstanceValue=instanceValue,ref:String=refId};
+							metadataRefs+=instanceRefPair;
+						}endif;
+					};
+				
+				if(instanceSpecification.oclIsUndefined())then{
+					// look for a ref
+					element.getElementAttributes()->forEach(attribute){
+						if(attribute.isRef())then{
+							var refId:String=attribute.getAttributeValue();
+							var instanceRefPair:Tuple(instanceValue:UML::InstanceValue,ref:String)= 
+								Tuple{instanceValue:UML::InstanceValue=instanceValue,ref:String=refId};
+							instanceRefs+=instanceRefPair;
+						}endif;
+					};
+				}else{
+				element.xmlInstanceDocumentElement(instanceSpecification,slot.definingFeature.type.oclAsType(Classifier));
+				}endif;
+			}endif;
+		}endif;
+	};
+	return;
+}
+
+helper OclAny::isId():Boolean{
+	return (self.getAttributeName()='id') and 	(self.getAttributeNamespace().isStructuresSchemaNamespace()) ;
+}
+helper OclAny::isRef():Boolean{
+	return (self.getAttributeName()='ref') and 	(self.getAttributeNamespace().isStructuresSchemaNamespace()) ;
+}
+helper OclAny::isMetadata():Boolean{
+	return (self.getAttributeName()='metadata') and 	(self.getAttributeNamespace().isStructuresSchemaNamespace()) ;
+}
+helper OclAny::getElementValue(inout slot:Slot):ValueSpecification{
+	var value:ValueSpecification=null;
+	// determine if instance or literal
+	var feature:Property=slot.definingFeature.oclAsType(Property);
+	var type:Classifier=feature.type.oclAsType(Classifier);
+	if(type.oclIsKindOf(DataType))then{
+		value:=self.getElementValueSpecification(slot);
+	}else{
+		value:=new InstanceValue();
+		value.type:=type;
+		// defer setting instance if this is a reference
+//		if(feature.name.isReferenceName())then{
+		if(feature.aggregation=AggregationKind::none)then{
+			
+		}else{
+			var instance:InstanceSpecification=new InstanceSpecification();		
+			value.oclAsType(InstanceValue).instance:=instance;
+			var xmlInstancePackage:Package=slot.owningInstance.owningPackage;
+//			instance.classifier+=feature.classifier;
+			if(type.oclIsUndefined())then{
+				log('ERROR: untyped Element '+feature.qualifiedName);
+			}else{
+				instance.classifier+=type;
+				
+			}endif;
+			xmlInstancePackage.packagedElement+=instance;
+		}endif;
+	}endif;
+
+	slot.value+=value;
+	return value;
+}
+// not used
+//query String::isReferenceName():Boolean=self.endsWith('Reference');
+
+helper String::getEnumerationLiteral(enumeration:Enumeration):EnumerationLiteral{
+	var enumerationLiteral:EnumerationLiteral=enumeration.ownedLiteral->select(l|l.name=self)->asSequence()->first();
+	if(enumerationLiteral.oclIsUndefined())then{
+		enumeration.general->select(e|e.oclIsKindOf(Enumeration)).oclAsType(Enumeration)->forEach(el){
+			return self.getEnumerationLiteral(el);
+		};
+	}endif;
+	return enumerationLiteral;
+}
+helper OclAny::getElementValueSpecification(inout slot:Slot):ValueSpecification{
+	// this should always be a literal or enumerationliteral
+	return self.getXSDElementValue().getValueSpecification(slot);
+}
+helper OclAny::getAttributeValue(inout slot:Slot):ValueSpecification{
+	// this should always be a literal or enumerationliteral
+	return self.getAttributeValue().getValueSpecification(slot);
+}
+helper String::getValueSpecification(inout slot:Slot):ValueSpecification{
+	// this should always be a literal or enumerationliteral
+	var value:ValueSpecification=null;
+	var type:Classifier=slot.definingFeature.type.oclAsType(Classifier);
+	
+	var attributeValue:String=self;
+	if(type.oclIsKindOf(Enumeration))then{
+		value:=new InstanceValue();
+		value.oclAsType(InstanceValue).instance:=attributeValue.getEnumerationLiteral(type.oclAsType(Enumeration));
+	}else{
+		if(type.isBoolean())then{
+			value:=new LiteralBoolean();
+			value.oclAsType(LiteralBoolean).value:=attributeValue.toLower()='true';
+		}else{
+			if(type.isInteger())then{
+				value:=new LiteralInteger();
+				value.oclAsType(LiteralInteger).value:=attributeValue.toInteger();
+			}else{
+				if(type.isReal())then{
+					value:=new LiteralReal();
+					value.oclAsType(LiteralReal).value:=attributeValue.toReal();
+				}else{
+					value:=new LiteralString();
+					value.oclAsType(LiteralString).value:=attributeValue;
+					
+				}endif;
+				
+			}endif;
+			
+		}endif;
+	}endif;
+	value.type:=type;
+	slot.value+=value;
+	return value;
+}
+
+helper Classifier::isBoolean():Boolean{
+	if('boolean'=(self.name.toLower()))then{return true;}endif;
+	self.general->forEach(general){return general.isBoolean();};
+	return false;
+}
+helper Classifier::isInteger():Boolean{
+	if('integer'=(self.name.toLower()))then{return true;}endif;
+	self.general->forEach(general){return general.isInteger();};
+	return false;
+}
+helper Classifier::isReal():Boolean{
+	var name:String =self.name.toLower();
+	if(
+		('boolean'=name)
+		or ('decimal'=name)
+		or ('double'=name)
+		or ('real'=name)
+		)then{return true;}endif;
+	self.general->forEach(general){return general.isReal();};
+	return false;
+}
+helper OclAny::getElementSlot(inout instance:InstanceSpecification,classifier:Classifier):Slot{
+	var topLevelElement:Property=self.getNestedElement(classifier);
+	if(topLevelElement.oclIsUndefined())then{
+		log('ERROR: failed to resolve element '+self.getElementNamespace()+' : '+self.getElementName()+' in UML context '+classifier.qualifiedName);
+		return null;
+	}endif;
+	// check if slot already defined
+	instance.slot->select(s|s.definingFeature=topLevelElement)->forEach(existingSlot){
+		return existingSlot;
+	};
+	var slot:Slot=new Slot();
+	instance.slot+=slot;
+	slot.definingFeature:=topLevelElement;
+	return slot;
+}
+query UML::Property::getResolvedAttribute():UML::Property{
+	var topLevelProperty:UML::Property=self.referencesTopLevelProperty();
+	if((topLevelProperty=null) 
+		or topLevelProperty.oclIsUndefined() 
+		or (topLevelProperty.getNearestPackage()=null)
+		or (topLevelProperty.getNearestPackage().oclIsUndefined())
+		)then {return self;}endif;
+	return topLevelProperty;
+	}
+helper OclAny::getNestedElement(classifier:Classifier):Property{
+	// we should know the context in this case
+	var tagName:String=self.getElementName();
+	var targetNamespace:String=self.getElementNamespace();
+	var targetInformationModel:Package=targetNamespace.getInformationModel();
+	if(targetInformationModel.oclIsUndefined())then{
+		log('Failed to resolve targetNamespace '+targetNamespace);
+		return null;
+	}endif;
+
+//	var propertyResult:Property=classifier.getAllResolvedAttributes()
+	var propertyResult:Property=classifier.getAllAttributes().getResolvedAttribute()
+			->select(a|(a.name=tagName) and (targetInformationModel=a.getNearestPackage()))
+//			->select(p|p.getNearestPackage()=targetInformationModel)
+			->asSequence()->first();
+
+	if(propertyResult.oclIsUndefined())then{
+
+	
+		// could be subsetted element
+		// or could be property from subclass of classifier
+		// need to find the property, probably in a PropertyHolder
+		// need to allow for element definition in a foreign namespace
+		// so we need to look at <<PropertyHolder>> Properties in <<InformationModel>> associated with the namespace
+	propertyResult:=targetInformationModel.ownedType
+			->select(t|t.isPropertyHolder()).oclAsType(Classifier).attribute
+			->select(a|a.name=tagName)->asSequence()->first();
+
+		
+		// so we will need to examine all attributes of the classifier and track down their top level definitions, 
+		// then get the properties subsetting those
+		// propertyResult:=classifier.getAllSubstitutionAttributes()->select(a|a.name=tagName)->asSequence()->first();
+		// if all that does not work, then start looking at subclassifiers
+		if(propertyResult.oclIsUndefined())then{
+			// search non-property holders
+			propertyResult:=targetInformationModel.ownedType
+//				->select(t|not(t.isPropertyHolder())).oclAsType(Classifier).attribute.getResolvedAttribute()
+//				->select(t|t.oclIsKindOf(Classifier) and not(t.isPropertyHolder())).oclAsType(Classifier).attribute  // test
+				->select(t|t.oclIsKindOf(Classifier) and not(t.isPropertyHolder())).oclAsType(Classifier).attribute.getResolvedAttribute()
+				->select(a|(a.name=tagName) and (targetInformationModel=a.getNearestPackage()))
+				
+				->asSequence()->first();
+			if(propertyResult.oclIsUndefined())then{
+				// we searched all properties in information model at this point, and still could not find it
+				log('Failed to locate property '+tagName+' in '+targetInformationModel.qualifiedName);
+			}endif;
+		}endif;
+	}endif;
+	return propertyResult;
+}
+
+/*
+helper Classifier::getAllSubstitutionAttributes():Set(Property){
+	
+}
+*/
+helper OclAny::getTopLevelElement():Property{
+	var targetNamespace:String=self.getElementNamespace();
+	var targetName:String=self.getElementName();
+	var targetSchema:Package=targetNamespace.getInformationModel();
+	if(targetSchema.oclIsUndefined())then{
+		log('ERROR: failed to find schema of top level element '+targetNamespace+' : '+targetName);
+		return null;
+	}endif;
+	return targetSchema.ownedType->select(t|t.oclIsKindOf(Classifier)).oclAsType(Classifier).attribute
+	->select(a|a.name=targetName)->asSequence()->first();
+}
+helper String::getInformationModel():Package{
+	return allSchemaTargetNamespaces->select(t|t.targetNamespace=self).schema->asSequence()->first();
+}
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+helper CMOF::EObject::getDocumentAtRelativeURI(relativeURI:String):OclAny{
+	var annotation:CMOF::EAnnotation=new CMOF::EAnnotation('getDocumentAtRelativeURI');
+	annotation._references+=self;
+	"relativeURI".setAnnotationDetail(annotation,relativeURI);
+	blackboxHook.eAnnotations+=annotation;
+	return annotation.eAnnotations->asSequence()->first();
+	}
+
+helper UML::Package::getMpdRelativePathForPackage(in topPackage:UML::Package):String{
+	if(self=topPackage)then{return '.';}endif;
+	return self.nestingPackage.getMpdRelativePathForPackage(topPackage)+'/'+self.name;
+}
+
+helper CMOF::EObject::getRootFileName():String{
+	var annotation:CMOF::EAnnotation=new CMOF::EAnnotation('getRootFileName');
+	annotation._references+=self;
+	blackboxHook.eAnnotations+=annotation;
+	return annotation.getDetail('rootFileName');
+	}
+
+helper 		gatherCatalogedSchemas(mpdRootPackage:UML::Package){
+		mpdRootPackage.allSubobjectsOfType(UML::Package).oclAsType(UML::Package)
+			->select(p|p.isStereotypeApplied(NIEMSchemaStereotype))
+			->forEach(schemaPackage){
+				var schemaTuple:Tuple(schema:UML::Package,
+						targetNamespace:String)=
+						Tuple{schema:UML::Package=schemaPackage,
+						targetNamespace:String=schemaPackage.getStereotypeApplication(NIEMSchemaStereotype).oclAsType(Stdlib::Element).getSchemaTargetNamespace()};
+				log('Schema proxy for '+schemaTuple.targetNamespace+', '+schemaTuple.schema.qualifiedName);		
+				schemaTargetNamespaces+=schemaTuple;		
+			};
+		log('schemaTuple proxies '+schemaTargetNamespaces->size().repr());	
+		mapInit();
+		catalog.map CatalogType();
+		return;
+}
+helper mapInit(){
+	var annotation:CMOF::EAnnotation=new CMOF::EAnnotation('mapInit');
+	blackboxHook.eAnnotations+=annotation;
+	return;
+ 	}
+mapping 	CAT::CatalogType::CatalogType():UML::Model@pimUml
+{
+	mpdRootPackage.packagedElement+=result;
+	mpdRootPackage:=result;
+	// there is no longer an mpdName: extract from directory name
+	mpdRootPackage.name:=self.mpdName;
+//	mpdRootPackage.name:=self.getMpdName();
+	result.applyProfile(logicalProfile);
+	result.applyProfile(provisioningProfile);
+	result.applyProfile(structureProfile);
+	result.applyProfile(niemXsdProfile);
+	self.map MpdCatalog_ProvisioningComponent(result);
+}
+/*
+query CAT::Catalog::getMpdName():String{
+	var baseName:String=self.oclAsType(CMOF::EObject).getDirectoryName();
+	var index:Integer=baseName.lastIndexOf("-");
+	return baseName.substring(1,index-1);
+}
+query CAT::Catalog::getMpdVersionID():String{
+	var baseName:String=self.oclAsType(CMOF::EObject).getDirectoryName();
+	var index:Integer=baseName.lastIndexOf("-");
+	var tail:String=baseName.substring(index+1,baseName.length());
+	var versionEnd=tail.indexOf(".");
+	return tail.substring(1,versionEnd-1);
+}
+*/
+query CMOF::EObject::getDirectoryName():String{
+	var baseName:String=self.getModelDirectoryName();
+	return baseName;
+}
+mapping 	CAT::CatalogType::MpdCatalog_ProvisioningComponent(
+	inout newPackage:UML::Package):UML::Component@pimUml{
+	
+	newPackage.packagedElement+=result;
+	mpdComponent:=result;
+	// there is no longer an mpdName: extract from directory name
+	var baseModelName:String= self.mpdName;
+//	var baseModelName:String= self.getMpdName();
+	name:=baseModelName;
+	// process all content
+	// create the items, establish containment, set stereotypes and apply tags discretely
+    self.artifact->select(f|f.oclIsKindOf(CAT::FileType)).oclAsType(CAT::FileType)->forEach(file){
+            file.addFileType(mpdComponent);
+    };
+    self.artifact->select(f|f.oclIsKindOf(CAT::FileSetType)).oclAsType(CAT::FileSetType).map FileSetType();
+	
+	var pimmpd:Stdlib::Element=result.applyStereotype(prompdStereotype);
+	// there is no longer an mpdVersionID: extract from directory name
+	pimmpd.setMpdVersionID(self.mpdVersionID);
+//	pimmpd.setMpdVersionID(self.getMpdVersionID());
+//	log('MpdCatalog_ProvisioningComponent mpdClassCode '+self.mpdClassCode.repr().replace('-','_'));
+	pimmpd.setMpdClassCode(self.mpdClassCode.repr().replace('-','_'));
+	pimmpd.setMpdBaseURI(self.mpdURI.expandURI().mpdURItoBaseMpdUri(self.mpdVersionID));
+	pimmpd.setMpdDescriptionText(self.descriptionText);
+	self.metadata->forEach(metadata){
+		pimmpd.setMpdSecurityMarkingText(metadata.securityMarkingText);
+		pimmpd.setMpdCreationDate(metadata.creationDate.repr());
+
+		pimmpd.setMpdStatusText(metadata.statusText);
+		pimmpd.setMpdKeywordText(metadata.keywordText);
+		pimmpd.setMpdDomainText(metadata.domainText);
+		pimmpd.setMpdPurposeText(metadata.purposeText);
+		pimmpd.setMpdExchangePatternText(metadata.exchangePatternText);
+		pimmpd.setMpdExchangePartnerName(metadata.exchangePartnerName);
+		
+		metadata.authoritativeSource->forEach(authoritativeSource){
+			pimmpd.setMpdASName(authoritativeSource.aSName);
+			pimmpd.setMpdASAddressText(authoritativeSource.aSAddressText);
+			pimmpd.setMpdASWebSiteURL(authoritativeSource.aSWebSiteURL);
+//			pimmpd.setMpdPackageCode('release');
+			var pimPOCList:Stdlib::Element=pimmpd.getMpdPOCList();
+			authoritativeSource.pOC->forEach(poc){
+				var pimpoc:Stdlib::Element=pimPOCList.createPOCInstance();
+				pimpoc.setPOCPOCName(poc.pOCName);
+				pimpoc.setPOCPOCEmail(poc.pOCEmail);
+				pimpoc.setPOCPOCTelephone(poc.pOCTelephone);
+			};
+		};
+	};
+}
+query String::isPurposeCatalog():Boolean=self.substringAfter('#')='catalog';
+// map the Catalog Uri entry to a <<ModelPackageDescriptionFile>> Usage
+mapping 	CAT::FileType::FileType(
+	inout pimPackage:UML::NamedElement,inout pimComponent:UML::Component)
+	:UML::Usage@pimUml
+	when{not(self.purposeURI.expandURI().isPurposeCatalog())}
+{
+	supplier+=pimPackage;
+	client+=pimComponent;
+	pimComponent.packagedElement+=result;
+	var pimNdrSchemaInstance:Stdlib::Element=result.applyStereotype(NIEMModelPackageDescriptionFileStereotype);
+	// set version, conformant, purpose
+	pimNdrSchemaInstance.setFileTypeDescriptionText(self.descriptionText);
+	pimNdrSchemaInstance.setFileTypeExternalURI(self.externalURI.expandURI());
+	pimNdrSchemaInstance.setFileTypeNatureCode(self.natureURI.expandURI());
+	pimNdrSchemaInstance.setFileTypePurposeCode(self.purposeURI.expandURI());
+	// we have placed elements at their relative locations, no need to set relative path
+	pimNdrSchemaInstance.setFileTypeRelativePathName('');
+	//log("FileType "+self.natureURI.expandURI()+", "+natureURI+self.purposeURI.expandURI()+", "+purposeURI);
+}
+// represent non-schema artifacts as a package
+mapping 	CAT::FileType::FileTypePackage(inout ownerPackage:UML::Package,inout pimComponent:UML::Component):UML::Package@pimUml
+{
+	var umlPackagePath:String=self.relativePathName.toRelativeMdpLocation();
+//	var umlPackagePath:String=self.uri.toRelativeMdpLocation();
+	ownerPackage.packagedElement+=result;
+	result.name:=umlPackagePath.toBaseName();
+}
+	
+helper 	CAT::FileType::addFileType(inout pimComponent:UML::Component):UML::Usage
+{
+	var umlPackagePath:String=self.relativePathName.toRelativeMdpLocation();
+	//var umlPackagePath:String=self.uri.toRelativeMdpLocation();
+	var ownerPackage:UML::Package=umlPackagePath.getOwnerPackage(mpdRootPackage);
+	var fileTypePackage:UML::Package=null;
+	if(self.relativePathName.endsWith('.xsd'))then{
+//	if(self.uri.endsWith('.xsd'))then{
+		var schema:XSD::XSDSchema=self.oclAsType(CMOF::EObject).getSchemaAtRelativeURI(self.relativePathName).oclAsType(XSD::XSDSchema);
+//		var schema:XSD::XSDSchema=self.oclAsType(CMOF::EObject).getSchemaAtRelativeURI(self.uri).oclAsType(XSD::XSDSchema);
+		if(not(schema.oclIsUndefined()))then{
+			// and map it as schema
+			fileTypePackage:=schema.mapAbstractXSDSchema();
+			// no mapping if proxy, structures, etc.
+			if(fileTypePackage.oclIsUndefined())then{return null;}endif;
+			ownerPackage.packagedElement+=fileTypePackage;
+			var stereotypeInstance:Stdlib::Element=fileTypePackage.getStereotypeApplication(NIEMInformationModelStereotype).oclAsType(Stdlib::Element);
+			if(not(stereotypeInstance.oclIsUndefined()))then{
+				
+				schema.setModelInformationDefaultPurpose(self.purposeURI.expandURI(),stereotypeInstance);
+			}endif;
+		}endif;
+	}endif;	
+	if((fileTypePackage=null))then{
+		// for artifacts not recognized (not schemas) we map to a UML Package
+		fileTypePackage:=self.map FileTypePackage(ownerPackage,pimComponent);
+	}endif;
+	return self.map FileType(fileTypePackage,pimComponent);
+}
+
+mapping 	CAT::FileSetType::FileSetType():UML::Component@pimUml
+{
+	// perhaps a dependency with multiple sources as the referenced files; (ref vs containment? - flag in FileType)	
+	name:=self.id;
+	mpdComponent.packagedElement+=result;
+	self.file->forEach(file){
+		var referencedFile:UML::NamedElement=file.addFileType(result);
+	};
+	// referenced files
+	self.files->select(f|not(f.oclIsUndefined()))->forEach(fileRef){
+		var file:CAT::FileType=catalog.allSubobjectsOfKind(CAT::FileType).oclAsType(CAT::FileType)->select(f|f.id=fileRef.repr())->asSequence()->first();
+		var referencedFile:UML::Usage=file.addFileType(mpdComponent);
+		if(not(referencedFile.oclIsUndefined()))then{
+		var elementImport:UML::ElementImport=new UML::ElementImport@pimUml();
+		elementImport.importedElement:=referencedFile;
+		elementImport.importingNamespace:=result;
+		}endif;
+	};
+	var artifactStereotype:UML::Stereotype=NIEMModelPackageDescriptionFileSetStereotype;
+	var stereotypeInstance:Stdlib::Element=result.applyStereotype(artifactStereotype);
+
+	stereotypeInstance.setFileSetTypeDescriptionText(self.descriptionText);
+	stereotypeInstance.setFileSetTypeExternalURI(self.externalURI.expandURI());
+	stereotypeInstance.setFileSetTypeNatureURI(self.natureURI.expandURI());
+	stereotypeInstance.setFileSetTypePurposeURI(self.purposeURI.expandURI());
+}	
+query String::expandURI():String{
+	if(self.oclIsUndefined())then {return self;} else{}endif;
+	
+	if(self.startsWith('[') and self.endsWith(']'))then{
+		var prefix:String=self.substringAfter('[').substringBefore(':');
+		var local:String=self.substringAfter(':').substringBefore(']');		
+		var namespace:String=documentRoot.xMLNSPrefixMap->select(e|e.key=prefix).value->first();
+		//log('expandURI '+self+', '+prefix+', '+local+', '+namespace);
+		return namespace+local;
+	}else{}endif;
+	return self;
+};
+query String::mpdURItoBaseMpdUri(mpdVersionID:String):String{
+	if(self.oclIsUndefined())then {return self;} else{}endif;
+	if(mpdVersionID.oclIsUndefined())then {return self;} else{}endif;
+	return self.replace('/'+mpdVersionID,'');
+};
+ 	

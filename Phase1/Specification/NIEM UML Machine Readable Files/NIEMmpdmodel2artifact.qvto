@@ -1,0 +1,531 @@
+/*
+NIEM UML
+Copyright � 2011, ModelDriven.org and Tom Digre, all rights reserved worldwide.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0-standalone.html.
+
+There are also commercial licenses available for this software.
+Contact ModelDriven.org for more information.
+*/
+//import niemcommonBase;
+import NIEMpsm2xsd;
+import NIEMplatformBinding;
+//import pim2psmPlatformBinding;
+//import pim2mpd;
+//import pim2ndr;
+//import pim2xsd;
+//import uml2mpdPlatformBinding;
+//import pim2psmPlatformBinding;
+//import uml2xsdPlatformBinding;
+/* TEMP
+import uml2ndrPlatformBinding;
+import uml2xsdPlatformBinding;
+*/
+//modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.1.2';
+modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+
+modeltype CMOF  uses 'http://www.eclipse.org/emf/2002/Ecore';
+modeltype XSD  uses 'http://www.eclipse.org/xsd/2002/XSD';
+modeltype CAT  uses 'http://reference.niem.gov/niem/resource/mpd/catalog/1.0/';
+modeltype OASIS  uses 'urn:oasis:names:tc:entity:xmlns:xml:catalog';
+
+modeltype CHANGELOG uses 'http://reference.niem.gov/niem/resource/mpd/changelog/1.0/';
+//modeltype PROXY uses 'http://niem.gov/niem/proxy/xsd/2.0';
+modeltype WANTLIST uses 'http://niem.gov/niem/wantlist/2';// EXTRA
+
+transformation NIEMmpdmodel2artifact(in uml:UML,
+	in schemaForProxy:XSD,in schemaForStructures:XSD,in schemaForAppinfo:XSD,
+	//in schemaForAppinfo2:XSD, // not in NIEM3
+	in schemaForConformanceTargets:XSD,in schemaForLocalTerminology:XSD,
+	//out changeLog:CHANGELOG,  moved to platform specific
+	out xsd:XSD,inout blackboxAdapter:CMOF,out cat:CAT
+	,out oasis:OASIS
+	,out wantlist:WANTLIST 
+	)
+	extends transformation
+//	pim2psmPlatformBinding,
+//	pim2mpd(uml:UML,changeLog:CHANGELOG,xsd:XSD,blackboxAdapter:CMOF,cat:CAT),
+//	uml2mpdPlatformBinding(uml:UML,xsd:XSD),
+//	pim2ndr(uml:UML,xsd:XSD,blackboxAdapter:CMOF),
+//	uml2ndrPlatformBinding(uml:UML,xsd:XSD),uml2xsdPlatformBinding(uml:UML,xsd:XSD),
+//	pim2xsd(uml:UML,xsd:XSD),
+//	uml2xsdPlatformBinding(in UML,out XSD),
+//	niemcommonBase,
+	NIEMpsm2xsd(uml:UML,schemaForProxy:XSD,schemaForStructures:XSD,schemaForAppinfo:XSD,
+		//schemaForAppinfo2:XSD,// not in niem3
+		schemaForConformanceTargets:XSD,schemaForLocalTerminology:XSD,
+		xsd:XSD 
+		);
+
+	main() {
+		blackboxHook:=blackboxAdapter.objectsOfType(CMOF::EPackage)->asSequence()->first();
+	mpdmodel2artifactMain();
+	return;
+	}
+helper mpdmodel2artifactMain(){
+		NIEMpsm2mpdMain();
+		/////////////////////////EXTRA
+		var wantlistDocument:WANTLIST::DocumentRoot=new WANTLIST::DocumentRoot@wantlist();// EXTRA
+		log('wantlist '+wantlistDocument.repr());
+		wantlistPrefixes(wantlistDocument);
+		var topWantList:WANTLIST::WantListType=new WANTLIST::WantListType@wantlist();// EXTRA
+		wantlistDocument.wantList+=topWantList;
+		topWantList.release:='2.1';// EXTRA
+		topWantList.product:='NIEM';// EXTRA
+		log('wantlist gather schemas');
+		var schemas:Set(XSD::XSDSchema)=xsd.rootObjects()
+			->select(x|x.oclIsKindOf(XSD::XSDSchema)).oclAsType(XSD::XSDSchema)->asSet();
+		log('wantlist attribute');
+		schemas.wantlistAttribute(topWantList);
+		log('wantlist element');
+		schemas.wantlistElement(topWantList);
+		log('wantlist type');
+		schemas.wantlistType(topWantList);
+		log('wantlist complete '+wantlistDocument.repr());
+		///////////////////////////////sort contents of schemas
+		schemas->forEach(schema){
+			schema.contents:=schema.contents->sortedBy(content|content.schemaContentOrder());
+		};
+		return;
+}	
+query XSD::XSDSchemaContent::schemaContentOrder():String{
+	// sort by annotation, import, other, attribute,element,type
+	if(self.oclIsKindOf(XSD::XSDAnnotation))then {return 'a'+self.repr();}endif;
+	if(self.oclIsKindOf(XSD::XSDImport))then {return 'b'+self.oclAsType(XSD::XSDImport).namespace;}endif;
+	if(self.oclIsKindOf(XSD::XSDAttributeDeclaration))then {return 'e'+self.oclAsType(XSD::XSDNamedComponent).name;}endif;
+	if(self.oclIsKindOf(XSD::XSDElementDeclaration))then {return 'f'+self.oclAsType(XSD::XSDNamedComponent).name;}endif;
+	if(self.oclIsKindOf(XSD::XSDTypeDefinition))then {return 'g'+self.oclAsType(XSD::XSDNamedComponent).name;}endif;
+	if(self.oclIsKindOf(XSD::XSDNamedComponent))then {return 'c'+self.oclAsType(XSD::XSDNamedComponent).name;}endif;
+	return 'd'+self.repr();
+}
+helper catalog(){
+		var documentRoot:CAT::DocumentRoot:=new CAT::DocumentRoot();
+		documentRoot.catalog+=mpdComponent.map ModelPackageDescription();
+
+		var oasisDocumentRoot:OASIS::DocumentRoot:=new OASIS::DocumentRoot();
+		oasisDocumentRoot.catalog+=mpdComponent.map OasisCatalog();
+		// dummy changelog
+		// moved to platform specific
+		/*
+		var changeLogx:CHANGELOG::ChangeLogType=new CHANGELOG::ChangeLogType@changeLog();
+		log('changeLog '+changeLogx.repr());
+
+		var proxyText:PROXY::_String:=new PROXY::_String();
+		proxyText.value:='Sample Summary';
+		var proxySubmitter:PROXY::_String:=new PROXY::_String();
+		proxySubmitter.value:='Sample Submitter';
+		changeLogx.changeLogSummaryText:=proxyText;
+		changeLogx.changeLogSubmitterName:=proxySubmitter;
+		*/
+		return;
+}
+//////////////////////OASIS
+mapping UML::Component	::OasisCatalog():OASIS::Catalog
+{
+	self.clientDependency
+		->select(t|t.isStereotypeApplied(NIEMModelPackageDescriptionFileStereotype)).oclAsType(UML::Usage)
+		.map Uri(result);
+}
+mapping UML::Usage::Uri(inout catalog:OASIS::Catalog):OASIS::Uri
+	when{self.supplier->select(s|s.oclIsKindOf(UML::Package) and s.oclAsType(UML::Package).isNIEMNamespace())->notEmpty()}
+{
+	catalog.uri+=result;
+	var schemaPackage:UML::Package=self.supplier
+		->select(s|s.oclIsKindOf(UML::Package) and s.oclAsType(UML::Package).isNIEMNamespace()).oclAsType(UML::Package)
+		->asSequence()->first();
+	uri:=schemaPackage.toRelativePathName(schemaPackage.getNearestPackage().getNearesProfileApplication(niemXsdProfile),result);
+	var pimmpd:Stdlib::Element=self.getStereotypeApplication(NIEMModelPackageDescriptionFileStereotype).oclAsType(Stdlib::Element);
+	var explicitRelativePathName:String =pimmpd.getFileTypeRelativePathName();
+	if(not(explicitRelativePathName.oclIsUndefined()) and (explicitRelativePathName<>''))then{
+		uri:=explicitRelativePathName;
+	}endif;
+	name:=schemaPackage.getTargetNamespace();
+}
+///////////////////////////
+mapping UML::Component	::ModelPackageDescription():CAT::CatalogType
+{
+	mpdComponent:=self;
+	self.getTopNiemFolders().nestedPackage.mapAbstractPackage();
+	log('processCatalog start ');
+	self.packagedElement
+		->select(t|t.isStereotypeApplied(NIEMModelPackageDescriptionFileSetStereotype))
+		.oclAsType(UML::Component)
+		.map ModelPackageDescriptionFileSet(result);
+	// mpd
+	var pimmpd:Stdlib::Element=self.getStereotypeApplication(prompdStereotype).oclAsType(Stdlib::Element);
+
+	var md:CAT::MetadataType=new CAT::MetadataType();
+	metadata:=md;
+	var as:CAT::AuthoritativeSourceType=new CAT::AuthoritativeSourceType();
+	md.authoritativeSource:=as;
+	descriptionText:=pimmpd.getMpdDescriptionText();
+	mpdURI:=pimmpd.getMpdBaseURI();
+	mpdName:=mpdURI.getLastSegment();
+	mpdVersionID:=pimmpd.getMpdVersionID();
+
+	md.securityMarkingText:=pimmpd.getMpdSecurityMarkingText();
+//TODO	md.creationDate:=self.getAnyValue(artifactStereotype,'CreationDate').oclAsType(XSD::Date);
+//pimmpd.getMpdCreationDate()
+	md.statusText:=pimmpd.getMpdStatusText();
+	md.keywordText:=pimmpd.getMpdKeywordText();
+	md.domainText:=pimmpd.getMpdDomainText();
+	md.purposeText:=pimmpd.getMpdPurposeText();
+	md.exchangePatternText:=pimmpd.getMpdExchangePatternText();
+	md.exchangePartnerName:=pimmpd.getMpdExchangePartnerName();
+	as.aSName:=pimmpd.getMpdASName();
+	as.aSAddressText:=pimmpd.getMpdASAddressText();
+	as.aSWebSiteURL:=pimmpd.getMpdASWebSiteURL();
+	pimmpd.getMpdPOC()->forEach(poc){
+		var POC:CAT::POCType=new CAT::POCType();
+		POC.pOCName:=poc.getPOCName();
+		POC.pOCEmail:=poc.getPOCEmail();
+		POC.pOCTelephone:=poc.getPOCTelephone();
+		as.pOC+=POC;
+	};
+	self.clientDependency.map ModelPackageDescriptionRelationship(md);
+	self.clientDependency
+		->select(t|t.isStereotypeApplied(NIEMModelPackageDescriptionFileStereotype)).oclAsType(UML::Usage)
+		.map ModelPackageDescriptionFile(result);
+}
+mapping UML::Dependency::ModelPackageDescriptionRelationship(inout md:CAT::MetadataType):CAT::RelationshipType
+	when{self.isStereotypeApplied(NIEMModelPackageDescriptionRelationshipStereotype)}
+{
+		var relationshipType:Stdlib::Element=self.getStereotypeApplication(NIEMModelPackageDescriptionRelationshipStereotype).oclAsType(Stdlib::Element);
+		descriptionText:=relationshipType.getRelationshipDescriptionText();
+		var code:String=relationshipType.getRelationshipCode();
+		relationshipCode:=switch{
+			case(code='versionOf') CAT::RelationshipCodeSimpleType::versionOf;
+			case(code='specializes') CAT::RelationshipCodeSimpleType::specializes;
+			case(code='generalizes') CAT::RelationshipCodeSimpleType::generalizes;
+			case(code='supersedes') CAT::RelationshipCodeSimpleType::supersedes;
+			case(code='deprecates') CAT::RelationshipCodeSimpleType::deprecates;
+			case(code='adapts') CAT::RelationshipCodeSimpleType::adapts;
+			case(code='updates') CAT::RelationshipCodeSimpleType::updates;
+			else CAT::RelationshipCodeSimpleType::conformsTo;
+			};
+		md.relationship+=result;
+}
+mapping UML::Usage::ModelPackageDescriptionFile(inout catalog:CAT::CatalogType):CAT::FileType{
+	catalog.addCatalogFile(result);
+	var schemaPackage:UML::NamedElement=self.supplier->asSequence()->first();
+	relativePathName:=schemaPackage.toRelativePathName(schemaPackage.getNearestPackage().getNearesProfileApplication(niemXsdProfile),result);
+	var pimmpd:Stdlib::Element=self.getStereotypeApplication(NIEMModelPackageDescriptionFileStereotype).oclAsType(Stdlib::Element);
+	var explicitRelativePathName:String =pimmpd.getFileTypeRelativePathName();
+	if(not(explicitRelativePathName.oclIsUndefined()) and (explicitRelativePathName<>''))then{
+		relativePathName:=explicitRelativePathName;
+	}endif;
+	descriptionText:=pimmpd.getFileDescriptionText();
+	id:=self.getFileId();
+	externalURI:=pimmpd.getFileTypeExternalURI();
+	natureURI:=pimmpd.getFileTypeNatureURI();
+	purposeURI:=pimmpd.getFileTypePurposeURI();
+}
+mapping UML::Usage::ModelPackageDescriptionFile(inout fileSet:CAT::FileSetType):CAT::FileType{
+	fileSet.file+=result;
+	var schemaPackage:UML::NamedElement=self.supplier->asSequence()->first();
+
+	relativePathName:=schemaPackage.toRelativePathName(schemaPackage.getNearestPackage().getNearesProfileApplication(niemXsdProfile),result);
+	var pimmpd:Stdlib::Element=self.getStereotypeApplication(NIEMModelPackageDescriptionFileStereotype);
+	var explicitRelativePathName:String =pimmpd.getFileTypeRelativePathName();
+	if(not(explicitRelativePathName.oclIsUndefined()) and (explicitRelativePathName<>''))then{
+		relativePathName:=explicitRelativePathName;
+	}endif;
+	descriptionText:=pimmpd.getFileDescriptionText();
+	id:=self.getFileId();
+	externalURI:=pimmpd.getFileTypeExternalURI();
+	natureURI:=pimmpd.getFileTypeNatureURI();
+	purposeURI:=pimmpd.getFileTypePurposeURI();
+}
+
+mapping UML::Component::ModelPackageDescriptionFileSet(inout catalog:CAT::CatalogType):CAT::FileSetType{
+	catalog.addCatalogFileSet(result);
+	self.elementImport.importedElement->select(e|e.isStereotypeApplied(NIEMModelPackageDescriptionFileStereotype))
+		.oclAsType(UML::Usage)->forEach(fileType){result.addFileSetFiles(fileType.getFileId());};
+	self.clientDependency->select(e|e.isStereotypeApplied(NIEMModelPackageDescriptionFileStereotype))
+		.oclAsType(UML::Usage).map ModelPackageDescriptionFile(result);
+
+	var pimMpdFileSetStereotypeInstance:Stdlib::Element=self.getStereotypeApplication(NIEMModelPackageDescriptionFileSetStereotype).oclAsType(Stdlib::Element);
+	natureURI:=natureFilesetURI;
+	purposeURI:=pimMpdFileSetStereotypeInstance.getFileSetTypePurposeCode();
+	id:='fs_'+self.getFileId();
+	externalURI:=pimMpdFileSetStereotypeInstance.getFileSetExternalURI();
+	descriptionText:=pimMpdFileSetStereotypeInstance.getFileSetDescriptionText();
+
+}
+mapping 	UML::NamedElement::FolderType(inout catalog:CAT::CatalogType,mpdRootPackage:UML::Model):CAT::FolderType
+{
+	catalog.addCatalogFolder(result);
+	relativePathName:=self.toRelativePathName(mpdRootPackage,result);
+}
+////////////////////////////////////////////////////extra
+helper WANTLIST::AttributeType::setWantlistAttributeName(namespace:String,localPart:String,prefix:String){
+	var annotation:CMOF::EAnnotation=new CMOF::EAnnotation('setWantlistAttributeName');
+	annotation._references+=self.oclAsType(CMOF::EObject);
+	"namespace".setAnnotationDetail(annotation,namespace);
+	"localPart".setAnnotationDetail(annotation,localPart);
+	"prefix".setAnnotationDetail(annotation,prefix);
+	blackboxHook.eAnnotations+=annotation;
+	return ;
+	}
+helper WANTLIST::ElementType::setWantlistElementName(namespace:String,localPart:String,prefix:String){
+	var annotation:CMOF::EAnnotation=new CMOF::EAnnotation('setWantlistElementName');
+	annotation._references+=self.oclAsType(CMOF::EObject);
+	"namespace".setAnnotationDetail(annotation,namespace);
+	"localPart".setAnnotationDetail(annotation,localPart);
+	"prefix".setAnnotationDetail(annotation,prefix);
+	blackboxHook.eAnnotations+=annotation;
+	return ;
+	}
+helper WANTLIST::TypeType::setWantlistTypeName(namespace:String,localPart:String,prefix:String){
+	var annotation:CMOF::EAnnotation=new CMOF::EAnnotation('setWantlistTypeName');
+	annotation._references+=self.oclAsType(CMOF::EObject);
+	"namespace".setAnnotationDetail(annotation,namespace);
+	"localPart".setAnnotationDetail(annotation,localPart);
+	"prefix".setAnnotationDetail(annotation,prefix);
+	blackboxHook.eAnnotations+=annotation;
+	return ;
+	}
+///////////////////////
+helper WANTLIST::AttributeInTypeType::setWantlistAttributeTypeName(namespace:String,localPart:String,prefix:String){
+	var annotation:CMOF::EAnnotation=new CMOF::EAnnotation('setWantlistAttributeTypeName');
+	annotation._references+=self.oclAsType(CMOF::EObject);
+	"namespace".setAnnotationDetail(annotation,namespace);
+	"localPart".setAnnotationDetail(annotation,localPart);
+	"prefix".setAnnotationDetail(annotation,prefix);
+	blackboxHook.eAnnotations+=annotation;
+	return ;
+	}
+helper WANTLIST::ElementInTypeType::setWantlistElementTypeName(namespace:String,localPart:String,prefix:String){
+	var annotation:CMOF::EAnnotation=new CMOF::EAnnotation('setWantlistElementTypeName');
+	annotation._references+=self.oclAsType(CMOF::EObject);
+	"namespace".setAnnotationDetail(annotation,namespace);
+	"localPart".setAnnotationDetail(annotation,localPart);
+	"prefix".setAnnotationDetail(annotation,prefix);
+	blackboxHook.eAnnotations+=annotation;
+	return ;
+	}
+helper WANTLIST::UnionMemberType::setWantlistUnionMemberTypeName(namespace:String,localPart:String,prefix:String){
+	var annotation:CMOF::EAnnotation=new CMOF::EAnnotation('setWantlistUnionMemberTypeName');
+	annotation._references+=self.oclAsType(CMOF::EObject);
+	"namespace".setAnnotationDetail(annotation,namespace);
+	"localPart".setAnnotationDetail(annotation,localPart);
+	"prefix".setAnnotationDetail(annotation,prefix);
+	blackboxHook.eAnnotations+=annotation;
+	return ;
+	}
+helper WANTLIST::ElementInTypeType::setWantlistElementMaxOccurs(maxOccurs:Integer){
+	var annotation:CMOF::EAnnotation=new CMOF::EAnnotation('setWantlistElementMaxOccurs');
+	annotation._references+=self.oclAsType(CMOF::EObject);
+	"maxOccurs".setAnnotationDetail(annotation,maxOccurs.repr());
+	blackboxHook.eAnnotations+=annotation;
+	return ;
+	}
+
+
+helper 	XSD::XSDSchema::wantlistAttribute(inout topWantList:WANTLIST::WantListType){// EXTRA
+	var prefix:String=self.getWantlistPrefix();
+	if(prefix.oclIsUndefined()) then {return;}endif;
+	self.attributeDeclarations->select(a|a.targetNamespace=self.targetNamespace)
+	->forEach(attribute){
+		var attributeType:WANTLIST::AttributeType=new WANTLIST::AttributeType@wantlist();
+		//attributeType.qualifier:=prefix+':'+attribute.name;
+		attributeType.setWantlistAttributeName(self.targetNamespace,attribute.name,prefix);
+		topWantList.attribute+=attributeType;
+	};
+
+	// add elements from schema to wantList
+	// AttributeType, ElementType, TypeType
+	// lets see how we are doing before more
+	return;
+}
+helper 	XSD::XSDSchema::wantlistElement(inout topWantList:WANTLIST::WantListType){// EXTRA
+	var prefix:String=self.getWantlistPrefix();
+	if(prefix.oclIsUndefined()) then {log("No wantlist for non-reference schema "+self.targetNamespace);return;}endif;
+	self.elementDeclarations
+	->select(a|a.targetNamespace=self.targetNamespace)
+	->forEach(element){
+		if(element.name.oclIsUndefined())then{
+			log("ERROR:wantlist element has no name in schema "+self.targetNamespace);
+		}else{
+		var elementType:WANTLIST::ElementType=new WANTLIST::ElementType@wantlist();
+//		elementType.qualifier:=prefix+':'+element.name;
+		elementType.setWantlistElementName(self.targetNamespace,element.name,prefix);
+		elementType.isReference:=element.name.endsWith('Reference');
+		topWantList.element+=elementType;
+		}endif;
+	};
+	return;
+}
+helper 	XSD::XSDSchema::wantlistType(inout topWantList:WANTLIST::WantListType){// EXTRA
+	var prefix:String=self.getWantlistPrefix();
+	if(prefix.oclIsUndefined()) then {return;}endif;
+	self.typeDefinitions
+	->select(a|a.targetNamespace=self.targetNamespace)
+	->forEach(type){
+	//log('wantlistType '+type.repr());
+		var typeType:WANTLIST::TypeType=new WANTLIST::TypeType@wantlist();
+		//typeType.qualifier:=prefix+':'+type.name;
+		typeType.setWantlistTypeName(self.targetNamespace,type.name,prefix);
+		topWantList.type+=typeType;
+		typeType.isRequested:=false;
+		if(type.oclIsKindOf(XSD::XSDComplexTypeDefinition))then{
+			var complexType:XSD::XSDComplexTypeDefinition=type.oclAsType(XSD::XSDComplexTypeDefinition);
+			// AttributeInType
+			complexType.attributeContents->forEach(attributeContent){
+				if(attributeContent.oclIsKindOf(XSD::XSDAttributeUse))then{
+					var attributeUse:XSD::XSDAttributeUse=attributeContent.oclAsType(XSD::XSDAttributeUse);
+					var resolvedAttribute:XSD::XSDAttributeDeclaration=attributeUse.attributeDeclaration;
+					var prefix2:String=resolvedAttribute.targetNamespace.getWantlistPrefix();
+					if(not(prefix2.oclIsUndefined()))then{
+						var attributeTypeType:WANTLIST::AttributeInTypeType=new WANTLIST::AttributeInTypeType@wantlist();
+						attributeTypeType.setWantlistAttributeTypeName(resolvedAttribute.targetNamespace,resolvedAttribute.name,prefix2);
+						typeType.attributeInType+=attributeTypeType;
+					}endif;
+				}endif;
+			};
+			// ElementInType
+			var content:XSD::XSDComplexTypeContent=complexType.content;
+			if(not(content.oclIsUndefined()) and content.oclIsKindOf(XSD::XSDParticle))then{
+				var particle:XSD::XSDParticle=content.oclAsType(XSD::XSDParticle);
+				particle.wantlistElementInType(typeType);
+			}endif;
+
+		}else{
+			var simpleType:XSD::XSDSimpleTypeDefinition=type.oclAsType(XSD::XSDSimpleTypeDefinition);
+			// Facet
+			simpleType.facetContents->forEach(facet){
+				var facetType:WANTLIST::FacetType=new WANTLIST::FacetType@wantlist();
+				var facetTypeType:WANTLIST::FacetFacetType=switch{
+					case(facet.facetName='minExclusive')WANTLIST::FacetFacetType::minExclusive;
+					case(facet.facetName='maxExclusive')WANTLIST::FacetFacetType::maxExclusive;
+					case(facet.facetName='maxInclusive')WANTLIST::FacetFacetType::maxInclusive;
+					case(facet.facetName='totalDigits')WANTLIST::FacetFacetType::totalDigits;
+					case(facet.facetName='fractionDigits')WANTLIST::FacetFacetType::fractionDigits;
+					case(facet.facetName='length')WANTLIST::FacetFacetType::length;
+					case(facet.facetName='minLength')WANTLIST::FacetFacetType::minLength;
+					case(facet.facetName='maxLength')WANTLIST::FacetFacetType::maxLength;
+					case(facet.facetName='enumeration')WANTLIST::FacetFacetType::enumeration;
+					case(facet.facetName='whiteSpace')WANTLIST::FacetFacetType::whiteSpace;
+					case(facet.facetName='pattern')WANTLIST::FacetFacetType::pattern;
+					
+				/*
+					case(facet.facetName='minExclusive'){
+						WANTLIST::FacetFacetType::minExclusive;
+					} ;
+					case(facet.facetName='maxExclusive'){
+						WANTLIST::FacetFacetType::maxExclusive;
+					} ;
+					case(facet.facetName='maxInclusive'){
+						WANTLIST::FacetFacetType::maxInclusive;
+					} ;
+					case(facet.facetName='totalDigits'){
+						WANTLIST::FacetFacetType::totalDigits;
+					} ;
+					case(facet.facetName='fractionDigits'){
+						WANTLIST::FacetFacetType::fractionDigits;
+					} ;
+					case(facet.facetName='length'){
+						WANTLIST::FacetFacetType::length;
+					} ;
+					case(facet.facetName='minLength'){
+						WANTLIST::FacetFacetType::minLength;
+					} ;
+					case(facet.facetName='maxLength'){
+						WANTLIST::FacetFacetType::maxLength;
+					} ;
+					case(facet.facetName='enumeration'){
+						WANTLIST::FacetFacetType::enumeration;
+					} ;
+					case(facet.facetName='whiteSpace'){
+						WANTLIST::FacetFacetType::whiteSpace;
+					} ;
+					case(facet.facetName='pattern'){
+						WANTLIST::FacetFacetType::pattern;
+					} ;
+					*/
+				};
+				facetType.facet:=facetTypeType;
+				facetType.value:=facet.lexicalValue;
+				typeType.facet+=facetType;
+			};
+			// UnionMember
+			simpleType.memberTypeDefinitions->forEach(member){
+				var prefix2:String=member.targetNamespace.getWantlistPrefix();
+				if(not(prefix2.oclIsUndefined()))then{
+					var unionMemberType:WANTLIST::UnionMemberType=new WANTLIST::UnionMemberType@wantlist();
+					unionMemberType.setWantlistUnionMemberTypeName(member.targetNamespace,member.name,prefix2);
+					typeType.unionMember+=unionMemberType;
+				}endif;
+			};
+		}endif;
+
+	};
+	return;
+}
+helper 	XSD::XSDParticle::wantlistElementInType(inout typeType:WANTLIST::TypeType){// EXTRA
+				var particleContent:XSD::XSDParticleContent=self.content;
+				if((particleContent=null)or particleContent.oclIsUndefined()) then {return;}endif;
+				if(particleContent.oclIsKindOf(XSD::XSDElementDeclaration))then{
+					var resolvedElementDeclaration:XSD::XSDElementDeclaration=particleContent.oclAsType(XSD::XSDElementDeclaration).resolvedElementDeclaration;
+					if((resolvedElementDeclaration=null)or resolvedElementDeclaration.oclIsUndefined()) then {return;}endif;
+					//log('wantlistElementInType '+resolvedElementDeclaration.repr());
+					var prefix2:String=resolvedElementDeclaration.targetNamespace.getWantlistPrefix();
+					if(not(prefix2.oclIsUndefined()))then{
+						var elementTypeType:WANTLIST::ElementInTypeType=new WANTLIST::ElementInTypeType@wantlist();
+						elementTypeType.setWantlistElementTypeName(resolvedElementDeclaration.targetNamespace,resolvedElementDeclaration.name,prefix2);
+						elementTypeType.isReference:=resolvedElementDeclaration.name.endsWith('Reference');
+						elementTypeType.minOccurs:=self.minOccurs;
+                        //var maxOccursValue:WANTLIST::AllNNIMember1=WANTLIST::AllNNIMember1::unbounded;
+//                        elementTypeType.maxOccurs:=if(self.maxOccurs<0) then 'unbounded' else self.maxOccurs endif;
+                        //elementTypeType.maxOccurs:=if(self.maxOccurs<0) then WANTLIST::AllNNIMember1::unbounded else self.maxOccurs.oclAsType(OclAny) endif;
+                        elementTypeType.setWantlistElementMaxOccurs(self.maxOccurs);
+						typeType.elementInType+=elementTypeType;
+					}endif;
+
+				}else{
+					if(particleContent.oclIsKindOf(XSD::XSDModelGroup))then{
+						particleContent.oclAsType(XSD::XSDModelGroup).contents.wantlistElementInType(typeType);
+				//    <xsd:attribute name="choice" use="optional" type="w:PositiveIntegerListType"/>
+					}endif;
+				}endif;
+				return;
+}
+
+helper 	String::getWantlistPrefix():String{// EXTRA
+	// add prefixes
+	var targetNamespace:String=self;
+	prefixToNamespace->forEach(p){
+		if(p.namespace=targetNamespace)then{return p.prefix;}endif;
+	};
+	return null;
+	}
+helper 	XSD::XSDSchema::getWantlistPrefix():String{// EXTRA
+	return self.targetNamespace.getWantlistPrefix();
+	}
+helper 	wantlistPrefixes(inout wantlistDocument:WANTLIST::DocumentRoot){// EXTRA
+	// add prefixes
+	prefixToNamespace->forEach(p){
+		wantlistDocument.addXmlns(p.prefix,p.namespace);
+	};
+	return;
+	}
+helper 	WANTLIST::DocumentRoot::addXmlns(in prefix:String,in namespace:String){// EXTRA
+	// add prefixes
+	var prefixMaps:OrderedSet(CMOF::EStringToStringMapEntry)=self.xMLNSPrefixMap;
+	var prefixMap:CMOF::EStringToStringMapEntry=new CMOF::EStringToStringMapEntry();
+	prefixMap.key:=prefix;
+	prefixMap.value:=namespace;
+	prefixMaps+=prefixMap;
+	return;
+}

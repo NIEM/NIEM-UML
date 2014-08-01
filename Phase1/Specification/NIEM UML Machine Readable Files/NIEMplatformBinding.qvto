@@ -1,0 +1,2448 @@
+//import niemcommonMpd2pim;
+import NIEMglobals;
+modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+modeltype XSD  uses 'http://www.eclipse.org/xsd/2002/XSD';
+modeltype CAT  uses 'http://reference.niem.gov/niem/resource/mpd/catalog/1.0/';
+//modeltype CAT  uses 'urn:oasis:names:tc:entity:xmlns:xml:catalog';
+modeltype CMOF  uses 'http://www.eclipse.org/emf/2002/Ecore';
+modeltype ECORE  uses 'http://www.eclipse.org/emf/2002/Ecore';
+modeltype CHANGELOG uses 'http://reference.niem.gov/niem/resource/mpd/changelog/1.0/';
+
+
+transformation NIEMplatformBinding;
+	main() {}
+//////////////////// configuration properties
+property rootDirectory:String='~/';
+
+helper 	XSD::XSDAnnotation::mapXSDAnnotation(owner:UML::Element){
+	var annotation:CMOF::EAnnotation=new CMOF::EAnnotation('mapXSDAnnotation');
+	annotation._references+=self.oclAsType(CMOF::EObject);
+	annotation._references+=owner.oclAsType(CMOF::EObject);
+	blackboxHook.eAnnotations+=annotation;
+	return;
+}
+query XSD::XSDSchema::relativeMdpLocation():String{
+//	var relativeLocation:String=self.schemaLocation.substringAfter(rootDirectory);
+	var relativeLocation:String=self.schemaLocation.replace('\\','/').substringAfter(rootDirectory);
+	if(relativeLocation.oclIsUndefined())then{return 'external/'+self.oclAsType(CMOF::EObject).getExtentBaseName()+'.xsd';}
+	else{
+		// skip top 2 levels
+		var relativeLocation2:String=relativeLocation.substringAfter('/');
+		if(relativeLocation2.oclIsUndefined())then{}
+		else{
+			// skip top level
+			relativeLocation:= relativeLocation2;
+			relativeLocation2:=relativeLocation.substringAfter('/');
+			if(relativeLocation2.oclIsUndefined())then{}
+			else{
+				// skip second top level
+				relativeLocation:= relativeLocation2;
+			}endif;
+		}endif;
+	}endif;
+	return relativeLocation;
+}
+query OclAny::getNamespaceAttributeValue():String=
+	self.getAttributes()->select(a|a.isAppinfoNamespaceAttribute()).getAttributeValue()->asSequence()->first();
+query OclAny::hasAppinfoNamespaceAttribute(name:String):Boolean=
+	self.getAttributes()->select(a|a.isAppinfoNamespaceAttribute() and (a.getAttributeValue()=name))->notEmpty();
+query OclAny::hasAppinfoNameAttribute(name:String):Boolean=
+	self.getAttributes()->select(a|a.isAppinfoNameAttribute() and (a.getAttributeValue()=name))->notEmpty();
+//////////////////////////////////////////////////////////
+/*
+import niemcommonBase;
+import niemcommonPim2psm;
+modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+modeltype ECORE  uses 'http://www.eclipse.org/emf/2002/Ecore';
+modeltype XSD  uses 'http://www.eclipse.org/xsd/2002/XSD';
+
+transformation niemcommonMpd2pim()
+//	extends transformation mpd
+	extends transformation niemcommonBase,niemcommonPim2psm
+	;
+	main() {
+	}
+*/
+//////////////////////////////////////////
+helper  Stdlib::Element::setElementNamespace(namespace:String){
+	self.oclAsType(UML::InstanceSpecification).setValue('namespace',namespace);
+}
+helper  Stdlib::Element::setElementName(name:String){
+	self.oclAsType(UML::InstanceSpecification).setValue('name',name);
+}
+helper  Stdlib::Element::setElementValue(value:String){
+	self.oclAsType(UML::InstanceSpecification).setValue('value',value);
+}
+query  Stdlib::Element::createElementInstance():Stdlib::Element{
+	var psmpocInstanceValue:UML::InstanceValue=createInstanceValue(self.oclAsType(UML::Slot));
+	var psmpoc:UML::InstanceSpecification=new UML::InstanceSpecification(psmpocInstanceValue);
+	return psmpoc;
+}
+helper  Stdlib::Element::getElementAttributeList():Stdlib::Element{
+	return self.oclAsType(UML::InstanceSpecification).getSlot('attribute');
+}
+constructor UML::InstanceSpecification::InstanceSpecification(inout instanceValue:UML::InstanceValue){
+	instanceValue.instance:=result;
+	instanceValue.getNearestPackage().packagedElement+=result;
+	classifier+=instanceValue.owner.oclAsType(UML::Slot).definingFeature.type.oclAsType(UML::Classifier);
+}
+query UML::Element::getNearestPackage():UML::Package=
+	if(self.oclIsKindOf(UML::Package)) then self.oclAsType(UML::Package)
+	else if((self.owner=null)or self.owner.oclIsUndefined())then null else self.owner.getNearestPackage() endif
+	endif;
+
+query OclAny::getXSDElementValue():String=self.getDetail('text');
+query OclAny::getXSDAttributeValue():String=self.getDetail('text');
+	
+helper  Stdlib::Element::createAttributeInstance():Stdlib::Element{
+	var psmpocInstanceValue:UML::InstanceValue=createInstanceValue(self.oclAsType(UML::Slot));
+	var psmpoc:UML::InstanceSpecification=new UML::InstanceSpecification(psmpocInstanceValue);
+	return psmpoc;
+}
+helper  Stdlib::Element::setAttributeNamespace(namespace:String){
+	self.oclAsType(UML::InstanceSpecification).setValue('namespace',namespace);
+}
+helper  Stdlib::Element::setAttributeName(name:String){
+	self.oclAsType(UML::InstanceSpecification).setValue('name',name);
+}
+helper  Stdlib::Element::setAttributeValue(value:String){
+	self.oclAsType(UML::InstanceSpecification).setValue('value',value);
+}
+helper  Stdlib::Element::getElementElementList():Stdlib::Element{
+	return self.oclAsType(UML::InstanceSpecification).getSlot('element');
+}
+
+helper XSD::XSDImport::importSchema(){
+	var annotation:ECORE::EAnnotation=new ECORE::EAnnotation('importSchema');
+	annotation._references+=self.oclAsType(ECORE::EObject);
+	blackboxHook.eAnnotations+=annotation;
+	return;
+	}
+helper XSD::XSDSchema::extent():Stdlib::Element{
+	return self;
+	}
+helper Stdlib::Element::contextURI():String{
+	return self.oclAsType(ECORE::EObject).getExtentBaseName();
+	}
+
+helper ECORE::EObject::getExtentBaseName():String{
+	var annotation:ECORE::EAnnotation=new ECORE::EAnnotation('getExtentBaseName');
+	annotation._references+=self;
+	blackboxHook.eAnnotations+=annotation;
+	return annotation.getDetail('extentBaseName');
+	}
+helper String::lastIndexOf(match:String):Integer{
+	return self.rfind(match);
+}
+	
+helper  Stdlib::Element::setInformationModelDefaultPurpose(defaultPurpose:String){
+	self.setTagEnumerationValueConditionally('defaultPurpose',defaultPurpose);
+}
+helper  Stdlib::Element::setMpdClassCode(mpdClassCode:String){
+	self.setTagEnumerationValueConditionally('mpdClassCode',mpdClassCode);
+}
+
+helper  Stdlib::Element::setSchemaAppinfoConformantIndicator(isConformant:Boolean){
+	self.setTagValueConditionally('isConformant',isConformant);
+}
+helper  Stdlib::Element::setSchemaVersion(version:String){
+	self.setTagValueConditionally('version',version);
+}
+helper  Stdlib::Element::setSchemaDefaultPrefix(defaultPrefix:String){
+	self.setTagValueConditionally('defaultPrefix',defaultPrefix);
+}
+
+helper  Stdlib::Element::setSchemaNamespace(namespace:String){
+	self.setTagValueConditionally('targetNamespace',namespace);
+}
+helper  Stdlib::Element::setFileTypeExternalURI(externalURI:String){
+	self.setTagValueConditionally('externalURI',externalURI);
+}
+helper ECORE::EObject::getSchemaAtRelativeURI(relativeURI:String):ECORE::EObject{
+	var annotation:ECORE::EAnnotation=new ECORE::EAnnotation('getSchemaAtRelativeURI');
+	annotation._references+=self;
+	"relativeURI".setAnnotationDetail(annotation,relativeURI);
+	blackboxHook.eAnnotations+=annotation;
+	return annotation._references->select(r|r<>self)->asSequence()->first();
+	}
+helper  Stdlib::Element::setFileSetTypeDescriptionText(descriptionText:String){
+	self.setTagValueConditionally('descriptionText',descriptionText);
+}
+helper  Stdlib::Element::setFileSetTypeExternalURI(externalURI:String){
+	self.setTagValueConditionally('externalURI',externalURI);
+}
+helper  Stdlib::Element::setMpdDescriptionText(descriptionText:String){
+	self.setTagValueConditionally('descriptionText',descriptionText);
+}
+helper  Stdlib::Element::setMpdSecurityMarkingText(SecurityMarkingText:String){
+	self.setTagValueConditionally('SecurityMarkingText',SecurityMarkingText);
+}
+helper  Stdlib::Element::setMpdVersionID(mpdVersionID:String){
+	self.setTagValueConditionally('mpdVersionID',mpdVersionID);
+}
+helper  Stdlib::Element::setMpdBaseURI(mpdBaseURI:String){
+	self.setTagValueConditionally('mpdBaseURI',mpdBaseURI);
+}
+
+helper  Stdlib::Element::setMpdCreationDate(CreationDate:String){
+	self.setTagValueConditionally('CreationDate',CreationDate);
+}
+helper  Stdlib::Element::setMpdStatusText(StatusText:String){
+	self.setTagValueConditionally('StatusText',StatusText);
+}
+helper  Stdlib::Element::setMpdKeywordText(KeywordText:Sequence(String)){
+	self.setTagValueConditionally('KeywordText',KeywordText);
+}
+helper  Stdlib::Element::setMpdDomainText(DomainText:Sequence(String)){
+	self.setTagValueConditionally('DomainText',DomainText);
+}
+helper  Stdlib::Element::setMpdPurposeText(PurposeText:Sequence(String)){
+	self.setTagValueConditionally('PurposeText',PurposeText);
+}
+helper  Stdlib::Element::setMpdExchangePatternText(ExchangePatternText:Sequence(String)){
+	self.setTagValueConditionally('ExchangePatternText',ExchangePatternText);
+}
+helper  Stdlib::Element::setMpdExchangePartnerName(ExchangePartnerName:Sequence(String)){
+	self.setTagValueConditionally('ExchangePartnerName',ExchangePartnerName);
+}
+helper  Stdlib::Element::setMpdASName(ASName:String){
+	self.setTagValueConditionally('ASName',ASName);
+}
+helper  Stdlib::Element::setMpdASAddressText(ASAddressText:String){
+	self.setTagValueConditionally('ASAddressText',ASAddressText);
+}
+helper  Stdlib::Element::setMpdASWebSiteURL(ASWebSiteURL:String){
+	self.setTagValueConditionally('ASWebSiteURL',ASWebSiteURL);
+}
+helper  Stdlib::Element::setPOCPOCName(POCName:String){
+	self.setTagValueConditionally('POCName',POCName);
+}
+helper  Stdlib::Element::setPOCPOCEmail(POCEmail:Sequence(String)){
+	self.setTagValueConditionally('POCEmail',POCEmail);
+}
+helper  Stdlib::Element::setPOCPOCTelephone(POCTelephone:Sequence(String)){
+	self.setTagValueConditionally('POCTelephone',POCTelephone);
+}
+helper  Stdlib::Element::createPOCInstance():Stdlib::Element{
+	var psmpocInstanceValue:UML::InstanceValue=createInstanceValue(self.oclAsType(UML::Slot));
+	var psmpoc:UML::InstanceSpecification=new UML::InstanceSpecification(psmpocInstanceValue);
+	return psmpoc;
+}
+/*
+helper  Stdlib::Element::setMpdPackageCode(packageCode:String){
+//	self.oclAsType(UML::InstanceSpecification).setEnumerationValue('packageCode',packageCode);
+	self.oclAsType(UML::InstanceSpecification).setEnumerationValue('mpdClassCode',packageCode);
+}
+*/
+helper  Stdlib::Element::getMpdPOCList():Stdlib::Element{
+	return self.oclAsType(UML::InstanceSpecification).getSlot('POC');
+}
+///////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////
+property blackboxHook:ECORE::EPackage=null;
+//property schemaForSchemaNamespace:String=schemaForSchemaNamespace;
+
+
+//////////////////////////////////////////
+query UML::Element::getTargetDirectedRelationships():Set(UML::DirectedRelationship)=self._directedRelationshipOfTarget;
+query UML::Type::getAssociations():Set(UML::Association)=self._associationOfEndType;
+
+helper Stdlib::Element::getRelationshipDescriptionText():String=self.oclAsType(UML::InstanceSpecification).getStringValue('descriptionText');
+
+
+helper Stdlib::Element::getRelationshipCode():String=self.oclAsType(UML::InstanceSpecification).getStringValue('relationshipCode');
+query Stdlib::Element::getPimSchemaConformantIndicator():Boolean=
+	self.oclAsType(UML::InstanceSpecification).getBooleanValue('isConformant');
+//	self.oclAsType(UML::InstanceSpecification).getBooleanValue('appinfoConformantIndicator');
+query UML::InstanceSpecification::getBooleanValue(tagName:String):Boolean=
+	self.getValueSpecification(tagName).getBooleanValue()->select(v|(v<>null) and not(v.oclIsUndefined()))->asSequence()->first();
+query UML::InstanceSpecification::getAnyValue(tagName:String):OclAny=
+	self.getValueSpecification(tagName).getAnyValue()->select(v|(v<>null) and not(v.oclIsUndefined()))->asSequence()->first();
+
+query UML::InstanceSpecification::getStringValue(tagName:String):String=
+	self.getValueSpecification(tagName).getStringValue()->select(v|(v<>null) and not(v.oclIsUndefined()))->asSequence()->first();
+query UML::InstanceSpecification::getStringValues(tagName:String):Sequence(String)=
+	self.getValueSpecification(tagName).getStringValues()->select(v|(v<>null) and not(v.oclIsUndefined()))->asSequence();
+query UML::InstanceSpecification::getInstanceValues(tagName:String):Sequence(UML::InstanceSpecification)=
+	self.getValueSpecification(tagName).getInstanceValues()->select(v|(v<>null) and not(v.oclIsUndefined()))->asSequence();
+query UML::InstanceSpecification::getEnumerationLiteralValue(tagName:String):UML::EnumerationLiteral=
+	self.getValueSpecification(tagName).getEnumerationLiteralValue()->select(v|(v<>null) and not(v.oclIsUndefined()))->asSequence()->first();
+
+query UML::InstanceSpecification::getValueSpecification(tagName:String):Sequence(UML::ValueSpecification)=
+	self.slot->select(s|s.definingFeature.name=tagName).value->asSequence();
+query UML::ValueSpecification::getStringValue():String=
+	self->select(v|v.oclIsKindOf(UML::LiteralString)).oclAsType(UML::LiteralString)
+	.value->asSequence()->first();
+query UML::ValueSpecification::getStringValues():Sequence(String)=
+	self->select(v|v.oclIsKindOf(UML::LiteralString)).oclAsType(UML::LiteralString)
+	.value->asSequence();
+query UML::ValueSpecification::getInstanceValues():Sequence(UML::InstanceSpecification)=
+	self->select(v|v.oclIsKindOf(UML::InstanceValue)).oclAsType(UML::InstanceValue)
+	.instance->asSequence();
+query UML::ValueSpecification::getEnumerationLiteralValue():UML::EnumerationLiteral=
+	self->select(v|v.oclIsKindOf(UML::InstanceValue)).oclAsType(UML::InstanceValue)
+	.instance->select(i|i.oclIsKindOf(UML::EnumerationLiteral)).oclAsType(UML::EnumerationLiteral)
+	->asSequence()->first();
+query UML::ValueSpecification::getBooleanValue():Boolean=
+	self->select(v|v.oclIsKindOf(UML::LiteralBoolean)).oclAsType(UML::LiteralBoolean)
+	.value->asSequence()->first();
+query UML::ValueSpecification::getAnyValue():OclAny{
+	if(self.oclIsKindOf(UML::LiteralInteger))then {return self.oclAsType(UML::LiteralInteger).value;}else{}endif;
+	if(self.oclIsKindOf(UML::LiteralBoolean))then {return self.oclAsType(UML::LiteralBoolean).value;}else{}endif;
+	if(self.oclIsKindOf(UML::LiteralString))then {return self.oclAsType(UML::LiteralString).value;}else{}endif;
+	if(self.oclIsKindOf(UML::LiteralUnlimitedNatural))then {return self.oclAsType(UML::LiteralUnlimitedNatural).value;}else{}endif;
+	if(self.oclIsKindOf(UML::InstanceValue))then {return self.oclAsType(UML::InstanceValue).instance;}else{}endif;
+	return null;
+	}
+
+
+query UML::Element::IsStereotypeApplied(stereotype:UML::Stereotype):Boolean=
+	self.isStereotypeApplied(stereotype);
+
+query UML::Element::isStereotypeApplied(stereotype:UML::Stereotype):Boolean=
+	self.stereotypedBy(stereotype.name);
+
+query UML::Element::stereotypedBy(name:String):Boolean{
+	self.getAppliedStereotypes()->forEach(s){if(s.isStereotypeMatch(name))then {return true;}else{}endif;};
+	return false;
+}
+query UML::Type::typedElementTypes():Set(UML::TypedElement)=self._typedElementOfType;
+query UML::Element::getAppliedStereotypes():Set(UML::Stereotype){
+	if((self.appliedStereotypeInstance=null) or self.appliedStereotypeInstance.oclIsUndefined())then{return Set{};}else{}endif;
+	var stereotypes:Set(UML::Stereotype)=self.appliedStereotypeInstance.classifier
+	->select(c|(c<>null) and not(c.oclIsUndefined()) and c.oclIsKindOf(UML::Stereotype)).oclAsType(UML::Stereotype)
+	->asSet();
+//	log('getAppliedStereotypes '+stereotypes->size().repr()+', '+self.appliedStereotypeInstance.qualifiedName);
+	return stereotypes;
+	}
+	
+helper UML::Element::removeStereotype(name:String):Void{
+	if((self.appliedStereotypeInstance=null) or self.appliedStereotypeInstance.oclIsUndefined())then{return null;}else{}endif;
+	self.appliedStereotypeInstance.classifier:=
+		self.appliedStereotypeInstance.classifier->select(s|s.name<>name);
+	return null;
+	}
+	
+query UML::Classifier::isStereotypeMatch(name:String):Boolean{
+	if(
+		(self.name=name)
+		or (self.qualifiedName=name)
+//emf		or (self.name=name.replace('::','_'))
+		)then {return true;}else{}endif;
+	self.general->select(g|(g<>null)and not(g.oclIsUndefined()))->forEach(g){if(g.isStereotypeMatch(name))then{return true;}else{}endif;};
+	return false;
+}
+helper UML::Element::isEditable():Boolean{
+	var annotation:ECORE::EAnnotation=new ECORE::EAnnotation('isEditable');
+	annotation._references+=self.oclAsType(ECORE::EObject);
+	blackboxHook.eAnnotations+=annotation;
+	return annotation.getDetail('isEditable')='true';
+	}
+constructor ECORE::EAnnotation::EAnnotation(sourceIn:String){
+	result.source:=sourceIn;
+}
+query OclAny::getDetail(key:String):String=self.oclAsType(ECORE::EAnnotation).details->select(d|d.key=key).value->asSequence()->first();
+helper OclAny::modifyDetail(key:String,newValue:String){
+	self.oclAsType(ECORE::EAnnotation).details->select(d|d.key=key)->forEach(keyValue){keyValue.value:=newValue;};
+	return;
+}	
+query UML::Package::isProfileApplied(profile:UML::Profile):Boolean=
+	self.profileApplication->exists(a|a.appliedProfile=profile);
+
+query UML::Package::getNearesProfileApplication(profile:UML::Profile):UML::Package=
+	if(self.isProfileApplied(profile))then self else self.owner.getNearestPackage().getNearesProfileApplication(profile) endif;
+query UML::Component::getTopNiemFolders():Set(UML::Package)=
+	self.elementImport.importedElement.oclAsType(UML::NamedElement)->asSet()
+	->union(self.clientDependency.supplier->asSet())
+		->select(e|e.oclIsKindOf(UML::Package))
+		.oclAsType(UML::Package)
+		.getNearesProfileApplication(structureProfile)->asSet();
+query UML::Element::GetStereotypeApplication(stereotype:UML::Stereotype):Stdlib::Element=self.getStereotypeApplication(stereotype);
+query UML::Element::getStereotypeApplication():UML::InstanceSpecification=
+	self.appliedStereotypeInstance;
+query UML::Element::getStereotypeApplication(stereotype:UML::Stereotype):Stdlib::Element{
+//	log('getStereotypeApplication '+stereotype.name);
+	return self.getStereotypeApplication();
+	}
+
+query UML::Element::getNearestNIEMSchemaPackage():UML::Package{
+	var schemaPackage:UML::Package=self.getNearestPackage();
+	if(schemaPackage.isStereotypeApplied(NIEMSchemaStereotype)) then {return schemaPackage;} endif;
+        if(schemaPackage.name=XMLPrimitiveTypesPackageName)then{return schemaPackage;}endif;
+        if(schemaPackage.name=UMLPrimitiveTypesPackageName)then{return schemaPackage;}endif;
+
+	var nestingPackage:UML::Package=schemaPackage.nestingPackage;
+	if(nestingPackage.oclIsUndefined())then{return null;}endif;
+	return nestingPackage.getNearestNIEMSchemaPackage();
+}
+query UML::Classifier::allParents():OrderedSet(UML::Classifier)=
+	self.general->select(g|(g<>self) and (g<>null)and not(g.oclIsUndefined()))
+	->union(self.general->select(g|(g<>self) and (g<>null)and not(g.oclIsUndefined())).allParents())->asOrderedSet();
+
+//query UML::Classifier::isStructuresAugmentationType():Boolean=self.name='AugmentationType';
+//query UML::Classifier::isAugmentationType():Boolean=self.isStructuresAugmentationType() or
+//	self.allParents()->select(p|p.isNIEMComplexTypeDefinition() and p.isStructuresAugmentationType())->notEmpty();
+query UML::Classifier::isAugmentationType():Boolean=self.isStructuresAugmentationType() or
+	self.allParents()->select(p|p.isNIEMComplexTypeDefinition() and p.isStructuresAugmentationType())->notEmpty();
+query UML::Classifier::isStructuresAugmentationType():Boolean=self.isPimAugmentation();
+query UML::Element::isPimAugmentation():Boolean=false;
+query UML::Class::isPimAugmentation():Boolean=self.IsStereotypeApplied(NIEMAugmentationStereotype);//stereotypedBy('Augmentation');
+
+query UML::Element::isNIEMComplexTypeDefinition():Boolean=self.oclIsKindOf(UML::Class);
+
+////////////////////////////mpd
+query Stdlib::Element::getXSDPropertyFixed():String=self.oclAsType(UML::InstanceSpecification).getStringValue('fixed');
+query Stdlib::Element::getMpdDescriptionText():String=self.oclAsType(UML::InstanceSpecification).getStringValue('descriptionText');
+////////////////////////////uml2mpdPlatformBinding
+query  Stdlib::Element::getNIEMPropertyKind():String=
+	self.oclAsType(UML::InstanceSpecification).getEnumerationLiteralValue('kind').name;
+query Stdlib::Element::getFileTypePurposeCode():String{
+	var code:String=self.oclAsType(UML::InstanceSpecification).getEnumerationLiteralValue('purposeCode').name;
+	return purposeURI+code.replace('_','-');
+}
+query UML::Element::getBaseNiemName(umlName:String ):String{
+	var niemName:String=umlName;
+	var stereotypeInstance:Stdlib::Element=self.GetStereotypeApplication(NIEMReferenceNameStereotype).oclAsType(Stdlib::Element);
+	if(self.IsStereotypeApplied(NIEMReferenceNameStereotype))then{
+		var testNiemName:String=self.GetStereotypeApplication(NIEMReferenceNameStereotype).oclAsType(Stdlib::Element).getNIEMName();
+		if(not(testNiemName.oclIsUndefined()))then{
+			niemName:=testNiemName;
+		}endif;
+	}endif;
+	return niemName;
+}
+	
+query UML::NamedElement::getBaseNiemName():String=self.getBaseNiemName(self.name);
+query Stdlib::Element::getNIEMName():String=self.oclAsType(UML::InstanceSpecification).getStringValue('NIEMName');
+query Stdlib::Element::getMpdBaseURI():String=self.oclAsType(UML::InstanceSpecification).getStringValue('mpdBaseURI');
+query Stdlib::Element::getMpdVersionID():String=self.oclAsType(UML::InstanceSpecification).getStringValue('mpdVersionID');
+helper Stdlib::Element::getMpdSecurityMarkingText():String=self.oclAsType(UML::InstanceSpecification).getStringValue('SecurityMarkingText');
+helper Stdlib::Element::getMpdStatusText():String=self.oclAsType(UML::InstanceSpecification).getStringValue('StatusText');
+helper Stdlib::Element::getMpdKeywordText():Sequence(String)=self.oclAsType(UML::InstanceSpecification).getStringValues('KeywordText');
+helper Stdlib::Element::getMpdPOC():Sequence(Stdlib::Element)=self.oclAsType(UML::InstanceSpecification).getInstanceValues('POC');
+helper Stdlib::Element::getMpdDomainText():Sequence(String)=self.oclAsType(UML::InstanceSpecification).getStringValues('DomainText');
+helper Stdlib::Element::getMpdPurposeText():Sequence(String)=self.oclAsType(UML::InstanceSpecification).getStringValues('PurposeText');
+helper Stdlib::Element::getMpdExchangePatternText():Sequence(String)=self.oclAsType(UML::InstanceSpecification).getStringValues('ExchangePatternText');
+helper Stdlib::Element::getMpdExchangePartnerName():Sequence(String)=self.oclAsType(UML::InstanceSpecification).getStringValues('ExchangePartnerName');
+helper Stdlib::Element::getMpdASName():String=self.oclAsType(UML::InstanceSpecification).getStringValue('ASName');
+helper Stdlib::Element::getMpdASAddressText():String=self.oclAsType(UML::InstanceSpecification).getStringValue('ASAddressText');
+helper Stdlib::Element::getMpdASWebSiteURL():String=self.oclAsType(UML::InstanceSpecification).getStringValue('ASWebSiteURL');
+helper Stdlib::Element::getPOCName():String=self.oclAsType(UML::InstanceSpecification).getStringValue('POCName');
+helper Stdlib::Element::getPOCEmail():Sequence(String)=self.oclAsType(UML::InstanceSpecification).getStringValues('POCEmail');
+helper Stdlib::Element::getPOCTelephone():Sequence(String)=self.oclAsType(UML::InstanceSpecification).getStringValues('POCTelephone');
+
+helper Stdlib::Element::getMpdCreationDate():String=self.oclAsType(UML::InstanceSpecification).getStringValue('CreationDate');
+
+helper  Stdlib::Element::getMpdPackageCode():String{
+	var packageCodeLiteral:String=self.oclAsType(UML::InstanceSpecification).getEnumerationLiteralValue('mpdClassCode').name;
+	if(packageCodeLiteral.oclIsUndefined())then{packageCodeLiteral:=defaultPackageCodeLiteral.name;}else{}endif;
+	return packageCodeLiteral;
+}
+query Stdlib::Element::getFileSetTypePurposeCode():String{
+	var code:String=self.oclAsType(UML::InstanceSpecification).getEnumerationLiteralValue('purposeCode').name;
+	return purposeURI+code.replace('_','-');
+}
+helper Stdlib::Element::getFileSetExternalURI():String=self.oclAsType(UML::InstanceSpecification).getStringValue('externalURI');
+helper Stdlib::Element::getFileSetDescriptionText():String=self.oclAsType(UML::InstanceSpecification).getStringValue('descriptionText');
+helper Stdlib::Element::getFileTypeExternalURI():String=self.oclAsType(UML::InstanceSpecification).getStringValue('externalURI');
+//helper Stdlib::Element::getFileTypeNatureURI():String=self.oclAsType(UML::InstanceSpecification).getStringValue('natureURI');
+//query Stdlib::Element::getFileTypePurposeURI():String=self.oclAsType(UML::InstanceSpecification).getStringValue('purposeURI');
+
+query Stdlib::Element::getFileDescriptionText():String=self.oclAsType(UML::InstanceSpecification).getStringValue('descriptionText');
+
+query  UML::Package::isModelGroupDefinitions():Boolean{
+	return self.name=modelGroupDefinitionPackageName;
+}
+query UML::Type::isAttributeGroupDefinition():Boolean=
+	self.name.endsWith('AttributeGroup');
+
+
+
+/////////////////////////////////////////
+query OclAny::getTermTerm():String=
+	self.getAttributes()->select(a|a.isTermTermAttribute()).getAttributeValue()->first();
+query OclAny::getTermLiteral():String=
+	self.getAttributes()->select(a|a.isTermLiteralAttribute()).getAttributeValue()->first();
+query OclAny::getTermDefinition():String=
+	self.getAttributes()->select(a|a.isTermDefinitionAttribute()).getAttributeValue()->first();
+query OclAny::getTermSourceText():Sequence(String)=
+	self.getElementElements()->select(a|a.isTermSourceTextElement()).getXSDElementValue()->asSequence();
+query OclAny::getTermSourceURIs():Sequence(String)=
+	self.getAttributes()->select(a|a.isTermSourceURIAttribute()).getAttributeListValue();
+query OclAny::isTermTermAttribute():Boolean=(self.getAttributeName()='term');
+query OclAny::isTermLiteralAttribute():Boolean=(self.getAttributeName()='literal');
+query OclAny::isTermDefinitionAttribute():Boolean=(self.getAttributeName()='definition');
+query OclAny::isTermSourceURIAttribute():Boolean=(self.getAttributeName()='sourceURIs');
+query OclAny::isTermSourceTextElement():Boolean=(self.getElementName()='SourceText');
+	
+query OclAny::getAttributeListValue():Sequence(String)=self.getAttributeValue().tokenize(' ');
+query OclAny::getAttributeValue():String=self.getDetail('value');
+query OclAny::getAttributeName():String=self.getDetail('name');
+query OclAny::getAttributeNamespace():String=self.getDetail('namespace');
+query OclAny::getElementName():String=self.getAttributeName();
+query OclAny::getAppInfoName():String=
+	self.getAttributes()->select(a|a.isAppinfoNameAttribute()).getAttributeValue()->first();
+query OclAny::getAttributes():OrderedSet(ECORE::EAnnotation)=self.oclAsType(ECORE::EAnnotation).eAnnotations->select(a|a.source='attributeNS');
+query OclAny::isAppinfoNameAttribute():Boolean=self.isAppinfoAttribute() and (self.getAttributeName()='name');
+query OclAny::isAppinfoAttribute():Boolean=self.getAttributeNamespace().isAppinfoNamespace();
+query XSD::XSDAnnotation::getXSDAnnotationApplicationInformation():OrderedSet(OclAny){
+	return self.getApplicationInformation();
+}
+query XSD::XSDAnnotation::getApplicationInformation():OrderedSet(OclAny){
+	var annotation:ECORE::EAnnotation=new ECORE::EAnnotation('getApplicationInformation');
+	annotation._references+=self.oclAsType(ECORE::EObject);
+	blackboxHook.eAnnotations+=annotation;
+	return annotation.eAnnotations;
+}
+query XSD::XSDConcreteComponent::getElement():OrderedSet(OclAny){
+	var annotation:ECORE::EAnnotation=new ECORE::EAnnotation('getElement');
+	annotation._references+=self.oclAsType(ECORE::EObject);
+	blackboxHook.eAnnotations+=annotation;
+	return annotation.eAnnotations;
+}
+query  OclAny::getElementAttributes():OrderedSet(Stdlib::Element)=self.oclAsType(ECORE::EAnnotation).getAttributes();
+query OclAny::getElementNamespace():String=self.getAttributeNamespace();
+query String::truncateLastSegment():String{
+	if(self.rfind('/')>1)then{
+		return self.substring(1,self.rfind('/')-1);
+	}else{}endif;
+	return '';//self;
+}
+query 	UML::Package::getSchemaTargetNamespace():String=self.GetStereotypeApplication(NIEMSchemaStereotype).oclAsType(Stdlib::Element).getSchemaTargetNamespace();
+
+helper Stdlib::Element::getSchemaTargetNamespace():String=
+	self.oclAsType(UML::InstanceSpecification).getAnyValue('targetNamespace')
+	.oclAsType(String);
+helper String::setAttributeNS(inout element:ECORE::EAnnotation,namespace:String,value:String){
+	var annotation:ECORE::EAnnotation=new ECORE::EAnnotation('attributeNS');
+	'name'.setAnnotationDetail(annotation,self);
+	'namespace'.setAnnotationDetail(annotation,namespace);
+	'value'.setAnnotationDetail(annotation,value);
+	element.eAnnotations+=annotation;
+	return;
+}
+	/* does not appear to be used
+helper OclAny::setAttributeNS(name:String,namespace:String,value:String){
+	name.setAttributeNS(self.oclAsType(ECORE::EAnnotation),namespace,value);
+}
+*/
+
+helper OclAny::setTextContent(value:String){
+	value.setTextContent(self.oclAsType(ECORE::EAnnotation));
+}
+
+helper String::setAnnotationDetail(inout annotation:ECORE::EAnnotation,value:String){
+	var parametermap:ECORE::EStringToStringMapEntry=new ECORE::EStringToStringMapEntry();
+	parametermap.key:=self;
+	parametermap.value:=value;
+	annotation.details+=parametermap;
+	return;
+}
+helper String::setTextContent(element:ECORE::EAnnotation){
+	'text'.setAnnotationDetail(element,self);
+}
+helper OclAny::commitInformation(){
+	addInformation(self.oclAsType(ECORE::EAnnotation));
+}
+helper addInformation(element:ECORE::EAnnotation){
+	blackboxHook.eAnnotations+=element;
+	return;
+}
+helper XSD::XSDAnnotation::createUserInformation(sourceURI:String):OclAny{
+	return self.createUserInformation(sourceURI,self.schema);
+}
+helper XSD::XSDAnnotation::createUserInformation(sourceURI:String,schema:XSD::XSDSchema):ECORE::EAnnotation{
+	var annotation:ECORE::EAnnotation=new ECORE::EAnnotation('userInformation');
+	'sourceURI'.setAnnotationDetail(annotation,sourceURI);
+	annotation._references+=self.oclAsType(ECORE::EObject);
+	annotation._references+=schema.oclAsType(ECORE::EObject);
+	return annotation;
+}
+helper XSD::XSDSchema::setQNamePrefixToNamespace(prefix:String,namespace:String){
+	// use standard prefixes; overridden by subclass
+	//log('setQNamePrefixToNamespace,tns,'+name,self);
+	var annotation:ECORE::EAnnotation=new ECORE::EAnnotation('setQNamePrefixToNamespace');
+	'prefix'.setAnnotationDetail(annotation,prefix);
+	'namespace'.setAnnotationDetail(annotation,namespace);
+	annotation._references+=self.oclAsType(ECORE::EObject);
+	blackboxHook.eAnnotations+=annotation;
+	//log('setSchemaForSchema,xsd,'+namespace,self);
+	return;
+}
+
+query OclAny::isAppinfoNamespaceAttribute():Boolean=self.isAppinfoAttribute() and (self.getAttributeName()='namespace');
+helper OclAny::createChildElementNS(name:String,namespace:String):Stdlib::Element{
+	return name.createChildElementNS(self.oclAsType(ECORE::EAnnotation),namespace);
+}
+helper String::createChildElementNS(inout applicationInformation:ECORE::EAnnotation,namespace:String):ECORE::EAnnotation{
+	var annotation:ECORE::EAnnotation=new ECORE::EAnnotation('childElementNS');
+	'name'.setAnnotationDetail(annotation,self);
+	'namespace'.setAnnotationDetail(annotation,namespace);
+	//log('createChildElementNS '+self+', '+namespace);
+	applicationInformation.eAnnotations+=annotation;
+	return annotation;
+}
+helper XSD::XSDAnnotation::createApplicationInformation(sourceURI:String):OclAny{
+	//return self.createApplicationInformation(sourceURI,self.schema);
+	var annotation:ECORE::EAnnotation=new ECORE::EAnnotation('applicationInformation');
+	'sourceURI'.setAnnotationDetail(annotation,sourceURI);
+	annotation._references+=self.oclAsType(ECORE::EObject);
+	return annotation;
+
+}
+query  OclAny::getElementElements():OrderedSet(OclAny)=self.oclAsType(ECORE::EAnnotation).eAnnotations->select(a|a.source='childElementNS');
+query OclAny::getAppInfoNamespace():String=
+	// self is a DOM Element
+	self.getAttributes()->select(a|a.isAppinfoNamespaceAttribute()).getAttributeValue()->first();
+
+helper CAT::CatalogType::addCatalogFolder(folder:CAT::FolderType){
+	self.oclAsType(ECORE::EObject).add('artifactGroup','folder',folder.oclAsType(ECORE::EObject));
+}
+
+helper ECORE::EObject::add(mapFeature:String,targetFeature:String,eObject:ECORE::EObject){
+	var annotation:ECORE::EAnnotation=new ECORE::EAnnotation('add');
+	'mapFeature'.setAnnotationDetail(annotation,mapFeature);
+	'targetFeature'.setAnnotationDetail(annotation,targetFeature);
+	annotation._references+=self;
+	annotation._references+=eObject;
+	blackboxHook.eAnnotations+=annotation;
+	return;
+}
+query  Stdlib::Element::getNIEMElementNillable():Boolean=
+	self.oclAsType(UML::InstanceSpecification).getBooleanValue('nillable');
+query String::toNCName():String=self.replace('/','_').replace(' ','')
+	.replace('<','_').replace('>','_').replace('(','_').replace(')','_').replace(',','_').replace('=','');
+
+helper CAT::FileSetType::addFileSetFiles(value:String){
+	value.addToStringList(self.oclAsType(ECORE::EObject),'files');
+}
+helper  Stdlib::Element::setLocalTermLiteral(id:String){
+	self.setTagValueConditionally('literal',id);
+}
+helper  Stdlib::Element::setLocalTermDefinition(id:String){
+	self.setTagValueConditionally('definition',id);
+}
+
+helper String::addTermSourceURI(element:Stdlib::Element){
+	self.addToStringList(element.oclAsType(ECORE::EObject),'sourceURIs');
+}
+
+helper String::addToStringList(eObject:ECORE::EObject,featureName:String){
+	var annotation:ECORE::EAnnotation=new ECORE::EAnnotation('addToStringList');
+	'idref'.setAnnotationDetail(annotation,self);
+	'featureName'.setAnnotationDetail(annotation,featureName);
+	annotation._references+=eObject;
+	blackboxHook.eAnnotations+=annotation;
+	return;
+}
+/*
+helper CAT::Catalog::addCatalogFile(folder:CAT::Uri){
+	var catalog:CAT::Catalog=self;
+	catalog.uri+=folder;
+	return;
+}
+*/
+
+helper CAT::CatalogType::addCatalogFile(folder:CAT::FileType){
+	self.oclAsType(ECORE::EObject).add('artifactGroup','file',folder.oclAsType(ECORE::EObject));
+}
+	
+helper  Stdlib::Element::setFileTypeId(id:String){
+	self.setTagValueConditionally('id',id);
+}
+
+helper UML::Element::setTagValueConditionally(stereotype:UML::Stereotype,tagName:String,anyObject:String){
+	if((anyObject=null)or(anyObject.oclIsInvalid())or(anyObject.oclIsUndefined()))then{}else{
+		self.setValue(stereotype,tagName,anyObject);
+	}endif;
+}
+helper UML::Element::setValue(stereotype:UML::Stereotype,tagName:String,anyObject:String){
+	var slot:UML::Slot=self.getSlot(stereotype,tagName);
+	clearValue(slot);
+	createLiteralString(slot).value:=anyObject;
+	return;
+}
+helper UML::Element::getSlot(stereotype:UML::Stereotype,tagName:String):UML::Slot{
+	return self.getStereotypeApplication().getSlot(tagName);
+}
+query UML::InstanceSpecification::getIntegerValue(tagName:String):Integer=
+	self.getValueSpecification(tagName).getIntegerValue()->select(v|(v<>null) and not(v.oclIsUndefined()))->asSequence()->first();
+query UML::ValueSpecification::getIntegerValue():Integer=
+	self->select(v|v.oclIsKindOf(UML::LiteralInteger)).oclAsType(UML::LiteralInteger)
+	.value->asSequence()->first();
+
+query  Stdlib::Element::getNIEMSimpleTypeFractionDigits():Integer=
+	self.oclAsType(UML::InstanceSpecification).getIntegerValue('fractionDigits');
+
+query  Stdlib::Element::getNIEMSimpleTypeLength():Integer=
+	self.oclAsType(UML::InstanceSpecification).getIntegerValue('length');
+
+query  Stdlib::Element::getNIEMSimpleTypeMaxLength():Integer=
+	self.oclAsType(UML::InstanceSpecification).getIntegerValue('maxLength');
+
+query  Stdlib::Element::getNIEMSimpleTypeMinLength():Integer=
+	self.oclAsType(UML::InstanceSpecification).getIntegerValue('minLength');
+
+
+
+query  Stdlib::Element::getNIEMSimpleTypeTotalDigits():Integer=
+	self.oclAsType(UML::InstanceSpecification).getIntegerValue('totalDigits');
+
+query  Stdlib::Element::getXSDRepresentationRestrictionWhiteSpace():String=
+	self.oclAsType(UML::InstanceSpecification).getStringValue('whiteSpace');
+
+query  Stdlib::Element::getNIEMSimpleTypePattern():Sequence(String)=
+	self.oclAsType(UML::InstanceSpecification).getStringValues('pattern');
+
+helper Stdlib::Element::setTagValueConditionally(tagName:String,anyObject:String){
+	if((anyObject=null)or(anyObject.oclIsInvalid())or(anyObject.oclIsUndefined()))then{}else{
+		self.oclAsType(UML::InstanceSpecification).setValue(tagName,anyObject);
+	}endif;
+}
+helper UML::InstanceSpecification::setValue(tagName:String,anyObject:String){
+	var slot:UML::Slot=self.getSlot(tagName);
+	clearValue(slot);
+		createLiteralString(slot).value:=anyObject;
+		return;
+}
+helper clearValue(inout slot: UML::Slot){
+	slot.value:=Sequence{};
+	return;
+}
+helper createLiteralString(inout slot: UML::Slot):UML::LiteralString{
+	var newValue:UML::LiteralString=new UML::LiteralString();
+	slot.value+=newValue;
+	return newValue;
+}
+helper UML::InstanceSpecification::getSlot(tagName:String):UML::Slot{
+	var slot:UML::Slot=self.slot->select(s|s.definingFeature.name=tagName)->asSequence()->first();
+	if(slot.oclIsUndefined())then{
+		slot:=new UML::Slot();
+		slot.owningInstance:=self;//.getStereotypeApplication();
+		slot.definingFeature:=self.classifier.getAllAttributes()->select(a|a.name=tagName)->asSequence()->first();
+		//if(tagName='version')then{log('getSlot new '+tagName+', '+slot.definingFeature.qualifiedName+', '+self.classifier->size().repr());}else{}endif;
+		//if(tagName='targetNamespace')then{log('getSlot new '+tagName+', '+slot.definingFeature.qualifiedName+', '+self.classifier->size().repr());}else{}endif;
+	}else{}endif;
+	return slot;
+}
+query UML::Classifier::getAllAttributes():OrderedSet(UML::Property){
+	//self.attribute->asOrderedSet()->union(self.allParents().attribute->asOrderedSet())->asOrderedSet();
+		var properties:OrderedSet(UML::Property)=self.attribute->asOrderedSet();
+		properties+=self.allParents().attribute;
+		return properties.expandChoiceAttributes()->asOrderedSet();
+	}
+query 	UML::Property::referencesTopLevelProperty():UML::Property=
+	self.clientDependency->select(d|d.IsStereotypeApplied(NIEMReferencesStereotype))
+	.supplier->select(s|s.oclIsKindOf(UML::Property))
+	.oclAsType(UML::Property)->asSequence()->first();
+	
+query UML::Property::expandChoiceAttributes():OrderedSet(UML::Property){
+	//self.attribute->asOrderedSet()->union(self.allParents().attribute->asOrderedSet())->asOrderedSet();
+		var properties:OrderedSet(UML::Property)=OrderedSet{self};
+		if(self.type.isChoice())then{
+			properties:=self.type.oclAsType(UML::Classifier).getAllAttributes();
+		}endif;
+		return properties;
+	}
+query UML::Type::isChoice():Boolean=self.isStereotypeApplied(NIEMChoiceStereotype);
+query Stdlib::Element::getAnyPropertyProcessContents():String=
+//	self.oclAsType(UML::InstanceSpecification).getStringValue('processContents');
+	self.oclAsType(UML::InstanceSpecification).getEnumerationLiteralValue('processContents').name;
+
+query Stdlib::Element::getAnyPropertyNamespace():String=
+	self.oclAsType(UML::InstanceSpecification).getStringValue('valueNamespace');
+
+helper CAT::CatalogType::addCatalogFileSet(folder:CAT::FileSetType){
+	self.oclAsType(ECORE::EObject).add('artifactGroup','fileSet',folder.oclAsType(ECORE::EObject));
+}
+query Stdlib::Element::getLocalTermTerm():String=
+	self.oclAsType(UML::InstanceSpecification).getStringValue('term');
+query Stdlib::Element::getLocalTermLiteral():String=
+	self.oclAsType(UML::InstanceSpecification).getStringValue('literal');
+query Stdlib::Element::getLocalTermDefinition():String=
+	self.oclAsType(UML::InstanceSpecification).getStringValue('definition');
+query Stdlib::Element::getLocalTermSourceURIs():Sequence(String)=
+	self.oclAsType(UML::InstanceSpecification).getStringValues('sourceURIs');
+
+//helper Stdlib::Element::getFileId():String=self.oclAsType(UML::InstanceSpecification).getStringValue('id');
+query Stdlib::Element::getPimSchemaVersion():String=
+	self.oclAsType(UML::InstanceSpecification).getStringValue('version');
+query Stdlib::Element::getSchemaDefaultPrefix():String=
+	self.oclAsType(UML::InstanceSpecification).getStringValue('defaultPrefix');
+	
+query Stdlib::Element::getPimSchemaNamespace():String=
+	self.oclAsType(UML::InstanceSpecification).getStringValue('targetNamespace');
+helper XSD::XSDSchema::setSchemaForSchema(prefix:String,namespace:String){
+	// use standard prefixes; overridden by subclass
+	var annotation:ECORE::EAnnotation=new ECORE::EAnnotation('setSchemaForSchema');
+	'prefix'.setAnnotationDetail(annotation,prefix);
+	'namespace'.setAnnotationDetail(annotation,namespace);
+	annotation._references+=self.oclAsType(ECORE::EObject);
+	blackboxHook.eAnnotations+=annotation;
+	//log('setSchemaForSchema,xsd,'+namespace,self);
+	return;
+}
+query  Stdlib::Element::getFileTypeRelativePathName():String=
+	self.oclAsType(UML::InstanceSpecification).getStringValue('relativePathName');
+query  Stdlib::Element::getNIEMSimpleTypeMaxExclusive():String=
+	self.oclAsType(UML::InstanceSpecification).getStringValue('maxExclusive');
+
+query  Stdlib::Element::getNIEMSimpleTypeMaxInclusive():String=
+	self.oclAsType(UML::InstanceSpecification).getStringValue('maxInclusive');
+
+query  Stdlib::Element::getNIEMSimpleTypeMinExclusive():String=
+	self.oclAsType(UML::InstanceSpecification).getStringValue('minExclusive');
+
+query  Stdlib::Element::getNIEMSimpleTypeMinInclusive():String=
+	self.oclAsType(UML::InstanceSpecification).getStringValue('minInclusive');
+/////////////////////////////////////////////////////////////////////////////
+/*
+import niemcommonBase;
+import niemcommonPim2psm;
+import niemcommonMpd2pim;
+modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+modeltype ECORE  uses 'http://www.eclipse.org/emf/2002/Ecore';
+modeltype XSD  uses 'http://www.eclipse.org/xsd/2002/XSD';
+
+transformation niemcommon()
+//	extends transformation mpd
+	extends transformation niemcommonBase,niemcommonPim2psm,niemcommonMpd2pim
+	;
+	main() {
+	}
+	*/
+//////////////////////////////////////////
+//property niemReferenceModelName:String='NIEM Reference Model';
+//property logicalProfileName:String='vocabulary_pim_profile';
+//property structureProfileName:String='structure_profile';
+//property niemXsdProfileName:String='niem_xsd_profile';
+//property provisioningProfileBaseName:String='mpd_pim';
+//property provisioningProfileName:String=provisioningProfileBaseName+'_profile';
+
+
+property umlAnnotationSource:String='http://modeldriven.org/uml';
+
+
+//property ndrReferenceTargetTag:String='ndrReferenceTarget';
+
+property ndrProfile:UML::Profile=null; // the ndr uml profile
+property mpdProfile:UML::Profile=null; // the mpd uml profile
+
+
+property ndrStereotypePrefix:String='ndr';  // prefix used for stereotype names
+property ndrProfilePath:String=ndrStereotypePrefix; // the ndr uml profile qualified name
+
+property NdrSchemaStereotypeName:String=ndrStereotypePrefix+'Schema';
+property NdrTypeDefinitionStereotypeName:String=ndrStereotypePrefix+'TypeDefinition';
+property NdrBaseElementDeclarationStereotypeName:String=ndrStereotypePrefix+'BaseElementDeclaration';
+property NdrReferenceElementDeclarationStereotypeName:String=ndrStereotypePrefix+'ReferenceElementDeclaration';
+
+property NdrAnnotationStereotypeName:String=ndrStereotypePrefix+'Annotation';
+property NdrSimpleTypeDefinitionStereotypeName:String=ndrStereotypePrefix+'SimpleTypeDefinition';
+property NdrComplexTypeDefinitionStereotypeName:String=ndrStereotypePrefix+'ComplexTypeDefinition';
+property NdrImportStereotypeName:String=ndrStereotypePrefix+'Import';
+property NdrAssociationTypeStereotypeName:String=ndrStereotypePrefix+'AssociationType';
+property NdrAttributeDeclarationStereotypeName:String=ndrStereotypePrefix+'AttributeDeclaration';
+property NdrAttributeGroupDefinitionStereotypeName:String=ndrStereotypePrefix+'AttributeGroupDefinition';
+property NdrSchemaDirectiveStereotypeName:String=ndrStereotypePrefix+'SchemaDirective';
+property NdrAppinfoBaseStereotypeName:String=ndrStereotypePrefix+'AppinfoBase';
+property NdrSimpleTypeDefinitionAnnotationStereotypeName:String=ndrStereotypePrefix+'SimpleTypeDefinitionAnnotation';
+
+property NdrMetadataTypeStereotypeName:String=ndrStereotypePrefix+'MetadataType';
+property NdrAugmentationTypeStereotypeName:String=ndrStereotypePrefix+'AugmentationType';
+property NdrElementDeclarationStereotypeName:String=ndrStereotypePrefix+'ElementDeclaration';
+
+property NdrAppliesToStereotypeName:String=ndrStereotypePrefix+'AppliesTo';
+property NdrReferenceTargetStereotypeName:String=ndrStereotypePrefix+'ReferenceTarget';
+
+property NdrRoleTypeStereotypeName:String=ndrStereotypePrefix+'RoleType';
+property NdrAdapterTypeStereotypeName:String=ndrStereotypePrefix+'AdapterType';
+property NdrObjectTypeStereotypeName:String=ndrStereotypePrefix+'ObjectType';
+property NdrNamedComponentStereotypeName:String=ndrStereotypePrefix+'NamedComponent';
+
+property NdrReferenceElementDeclarationStereotype:UML::Stereotype=null;
+property NdrMetadataTypeStereotype:UML::Stereotype=null;
+property NdrAugmentationTypeStereotype:UML::Stereotype=null;
+property NdrElementDeclarationStereotype:UML::Stereotype=null;
+
+property NdrAppliesToStereotype:UML::Stereotype=null;
+property NdrAppinfoBaseStereotype:UML::Stereotype=null;
+property NdrReferenceTargetStereotype:UML::Stereotype=null;
+property NdrNamedComponentStereotype:UML::Stereotype=null;
+
+
+//property NdrAugmentationTypeStereotype:UML::Stereotype=null;
+property NdrRoleTypeStereotype:UML::Stereotype=null;
+property NdrAssociationTypeStereotype:UML::Stereotype=null;
+//property NdrMetadataTypeStereotype:UML::Stereotype=null;
+property NdrAdapterTypeStereotype:UML::Stereotype=null;
+property NdrObjectTypeStereotype:UML::Stereotype=null;
+
+property NdrSchemaDirectiveStereotype:UML::Stereotype=null;
+property NdrImportStereotype:UML::Stereotype=null;
+property NdrSchemaStereotype:UML::Stereotype=null;
+property NdrAttributeGroupDefinitionStereotype:UML::Stereotype=null;
+property NdrAttributeDeclarationStereotype:UML::Stereotype=null;
+property NdrSimpleTypeDefinitionStereotype:UML::Stereotype=null;
+property NdrComplexTypeDefinitionStereotype:UML::Stereotype=null;
+property NdrTypeDefinitionStereotype:UML::Stereotype=null;
+property NdrBaseElementDeclarationStereotype:UML::Stereotype=null;
+property NdrAnnotationStereotype:UML::Stereotype=null;
+property NdrSimpleTypeDefinitionAnnotationStereotype:UML::Stereotype=null;
+
+
+
+//property MpdFileTypeStereotypeName:String='mpdFileType';
+//property MpdFileSetTypeStereotypeName:String='mpdFileSetType';
+//property MpdFolderTypeStereotypeName:String='mpdFolderType';
+//property MpdStereotypeName:String='mpd';
+//property MpdArtifactStereotypeName:String='mpdArtifact';
+
+//property MpdFolderTypeStereotype:UML::Stereotype=null;
+//property MpdFileTypeStereotype:UML::Stereotype=null;
+//property MpdFileSetTypeStereotype:UML::Stereotype=null;
+//property MpdStereotype:UML::Stereotype=null;
+//property MpdArtifactStereotype:UML::Stereotype=null;
+
+//property MpdStereotypeName:String='mpd';
+//property provisioningMpdStereotypeName:String='MPD';
+//property provisioningMpdStereotypeName:String='Model Package Description';
+//property provisioningNdrSchemaStereotypeName:String='NDRSchema';
+//property provisioningNdrSchemaStereotypeName:String='NDRSchema';
+//property provisioningNdrSchemaStereotypeName:String='XSDNamespace';
+
+
+
+property SchemaForNamespaceNamespace:String='http://www.w3.org/XML/1998/namespace';
+property xsdProfile:UML::Profile=null; // the xsd uml profile
+property proxySchemaPackageName:String='xsd';  // xsd profile name
+property xsdProfileName:String='xsd';  // xsd profile name
+property ndrProfileName:String='ndr';  // xsd profile name
+property mpdProfileName:String='mpd';  // xsd profile name
+property xsdStereotypePrefix:String='XSD';  // prefix used for stereotype names
+//property xsdProfilePath:String='xsd::'+xsdStereotypePrefix; // the xsd uml profile qualified name
+property xsdProfilePath:String=xsdStereotypePrefix; // the xsd uml profile qualified name
+
+property XsdComplexTypeDefinitionStereotypeName:String=xsdStereotypePrefix+'ComplexTypeDefinition';
+property XsdAnnotationStereotypeName:String=xsdStereotypePrefix+'Annotation';
+
+property XsdSimpleTypeDefinitionStereotypeName:String=xsdStereotypePrefix+'SimpleTypeDefinition';
+property XsdElementDeclarationStereotypeName:String=xsdStereotypePrefix+'ElementDeclaration';
+
+property XsdConstrainingFacetStereotypeName:String=xsdStereotypePrefix+'ConstrainingFacet';
+property XsdNotationDeclarationStereotypeName:String=xsdStereotypePrefix+'NotationDeclaration';
+property XsdSchemaContentStereotypeName:String=xsdStereotypePrefix+'SchemaContent';
+property XsdParticleStereotypeName:String=xsdStereotypePrefix+'Particle';
+property XsdSchemaStereotypeName:String=xsdStereotypePrefix+'Schema';
+
+//property Xsd_xsdAttributeGroupContentStereotypeName:String=xsdStereotypePrefix+'_xsdAttributeGroupContent';
+property XsdAttributeGroupContentStereotypeName:String=xsdStereotypePrefix+'AttributeGroupContent';
+
+//property Xsd_xsdWildcardStereotypeName:String=xsdStereotypePrefix+'_xsdWildcard';
+property XsdWildcardStereotypeName:String=xsdStereotypePrefix+'Wildcard';
+property XsdComplexTypeContentStereotypeName:String=xsdStereotypePrefix+'ComplexTypeContent';
+//property Xsd_xsdComplexTypeContentStereotypeName:String=xsdStereotypePrefix+'_xsdComplexTypeContent';
+property XsdParticleContentStereotypeName:String=xsdStereotypePrefix+'ParticleContent';
+property Xsd_xsdParticleContentStereotypeName:String=xsdStereotypePrefix+'_xsdParticleContent';
+property XsdIdentityConstraintDefinitionStereotypeName:String=xsdStereotypePrefix+'IdentityConstraintDefinition';
+property XsdTypeDefinitionStereotypeName:String=xsdStereotypePrefix+'TypeDefinition';
+property XsdModelGroupDefinitionStereotypeName:String=xsdStereotypePrefix+'ModelGroupDefinition';
+property XsdModelGroupStereotypeName:String=xsdStereotypePrefix+'ModelGroup';
+property XsdAttributeDeclarationStereotypeName:String=xsdStereotypePrefix+'AttributeDeclaration';
+property XsdAttributeUseStereotypeName:String=xsdStereotypePrefix+'AttributeUse';
+property XsdEnumerationFacetStereotypeName:String=xsdStereotypePrefix+'EnumerationFacet';
+property XsdElementsStereotypeName:String=xsdStereotypePrefix+'Elements';
+property XsdAttributesStereotypeName:String=xsdStereotypePrefix+'Attributes';
+property XsdAttributeGroupDefinitionsStereotypeName:String=xsdStereotypePrefix+'AttributeGroupDefinitions';
+property XsdModelGroupDefinitionsStereotypeName:String=xsdStereotypePrefix+'ModelGroupDefinitions';
+property XsdImportStereotypeName:String=xsdStereotypePrefix+'Import';
+property XsdAttributeGroupDefinitionStereotypeName:String=xsdStereotypePrefix+'AttributeGroupDefinition';
+property XsdFacetStereotypeName:String=xsdStereotypePrefix+'Facet';
+property XsdFixedFacetStereotypeName:String=xsdStereotypePrefix+'FixedFacet';
+property XsdModelGroupAnnotationStereotypeName:String=xsdStereotypePrefix+'ModelGroupAnnotation';
+property XSDSimpleTypeDefinitionAnnotationStereotypeName:String=xsdStereotypePrefix+'SimpleTypeDefinitionAnnotation';
+property XSDContentAnnotationStereotypeName:String=xsdStereotypePrefix+'ContentAnnotation';
+property XsdDerivationAnnotationStereotypeName:String=xsdStereotypePrefix+'DerivationAnnotation';
+property XsdIncludeStereotypeName:String=xsdStereotypePrefix+'Include';
+
+property XsdMaxExclusiveFacetStereotypeName:String=xsdStereotypePrefix+'MaxExclusiveFacet';
+property XsdMaxInclusiveFacetStereotypeName:String=xsdStereotypePrefix+'MaxInclusiveFacet';
+property XsdPatternFacetStereotypeName:String=xsdStereotypePrefix+'PatternFacet';
+property XsdWhiteSpaceFacetStereotypeName:String=xsdStereotypePrefix+'WhiteSpaceFacet';
+property XsdLengthFacetStereotypeName:String=xsdStereotypePrefix+'LengthFacet';
+property XsdFeatureStereotypeName:String=xsdStereotypePrefix+'Feature';
+
+property XSDModelGroupAnnotationStereotypeName:String=xsdStereotypePrefix+'ModelGroupAnnotation';
+property XsdMaxLengthFacetStereotypeName:String=xsdStereotypePrefix+'MaxLengthFacet';
+//property XsdWildcardStereotypeName:String=xsdStereotypePrefix+'Wildcard';
+//property XsdNumericFacetStereotypeName:String=xsdStereotypePrefix+'NumericFacet';
+//property XsdBoundedFacetStereotypeName:String=xsdStereotypePrefix+'BoundedFacet';
+//property XsdCardinalityFacetStereotypeName:String=xsdStereotypePrefix+'CardinalityFacet';
+//property XsdOrderedFacetFacetStereotypeName:String=xsdStereotypePrefix+'OrderedFacet';
+property XsdTotalDigitsFacetStereotypeName:String=xsdStereotypePrefix+'TotalDigitsFacet';
+
+property XsdFractionDigitsFacetStereotypeName:String=xsdStereotypePrefix+'FractionDigitsFacet';
+property XsdMinLengthFacetStereotypeName:String=xsdStereotypePrefix+'MinLengthFacet';
+property XsdMinInclusiveFacetStereotypeName:String=xsdStereotypePrefix+'MinInclusiveFacet';
+property XsdMinExclusiveFacetStereotypeName:String=xsdStereotypePrefix+'MinExclusiveFacet';
+property XsdMinFacetStereotypeName:String=xsdStereotypePrefix+'MinFacet';
+property XsdMaxFacetStereotypeName:String=xsdStereotypePrefix+'MaxFacet';
+property XsdRedefineStereotypeName:String=xsdStereotypePrefix+'Redefine';
+property XsdSchemaDirectiveStereotypeName:String=xsdStereotypePrefix+'SchemaDirective';
+
+property XsdElementsStereotype:UML::Stereotype=null;
+property XsdAttributesStereotype:UML::Stereotype=null;
+property XsdAnnotationStereotype:UML::Stereotype=null;
+property XsdModelGroupDefinitionsStereotype:UML::Stereotype=null;
+property XsdAttributeGroupDefinitionsStereotype:UML::Stereotype=null;
+property XsdSchemaStereotype:UML::Stereotype=null;
+property XsdComplexTypeDefinitionStereotype:UML::Stereotype=null;
+property XsdNotationDeclarationStereotype:UML::Stereotype=null;
+property XsdFacetStereotype:UML::Stereotype=null;
+property XsdIdentityConstraintDefinitionStereotype:UML::Stereotype=null;
+property XsdModelGroupStereotype:UML::Stereotype=null;
+property XsdWildcardStereotype:UML::Stereotype=null;
+property XsdFixedFacetStereotype:UML::Stereotype=null;
+
+property XsdModelGroupAnnotationStereotype:UML::Stereotype=null;
+property XSDSimpleTypeDefinitionAnnotationStereotype:UML::Stereotype=null;
+property XSDContentAnnotationStereotype:UML::Stereotype=null;
+property XsdDerivationAnnotationStereotype:UML::Stereotype=null;
+
+property XsdIncludeStereotype:UML::Stereotype=null;
+property XsdImportStereotype:UML::Stereotype=null;
+property XsdMaxExclusiveFacetStereotype:UML::Stereotype=null;
+property XsdMaxInclusiveFacetStereotype:UML::Stereotype=null;
+property XsdPatternFacetStereotype:UML::Stereotype=null;
+property XsdWhiteSpaceFacetStereotype:UML::Stereotype=null;
+property XsdLengthFacetStereotype:UML::Stereotype=null;
+property XsdFeatureStereotype:UML::Stereotype=null;
+property XsdAttributeGroupDefinitionStereotype:UML::Stereotype=null;
+property XsdAttributeDeclarationStereotype:UML::Stereotype=null;
+property XSDModelGroupAnnotationStereotype:UML::Stereotype=null;
+property XSDDerivationAnnotationStereotype:UML::Stereotype=null;
+property XsdSimpleTypeDefinitionStereotype:UML::Stereotype=null;
+property XsdAttributeUseStereotype:UML::Stereotype=null;
+//property XsdWildcardStereotype:UML::Stereotype=null;
+property XsdTypeDefinitionStereotype:UML::Stereotype=null;
+property XsdConstrainingFacetStereotype:UML::Stereotype=null;
+property XsdModelGroupDefinitionStereotype:UML::Stereotype=null;
+property XsdElementDeclarationStereotype:UML::Stereotype=null;
+property XsdParticleStereotype:UML::Stereotype=null;
+//property XsdBoundedFacetStereotype:UML::Stereotype=null;
+//property XsdNumericFacetStereotype:UML::Stereotype=null;
+//property XsdCardinalityFacetStereotype:UML::Stereotype=null;
+//property XsdOrderedFacetFacetStereotype:UML::Stereotype=null;
+property XsdTotalDigitsFacetStereotype:UML::Stereotype=null;
+property XsdMaxLengthFacetStereotype:UML::Stereotype=null;
+property XsdFractionDigitsFacetStereotype:UML::Stereotype=null;
+property XsdMinLengthFacetStereotype:UML::Stereotype=null;
+property XsdEnumerationFacetStereotype:UML::Stereotype=null;
+property XsdMinInclusiveFacetStereotype:UML::Stereotype=null;
+property XsdMinFacetStereotype:UML::Stereotype=null;
+property XsdMinExclusiveFacetStereotype:UML::Stereotype=null;
+property XsdMaxFacetStereotype:UML::Stereotype=null;
+property XsdRedefineStereotype:UML::Stereotype=null;
+property XsdSchemaDirectiveStereotype:UML::Stereotype=null;
+
+property xsdXSDCompositorEnumeration:UML::Enumeration=null;
+property xsdXSDCompositorSequenceEnumerationLiteral:UML::EnumerationLiteral=null;
+property xsdXSDDerivationMethodEnumeration:UML::Enumeration=null;
+property xsdXSDDerivationMethodExtensionEnumerationLiteral:UML::EnumerationLiteral=null;
+property ndrBaseTypeEnumeration:UML::Enumeration=null;
+property ndrBaseTypeObjectEnumerationLiteral:UML::EnumerationLiteral=null;
+property ndrBaseTypeAssociationEnumerationLiteral:UML::EnumerationLiteral=null;
+
+/*
+helper UML::initXSDProfile(){
+		xsdProfile:=self.objectsOfType(UML::Profile)->select(p|p.name=xsdProfileName)->asSequence()->first();
+		return;
+}
+*/
+
+query UML::Element::isComplexTypeDefinition():Boolean=
+	self.stereotypedBy(XsdComplexTypeDefinitionStereotypeName);
+query UML::Classifier::subTypes():Set(UML::Classifier)=
+	self.getTargetDirectedRelationships()->select(t|t.oclIsKindOf(UML::Generalization))
+	.oclAsType(UML::Generalization).specific->asSet();
+query UML::Property::isRoleOf():Boolean=self.name.startsWith('RoleOf');
+
+query UML::Element::getAnyValue(stereotype:UML::Stereotype,tagName:String):Sequence(UML::ValueSpecification){
+	var stereotypeApplied:UML::Stereotype=self.getAnyStereotypeApplied(stereotype);
+	if(stereotypeApplied.oclIsUndefined())then{
+		log('ERROR:stereotype '+stereotype.name+' has not been applied, tag '+tagName+', on uml element '+self.oclAsType(UML::NamedElement).qualifiedName);
+	}else{
+		//if(tagName='purposeURI')then{log('getAnyValue purposeURI '+stereotypeApplied.qualifiedName+' = '+self.getValue(stereotypeApplied,tagName).repr());}else{}endif;
+		return self.getValue(stereotypeApplied,tagName);
+
+	}endif;
+	return null;
+	}
+query UML::Element::getAnyStereotypeApplied(stereotype:UML::Stereotype):UML::Stereotype=
+	self.getAppliedStereotypes()->select(s|s.isSubtypeOf(stereotype))->asSequence()->first();
+query UML::Element::getValue(stereotype:UML::Stereotype,tagName:String):Sequence(UML::ValueSpecification)=
+	self.appliedStereotypeInstance.slot
+	->select(s|(s.definingFeature.name=tagName)
+		and (stereotype.isSubtypeOf(s.definingFeature.owner.oclAsType(UML::Classifier)))
+	).value->asSequence();
+	/*
+query UML::Profile::getOwnedStereotype(stereotypeName:String,context:XSD::XSDConcreteComponent):UML::Stereotype{
+//	return self.getOwnedStereotypeForProfile(stereotypeName);
+	return self.getOwnedStereotype(stereotypeName);
+	}
+	*/
+	/*
+query UML::Profile::getOwnedStereotypeForProfile(stereotypeName:String):UML::Stereotype{
+		var stereotype:UML::Stereotype=self.ownedStereotype->select(s|s.name=stereotypeName)->asSequence()->first();
+		if(stereotype.oclIsUndefined())then{
+			log('ERROR: stereotype '+stereotypeName+' not found in profile '+self.name);
+
+		}else{}endif;
+		return stereotype;
+	}
+	*/
+helper UML::Element::conditionallyApplyStereotype(stereotype:UML::Stereotype):UML::Stereotype{
+	if(not(stereotype.oclIsUndefined())and not(self.isAnyStereotypeApplied(stereotype)))then{
+		if(self.isStereotypeApplicable(stereotype))then{
+			self.applyStereotype(stereotype);
+		}else{
+			log('stereotype '+stereotype.name+' not applicable to '+self.metaClassName()
+				+' with owner '+self.owner.repr()+', '+self.repr()
+//				+', '+stereotype.getAllExtendedMetaclasses().name->size().repr()
+//				+', '+stereotype.getAllExtendedMetaclasses()->size().repr()
+				,self);
+			return null;//stereotype:=null;
+		}endif;
+	}else{
+	}endif;
+	return self.getAnyStereotypeApplied(stereotype);
+};
+query UML::Element::isAnyStereotypeApplied(stereotype:UML::Stereotype):Boolean=
+	self.getAppliedStereotypes()->exists(s|s.isSubtypeOf(stereotype));
+query UML::Element::isStereotypeApplicable(stereotype:UML::Stereotype):Boolean=
+	true;// for now assume it is
+//	stereotype.getExtendedMetaclasses()->exists(c|c.isSubtypedBy(self.metaClassName());
+/*
+query UML::Class::getExtendedMetaclasses():Set(UML::Class)=
+	self.extension.metaclass->union(self.allParents().oclAsType(UML::Class).extension.metaclass)->asSet();
+*/
+/*
+query UML::Element::isStereotypeApplicable(stereotype:UML::Stereotype):Boolean=
+	stereotype.getAllExtendedMetaclasses().name->includes(self.metaClassName());
+query UML::Class::getAllExtendedMetaclasses():Set(UML::Class)=
+	self.getAllBasicExtendedMetaclasses()->union(self.allParents().oclAsType(UML::Class).getAllBasicExtendedMetaclasses())
+	->asSet();
+query UML::Class::getAllBasicExtendedMetaclasses():Set(UML::Class)=
+	self.getExtendedMetaclasses()->union(self.getExtendedMetaclasses().allParents().oclAsType(UML::Class))
+	->asSet();
+query UML::Class::getExtendedMetaclasses():Set(UML::Class)=
+	self.extension.metaclass->asSet();
+*/
+	/*
+helper UML::Element::setTagValueConditionally(stereotype:UML::Stereotype,tagName:String,anyObject:OclAny){
+	if((anyObject=null)or(anyObject.oclIsInvalid())or(anyObject.oclIsUndefined()))then{}else{
+		self.setValue(stereotype,tagName,anyObject);
+	}endif;
+}
+*/
+helper UML::Element::setTagValueConditionally(stereotype:UML::Stereotype,tagName:String,anyObject:Sequence(String)){
+	if(anyObject->isEmpty())then{}else{
+		self.setValue(stereotype,tagName,anyObject);
+	}endif;
+}
+helper UML::Element::setTagValueConditionally(stereotype:UML::Stereotype,tagName:String,anyObject:Boolean){
+	if((anyObject=null)or(anyObject.oclIsInvalid())or(anyObject.oclIsUndefined()))then{}else{
+		self.setValue(stereotype,tagName,anyObject);
+	}endif;
+}
+helper UML::Element::setTagValueConditionally(stereotype:UML::Stereotype,tagName:String,anyObject:Integer){
+	if((anyObject=null)or(anyObject.oclIsInvalid())or(anyObject.oclIsUndefined()))then{}else{
+		self.setValue(stereotype,tagName,anyObject);
+	}endif;
+}
+
+helper UML::Element::setTagValueConditionally(stereotype:UML::Stereotype,tagName:String,anyObject:UML::EnumerationLiteral){
+	if((anyObject=null)or(anyObject.oclIsInvalid())or(anyObject.oclIsUndefined()))then{}else{
+		self.setValue(stereotype,tagName,anyObject);
+	}endif;
+}
+helper UML::Element::setTagEnumerationValueConditionally(stereotype:UML::Stereotype,tagName:String,anyObject:Sequence(String)){
+	if(anyObject->isEmpty())then{}else{
+		self.setEnumerationValue(stereotype,tagName,anyObject);
+	}endif;
+}
+helper UML::Element::setTagEnumerationValueConditionally(stereotype:UML::Stereotype,tagName:String,anyObject:String){
+	if(anyObject->isEmpty())then{}else{
+		self.setEnumerationValue(stereotype,tagName,anyObject);
+	}endif;
+}
+
+helper Stdlib::Element::setTagEnumerationValueConditionally(tagName:String,anyObject:Sequence(String)){
+		self.oclAsType(UML::InstanceSpecification).setEnumerationValue(tagName,anyObject);
+}
+
+/*
+helper UML::Element::setTagValueConditionally(stereotype:UML::Stereotype,tagName:String,anyObject:Sequence(OclAny)){
+	if(anyObject->isEmpty())then{}else{
+		self.setValue(stereotype,tagName,anyObject);
+	}endif;
+}
+*/
+helper UML::Element::unsetTagValue(stereotype:UML::Stereotype,tagName:String){
+	var slot:UML::Slot=self.getSlot(stereotype,tagName);
+	clearValue(slot);
+	return;
+}
+helper UML::Element::setValue(stereotype:UML::Stereotype,tagName:String,anyObject:Integer){
+	var slot:UML::Slot=self.getSlot(stereotype,tagName);
+	clearValue(slot);
+	createLiteralInteger(slot).value:=anyObject;
+	return;
+}
+
+helper UML::Element::setValue(stereotype:UML::Stereotype,tagName:String,anyObject:Boolean){
+	var slot:UML::Slot=self.getSlot(stereotype,tagName);
+	clearValue(slot);
+	createLiteralBoolean(slot).value:=anyObject;
+	return;
+}
+
+helper UML::Element::setValue(stereotype:UML::Stereotype,tagName:String,enumLiteral:UML::EnumerationLiteral){
+	var slot:UML::Slot=self.getSlot(stereotype,tagName);
+	clearValue(slot);
+	createInstanceValue(slot,enumLiteral.enumeration).instance:=enumLiteral;
+	return;
+}
+helper UML::InstanceSpecification::setValue(tagName:String,enumLiteral:UML::EnumerationLiteral){
+	var slot:UML::Slot=self.getSlot(tagName);
+	clearValue(slot);
+	createInstanceValue(slot,enumLiteral.enumeration).instance:=enumLiteral;
+	return;
+}
+
+helper UML::InstanceSpecification::setEnumerationValue(tagName:String,anyObject:Sequence(String)){
+	var slot:UML::Slot=self.getSlot(tagName);
+	var enumeration:UML::Enumeration=slot.definingFeature.type.oclAsType(UML::Enumeration);
+	clearValue(slot);
+	anyObject->forEach(s){
+		createInstanceValue(slot,enumeration).instance:=enumeration.ownedLiteral->select(l|l.name=s)->asSequence()->first();
+	};
+}
+helper UML::Element::setEnumerationValue(stereotype:UML::Stereotype,tagName:String,anyObject:Sequence(String)){
+	return self.getStereotypeApplication().setEnumerationValue(tagName,anyObject);
+}
+helper UML::Element::setEnumerationValue(stereotype:UML::Stereotype,tagName:String,anyObject:String){
+	return self.getStereotypeApplication().setEnumerationValue(tagName,anyObject);
+}
+helper UML::Element::setValue(stereotype:UML::Stereotype,tagName:String,anyObject:Sequence(String)){
+	return self.getStereotypeApplication().setValue(tagName,anyObject);
+}
+
+
+
+
+query UML::Classifier::conformsTo(other:UML::Classifier):Boolean=
+	(self=other) or self.allParents()->includes(self);
+/*
+query UML::Element::getNearestSchemaPackage():UML::Package{
+	var schemaPackage:UML::Package=self.getNearestPackage();
+	if(schemaPackage.isStereotypeApplied(XsdSchemaStereotype) or schemaPackage.isXMLSchemaPackage()) then {return schemaPackage;} endif;
+	return schemaPackage.nestingPackage;
+}
+*/
+
+query UML::Package::isXMLSchemaPackage():Boolean=self.isXMLInstanceSchemaPackage() or (self.name='MagicXMLSchema');
+query UML::Package::isXMLInstanceSchemaPackage():Boolean=(self.name='XMLSchema');
+
+/*
+query UML::Package::getSchemaTargetNamespace():String{
+	return if(self.getSchemaStereotype().oclIsUndefined()) then ''
+	else self.getAnyValue(self.getSchemaStereotype(),'targetNamespace')
+			->select(v|v.oclIsKindOf(UML::LiteralString)).oclAsType(UML::LiteralString).value
+			->asSequence()->first()
+	endif;
+}
+
+
+query UML::Package::getSchemaStereotype():UML::Stereotype{
+	if(self.isAnyStereotypeApplied(xsdProfile.getOwnedStereotype(XsdSchemaStereotypeName)))then{
+		return self.getAnyStereotypeApplied(xsdProfile.getOwnedStereotype(XsdSchemaStereotypeName));
+	}else{}endif;
+	return 	self.getAnyStereotypeApplied(getNdrProfile().getOwnedStereotype(XsdSchemaStereotypeName));
+}
+*/
+//query getNdrProfile():UML::Profile=null;
+
+
+
+query UML::NamedElement::reference(refName:String):Set(UML::NamedElement)=self.clientDependency
+		->select(d|d.oclIsKindOf(UML::Realization)and not(d.name.oclIsUndefined()) and (d.name=refName)).supplier->asSet();
+/*
+query UML::Element::getNdrBaseElementDeclaration():UML::InstanceSpecification=
+	self.getStereotypeApplication(NdrBaseElementDeclarationStereotypeName);
+*/
+query UML::InstanceSpecification::getAnyValues(tagName:String):Sequence(OclAny)=
+//	self.getValueSpecification(tagName).getAnyValues()->select(v|(v<>null) and not(v.oclIsUndefined()))->asSequence();
+	self.getValueSpecification(tagName).getAnyValue()->select(v|(v<>null) and not(v.oclIsUndefined()))->asSequence();
+
+/*
+query UML::ValueSpecification::getAnyValues():Sequence(OclAny){
+	var anyValue:OclAny=self.getAnyValue();
+	if((anyValue=null)or anyValue.oclIsUndefined())then {return Sequence{};}else{}endif;
+//	return anyValue->asSequence();
+	return Sequence{anyValue};
+	}
+*/
+helper UML::Package::applyProfile(profile : UML::Profile){
+	var profileApplication: UML::ProfileApplication=new UML::ProfileApplication();
+	profileApplication.applyingPackage:=self;
+	profileApplication.appliedProfile:=profile;
+	log('applyProfile '+profile.qualifiedName+' to '+self.qualifiedName);
+	return;
+}
+query String::isRoleOfName():Boolean=self.startsWith('RoleOf') and (self<>'RoleOf');
+
+
+helper  UML::Package::applyProfiles(){
+	self.profileApplication->select(a|a.appliedProfile=xsdProfile)->forEach(appliedProfile){return;};
+	var profileApplication:UML::ProfileApplication=new UML::ProfileApplication();
+	profileApplication.appliedProfile:=xsdProfile;
+	profileApplication.applyingPackage:=self;
+	return;
+}
+/*
+helper Integer::setLower(inout me:UML::MultiplicityElement){
+	/ *
+	if((me.lowerValue=null) or me.lowerValue.oclIsUndefined() or not(me.lowerValue.oclIsKindOf(UML::LiteralInteger)))then{
+		me.lowerValue:=new UML::LiteralInteger();
+	}else{}endif;
+	me.lowerValue.oclAsType(UML::LiteralInteger).value=self;
+	* /
+	var annotation:ECORE::EAnnotation=new ECORE::EAnnotation('setLower');
+	annotation._references+=me.oclAsType(ECORE::EObject);
+	"lowerValue".setAnnotationDetail(annotation,self.repr());
+	blackboxHook.eAnnotations+=annotation;
+	return;
+}
+helper Integer::setUpper(inout me:UML::MultiplicityElement){
+	var annotation:ECORE::EAnnotation=new ECORE::EAnnotation('setUpper');
+	annotation._references+=me.oclAsType(ECORE::EObject);
+	"upperValue".setAnnotationDetail(annotation,self.repr());
+	blackboxHook.eAnnotations+=annotation;
+	/ *
+
+	if(me.upperValue.oclIsUndefined())then{
+		me.upperValue:=new UML::LiteralUnlimitedNatural();
+	}else{}endif;
+	if(self<0)then{
+		me.upperValue.oclAsType(UML::LiteralUnlimitedNatural).value=*;
+
+	}else{
+		me.upperValue.oclAsType(UML::LiteralUnlimitedNatural).value=self;
+	}endif;
+	* /
+	return;
+}
+*/
+
+/*
+query XSD::XSDConcreteComponent::getStereotype():UML::Stereotype{
+	var metaClassName:String=self.metaClassName();
+	return xsdProfile.getOwnedStereotype(metaClassName.replace('XSD',xsdStereotypePrefix),self);
+	}
+query XSD::XSDAnnotation::getStereotype():UML::Stereotype{
+	var metaClassName:String=self.metaClassName();
+	// special cases for modelgroup and derivation
+	var owner:XSD::XSDConcreteComponent=self.container;
+	if(owner.oclIsKindOf(XSD::XSDModelGroup))then{
+		metaClassName:='XSDModelGroupAnnotation';
+	}else{
+		if(owner.oclIsKindOf(XSD::XSDTypeDefinition) and (owner.oclAsType(XSD::XSDTypeDefinition).derivationAnnotation=self))then{
+			metaClassName:='XSDDerivationAnnotation';
+		}else{
+		}endif;
+	}endif;
+	return xsdProfile.getOwnedStereotype(metaClassName.replace('XSD',xsdStereotypePrefix),self);
+	}
+*/
+helper XSD::XSDConcreteComponent::applyValues(element:UML::Element,stereotype:UML::Stereotype){
+	log('applyValues not handled '+element.repr());
+	}
+helper Stdlib::Element::extent():Stdlib::Element{
+	return self;
+	}
+
+
+	/*
+helper UML::Element::ID():String{
+	var annotation:ECORE::EAnnotation=new ECORE::EAnnotation('getID');
+	annotation._references+=self.oclAsType(ECORE::EObject);
+	blackboxHook.eAnnotations+=annotation;
+	return annotation.getDetail('ID');
+	}
+
+query UML::Classifier::isNiemAssociation():Boolean=self.stereotypedBy(NdrAssociationTypeStereotypeName);
+
+query UML::Package::getPurposeURI():String{
+	return self.getStereotypeApplication().getStringValue('purposeURI');
+}
+
+query XSD::XSDAnnotation::getApplicationInformationElements():OrderedSet(ECORE::EAnnotation){
+	return self.getApplicationInformation().oclAsType(Stdlib::Element).getElementElements().oclAsType(ECORE::EAnnotation)
+	->asOrderedSet();
+}
+*/
+//query  Stdlib::Element::getElementElements():OrderedSet(Stdlib::Element)=self.oclAsType(ECORE::EAnnotation).getElements();
+//query  OclAny::getElementElements():OrderedSet(Stdlib::Element)=self.oclAsType(ECORE::EAnnotation).getElements();
+
+query XSD::XSDAnnotation::getUserInformation():OrderedSet(ECORE::EAnnotation){
+//query XSD::XSDAnnotation::getUserInformation():ECORE::EAnnotation{
+	var annotation:ECORE::EAnnotation=new ECORE::EAnnotation('getUserInformation');
+	annotation._references+=self.oclAsType(ECORE::EObject);
+	blackboxHook.eAnnotations+=annotation;
+//	return annotation.eAnnotations;
+//	return annotation;
+	return annotation.eAnnotations;
+}
+query UML::Element::mdclone():UML::Element{
+	var annotation:ECORE::EAnnotation=new ECORE::EAnnotation('mdclone');
+	annotation._references+=self.oclAsType(ECORE::EObject);
+	blackboxHook.eAnnotations+=annotation;
+	return annotation._references->select(r|r<>self).oclAsType(UML::Element)->asSequence()->first();
+}
+helper  Stdlib::Element::cloneInformationModelToNamespace(inout targetInstanceIn:Stdlib::Element){
+	targetInstanceIn.setSchemaNamespace(self.getSchemaTargetNamespace());
+	targetInstanceIn.setSchemaAppinfoConformantIndicator(self.getPimSchemaConformantIndicator());
+    var version:String=self.getPimSchemaVersion();
+    if(not(version.oclIsUndefined()))then {targetInstanceIn.setSchemaVersion(version);} endif;
+    var defaultPrefix:String=self.getSchemaDefaultPrefix();
+    //log('cloneInformationModelToNamespace '+self.getSchemaTargetNamespace()+' = '+defaultPrefix);
+    if(not(defaultPrefix.oclIsUndefined()))then {targetInstanceIn.setSchemaDefaultPrefix(defaultPrefix);} endif;
+	return;
+}
+
+
+
+query XSD::XSDNamedComponent::getComponentName():String{
+	if(self.name.oclIsUndefined())then{return self.aliasName;}else{}endif;
+	return self.name;
+}
+
+query  UML::Element::getAppliedSubstereotypes(stereotype:UML::Stereotype):Set(UML::Stereotype){
+	self.getAppliedStereotypes()->select(s|(s=stereotype) or s.allParents()->includes(stereotype))
+}
+////////////////////////////////////////////////////
+query  Stdlib::Element::getAnnotationApplicationInformationList():Stdlib::Element{
+	return self.oclAsType(UML::InstanceSpecification).getSlot('applicationInformation');
+}
+query  Stdlib::Element::getAnnotationUserInformationList():Stdlib::Element{
+	return self.oclAsType(UML::InstanceSpecification).getSlot('userInformation');
+}
+
+//query XSD::XSDAnnotation::getAnnotationUserInformation():OrderedSet(Stdlib::Element){
+query XSD::XSDAnnotation::getXSDAnnotationUserInformation():OrderedSet(OclAny){
+	return self.getUserInformation();
+}
+query Stdlib::Element::getAnnotationUserInformation():OrderedSet(Stdlib::Element)=
+//	self.oclAsType(UML::InstanceSpecification).getAnyValues('userInformation')
+	self.oclAsType(UML::InstanceSpecification).getInstanceValues('userInformation')
+	.oclAsType(Stdlib::Element)->asOrderedSet();
+
+helper Stdlib::Element::getElementValue():String=
+	self.oclAsType(UML::InstanceSpecification).getAnyValue('value')
+	.oclAsType(String);
+
+
+
+
+
+///////////////////////////////////////////////////
+/*
+helper UML::Profile::initMPDProfileStereotypes():UML::Profile{
+		mpdProfile:=self;
+
+		MpdStereotype:=mpdProfile.getOwnedStereotype(MpdStereotypeName);
+		MpdFileTypeStereotype:=mpdProfile.getOwnedStereotype(MpdFileTypeStereotypeName);
+		MpdFolderTypeStereotype:=mpdProfile.getOwnedStereotype(MpdFolderTypeStereotypeName);
+		MpdFileSetTypeStereotype:=mpdProfile.getOwnedStereotype(MpdFileSetTypeStereotypeName);
+		MpdArtifactStereotype:=mpdProfile.getOwnedStereotype(MpdArtifactStereotypeName);
+
+		psmPackageCodeLiteralEnumeration:=mpdProfile.packagedElement
+			->select(e|e.oclIsKindOf(UML::Enumeration)and (e.name='PackageCode')).oclAsType(UML::Enumeration)
+			->asSequence()->first();
+		defaultPsmPackageCodeLiteral:=psmPackageCodeLiteralEnumeration.getOwnedLiteral(defaultPsmPackageCodeName);
+
+		return mpdProfile;
+}
+*/
+query UML::Profile::getOwnedStereotype(stereotypeName:String):UML::Stereotype{
+		var stereotype:UML::Stereotype=self.ownedStereotype->select(s|s.name=stereotypeName)->asSequence()->first();
+		if(stereotype.oclIsUndefined())then{
+			log('ERROR: stereotype '+stereotypeName+' not found in profile '+self.name);
+
+		}else{}endif;
+		return stereotype;
+	}
+
+helper UML::Profile::initNDRProfileStereotypes(){
+		ndrProfile:=self;
+
+		NdrObjectTypeStereotype:=ndrProfile.getOwnedStereotype(NdrObjectTypeStereotypeName);
+
+		NdrAdapterTypeStereotype:=ndrProfile.getOwnedStereotype(NdrAdapterTypeStereotypeName);
+		NdrAssociationTypeStereotype:=ndrProfile.getOwnedStereotype(NdrAssociationTypeStereotypeName);
+		NdrRoleTypeStereotype:=ndrProfile.getOwnedStereotype(NdrRoleTypeStereotypeName);
+		NdrElementDeclarationStereotype:=ndrProfile.getOwnedStereotype(NdrElementDeclarationStereotypeName);
+		NdrSchemaDirectiveStereotype:=ndrProfile.getOwnedStereotype(NdrSchemaDirectiveStereotypeName);
+		NdrImportStereotype:=ndrProfile.getOwnedStereotype(NdrImportStereotypeName);
+		NdrSchemaStereotype:=ndrProfile.getOwnedStereotype(NdrSchemaStereotypeName);
+		NdrAttributeGroupDefinitionStereotype:=ndrProfile.getOwnedStereotype(NdrAttributeGroupDefinitionStereotypeName);
+		NdrAttributeDeclarationStereotype:=ndrProfile.getOwnedStereotype(NdrAttributeDeclarationStereotypeName);
+		NdrSimpleTypeDefinitionStereotype:=ndrProfile.getOwnedStereotype(NdrSimpleTypeDefinitionStereotypeName);
+		NdrComplexTypeDefinitionStereotype:=ndrProfile.getOwnedStereotype(NdrComplexTypeDefinitionStereotypeName);
+		NdrTypeDefinitionStereotype:=ndrProfile.getOwnedStereotype(NdrTypeDefinitionStereotypeName);
+		NdrBaseElementDeclarationStereotype:=ndrProfile.getOwnedStereotype(NdrBaseElementDeclarationStereotypeName);
+		NdrReferenceElementDeclarationStereotype:=ndrProfile.getOwnedStereotype(NdrReferenceElementDeclarationStereotypeName);
+		NdrMetadataTypeStereotype:=ndrProfile.getOwnedStereotype(NdrMetadataTypeStereotypeName);
+		NdrAugmentationTypeStereotype:=ndrProfile.getOwnedStereotype(NdrAugmentationTypeStereotypeName);
+		NdrNamedComponentStereotype:=ndrProfile.getOwnedStereotype(NdrNamedComponentStereotypeName);
+		NdrAppinfoBaseStereotype:=ndrProfile.getOwnedStereotype(NdrAppinfoBaseStereotypeName);
+		NdrReferenceTargetStereotype:=ndrProfile.getOwnedStereotype(NdrReferenceTargetStereotypeName);
+		NdrAppliesToStereotype:=ndrProfile.getOwnedStereotype(NdrAppliesToStereotypeName);
+		NdrAnnotationStereotype:=ndrProfile.getOwnedStereotype(NdrAnnotationStereotypeName);
+		NdrSimpleTypeDefinitionAnnotationStereotype:=ndrProfile.getOwnedStereotype(NdrSimpleTypeDefinitionAnnotationStereotypeName);
+
+
+		ndrBaseTypeEnumeration:=ndrProfile.packagedElement
+			->select(e|e.oclIsKindOf(UML::Enumeration)and (e.name='BaseType')).oclAsType(UML::Enumeration)
+			->asSequence()->first();
+		ndrBaseTypeObjectEnumerationLiteral:=ndrBaseTypeEnumeration.getOwnedLiteral('Object');
+		ndrBaseTypeAssociationEnumerationLiteral:=ndrBaseTypeEnumeration.getOwnedLiteral('Association');
+
+
+		return;
+}
+query	UML::Enumeration::getOwnedLiteral(schemaKind:String):UML::EnumerationLiteral=
+	self.ownedLiteral->select(l|l.name=schemaKind)->asSequence()->first();
+/*
+	In the context of a top-level Model,
+	find and initialize globals for all NIEM Profiles plus the XML Type Library
+*/
+
+helper UML::Model::initializeProfileGlobals(){
+		var pimRoot:UML::Model=self;
+		var allSourceProfiles:Set(UML::Profile)=pimRoot.allSubobjectsOfType(UML::Profile).oclAsType(UML::Profile)->asSet();
+		allSourceProfiles
+			->select(p|p.name=provisioningProfileName)->asSequence()->first().initProvisioningProfileStereotypes();//getProvisioningProfile();
+		allSourceProfiles->select(p|p.name=logicalProfileName)
+			->asSequence()->first().initLogicalProfileStereotypes();
+		allSourceProfiles->select(p|p.name=structureProfileName)
+			->asSequence()->first().initStructureProfileStereotypes();
+		allSourceProfiles->select(p|p.name=niemXsdProfileName)
+			->asSequence()->first().initNiemXsdProfileStereotypes();
+		umlXmlLibrary:=pimRoot.allSubobjectsOfType(UML::Model).oclAsType(UML::Model)
+			->select(m|m.name=XMLPrimitiveTypesPackageName)->asSequence()->first();
+		return;
+}
+helper UML::Profile::initNiemXsdProfileStereotypes(){
+	niemXsdProfile:=self;
+		NIEMPropertyStereotype:=niemXsdProfile.getOwnedStereotype('XSDProperty');
+		NIEMAnyPropertyStereotype:=niemXsdProfile.getOwnedStereotype('XSDAnyProperty');
+		NIEMRepresentationRestrictionStereotype:=niemXsdProfile.getOwnedStereotype('XSDRepresentationRestriction');
+		NIEMSimpleContentStereotype:=niemXsdProfile.getOwnedStereotype('XSDSimpleContent');
+		//NIEMSequenceIdStereotype:=niemXsdProfile.getOwnedStereotype('SequenceID');
+		NIEMDeclarationStereotype:=niemXsdProfile.getOwnedStereotype('XSDDeclaration');
+	return;
+}
+
+helper UML::Profile::initStructureProfileStereotypes(){
+	structureProfile:=self;
+		NIEMAdapterStereotype:=structureProfile.getOwnedStereotype('AdapterType');
+		appliesToStereotype:=structureProfile.getOwnedStereotype('Application');
+		NIEMAssociationStereotype:=structureProfile.getOwnedStereotype('AssociationType');
+		NIEMAugmentationApplicationStereotype:=structureProfile.getOwnedStereotype('AugmentationApplication');
+		NIEMAugmentationStereotype:=structureProfile.getOwnedStereotype('AugmentationType');
+		NIEMChoiceStereotype:=structureProfile.getOwnedStereotype('Choice');
+		NIEMDescriptionStereotype:=structureProfile.getOwnedStereotype('Documentation');
+		NIEMListTypeStereotype:=structureProfile.getOwnedStereotype('List');
+		NIEMMetadataApplicationStereotype:=structureProfile.getOwnedStereotype('MetadataApplication');
+		NIEMMetadataStereotype:=structureProfile.getOwnedStereotype('MetadataType');
+		NIEMSchemaStereotype:=structureProfile.getOwnedStereotype(provisioningNdrSchemaStereotypeName);
+		NIEMTypeStereotype:=structureProfile.getOwnedStereotype('NIEMType');
+		NIEMObjectTypeStereotype:=structureProfile.getOwnedStereotype('ObjectType');
+		NIEMPropertyHolderStereotype:=structureProfile.getOwnedStereotype(propertyHolderStereotypeName);
+		NIEMReferencesStereotype:=structureProfile.getOwnedStereotype('References');
+		NIEMUnionTypeStereotype:=structureProfile.getOwnedStereotype('Union');
+		NIEMUnionOfStereotype:=structureProfile.getOwnedStereotype('UnionOf');
+		NIEMRestrictionStereotype:=structureProfile.getOwnedStereotype('Restriction');
+		NIEMSimpleTypeStereotype:=structureProfile.getOwnedStereotype('ValueRestriction');
+		NIEMLocalVocabularyStereotype:=structureProfile.getOwnedStereotype('LocalVocabulary');
+		NIEMLocalTermStereotype:=structureProfile.getOwnedStereotype('LocalTerm');
+		
+	return;
+}
+
+helper UML::Profile::initLogicalProfileStereotypes(){
+		logicalProfile:=self;
+		NIEMRoleOfStereotype:=logicalProfile.getOwnedStereotype('RoleOf');
+		NIEMReferenceNameStereotype:=logicalProfile.getOwnedStereotype('ReferenceName');
+		NIEMRoleStereotype:=logicalProfile.getOwnedStereotype('RolePlayedBy');
+		NIEMAugmentsStereotype:=logicalProfile.getOwnedStereotype('Augments');
+		NIEMInformationModelStereotype:=logicalProfile.getOwnedStereotype('InformationModel');
+		return;
+}
+
+helper UML::Profile::initProvisioningProfileStereotypes(){
+	provisioningProfile:=self;
+		prompdStereotype:=provisioningProfile.getOwnedStereotype(provisioningMpdStereotypeName);
+		NIEMModelPackageDescriptionRelationshipStereotype:=provisioningProfile.getOwnedStereotype('ModelPackageDescriptionRelationship');
+		NIEMModelPackageDescriptionFileStereotype:=provisioningProfile.getOwnedStereotype('ModelPackageDescriptionFile');
+		NIEMModelPackageDescriptionFileSetStereotype:=provisioningProfile.getOwnedStereotype('ModelPackageDescriptionFileSet');
+		packageCodeLiteralEnumeration:=provisioningProfile.packagedElement
+			->select(e|e.oclIsKindOf(UML::Enumeration)and (e.name='ModelPackageDescriptionClassCode')).oclAsType(UML::Enumeration)
+			->asSequence()->first();
+		defaultPackageCodeLiteral:=packageCodeLiteralEnumeration.getOwnedLiteral(defaultPackageCodeName);
+	return;
+}
+
+helper UML::Profile::initXSDProfileStereotypes(){
+		xsdProfile:=self;
+
+	XsdAnnotationStereotype:=xsdProfile.getOwnedStereotype(XsdAnnotationStereotypeName);
+	XsdAttributeUseStereotype:=xsdProfile.getOwnedStereotype(XsdAttributeUseStereotypeName);
+	XsdComplexTypeDefinitionStereotype:=xsdProfile.getOwnedStereotype(XsdComplexTypeDefinitionStereotypeName);
+	XsdConstrainingFacetStereotype:=xsdProfile.getOwnedStereotype(XsdConstrainingFacetStereotypeName);
+	XSDContentAnnotationStereotype:=xsdProfile.getOwnedStereotype(XSDContentAnnotationStereotypeName);
+	XsdDerivationAnnotationStereotype:=xsdProfile.getOwnedStereotype(XsdDerivationAnnotationStereotypeName);
+	XsdFacetStereotype:=xsdProfile.getOwnedStereotype(XsdFacetStereotypeName);
+	XsdFixedFacetStereotype:=xsdProfile.getOwnedStereotype(XsdFixedFacetStereotypeName);
+	XsdIdentityConstraintDefinitionStereotype:=xsdProfile.getOwnedStereotype(XsdIdentityConstraintDefinitionStereotypeName);
+	XsdModelGroupAnnotationStereotype:=xsdProfile.getOwnedStereotype(XsdModelGroupAnnotationStereotypeName);
+	XsdModelGroupDefinitionStereotype:=xsdProfile.getOwnedStereotype(XsdModelGroupDefinitionStereotypeName);
+	XsdModelGroupStereotype:=xsdProfile.getOwnedStereotype(XsdModelGroupStereotypeName);
+	XsdNotationDeclarationStereotype:=xsdProfile.getOwnedStereotype(XsdNotationDeclarationStereotypeName);
+	XsdSchemaStereotype:=xsdProfile.getOwnedStereotype(XsdSchemaStereotypeName);
+	XSDSimpleTypeDefinitionAnnotationStereotype:=xsdProfile.getOwnedStereotype(XSDSimpleTypeDefinitionAnnotationStereotypeName);
+	XsdTypeDefinitionStereotype:=xsdProfile.getOwnedStereotype(XsdTypeDefinitionStereotypeName);
+	XsdWildcardStereotype:=xsdProfile.getOwnedStereotype(XsdWildcardStereotypeName);
+	XsdElementDeclarationStereotype:=xsdProfile.getOwnedStereotype(XsdElementDeclarationStereotypeName);
+	XsdParticleStereotype:=xsdProfile.getOwnedStereotype(XsdParticleStereotypeName);
+	XsdEnumerationFacetStereotype:=xsdProfile.getOwnedStereotype(XsdEnumerationFacetStereotypeName);
+	XsdAttributeDeclarationStereotype:=xsdProfile.getOwnedStereotype(XsdAttributeDeclarationStereotypeName);
+	XsdSimpleTypeDefinitionStereotype:=xsdProfile.getOwnedStereotype(XsdSimpleTypeDefinitionStereotypeName);
+
+	XsdIncludeStereotype:=xsdProfile.getOwnedStereotype(XsdIncludeStereotypeName);
+	XsdImportStereotype:=xsdProfile.getOwnedStereotype(XsdImportStereotypeName);
+	XsdMaxExclusiveFacetStereotype:=xsdProfile.getOwnedStereotype(XsdMaxExclusiveFacetStereotypeName);
+	XsdMaxInclusiveFacetStereotype:=xsdProfile.getOwnedStereotype(XsdMaxInclusiveFacetStereotypeName);
+	XsdPatternFacetStereotype:=xsdProfile.getOwnedStereotype(XsdPatternFacetStereotypeName);
+	XsdWhiteSpaceFacetStereotype:=xsdProfile.getOwnedStereotype(XsdWhiteSpaceFacetStereotypeName);
+	XsdLengthFacetStereotype:=xsdProfile.getOwnedStereotype(XsdLengthFacetStereotypeName);
+	XsdFeatureStereotype:=xsdProfile.getOwnedStereotype(XsdFeatureStereotypeName);
+	XsdAttributeGroupDefinitionStereotype:=xsdProfile.getOwnedStereotype(XsdAttributeGroupDefinitionStereotypeName);
+	XSDModelGroupAnnotationStereotype:=xsdProfile.getOwnedStereotype(XSDModelGroupAnnotationStereotypeName);
+	XSDDerivationAnnotationStereotype:=xsdProfile.getOwnedStereotype(XsdDerivationAnnotationStereotypeName);
+	XsdWildcardStereotype:=xsdProfile.getOwnedStereotype(XsdWildcardStereotypeName);
+	//XsdNumericFacetStereotype:=xsdProfile.getOwnedStereotype(XsdNumericFacetStereotypeName);
+	//XsdBoundedFacetStereotype:=xsdProfile.getOwnedStereotype(XsdBoundedFacetStereotypeName);
+	//XsdCardinalityFacetStereotype:=xsdProfile.getOwnedStereotype(XsdCardinalityFacetStereotypeName);
+	//XsdOrderedFacetFacetStereotype:=xsdProfile.getOwnedStereotype(XsdOrderedFacetFacetStereotypeName);
+	XsdTotalDigitsFacetStereotype:=xsdProfile.getOwnedStereotype(XsdTotalDigitsFacetStereotypeName);
+	XsdMaxLengthFacetStereotype:=xsdProfile.getOwnedStereotype(XsdMaxLengthFacetStereotypeName);
+	XsdFractionDigitsFacetStereotype:=xsdProfile.getOwnedStereotype(XsdFractionDigitsFacetStereotypeName);
+	XsdMinLengthFacetStereotype:=xsdProfile.getOwnedStereotype(XsdMinLengthFacetStereotypeName);
+	XsdMinInclusiveFacetStereotype:=xsdProfile.getOwnedStereotype(XsdMinInclusiveFacetStereotypeName);
+	XsdMinExclusiveFacetStereotype:=xsdProfile.getOwnedStereotype(XsdMinExclusiveFacetStereotypeName);
+	XsdMinFacetStereotype:=xsdProfile.getOwnedStereotype(XsdMinFacetStereotypeName);
+	XsdMaxFacetStereotype:=xsdProfile.getOwnedStereotype(XsdMaxFacetStereotypeName);
+	XsdRedefineStereotype:=xsdProfile.getOwnedStereotype(XsdRedefineStereotypeName);
+	XsdSchemaDirectiveStereotype:=xsdProfile.getOwnedStereotype(XsdSchemaDirectiveStereotypeName);
+	XsdElementsStereotype:=xsdProfile.getOwnedStereotype(XsdElementsStereotypeName);
+	XsdAttributesStereotype:=xsdProfile.getOwnedStereotype(XsdAttributesStereotypeName);
+	XsdModelGroupDefinitionsStereotype:=xsdProfile.getOwnedStereotype(XsdModelGroupDefinitionsStereotypeName);
+	XsdAttributeGroupDefinitionsStereotype:=xsdProfile.getOwnedStereotype(XsdAttributeGroupDefinitionsStereotypeName);
+
+		xsdXSDCompositorEnumeration:=xsdProfile.packagedElement
+			->select(e|e.oclIsKindOf(UML::Enumeration)and (e.name='XSDCompositor')).oclAsType(UML::Enumeration)
+			->asSequence()->first();
+		xsdXSDCompositorSequenceEnumerationLiteral:=xsdXSDCompositorEnumeration.getOwnedLiteral('sequence');
+		xsdXSDDerivationMethodEnumeration:=xsdProfile.packagedElement
+			->select(e|e.oclIsKindOf(UML::Enumeration)and (e.name='XSDDerivationMethod')).oclAsType(UML::Enumeration)
+			->asSequence()->first();
+		xsdXSDDerivationMethodExtensionEnumerationLiteral:=xsdXSDDerivationMethodEnumeration.getOwnedLiteral('extension');
+
+		return;
+}
+
+property psmPackageCodeLiteralEnumeration:UML::Enumeration=null;
+property defaultPsmPackageCodeName:String='IEPD';
+//property defaultPsmPackageCodeLiteral:UML::EnumerationLiteral=null;
+
+//property defaultPackageCodeName:String='IEPD';
+property defaultSchemaKindName:String='subset';
+//property defaultSchemaKindLiteral:UML::EnumerationLiteral=null;
+
+
+//property schemaKindEnumeration:UML::Enumeration=null;
+
+////////////////////////////xsd2umlPlatformBinding
+/*
+helper  Stdlib::Element::setFacetLexicalValue(lexicalValue:String){
+	self.setTagValueConditionally('lexicalValue',lexicalValue);
+}
+*/
+////////////////////////////uml2mpdPlatformBinding
+
+query Stdlib::Element::getFileTypeNatureCode():String{
+	var code:String=self.oclAsType(UML::InstanceSpecification).getEnumerationLiteralValue('natureCode').name;
+	return natureURI+code.replace('_','-');
+}
+query Stdlib::Element::getFileSetTypeNatureCode():String{
+	var code:String=self.oclAsType(UML::InstanceSpecification).getEnumerationLiteralValue('natureCode').name;
+	return natureURI+code.replace('_','-');
+}
+helper Stdlib::Element::getFileTypeNatureURI():String=natureURI+self.oclAsType(UML::InstanceSpecification).getEnumerationLiteralValue('natureCode').name.replace('_','-');
+
+query Stdlib::Element::getFileTypePurposeURI():String=purposeURI+self.oclAsType(UML::InstanceSpecification).getEnumerationLiteralValue('purposeCode').name.replace('_','-');
+
+///////////////////////////mpd2umlPlatformBinding
+helper Stdlib::Element::getFileTypeId():String=self.oclAsType(UML::InstanceSpecification).getStringValue('id');
+
+helper  Stdlib::Element::setFileTypeNatureURI(natureURI:String){
+	self.setTagValueConditionally('natureURI',natureURI);
+}
+helper  Stdlib::Element::setFileTypePurposeURI(purposeURI:String){
+	self.setTagValueConditionally('purposeURI',purposeURI);
+}
+
+
+helper  Stdlib::Element::setFileTypeRelativePathName(relativePathName:String){
+	self.setTagValueConditionally('relativePathName',relativePathName);
+}
+
+helper  Stdlib::Element::setMpdMpdBaseURI(mpdBaseURI:String){
+	self.setTagValueConditionally('mpdBaseURI',mpdBaseURI);
+}
+helper  Stdlib::Element::setMpdMpdVersionID(mpdVersionID:String){
+	self.setTagValueConditionally('mpdVersionID',mpdVersionID);
+}
+
+//////////////////////xsd2umlPlatformBinding
+helper  Stdlib::Element::setElementDeclarationAbstract(_abstract:Boolean){
+	self.setTagValueConditionally('abstract',_abstract);
+}
+helper  Stdlib::Element::setElementDeclarationNillable(nillable:Boolean){
+	self.setTagValueConditionally('nillable',nillable);
+}
+
+/////////////////////ndr2umlPlatformbinding
+helper  Stdlib::Element::setComplexTypeDefinitionAppinfoAugmentedTypeIndicator(appinfoAugmentedTypeIndicator:Boolean){
+	self.setTagValueConditionally('appinfoAugmentedTypeIndicator',appinfoAugmentedTypeIndicator);
+}
+
+helper  Stdlib::Element::setNamedComponentAppinfoDeprecated(appinfoDeprecated:Boolean){
+	self.setTagValueConditionally('appinfoDeprecated',appinfoDeprecated);
+}
+helper  Stdlib::Element::setNamedComponentIsBIEC(isBIEC:Boolean){
+	self.setTagValueConditionally('isBIEC',isBIEC);
+}
+/* is this necessary?
+helper  Stdlib::Element::setTypeDefinitionAppinfoBase(appinfoBase:String){
+	self.oclAsType(UML::InstanceSpecification).setEnumerationValue('appinfoBase',appinfoBase);
+//	self.setTagValueConditionally('appinfoBase',appinfoBase);
+}
+*/
+helper  Stdlib::Element::setImportAppinfoConformantIndicator(appinfoConformantIndicator:Boolean){
+	self.setTagValueConditionally('appinfoConformantIndicator',appinfoConformantIndicator);
+}
+////////////////////////uml2mpdPlatformBinding
+////////////////////////////////pim2psmPlatformBinding
+
+
+helper  Stdlib::Element::setMaxFacetValue(value:String){
+	self.setTagValueConditionally('value',value);
+}
+helper  Stdlib::Element::setMinFacetValue(value:String){
+	self.setTagValueConditionally('value',value);
+}
+
+//////////////////////////////////
+
+	/*
+query UML::components::mdbasiccomponents::Component::getTopPsmFolders():Set(UML::Package)=
+	self.elementImport.importedElement
+		->select(e|e.oclIsKindOf(UML::Package))
+		.oclAsType(UML::Package)
+		.getNearesProfileApplication(niemXsdProfile)->asSet();
+		*/
+/*
+query UML::components::mdbasiccomponents::Component::getTopNiemFolders():Set(UML::Package)=
+	self.elementImport.importedElement
+		->select(e|e.oclIsKindOf(UML::Package))
+		.oclAsType(UML::Package)
+		.getNearesProfileApplication(structureProfile)->asSet();
+*/
+query Stdlib::Element::getMaxFacetValue():String=
+	self.oclAsType(UML::InstanceSpecification).getStringValue('value');
+query Stdlib::Element::getMinFacetValue():String=
+	self.oclAsType(UML::InstanceSpecification).getStringValue('value');
+//////////////////////////////////////////////////////////////////////////////
+/*
+import niemcommonBase;
+import NIEMglobals;
+
+modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+modeltype ECORE  uses 'http://www.eclipse.org/emf/2002/Ecore';
+modeltype XSD  uses 'http://www.eclipse.org/xsd/2002/XSD';
+
+transformation niemcommonPim2psm()
+//	extends transformation mpd
+	extends transformation niemcommonBase,NIEMglobals
+	;
+	main() {
+	}
+
+*/
+
+query UML::Classifier::isSubtypeOf(stereotype:UML::Classifier):Boolean=
+	(self=stereotype) or (self.name=stereotype.name)
+	or self.allParents()->select(g|(stereotype=g) or (stereotype.name=g.name))->notEmpty()
+	;
+
+helper UML::Element::ApplyStereotype(stereotype:UML::Stereotype):Stdlib::Element=self.applyStereotype(stereotype);
+
+
+helper UML::Element::applyStereotype(stereotype:UML::Stereotype):Stdlib::Element{
+	var instanceSpecification: UML::InstanceSpecification=self.appliedStereotypeInstance;
+	if(instanceSpecification.oclIsUndefined())then{
+		instanceSpecification:=new UML::InstanceSpecification();
+		instanceSpecification.stereotypedElement:=self;
+	}else{}endif;
+	if(instanceSpecification.classifier->select(s|s.isSubtypeOf(stereotype))->isEmpty())then{
+		instanceSpecification.classifier+=stereotype;
+	}else{}endif;
+	return instanceSpecification;
+};
+
+helper  Stdlib::Element::deepcloneStereotypeApplication(stereotype:UML::Stereotype,inout target:UML::Element):Stdlib::Element{
+	var sourceStereotypeInstance:UML::InstanceSpecification=self.oclAsType(UML::InstanceSpecification);
+	var targetStereotypeInstance:UML::InstanceSpecification=target.applyStereotype(stereotype).oclAsType(UML::InstanceSpecification);
+	// copy source instance to target instance
+	sourceStereotypeInstance.slot->forEach(slot){
+		slot.map cloneSlot(targetStereotypeInstance);
+	};
+	return targetStereotypeInstance;
+}
+mapping  UML::Slot::cloneSlot(inout targetStereotypeInstance:UML::InstanceSpecification):UML::Slot{
+	targetStereotypeInstance.slot+=result;
+	definingFeature:=self.definingFeature;
+	self.value->forEach(value){
+		value.map cloneValue(result);
+	}
+}
+mapping  UML::ValueSpecification::cloneValue(inout slot:UML::Slot):UML::ValueSpecification
+	disjuncts UML::InstanceValue::cloneInstanceValue,
+		UML::LiteralBoolean::cloneLiteralBoolean,
+		UML::LiteralInteger::cloneLiteralInteger,
+		UML::LiteralNull::cloneLiteralNull,
+		UML::LiteralString::cloneLiteralString,
+		UML::LiteralUnlimitedNatural::cloneLiteralUnlimitedNatural
+	{}
+mapping  UML::InstanceValue::cloneInstanceValue(inout slot:UML::Slot):UML::InstanceValue
+	{
+		slot.value+=result;
+		instance:=self.instance;
+	}
+mapping  UML::LiteralNull::cloneLiteralNull(inout slot:UML::Slot):UML::LiteralNull
+	{
+		slot.value+=result;
+	}
+mapping  UML::LiteralBoolean::cloneLiteralBoolean(inout slot:UML::Slot):UML::LiteralBoolean
+	{
+		slot.value+=result;
+		value:=self.value;
+	}
+mapping  UML::LiteralInteger::cloneLiteralInteger(inout slot:UML::Slot):UML::LiteralInteger
+	{
+		slot.value+=result;
+		value:=self.value;
+	}
+mapping  UML::LiteralUnlimitedNatural::cloneLiteralUnlimitedNatural(inout slot:UML::Slot):UML::LiteralUnlimitedNatural
+	{
+		slot.value+=result;
+		value:=self.value;
+	}
+mapping  UML::LiteralString::cloneLiteralString(inout slot:UML::Slot):UML::LiteralString
+	{
+		slot.value+=result;
+		value:=self.value;
+	}
+	/*
+helper Stdlib::Element::setPropertyInstantiability(instantiability:String){
+	self.setTagEnumerationValueConditionally('instantiability',instantiability);
+	}
+	*/
+helper Stdlib::Element::setTagEnumerationValueConditionally(tagName:String,anyObject:String){
+		self.oclAsType(UML::InstanceSpecification).setEnumerationValue(tagName,anyObject);
+}
+helper UML::InstanceSpecification::setEnumerationValue(tagName:String,anyObject:String){
+	var slot:UML::Slot=self.getSlot(tagName);
+	var enumeration:UML::Enumeration=slot.definingFeature.type.oclAsType(UML::Enumeration);
+	clearValue(slot);
+		createInstanceValue(slot,enumeration).instance:=enumeration.ownedLiteral->select(l|l.name=anyObject)->asSequence()->first();
+		return;
+}
+helper createInstanceValue(inout slot: UML::Slot,in type:UML::Type):UML::InstanceValue{
+	var newValue:UML::InstanceValue=new UML::InstanceValue();
+	newValue.type:=type;
+	slot.value+=newValue;
+	return newValue;
+}
+	
+helper createInstanceValue(inout slot: UML::Slot):UML::InstanceValue{
+	var newValue:UML::InstanceValue=new UML::InstanceValue();
+	slot.value+=newValue;
+	return newValue;
+}
+helper 	UML::Element::removeElement(){
+	var toBeRemoved:UML::Element=self;
+	if(self.oclIsKindOf(UML::Generalization))then{
+		var g:UML::Generalization=self.oclAsType(UML::Generalization);
+		g.specific:=null;
+		g.general:=null;
+		return;
+	}endif;
+	
+	if(self.oclIsKindOf(UML::Association))then{
+		self.oclAsType(UML::Association).ownedEnd.removeElement();
+		toBeRemoved.oclAsType(UML::Association).memberEnd:=Set{};
+	
+	}else{
+		
+	}endif;
+	if(self.oclIsKindOf(UML::Class))then{
+		self.oclAsType(UML::Class).ownedAttribute.removeElement();
+	}else{
+		
+	}endif;
+if(self.oclIsKindOf(UML::DataType))then{
+		self.oclAsType(UML::DataType).ownedAttribute.removeElement();
+	}else{
+		
+	}endif;	
+if(self.oclIsKindOf(UML::Classifier))then{
+		self.oclAsType(UML::Classifier).generalization.removeElement();
+	}else{
+		
+	}endif;	
+	
+if(self.oclIsKindOf(UML::Slot))then{
+		self.oclAsType(UML::Slot).value.removeElement();
+		self.oclAsType(UML::Slot).value:=Set{};
+	}endif;	
+if(self.oclIsKindOf(UML::ValueSpecification))then{
+		self.oclAsType(UML::ValueSpecification).owningSlot:=null;
+		if(self.oclIsKindOf(UML::InstanceValue))then{
+				self.oclAsType(UML::InstanceValue).instance:=null;
+			}endif;	
+	}endif;	
+	
+if(self.oclIsKindOf(UML::Property))then{
+	if(self.oclAsType(UML::Property).owningAssociation.oclIsUndefined())then{
+			self.oclAsType(UML::Property).association.removeElement();
+		}endif;
+	toBeRemoved.oclAsType(UML::Property).association:=null;		
+	toBeRemoved.oclAsType(UML::Property).subsettedProperty:=Set{};		
+	toBeRemoved.oclAsType(UML::Property)._propertyOfSubsettedProperty:=Set{};	
+	toBeRemoved.oclAsType(UML::Property)._slotOfDefiningFeature.removeElement();	
+	toBeRemoved.oclAsType(UML::Property)._slotOfDefiningFeature:=Set{};
+	toBeRemoved.oclAsType(UML::Property).type:=null;
+	toBeRemoved.oclAsType(UML::Property).name:=null;
+	}endif;	
+	// if any relations, remove those as well
+	toBeRemoved.getTargetDirectedRelationships()->forEach(relationship){relationship.removeElement();};
+	toBeRemoved._directedRelationshipOfSource->forEach(relationship){relationship.removeElement();};
+	toBeRemoved.owner:=null;
+	return;
+}
+query  Stdlib::Element::getInformationModelDefaultPurpose():String=
+	self.oclAsType(UML::InstanceSpecification).getEnumerationLiteralValue('defaultPurpose').name;
+	
+helper  Stdlib::Element::setFileTypeNatureCode(fullnatureURI:String){
+//	self.setTagEnumerationValueConditionally('natureCode',fullnatureURI.substringAfter(natureURI).replace('-','_'));
+	self.setTagEnumerationValueConditionally('natureCode',fullnatureURI.substringAfter('#').replace('-','_'));
+}
+
+helper  Stdlib::Element::setFileTypePurposeCode(fullpurposeURI:String){
+//	self.setTagEnumerationValueConditionally('purposeCode',fullpurposeURI.substringAfter(purposeURI).replace('-','_'));
+	self.setTagEnumerationValueConditionally('purposeCode',fullpurposeURI.substringAfter('#').replace('-','_'));
+}
+
+helper  Stdlib::Element::setFileSetTypeNatureURI(fullnatureURI:String){
+//	self.setTagEnumerationValueConditionally('natureCode',fullnatureURI.substringAfter(natureURI).replace('-','_'));
+	self.setTagEnumerationValueConditionally('natureCode',fullnatureURI.substringAfter('#').replace('-','_'));
+//	self.setTagValueConditionally('natureURI',natureURI);
+}
+
+helper  Stdlib::Element::setFileSetTypePurposeURI(fullpurposeURI:String){
+//	self.setTagEnumerationValueConditionally('purposeCode',fullpurposeURI.substringAfter(purposeURI).replace('-','_'));
+	self.setTagEnumerationValueConditionally('purposeCode',fullpurposeURI.substringAfter('#').replace('-','_'));
+//	self.setTagValueConditionally('purposeURI',purposeURI);
+}
+
+helper  Stdlib::Element::setFileTypeDescriptionText(descriptionText:String){
+	self.setTagValueConditionally('descriptionText',descriptionText);
+}
+helper UML::MultiplicityElement::setLower(lower:Integer){
+	var annotation:ECORE::EAnnotation=new ECORE::EAnnotation('setLower');
+	annotation._references+=self.oclAsType(ECORE::EObject);
+	"lowerValue".setAnnotationDetail(annotation,lower.repr());
+	blackboxHook.eAnnotations+=annotation;
+	return;
+}
+helper UML::MultiplicityElement::setUpper(upper:Integer){
+	var annotation:ECORE::EAnnotation=new ECORE::EAnnotation('setUpper');
+	annotation._references+=self.oclAsType(ECORE::EObject);
+	"upperValue".setAnnotationDetail(annotation,upper.repr());
+	blackboxHook.eAnnotations+=annotation;
+	return;
+}
+helper  Stdlib::Element::setNIEMSimpleTypeFractionDigits(value:Integer){
+	self.setTagValueConditionally('fractionDigits',value);
+}
+helper  Stdlib::Element::setNIEMSimpleTypeLength(value:Integer){
+	self.setTagValueConditionally('length',value);
+}
+helper  Stdlib::Element::setNIEMSimpleTypeMaxLength(value:Integer){
+	self.setTagValueConditionally('maxLength',value);
+}
+helper  Stdlib::Element::setNIEMSimpleTypeMinLength(value:Integer){
+	self.setTagValueConditionally('minLength',value);
+}
+helper  Stdlib::Element::setNIEMSimpleTypeMaxExclusive(value:String){
+	self.setTagValueConditionally('maxExclusive',value);
+}
+helper  Stdlib::Element::setNIEMSimpleTypeMaxInclusive(value:String){
+	self.setTagValueConditionally('maxInclusive',value);
+}
+helper  Stdlib::Element::setNIEMSimpleTypeMinExclusive(value:String){
+	self.setTagValueConditionally('minExclusive',value);
+}
+helper  Stdlib::Element::setNIEMSimpleTypeMinInclusive(value:String){
+	self.setTagValueConditionally('minInclusive',value);
+}
+
+helper  Stdlib::Element::setNIEMSimpleTypeTotalDigits(value:Integer){
+	self.setTagValueConditionally('totalDigits',value);
+}
+helper  Stdlib::Element::setNIEMSimpleTypeWhiteSpace(value:String){
+	self.setTagEnumerationValueConditionally('whiteSpace',value);
+}
+helper  Stdlib::Element::setNIEMSimpleTypePattern(value:Sequence(String)){
+	self.setTagValueConditionally('pattern',value);
+}
+helper  Stdlib::Element::setNIEMAnyPropertyProcessContents(processContents:String){
+	self.setTagEnumerationValueConditionally('processContents',processContents);
+}
+helper  Stdlib::Element::setNIEMAnyPropertyValueNamespace(valueNamespace:String){
+//	self.setTagEnumerationValueConditionally('valueNamespace',valueNamespace);
+	self.oclAsType(UML::InstanceSpecification).setValue('valueNamespace',valueNamespace);
+}
+helper Stdlib::Element::setTagValueConditionally(tagName:String,anyObject:Integer){
+	if((anyObject=null)or(anyObject.oclIsInvalid())or(anyObject.oclIsUndefined()))then{}else{
+		self.oclAsType(UML::InstanceSpecification).setValue(tagName,anyObject);
+	}endif;
+}
+helper Stdlib::Element::setTagValueConditionally(tagName:String,anyObject:Sequence(String)){
+	if(anyObject->isEmpty())then{}else{
+		self.oclAsType(UML::InstanceSpecification).setValue(tagName,anyObject);
+	}endif;
+}
+helper UML::InstanceSpecification::setValue(tagName:String,anyObject:Integer){
+	var slot:UML::Slot=self.getSlot(tagName);
+	clearValue(slot);
+		createLiteralInteger(slot).value:=anyObject;
+		return;
+}
+
+helper UML::InstanceSpecification::setValue(tagName:String,anyObject:Sequence(String)){
+	var slot:UML::Slot=self.getSlot(tagName);
+	clearValue(slot);
+	anyObject->forEach(s){
+		createLiteralString(slot).value:=s;
+	};
+}
+helper createLiteralInteger(inout slot: UML::Slot):UML::LiteralInteger{
+	var newValue:UML::LiteralInteger=new UML::LiteralInteger();
+	slot.value+=newValue;
+	return newValue;
+}
+helper  Stdlib::Element::setNIEMPropertyKind(kind:String){
+	self.setTagEnumerationValueConditionally('kind',kind);
+}
+helper  Stdlib::Element::setNIEMPropertyNillable(nillable:Boolean){
+	self.setTagValueConditionally('nillable',nillable);
+}
+helper Stdlib::Element::setTagValueConditionally(tagName:String,anyObject:Boolean){
+	if((anyObject=null)or(anyObject.oclIsInvalid())or(anyObject.oclIsUndefined()))then{}else{
+		self.oclAsType(UML::InstanceSpecification).setValue(tagName,anyObject);
+	}endif;
+}
+helper UML::InstanceSpecification::setValue(tagName:String,anyObject:Boolean){
+	var slot:UML::Slot=self.getSlot(tagName);
+	clearValue(slot);
+	createLiteralBoolean(slot).value:=anyObject;
+	return;
+}
+helper createLiteralBoolean(inout slot: UML::Slot):UML::LiteralBoolean{
+	var newValue:UML::LiteralBoolean=new UML::LiteralBoolean();
+	slot.value+=newValue;
+	return newValue;
+}
+/////////////////////////////////////////////////////////////////////////////
+query OclAny::isCatalogFolderType():Boolean=self.oclIsKindOf(CAT::FolderType);
+helper XSD::XSDConcreteComponent::setComponentAttributeValue(value:String,name:String,namespace:String){
+	var annotation:CMOF::EAnnotation=new CMOF::EAnnotation('setComponentAttributeValue');
+	"name".setAnnotationDetail(annotation,name);
+	"value".setAnnotationDetail(annotation,value);
+	"namespace".setAnnotationDetail(annotation,namespace);
+	
+	annotation._references+=self.oclAsType(CMOF::EObject);
+	blackboxHook.eAnnotations+=annotation;
+	return;
+};
+helper XSD::XSDConcreteComponent::setAppinfoAttributeValue(name:String,value:String){
+	self.setComponentAttributeValue(value,'appinfo:'+name,appinfoNamespace);
+	return;
+}
+helper XSD::XSDConcreteComponent::setConformanceTargets(value:String){
+	self.setComponentAttributeValue(value,'ct:'+ConformanceTargetsAttributeName,ConformanceTargetNamespace);
+	return;
+}
+	
+//helper setAppinfoElement(inout annotation:XSD::XSDAnnotation,value:String,/*owningSchema:XSD::XSDSchema,*/name:String){
+/*	
+helper XSD::XSDAnnotation::setAppinfoElementValue(value:String,name:String){
+	var annotation:XSD::XSDAnnotation=self;
+	annotation.getXSDAnnotationApplicationInformation().getElementElements()
+	->select(i|i.isAppinfoElement() and (i.getElementName()=name))
+	->forEach(conformantIndicatorElement){
+		conformantIndicatorElement.setTextContent(value);
+		return;
+	};
+	var owningSchema:XSD::XSDSchema=annotation.schema;
+
+	if(annotation.oclIsUndefined())then{log('ERROR:setAppinfoElement undefined annotation '+value+', '+name);return;}else{}endif;
+	if(annotation.schema.oclIsUndefined())then{log('ERROR:setAppinfoElement undefined annotation schema '+owningSchema.targetNamespace+', '+name+', '+annotation.container.oclAsType(CMOF::EObject).eClass().name);return;}else{}endif;
+	if(value.oclIsUndefined())then{log('ERROR:setAppinfoElement undefined value '+owningSchema.targetNamespace+', '+name);return;}else{}endif;
+	if(name.oclIsUndefined())then{log('ERROR:setAppinfoElement undefined name '+owningSchema.targetNamespace+', '+name);return;}else{}endif;
+
+	var appInfo:CMOF::EAnnotation=annotation.createApplicationInformation(null).oclAsType(CMOF::EAnnotation);
+
+	if(appInfo.oclIsUndefined())then{log('ERROR:setAppinfoElement failed to create applicationInformation '+owningSchema.targetNamespace+', '+name);return;}else{}endif;
+
+	var domElement:CMOF::EAnnotation=name.createChildElementNS(appInfo,appinfoNamespace);
+
+	if(domElement.oclIsUndefined())then{log('ERROR:setAppinfoElement failed to create child element '+owningSchema.targetNamespace+', '+name);return;}else{}endif;
+
+	value.setTextContent(domElement);
+	addInformation(appInfo);
+
+	return;
+};
+query OclAny::isAppinfoElement():Boolean=self.getElementNamespace()=appinfoNamespace;
+helper XSD::XSDAnnotation::setAppinfoElement(elementName:String,name:String,namespace:String){
+	var annotation:XSD::XSDAnnotation=self;
+	var owningSchema:XSD::XSDSchema=self.schema;
+			var conformantIndicatorElements:Sequence(OclAny)=
+				annotation.getXSDAnnotationApplicationInformation()
+				->forEach(xsdAnnotation){
+					xsdAnnotation.getElementElements()
+						->select(i|
+							i.isAppinfoElement()
+							and (i.getElementName()=elementName)
+							and (elementName<>'AppliesTo')
+							)
+						->forEach(conformantIndicatorElement){
+							conformantIndicatorElement.modifyDetail('name','i:'+elementName);
+//							log('setAppinfoElement override '+'appinfoNamespace='+appinfoNamespace+', name='+name);
+							conformantIndicatorElement.setAttributeNS('i:name',appinfoNamespace,name);
+							conformantIndicatorElement.setAttributeNS('i:namespace',appinfoNamespace,namespace);
+			//				'i:name'.setAttributeNS(conformantIndicatorElement,appinfoNamespace,name);
+			//				'i:namespace'.setAttributeNS(conformantIndicatorElement,appinfoNamespace,namespace);
+			xsdAnnotation.oclAsType(CMOF::EAnnotation)._references+=self.oclAsType(CMOF::EObject);
+			xsdAnnotation.oclAsType(CMOF::EAnnotation).source:='applicationInformation';
+							xsdAnnotation.commitInformation();
+							return;
+						};
+				};
+
+//			if(conformantIndicatorElements->isEmpty())then{
+				if(annotation.oclIsUndefined())then{log('ERROR:applyElement undefined annotation ');return;}else{}endif;
+				var appInfo:CMOF::EAnnotation=annotation.createApplicationInformation(null).oclAsType(CMOF::EAnnotation);
+				if(appInfo.oclIsUndefined())then{log('ERROR:applyElement failed to create applicationInformation '+owningSchema.targetNamespace+', '+name);return;}else{}endif;
+				// check for redundant AppliesTo
+				if(elementName='AppliesTo')then{
+					annotation.getXSDAnnotationApplicationInformation().getElementElements()
+						->select(i|
+							i.isAppinfoElement()
+							and (i.getElementName()=elementName)
+							and (i.getAppInfoName()=name)
+							and (i.getAppInfoNamespace()=namespace)
+
+							)->forEach(match){
+								log('suppress redundant AppliesTo '+name+' '+namespace);
+								return;
+							};
+
+				}else{}endif;
+				var domElement:CMOF::EAnnotation=('i:'+elementName).createChildElementNS(appInfo,appinfoNamespace);
+				'i:name'.setAttributeNS(domElement,appinfoNamespace,name);
+				'i:namespace'.setAttributeNS(domElement,appinfoNamespace,namespace);
+				addInformation(appInfo);
+//			}else{}endif;
+}
+*/
+helper OclAny::addAppinfoLocalTerm(term:String,
+		termLiteral:String,termDefinition:String,termSourceText:Sequence(String),sourceURIs:Sequence(String)){
+	var appInfo:CMOF::EAnnotation=self.oclAsType(CMOF::EAnnotation);
+	var domElement:CMOF::EAnnotation=('term:LocalTerm').createChildElementNS(appInfo,LocalTerminologyTargetNamespace);
+	if(not(term.oclIsUndefined()))then{
+	'term'.setAttributeNS(domElement,null,term);
+	}endif;
+	if(not(termLiteral.oclIsUndefined()))then{
+	'literal'.setAttributeNS(domElement,null,termLiteral);
+	}endif;
+	
+	if(not(termDefinition.oclIsUndefined()))then{
+	'definition'.setAttributeNS(domElement,null,termDefinition);
+	}endif;
+	termSourceText->forEach(sourceText){
+		var sourceTextElement:CMOF::EAnnotation=('term:SourceText').createChildElementNS(domElement,LocalTerminologyTargetNamespace);
+		sourceTextElement.setTextContent(sourceText);
+	};
+	var sourceURIsList:String='';
+	sourceURIs->forEach(sourceURI){
+		if(sourceURIsList<>'')then{sourceURIsList:=sourceURIsList+' ';}endif;
+		sourceURIsList:=sourceURIsList+sourceURI;
+	};
+	if(sourceURIsList<>'')then{
+		'sourceURIs'.setAttributeNS(domElement,null,sourceURIsList);
+	}endif;
+	addInformation(appInfo);
+}
+
+helper CMOF::EObject::getModelDirectoryName():String{
+	var annotation:CMOF::EAnnotation=new CMOF::EAnnotation('getModelDirectoryName');
+	annotation._references+=self;
+	blackboxHook.eAnnotations+=annotation;
+	return annotation.getDetail('modelDirectoryName');
+	}
+
+/* not in niem3
+helper XSD::XSDAnnotation::setAppinfo2Element(value:String,owningSchema:XSD::XSDSchema,name:String){
+	var annotation:XSD::XSDAnnotation=self;
+	annotation.getXSDAnnotationApplicationInformation().getElementElements()
+	->select(i|i.isAppinfo2Element() and (i.getElementName()=name))
+	->forEach(conformantIndicatorElement){
+		conformantIndicatorElement.setTextContent(value);
+		return;
+	};
+	if(annotation.oclIsUndefined())then{log('ERROR:setAppinfo2Element undefined annotation ');return;}else{}endif;
+	if(annotation.schema.oclIsUndefined())then{log('ERROR:setAppinfo2Element undefined annotation schema '+owningSchema.targetNamespace+', '+name+', '+annotation.container.oclAsType(CMOF::EObject).eClass().name);return;}else{}endif;
+	if(value.oclIsUndefined())then{log('ERROR:setAppinfo2Element undefined value '+owningSchema.targetNamespace+', '+name);return;}else{}endif;
+	if(name.oclIsUndefined())then{log('ERROR:setAppinfo2Element undefined name '+owningSchema.targetNamespace+', '+name);return;}else{}endif;
+	if(owningSchema.oclIsUndefined())then{log('ERROR:setAppinfo2Element undefined owningSchema '+owningSchema.targetNamespace+', '+name);return;}else{}endif;
+
+	var appInfo:CMOF::EAnnotation=annotation.createApplicationInformation(null).oclAsType(CMOF::EAnnotation);
+
+	if(appInfo.oclIsUndefined())then{log('ERROR:setAppinfo2Element failed to create applicationInformation '+owningSchema.targetNamespace+', '+name);return;}else{}endif;
+
+	var domElement:CMOF::EAnnotation=name.createChildElementNS(appInfo,appinfo2Namespace);
+
+	if(domElement.oclIsUndefined())then{log('ERROR:setAppinfo2Element failed to create child element '+owningSchema.targetNamespace+', '+name);return;}else{}endif;
+
+	value.setTextContent(domElement);
+	addInformation(appInfo);
+	return;
+};
+query OclAny::isAppinfo2Element():Boolean=self.getElementNamespace()=appinfo2Namespace;
+*/
+/*
+abstract query UML::Element::isStereotypeApplied(stereotype:UML::Stereotype):Boolean;
+abstract helper UML::Element::isEditable():Boolean;
+abstract query UML::Element::getStereotypeApplication(stereotype:UML::Stereotype):Stdlib::Element;
+abstract query Stdlib::Element::getMpdDescriptionText():String;
+abstract query Stdlib::Element::getMpdBaseURI():String;
+abstract query Stdlib::Element::getMpdVersionID():String;
+abstract helper Stdlib::Element::getMpdSecurityMarkingText():String;
+abstract helper Stdlib::Element::getMpdStatusText():String;
+abstract helper Stdlib::Element::getMpdKeywordText():Sequence(String);
+abstract helper Stdlib::Element::getMpdPOC():Sequence(Stdlib::Element);
+abstract helper Stdlib::Element::getMpdDomainText():Sequence(String);
+abstract helper Stdlib::Element::getMpdPurposeText():Sequence(String);
+abstract helper Stdlib::Element::getMpdExchangePatternText():Sequence(String);
+abstract helper Stdlib::Element::getMpdExchangePartnerName():Sequence(String);
+abstract helper Stdlib::Element::getMpdASName():String;
+abstract helper Stdlib::Element::getMpdASAddressText():String;
+abstract helper Stdlib::Element::getMpdASWebSiteURL():String;
+abstract helper Stdlib::Element::getPOCName():String;
+abstract helper Stdlib::Element::getPOCEmail():Sequence(String);
+abstract helper Stdlib::Element::getPOCTelephone():Sequence(String);
+abstract helper Stdlib::Element::getMpdCreationDate():String;
+abstract helper  Stdlib::Element::getMpdPackageCode():String;
+abstract query Stdlib::Element::getFileSetTypePurposeCode():String;
+abstract helper Stdlib::Element::getFileSetExternalURI():String;
+abstract helper Stdlib::Element::getFileSetDescriptionText():String;
+abstract helper Stdlib::Element::getFileTypeExternalURI():String;
+abstract helper Stdlib::Element::getFileTypeNatureURI():String;
+abstract query Stdlib::Element::getFileTypePurposeURI():String;
+abstract query Stdlib::Element::getFileDescriptionText():String;
+abstract helper Stdlib::Element::getRelationshipDescriptionText():String;
+abstract helper Stdlib::Element::getRelationshipCode():String;
+abstract query Stdlib::Element::getPimSchemaConformantIndicator():Boolean;
+abstract helper XSD::XSDSchema::setSchemaForSchema(prefix:String,namespace:String);
+abstract query Stdlib::Element::getPimSchemaNamespace():String;
+abstract query Stdlib::Element::getPimSchemaVersion():String;
+
+abstract query  Stdlib::Element::getNIEMSimpleTypeFractionDigits():Integer;
+abstract query  Stdlib::Element::getNIEMSimpleTypeLength():Integer;
+abstract query  Stdlib::Element::getNIEMSimpleTypeMaxLength():Integer;
+abstract query  Stdlib::Element::getNIEMSimpleTypeMinLength():Integer;
+abstract query  Stdlib::Element::getNIEMSimpleTypeTotalDigits():Integer;
+abstract query  Stdlib::Element::getXSDRepresentationRestrictionWhiteSpace():String;
+abstract query  Stdlib::Element::getNIEMSimpleTypePattern():Sequence(String);
+abstract query  Stdlib::Element::getNIEMSimpleTypeMaxExclusive():String;
+abstract query  Stdlib::Element::getNIEMSimpleTypeMaxInclusive():String;
+abstract query  Stdlib::Element::getNIEMSimpleTypeMinExclusive():String;
+abstract query  Stdlib::Element::getNIEMSimpleTypeMinInclusive():String;
+abstract helper XSD::XSDAnnotation::createUserInformation(sourceURI:String):OclAny;
+abstract helper OclAny::commitInformation();
+abstract query Stdlib::Element::getAnyPropertyNamespace():String;
+abstract query Stdlib::Element::getAnyPropertyProcessContents():String;
+abstract query  Stdlib::Element::getNIEMElementNillable():Boolean;
+abstract query OclAny::getAttributeNamespace():String;
+abstract query OclAny::getAttributeValue():String;
+abstract query OclAny::getAttributeName():String;
+abstract helper OclAny::setTextContent(value:String);
+abstract helper OclAny::setAttributeNS(name:String,namespace:String,value:String);
+abstract query  Stdlib::Element::getNIEMPropertyKind():String;
+abstract query Stdlib::Element::getFileTypePurposeCode():String;
+abstract helper XSD::XSDSchema::setQNamePrefixToNamespace(prefix:String,namespace:String);
+abstract helper setAppinfo2Element(inout annotation:XSD::XSDAnnotation,value:String,owningSchema:XSD::XSDSchema,name:String);
+abstract helper setAppinfoElement(inout annotation:XSD::XSDAnnotation,value:String,name:String);
+abstract helper XSD::XSDAnnotation::setAppinfoElement(elementName:String,name:String,namespace:String);
+//////catalog
+//query OclAny::isCatalogFolderType():Boolean=self.oclIsKindOf(CAT::FolderType);
+abstract query OclAny::isCatalogFolderType():Boolean;
+*/
+/*
+abstract helper Tuple(
+	descriptionText:String,mpdURI:String,mpdName:String,mpdVersionID:String,
+	metadata:OclAny
+	)::addCatalogFile(folder:Tuple(relativePathName:String,descriptionText:String,id:String,externalURI:String,natureURI:String,purposeURI:String));
+abstract helper Tuple(
+	descriptionText:String,mpdURI:String,mpdName:String,mpdVersionID:String,
+	metadata:OclAny
+	)::addCatalogFileSet(folder:Tuple(natureURI:String,purposeURI:String,id:String,externalURI:String,descriptionText:String,file:Sequence(OclAny)));
+abstract helper Tuple(natureURI:String,purposeURI:String,id:String,externalURI:String,descriptionText:String,file:Sequence(OclAny))::addFileSetFiles(value:String);
+*/
+/*
+abstract helper Tuple(
+	descriptionText:String,mpdURI:String,mpdName:String,mpdVersionID:String,
+	metadata:OclAny
+	)::addCatalogFolder(folder:CAT::FolderType);
+*/
+query UML::NamedElement::toRelativePathName(mpdRootPackage:UML::Package,artifact:OclAny):String{
+	var umlPackagePath:String=self.qualifiedName.substringAfter(mpdRootPackage.qualifiedName).replace('::','/');
+	if(umlPackagePath='')then {umlPackagePath:='./';}else{umlPackagePath:='.'+umlPackagePath;}endif;
+	//if(artifact.isCatalogFolderType() and not(umlPackagePath.endsWith('/')))then {umlPackagePath:=umlPackagePath+'/';}else{}endif;// not in niem-3
+	if(self.isStereotypeApplied(NIEMSchemaStereotype)and not(umlPackagePath.endsWith('.xsd')))then{umlPackagePath:=umlPackagePath+'.xsd';}else{}endif;
+	return umlPackagePath;
+}
+
+helper UML::Classifier::isNIEMConformant():Boolean{
+		var schemaContainer:UML::Package=self.getNearestNIEMSchemaPackage();
+		if(not(schemaContainer.oclIsUndefined()))then{
+			var pimStereotypeInstance:Stdlib::Element=schemaContainer.GetStereotypeApplication(NIEMSchemaStereotype).oclAsType(Stdlib::Element);
+			if(not(pimStereotypeInstance.oclIsUndefined()))then{
+				var appinfoConformantIndicator:Boolean=pimStereotypeInstance.getPimSchemaConformantIndicator();
+				if(appinfoConformantIndicator.oclIsUndefined())then{appinfoConformantIndicator:=true;}endif;
+				return appinfoConformantIndicator;
+			}endif;
+		}endif;
+		return false;
+}
+
+/*
+mapping UML::Usage::ModelPackageDescriptionFile(
+	inout psmOwner:UML::Component,psmNiemNamespace:UML::Package)
+	:UML::Usage@niemUml
+{
+	client+=psmOwner;
+	psmOwner.packagedElement+=result;
+	supplier+=psmNiemNamespace;
+	var pimStereotypeInstance:Stdlib::Element=self.GetStereotypeApplication(NIEMModelPackageDescriptionFileStereotype).oclAsType(Stdlib::Element);
+	pimStereotypeInstance.deepcloneStereotypeApplication(NIEMModelPackageDescriptionFileStereotype,result);
+	if(self.isChangelog(pimStereotypeInstance))then{
+		self.supplier->select(p|p.oclIsKindOf(UML::Package)).oclAsType(UML::Package).changelog();
+	}endif;
+}
+*/
+// handle changelog
+/*
+helper UML::Usage::changelogCallout(pimStereotypeInstance:Stdlib::Element){
+		log('changeLogCallout '+pimStereotypeInstance.getFileTypeNatureCode()+", "+pimStereotypeInstance.getFileTypePurposeCode());
+	if(self.isChangelog(pimStereotypeInstance))then{
+		self.supplier->select(p|p.oclIsKindOf(UML::Package)).oclAsType(UML::Package).changelog();
+	}endif;
+}
+query UML::Usage::isChangelog(pimStereotypeInstance:Stdlib::Element):Boolean=
+	// if there is a <<ModelPackageDescriptionFile>> with nature,purpose for changelog
+	 (pimStereotypeInstance.getFileTypeNatureCode()=natureXmlURI)
+	 and (pimStereotypeInstance.getFileTypePurposeCode()=purposeChangelogURI)
+	 ;
+	//			psmStereotypeInstance.setFileTypeNatureCode(natureXsdURI);
+	//		psmStereotypeInstance.setFileTypePurposeCode(purposeURI+purposeCode+'-schema');
+*/	
+
+helper UML::Package::changelog(inout psmPackage:UML::Package){
+//		var changeLogx:CHANGELOG::ChangeLogType=new CHANGELOG::ChangeLogType@changeLog();
+		var changeLogx:CHANGELOG::ChangeLogType=new CHANGELOG::ChangeLogType();
+		log('changeLog '+self.qualifiedName);
+		psmPackage.name:='changelog.xml';
+		// platform specific transform changelog
+	var annotation:ECORE::EAnnotation=new ECORE::EAnnotation('changelog');
+	annotation._references+=self.oclAsType(ECORE::EObject);
+	annotation._references+=changeLogx.oclAsType(ECORE::EObject);
+	blackboxHook.eAnnotations+=annotation;
+		
+		
+/* suppress
+		var proxyText:PROXY::_String:=new PROXY::_String();
+		proxyText.value:='Sample Summary';
+		var proxySubmitter:PROXY::_String:=new PROXY::_String();
+		proxySubmitter.value:='Sample Submitter';
+		 suppress
+		changeLogx.changeLogSummaryText:=proxyText;
+		changeLogx.changeLogSubmitterName:=proxySubmitter;
+		*/
+		return;
+}
+query UML::Element::isPropertyHolder():Boolean=self.IsStereotypeApplied(NIEMPropertyHolderStereotype);
+	
+// test if this is a restriction on a niem proxy (complexType), per Issue 18361: PSM Representation for XSD Complex Type with Simple Content 
+query UML::Classifier::isProxyRestriction():Boolean=false;
+query UML::DataType::isProxyRestriction():Boolean=self.getRestrictions()->exists(r|not(r._mapping.oclIsUndefined()));
+// for given Classifier context, return <<Restriction>>s , part of Issue 18361: PSM Representation for XSD Complex Type with Simple Content  		
+query UML::Classifier::getRestrictions():Set(UML::Realization)=
+		self.clientDependency
+		->select(d|d.isStereotypeApplied(NIEMRestrictionStereotype)).oclAsType(UML::Realization)
+		->asSet();
+query UML::Package::isNIEMNamespace():Boolean=
+	self.IsStereotypeApplied(NIEMSchemaStereotype)
+	or self.IsStereotypeApplied(NIEMInformationModelStereotype)
+	;
+query UML::Package::getTargetNamespace():String=
+	self.getStereotypeApplication(NIEMSchemaStereotype).oclAsType(Stdlib::Element).getSchemaTargetNamespace();
+		
