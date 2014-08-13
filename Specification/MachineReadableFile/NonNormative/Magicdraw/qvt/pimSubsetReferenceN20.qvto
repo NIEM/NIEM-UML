@@ -1,0 +1,1796 @@
+/*
+NIEM UML 
+Copyright � 2011, ModelDriven.org and Tom Digre, all rights reserved worldwide.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0-standalone.html.
+
+There are also commercial licenses available for this software.
+Contact ModelDriven.org for more information.
+*/
+//import niemcommon;
+import NIEMplatformBinding;
+
+modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+modeltype ECORE  uses 'http://www.eclipse.org/emf/2002/Ecore';
+modeltype CMOF  uses 'http://www.eclipse.org/emf/2002/Ecore';
+
+transformation pimSubsetReferenceN20(inout pimUml:UML,inout blackboxAdapter:CMOF)
+	extends transformation NIEMplatformBinding;
+	
+	main() {
+	}
+
+////////////////////////////////////////////////niem20to21
+helper niem20to21(){
+		// initial pass: adjust names, add types, etc.
+		// get and check Classifiers, properties
+		pimPackages.ownedType
+		->select(type|type.oclIsKindOf(UML::Classifier)).oclAsType(UML::Classifier)
+		.niem20to21Type();
+		// find 2.0 namespaces and adjust each; including targetNamespace
+		pimPackages.niem20to21Namespace();
+		// check for lost types from associations and properties
+		pimPackages.ownedType
+		->select(type|type.oclIsKindOf(UML::Association)).oclAsType(UML::Association)
+		->forEach(association){
+			if(association.memberEnd.type->select(t|((t<>null)and not(t.oclIsUndefined()))and t.isLost())->notEmpty())then{
+				association.removeElement();				
+			}endif;
+		};
+		pimPackages.ownedType
+		->select(type|type.oclIsKindOf(UML::Classifier)).oclAsType(UML::Classifier).attribute
+		->forEach(attr){
+			
+			if((attr.type<>null)and not(attr.type.oclIsUndefined()) and attr.type.isLost())then{
+				attr.type:=null;
+			}endif;
+		};
+		return;
+}
+query UML::Type::isLost():Boolean=(self.owner=null) or self.owner.oclIsUndefined();
+helper UML::Package::niem20to21Namespace(){
+			// process by namespace
+		var pimNdrSchemaInstance:Stdlib::Element=self.getStereotypeApplication(NIEMSchemaStereotype).oclAsType(Stdlib::Element);
+		//log('niem20to21Namespace '+self.qualifiedName+', instance '+pimNdrSchemaInstance.repr());
+		if(pimNdrSchemaInstance.oclIsUndefined())then return endif;
+			var namespace=self.getTargetNamespace();
+		//log('niem20to21Namespace targetNamespace '+namespace);
+			switch{
+				case (namespace=niem20_addr_URI){
+					// no longer exists - should we delete it and all refs?
+					log('WARNING: niem 2.0 namespace deprecated '+namespace);
+				};
+				case (namespace=niem20_ansi_nist_URI){
+					// same
+				};
+				case (namespace=niem20_ansi_d20_URI){
+					// same
+				};
+				case (namespace=niem20_apco_URI){
+					log('niem20to21Namespace targetNamespace '+namespace+' to '+niem21_apco_URI);
+					pimNdrSchemaInstance.setSchemaNamespace(niem21_apco_URI);
+				};
+				case (namespace=niem20_atf_URI){
+					// same
+				};
+				case (namespace=niem20_can_URI){
+					// same
+				};
+				case (namespace=niem20_cap_URI){
+					// same
+				};
+				case (namespace=niem20_census_URI){
+					// same
+				};
+				case (namespace=niem20_context_URI){
+					// no longer exists - should we delete it and all refs?
+					log('WARNING: niem 2.0 namespace deprecated '+namespace);
+				};
+				case (namespace=niem20_de_URI){
+					// same
+				};
+				case (namespace=niem20_dea_URI){
+					log('niem20to21Namespace targetNamespace '+namespace+' to '+niem21_dea_URI);
+					pimNdrSchemaInstance.setSchemaNamespace(niem21_dea_URI);
+				};
+				case (namespace=niem20_dod_jcs_pub2_0_URI){
+					// same
+				};
+				case (namespace=niem20_edxl_URI){
+					log('niem20to21Namespace targetNamespace '+namespace+' to '+niem21_edxl_URI);
+					pimNdrSchemaInstance.setSchemaNamespace(niem21_edxl_URI);
+				};
+				case (namespace=niem20_edxl_cap_URI){
+					log('niem20to21Namespace targetNamespace '+namespace+' to '+niem21_edxl_cap_URI);
+					pimNdrSchemaInstance.setSchemaNamespace(niem21_edxl_cap_URI);
+				};
+				case (namespace=niem20_edxl_de_URI){
+					log('niem20to21Namespace targetNamespace '+namespace+' to '+niem21_edxl_de_URI);
+					pimNdrSchemaInstance.setSchemaNamespace(niem21_edxl_de_URI);
+				};
+				case (namespace=niem20_em_URI){
+					log('niem20to21Namespace targetNamespace '+namespace+' to '+niem21_em_URI);
+					pimNdrSchemaInstance.setSchemaNamespace(niem21_em_URI);
+				};
+				case (namespace=niem20_ex_URI){
+					// no longer exists - should we delete it and all refs?
+					log('WARNING: niem 2.0 namespace deprecated '+namespace);
+				};
+				case (namespace=niem20_fbi_URI){
+					// same
+				};
+				case (namespace=niem20_fips_10_4_URI){
+					// same
+				};
+				case (namespace=niem20_fips_5_2_URI){
+					// same
+				};
+				case (namespace=niem20_fips_6_4_URI){
+					// same
+				};
+				case (namespace=niem20_gco_URI){
+					log('niem20to21Namespace targetNamespace '+namespace+' to '+niem21_gco_URI);
+					pimNdrSchemaInstance.setSchemaNamespace(niem21_gco_URI);
+				};
+				case (namespace=niem20_geo_URI){
+					log('niem20to21Namespace targetNamespace '+namespace+' to '+niem21_geo_URI);
+					pimNdrSchemaInstance.setSchemaNamespace(niem21_geo_URI);
+				};
+				case (namespace=niem20_gmd_URI){
+					log('niem20to21Namespace targetNamespace '+namespace+' to '+niem21_gmd_URI);
+					pimNdrSchemaInstance.setSchemaNamespace(niem21_gmd_URI);
+				};
+				case (namespace=niem20_gml_URI){
+					log('niem20to21Namespace targetNamespace '+namespace+' to '+niem21_gml_URI);
+					pimNdrSchemaInstance.setSchemaNamespace(niem21_gml_URI);
+				};
+				case (namespace=niem20_have_URI){
+					log('niem20to21Namespace targetNamespace '+namespace+' to '+niem21_have_URI);
+					pimNdrSchemaInstance.setSchemaNamespace(niem21_have_URI);
+				};
+				case (namespace=niem20_hazmat_URI){
+					log('niem20to21Namespace targetNamespace '+namespace+' to '+niem21_hazmat_URI);
+					pimNdrSchemaInstance.setSchemaNamespace(niem21_hazmat_URI);
+				};
+				case (namespace=niem20_ifc_URI){
+					// no longer exists - should we delete it and all refs?
+					log('WARNING: niem 2.0 namespace deprecated '+namespace);
+				};
+				case (namespace=niem20_im_URI){
+					log('niem20to21Namespace targetNamespace '+namespace+' to '+niem21_im_URI);
+					pimNdrSchemaInstance.setSchemaNamespace(niem21_im_URI);
+				};
+				case (namespace=niem20_intel_URI){
+					log('niem20to21Namespace targetNamespace '+namespace+' to '+niem21_intel_URI);
+					pimNdrSchemaInstance.setSchemaNamespace(niem21_intel_URI);
+				};
+				case (namespace=niem20_ip_URI){
+					log('niem20to21Namespace targetNamespace '+namespace+' to '+niem21_ip_URI);
+					pimNdrSchemaInstance.setSchemaNamespace(niem21_ip_URI);
+				};
+				case (namespace=niem20_iso_3166_URI){
+					// same
+				};
+				case (namespace=niem20_iso_4217_URI){
+					// same
+				};
+				case (namespace=niem20_iso_639_3_URI){
+					// same
+				};
+				case (namespace=niem20_it_URI){
+					log('niem20to21Namespace targetNamespace '+namespace+' to '+niem21_it_URI);
+					pimNdrSchemaInstance.setSchemaNamespace(niem21_it_URI);
+				};
+				case (namespace=niem20_itis_URI){
+					log('niem20to21Namespace targetNamespace '+namespace+' to '+niem21_itis_URI);
+					pimNdrSchemaInstance.setSchemaNamespace(niem21_itis_URI);
+				};
+				case (namespace=niem20_j_URI){
+					log('niem20to21Namespace targetNamespace '+namespace+' to '+niem21_j_URI);
+					pimNdrSchemaInstance.setSchemaNamespace(niem21_j_URI);
+				};
+				case (namespace=niem20_land_URI){
+					// no longer exists - should we delete it and all refs?
+					log('WARNING: niem 2.0 namespace deprecated '+namespace);
+				};
+				case (namespace=niem20_lasd_URI){
+					// same
+				};
+				case (namespace=niem20_mmr_URI){
+					// no longer exists - should we delete it and all refs?
+					log('WARNING: niem 2.0 namespace deprecated '+namespace);
+				};
+				case (namespace=niem20_mmucc_2_URI){
+					log('niem20to21Namespace targetNamespace '+namespace+' to '+niem21_mmucc_2_URI);
+					pimNdrSchemaInstance.setSchemaNamespace(niem21_mmucc_2_URI);
+				};
+				case (namespace=niem20_mn_off_URI){
+					// same
+				};
+				case (namespace=niem20_mo_URI){
+					// no longer exists - should we delete it and all refs?
+					log('WARNING: niem 2.0 namespace deprecated '+namespace);
+				};
+				case (namespace=niem20_nc_URI){
+					// same
+				};
+				case (namespace=niem20_nga_URI){
+					// same
+				};
+				case (namespace=niem20_niem_xsd_URI){
+					// same
+				};
+				case (namespace=niem20_nlets_URI){
+					log('niem20to21Namespace targetNamespace '+namespace+' to '+niem21_nlets_URI);
+					pimNdrSchemaInstance.setSchemaNamespace(niem21_nlets_URI);
+				};
+				case (namespace=niem20_nonauth_URI){
+					//log('niem20to21Namespace targetNamespace '+namespace+' to '+niem21_nonauth_URI);
+					//pimNdrSchemaInstance.setSchemaNamespace(niem21_nonauth_URI);
+					// same
+				};
+				case (namespace=niem20_ogc_URI){
+					// no longer exists - should we delete it and all refs?
+					log('WARNING: niem 2.0 namespace deprecated '+namespace);
+				};
+				case (namespace=niem20_om_URI){
+					// no longer exists - should we delete it and all refs?
+					log('WARNING: niem 2.0 namespace deprecated '+namespace);
+				};
+				case (namespace=niem20_sar_URI){
+					log('niem20to21Namespace targetNamespace '+namespace+' to '+niem21_sar_URI);
+					pimNdrSchemaInstance.setSchemaNamespace(niem21_sar_URI);
+				};
+				case (namespace=niem20_scr_URI){
+					log('niem20to21Namespace targetNamespace '+namespace+' to '+niem21_scr_URI);
+					pimNdrSchemaInstance.setSchemaNamespace(niem21_scr_URI);
+				};
+				case (namespace=niem20_sld_URI){
+					// no longer exists - should we delete it and all refs?
+					log('WARNING: niem 2.0 namespace deprecated '+namespace);
+				};
+				case (namespace=niem20_swe_URI){
+					// no longer exists - should we delete it and all refs?
+				};
+				case (namespace=niem20_twpdes_URI){
+					// same
+				};
+				case (namespace=niem20_ucr_URI){
+					// same
+				};
+				case (namespace=niem20_unece_URI){
+					// same
+				};
+				case (namespace=niem20_usps_URI){
+					// same
+				};
+				case (namespace=niem20_ut_offender_URI){
+					// same
+				};
+				case (namespace=niem20_xls_URI){
+					log('niem20to21Namespace targetNamespace '+namespace+' to '+niem21_xls_URI);
+					pimNdrSchemaInstance.setSchemaNamespace(niem21_xls_URI);
+				};
+			};
+}
+helper UML::Classifier::niem20to21Type(){
+			// process by classifier
+			// get and check properties
+				self.attribute.niem20to21Property();
+	// base processing on resolved propertyName/namespace
+	var myself:UML::Classifier:=self;
+	var resolvedName:String=self.getResolvedName();
+	var resolvedNamespace:String=self.getResolvedNamespace();
+	switch{
+		
+		case((resolvedName='TimeInUSCodeType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: renaming Classifier '+self.qualifiedName);
+				myself.name:='TimeInUSType';
+		};
+		
+		case((resolvedName='ArrivalType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: renaming Classifier '+self.qualifiedName);
+				myself.name:='ScreeningArrivalType';
+		};
+		
+		case((resolvedName='ArrestMethodAugmentationType') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		
+		case((resolvedName='ExchangeVisitorCategoryCodeSimpleType') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+			case((resolvedName='ExchangeVisitorCategoryCodeType') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		case((resolvedName='AgentAugmentationType') and (resolvedNamespace=niem20_it_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+	
+		case((resolvedName='AlienMiscellaneousIDCategoryCodeSimpleType') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		case((resolvedName='AlienMiscellaneousIDCategoryCodeType') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+	
+		case((resolvedName='ArrestMethodCodeSimpleType') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		case((resolvedName='ArrestMethodCodeType') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+	
+	
+		case((resolvedName='ExchangeVisitorCategoryType') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		
+		case((resolvedName='AlienAugmentationType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		case((resolvedName='TimeInUnitedStatesType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		
+		case((resolvedName='StudentEducationLevelCategoryCodeSimpleType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		case((resolvedName='StudentEducationLevelCategoryCodeType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		case((resolvedName='PersonBiographicAssociationType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+
+		case((resolvedName='PersonLeadRoleCategoryCodeSimpleType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		case((resolvedName='PersonLeadRoleCategoryCodeType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		
+		case((resolvedName='StudentEducationLevelCategoryCodeType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		
+		
+		case((resolvedName='StudentEducationLevelCategoryCodeSimpleType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		
+		case((resolvedName='ExchangeVisitorStatusReasonCategoryCodeSimpleType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+	
+		case((resolvedName='PartialDateType') and (resolvedNamespace=niem20_intel_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+	
+		case((resolvedName='ExchangeVisitorStatusReasonCategoryCodeType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+	
+		
+		case((resolvedName='ScreeningProcessAugmentationType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+	
+		case((resolvedName='TransportMeansAugmentationType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+	
+		case((resolvedName='PersonLeadRoleCategoryCodeType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		
+		case((resolvedName='PersonLeadRoleCategoryCodeSimpleType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		case((resolvedName='ImageAugmentationType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		case((resolvedName='PersonBirthLocationAugmentationType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		
+		case((resolvedName='IncidentCategoryCodeSimpleType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		case((resolvedName='IncidentCategoryCodeType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		
+		case((resolvedName='PersonAugmentationType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		
+		//  scr EnrollmentStatusCategoryCodeType removed
+		case((resolvedName='EnrollmentStatusCategoryCodeType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		
+		case((resolvedName='EnrollmentStatusCategoryCodeSimpleType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		case((resolvedName='AlienMiscellaneousIDCategoryCodeType') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		case((resolvedName='AlienMiscellaneousIDCategoryCodeSimpleType') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+
+		case((resolvedName='DocumentAugmentationType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+
+		case((resolvedName='DocumentPersonAssociationType') and (resolvedNamespace=niem20_j_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+	
+		case((resolvedName='AlertAugmentationType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		case((resolvedName='DeportationDocumentCategoryCodeType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+			case((resolvedName='StudentTerminationCategoryCodeType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+	
+		case((resolvedName='StudentTerminationCategoryCodeType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		//  scr StudentTerminationCategoryCodeSimpleType removed
+		case((resolvedName='StudentTerminationCategoryCodeSimpleType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		//  scr StudentTerminationCategoryCodeSimpleType removed
+		case((resolvedName='StudentTerminationCategoryCodeSimpleType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		//  scr StudentTerminationCategoryCodeSimpleType removed
+		case((resolvedName='StudentTerminationCategoryCodeSimpleType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		//  scr EnrollmentStatusCategoryCodeType removed
+		case((resolvedName='StudentTerminationCategoryCodeSimpleType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		//  scr EnrollmentStatusCategoryCodeType removed
+		case((resolvedName='DeportationDocumentCategoryCodeSimpleType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		case((resolvedName='DeportationDocumentCategoryCodeType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		case((resolvedName='PassengerType') and (resolvedNamespace=niem20_ip_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+
+		case((resolvedName='FlightType') and (resolvedNamespace=niem20_ip_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		//  ip FlightTimeAtAirportType removed
+		case((resolvedName='FlightTimeAtAirportType') and (resolvedNamespace=niem20_ip_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		case((resolvedName='AirlineType') and (resolvedNamespace=niem20_ip_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		case((resolvedName='AirportType') and (resolvedNamespace=niem20_ip_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		//  screening ExchangeVisitorStatusReasonCategoryCodeType removed
+		case((resolvedName='ExchangeVisitorStatusReasonCategoryCodeType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		//  screening OrganizationLocationAssociationAugmentationType removed
+		case((resolvedName='OrganizationLocationAssociationAugmentationType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		//  immigration AlienDeportationType removed
+		case((resolvedName='AlienDeportationType') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		//  immigration ArrestMethodCodeSimpleType removed
+		case((resolvedName='ArrestMethodCodeSimpleType') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		//  immigration ArrestMethodCodeType removed
+		case((resolvedName='ArrestMethodCodeType') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: removing obsolete Classifier '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		
+	};			
+				return;
+}
+query UML::NamedElement::getResolvedName():String=self.name;
+query UML::NamedElement::getResolvedNamespace():String=self.getNearestNIEMSchemaPackage().getTargetNamespace();
+query UML::Property::getResolvedNamespace():String{
+	var topLevelProperty:UML::Property=self.referencesTopLevelProperty();
+	if(topLevelProperty.oclIsUndefined())then{
+	return self.getNearestNIEMSchemaPackage().getTargetNamespace();
+	}endif;
+	return topLevelProperty.getNearestNIEMSchemaPackage().getTargetNamespace();
+}	
+query UML::Property::isPropertyHolderElement():Boolean=self.owner.IsStereotypeApplied(NIEMPropertyHolderStereotype);
+helper UML::Element::replaceDefinition(text:String){
+	var myself:UML::Element:=self;
+	self.ownedComment->forEach(comment){
+		comment.body:=text;
+		return;
+	};
+	var c:UML::Comment=new UML::Comment();
+	c.body:=text;
+	myself.ownedComment+=c;
+	c.annotatedElement+=myself;
+	return;
+}
+helper UML::NamedElement::changeReferenceTo(supplier:UML::NamedElement){
+	if((supplier=null) or supplier.oclIsUndefined())then{return;}endif;
+	var myself:UML::NamedElement:=self;
+	self.clientDependency->select(d|d.IsStereotypeApplied(NIEMReferencesStereotype))->forEach(d){
+		d.supplier:=supplier;
+		return;
+	};
+	var ref:UML::Realization=new UML::Realization();
+	ref.supplier+=supplier;
+	ref.client+=myself;
+	self.getNearestPackage().packagedElement+=ref;
+	ref.applyStereotype(NIEMReferencesStereotype);
+	return;
+}
+helper findOrCreateEnumeration(name:String,namespace:String):UML::Enumeration{
+	namespace.findOrCreateNamespace()
+		->forEach(pkg){
+			pkg.ownedType
+			->select(t|t.oclIsTypeOf(UML::Enumeration)and (t.name=name)).oclAsType(UML::Enumeration)
+			->forEach(c){
+				return c;// found existing class
+			};
+			// fall through if class not found
+			// create the class and add to namespace
+			var newClass:UML::Enumeration=new UML::Enumeration();
+			pkg.packagedElement+=newClass;
+			newClass.name:=name;
+			return newClass;		
+	};
+	// fall through if namespace not found
+	return null;
+}
+helper findOrCreateClass(name:String,namespace:String):UML::Class{
+	namespace.findOrCreateNamespace()
+		->forEach(pkg){
+			pkg.ownedType
+			->select(t|t.oclIsTypeOf(UML::Class)and (t.name=name)).oclAsType(UML::Class)
+			->forEach(c){
+				return c;// found existing class
+			};
+			// fall through if class not found
+			// create the class and add to namespace
+			var newClass:UML::Class=new UML::Class();
+			pkg.packagedElement+=newClass;
+			newClass.name:=name;
+			if(name.endsWith('AugmentationType'))then{
+				newClass.applyStereotype(NIEMAugmentationStereotype);
+			}endif;
+			switch{
+				case((name='OffenseType') and (namespace=niem20_j_URI)){
+					// basetype is OffenseType
+					
+					var ActivityType:UML::Class=findOrCreateClass('ActivityType',niem20_nc_URI);
+					//pkg.packagedElement+=ActivityType;
+					ActivityType.name='ActivityType';
+					var g:UML::Generalization=new Generalization();
+					g.specific:=newClass;
+					g.general:=ActivityType;
+				};
+				
+			};	
+			return newClass;		
+	};
+	// fall through if namespace not found
+	return null;
+}
+helper findOrCreatePrimitiveType(name:String,namespace:String):UML::PrimitiveType{
+	namespace.findOrCreateNamespace()
+		->forEach(pkg){
+			pkg.ownedType
+			->select(t|t.oclIsTypeOf(UML::PrimitiveType)and (t.name=name)).oclAsType(UML::PrimitiveType)
+			->forEach(c){
+				return c;// found existing class
+			};
+			// fall through if class not found
+			// create the class and add to namespace
+			var newPrimitiveType:UML::PrimitiveType=new UML::PrimitiveType();
+			pkg.packagedElement+=newPrimitiveType;
+			newPrimitiveType.name:=name;
+	switch{
+		case((name='TextType') and (namespace=niem20_nc_URI)){
+			// basetype is String
+			var s:UML::PrimitiveType=getXMLPrimitiveType('string');
+			var g:UML::Generalization=new Generalization();
+			g.specific:=newPrimitiveType;
+			g.general:=s;
+		};
+		case((name='ProperNameTextType') and (namespace=niem20_nc_URI)){
+			// basetype is String
+			var s:UML::PrimitiveType=findOrCreatePrimitiveType('TextType',niem20_nc_URI);
+
+			var g:UML::Generalization=new Generalization();
+			g.specific:=newPrimitiveType;
+			g.general:=s;
+		};
+	};
+	return newPrimitiveType;			
+	};
+	// fall through if namespace not found
+	return null;
+}
+helper UML::Package::getPropertyHolder():UML::Class{
+	self.ownedType
+			->select(t|t.IsStereotypeApplied(NIEMPropertyHolderStereotype)).oclAsType(UML::Class)
+			->forEach(p){
+				return p;
+			};
+	// create one
+	var propertyHolder:UML::Class=new UML::Class();
+	var myself:UML::Package=self;
+	myself.packagedElement+=propertyHolder;
+	propertyHolder.name='PropertyHolder';
+	return propertyHolder;		
+}
+helper String::createNamespace():UML::Package{
+	var aPackage:UML::Package=pimPackages->asSequence()->first();
+	var packageName:String=self.getPackageName();
+	var newPackage:UML::Package=new UML::Package();
+	newPackage.name:=packageName;
+	aPackage.nestingPackage.packagedElement+=newPackage;
+	var pimNdrSchemaInstance:Stdlib::Element=newPackage.applyStereotype(NIEMInformationModelStereotype);
+		pimNdrSchemaInstance.setSchemaAppinfoConformantIndicator(true);
+		pimNdrSchemaInstance.setSchemaVersion('1');
+		pimNdrSchemaInstance.setSchemaNamespace(self);
+		pimNdrSchemaInstance.setInformationModelDefaultPurpose('subset');
+	
+	pimPackages+=newPackage;
+	return newPackage;	
+}
+helper String::getPackageName():String{
+	return self.replace(':','').replace('/','_');
+}	
+helper String::findOrCreateNamespace():UML::Package{
+	pimPackages
+		->select(p|p.getSchemaTargetNamespace()=self)->forEach(p){return p;};
+	// fall through if not found
+	return self.createNamespace();	
+}
+helper createElement(name:String):UML::Property{
+			var newProperty:UML::Property=new UML::Property();
+			newProperty.name:=name;
+			newProperty.aggregation:=UML::AggregationKind::shared;
+			newProperty.setLower(0);
+			newProperty.setUpper(-1);
+			return newProperty;
+}
+helper findOrCreateElement(name:String,namespace:String):UML::Property{
+	namespace.findOrCreateNamespace()->forEach(pkg){
+		pkg.ownedType
+			->select(t|t.IsStereotypeApplied(NIEMPropertyHolderStereotype)).oclAsType(UML::Class).ownedAttribute
+			->select(a|a.name=name)
+			->forEach(p){
+				return p;
+			};
+			// fall through if property not found
+			// create the property and add to nominal PropertyHolder
+			var newProperty:UML::Property=createElement(name);
+			var propertyHolder:UML::Class=pkg.getPropertyHolder();
+			propertyHolder.ownedAttribute+=newProperty;
+			
+			
+	switch{
+		case((name='DetentionAugmentation') and (namespace=niem20_scr_URI)){
+			// type is scr:DetentionAugmentationType
+			
+			var DetentionAugmentationType:UML::Class=findOrCreateClass('DetentionAugmentationType',niem20_scr_URI);
+			newProperty.type:=DetentionAugmentationType;
+		};
+		
+		case((name='LocaleSubdivisionName') and (namespace=niem20_nc_URI)){
+			// type is nc:IdentificationType
+			
+			var IdentificationType:UML::PrimitiveType=findOrCreatePrimitiveType('TextType',niem20_nc_URI);
+			newProperty.type:=IdentificationType;
+		};
+		
+		
+		// 17 	Removed duplicate element j:JurisdictionIdentification
+		case((name='JurisdictionIdentification') and (namespace=niem20_nc_URI)){
+			// type is nc:IdentificationType
+			
+			var IdentificationType:UML::Class=findOrCreateClass('IdentificationType',niem20_nc_URI);
+			newProperty.type:=IdentificationType;
+		};
+		// 34 	Removed element intel:PersonDriverLicenseIdentification (duplicates element nc:DriverLicenseIdentification).
+		case((name='DriverLicenseIdentification') and (namespace=niem20_nc_URI)){
+			// type is nc:IdentificationType
+			
+			var IdentificationType:UML::Class=findOrCreateClass('IdentificationType',niem20_nc_URI);
+			newProperty.type:=IdentificationType;
+		};
+		// 35 	Removed intel elements PersonNationalIdentification and PersonOtherIdentification (duplicates elements in Core).
+		case((name='PersonNationalIdentification') and (namespace=niem20_nc_URI)){
+			// type is nc:IdentificationType
+			var IdentificationType:UML::Class=findOrCreateClass('IdentificationType',niem20_nc_URI);
+			newProperty.type:=IdentificationType;
+		};
+		// 35 	Removed intel elements PersonNationalIdentification and PersonOtherIdentification (duplicates elements in Core).
+		case((name='PersonOtherIdentification') and (namespace=niem20_nc_URI)){
+			// type is nc:IdentificationType
+			var IdentificationType:UML::Class=findOrCreateClass('IdentificationType',niem20_nc_URI);
+			newProperty.type:=IdentificationType;
+		};
+		// 36 	Removed element intel:PersonSSNIdentification (duplicates element in Core).
+		case((name='PersonSSNIdentification') and (namespace=niem20_nc_URI)){
+			// type is nc:IdentificationType
+			var IdentificationType:UML::Class=findOrCreateClass('IdentificationType',niem20_nc_URI);
+			newProperty.type:=IdentificationType;
+		};
+		// 42 	Harmonized im:ConsulateIndicator and scr:ConsulateIndicator
+		case((name='ConsulateIndicator') and (namespace=niem20_scr_URI)){
+			// type is boolean
+			newProperty.type:=getXMLPrimitiveType('boolean');
+		};
+		// 43 	Harmonized im:AlertEntryText and scr:AlertEntryText
+		case((name='AlertEntryText') and (namespace=niem20_scr_URI)){
+			// type is nc:TextType
+			var TextType:UML::PrimitiveType=findOrCreatePrimitiveType('TextType',niem20_nc_URI);
+			newProperty.type:=TextType;
+		};
+		case((name='AlertIdentification') and (namespace=niem20_scr_URI)){
+			// type is nc:IdentificationType
+			var TextType:UML::PrimitiveType=findOrCreatePrimitiveType('TextType',niem20_nc_URI);
+			newProperty.type:=TextType;
+		};
+		case((name='Enforcement') and (namespace=niem20_scr_URI)){
+			// type is nc:EnforcementType
+			var TextType:UML::Class=findOrCreateClass('EnforcementType',niem20_scr_URI);
+			newProperty.type:=TextType;
+		};
+		case((name='FingerprintCaptureTechnique') and (namespace=niem20_scr_URI)){
+			// type is nc:EnforcementType
+			var TextType:UML::Class=findOrCreateClass('FingerprintCaptureTechniqueType',niem20_scr_URI);
+			newProperty.type:=TextType;
+		};
+	};
+		return newProperty;
+	};			
+	// fall through if namespace not found
+	return null;
+	
+}
+query getXMLPrimitiveType(typeName:String):UML::PrimitiveType=
+	umlXmlLibrary.ownedType->select(t|t.name=typeName).oclAsType(UML::PrimitiveType)->asSequence()->first();
+helper UML::Property::niem20to21Property(){
+	// base processing on resolved propertyName/namespace
+	var myself:UML::Property:=self;
+	var resolvedName:String=self.getResolvedName();
+	var resolvedClassName:String=self.classifier.name;
+	var resolvedNamespace:String=self.getResolvedNamespace();
+	switch{
+		
+		
+		case((resolvedName='EnforcedDeparture') and (resolvedNamespace=niem20_im_URI)){
+			// create AlienDeportationType if not already defined;
+			var OffenseType:UML::Class=findOrCreateClass('AlienDeportationType',niem20_scr_URI);
+			// change type of property to AlienDeportationType
+			myself.type:=OffenseType;
+		};
+		
+		
+		case((resolvedName='CommodityUNDGIdentification') and (resolvedNamespace=niem20_it_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='CommodityUNDGIdentificationText';
+		};
+		
+		case((resolvedName='CitizenshipLawfullyAdmittedPermanentResidenceBeginDate') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='AlienLawfullyAdmittedPermanentResidenceBeginDate';
+		};
+		
+		case((resolvedName='CitizenshipLawfullyAdmittedPermanentResidentIndicator') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='AlienLawfullyAdmittedPermanentResidentIndicator';
+		};
+		
+		case((resolvedName='CitizenshipLawfullyAdmittedPermanentResidenceEndDate') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='AlienLawfullyAdmittedPermanentResidenceEndDate';
+		};
+		
+		case((resolvedName='CapabilityProficiencyCode') and (resolvedNamespace=niem20_intel_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='CapabilityProficiencyText';
+		};
+		
+		case((resolvedName='ProgramAbbreviationCode') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='ProgramAbbreviationText';
+		};
+		
+		case((resolvedName='ProgramCode') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='ProgramCategoryText';
+		};
+
+		case((resolvedName='AlertClassCode') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='AlertClassCategoryText';
+		};
+		case((resolvedName='AlertCode') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='AlertCategoryClassificationCode';
+		};
+		
+		
+		case((resolvedName='AlienCustodyCode') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='AlienCustodyCategoryText';
+		};
+		
+		case((resolvedName='AlienSpecialClassCode') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='AlienSpecialClassCategoryText';
+		};
+		
+		case((resolvedName='MatchCandidateOverallMatchDecisionStatusCode') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='MatchCandidateOverallMatchDecisionStatusText';
+		};
+		case((resolvedName='CrashLocation') and (resolvedNamespace=niem20_j_URI)){
+			if(self.isPropertyHolderElement())then{
+				self.removeElement();
+			}else{
+				var scrDetentionAugmentation:UML::Property=findOrCreateElement('Location',niem20_nc_URI);
+				myself.name:='Location';
+				self.changeReferenceTo(scrDetentionAugmentation);			
+			}endif;
+		};
+		
+		
+		case((resolvedName='AlienEncounterCode') and (resolvedNamespace=niem20_im_URI)){
+			if(self.isPropertyHolderElement())then{
+				self.removeElement();
+			}else{
+				var scrDetentionAugmentation:UML::Property=findOrCreateElement('Enforcement',niem20_scr_URI);
+				myself.name:='Enforcement';
+				self.changeReferenceTo(scrDetentionAugmentation);			
+			}endif;
+		};
+		case((resolvedName='AlienEncounterFingerprintCode') and (resolvedNamespace=niem20_im_URI)){
+			if(self.isPropertyHolderElement())then{
+				self.removeElement();
+			}else{
+				var scrDetentionAugmentation:UML::Property=findOrCreateElement('FingerprintCaptureTechnique',niem20_scr_URI);
+				myself.name:='FingerprintCaptureTechnique';
+				self.changeReferenceTo(scrDetentionAugmentation);			
+			}endif;
+		};
+		
+		case((resolvedName='ICEOfficerCode') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='ICEOfficerCategoryText';
+		};
+		
+		case((resolvedName='BarracksCode') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='BarracksCategoryText';
+		};
+		
+		case((resolvedName='RequestStatusCode') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='RequestStatusCategoryText';
+		};
+		
+		case((resolvedName='TransferRequestStatusCode') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='TransferRequestStatusCategoryText';
+		};
+		
+		case((resolvedName='RequestCode') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='RequestCategoryText';
+		};
+		
+		case((resolvedName='DependentCode') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='DependentCategoryText';
+		};
+		
+		case((resolvedName='AlienFelonCode') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='AlienFelonCategoryText';
+		};
+		
+		case((resolvedName='CountrySubdivisionID') and (resolvedNamespace=niem20_scr_URI) and (self.classifier.name='CitizenshipType')){
+			log('INFO: renaming Property '+self.qualifiedName);
+				var scrDetentionAugmentation:UML::Property=findOrCreateElement('LocaleSubdivisionName',niem20_nc_URI);
+				myself.name:='LocaleSubdivisionName';
+				self.changeReferenceTo(scrDetentionAugmentation);			
+		};
+		
+		case((resolvedName='StayActionCode') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='StayActionText';
+		};
+		
+		case((resolvedName='CoordinateCategoryCode') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='CoordinateCategoryText';
+		};
+		
+		case((resolvedName='DepartProofCode') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='DepartProofText';
+		};
+		
+		case((resolvedName='BiometricSourceCategoryCode') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='BiometricSourceCategoryText';
+		};
+		
+		case((resolvedName='VoluntaryDepartDecisionCategoryCode') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='VoluntaryDepartDecisionCategoryText';
+		};
+		
+		case((resolvedName='ClassOfAdmission') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='PrimaryDispositionText';
+		};
+		
+		case((resolvedName='ClassOfAdmission') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='PrimaryDispositionText';
+		};
+		
+		case((resolvedName='ChargeIdentification') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='ApprehensionChargeIdentification';
+		};
+		
+		case((resolvedName='BiometricStatusCategoryCode') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='BiometricStatusCategoryText';
+		};
+		
+		case((resolvedName='LocationBlockGroupCode') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='LocationBlockGroupText';
+		};
+		case((resolvedName='LocationCarrierRouteCode') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='LocationCarrierRouteText';
+		};
+		case((resolvedName='LocationTractCode') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='LocationTractText';
+		};
+		
+		case((resolvedName='ClassOfAdmissionDurationBasisCategoryCode') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='ClassOfAdmissionDurationBasisCategoryText';
+		};
+		
+		
+		case((resolvedName='SmuggledMethodCode') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='SmuggledMethodCategoryText';
+		};
+		case((resolvedName='TimeInUSCode') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='TimeInUS';
+		};
+		
+		
+		case((resolvedName='ExpirationDate') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='AlertExpirationDate';
+		};
+			case((resolvedName='EntryDate') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='AlertEntryDate';
+		};
+		case((resolvedName='ImageCode') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='ImageCategoryText';
+		};
+		
+		case((resolvedName='AuthorizationDropBelowFullTimeCode') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='AuthorizationDropBelowFullTimeCategoryText';
+		};
+		
+		case((resolvedName='AlienIncidentRoleCode') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='AlienIncidentRoleDescriptionText';
+		};
+		
+		case((resolvedName='MatchCandidateStatusCode') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='MatchCandidateStatusCategoryText';
+		};
+		
+		case((resolvedName='EmploymentCategoryCode') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: renaming Property '+self.qualifiedName);
+				myself.name:='EmploymentCategoryText';
+		};
+		
+		case((resolvedName='ArrestMethodAugmentation') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='ArrestMethodCode') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='AlienMiscellaneousIDCategoryCode') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		
+		case((resolvedName='AlienMiscellaneousIDCategoryCode') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='ExchangeVisitorCategory') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='ExchangeVisitorCategoryCode') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		
+		case((resolvedName='PersonDeathDate') and (resolvedNamespace=niem20_intel_URI) and self.isPropertyHolderElement()){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='PersonBirthDate') and (resolvedNamespace=niem20_intel_URI) and self.isPropertyHolderElement()){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='PartialDate') and (resolvedNamespace=niem20_intel_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		
+		case((resolvedName='AgentAugmentation') and (resolvedNamespace=niem20_it_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		
+		case((resolvedName='CommodityCargoDescriptionText') and (resolvedNamespace=niem20_it_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		
+		
+		case((resolvedName='ExchangeVisitorCategoryDescriptionText') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='Passport') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='Visa') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		
+		
+		case((resolvedName='Detention') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		
+		case((resolvedName='AlienAugmentation') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+	
+	case((resolvedName='TimeInUnitedStates') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		
+		case((resolvedName='PersonBiographicAssociation') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='PersonAugmentation') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='TransportMeansAugmentation') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		
+		case((resolvedName='ScreeningProcessAugmentation') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+	
+		case((resolvedName='TransportMeansAugmentation') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='PersonBirthLocationAugmentation') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+	
+		case((resolvedName='ImageAugmentation') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+	
+		case((resolvedName='DocumentAugmentation') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='StatuteOffenseCode') and (resolvedNamespace=niem20_j_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='StatuteOffenseIdentification') and (resolvedNamespace=niem20_j_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		
+		case((resolvedName='IncidentFactor') and (resolvedNamespace=niem20_j_URI) and (resolvedClassName='IncidentAugmentationType')){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='IncidentEvidenceHeldIndicator') and (resolvedNamespace=niem20_j_URI) and (resolvedClassName='IncidentAugmentationType')){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='IncidentLevel') and (resolvedNamespace=niem20_j_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='IncidentEntryPoint') and (resolvedNamespace=niem20_j_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='IncidentStructuresEnteredQuantity') and (resolvedNamespace=niem20_j_URI) and (resolvedClassName='IncidentAugmentationType')){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+	
+		case((resolvedName='IncidentForce') and (resolvedNamespace=niem20_j_URI) and (resolvedClassName='IncidentAugmentationType')){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+	
+		case((resolvedName='IncidentExitPoint') and (resolvedNamespace=niem20_j_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		
+		
+		case((resolvedName='DocumentPersonAssociationReference') and (resolvedNamespace=niem20_j_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='DocumentPersonAssociation') and (resolvedNamespace=niem20_j_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		
+		
+		// imm:ArrestMethodCode removed
+		case((resolvedName='ArrestMethodCode') and (resolvedNamespace=niem20_im_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		/*
+		case((resolvedName='TimeInUSCodeType') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		*/
+		case((resolvedName='AlertAugmentation') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+			self.removeElement();
+			return;
+		};
+		case((resolvedName='Segment') and (resolvedNamespace=niem20_ip_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='Asset') and (resolvedNamespace=niem20_ip_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='AssetReference') and (resolvedNamespace=niem20_ip_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		
+		case((resolvedName='SegmentReference') and (resolvedNamespace=niem20_ip_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		
+		case((resolvedName='SubSegmentReference') and (resolvedNamespace=niem20_ip_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='FlightReference') and (resolvedNamespace=niem20_ip_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='Flight') and (resolvedNamespace=niem20_ip_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		
+		case((resolvedName='FlightIdentification') and (resolvedNamespace=niem20_ip_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='PassengerReference') and (resolvedNamespace=niem20_ip_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='Passenger') and (resolvedNamespace=niem20_ip_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		
+		// ip:FlightTimeAtAirport removed
+		case((resolvedName='FlightTimeAtAirport') and (resolvedNamespace=niem20_ip_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='Airport') and (resolvedNamespace=niem20_ip_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='Airline') and (resolvedNamespace=niem20_ip_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='AirlineReference') and (resolvedNamespace=niem20_ip_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='AirportReference') and (resolvedNamespace=niem20_ip_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='DepartureAirport') and (resolvedNamespace=niem20_ip_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='DepartureAirportReference') and (resolvedNamespace=niem20_ip_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='TransitAirport') and (resolvedNamespace=niem20_ip_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='TransitAirportReference') and (resolvedNamespace=niem20_ip_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='ArrivalAirport') and (resolvedNamespace=niem20_ip_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='ArrivalAirportReference') and (resolvedNamespace=niem20_ip_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		
+		case((resolvedName='PersonAffiliationAssociation') and (resolvedNamespace=niem20_intel_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		case((resolvedName='PersonOtherIdentification') and (resolvedNamespace=niem20_intel_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+
+		
+		
+		
+		// scr:OrganizationLocationAssociationAugmentation removed
+		case((resolvedName='OrganizationLocationAssociationAugmentation') and (resolvedNamespace=niem20_scr_URI)){
+			log('INFO: removing obsolete Property '+self.qualifiedName);
+				self.removeElement();
+		};
+		//  1 	Changed data type of j:ArrestInvolvedWeapon from nc:PropertyType to nc:WeaponType
+		case((resolvedName='ArrestInvolvedWeapon') and (resolvedNamespace=niem20_j_URI)){
+			// create WeaponType if not already defined;
+			var WeaponType:UML::Class=findOrCreateClass('WeaponType',niem20_nc_URI);
+			// change type of property to WeaponType
+			myself.type:=WeaponType;
+		};
+		// * 3 	Modeled a new justice Offense object; changed data type of element j:Offense from nc:IncidentType to j:OffenseType
+		case((resolvedName='Offense') and (resolvedNamespace=niem20_j_URI)){
+			// create OffenseType if not already defined;
+			var OffenseType:UML::Class=findOrCreateClass('OffenseType',niem20_j_URI);
+			// change type of property to OffenseType
+			myself.type:=OffenseType;
+		};
+		// 9 	Deleted element scr:Detention (duplicates scr:DetentionAugmentation)
+		case((resolvedName='Detention') and (resolvedNamespace=niem20_scr_URI)){
+			// either delete the PropertyHolder element or change reference to scr:DetentionAugmentation
+			if(self.isPropertyHolderElement())then{
+				self.removeElement();
+			}else{
+				var scrDetentionAugmentation:UML::Property=findOrCreateElement('DetentionAugmentation',niem20_scr_URI);
+				myself.name:='DetentionAugmentation';
+				self.changeReferenceTo(scrDetentionAugmentation);			
+			}endif;
+		};
+		// 16 	Changed the definition of j:VictimOffenseChargeCode so it is not specific to a person.
+		case((resolvedName='VictimOffenseChargeCode') and (resolvedNamespace=niem20_j_URI)){
+			// replace definition
+			self.replaceDefinition('A blood-alcohol percentage reading from a Blood Alcohol Test (BAC Test).');
+		};
+		// 17 	Removed duplicate element j:JurisdictionIdentification
+		case((resolvedName='JurisdictionIdentification') and (resolvedNamespace=niem20_j_URI)){
+			// either delete the PropertyHolder element or change reference to nc:*
+				self.removeElement();
+				/*
+			if(self.isPropertyHolderElement())then{
+				self.removeElement();
+			}else{
+				var ncJurisdictionIdentification:UML::Property=findOrCreateElement('JurisdictionIdentification',niem20_nc_URI);
+				self.changeReferenceTo(ncJurisdictionIdentification);			
+			}endif;
+			*/
+		};
+		/* cbrn is new, so following few are not needed
+		// 20 	Made elements cbrn:UserName and cbrn:GeographicCoordinates abstract; deleted the data types.
+		case((
+		
+			(resolvedName='UserName')
+			(resolvedName='GeographicCoordinates')
+			) 
+			and (resolvedNamespace=niem20_cbrn_URI)){
+			var oldType:UML::Type=self.type;
+			if(not(oldType.oclIsUndefined()))then {oldType.delete();}endif;
+			// change type of property to null
+			myself.isDerivedUnion:=true;
+			myself.type:=null;
+		};
+		// 21 	Changed data type of cbrn:CountValues to cbrn:DoubleListType
+		case((resolvedName='CountValues') and (resolvedNamespace=niem20_cbrn_URI)){
+			// create DoubleListType if not already defined;
+			// change type of property to DoubleListType
+			myself.type:=DoubleListType;
+		};
+		*/
+		case((resolvedName='IdentificationIssuingCountryCode') and (resolvedNamespace=niem20_intel_URI)){
+			// change name
+			myself.name:='IdentificationIssuingCountry';
+		};
+		
+		
+		// 30 	Changed intel:AuthenticCode (data type nc:TextType) to intel:AuthenticIndicator (data type niem-xsd:boolean)
+		case((resolvedName='AuthenticCode') and (resolvedNamespace=niem20_intel_URI)){
+			// change type of property to boolean
+			// change name
+			myself.name:='AuthenticIndicator';
+			myself.type:=getXMLPrimitiveType('boolean');
+		};
+		// 31 	Changed the name of intel:CapabilityProficiencyCode (data type nc:TextType) to CapabilityProficiencyText since there is no code set.
+		case((resolvedName='CapabilityProficiencyCode') and (resolvedNamespace=niem20_intel_URI)){
+			// change name
+			myself.name:='CapabilityProficiencyText';
+		};
+		// 32 	Changed the data types of im:AlienBirthCountryName, im:AlienCitizenshipCountryName, im:AlienResidencyCountryName from nc:TextType to nc:ProperNameTextType to be more consistent with country names in Core.
+		case(
+			(
+				(resolvedName='AlienBirthCountryName')
+				or (resolvedName='AlienCitizenshipCountryName')
+				or (resolvedName='AlienResidencyCountryName')
+			) and (resolvedNamespace=niem20_im_URI)){
+			// create PropertyNameTextType if necessary
+			var PropertyNameTextType:UML::PrimitiveType=findOrCreatePrimitiveType('ProperNameTextType',niem20_nc_URI);
+			// change type
+			myself.type:=PropertyNameTextType;
+		};
+		// 34 	Removed element intel:PersonDriverLicenseIdentification (duplicates element nc:DriverLicenseIdentification).
+		case((resolvedName='PersonDriverLicenseIdentification') and (resolvedNamespace=niem20_intel_URI)){
+			// either delete the PropertyHolder element or change reference to nc:*
+			if(self.isPropertyHolderElement())then{
+				self.removeElement();
+			}else{
+				var ncDriverLicenseIdentification:UML::Property=findOrCreateElement('DriverLicenseIdentification',niem20_nc_URI);
+				self.changeReferenceTo(ncDriverLicenseIdentification);			
+			}endif;
+		};
+		// 35 	Removed intel elements PersonNationalIdentification and PersonOtherIdentification (duplicates elements in Core).
+		case((resolvedName='PersonNationalIdentification') and (resolvedNamespace=niem20_intel_URI)){
+			// either delete the PropertyHolder element or change reference to nc:*
+			if(self.isPropertyHolderElement())then{
+				self.removeElement();
+			}else{
+				var ncPersonNationalIdentification:UML::Property=findOrCreateElement('PersonNationalIdentification',niem20_nc_URI);
+				self.changeReferenceTo(ncPersonNationalIdentification);			
+			}endif;
+		};
+		// 35 	Removed intel elements PersonNationalIdentification and PersonOtherIdentification (duplicates elements in Core).
+		case((resolvedName='PersonOtherIdentification') and (resolvedNamespace=niem20_intel_URI)){
+			// either delete the PropertyHolder element or change reference to nc:*
+			if(self.isPropertyHolderElement())then{
+				self.removeElement();
+			}else{
+				var ncPersonNationalIdentification:UML::Property=findOrCreateElement('PersonOtherIdentification',niem20_nc_URI);
+				self.changeReferenceTo(ncPersonNationalIdentification);			
+			}endif;
+		};
+		// 36 	Removed element intel:PersonSSNIdentification (duplicates element in Core).
+		case((resolvedName='PersonSSNIdentification') and (resolvedNamespace=niem20_intel_URI)){
+			// either delete the PropertyHolder element or change reference to nc:*
+			if(self.isPropertyHolderElement())then{
+				self.removeElement();
+			}else{
+				var ncPersonSSNIdentification:UML::Property=findOrCreateElement('PersonSSNIdentification',niem20_nc_URI);
+				self.changeReferenceTo(ncPersonSSNIdentification);			
+			}endif;
+		};
+		// 37 	Changed the definition of j:BondTerminationCategoryText
+		case((resolvedName='BondTerminationCategoryText') and (resolvedNamespace=niem20_j_URI)){
+			self.replaceDefinition('A reason a bond is no longer in effect.');
+		};
+		// 42 	Harmonized im:ConsulateIndicator and scr:ConsulateIndicator
+		case((resolvedName='ConsulateIndicator') and (resolvedNamespace=niem20_im_URI)){
+			// either delete the PropertyHolder element or change reference to scr:*
+			if(self.isPropertyHolderElement())then{
+				self.removeElement();
+			}else{
+				var scrConsulateIndicator:UML::Property=findOrCreateElement('ConsulateIndicator',niem20_scr_URI);
+				self.changeReferenceTo(scrConsulateIndicator);			
+			}endif;
+		};
+		// 43 	Harmonized im:AlertEntryText and scr:AlertEntryText
+		case((resolvedName='AlertEntryText') and (resolvedNamespace=niem20_im_URI)){
+			// either delete the PropertyHolder element or change reference to scr:*
+			if(self.isPropertyHolderElement())then{
+				self.removeElement();
+			}else{
+				var scrAlertEntryText:UML::Property=findOrCreateElement('AlertEntryText',niem20_scr_URI);
+				self.changeReferenceTo(scrAlertEntryText);			
+			}endif;
+		};
+	};
+}
+/*		
+* for explicit impl
+$ indicates no transform necessary
+blank  not yet resolve
+
+* 1 	Changed data type of j:ArrestInvolvedWeapon from nc:PropertyType to nc:WeaponType
+2 	Replaced Infrastructure Protection domain with new content
+* 3 	Modeled a new justice Offense object; changed data type of element j:Offense from nc:IncidentType to j:OffenseType
+$ 4 	Added CPP-related components to the justice domain (Treatment, Evaluation, etc)
+$ 5 	Added new MotorCarrier object to the justice domain
+$ 6 	Added Family Services domain
+7 	Replaced Geospatial external schemas with updated schemas
+$ 8 	Added new Maritime domain
+* 9 	Deleted element scr:Detention (duplicates scr:DetentionAugmentation)
+10 	Removed reference associations in justice domain
+11 	Loaded screening additions, new definitions, and updates
+12 	Loaded immigration additions and updates
+13 	Replaced emergency management domain with new content
+$ 14 	Added new CBRN domain
+15 	Added international trade content, new definitions, and updates
+* 16 	Changed the definition of j:VictimOffenseChargeCode so it is not specific to a person.
+* 17 	Removed duplicate element j:JurisdictionIdentification
+18 	Harmonized duplicate elements in immigration and screening
+$ 19 	Removed "Rad" from the name of cbrn:RadEncounterDeviceLocationType and corresponding property names
+$ 20 	Made elements cbrn:UserName and cbrn:GeographicCoordinates abstract; deleted the data types.
+$ 21 	Changed data type of cbrn:CountValues to cbrn:DoubleListType
+$ 22 	Harmonized components in CBRN and International Trade (IT) domains
+$ 23 	Added AFCARS permanency goal codes and child welfare additions to the Family Services domain
+$ 24 	Added a reference to m:Voyage to m:VesselPortAssociationType; removed element m:VoyagePortOfCallAssociation and data type m:VoyagePortOfCallAssociationType. Also removed element m:PortOfCallReference (had reference target=VesselPortAssociationType)
+$ 25 	Added Hospital Availability Exchange (HAVE) external standard and adapter schema for Emergency Management domain
+26 	Replaced hazmat codes with updated set. Definitions now include hazard class or division to distinguish identifical definitions.
+27 	Added augmented elements and augmented types for augmenations in all domains
+28 	Added missing definitions
+29 	Added identification issuing country code substitutions for Intelligence domain
+* 30 	Changed intel:AuthenticCode (data type nc:TextType) to intel:AuthenticIndicator (data type niem-xsd:boolean)
+* 31 	Changed the name of intel:CapabilityProficiencyCode (data type nc:TextType) to CapabilityProficiencyText since there is no code set.
+* 32 	Changed the data types of im:AlienBirthCountryName, im:AlienCitizenshipCountryName, im:AlienResidencyCountryName from nc:TextType to nc:PropertyNameTextType to be more consistent with country names in Core.
+33 	Removed intel:PartialDateType and replaced its attributes (dayOfMonth, month, year) with element substitutions for nc:DateRepresentation. Removed intel:PersonBirthDate and intel:PersonDeathDate since the duplication is no longer needed.
+* 34 	Removed element intel:PersonDriverLicenseIdentification (duplicates element nc:DriverLicenseIdentification).
+* 35 	Removed intel elements PersonNationalIdentification and PersonOtherIdentification (duplicates elements in Core).
+* 36 	Removed element intel:PersonSSNIdentification (duplicates element in Core).
+* 37 	Changed the definition of j:BondTerminationCategoryText
+$ 38 	Added j:DrivingIncidentBloodAlcoholContentNumberText to j:DrivingIncidentType
+$ 39 	Added new DriverLicenseEndorsement element, type, and sub-components to justice; made the new element substitutable for nc:DriverLicenseEndorsement
+$ 40 	Added new element j:CDLHolderCode to j:CitationType
+$ 41 	Added new element j:JuvenileAsAdultIndicator to j:PersonChargeAssociationType
+* 42 	Harmonized im:ConsulateIndicator and scr:ConsulateIndicator
+* 43 	Harmonized im:AlertEntryText and scr:AlertEntryText
+? 44 	Added keyword to element scr:ClassOfAdmissionClassificationCode
+* 45 	Changed the definition of j:PersonStateFingerprintIdentification
+$ 46 	Added j:IdentificationJurisdictionUSPostalServiceCode as a substitution of abstract property nc:IdentificationJurisdiction
+$ 47 	New components for SAR - added intel:ThreatTypeCode and type j:TipClassCodeType
+$ 48 	Added additional codes to sar:TargetSectorCodeSimpleType
+*/		
+
+property pimPackages:Set(UML::Package)=Set{};
+/*
+NIEM 2.0 Namespaces
+*/	
+property niem20_addr_URI:String=baseNiemNamespaceNiem2+'external/urisa-street-address/draft-0.2.0/dhs-gmo/1.0.0'; // 
+property niem20_ansi_nist_URI:String=baseNiemNamespaceNiem2+'ansi-nist/2.0'; // 
+property niem20_ansi_d20_URI:String=baseNiemNamespaceNiem2+'ansi_d20/2.0'; // 
+property niem20_apco_URI:String=baseNiemNamespaceNiem2+'apco/2.0'; // 
+property niem20_atf_URI:String=baseNiemNamespaceNiem2+'atf/2.0'; // 
+property niem20_can_URI:String=baseNiemNamespaceNiem2+'post-canada/2.0'; // 
+property niem20_cap_URI:String='urn:oasis:names:tc:emergency:cap:1.1'; // 
+property niem20_census_URI:String=baseNiemNamespaceNiem2+'census/2.0'; // 
+property niem20_context_URI:String=baseNiemNamespaceNiem2+'external/ogc-context/1.1.0/dhs-gmo/1.0.0'; // 
+property niem20_de_URI:String='urn:oasis:names:tc:emergency:EDXL:DE:1.0'; // 
+property niem20_dea_URI:String=baseNiemNamespaceNiem2+'dea/2.0'; // 
+property niem20_dod_jcs_pub2_0_URI:String=baseNiemNamespaceNiem2+'dod_jcs-pub2.0-misc/2.0'; // 
+property niem20_edxl_URI:String=baseNiemNamespaceNiem2+'edxl/2.0'; // 
+property niem20_edxl_cap_URI:String=baseNiemNamespaceNiem2+'edxl-cap/2.0'; // 
+property niem20_edxl_de_URI:String=baseNiemNamespaceNiem2+'edxl-de/2.0'; // 
+property niem20_em_URI:String=baseNiemNamespaceNiem2+'domains/emergencyManagement/2.0'; // 
+property niem20_ex_URI:String=baseNiemNamespaceNiem2+'external/iso-10303-step/2/ex/dhs-gmo/1.0.0'; // 
+property niem20_fbi_URI:String=baseNiemNamespaceNiem2+'fbi/2.0'; // 
+property niem20_fips_10_4_URI:String=baseNiemNamespaceNiem2+'fips_10-4/2.0'; // 
+property niem20_fips_5_2_URI:String=baseNiemNamespaceNiem2+'fips_5-2/2.0'; // 
+property niem20_fips_6_4_URI:String=baseNiemNamespaceNiem2+'fips_6-4/2.0'; // 
+property niem20_gco_URI:String=baseNiemNamespaceNiem2+'external/iso-19139-gmd/draft-0.1/gco/dhs-gmo/1.0.0'; // 
+property niem20_geo_URI:String=baseNiemNamespaceNiem2+'geospatial/2.0'; // 
+property niem20_gmd_URI:String=baseNiemNamespaceNiem2+'external/iso-19139-gmd/draft-0.1/gmd/dhs-gmo/1.0.0'; // 
+property niem20_gml_URI:String=baseNiemNamespaceNiem2+'external/ogc-gml/3.1.1/dhs-gmo/1.0.0'; // 
+property niem20_have_URI:String=baseNiemNamespaceNiem2+'have/2.0'; // 
+property niem20_hazmat_URI:String=baseNiemNamespaceNiem2+'hazmat/2.0'; // 
+property niem20_ifc_URI:String=baseNiemNamespaceNiem2+'external/iai-ifc/RC2/ifc/dhs-gmo/1.0.0'; // 
+property niem20_im_URI:String=baseNiemNamespaceNiem2+'domains/immigration/2.0'; // 
+property niem20_intel_URI:String=baseNiemNamespaceNiem2+'domains/intelligence/2.0'; // 
+property niem20_ip_URI:String=baseNiemNamespaceNiem2+'domains/infrastructureProtection/2.0'; // 
+property niem20_iso_3166_URI:String=baseNiemNamespaceNiem2+'iso_3166/2.0'; // 
+property niem20_iso_4217_URI:String=baseNiemNamespaceNiem2+'iso_4217/2.0'; // 
+property niem20_iso_639_3_URI:String=baseNiemNamespaceNiem2+'iso_639-3/2.0'; // 
+property niem20_it_URI:String=baseNiemNamespaceNiem2+'domains/internationalTrade/2.0'; // 
+property niem20_itis_URI:String=baseNiemNamespaceNiem2+'itis/2.0'; // 
+property niem20_j_URI:String=baseNiemNamespaceNiem2+'domains/jxdm/4.0'; // 
+property niem20_land_URI:String='http://www.landxml.org/schema/LandXML-1.1'; // 
+property niem20_lasd_URI:String=baseNiemNamespaceNiem2+'lasd/2.0'; // 
+property niem20_mmr_URI:String=baseNiemNamespaceNiem2+'external/dhs-gmo/AS/multiModalRoute/1.0.0'; // 
+property niem20_mmucc_2_URI:String=baseNiemNamespaceNiem2+'mmucc_2/2.0'; // 
+property niem20_mn_off_URI:String=baseNiemNamespaceNiem2+'mn_offense/2.0'; // 
+property niem20_mo_URI:String=baseNiemNamespaceNiem2+'external/dhs-gmo/AS/mobileObject/1.0.0'; // 
+property niem20_nc_URI:String=baseNiemNamespaceNiem2+'niem-core/2.0'; // 
+property niem20_nga_URI:String=baseNiemNamespaceNiem2+'nga/2.0'; // 
+property niem20_niem_xsd_URI:String=baseNiemNamespaceNiem2+'proxy/xsd/2.0'; // 
+property niem20_nlets_URI:String=baseNiemNamespaceNiem2+'nlets/2.0'; // 
+property niem20_nonauth_URI:String=baseNiemNamespaceNiem2+'nonauthoritative-code/2.0'; // 
+property niem20_ogc_URI:String=baseNiemNamespaceNiem2+'external/ogc-filter/1.1.0/dhs-gmo/1.1.0'; // 
+property niem20_om_URI:String=baseNiemNamespaceNiem2+'external/ogc-observation/draft-0.14.5/om/dhs-gmo/1.0.0'; // 
+property niem20_sar_URI:String=baseNiemNamespaceNiem2+'sar/2.0'; // 
+property niem20_scr_URI:String=baseNiemNamespaceNiem2+'domains/screening/2.0'; // 
+property niem20_sld_URI:String=baseNiemNamespaceNiem2+'external/ogc-sld/1.0.20/dhs-gmo/1.0.0'; // 
+property niem20_swe_URI:String=baseNiemNamespaceNiem2+'external/ogc-observation/draft-0.14.5/swe/dhs-gmo/1.0.0'; // 
+property niem20_twpdes_URI:String=baseNiemNamespaceNiem2+'twpdes/2.0'; // 
+property niem20_ucr_URI:String=baseNiemNamespaceNiem2+'ucr/2.0'; // 
+property niem20_unece_URI:String=baseNiemNamespaceNiem2+'unece_rec20-misc/2.0'; // 
+property niem20_usps_URI:String=baseNiemNamespaceNiem2+'usps_states/2.0'; // 
+property niem20_ut_offender_URI:String=baseNiemNamespaceNiem2+'ut_offender-tracking-misc/2.0'; // 
+property niem20_xls_URI:String=baseNiemNamespaceNiem2+'external/ogc-openls/1.1.0/dhs-gmo/1.0.0'; // 
+/*
+NIEM 2.1 Namespaces
+*/	
+//property niem21_addr_URI:String=baseNiemNamespace+'external/urisa-street-address/draft-0.2.0/dhs-gmo/1.0.0'; // 
+property niem21_ansi_nist_URI:String=baseNiemNamespaceNiem2+'ansi-nist/2.0'; // same
+property niem21_ansi_d20_URI:String=baseNiemNamespaceNiem2+'ansi_d20/2.0'; // same
+property niem21_apco_URI:String=baseNiemNamespaceNiem2+'apco/2.1'; // 
+property niem21_atf_URI:String=baseNiemNamespaceNiem2+'atf/2.0'; // same
+property niem21_can_URI:String=baseNiemNamespaceNiem2+'post-canada/2.0'; // same
+property niem21_cap_URI:String='urn:oasis:names:tc:emergency:cap:1.1'; // same
+property niem21_cbrn_URI:String=baseNiemNamespaceNiem2+'domains/cbrn/2.1'; // new
+property niem21_cbrncl_URI:String=baseNiemNamespaceNiem2+'cbrncl/2.1'; // new
+property niem21_census_URI:String=baseNiemNamespaceNiem2+'census/2.0'; // same
+//property niem21_context_URI:String=baseNiemNamespace+'external/ogc-context/1.1.0/dhs-gmo/1.0.0'; // 
+property niem21_de_URI:String='urn:oasis:names:tc:emergency:EDXL:DE:1.0'; // same
+property niem21_dea_URI:String=baseNiemNamespaceNiem2+'dea/2.1'; // 
+property niem21_dod_jcs_pub2_0_URI:String=baseNiemNamespaceNiem2+'dod_jcs-pub2.0-misc/2.0'; // same
+property niem21_edxl_URI:String=baseNiemNamespaceNiem2+'edxl/2.1'; // 
+property niem21_edxl_cap_URI:String=baseNiemNamespaceNiem2+'edxl-cap/2.1'; // 
+property niem21_edxl_de_URI:String=baseNiemNamespaceNiem2+'edxl-de/2.1'; // 
+property niem21_edxl_have_URI:String=baseNiemNamespaceNiem2+'edxl-have/2.1'; // new
+property niem21_em_URI:String=baseNiemNamespaceNiem2+'domains/emergencyManagement/2.1'; // 
+//property niem21_ex_URI:String=baseNiemNamespace+'external/iso-10303-step/2/ex/dhs-gmo/1.0.0'; // 
+property niem21_fbi_URI:String=baseNiemNamespaceNiem2+'fbi/2.0'; // same 
+property niem21_fips_10_4_URI:String=baseNiemNamespaceNiem2+'fips_10-4/2.0'; // same 
+property niem21_fips_5_2_URI:String=baseNiemNamespaceNiem2+'fips_5-2/2.0'; // same
+property niem21_fips_6_4_URI:String=baseNiemNamespaceNiem2+'fips_6-4/2.0'; // same
+property niem21_fs_URI:String=baseNiemNamespaceNiem2+'domains/familyServices/2.1'; // new
+property niem21_gco_URI:String='http://www.isotc211.org/2005/gco'; // 
+property niem21_geo_URI:String=baseNiemNamespaceNiem2+'geospatial/2.1'; // 
+property niem21_gmd_URI:String='http://www.isotc211.org/2005/gmd'; // 
+property niem21_gml_URI:String='http://www.opengis.net/gml/3.2'; // 
+property niem21_gmx_URI:String='http://www.isotc211.org/2005/gmx'; // new
+property niem21_gsr_URI:String='http://www.isotc211.org/2005/gsr'; // new
+property niem21_gss_URI:String='http://www.isotc211.org/2005/gss'; // new
+property niem21_gts_URI:String='http://www.isotc211.org/2005/gts'; // new
+property niem21_have_URI:String='urn:oasis:names:tc:emergency:EDXL:HAVE:1.0'; // 
+property niem21_have_codes_URI:String=baseNiemNamespaceNiem2+'have-codes/2.1'; // new
+property niem21_hazmat_URI:String=baseNiemNamespaceNiem2+'hazmat/2.1'; // 
+property niem21_im_URI:String=baseNiemNamespaceNiem2+'domains/immigration/2.1'; // 
+//property niem21_ifc_URI:String=baseNiemNamespace+'external/iai-ifc/RC2/ifc/dhs-gmo/1.0.0'; // 
+property niem21_intel_URI:String=baseNiemNamespaceNiem2+'domains/intelligence/2.1'; // 
+property niem21_ip_URI:String=baseNiemNamespaceNiem2+'domains/infrastructureProtection/2.1'; // 
+property niem21_iso_3166_URI:String=baseNiemNamespaceNiem2+'iso_3166/2.0'; // same
+property niem21_iso_4217_URI:String=baseNiemNamespaceNiem2+'iso_4217/2.0'; // same
+property niem21_iso_639_3_URI:String=baseNiemNamespaceNiem2+'iso_639-3/2.0'; // same
+property niem21_it_URI:String=baseNiemNamespaceNiem2+'domains/internationalTrade/2.1'; // 
+property niem21_itis_URI:String=baseNiemNamespaceNiem2+'itis/2.1'; // 
+property niem21_j_URI:String=baseNiemNamespaceNiem2+'domains/jxdm/4.1'; // 
+//property niem21_land_URI:String='http://www.landxml.org/schema/LandXML-1.1'; // 
+property niem21_lasd_URI:String=baseNiemNamespaceNiem2+'lasd/2.0'; // same 
+property niem21_m_URI:String=baseNiemNamespaceNiem2+'domains/maritime/2.1'; // new 
+//property niem21_mmr_URI:String=baseNiemNamespace+'external/dhs-gmo/AS/multiModalRoute/1.0.0'; // 
+property niem21_mmucc_2_URI:String=baseNiemNamespaceNiem2+'mmucc_2/2.1'; // 
+property niem21_mn_off_URI:String=baseNiemNamespaceNiem2+'mn_offense/2.0'; // same 
+//property niem21_mo_URI:String=baseNiemNamespace+'external/dhs-gmo/AS/mobileObject/1.0.0'; // 
+property niem21_nc_URI:String=baseNiemNamespaceNiem2+'niem-core/2.0'; // same
+property niem21_nga_URI:String=baseNiemNamespaceNiem2+'nga/2.0'; // same
+property niem21_niem_xsd_URI:String=baseNiemNamespaceNiem2+'proxy/xsd/2.0'; // same 
+property niem21_nlets_URI:String=baseNiemNamespaceNiem2+'nlets/2.1'; // 
+property niem21_nonauth_URI:String=baseNiemNamespaceNiem2+'nonauthoritative-code/2.0'; // 
+//property niem21_ogc_URI:String=baseNiemNamespace+'external/ogc-filter/1.1.0/dhs-gmo/1.1.0'; // 
+//property niem21_om_URI:String=baseNiemNamespace+'external/ogc-observation/draft-0.14.5/om/dhs-gmo/1.0.0'; // 
+property niem21_sar_URI:String=baseNiemNamespaceNiem2+'sar/2.1'; // 
+property niem21_scr_URI:String=baseNiemNamespaceNiem2+'domains/screening/2.1'; // 
+//property niem21_sld_URI:String=baseNiemNamespace+'external/ogc-sld/1.0.20/dhs-gmo/1.0.0'; // 
+//property niem21_swe_URI:String=baseNiemNamespace+'external/ogc-observation/draft-0.14.5/swe/dhs-gmo/1.0.0'; // 
+property niem21_twpdes_URI:String=baseNiemNamespaceNiem2+'twpdes/2.0'; // same 
+property niem21_ucr_URI:String=baseNiemNamespaceNiem2+'ucr/2.0'; // same
+property niem21_unece_URI:String=baseNiemNamespaceNiem2+'unece_rec20-misc/2.0'; // same
+property niem21_usps_URI:String=baseNiemNamespaceNiem2+'usps_states/2.0'; // same
+property niem21_ut_offender_URI:String=baseNiemNamespaceNiem2+'ut_offender-tracking-misc/2.0'; // same 
+property niem21_xhtml_URI:String='http://www.w3.org/1999/xhtml'; // new
+property niem21_xlink_URI:String='http://www.w3.org/1999/xlink'; // new
+property niem21_xls_URI:String=baseNiemNamespaceNiem2+'external/ogc/xls/1.1.0/dhs-gmo/2.1.0'; // 
+property niem21_xsd_URI:String='ttp://www.w3.org/2001/XMLSchema'; // new

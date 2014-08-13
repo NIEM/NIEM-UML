@@ -1,0 +1,2112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="_0" nsURI="http://release.niem.gov/niem/codes/dea_ctlsub/3.0/"
+    nsPrefix="_0">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+    <details key="documentation" value="Drug Enforcement Administration (DEA).&#xA;Publication: Controlled Substances - by DEA Drug Code Number; &#xA;Date: 6 Sep 2012; &#xA;http://www.deadiversion.usdoj.gov/schedules/orangebook/d_cs_drugcode.pdf"/>
+  </eAnnotations>
+  <eAnnotations source="http://release.niem.gov/niem/conformanceTargets/3.0/">
+    <details key="conformanceTargets" value="http://reference.niem.gov/niem/specification/naming-and-design-rules/3.0/#ReferenceSchemaDocument"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EEnum" name="DEAClassScheduleCodeCodeSimpleType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A data type for a class to which the Drug Enforcement Agency (DEA) has assigned the product under the Controlled Substances Act of 1970."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="DEAClassScheduleCodeCodeSimpleType"/>
+    </eAnnotations>
+    <eLiterals name="I">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Schedule I Controlled Substances.  Substances in this schedule have no currently accepted medical use in the United States, a lack of accepted safety for use under medical supervision, and a high potential for abuse."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="II" value="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Schedule II Controlled Substances.  Substances in this schedule have a high potential for abuse which may lead to severe psychological or physical dependence."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="III" value="2">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Schedule III Controlled Substances.  Substances in this schedule have a potential for abuse less than substances in Schedules I or II and abuse may lead to moderate or low physical dependence or high psychological dependence."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="IV" value="3">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Schedule IV Controlled Substances.  Substances in this schedule have a low potential for abuse relative to substances in Schedule III."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="V" value="4">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Schedule V Controlled Substances.  Substances in this schedule have a low potential for abuse relative to substances listed in Schedule IV and consist primarily of preparations containing limited quantities of certain narcotics."/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="DEAClassScheduleCodeCodeSimpleTypeObject"
+      instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="DEAClassScheduleCodeCodeSimpleType:Object"/>
+      <details key="baseType" value="DEAClassScheduleCodeCodeSimpleType"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DEAClassScheduleCodeCodeType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A data type for a class to which the Drug Enforcement Agency (DEA) has assigned the product under the Controlled Substances Act of 1970."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="DEAClassScheduleCodeCodeType"/>
+      <details key="kind" value="simple"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//DEAClassScheduleCodeCodeSimpleType"
+        unsettable="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value=":0"/>
+        <details key="kind" value="simple"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//ID"
+        iD="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="id"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metadata" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREFS">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="metadata"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREF">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="ref"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="relationshipMetadata" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREFS">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="relationshipMetadata"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anyAttribute" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attributeWildcard"/>
+        <details key="wildcards" value="urn:us:gov:ic:ism urn:us:gov:ic:ntk"/>
+        <details key="name" value=":5"/>
+        <details key="processing" value="lax"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DrugCategoryCodeSimpleType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A data type for a kind of substance by which a person is intoxicated."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="DrugCategoryCodeSimpleType"/>
+    </eAnnotations>
+    <eLiterals name="A1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Amphetamine (clandestine)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="A2" value="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Methamphetamine (clandestine) "/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="A3" value="2">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Crystal Methamphetamine (&quot;ice&quot;)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="A4" value="3">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="P2P"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="A5" value="4">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Methcathinone "/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="A6" value="5">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Other Stimulant (clandestine) "/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="A7" value="6">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Amphetamine or Stimulant Related Chemical "/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="A8" value="7">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Methylphenidate"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="B1" value="8">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Pseudoephedrine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="B2" value="9">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ephedrine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="B3" value="10">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Iodine or Red Phosphorus"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="C1" value="11">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Cocaine HCL"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="C2" value="12">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Cocaine Base (excluding crack)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="C3" value="13">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Crack Cocaine "/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="C4" value="14">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Cocaine (pharmaceutical)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="C5" value="15">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Cocaine Related Chemical"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="D1" value="16">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Depressant (clandestine)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="D2" value="17">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Methaqualone"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="D3" value="18">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Fentanyl (clandestine) "/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="D4" value="19">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Depressant Related Chemical"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="E1" value="20">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Chemical Equipment (non drug specific)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="G1" value="21">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="GHB or GBL or BD (And GHB Analogues)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="G2" value="22">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ketamine (And Its Analogues)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="G3" value="23">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Unspecified Analogues"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="H1" value="24">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Heroin"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="H2" value="25">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Opium"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="H3" value="26">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Morphine Base"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="H4" value="27">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Opium or Heroin or Morphine Related Chemical"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="L1" value="28">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="LSD"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="L2" value="29">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="PCP"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="L3" value="30">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MDA or MDMA or MDE"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="L4" value="31">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Other Hallucinogen"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="L5" value="32">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Hallucinogen Related Chemical"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="M1" value="33">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Marijuana (foreign origin)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="M2" value="34">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Marijuana (domestic origin)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="M3" value="35">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Indoor cultivation"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="M4" value="36">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Hashish"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="M5" value="37">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Hashish Oil"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="N1" value="38">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Opioid Treatment Pharmaceuticals"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="N2" value="39">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Hydromorphone (Dilaudid)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="N3" value="40">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Schedule II Pharmaceutical Narcotic"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="N4" value="41">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Schedule II Pharmaceutical Non Narcotic"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="N5" value="42">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Schedule III Narcotic"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="N6" value="43">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Benzodiazepine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="N7" value="44">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="All Other Pharmaceutical Controlled Substances"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="N8" value="45">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Oxycodone"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="N9" value="46">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Hydrocodone"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="R1" value="47">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Palladone"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="S1" value="48">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Steroid (pharmaceutical)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="S2" value="49">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Steroid (clandestine)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="Z1" value="50">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="No Specific Drug"/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="DrugCategoryCodeSimpleTypeObject"
+      instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="DrugCategoryCodeSimpleType:Object"/>
+      <details key="baseType" value="DrugCategoryCodeSimpleType"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DrugCategoryCodeType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A data type for a kind of substance by which a person is intoxicated."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="DrugCategoryCodeType"/>
+      <details key="kind" value="simple"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//DrugCategoryCodeSimpleType"
+        unsettable="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value=":0"/>
+        <details key="kind" value="simple"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//ID"
+        iD="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="id"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metadata" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREFS">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="metadata"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREF">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="ref"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="relationshipMetadata" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREFS">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="relationshipMetadata"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anyAttribute" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attributeWildcard"/>
+        <details key="wildcards" value="urn:us:gov:ic:ism urn:us:gov:ic:ntk"/>
+        <details key="name" value=":5"/>
+        <details key="processing" value="lax"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DrugCodeSimpleType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A data type for drug codes."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="DrugCodeSimpleType"/>
+    </eAnnotations>
+    <eLiterals name="_1100" literal="1100">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Amphetamine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1105" value="1" literal="1105">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Methamphetamine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1205" value="2" literal="1205">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Lisdexamfetamine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1228" value="3" literal="1228">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Benzphetamine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1230" value="4" literal="1230">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Cathine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1235" value="5" literal="1235">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Cathinone"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1237" value="6" literal="1237">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Methcathinone"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1248" value="7" literal="1248">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Mephedrone (4-Methyl-N-methylcathinone)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1405" value="8" literal="1405">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Stimulant compounds previously excepted"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1475" value="9" literal="1475">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="N-Ethylamphetamine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1480" value="10" literal="1480">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="N,N-Dimethylamphetamine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1485" value="11" literal="1485">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Pyrovalerone"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1503" value="12" literal="1503">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Fenethylline"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1530" value="13" literal="1530">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Pemoline"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1575" value="14" literal="1575">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Fenproporex"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1580" value="15" literal="1580">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Mefenorex"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1585" value="16" literal="1585">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Aminorex"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1590" value="17" literal="1590">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="4-Methylaminorex (cis isomer)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1605" value="18" literal="1605">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Mazindol"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1610" value="19" literal="1610">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Diethylpropion"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1615" value="20" literal="1615">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Phendimetrazine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1631" value="21" literal="1631">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Phenmetrazine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1635" value="22" literal="1635">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SPA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1640" value="23" literal="1640">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Phentermine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1645" value="24" literal="1645">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Chlorphentermine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1647" value="25" literal="1647">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Clortermine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1670" value="26" literal="1670">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Dexfenfluramine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1675" value="28" literal="1675">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Sibutramine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1680" value="29" literal="1680">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Modafinil"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1724" value="30" literal="1724">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Methylphenidate"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1750" value="31" literal="1750">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Pipradrol"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_1760" value="32" literal="1760">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Fencamfamin"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2010" value="33" literal="2010">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gamma Hydroxybutyric Acid"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2012" value="34" literal="2012">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gamma Hydroxybutyric Acid preparations"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2020" value="35" literal="2020">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Embutramide"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2100" value="36" literal="2100">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Aprobarbital"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2125" value="45" literal="2125">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Amobarbital"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2126" value="46" literal="2126">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Amobarbital &amp; noncontrolled active ingred."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2138" value="48" literal="2138">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Fospropofol"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2145" value="49" literal="2145">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Barbital"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2250" value="50" literal="2250">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Methylphenobarbital (mephobarbital)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2264" value="51" literal="2264">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Methohexital"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2270" value="52" literal="2270">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Pentobarbital"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2271" value="53" literal="2271">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Pentobarbital &amp; noncontrolled active ingred."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2285" value="55" literal="2285">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Phenobarbital"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2315" value="56" literal="2315">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Secobarbital"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2316" value="57" literal="2316">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Secobarbital &amp; noncontrolled active ingred"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2460" value="59" literal="2460">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Chloral betaine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2465" value="60" literal="2465">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Chloral hydrate"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2467" value="61" literal="2467">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Dichloralphenazone"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2510" value="62" literal="2510">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Chlorhexadol"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2540" value="63" literal="2540">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ethchlorvynol"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2545" value="64" literal="2545">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ethinamate"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2550" value="65" literal="2550">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Glutethimide"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2565" value="66" literal="2565">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Methaqualone"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2572" value="67" literal="2572">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Mecloqualone"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2575" value="68" literal="2575">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Methyprylon"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2585" value="69" literal="2585">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Paraldehyde"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2591" value="70" literal="2591">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Petrichloral"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2600" value="71" literal="2600">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Sulfondiethylmethane"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2605" value="72" literal="2605">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Sulfonethylmethane"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2610" value="73" literal="2610">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Sulfonmethane"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2737" value="74" literal="2737">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Clonazepam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2744" value="75" literal="2744">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Chlordiazepoxide"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2746" value="76" literal="2746">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Lacosamide"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2748" value="77" literal="2748">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Bromazepam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2749" value="78" literal="2749">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Camazepam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2751" value="79" literal="2751">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Clobazam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2752" value="80" literal="2752">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Clotiazepam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2753" value="81" literal="2753">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Cloxazolam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2754" value="82" literal="2754">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Delorazepam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2756" value="83" literal="2756">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Estazolam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2758" value="84" literal="2758">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ethyl loflazepate"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2759" value="85" literal="2759">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Fludiazepam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2762" value="86" literal="2762">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Halazepam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2763" value="87" literal="2763">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Flunitrazepam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2764" value="88" literal="2764">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Prazepam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2765" value="89" literal="2765">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Diazepam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2767" value="90" literal="2767">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Flurazepam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2768" value="91" literal="2768">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Clorazepate"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2771" value="92" literal="2771">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Haloxazolam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2772" value="93" literal="2772">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ketazolam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2773" value="94" literal="2773">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Loprazolam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2774" value="95" literal="2774">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Lormetazepam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2779" value="96" literal="2779">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ezogabine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2781" value="97" literal="2781">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Zaleplon"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2782" value="98" literal="2782">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Pregabalin"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2783" value="99" literal="2783">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Zolpidem"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2784" value="100" literal="2784">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Zopiclone"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2800" value="101" literal="2800">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Mebutamate"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2820" value="102" literal="2820">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Meprobamate"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2834" value="103" literal="2834">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Nitrazepam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2835" value="104" literal="2835">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Oxazepam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2836" value="105" literal="2836">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Medazepam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2837" value="106" literal="2837">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Nimetazepam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2838" value="107" literal="2838">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Nordiazepam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2839" value="108" literal="2839">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Oxazolam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2881" value="109" literal="2881">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Quazepam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2882" value="110" literal="2882">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Alprazolam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2883" value="111" literal="2883">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Pinazepam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2884" value="112" literal="2884">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Midazolam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2885" value="113" literal="2885">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Lorazepam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2886" value="114" literal="2886">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Tetrazepam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2887" value="115" literal="2887">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Triazolam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_2925" value="116" literal="2925">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Temazepam"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_4000" value="117" literal="4000">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="13Beta-ethyl-17beta-hydroxygon-4-en-3-one"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_6250" value="179" literal="6250">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="JWH-250 (1-Pentyl-3-(2-methoxyphenylacetyl) indole)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7008" value="180" literal="7008">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SR-18 (Also known as RCS-8) (1-Cyclohexylethyl-3-(2methoxyphenylacetyl) indole)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7019" value="181" literal="7019">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="JWH-019 (1-Hexyl-3-(1-naphthoyl)indole)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7081" value="182" literal="7081">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="JWH-081 (1-Pentyl-3-(1-(4-methoxynaphthoyl) indole)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7104" value="183" literal="7104">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SR-19 (Also known as RCS-4) (1-Pentyl-3-[(4methoxy)-benzoyl] indole"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7118" value="184" literal="7118">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="JWH-018 (also known as AM678) (1-Pentyl-3-(1naphthoyl)indole)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7122" value="185" literal="7122">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="JWH-122 (1-Pentyl-3-(4-methyl-1-naphthoyl) indole)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7173" value="186" literal="7173">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="JWH-073 (1-Butyl-3-(1-naphthoyl)indole)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7200" value="187" literal="7200">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="JWH-200 (1-[2-(4-Morpholinyl)ethyl]-3-(1naphthoyl)indole)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7201" value="188" literal="7201">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="AM-2201 (1-(5-Fluoropentyl)-3-(1-naphthoyl) indole)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7203" value="189" literal="7203">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="JWH-203 (1-Pentyl-3-(2-chlorophenylacetyl) indole)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7249" value="190" literal="7249">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Alpha-ethyltryptamine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7260" value="191" literal="7260">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ibogaine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7285" value="192" literal="7285">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ketamine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7295" value="193" literal="7295">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Tiletamine &amp; Zolazepam Combination Product"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7297" value="194" literal="7297">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="CP-47497 (5-(1,1-Dimethylheptyl)-2-[(1R,3S)-3-hydroxycyclohexyl-phenol)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7298" value="195" literal="7298">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="CP-47497 C8 Homologue (5-(1,1-Dimethyloctyl)-2-[(1R,3S)3-hydroxycyclohexyl-phenol)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7300" value="196" literal="7300">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Lysergic acid"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7310" value="197" literal="7310">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Lysergic acid amide"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7315" value="198" literal="7315">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Lysergic acid diethylamide"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7348" value="199" literal="7348">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="2C-T-7 (2,5-Dimethoxy-4-(n)-propylthiophenethylamine)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7360" value="200" literal="7360">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Marihuana"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7369" value="201" literal="7369">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Dronabinol (synthetic) in sesame oil in soft gelatin capsule as approved by FDA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7370" value="202" literal="7370">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Tetrahydrocannabinols"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7374" value="203" literal="7374">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Parahexyl"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7379" value="204" literal="7379">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Nabilone"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7381" value="205" literal="7381">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Mescaline"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7385" value="206" literal="7385">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="2C-T-2 (2-(4-Ethylthio-2,5-dimethoxyphenyl) ethanamine)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7390" value="207" literal="7390">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="3,4,5-Trimethoxyamphetamine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7391" value="208" literal="7391">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="4-Bromo-2,5-dimethoxyamphetamine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7392" value="209" literal="7392">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="4-Bromo-2,5-dimethoxyphenethylamine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7395" value="210" literal="7395">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="4-Methyl-2,5-dimethoxyamphetamine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7396" value="211" literal="7396">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="2,5-Dimethoxyamphetamine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7398" value="212" literal="7398">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="JWH-398 (1-Pentyl-3-(4-chloro-1-naphthoyl) indole"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7399" value="213" literal="7399">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="2,5-Dimethoxy-4-ethylamphetamine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7400" value="214" literal="7400">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="3,4-Methylenedioxyamphetamine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7401" value="215" literal="7401">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="5-Methoxy-3,4-methylenedioxyamphetamine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7402" value="216" literal="7402">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="N-Hydroxy-3,4-methylenedioxyamphetamine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7404" value="217" literal="7404">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="3,4-Methylenedioxy-N-ethylamphetamine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7405" value="218" literal="7405">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="3,4-Methylenedioxymethamphetamine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7411" value="219" literal="7411">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="4-Methoxyamphetamine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7415" value="220" literal="7415">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Peyote"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7431" value="221" literal="7431">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="5-Methoxy-N-N-dimethyltryptamine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7432" value="222" literal="7432">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Alpha-methyltryptamine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7433" value="223" literal="7433">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Bufotenine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7434" value="224" literal="7434">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Diethyltryptamine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7435" value="225" literal="7435">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Dimethyltryptamine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7437" value="226" literal="7437">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Psilocybin"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7438" value="227" literal="7438">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Psilocyn"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7439" value="228" literal="7439">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="5-Methoxy-N,N-diisopropyltryptamine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7455" value="229" literal="7455">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="N-Ethyl-1-phenylcyclohexylamine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7458" value="230" literal="7458">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="1-(1-Phenylcyclohexyl)pyrrolidine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7460" value="231" literal="7460">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="1-Phenylcyclohexylamine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7470" value="232" literal="7470">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="1-[1-(2-Thienyl)cyclohexyl]piperidine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7471" value="233" literal="7471">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Phencyclidine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7473" value="234" literal="7473">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="1-[1-(2-Thienyl)cyclohexyl]pyrrolidine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7482" value="235" literal="7482">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="N-Ethyl-3-piperidyl benzilate"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7484" value="236" literal="7484">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="N-Methyl-3-piperidyl benzilate"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7493" value="237" literal="7493">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="N-Benzylpiperazine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7508" value="238" literal="7508">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="2C-D (2-(2,5-Dimethoxy-4-methylphenyl) ethanamine)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7509" value="239" literal="7509">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="2C-E (2-(2,5-Dimethoxy-4-ethylphenyl) ethanamine)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7517" value="240" literal="7517">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="2C-H (2-(2,5-Dimethoxyphenyl) ethanamine)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7518" value="241" literal="7518">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="2C-I (2-(4-Iodo-2,5-dimethoxyphenyl) ethanamine)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7519" value="242" literal="7519">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="2C-C (2-(4-Chloro-2,5-dimethoxyphenyl) ethanamine)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7521" value="243" literal="7521">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="2C-N (2-(2,5-Dimethoxy-4-nitro-phenyl) ethanamine)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7524" value="244" literal="7524">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="2C-P (2-(2,5-Dimethoxy-4-(n)-propylphenyl) ethanamine)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7532" value="245" literal="7532">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="2C-T-4 (2-(4-Isopropylthio)-2,5-dimethoxyphenyl) ethanamine)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7535" value="246" literal="7535">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MDPV (3,4-Methylenedioxypyrovalerone)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7540" value="247" literal="7540">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Methylone (3,4-Methylenedioxy-N-methylcathinone)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_7694" value="248" literal="7694">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="AM-694 (1-(5-Fluoropentyl)-3-(2-iodobenzoyl) indole)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_8192" value="249" literal="8192">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Carisoprodol"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_8333" value="250" literal="8333">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="4-Anilino-N-phenethyl-4-piperidine (ANPP)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_8501" value="251" literal="8501">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Phenylacetone"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_8603" value="252" literal="8603">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="1-Piperidinocyclohexanecarbonitrile"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9010" value="253" literal="9010">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Alphaprodine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9020" value="254" literal="9020">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Anileridine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9040" value="255" literal="9040">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Coca Leaves"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9041" value="256" literal="9041">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Cocaine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9050" value="257" literal="9050">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Codeine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9051" value="258" literal="9051">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Acetyldihydrocodeine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9052" value="259" literal="9052">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Benzylmorphine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9053" value="260" literal="9053">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Codeine-N-oxide"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9054" value="261" literal="9054">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Cyprenorphine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9055" value="262" literal="9055">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Desomorphine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9056" value="263" literal="9056">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Etorphine (except HCl)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9059" value="264" literal="9059">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Etorphine HCl"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9064" value="265" literal="9064">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Buprenorphine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9070" value="266" literal="9070">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Codeine methylbromide"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9120" value="267" literal="9120">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Dihydrocodeine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9143" value="268" literal="9143">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Oxycodone"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9145" value="269" literal="9145">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Dihydromorphine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9150" value="270" literal="9150">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Hydromorphone"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9167" value="271" literal="9167">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Difenoxin 1 mg/25 ug AtSO4/du"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9168" value="272" literal="9168">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Difenoxin"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9170" value="273" literal="9170">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Diphenoxylate"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9180" value="274" literal="9180">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Benzoylecgonine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9190" value="276" literal="9190">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ethylmorphine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9193" value="277" literal="9193">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Hydrocodone"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9200" value="278" literal="9200">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Heroin"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9210" value="279" literal="9210">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Levomethorphan"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9220" value="280" literal="9220">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Levorphanol"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9226" value="281" literal="9226">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Isomethadone"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9230" value="282" literal="9230">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Meperidine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9232" value="283" literal="9232">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Meperidine intermediate-A"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9233" value="284" literal="9233">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Meperidine intermediate-B"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9234" value="285" literal="9234">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Meperidine intermediate-C"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9240" value="286" literal="9240">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Metazocine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9250" value="287" literal="9250">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Methadone"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9254" value="288" literal="9254">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Methadone intermediate"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9260" value="289" literal="9260">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Metopon"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9273" value="290" literal="9273">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Dextropropoxyphene, bulk (non-dosage forms)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9278" value="291" literal="9278">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Dextropropoxyphene dosage forms"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9300" value="292" literal="9300">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Morphine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9301" value="293" literal="9301">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Hydromorphinol"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9302" value="294" literal="9302">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Methyldesorphine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9304" value="295" literal="9304">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Methyldihydromorphine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9305" value="296" literal="9305">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Morphine methylbromide"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9306" value="297" literal="9306">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Morphine methylsulfonate"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9307" value="298" literal="9307">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Morphine-N-oxide"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9308" value="299" literal="9308">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Myrophine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9309" value="300" literal="9309">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Nicocodeine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9312" value="301" literal="9312">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Nicomorphine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9313" value="302" literal="9313">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Normorphine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9314" value="303" literal="9314">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Pholcodine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9315" value="304" literal="9315">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Thebacon"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9319" value="305" literal="9319">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Acetorphine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9330" value="306" literal="9330">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Oripavine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9333" value="307" literal="9333">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Thebaine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9334" value="308" literal="9334">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Dihydroetorphine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9335" value="309" literal="9335">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Drotebanol"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9400" value="310" literal="9400">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Nalorphine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9600" value="311" literal="9600">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Opium, raw"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9601" value="312" literal="9601">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Acetylmethadol"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9602" value="313" literal="9602">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Allylprodine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9603" value="314" literal="9603">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Alphacetylmethadol except levo-alphacetylmethadol"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9604" value="315" literal="9604">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Alphameprodine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9605" value="316" literal="9605">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Alphamethadol"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9606" value="317" literal="9606">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Benzethidine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9607" value="318" literal="9607">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Betacetylmethadol"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9608" value="319" literal="9608">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Betameprodine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9609" value="320" literal="9609">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Betamethadol"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9610" value="321" literal="9610">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Opium extracts"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9611" value="322" literal="9611">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Betaprodine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9612" value="323" literal="9612">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Clonitazene"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9613" value="324" literal="9613">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Dextromoramide"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9615" value="325" literal="9615">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Diampromide"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9616" value="326" literal="9616">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Diethylthiambutene"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9617" value="327" literal="9617">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Dimenoxadol"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9618" value="328" literal="9618">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Dimepheptanol"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9619" value="329" literal="9619">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Dimethylthiambutene"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9620" value="330" literal="9620">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Opium fluid extract"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9621" value="331" literal="9621">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Dioxaphetyl butyrate"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9622" value="332" literal="9622">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Dipipanone"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9623" value="333" literal="9623">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ethylmethylthiambutene"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9624" value="334" literal="9624">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Etonitazene"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9625" value="335" literal="9625">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Etoxeridine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9626" value="336" literal="9626">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Furethidine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9627" value="337" literal="9627">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Hydroxypethidine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9628" value="338" literal="9628">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ketobemidone"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9629" value="339" literal="9629">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Levomoramide"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9630" value="340" literal="9630">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Opium tincture"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9631" value="341" literal="9631">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Levophenacylmorphan"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9632" value="342" literal="9632">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Morpheridine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9633" value="343" literal="9633">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Noracymethadol"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9634" value="344" literal="9634">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Norlevorphanol"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9635" value="345" literal="9635">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Normethadone"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9636" value="346" literal="9636">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Norpipanone"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9637" value="347" literal="9637">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Phenadoxone"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9638" value="348" literal="9638">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Phenampromide"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9639" value="349" literal="9639">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Opium, powdered"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9640" value="350" literal="9640">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Opium, granulated"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9641" value="351" literal="9641">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Phenoperidine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9642" value="352" literal="9642">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Piritramide"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9643" value="353" literal="9643">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Proheptazine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9644" value="354" literal="9644">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Properidine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9645" value="355" literal="9645">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Racemoramide"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9646" value="356" literal="9646">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Trimeperidine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9647" value="357" literal="9647">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Phenomorphan"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9648" value="358" literal="9648">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Levo-alphacetylmethadol"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9649" value="359" literal="9649">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Propiram"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9650" value="360" literal="9650">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Opium poppy"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9652" value="362" literal="9652">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Oxymorphone"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9661" value="363" literal="9661">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="1-Methyl-4-phenyl-4-propionoxypiperidine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9663" value="364" literal="9663">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="1-(2-Phenylethyl)-4-phenyl-4-acetoxypiperidine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9670" value="365" literal="9670">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Poppy Straw Concentrate"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9709" value="366" literal="9709">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Pentazocine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9715" value="367" literal="9715">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Phenazocine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9720" value="368" literal="9720">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Butorphanol"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9730" value="369" literal="9730">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Piminodine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9732" value="370" literal="9732">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Racemethorphan"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9733" value="371" literal="9733">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Racemorphan"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9737" value="372" literal="9737">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Alfentanil"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9739" value="373" literal="9739">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Remifentanil"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9740" value="374" literal="9740">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Sufentanil"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9743" value="375" literal="9743">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Carfentanil"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9750" value="376" literal="9750">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Tilidine"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9780" value="377" literal="9780">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Tapentadol"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9800" value="378" literal="9800">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Bezitramide"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9801" value="379" literal="9801">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Fentanyl"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9802" value="380" literal="9802">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Moramide-intermediate"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9803" value="381" literal="9803">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Codeine &amp; isoquinoline alkaloid 90 mg/du"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9804" value="382" literal="9804">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Codeine combination product 90 mg/du"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9805" value="383" literal="9805">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Hydrocodone &amp; isoquinoline alkaloid &lt;15 mg/du"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9806" value="384" literal="9806">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Hydrocodone combination product &lt;15 mg/du"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9807" value="385" literal="9807">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Dihydrocodeine combination product 90 mg/du"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9808" value="386" literal="9808">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ethylmorphine combination product 15 mg/du"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9809" value="387" literal="9809">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Opium combination product 25 mg/du"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9810" value="388" literal="9810">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Morphine combination product/50 mg/(100 ml or 100 gm)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9812" value="389" literal="9812">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Para-Fluorofentanyl"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9813" value="390" literal="9813">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="3-Methylfentanyl"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9814" value="391" literal="9814">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Alpha-methylfentanyl"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9815" value="392" literal="9815">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Acetyl-alpha-methylfentanyl"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9830" value="393" literal="9830">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Beta-hydroxyfentanyl"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9831" value="394" literal="9831">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Beta-hydroxy-3-methylfentanyl"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9832" value="395" literal="9832">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Alpha-methylthiofentanyl"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9833" value="396" literal="9833">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="3-Methylthiofentanyl"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_9835" value="397" literal="9835">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Thiofentanyl"/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="DrugCodeSimpleTypeObject" instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="DrugCodeSimpleType:Object"/>
+      <details key="baseType" value="DrugCodeSimpleType"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DrugCodeType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A data type for drug codes."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="DrugCodeType"/>
+      <details key="kind" value="simple"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//DrugCodeSimpleType"
+        unsettable="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value=":0"/>
+        <details key="kind" value="simple"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//ID"
+        iD="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="id"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metadata" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREFS">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="metadata"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREF">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="ref"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="relationshipMetadata" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREFS">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="relationshipMetadata"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anyAttribute" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attributeWildcard"/>
+        <details key="wildcards" value="urn:us:gov:ic:ism urn:us:gov:ic:ntk"/>
+        <details key="name" value=":5"/>
+        <details key="processing" value="lax"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>

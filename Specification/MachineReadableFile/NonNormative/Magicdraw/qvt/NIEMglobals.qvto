@@ -1,0 +1,158 @@
+//modeltype UML uses 'http://www.omg.org/spec/UML/20110701';
+// platform variants for UML
+//modeltype UML uses 'http://www.eclipse.org/uml2/4.0.0/UML';
+modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+modeltype XSD  uses 'http://www.eclipse.org/xsd/2002/XSD';
+
+transformation NIEMGlobals()
+	;
+	main() {
+	}
+property substitutionGroupAffiliationTag:String='substitutionGroupAffiliation';
+property attributeGroupDefinitionPackageName:String='attributeGroupDefinition';
+property elementDeclarationClassName:String='elementDeclaration';
+property attributeDeclarationClassName:String='attributeDeclaration';
+
+property UMLPrimitiveTypesPackageName:String='PrimitiveTypes';// tjd
+property XMLPrimitiveTypesPackageName:String='XMLPrimitiveTypes';
+property schemaForSchemaNamespace:String='http://www.w3.org/2001/XMLSchema';
+property schemaForSchemaInstanceNamespace:String=schemaForSchemaNamespace+'-instance';
+
+property baseNiemNamespaceNiem2:String='http://niem.gov/niem/';// niem2
+property baseNiemNamespace:String='http://release.niem.gov/niem/';
+// NIEM2
+property appinfo2Namespace:String=baseNiemNamespaceNiem2+'appinfo/2.1'; // niem2; no longer exists in niem3	
+property baseReferenceNiemNamespaceNiem2:String='http://reference.niem.gov/niem/';
+property baseReferenceNiemNamespace:String=baseNiemNamespace;
+property natureURI:String=baseReferenceNiemNamespace+'resource/mpd/lexicon/1.0/nature#';// 
+property structuresSchemaNamespaceNiem2:String='http://niem.gov/niem/structures/2.0';// niem2
+property structuresSchemaNamespace:String=baseNiemNamespace+'structures/3.0/';
+property appinfoNamespaceNiem2:String=baseNiemNamespaceNiem2+'appinfo/2.0';       
+property appinfoNamespace:String=baseNiemNamespace+'appinfo/3.0/';
+//property appinfo2SchemaNamespace:String='http://niem.gov/niem/appinfo/2.1';// no longer exists
+property proxySchemaNamespaceNiem2:String='http://niem.gov/niem/proxy/xsd/2.0';// niem2
+property proxySchemaNamespace:String=baseNiemNamespace+'proxy/xsd/3.0/';
+property niemCoreSchemaNamespace:String=baseNiemNamespace+'niem-core/3.0/';
+//property ansiNistSchemaNamespace:String=baseNiemNamespace+'ansi-nist/3.0/';// no more
+
+
+property LocalTerminologyTargetNamespace:String=baseNiemNamespace+'localTerminology/3.0/';
+property ConformanceTargetNamespace:String=baseNiemNamespace+'conformanceTargets/3.0/';
+property ConformanceTargetsAttributeName:String='conformanceTargets';
+
+
+
+property purposeURINiem2:String=baseReferenceNiemNamespaceNiem2+'resource/mpd/lexicon/1.0/purpose#';// niem2
+property purposeURI:String=baseNiemNamespace+'specification/naming-and-design-rules/3.0/#';// now conformance targets
+
+property purposeExchangeSchema:String='exchange-schema';
+
+property purposeReferenceSchemaURI:String=purposeURI+'ReferenceSchemaDocument';
+
+// remaining are unknown
+property purposeExchangeSchemaURI:String=purposeURI+purposeExchangeSchema;
+property purposeConstraintSchemaURI:String=purposeURI+'constraint-schema';
+property purposeExtensionSchemaURI:String=purposeURI+'extension-schema';
+property purposeSubsetSchemaURI:String=purposeURI+'subset-schema';
+property purposeBusinessRules:String=purposeURI+'business-rules';
+
+property purposeExchangeSchemaSetURI:String=purposeURI+'exchange-schema-set';
+property purposeExtensionSchemaSetURI:String=purposeURI+'extension-schema-set';
+property purposeSubsetSchemaSetURI:String=purposeURI+'subset-schema-set';
+property purposeReferenceSchemaSetURI:String=purposeURI+'reference-schema-set';
+property purposeConstraintSchemaSetURI:String=purposeURI+'constraint-schema-set';
+
+property purposeMasterDocumentURI:String=purposeURI+'master-document';
+property purposeChangelogURI:String=purposeURI+'changelog';
+property purposeSample_instanceURI:String=purposeURI+'sample-instance';
+
+property purposeCatalogURI:String=purposeURI+'catalog';
+property purposeTransformationURI:String=purposeURI+'transformation';
+property purposeDisplayURI:String=purposeURI+'display';
+property purposeSchemaURI:String=purposeURI+'schema';
+property purposeSampleInstanceURI:String=purposeURI+'sample-instance';
+property purposeWebServiceURI:String=purposeURI+'web-service';
+
+
+property natureFilesetURI:String=natureURI+'file-set';
+property natureWsdlURI:String=natureURI+'wsdl';
+property natureZipURI:String=natureURI+'zip';
+property natureGifURI:String=natureURI+'gif';
+property natureXsltURI:String=natureURI+'xslt';
+property natureXsdURI:String=natureURI+'xsd';
+property natureDocURI:String=natureURI+'doc';
+property natureTxtURI:String=natureURI+'txt';
+property natureXmlURI:String=natureURI+'xml';
+
+property provisioningMpdStereotypeName:String='ModelPackageDescription';
+property packageCodeLiteralEnumeration:UML::Enumeration=null;
+property defaultPackageCodeLiteral:UML::EnumerationLiteral=null;
+property defaultPackageCodeName:String='iepd';
+property provisioningNdrSchemaStereotypeName:String='Namespace';
+property propertyHolderStereotypeName:String='PropertyHolder';
+property logicalProfileName:String='NIEM_PIM_Profile';
+property structureProfileName:String='NIEM_Common_Profile';
+property niemXsdProfileName:String='NIEM_PSM_Profile';
+property provisioningProfileBaseName:String='Model_Package_Description';
+property provisioningProfileName:String=provisioningProfileBaseName+'_Profile';
+property modelGroupDefinitionPackageName:String='modelGroupDefinition';
+//property NIEMBaseTypeObject:String='Object'; // not NIEM 3
+//property NIEMBaseTypeAssociation:String='Association';// not NIEM 3
+
+
+property provisioningProfile:UML::Profile=null; // Model_Package_Description_Profile
+property logicalProfile:UML::Profile=null; // NIEM_PIM_Profile
+property structureProfile:UML::Profile=null; // NIEM_Common_Profile
+property niemXsdProfile:UML::Profile=null; // NIEM_PSM_Profile
+property NIEMSchemaStereotype:UML::Stereotype=null;
+
+property prompdStereotype:UML::Stereotype=null;
+property NIEMModelPackageDescriptionRelationshipStereotype:UML::Stereotype=null;
+
+property NIEMPropertyHolderStereotype:UML::Stereotype=null;
+property NIEMTypeStereotype:UML::Stereotype=null;
+
+property NIEMReferencesStereotype:UML::Stereotype=null;
+property NIEMChoiceStereotype:UML::Stereotype=null;
+
+property NIEMReferenceNameStereotype:UML::Stereotype=null;
+property appliesToStereotype:UML::Stereotype=null;
+property NIEMRoleOfStereotype:UML::Stereotype=null;
+property NIEMAugmentationStereotype:UML::Stereotype=null;
+property NIEMMetadataStereotype:UML::Stereotype=null;
+property NIEMAssociationStereotype:UML::Stereotype=null;
+property NIEMDescriptionStereotype:UML::Stereotype=null;
+property NIEMSimpleTypeStereotype:UML::Stereotype=null;
+property NIEMLocalVocabularyStereotype:UML::Stereotype=null;
+property NIEMLocalTermStereotype:UML::Stereotype=null;
+
+
+property NIEMRoleStereotype:UML::Stereotype=null;
+property NIEMAugmentsStereotype:UML::Stereotype=null;
+property NIEMInformationModelStereotype:UML::Stereotype=null;
+property NIEMAdapterStereotype:UML::Stereotype=null;
+property NIEMUnionTypeStereotype:UML::Stereotype=null;
+property NIEMUnionOfStereotype:UML::Stereotype=null;
+property NIEMListTypeStereotype:UML::Stereotype=null;
+
+property NIEMObjectTypeStereotype:UML::Stereotype=null;
+property NIEMModelPackageDescriptionFileStereotype:UML::Stereotype=null;
+property NIEMModelPackageDescriptionFileSetStereotype:UML::Stereotype=null;
+property NIEMAnyPropertyStereotype:UML::Stereotype=null;
+property NIEMPropertyStereotype:UML::Stereotype=null;
+property NIEMAugmentationApplicationStereotype:UML::Stereotype=null;
+property NIEMMetadataApplicationStereotype:UML::Stereotype=null;
+property NIEMRestrictionStereotype:UML::Stereotype=null;
+property		NIEMSimpleContentStereotype:UML::Stereotype=null;
+//property NIEMSequenceIdStereotype:UML::Stereotype=null;// not in niem 3
+property NIEMRepresentationRestrictionStereotype:UML::Stereotype=null;
+property NIEMDeclarationStereotype:UML::Stereotype=null;
+ property umlXmlLibrary:UML::Model=null; // the NIEM XML Type library
+ 
+ query String::isProxySchemaNamespace():Boolean=
+ 	(self=proxySchemaNamespace) or (self=proxySchemaNamespaceNiem2);
+ query String::isStructuresSchemaNamespace():Boolean=
+ 	(self=structuresSchemaNamespace) or (self=structuresSchemaNamespaceNiem2);
+ query String::isAppinfoNamespace():Boolean=
+ 	(self=appinfoNamespace) or (self=appinfoNamespaceNiem2);
+	

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="_0" nsURI="http://release.niem.gov/niem/codes/canada_post/3.0/"
+    nsPrefix="_0">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+    <details key="documentation" value="Province codes for Canada.&#xA;Publication: Canada Post Addressing Guidelines; &#xA;Date: 14 Jan 2013;   &#xA;http://www.canadapost.ca/tools/pg/manual/PGaddress-e.asp#1380608"/>
+  </eAnnotations>
+  <eAnnotations source="http://release.niem.gov/niem/conformanceTargets/3.0/">
+    <details key="conformanceTargets" value="http://reference.niem.gov/niem/specification/naming-and-design-rules/3.0/#ReferenceSchemaDocument"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EEnum" name="CanadianProvinceCodeSimpleType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A data type for provinces in Canada."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="CanadianProvinceCodeSimpleType"/>
+    </eAnnotations>
+    <eLiterals name="AB">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Alberta"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BC" value="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="British Columbia"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MB" value="2">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Manitoba"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NB" value="3">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="New Brunswick"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NL" value="4">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Newfoundland and Labrador"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NS" value="5">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Nova Scotia"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NT" value="6">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Northwest Territories"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NU" value="7">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Nunavut"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ON" value="8">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ontario"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PE" value="9">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Prince Edward Island"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="QC" value="10">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Québec"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SK" value="11">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Saskatchewan"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="YT" value="12">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Yukon"/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="CanadianProvinceCodeSimpleTypeObject"
+      instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="CanadianProvinceCodeSimpleType:Object"/>
+      <details key="baseType" value="CanadianProvinceCodeSimpleType"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CanadianProvinceCodeType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A data type for provinces in Canada."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="CanadianProvinceCodeType"/>
+      <details key="kind" value="simple"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//CanadianProvinceCodeSimpleType"
+        unsettable="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value=":0"/>
+        <details key="kind" value="simple"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//ID"
+        iD="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="id"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metadata" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREFS">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="metadata"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREF">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="ref"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="relationshipMetadata" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREFS">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="relationshipMetadata"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anyAttribute" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attributeWildcard"/>
+        <details key="wildcards" value="urn:us:gov:ic:ism urn:us:gov:ic:ntk"/>
+        <details key="name" value=":5"/>
+        <details key="processing" value="lax"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>

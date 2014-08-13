@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="_0" nsURI="http://release.niem.gov/niem/codes/hl7/3.0/" nsPrefix="_0">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+    <details key="documentation" value="Source: Health (HL-7); &#xA;Publication: Religion-HL7 Table 0006_VD; &#xA;Date: 19 Jul 2004;   http://ushik.ahrq.gov/dr.ui.drConceptualDomain_View?System=mdr&amp;ConceptualDomainID=74288000&amp;ViewDownFile=yes&amp;DownFile=Co"/>
+  </eAnnotations>
+  <eAnnotations source="http://release.niem.gov/niem/conformanceTargets/3.0/">
+    <details key="conformanceTargets" value="http://reference.niem.gov/niem/specification/naming-and-design-rules/3.0/#ReferenceSchemaDocument"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EEnum" name="ReligionCodeSimpleType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A data type for a religion to which a person can subscribe or believe; a categorization of spiritual beliefs."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ReligionCodeSimpleType"/>
+    </eAnnotations>
+    <eLiterals name="ABC">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: American Baptist Church"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AGN" value="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Agnostic"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AME" value="2">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: African Methodist Episcopal Zion"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AMT" value="3">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: African Methodist Episcopal"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ANG" value="4">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Anglican"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AOG" value="5">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Assembly of God"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ATH" value="6">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Atheist"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BAH" value="7">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Baha'i"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BAP" value="8">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Baptist"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BMA" value="9">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Buddhist: Mahayana"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BOT" value="10">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Buddhist: Other"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BTA" value="11">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Buddhist: Tantrayana"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BTH" value="12">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Buddhist: Theravada"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BUD" value="13">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Buddhist"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CAT" value="14">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Roman Catholic"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CFR" value="15">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Chinese Folk Religionist"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CHR" value="16">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CHS" value="17">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Christian Science"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CMA" value="18">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Christian Missionary Alliance"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CNF" value="19">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Confucian"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="COC" value="20">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Church of Christ"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="COG" value="21">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Church of God"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="COI" value="22">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Church of God in Christ"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="COL" value="23">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Congregational"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="COM" value="24">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Community"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="COP" value="25">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Other Pentecostal"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="COT" value="26">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Other"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CRR" value="27">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Christian Reformed"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="EOT" value="28">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Eastern Orthodox"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="EPI" value="29">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Episcopalian"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ERL" value="30">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ethnic Religionist"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="EVC" value="31">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Evangelical Church"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="FRQ" value="32">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Friends"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="FWB" value="33">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Free Will Baptist"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GRE" value="34">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Greek Orthodox"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="HIN" value="35">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Hindu"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="HOT" value="36">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Hindu: Other"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="HSH" value="37">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Hindu: Shaivites"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="HVA" value="38">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Hindu: Vaishnavites"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="JAI" value="39">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Jain"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="JCO" value="40">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Jewish: Conservative"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="JEW" value="41">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Jewish"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="JOR" value="42">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Jewish: Orthodox"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="JOT" value="43">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Jewish: Other"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="JRC" value="44">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Jewish: Reconstructionist"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="JRF" value="45">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Jewish: Reform"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="JRN" value="46">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Jewish: Renewal"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="JWN" value="47">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Jehovah's Witness"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="LMS" value="48">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Lutheran Missouri Synod"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="LUT" value="49">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Lutheran"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MEN" value="50">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Mennonite"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MET" value="51">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Methodist"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MOM" value="52">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Latter-day Saints"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MOS" value="53">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Muslim"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MOT" value="54">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Muslim: Other"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MSH" value="55">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Muslim: Shiite"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MSU" value="56">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Muslim: Sunni"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NAM" value="57">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Native American"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NAZ" value="58">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Church of the Nazarene"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NOE" value="59">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Nonreligious"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NRL" value="60">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="New Religionist"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ORT" value="61">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Orthodox"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="OTH" value="62">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Other"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PEN" value="63">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Pentecostal"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PRC" value="64">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Other Protestant"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PRE" value="65">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Presbyterian"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PRO" value="66">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Protestant"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="QUA" value="67">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Friends"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="REC" value="68">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Reformed Church"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="REO" value="69">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Reorganized Church of Jesus Christ-LDS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SAA" value="70">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Salvation Army"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SEV" value="71">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Seventh Day Adventist"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SHN" value="72">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Shintoist"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SIK" value="73">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Sikh"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SOU" value="74">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Southern Baptist"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SPI" value="75">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Spiritist"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="UCC" value="76">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: United Church of Christ"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="UMD" value="77">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: United Methodist"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="UNI" value="78">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Unitarian"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="UNU" value="79">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Unitarian Universalist"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="VAR" value="80">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Unknown"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="WES" value="81">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Wesleyan"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="WMC" value="82">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Christian: Wesleyan Methodist"/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="ReligionCodeSimpleTypeObject" instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ReligionCodeSimpleType:Object"/>
+      <details key="baseType" value="ReligionCodeSimpleType"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReligionCodeType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A data type for a religion to which a person can subscribe or believe; a categorization of spiritual beliefs."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ReligionCodeType"/>
+      <details key="kind" value="simple"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//ReligionCodeSimpleType"
+        unsettable="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value=":0"/>
+        <details key="kind" value="simple"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//ID"
+        iD="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="id"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metadata" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREFS">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="metadata"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREF">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="ref"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="relationshipMetadata" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREFS">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="relationshipMetadata"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anyAttribute" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attributeWildcard"/>
+        <details key="wildcards" value="urn:us:gov:ic:ism urn:us:gov:ic:ntk"/>
+        <details key="name" value=":5"/>
+        <details key="processing" value="lax"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>

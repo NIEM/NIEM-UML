@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="_0" nsURI="http://release.niem.gov/niem/codes/usps_states/3.0/"
+    nsPrefix="_0">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+    <details key="documentation" value="Source: U.S. Postal Service (USPS); &#xA;Publication: Official USPS Abbreviations, Appendix B; &#xA;Date: 2012;   &#xA;http://pe.usps.com/text/pub28/28apb.htm"/>
+  </eAnnotations>
+  <eAnnotations source="http://release.niem.gov/niem/conformanceTargets/3.0/">
+    <details key="conformanceTargets" value="http://reference.niem.gov/niem/specification/naming-and-design-rules/3.0/#ReferenceSchemaDocument"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EEnum" name="USStateCodeSimpleType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A data type for states."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="USStateCodeSimpleType"/>
+    </eAnnotations>
+    <eLiterals name="AA">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Armed Forces Americas (except Canada)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AE" value="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Armed Forces Europe, the Middle East, and Canada"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AK" value="2">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="ALASKA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AP" value="3">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Armed Forces Pacific"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AR" value="4">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="ARKANSAS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AS" value="5">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="AMERICAN SAMOA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AZ" value="6">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="ARIZONA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CA" value="7">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="CALIFORNIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CO" value="8">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="COLORADO"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CT" value="9">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="CONNECTICUT"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="DC" value="10">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="DISTRICT OF COLUMBIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="DE" value="11">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="DELAWARE"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="FL" value="12">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="FLORIDA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="FM" value="13">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="FEDERATED STATES OF MICRONESIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GA" value="14">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="GEORGIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GU" value="15">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="GUAM GU"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="HI" value="16">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="HAWAII"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="IA" value="17">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="IOWA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ID" value="18">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="IDAHO"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="IL" value="19">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="ILLINOIS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="IN" value="20">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="INDIANA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="KS" value="21">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="KANSAS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="KY" value="22">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="KENTUCKY"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="LA" value="23">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="LOUISIANA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MA" value="24">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MASSACHUSETTS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MD" value="25">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MARYLAND"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ME" value="26">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MAINE"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MH" value="27">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MARSHALL ISLANDS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MI" value="28">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MICHIGAN"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MN" value="29">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MINNESOTA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MO" value="30">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MISSOURI"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MP" value="31">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="NORTHERN MARIANA ISLANDS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MS" value="32">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MISSISSIPPI"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MT" value="33">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MONTANA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NC" value="34">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="NORTH CAROLINA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ND" value="35">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="NORTH DAKOTA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NE" value="36">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="NEBRASKA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NH" value="37">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="NEW HAMPSHIRE"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NJ" value="38">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="NEW JERSEY"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NM" value="39">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="NEW MEXICO"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NV" value="40">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="NEVADA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NY" value="41">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="NEW YORK"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="OH" value="42">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="OHIO"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="OK" value="43">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="OKLAHOMA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="OR" value="44">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="OREGON"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PA" value="45">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="PENNSYLVANIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PR" value="46">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="PUERTO RICO"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PW" value="47">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="PALAU"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="RI" value="48">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="RHODE ISLAND"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SC" value="49">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SOUTH CAROLINA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SD" value="50">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SOUTH DAKOTA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="TN" value="51">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="TENNESSEE"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="TX" value="52">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="TEXAS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="UT" value="53">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="UTAH"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="VA" value="54">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="VIRGINIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="VI" value="55">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="VIRGIN ISLANDS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="VT" value="56">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="VERMONT"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="WA" value="57">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="WASHINGTON"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="WI" value="58">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="WISCONSIN"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="WV" value="59">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="WEST VIRGINIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="WY" value="60">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="WYOMING"/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="USStateCodeSimpleTypeObject" instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="USStateCodeSimpleType:Object"/>
+      <details key="baseType" value="USStateCodeSimpleType"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="USStateCodeType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A data type for states."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="USStateCodeType"/>
+      <details key="kind" value="simple"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//USStateCodeSimpleType"
+        unsettable="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value=":0"/>
+        <details key="kind" value="simple"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//ID"
+        iD="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="id"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metadata" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREFS">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="metadata"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREF">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="ref"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="relationshipMetadata" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREFS">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="relationshipMetadata"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anyAttribute" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attributeWildcard"/>
+        <details key="wildcards" value="urn:us:gov:ic:ism urn:us:gov:ic:ntk"/>
+        <details key="name" value=":5"/>
+        <details key="processing" value="lax"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>

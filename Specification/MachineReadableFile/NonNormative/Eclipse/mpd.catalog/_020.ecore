@@ -1,0 +1,989 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="_0" nsURI="http://release.niem.gov/niem/codes/iso_4217/3.0/"
+    nsPrefix="_0">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+    <details key="documentation" value="Source: International Standards Organization (ISO); &#xA;Publication: Codes for the representation of currencies and funds; &#xA;Version: ISO 4217:2008; &#xA;Date: 30 Jun 2008; &#xA;http://www.iso.org/iso/en/prods-services/popstds/currencycodeslist.html"/>
+  </eAnnotations>
+  <eAnnotations source="http://release.niem.gov/niem/conformanceTargets/3.0/">
+    <details key="conformanceTargets" value="http://reference.niem.gov/niem/specification/naming-and-design-rules/3.0/#ReferenceSchemaDocument"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EEnum" name="CurrencyCodeSimpleType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A data type for a currency that qualifies a monetary amount."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="CurrencyCodeSimpleType"/>
+    </eAnnotations>
+    <eLiterals name="AED">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="UAE Dirham"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AFN" value="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Afghani"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ALL" value="2">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Lek"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AMD" value="3">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Armenian Dram"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ANG" value="4">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Netherlands Antillean Guilder"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AOA" value="5">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Kwanza"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ARS" value="6">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Argentine Peso"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AUD" value="7">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Australian Dollar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AWG" value="8">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Aruban Florin"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AZN" value="9">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Azerbaijanian Manat"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BAM" value="10">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Convertible Mark"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BBD" value="11">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Barbados Dollar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BDT" value="12">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Taka"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BGN" value="13">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Bulgarian Lev"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BHD" value="14">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Bahraini Dinar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BIF" value="15">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Burundi Franc"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BMD" value="16">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Bermudian Dollar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BND" value="17">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Brunei Dollar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BOB" value="18">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Boliviano"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BOV" value="19">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Mvdol"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BRL" value="20">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Brazilian Real"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BSD" value="21">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Bahamian Dollar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BTN" value="22">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ngultrum"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BWP" value="23">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Pula"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BYR" value="24">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Belarussian Ruble"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BZD" value="25">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Belize Dollar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CAD" value="26">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Canadian Dollar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CDF" value="27">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Congolese Franc"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CHE" value="28">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="WIR Euro"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CHF" value="29">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Swiss Franc"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CHW" value="30">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="WIR Franc"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CLF" value="31">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Unidades de fomento"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CLP" value="32">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Chilean Peso"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CNY" value="33">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Yuan Renminbi"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="COP" value="34">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Colombian Peso"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="COU" value="35">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Unidad de Valor Real"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CRC" value="36">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Costa Rican Colon"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CUC" value="37">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Peso Convertible"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CUP" value="38">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Cuban Peso"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CVE" value="39">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Cape Verde Escudo"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CZK" value="40">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Czech Koruna"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="DJF" value="41">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Djibouti Franc"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="DKK" value="42">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Danish Krone"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="DOP" value="43">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Dominican Peso"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="DZD" value="44">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Algerian Dinar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="EGP" value="45">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Egyptian Pound"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ERN" value="46">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Nakfa"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ETB" value="47">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ethiopian Birr"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="EUR" value="48">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Euro"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="FJD" value="49">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Fiji Dollar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="FKP" value="50">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Falkland Islands Pound"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GBP" value="51">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Pound Sterling"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GEL" value="52">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Lari"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GHS" value="53">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ghana Cedi"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GIP" value="54">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gibraltar Pound"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GMD" value="55">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Dalasi"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GNF" value="56">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Guinea Franc"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GTQ" value="57">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Quetzal"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GYD" value="58">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Guyana Dollar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="HKD" value="59">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Hong Kong Dollar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="HNL" value="60">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Lempira"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="HRK" value="61">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Croatian Kuna"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="HTG" value="62">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gourde"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="HUF" value="63">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Forint"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="IDR" value="64">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Rupiah"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ILS" value="65">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="New Israeli Sheqel"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="INR" value="66">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Indian Rupee"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="IQD" value="67">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Iraqi Dinar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="IRR" value="68">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Iranian Rial"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ISK" value="69">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Iceland Krona"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="JMD" value="70">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Jamaican Dollar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="JOD" value="71">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Jordanian Dinar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="JPY" value="72">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Yen"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="KES" value="73">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Kenyan Shilling"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="KGS" value="74">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Som"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="KHR" value="75">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Riel"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="KMF" value="76">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Comoro Franc"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="KPW" value="77">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="North Korean Won"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="KRW" value="78">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Won"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="KWD" value="79">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Kuwaiti Dinar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="KYD" value="80">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Cayman Islands Dollar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="KZT" value="81">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Tenge"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="LAK" value="82">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Kip"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="LBP" value="83">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Lebanese Pound"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="LKR" value="84">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Sri Lanka Rupee"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="LRD" value="85">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Liberian Dollar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="LSL" value="86">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Loti"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="LTL" value="87">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Lithuanian Litas"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="LVL" value="88">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Latvian Lats"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="LYD" value="89">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Libyan Dinar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MAD" value="90">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Moroccan Dirham"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MDL" value="91">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Moldovan Leu"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MGA" value="92">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Malagasy Ariary"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MKD" value="93">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Denar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MMK" value="94">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Kyat"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MNT" value="95">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Tugrik"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MOP" value="96">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Pataca"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MRO" value="97">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ouguiya"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MUR" value="98">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Mauritius Rupee"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MVR" value="99">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Rufiyaa"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MWK" value="100">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Kwacha"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MXN" value="101">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Mexican Peso"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MXV" value="102">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Mexican Unidad de Inversion (UDI)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MYR" value="103">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Malaysian Ringgit"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MZN" value="104">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Mozambique Metical"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NAD" value="105">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Namibia Dollar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NGN" value="106">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Naira"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NIO" value="107">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Cordoba Oro"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NOK" value="108">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Norwegian Krone"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NPR" value="109">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Nepalese Rupee"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NZD" value="110">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="New Zealand Dollar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="OMR" value="111">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Rial Omani"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PAB" value="112">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Balboa"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PEN" value="113">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Nuevo Sol"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PGK" value="114">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Kina"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PHP" value="115">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Philippine Peso"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PKR" value="116">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Pakistan Rupee"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PLN" value="117">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Zloty"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PYG" value="118">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Guarani"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="QAR" value="119">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Qatari Rial"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="RON" value="120">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="New Romanian Leu"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="RSD" value="121">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Serbian Dinar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="RUB" value="122">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Russian Ruble"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="RWF" value="123">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Rwanda Franc"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SAR" value="124">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Saudi Riyal"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SBD" value="125">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Solomon Islands Dollar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SCR" value="126">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Seychelles Rupee"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SDG" value="127">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Sudanese Pound"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SEK" value="128">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Swedish Krona"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SGD" value="129">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Singapore Dollar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SHP" value="130">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Saint Helena Pound"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SLL" value="131">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Leone"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SOS" value="132">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Somali Shilling"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SRD" value="133">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Surinam Dollar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SSP" value="134">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="South Sudanese Pound"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="STD" value="135">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Dobra"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SVC" value="136">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="El Salvador Colon"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SYP" value="137">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Syrian Pound"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SZL" value="138">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Lilangeni"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="THB" value="139">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Baht"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="TJS" value="140">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Somoni"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="TMT" value="141">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Turkmenistan New Manat"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="TND" value="142">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Tunisian Dinar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="TOP" value="143">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Pa'anga"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="TRY" value="144">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Turkish Lira"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="TTD" value="145">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Trinidad and Tobago Dollar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="TWD" value="146">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="New Taiwan Dollar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="TZS" value="147">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Tanzanian Shilling"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="UAH" value="148">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Hryvnia"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="UGX" value="149">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Uganda Shilling"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="USD" value="150">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="US Dollar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="USN" value="151">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="US Dollar (Next day)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="USS" value="152">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="US Dollar (Same day)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="UYI" value="153">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Uruguay Peso en Unidades Indexadas (URUIURUI)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="UYU" value="154">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Peso Uruguayo"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="UZS" value="155">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Uzbekistan Sum"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="VEF" value="156">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Bolivar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="VND" value="157">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Dong"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="VUV" value="158">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Vatu"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="WST" value="159">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Tala"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="XAF" value="160">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="CFA Franc BEAC"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="XAG" value="161">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Silver"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="XAU" value="162">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gold"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="XBA" value="163">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Bond Markets Unit European Composite Unit (EURCO)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="XBB" value="164">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Bond Markets Unit European Monetary Unit (E.M.U.-6)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="XBC" value="165">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Bond Markets Unit European Unit of Account 9 (E.U.A.-9)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="XBD" value="166">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Bond Markets Unit European Unit of Account 17 (E.U.A.-17)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="XCD" value="167">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="East Caribbean Dollar"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="XDR" value="168">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SDR (Special Drawing Right)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="XFU" value="169">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="UIC-Franc"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="XOF" value="170">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="CFA Franc BCEAO"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="XPD" value="171">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Palladium"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="XPF" value="172">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="CFP Franc"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="XPT" value="173">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Platinum"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="XSU" value="174">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Sucre"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="XTS" value="175">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Codes specifically reserved for testing purposes"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="XUA" value="176">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="ADB Unit of Account"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="XXX" value="177">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The codes assigned for transactions where no currency is involved"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="YER" value="178">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Yemeni Rial"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ZAR" value="179">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Rand"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ZMW" value="180">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Zambian Kwacha"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ZWL" value="181">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Zimbabwe Dollar"/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="CurrencyCodeSimpleTypeObject" instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="CurrencyCodeSimpleType:Object"/>
+      <details key="baseType" value="CurrencyCodeSimpleType"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CurrencyCodeType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A data type for a currency that qualifies a monetary amount."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="CurrencyCodeType"/>
+      <details key="kind" value="simple"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//CurrencyCodeSimpleType"
+        unsettable="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value=":0"/>
+        <details key="kind" value="simple"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//ID"
+        iD="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="id"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metadata" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREFS">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="metadata"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREF">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="ref"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="relationshipMetadata" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREFS">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="relationshipMetadata"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anyAttribute" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attributeWildcard"/>
+        <details key="wildcards" value="urn:us:gov:ic:ism urn:us:gov:ic:ntk"/>
+        <details key="name" value=":5"/>
+        <details key="processing" value="lax"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>
