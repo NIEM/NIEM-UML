@@ -1,0 +1,42 @@
+/*
+NIEM UML 
+Copyright � 2011, ModelDriven.org and Tom Digre, all rights reserved worldwide.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0-standalone.html.
+
+There are also commercial licenses available for this software.
+Contact ModelDriven.org for more information.
+*/
+
+import NIEMpim2psm;
+import NIEMpsm2mpd;
+import NIEMmpd2psm;
+//import pim2psm;
+//import psm2pim;
+
+import mpd2uml;
+import uml2mpd;
+import uml2xsd;
+import xsd2uml;
+
+modeltype ECORE  uses 'http://www.eclipse.org/emf/2002/Ecore';
+
+
+transformation composite(inout blackboxAdapter:ECORE);
+	main() {
+		blackboxHook:=blackboxAdapter.objectsOfType(ECORE::EPackage)->asSequence()->first();
+		var annotation:ECORE::EAnnotation=new ECORE::EAnnotation('qvt');
+		annotation._references+=this.oclAsType(ECORE::EObject);
+		blackboxHook.eAnnotations+=annotation;
+	}

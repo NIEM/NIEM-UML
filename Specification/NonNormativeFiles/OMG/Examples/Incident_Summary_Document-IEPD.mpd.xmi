@@ -1,0 +1,851 @@
+<?xml version="1.0" encoding="UTF-8"?><xmi:XMI xmlns:uml="http://www.omg.org/spec/UML/20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:StandardProfileL3="http://www.omg.org/spec/UML/20110701/StandardProfileL3" xmlns:NIEM_PSM_Profile="http://www.omg.org/spec/NIEM-UML/20130801/NIEM_PSM_Profile" xmlns:NIEM_Common_Profile="http://www.omg.org/spec/NIEM-UML/20130801/NIEM_Common_Profile" xmlns:NIEM_PIM_Profile="http://www.omg.org/spec/NIEM-UML/20130801/NIEM_PIM_Profile" xmlns:Model_Package_Description_Profile="http://www.omg.org/spec/NIEM-UML/20130801/Model_Package_Description_Profile" xmlns:StandardProfileL2="http://www.omg.org/spec/UML/20110701/StandardProfileL2">
+   <xmi:Documentation>
+      <xmi:exporter>MagicDraw Clean XMI Exporter</xmi:exporter>
+      <xmi:exporterVersion>17.0.5</xmi:exporterVersion>
+   </xmi:Documentation>
+   <uml:Model xmi:type="uml:Model" xmi:id="eee_1045467100313_135436_1" name="Data">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_17_0_5_1_2aa0151_1406131963779_586610_3362" body="Author:tom.&#xA;Created:7/23/14 12:12 PM.&#xA;Title:.&#xA;Comment:.&#xA;">
+         <annotatedElement xmi:idref="eee_1045467100313_135436_1"/>
+      </ownedComment>
+      <packagedElement xmi:type="uml:Model" xmi:id="_RI9C4BKEEeSKnL0WW6YsKw" name="Incident_Summary_Document">
+         <packagedElement xmi:type="uml:Component" xmi:id="_RI9p8xKEEeSKnL0WW6YsKw" name="Incident_Summary_Document">
+            <packagedElement xmi:type="uml:Usage" xmi:id="_RI_fJxKEEeSKnL0WW6YsKw">
+               <client xmi:idref="_RI9p8xKEEeSKnL0WW6YsKw"/>
+               <supplier xmi:idref="_RI9p9RKEEeSKnL0WW6YsKw"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Usage" xmi:id="_RJAtRxKEEeSKnL0WW6YsKw">
+               <client xmi:idref="_RI9p8xKEEeSKnL0WW6YsKw"/>
+               <supplier xmi:idref="_RJAGNRKEEeSKnL0WW6YsKw"/>
+            </packagedElement>
+         </packagedElement>
+         <packagedElement xmi:type="uml:Package" xmi:id="_RI9p9BKEEeSKnL0WW6YsKw" name="xsd">
+            <packagedElement xmi:type="uml:Package" xmi:id="_RI9p9RKEEeSKnL0WW6YsKw" name="extensions">
+               <elementImport xmi:type="uml:ElementImport" xmi:id="_RI-4GhKEEeSKnL0WW6YsKw" importedElement="_RI9p-hKEEeSKnL0WW6YsKw"/>
+               <elementImport xmi:type="uml:ElementImport" xmi:id="_RI-4GxKEEeSKnL0WW6YsKw" importedElement="_RI-RAxKEEeSKnL0WW6YsKw"/>
+               <packagedElement xmi:type="uml:Class" xmi:id="_RUHxEBKEEeSKnL0WW6YsKw" name="NamespaceElementPropertyHolder">
+                  <ownedAttribute xmi:type="uml:Property" xmi:id="_RUK0YhKEEeSKnL0WW6YsKw" name="IncidentVictimAssociation" aggregation="shared" type="_RUK0axKEEeSKnL0WW6YsKw">
+                     <ownedComment xmi:type="uml:Comment" xmi:id="_RUK0YxKEEeSKnL0WW6YsKw" body="A data type for a relationship between an incident and a person who is a victim as a result of the incident.">
+                        <annotatedElement xmi:idref="_RUK0YhKEEeSKnL0WW6YsKw"/>
+                     </ownedComment>
+                     <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RUK0ZBKEEeSKnL0WW6YsKw"/>
+                     <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RUK0ZRKEEeSKnL0WW6YsKw" value="*"/>
+                  </ownedAttribute>
+                  <ownedAttribute xmi:type="uml:Property" xmi:id="_RUN3thKEEeSKnL0WW6YsKw" name="IncidentWitnessAssociation" aggregation="shared" type="_RUOewxKEEeSKnL0WW6YsKw">
+                     <ownedComment xmi:type="uml:Comment" xmi:id="_RUN3txKEEeSKnL0WW6YsKw" body=" a relationship between an incident and a person who was a witness to the incident.">
+                        <annotatedElement xmi:idref="_RUN3thKEEeSKnL0WW6YsKw"/>
+                     </ownedComment>
+                     <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RUN3uBKEEeSKnL0WW6YsKw"/>
+                     <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RUN3uRKEEeSKnL0WW6YsKw" value="*"/>
+                  </ownedAttribute>
+                  <ownedAttribute xmi:type="uml:Property" xmi:id="_RUHxERKEEeSKnL0WW6YsKw" name="Incident" aggregation="shared" type="_RUIYKBKEEeSKnL0WW6YsKw">
+                     <ownedComment xmi:type="uml:Comment" xmi:id="_RUHxEhKEEeSKnL0WW6YsKw" body="An incident.">
+                        <annotatedElement xmi:idref="_RUHxERKEEeSKnL0WW6YsKw"/>
+                     </ownedComment>
+                     <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RUIYIBKEEeSKnL0WW6YsKw"/>
+                     <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RUIYIRKEEeSKnL0WW6YsKw" value="*"/>
+                  </ownedAttribute>
+               </packagedElement>
+               <packagedElement xmi:type="uml:Class" xmi:id="_RUIYKBKEEeSKnL0WW6YsKw" name="IncidentType">
+                  <ownedComment xmi:type="uml:Comment" xmi:id="_RUI_MBKEEeSKnL0WW6YsKw" body="A data type for an incident.">
+                     <annotatedElement xmi:idref="_RUIYKBKEEeSKnL0WW6YsKw"/>
+                  </ownedComment>
+                  <generalization xmi:type="uml:Generalization" xmi:id="_RUI_MRKEEeSKnL0WW6YsKw" general="_RUBqcRKEEeSKnL0WW6YsKw"/>
+               </packagedElement>
+               <packagedElement xmi:type="uml:Class" xmi:id="_RUK0axKEEeSKnL0WW6YsKw" name="IncidentVictimAssociationType">
+                  <ownedComment xmi:type="uml:Comment" xmi:id="_RULbcBKEEeSKnL0WW6YsKw" body="A data type for a relationship between an incident and a person who is a victim as a result of the incident.">
+                     <annotatedElement xmi:idref="_RUK0axKEEeSKnL0WW6YsKw"/>
+                  </ownedComment>
+                  <generalization xmi:type="uml:Generalization" xmi:id="_RULbcRKEEeSKnL0WW6YsKw" general="_RUEGsxKEEeSKnL0WW6YsKw"/>
+                  <ownedAttribute xmi:type="uml:Property" xmi:id="_RULbchKEEeSKnL0WW6YsKw" name="Incident" aggregation="shared" type="_RUBqcRKEEeSKnL0WW6YsKw" association="_RUMCghKEEeSKnL0WW6YsKw">
+                     <ownedComment xmi:type="uml:Comment" xmi:id="_RULbcxKEEeSKnL0WW6YsKw" body="An occurrence or an event that may require a response.">
+                        <annotatedElement xmi:idref="_RULbchKEEeSKnL0WW6YsKw"/>
+                     </ownedComment>
+                  </ownedAttribute>
+                  <ownedAttribute xmi:type="uml:Property" xmi:id="_RUMChhKEEeSKnL0WW6YsKw" name="Victim" aggregation="shared" type="_RJMTfBKEEeSKnL0WW6YsKw" association="_RUMplxKEEeSKnL0WW6YsKw">
+                     <ownedComment xmi:type="uml:Comment" xmi:id="_RUMChxKEEeSKnL0WW6YsKw" body="Details about a person, organization, or other entity who suffers injury, loss, or death as a result of an incident.">
+                        <annotatedElement xmi:idref="_RUMChhKEEeSKnL0WW6YsKw"/>
+                     </ownedComment>
+                  </ownedAttribute>
+               </packagedElement>
+               <packagedElement xmi:type="uml:Realization" xmi:id="_RUMCgBKEEeSKnL0WW6YsKw">
+                  <client xmi:idref="_RULbchKEEeSKnL0WW6YsKw"/>
+                  <supplier xmi:idref="_RUEGthKEEeSKnL0WW6YsKw"/>
+               </packagedElement>
+               <packagedElement xmi:type="uml:Association" xmi:id="_RUMCghKEEeSKnL0WW6YsKw">
+                  <memberEnd xmi:idref="_RULbchKEEeSKnL0WW6YsKw"/>
+                  <memberEnd xmi:idref="_RUMCgxKEEeSKnL0WW6YsKw"/>
+                  <ownedEnd xmi:type="uml:Property" xmi:id="_RUMCgxKEEeSKnL0WW6YsKw" isUnique="false" type="_RUK0axKEEeSKnL0WW6YsKw" association="_RUMCghKEEeSKnL0WW6YsKw">
+                     <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RUMChBKEEeSKnL0WW6YsKw"/>
+                     <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RUMChRKEEeSKnL0WW6YsKw" value="*"/>
+                  </ownedEnd>
+               </packagedElement>
+               <packagedElement xmi:type="uml:Realization" xmi:id="_RUMplRKEEeSKnL0WW6YsKw">
+                  <client xmi:idref="_RUMChhKEEeSKnL0WW6YsKw"/>
+                  <supplier xmi:idref="_RJMTcxKEEeSKnL0WW6YsKw"/>
+               </packagedElement>
+               <packagedElement xmi:type="uml:Association" xmi:id="_RUMplxKEEeSKnL0WW6YsKw">
+                  <memberEnd xmi:idref="_RUMChhKEEeSKnL0WW6YsKw"/>
+                  <memberEnd xmi:idref="_RUMpmBKEEeSKnL0WW6YsKw"/>
+                  <ownedEnd xmi:type="uml:Property" xmi:id="_RUMpmBKEEeSKnL0WW6YsKw" isUnique="false" type="_RUK0axKEEeSKnL0WW6YsKw" association="_RUMplxKEEeSKnL0WW6YsKw">
+                     <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RUMpmRKEEeSKnL0WW6YsKw"/>
+                     <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RUNQoBKEEeSKnL0WW6YsKw" value="*"/>
+                  </ownedEnd>
+               </packagedElement>
+               <packagedElement xmi:type="uml:Class" xmi:id="_RUOewxKEEeSKnL0WW6YsKw" name="IncidentWitnessAssociationType">
+                  <ownedComment xmi:type="uml:Comment" xmi:id="_RUOexBKEEeSKnL0WW6YsKw" body="A data type for a relationship between an incident and a person who was a witness to the incident.">
+                     <annotatedElement xmi:idref="_RUOewxKEEeSKnL0WW6YsKw"/>
+                  </ownedComment>
+                  <generalization xmi:type="uml:Generalization" xmi:id="_RUOexRKEEeSKnL0WW6YsKw" general="_RUEGsxKEEeSKnL0WW6YsKw"/>
+                  <ownedAttribute xmi:type="uml:Property" xmi:id="_RUOexhKEEeSKnL0WW6YsKw" name="Incident" aggregation="shared" type="_RUBqcRKEEeSKnL0WW6YsKw" association="_RUPF1hKEEeSKnL0WW6YsKw">
+                     <ownedComment xmi:type="uml:Comment" xmi:id="_RUOexxKEEeSKnL0WW6YsKw" body="An occurrence or an event that may require a response.">
+                        <annotatedElement xmi:idref="_RUOexhKEEeSKnL0WW6YsKw"/>
+                     </ownedComment>
+                  </ownedAttribute>
+                  <ownedAttribute xmi:type="uml:Property" xmi:id="_RUPs4RKEEeSKnL0WW6YsKw" name="Witness" aggregation="shared" type="_RJCicRKEEeSKnL0WW6YsKw" association="_RUQT9xKEEeSKnL0WW6YsKw">
+                     <ownedComment xmi:type="uml:Comment" xmi:id="_RUPs4hKEEeSKnL0WW6YsKw" body="Details about a person who has observed an incident.">
+                        <annotatedElement xmi:idref="_RUPs4RKEEeSKnL0WW6YsKw"/>
+                     </ownedComment>
+                  </ownedAttribute>
+               </packagedElement>
+               <packagedElement xmi:type="uml:Realization" xmi:id="_RUPF1BKEEeSKnL0WW6YsKw">
+                  <client xmi:idref="_RUOexhKEEeSKnL0WW6YsKw"/>
+                  <supplier xmi:idref="_RUEGthKEEeSKnL0WW6YsKw"/>
+               </packagedElement>
+               <packagedElement xmi:type="uml:Association" xmi:id="_RUPF1hKEEeSKnL0WW6YsKw">
+                  <memberEnd xmi:idref="_RUOexhKEEeSKnL0WW6YsKw"/>
+                  <memberEnd xmi:idref="_RUPF1xKEEeSKnL0WW6YsKw"/>
+                  <ownedEnd xmi:type="uml:Property" xmi:id="_RUPF1xKEEeSKnL0WW6YsKw" isUnique="false" type="_RUOewxKEEeSKnL0WW6YsKw" association="_RUPF1hKEEeSKnL0WW6YsKw">
+                     <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RUPF2BKEEeSKnL0WW6YsKw"/>
+                     <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RUPs4BKEEeSKnL0WW6YsKw" value="*"/>
+                  </ownedEnd>
+               </packagedElement>
+               <packagedElement xmi:type="uml:Realization" xmi:id="_RUQT9RKEEeSKnL0WW6YsKw">
+                  <client xmi:idref="_RUPs4RKEEeSKnL0WW6YsKw"/>
+                  <supplier xmi:idref="_RJB7YBKEEeSKnL0WW6YsKw"/>
+               </packagedElement>
+               <packagedElement xmi:type="uml:Association" xmi:id="_RUQT9xKEEeSKnL0WW6YsKw">
+                  <memberEnd xmi:idref="_RUPs4RKEEeSKnL0WW6YsKw"/>
+                  <memberEnd xmi:idref="_RUQT-BKEEeSKnL0WW6YsKw"/>
+                  <ownedEnd xmi:type="uml:Property" xmi:id="_RUQT-BKEEeSKnL0WW6YsKw" isUnique="false" type="_RUOewxKEEeSKnL0WW6YsKw" association="_RUQT9xKEEeSKnL0WW6YsKw">
+                     <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RUQT-RKEEeSKnL0WW6YsKw"/>
+                     <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RUQT-hKEEeSKnL0WW6YsKw" value="*"/>
+                  </ownedEnd>
+               </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_RI9p9hKEEeSKnL0WW6YsKw" name="NIEM_2.1">
+               <packagedElement xmi:type="uml:Package" xmi:id="_RI9p9xKEEeSKnL0WW6YsKw" name="domains">
+                  <packagedElement xmi:type="uml:Package" xmi:id="_RI9p-BKEEeSKnL0WW6YsKw" name="jxdm">
+                     <packagedElement xmi:type="uml:Package" xmi:id="_RI9p-RKEEeSKnL0WW6YsKw" name="4.1">
+                        <packagedElement xmi:type="uml:Package" xmi:id="_RI9p-hKEEeSKnL0WW6YsKw" name="jxdm">
+                           <ownedComment xmi:type="uml:Comment" xmi:id="_RI-RABKEEeSKnL0WW6YsKw" body="Justice">
+                              <annotatedElement xmi:idref="_RI9p-hKEEeSKnL0WW6YsKw"/>
+                           </ownedComment>
+                           <elementImport xmi:type="uml:ElementImport" xmi:id="_RI-4EBKEEeSKnL0WW6YsKw" importedElement="_RI-RAxKEEeSKnL0WW6YsKw"/>
+                           <packagedElement xmi:type="uml:Class" xmi:id="_RJBUXBKEEeSKnL0WW6YsKw" name="NamespaceElementPropertyHolder">
+                              <ownedAttribute xmi:type="uml:Property" xmi:id="_RJMTcxKEEeSKnL0WW6YsKw" name="Victim" aggregation="shared" type="_RJMTfBKEEeSKnL0WW6YsKw">
+                                 <ownedComment xmi:type="uml:Comment" xmi:id="_RJMTdBKEEeSKnL0WW6YsKw" body="Details about a person, organization, or other entity who suffers injury, loss, or death as a result of an incident.">
+                                    <annotatedElement xmi:idref="_RJMTcxKEEeSKnL0WW6YsKw"/>
+                                 </ownedComment>
+                                 <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RJMTdRKEEeSKnL0WW6YsKw"/>
+                                 <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RJMTdhKEEeSKnL0WW6YsKw" value="*"/>
+                              </ownedAttribute>
+                              <ownedAttribute xmi:type="uml:Property" xmi:id="_RJB7YBKEEeSKnL0WW6YsKw" name="Witness" aggregation="shared" type="_RJCicRKEEeSKnL0WW6YsKw">
+                                 <ownedComment xmi:type="uml:Comment" xmi:id="_RJB7YRKEEeSKnL0WW6YsKw" body="Details about a person who has observed an incident.">
+                                    <annotatedElement xmi:idref="_RJB7YBKEEeSKnL0WW6YsKw"/>
+                                 </ownedComment>
+                                 <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RJB7YhKEEeSKnL0WW6YsKw"/>
+                                 <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RJB7YxKEEeSKnL0WW6YsKw" value="*"/>
+                              </ownedAttribute>
+                              <ownedAttribute xmi:type="uml:Property" xmi:id="_RJNhkRKEEeSKnL0WW6YsKw" name="IncidentAugmentation" aggregation="shared" type="_RJNhmBKEEeSKnL0WW6YsKw">
+                                 <ownedComment xmi:type="uml:Comment" xmi:id="_RJNhkhKEEeSKnL0WW6YsKw" body="Additional information about an incident.">
+                                    <annotatedElement xmi:idref="_RJNhkRKEEeSKnL0WW6YsKw"/>
+                                 </ownedComment>
+                                 <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RJjf0BKEEeSKnL0WW6YsKw"/>
+                                 <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RJgcgBKEEeSKnL0WW6YsKw" value="*"/>
+                              </ownedAttribute>
+                           </packagedElement>
+                           <packagedElement xmi:type="uml:Class" xmi:id="_RJCicRKEEeSKnL0WW6YsKw" name="WitnessType">
+                              <ownedComment xmi:type="uml:Comment" xmi:id="_RJCichKEEeSKnL0WW6YsKw" body="A data type for a person who has observed an incident.">
+                                 <annotatedElement xmi:idref="_RJCicRKEEeSKnL0WW6YsKw"/>
+                              </ownedComment>
+                              <ownedAttribute xmi:type="uml:Property" xmi:id="_RJCicxKEEeSKnL0WW6YsKw" name="RoleOfPerson" aggregation="shared" type="_RJDwkxKEEeSKnL0WW6YsKw" association="_RJLsbRKEEeSKnL0WW6YsKw">
+                                 <ownedComment xmi:type="uml:Comment" xmi:id="_RJCidBKEEeSKnL0WW6YsKw" body="A person of whom the role object is a function.">
+                                    <annotatedElement xmi:idref="_RJCicxKEEeSKnL0WW6YsKw"/>
+                                 </ownedComment>
+                                 <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RJCidRKEEeSKnL0WW6YsKw"/>
+                                 <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RJCidhKEEeSKnL0WW6YsKw" value="*"/>
+                              </ownedAttribute>
+                           </packagedElement>
+                           <packagedElement xmi:type="uml:Realization" xmi:id="_RJLsaxKEEeSKnL0WW6YsKw">
+                              <client xmi:idref="_RJCicxKEEeSKnL0WW6YsKw"/>
+                              <supplier xmi:idref="_RJDJgxKEEeSKnL0WW6YsKw"/>
+                           </packagedElement>
+                           <packagedElement xmi:type="uml:Association" xmi:id="_RJLsbRKEEeSKnL0WW6YsKw">
+                              <memberEnd xmi:idref="_RJCicxKEEeSKnL0WW6YsKw"/>
+                              <memberEnd xmi:idref="_RJMTcBKEEeSKnL0WW6YsKw"/>
+                              <ownedEnd xmi:type="uml:Property" xmi:id="_RJMTcBKEEeSKnL0WW6YsKw" isUnique="false" type="_RJCicRKEEeSKnL0WW6YsKw" association="_RJLsbRKEEeSKnL0WW6YsKw">
+                                 <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RJMTcRKEEeSKnL0WW6YsKw"/>
+                                 <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RJMTchKEEeSKnL0WW6YsKw" value="*"/>
+                              </ownedEnd>
+                           </packagedElement>
+                           <packagedElement xmi:type="uml:Class" xmi:id="_RJMTfBKEEeSKnL0WW6YsKw" name="VictimType">
+                              <ownedComment xmi:type="uml:Comment" xmi:id="_RJM6gBKEEeSKnL0WW6YsKw" body="A data type for a person who suffers injury, loss, or death as a result of an incident.">
+                                 <annotatedElement xmi:idref="_RJMTfBKEEeSKnL0WW6YsKw"/>
+                              </ownedComment>
+                              <ownedAttribute xmi:type="uml:Property" xmi:id="_RJM6gRKEEeSKnL0WW6YsKw" name="RoleOfPerson" aggregation="shared" type="_RJDwkxKEEeSKnL0WW6YsKw" association="_RJM6jBKEEeSKnL0WW6YsKw">
+                                 <ownedComment xmi:type="uml:Comment" xmi:id="_RJM6ghKEEeSKnL0WW6YsKw" body="A person of whom the role object is a function.">
+                                    <annotatedElement xmi:idref="_RJM6gRKEEeSKnL0WW6YsKw"/>
+                                 </ownedComment>
+                                 <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RJM6gxKEEeSKnL0WW6YsKw"/>
+                                 <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RJM6hBKEEeSKnL0WW6YsKw" value="*"/>
+                              </ownedAttribute>
+                           </packagedElement>
+                           <packagedElement xmi:type="uml:Realization" xmi:id="_RJM6ihKEEeSKnL0WW6YsKw">
+                              <client xmi:idref="_RJM6gRKEEeSKnL0WW6YsKw"/>
+                              <supplier xmi:idref="_RJDJgxKEEeSKnL0WW6YsKw"/>
+                           </packagedElement>
+                           <packagedElement xmi:type="uml:Association" xmi:id="_RJM6jBKEEeSKnL0WW6YsKw">
+                              <memberEnd xmi:idref="_RJM6gRKEEeSKnL0WW6YsKw"/>
+                              <memberEnd xmi:idref="_RJM6jRKEEeSKnL0WW6YsKw"/>
+                              <ownedEnd xmi:type="uml:Property" xmi:id="_RJM6jRKEEeSKnL0WW6YsKw" isUnique="false" type="_RJMTfBKEEeSKnL0WW6YsKw" association="_RJM6jBKEEeSKnL0WW6YsKw">
+                                 <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RJM6jhKEEeSKnL0WW6YsKw"/>
+                                 <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RJNhkBKEEeSKnL0WW6YsKw" value="*"/>
+                              </ownedEnd>
+                           </packagedElement>
+                           <packagedElement xmi:type="uml:Class" xmi:id="_RJNhmBKEEeSKnL0WW6YsKw" name="IncidentAugmentationType">
+                              <ownedComment xmi:type="uml:Comment" xmi:id="_RJNhmRKEEeSKnL0WW6YsKw" body="A data type for additional information about an incident.">
+                                 <annotatedElement xmi:idref="_RJNhmBKEEeSKnL0WW6YsKw"/>
+                              </ownedComment>
+                              <ownedAttribute xmi:type="uml:Property" xmi:id="_RJNhmhKEEeSKnL0WW6YsKw" name="IncidentSubject" aggregation="shared" type="_RJOIqRKEEeSKnL0WW6YsKw" association="_RT_1QhKEEeSKnL0WW6YsKw">
+                                 <ownedComment xmi:type="uml:Comment" xmi:id="_RJNhmxKEEeSKnL0WW6YsKw" body="A person whose actions caused an incident.">
+                                    <annotatedElement xmi:idref="_RJNhmhKEEeSKnL0WW6YsKw"/>
+                                 </ownedComment>
+                              </ownedAttribute>
+                           </packagedElement>
+                           <packagedElement xmi:type="uml:Class" xmi:id="_RJOIqRKEEeSKnL0WW6YsKw" name="SubjectType">
+                              <ownedComment xmi:type="uml:Comment" xmi:id="_RJOIqhKEEeSKnL0WW6YsKw" body="A data type for a person who is involved or suspected of being involved in an incident or criminal activity.">
+                                 <annotatedElement xmi:idref="_RJOIqRKEEeSKnL0WW6YsKw"/>
+                              </ownedComment>
+                              <ownedAttribute xmi:type="uml:Property" xmi:id="_RJOIqxKEEeSKnL0WW6YsKw" name="RoleOfPerson" aggregation="shared" type="_RJDwkxKEEeSKnL0WW6YsKw" association="_RJPWxRKEEeSKnL0WW6YsKw">
+                                 <ownedComment xmi:type="uml:Comment" xmi:id="_RJOIrBKEEeSKnL0WW6YsKw" body="A person of whom the role object is a function.">
+                                    <annotatedElement xmi:idref="_RJOIqxKEEeSKnL0WW6YsKw"/>
+                                 </ownedComment>
+                              </ownedAttribute>
+                              <ownedAttribute xmi:type="uml:Property" xmi:id="_RJPWyRKEEeSKnL0WW6YsKw" name="SubjectArmedIndicator" aggregation="shared">
+                                 <type href="http://www.omg.org/spec/NIEM-UML/20120501/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-boolean"/>
+                                 <ownedComment xmi:type="uml:Comment" xmi:id="_RJPWyhKEEeSKnL0WW6YsKw" body="Indicates if wanted person is armed">
+                                    <annotatedElement xmi:idref="_RJPWyRKEEeSKnL0WW6YsKw"/>
+                                 </ownedComment>
+                              </ownedAttribute>
+                              <ownedAttribute xmi:type="uml:Property" xmi:id="_RJQk4hKEEeSKnL0WW6YsKw" name="SubjectIdentification" aggregation="shared" type="_RJKeQBKEEeSKnL0WW6YsKw" association="_RJRL-RKEEeSKnL0WW6YsKw">
+                                 <ownedComment xmi:type="uml:Comment" xmi:id="_RJQk4xKEEeSKnL0WW6YsKw" body="An assigned number or string that identifies a subject.">
+                                    <annotatedElement xmi:idref="_RJQk4hKEEeSKnL0WW6YsKw"/>
+                                 </ownedComment>
+                              </ownedAttribute>
+                           </packagedElement>
+                           <packagedElement xmi:type="uml:Realization" xmi:id="_RJPWwxKEEeSKnL0WW6YsKw">
+                              <client xmi:idref="_RJOIqxKEEeSKnL0WW6YsKw"/>
+                              <supplier xmi:idref="_RJDJgxKEEeSKnL0WW6YsKw"/>
+                           </packagedElement>
+                           <packagedElement xmi:type="uml:Association" xmi:id="_RJPWxRKEEeSKnL0WW6YsKw">
+                              <memberEnd xmi:idref="_RJOIqxKEEeSKnL0WW6YsKw"/>
+                              <memberEnd xmi:idref="_RJPWxhKEEeSKnL0WW6YsKw"/>
+                              <ownedEnd xmi:type="uml:Property" xmi:id="_RJPWxhKEEeSKnL0WW6YsKw" isUnique="false" type="_RJOIqRKEEeSKnL0WW6YsKw" association="_RJPWxRKEEeSKnL0WW6YsKw">
+                                 <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RJPWxxKEEeSKnL0WW6YsKw"/>
+                                 <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RJPWyBKEEeSKnL0WW6YsKw" value="*"/>
+                              </ownedEnd>
+                           </packagedElement>
+                           <packagedElement xmi:type="uml:Association" xmi:id="_RJRL-RKEEeSKnL0WW6YsKw">
+                              <memberEnd xmi:idref="_RJQk4hKEEeSKnL0WW6YsKw"/>
+                              <memberEnd xmi:idref="_RT-AEBKEEeSKnL0WW6YsKw"/>
+                              <ownedEnd xmi:type="uml:Property" xmi:id="_RT-AEBKEEeSKnL0WW6YsKw" isUnique="false" type="_RJOIqRKEEeSKnL0WW6YsKw" association="_RJRL-RKEEeSKnL0WW6YsKw">
+                                 <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RT_1QBKEEeSKnL0WW6YsKw"/>
+                              </ownedEnd>
+                           </packagedElement>
+                           <packagedElement xmi:type="uml:Association" xmi:id="_RT_1QhKEEeSKnL0WW6YsKw">
+                              <memberEnd xmi:idref="_RJNhmhKEEeSKnL0WW6YsKw"/>
+                              <memberEnd xmi:idref="_RT_1QxKEEeSKnL0WW6YsKw"/>
+                              <ownedEnd xmi:type="uml:Property" xmi:id="_RT_1QxKEEeSKnL0WW6YsKw" isUnique="false" type="_RJNhmBKEEeSKnL0WW6YsKw" association="_RT_1QhKEEeSKnL0WW6YsKw">
+                                 <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RUAcUBKEEeSKnL0WW6YsKw"/>
+                              </ownedEnd>
+                           </packagedElement>
+                           <packagedElement xmi:type="uml:Realization" xmi:id="_FOowiBKFEeSKnL0WW6YsKw">
+                              <client xmi:idref="_RI9p-hKEEeSKnL0WW6YsKw"/>
+                              <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-domains-screening.xmi#_niem-domains-jxdm-5.0-jxdm"/>
+                           </packagedElement>
+                           <packagedElement xmi:type="uml:Realization" xmi:id="_FOowkBKFEeSKnL0WW6YsKw">
+                              <client xmi:idref="_RJOIqRKEEeSKnL0WW6YsKw"/>
+                              <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-domains-screening.xmi#_niem-domains-jxdm-5.0-jxdm-SubjectType"/>
+                           </packagedElement>
+                           <packagedElement xmi:type="uml:Realization" xmi:id="_FOpXkRKFEeSKnL0WW6YsKw">
+                              <client xmi:idref="_RJPWxRKEEeSKnL0WW6YsKw"/>
+                              <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-domains-screening.xmi#_niem-domains-jxdm-5.0-jxdm-packagedElement-590"/>
+                           </packagedElement>
+                           <packagedElement xmi:type="uml:Realization" xmi:id="_FOpXlxKFEeSKnL0WW6YsKw">
+                              <client xmi:idref="_RJRL-RKEEeSKnL0WW6YsKw"/>
+                              <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-domains-screening.xmi#_niem-domains-jxdm-5.0-jxdm-packagedElement-590"/>
+                           </packagedElement>
+                           <packagedElement xmi:type="uml:Realization" xmi:id="_FOpXnRKFEeSKnL0WW6YsKw">
+                              <client xmi:idref="_RJCicRKEEeSKnL0WW6YsKw"/>
+                              <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-domains-screening.xmi#_niem-domains-jxdm-5.0-jxdm-WitnessType"/>
+                           </packagedElement>
+                           <packagedElement xmi:type="uml:Realization" xmi:id="_FOp-phKFEeSKnL0WW6YsKw">
+                              <client xmi:idref="_RJLsbRKEEeSKnL0WW6YsKw"/>
+                              <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-domains-screening.xmi#_niem-domains-jxdm-5.0-jxdm-packagedElement-590"/>
+                           </packagedElement>
+                           <packagedElement xmi:type="uml:Realization" xmi:id="_FOp-rhKFEeSKnL0WW6YsKw">
+                              <client xmi:idref="_RJMTfBKEEeSKnL0WW6YsKw"/>
+                              <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-domains-screening.xmi#_niem-domains-jxdm-5.0-jxdm-VictimType"/>
+                           </packagedElement>
+                           <packagedElement xmi:type="uml:Realization" xmi:id="_FOp-shKFEeSKnL0WW6YsKw">
+                              <client xmi:idref="_RJNhmBKEEeSKnL0WW6YsKw"/>
+                              <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-domains-screening.xmi#_niem-domains-jxdm-5.0-jxdm-IncidentAugmentationType"/>
+                           </packagedElement>
+                           <packagedElement xmi:type="uml:Realization" xmi:id="_FOp-tBKFEeSKnL0WW6YsKw">
+                              <client xmi:idref="_RJM6jBKEEeSKnL0WW6YsKw"/>
+                              <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-domains-screening.xmi#_niem-domains-jxdm-5.0-jxdm-packagedElement-590"/>
+                           </packagedElement>
+                           <packagedElement xmi:type="uml:Realization" xmi:id="_FOqlsRKFEeSKnL0WW6YsKw">
+                              <client xmi:idref="_RT_1QhKEEeSKnL0WW6YsKw"/>
+                              <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-domains-screening.xmi#_niem-domains-jxdm-5.0-jxdm-packagedElement-590"/>
+                           </packagedElement>
+                        </packagedElement>
+                     </packagedElement>
+                  </packagedElement>
+               </packagedElement>
+               <packagedElement xmi:type="uml:Package" xmi:id="_RI-RARKEEeSKnL0WW6YsKw" name="niem-core">
+                  <packagedElement xmi:type="uml:Package" xmi:id="_RI-RAhKEEeSKnL0WW6YsKw" name="2.0">
+                     <packagedElement xmi:type="uml:Package" xmi:id="_RI-RAxKEEeSKnL0WW6YsKw" name="niem-core">
+                        <ownedComment xmi:type="uml:Comment" xmi:id="_RKZNUBKEEeSKnL0WW6YsKw" body="NIEM Core includes both Universal (U) and Common (C) components.  The identities for U and C components in Core are maintained with metadata.">
+                           <annotatedElement xmi:idref="_RI-RAxKEEeSKnL0WW6YsKw"/>
+                        </ownedComment>
+                        <packagedElement xmi:type="uml:Class" xmi:id="_RJDJghKEEeSKnL0WW6YsKw" name="NamespaceElementPropertyHolder">
+                           <ownedAttribute xmi:type="uml:Property" xmi:id="_RUFU1BKEEeSKnL0WW6YsKw" name="Person" aggregation="shared" type="_RJDwkxKEEeSKnL0WW6YsKw">
+                              <ownedComment xmi:type="uml:Comment" xmi:id="_RUFU1RKEEeSKnL0WW6YsKw" body="A human being.">
+                                 <annotatedElement xmi:idref="_RUFU1BKEEeSKnL0WW6YsKw"/>
+                              </ownedComment>
+                              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RUFU1hKEEeSKnL0WW6YsKw"/>
+                              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RUFU1xKEEeSKnL0WW6YsKw" value="*"/>
+                           </ownedAttribute>
+                           <ownedAttribute xmi:type="uml:Property" xmi:id="_RUEGthKEEeSKnL0WW6YsKw" name="Incident" aggregation="shared" type="_RUBqcRKEEeSKnL0WW6YsKw">
+                              <ownedComment xmi:type="uml:Comment" xmi:id="_RUEGtxKEEeSKnL0WW6YsKw" body="An occurrence or an event that may require a response.">
+                                 <annotatedElement xmi:idref="_RUEGthKEEeSKnL0WW6YsKw"/>
+                              </ownedComment>
+                              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RUEGuBKEEeSKnL0WW6YsKw"/>
+                              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RUEtwBKEEeSKnL0WW6YsKw" value="*"/>
+                           </ownedAttribute>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Class" xmi:id="_RJDwkxKEEeSKnL0WW6YsKw" name="PersonType">
+                           <ownedComment xmi:type="uml:Comment" xmi:id="_RJDwlBKEEeSKnL0WW6YsKw" body="A data type for a human being.">
+                              <annotatedElement xmi:idref="_RJDwkxKEEeSKnL0WW6YsKw"/>
+                           </ownedComment>
+                           <ownedAttribute xmi:type="uml:Property" xmi:id="_RJDwlRKEEeSKnL0WW6YsKw" name="PersonBirthDate" aggregation="shared" type="_RJE-sBKEEeSKnL0WW6YsKw" association="_RJGM2RKEEeSKnL0WW6YsKw">
+                              <ownedComment xmi:type="uml:Comment" xmi:id="_RJDwlhKEEeSKnL0WW6YsKw" body="A date a person was born.">
+                                 <annotatedElement xmi:idref="_RJDwlRKEEeSKnL0WW6YsKw"/>
+                              </ownedComment>
+                           </ownedAttribute>
+                           <ownedAttribute xmi:type="uml:Property" xmi:id="_RJGz4xKEEeSKnL0WW6YsKw" name="PersonName" aggregation="shared" type="_RJHa-BKEEeSKnL0WW6YsKw" association="_RJJQJBKEEeSKnL0WW6YsKw">
+                              <ownedComment xmi:type="uml:Comment" xmi:id="_RJGz5BKEEeSKnL0WW6YsKw" body="A combination of names and/or titles by which a person is known.">
+                                 <annotatedElement xmi:idref="_RJGz4xKEEeSKnL0WW6YsKw"/>
+                              </ownedComment>
+                           </ownedAttribute>
+                           <ownedAttribute xmi:type="uml:Property" xmi:id="_RJJQKBKEEeSKnL0WW6YsKw" name="PersonSSNIdentification" aggregation="shared" type="_RJKeQBKEEeSKnL0WW6YsKw" association="_RJLFWhKEEeSKnL0WW6YsKw">
+                              <ownedComment xmi:type="uml:Comment" xmi:id="_RJJQKRKEEeSKnL0WW6YsKw" body="A unique reference to a living person; assigned by the United States Social Security Administration.">
+                                 <annotatedElement xmi:idref="_RJJQKBKEEeSKnL0WW6YsKw"/>
+                              </ownedComment>
+                           </ownedAttribute>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Class" xmi:id="_RJE-sBKEEeSKnL0WW6YsKw" name="DateType">
+                           <ownedComment xmi:type="uml:Comment" xmi:id="_RJE-sRKEEeSKnL0WW6YsKw" body="A data type for a calendar date.">
+                              <annotatedElement xmi:idref="_RJE-sBKEEeSKnL0WW6YsKw"/>
+                           </ownedComment>
+                           <ownedAttribute xmi:type="uml:Property" xmi:id="_RJE-shKEEeSKnL0WW6YsKw" name="DateRepresentation" isReadOnly="true" aggregation="shared" isDerived="true" isDerivedUnion="true">
+                              <ownedComment xmi:type="uml:Comment" xmi:id="_RJE-sxKEEeSKnL0WW6YsKw" body="A representation of a date.">
+                                 <annotatedElement xmi:idref="_RJE-shKEEeSKnL0WW6YsKw"/>
+                              </ownedComment>
+                           </ownedAttribute>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Association" xmi:id="_RJGM2RKEEeSKnL0WW6YsKw">
+                           <memberEnd xmi:idref="_RJDwlRKEEeSKnL0WW6YsKw"/>
+                           <memberEnd xmi:idref="_RJGz4BKEEeSKnL0WW6YsKw"/>
+                           <ownedEnd xmi:type="uml:Property" xmi:id="_RJGz4BKEEeSKnL0WW6YsKw" isUnique="false" type="_RJDwkxKEEeSKnL0WW6YsKw" association="_RJGM2RKEEeSKnL0WW6YsKw">
+                              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RJGz4RKEEeSKnL0WW6YsKw"/>
+                           </ownedEnd>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Class" xmi:id="_RJHa-BKEEeSKnL0WW6YsKw" name="PersonNameType">
+                           <ownedComment xmi:type="uml:Comment" xmi:id="_RJHa-RKEEeSKnL0WW6YsKw" body="A data type for a combination of names and/or titles by which a person is known.">
+                              <annotatedElement xmi:idref="_RJHa-BKEEeSKnL0WW6YsKw"/>
+                           </ownedComment>
+                           <ownedAttribute xmi:type="uml:Property" xmi:id="_RJHa-hKEEeSKnL0WW6YsKw" name="PersonFullName" aggregation="shared" type="_RJIpExKEEeSKnL0WW6YsKw">
+                              <ownedComment xmi:type="uml:Comment" xmi:id="_RJHa-xKEEeSKnL0WW6YsKw" body="A complete name of a person.">
+                                 <annotatedElement xmi:idref="_RJHa-hKEEeSKnL0WW6YsKw"/>
+                              </ownedComment>
+                           </ownedAttribute>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_RJIpExKEEeSKnL0WW6YsKw" name="PersonNameTextType">
+                           <ownedComment xmi:type="uml:Comment" xmi:id="_RJIpFBKEEeSKnL0WW6YsKw" body="A data type for a name by which a person is known, referred, or addressed.">
+                              <annotatedElement xmi:idref="_RJIpExKEEeSKnL0WW6YsKw"/>
+                           </ownedComment>
+                           <generalization xmi:type="uml:Generalization" xmi:id="_RJIpGxKEEeSKnL0WW6YsKw" general="_RJIpFRKEEeSKnL0WW6YsKw"/>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_RJIpFRKEEeSKnL0WW6YsKw" name="ProperNameTextType">
+                           <ownedComment xmi:type="uml:Comment" xmi:id="_RJIpFhKEEeSKnL0WW6YsKw" body="A data type for a word or phrase by which a person or thing is known, referred, or addressed.">
+                              <annotatedElement xmi:idref="_RJIpFRKEEeSKnL0WW6YsKw"/>
+                           </ownedComment>
+                           <generalization xmi:type="uml:Generalization" xmi:id="_RJIpGhKEEeSKnL0WW6YsKw" general="_RJIpFxKEEeSKnL0WW6YsKw"/>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_RJIpFxKEEeSKnL0WW6YsKw" name="TextType">
+                           <ownedComment xmi:type="uml:Comment" xmi:id="_RJIpGBKEEeSKnL0WW6YsKw" body="A data type for a character string.">
+                              <annotatedElement xmi:idref="_RJIpFxKEEeSKnL0WW6YsKw"/>
+                           </ownedComment>
+                           <generalization xmi:type="uml:Generalization" xmi:id="_RJIpGRKEEeSKnL0WW6YsKw">
+                              <general href="http://www.omg.org/spec/NIEM-UML/20120501/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string"/>
+                           </generalization>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Association" xmi:id="_RJJQJBKEEeSKnL0WW6YsKw">
+                           <memberEnd xmi:idref="_RJGz4xKEEeSKnL0WW6YsKw"/>
+                           <memberEnd xmi:idref="_RJJQJRKEEeSKnL0WW6YsKw"/>
+                           <ownedEnd xmi:type="uml:Property" xmi:id="_RJJQJRKEEeSKnL0WW6YsKw" isUnique="false" type="_RJDwkxKEEeSKnL0WW6YsKw" association="_RJJQJBKEEeSKnL0WW6YsKw">
+                              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RJJQJhKEEeSKnL0WW6YsKw"/>
+                           </ownedEnd>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Class" xmi:id="_RJKeQBKEEeSKnL0WW6YsKw" name="IdentificationType">
+                           <ownedComment xmi:type="uml:Comment" xmi:id="_RJKeQRKEEeSKnL0WW6YsKw" body="A data type for a representation of an identity.">
+                              <annotatedElement xmi:idref="_RJKeQBKEEeSKnL0WW6YsKw"/>
+                           </ownedComment>
+                           <ownedAttribute xmi:type="uml:Property" xmi:id="_RJKeQhKEEeSKnL0WW6YsKw" name="IdentificationID" aggregation="shared">
+                              <type href="http://www.omg.org/spec/NIEM-UML/20120501/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string"/>
+                              <ownedComment xmi:type="uml:Comment" xmi:id="_RJKeQxKEEeSKnL0WW6YsKw" body="A value that identifies something.">
+                                 <annotatedElement xmi:idref="_RJKeQhKEEeSKnL0WW6YsKw"/>
+                              </ownedComment>
+                           </ownedAttribute>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Association" xmi:id="_RJLFWhKEEeSKnL0WW6YsKw">
+                           <memberEnd xmi:idref="_RJJQKBKEEeSKnL0WW6YsKw"/>
+                           <memberEnd xmi:idref="_RJLFWxKEEeSKnL0WW6YsKw"/>
+                           <ownedEnd xmi:type="uml:Property" xmi:id="_RJLFWxKEEeSKnL0WW6YsKw" isUnique="false" type="_RJDwkxKEEeSKnL0WW6YsKw" association="_RJLFWhKEEeSKnL0WW6YsKw">
+                              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RJLFXBKEEeSKnL0WW6YsKw"/>
+                           </ownedEnd>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Class" xmi:id="_RUAcUxKEEeSKnL0WW6YsKw" name="ActivityType">
+                           <ownedComment xmi:type="uml:Comment" xmi:id="_RUAcVBKEEeSKnL0WW6YsKw" body="A data type for a single or set of related actions, events, or process steps.">
+                              <annotatedElement xmi:idref="_RUAcUxKEEeSKnL0WW6YsKw"/>
+                           </ownedComment>
+                           <ownedAttribute xmi:type="uml:Property" xmi:id="_RUAcVRKEEeSKnL0WW6YsKw" name="ActivityDateRepresentation" isReadOnly="true" aggregation="shared" isDerived="true" isDerivedUnion="true">
+                              <ownedComment xmi:type="uml:Comment" xmi:id="_RUAcVhKEEeSKnL0WW6YsKw" body="A date an activity occurs.">
+                                 <annotatedElement xmi:idref="_RUAcVRKEEeSKnL0WW6YsKw"/>
+                              </ownedComment>
+                           </ownedAttribute>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Class" xmi:id="_RUBqcRKEEeSKnL0WW6YsKw" name="IncidentType">
+                           <ownedComment xmi:type="uml:Comment" xmi:id="_RUBqchKEEeSKnL0WW6YsKw" body="A data type for an occurrence or an event that may require a response.">
+                              <annotatedElement xmi:idref="_RUBqcRKEEeSKnL0WW6YsKw"/>
+                           </ownedComment>
+                           <generalization xmi:type="uml:Generalization" xmi:id="_RUBqcxKEEeSKnL0WW6YsKw" general="_RUAcUxKEEeSKnL0WW6YsKw"/>
+                           <ownedAttribute xmi:type="uml:Property" xmi:id="_RUBqdBKEEeSKnL0WW6YsKw" name="IncidentLocation" aggregation="shared" type="_RUCRghKEEeSKnL0WW6YsKw" association="_RUDfrBKEEeSKnL0WW6YsKw">
+                              <ownedComment xmi:type="uml:Comment" xmi:id="_RUBqdRKEEeSKnL0WW6YsKw" body="A location where an incident occurred.">
+                                 <annotatedElement xmi:idref="_RUBqdBKEEeSKnL0WW6YsKw"/>
+                              </ownedComment>
+                           </ownedAttribute>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Class" xmi:id="_RUCRghKEEeSKnL0WW6YsKw" name="LocationType">
+                           <ownedComment xmi:type="uml:Comment" xmi:id="_RUCRgxKEEeSKnL0WW6YsKw" body="A data type for a geophysical location.">
+                              <annotatedElement xmi:idref="_RUCRghKEEeSKnL0WW6YsKw"/>
+                           </ownedComment>
+                           <ownedAttribute xmi:type="uml:Property" xmi:id="_RUCRhBKEEeSKnL0WW6YsKw" name="Address" aggregation="shared" type="_RUC4kBKEEeSKnL0WW6YsKw" association="_RUC4mxKEEeSKnL0WW6YsKw">
+                              <ownedComment xmi:type="uml:Comment" xmi:id="_RUCRhRKEEeSKnL0WW6YsKw" body="A geophysical location described by postal information.">
+                                 <annotatedElement xmi:idref="_RUCRhBKEEeSKnL0WW6YsKw"/>
+                              </ownedComment>
+                           </ownedAttribute>
+                           <ownedAttribute xmi:type="uml:Property" xmi:id="_RUDfoxKEEeSKnL0WW6YsKw" name="LocationName" aggregation="shared" type="_RJIpFRKEEeSKnL0WW6YsKw">
+                              <ownedComment xmi:type="uml:Comment" xmi:id="_RUDfpBKEEeSKnL0WW6YsKw" body="A name of a location.">
+                                 <annotatedElement xmi:idref="_RUDfoxKEEeSKnL0WW6YsKw"/>
+                              </ownedComment>
+                           </ownedAttribute>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Class" xmi:id="_RUC4kBKEEeSKnL0WW6YsKw" name="AddressType">
+                           <ownedComment xmi:type="uml:Comment" xmi:id="_RUC4kRKEEeSKnL0WW6YsKw" body="A data type for a geophysical location described by postal information.">
+                              <annotatedElement xmi:idref="_RUC4kBKEEeSKnL0WW6YsKw"/>
+                           </ownedComment>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Association" xmi:id="_RUC4mxKEEeSKnL0WW6YsKw">
+                           <memberEnd xmi:idref="_RUCRhBKEEeSKnL0WW6YsKw"/>
+                           <memberEnd xmi:idref="_RUDfoBKEEeSKnL0WW6YsKw"/>
+                           <ownedEnd xmi:type="uml:Property" xmi:id="_RUDfoBKEEeSKnL0WW6YsKw" isUnique="false" type="_RUCRghKEEeSKnL0WW6YsKw" association="_RUC4mxKEEeSKnL0WW6YsKw">
+                              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RUDfoRKEEeSKnL0WW6YsKw"/>
+                           </ownedEnd>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Association" xmi:id="_RUDfrBKEEeSKnL0WW6YsKw">
+                           <memberEnd xmi:idref="_RUBqdBKEEeSKnL0WW6YsKw"/>
+                           <memberEnd xmi:idref="_RUEGsBKEEeSKnL0WW6YsKw"/>
+                           <ownedEnd xmi:type="uml:Property" xmi:id="_RUEGsBKEEeSKnL0WW6YsKw" isUnique="false" type="_RUBqcRKEEeSKnL0WW6YsKw" association="_RUDfrBKEEeSKnL0WW6YsKw">
+                              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RUEGsRKEEeSKnL0WW6YsKw"/>
+                           </ownedEnd>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Class" xmi:id="_RUEGsxKEEeSKnL0WW6YsKw" name="AssociationType">
+                           <ownedComment xmi:type="uml:Comment" xmi:id="_RUEGtBKEEeSKnL0WW6YsKw" body="A data type for a connection, relationship, or involvement somehow linking people and/or things together.">
+                              <annotatedElement xmi:idref="_RUEGsxKEEeSKnL0WW6YsKw"/>
+                           </ownedComment>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Class" xmi:id="_RURiExKEEeSKnL0WW6YsKw" name="AddressRepresentationPropertyHolder">
+                           <ownedAttribute xmi:type="uml:Property" xmi:id="_RUSJIBKEEeSKnL0WW6YsKw" name="AddressFullText" aggregation="shared" type="_RJIpFxKEEeSKnL0WW6YsKw">
+                              <ownedComment xmi:type="uml:Comment" xmi:id="_RUSJIRKEEeSKnL0WW6YsKw" body="A complete address.">
+                                 <annotatedElement xmi:idref="_RUSJIBKEEeSKnL0WW6YsKw"/>
+                              </ownedComment>
+                              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RUSJJxKEEeSKnL0WW6YsKw"/>
+                              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RUSJKBKEEeSKnL0WW6YsKw" value="*"/>
+                           </ownedAttribute>
+                           <ownedAttribute xmi:type="uml:Property" xmi:id="_FOoJcBKFEeSKnL0WW6YsKw" name="Address" aggregation="shared" type="_RUC4kBKEEeSKnL0WW6YsKw">
+                              <subsettedProperty xmi:idref="_FOowgRKFEeSKnL0WW6YsKw"/>
+                           </ownedAttribute>
+                           <ownedAttribute xmi:type="uml:Property" xmi:id="_FOowgRKFEeSKnL0WW6YsKw" name="LocationAddressAbstract" isReadOnly="true" aggregation="shared" isDerived="true" isDerivedUnion="true">
+                              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FOowghKFEeSKnL0WW6YsKw"/>
+                              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FOowgxKFEeSKnL0WW6YsKw" value="*"/>
+                           </ownedAttribute>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Class" xmi:id="_RUSJKhKEEeSKnL0WW6YsKw" name="ActivityDateRepresentationPropertyHolder">
+                           <ownedAttribute xmi:type="uml:Property" xmi:id="_RUSJKxKEEeSKnL0WW6YsKw" name="ActivityDateRepresentation" isReadOnly="true" aggregation="shared" isDerived="true" isDerivedUnion="true">
+                              <ownedComment xmi:type="uml:Comment" xmi:id="_RUSJLBKEEeSKnL0WW6YsKw" body="A date an activity occurs.">
+                                 <annotatedElement xmi:idref="_RUSJKxKEEeSKnL0WW6YsKw"/>
+                              </ownedComment>
+                              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RUSwMxKEEeSKnL0WW6YsKw"/>
+                              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RUSwNBKEEeSKnL0WW6YsKw" value="*"/>
+                           </ownedAttribute>
+                           <ownedAttribute xmi:type="uml:Property" xmi:id="_RUSwNRKEEeSKnL0WW6YsKw" name="ActivityDate" aggregation="shared" type="_RJE-sBKEEeSKnL0WW6YsKw">
+                              <subsettedProperty xmi:idref="_RUSJKxKEEeSKnL0WW6YsKw"/>
+                              <ownedComment xmi:type="uml:Comment" xmi:id="_RUSwNhKEEeSKnL0WW6YsKw" body="A date of an activity.">
+                                 <annotatedElement xmi:idref="_RUSwNRKEEeSKnL0WW6YsKw"/>
+                              </ownedComment>
+                              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RUSwPBKEEeSKnL0WW6YsKw"/>
+                              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RUSwPRKEEeSKnL0WW6YsKw" value="*"/>
+                           </ownedAttribute>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Class" xmi:id="_RUTXQRKEEeSKnL0WW6YsKw" name="RoleOfPropertyHolder">
+                           <ownedAttribute xmi:type="uml:Property" xmi:id="_RJLsYRKEEeSKnL0WW6YsKw" name="RoleOf" isReadOnly="true" aggregation="shared" isDerived="true" isDerivedUnion="true">
+                              <ownedComment xmi:type="uml:Comment" xmi:id="_RJLsYhKEEeSKnL0WW6YsKw" body="A property of a role object. This specifies the base object, of which the role object is a function.">
+                                 <annotatedElement xmi:idref="_RJLsYRKEEeSKnL0WW6YsKw"/>
+                              </ownedComment>
+                              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RJLsYxKEEeSKnL0WW6YsKw"/>
+                              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RJLsZBKEEeSKnL0WW6YsKw" value="*"/>
+                           </ownedAttribute>
+                           <ownedAttribute xmi:type="uml:Property" xmi:id="_RJDJgxKEEeSKnL0WW6YsKw" name="RoleOfPerson" aggregation="shared" type="_RJDwkxKEEeSKnL0WW6YsKw">
+                              <subsettedProperty xmi:idref="_RJLsYRKEEeSKnL0WW6YsKw"/>
+                              <ownedComment xmi:type="uml:Comment" xmi:id="_RJDJhBKEEeSKnL0WW6YsKw" body="A person of whom the role object is a function.">
+                                 <annotatedElement xmi:idref="_RJDJgxKEEeSKnL0WW6YsKw"/>
+                              </ownedComment>
+                              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RJDJhRKEEeSKnL0WW6YsKw"/>
+                              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RJDJhhKEEeSKnL0WW6YsKw" value="*"/>
+                           </ownedAttribute>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Class" xmi:id="_RUTXQxKEEeSKnL0WW6YsKw" name="DateRepresentationPropertyHolder">
+                           <ownedAttribute xmi:type="uml:Property" xmi:id="_RJE-uxKEEeSKnL0WW6YsKw" name="DateRepresentation" isReadOnly="true" aggregation="shared" isDerived="true" isDerivedUnion="true">
+                              <ownedComment xmi:type="uml:Comment" xmi:id="_RJE-vBKEEeSKnL0WW6YsKw" body="A representation of a date.">
+                                 <annotatedElement xmi:idref="_RJE-uxKEEeSKnL0WW6YsKw"/>
+                              </ownedComment>
+                              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RJFlwBKEEeSKnL0WW6YsKw"/>
+                              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RJFlwRKEEeSKnL0WW6YsKw" value="*"/>
+                           </ownedAttribute>
+                           <ownedAttribute xmi:type="uml:Property" xmi:id="_RUT-UBKEEeSKnL0WW6YsKw" name="DateTime" aggregation="shared">
+                              <type href="http://www.omg.org/spec/NIEM-UML/20120501/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-dateTime"/>
+                              <subsettedProperty xmi:idref="_RJE-uxKEEeSKnL0WW6YsKw"/>
+                              <ownedComment xmi:type="uml:Comment" xmi:id="_RUT-URKEEeSKnL0WW6YsKw" body="A full date and time.">
+                                 <annotatedElement xmi:idref="_RUT-UBKEEeSKnL0WW6YsKw"/>
+                              </ownedComment>
+                              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RUT-VxKEEeSKnL0WW6YsKw"/>
+                              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RUT-WBKEEeSKnL0WW6YsKw" value="*"/>
+                           </ownedAttribute>
+                           <ownedAttribute xmi:type="uml:Property" xmi:id="_RUT-WRKEEeSKnL0WW6YsKw" name="Date" aggregation="shared">
+                              <type href="http://www.omg.org/spec/NIEM-UML/20120501/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-date"/>
+                              <subsettedProperty xmi:idref="_RJE-uxKEEeSKnL0WW6YsKw"/>
+                              <ownedComment xmi:type="uml:Comment" xmi:id="_RUT-WhKEEeSKnL0WW6YsKw" body="A full date.">
+                                 <annotatedElement xmi:idref="_RUT-WRKEEeSKnL0WW6YsKw"/>
+                              </ownedComment>
+                              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RUUlZRKEEeSKnL0WW6YsKw"/>
+                              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RUUlZhKEEeSKnL0WW6YsKw" value="*"/>
+                           </ownedAttribute>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Realization" xmi:id="_FOowhhKFEeSKnL0WW6YsKw">
+                           <client xmi:idref="_RI-RAxKEEeSKnL0WW6YsKw"/>
+                           <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-niem-core.xmi#_niem-niem-core-3.0-niem-core"/>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Realization" xmi:id="_FOowihKFEeSKnL0WW6YsKw">
+                           <client xmi:idref="_RJIpFRKEEeSKnL0WW6YsKw"/>
+                           <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-niem-core.xmi#_niem-niem-core-3.0-niem-core-ProperNameTextType"/>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Realization" xmi:id="_FOowjBKFEeSKnL0WW6YsKw">
+                           <client xmi:idref="_RJGM2RKEEeSKnL0WW6YsKw"/>
+                           <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-niem-core.xmi#_niem-niem-core-3.0-niem-core-packagedElement-416"/>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Realization" xmi:id="_FOowjhKFEeSKnL0WW6YsKw">
+                           <client xmi:idref="_RJE-sBKEEeSKnL0WW6YsKw"/>
+                           <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-niem-core.xmi#_niem-niem-core-3.0-niem-core-DateType"/>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Realization" xmi:id="_FOowkhKFEeSKnL0WW6YsKw">
+                           <client xmi:idref="_RUC4mxKEEeSKnL0WW6YsKw"/>
+                           <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-niem-core.xmi#_niem-niem-core-3.0-niem-core-packagedElement-416"/>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Realization" xmi:id="_FOpXkxKFEeSKnL0WW6YsKw">
+                           <client xmi:idref="_RJHa-BKEEeSKnL0WW6YsKw"/>
+                           <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-niem-core.xmi#_niem-niem-core-3.0-niem-core-PersonNameType"/>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Realization" xmi:id="_FOpXlRKFEeSKnL0WW6YsKw">
+                           <client xmi:idref="_RJDwkxKEEeSKnL0WW6YsKw"/>
+                           <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-niem-core.xmi#_niem-niem-core-3.0-niem-core-PersonType"/>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Realization" xmi:id="_FOpXmRKFEeSKnL0WW6YsKw">
+                           <client xmi:idref="_RJKeQBKEEeSKnL0WW6YsKw"/>
+                           <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-niem-core.xmi#_niem-niem-core-3.0-niem-core-IdentificationType"/>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Realization" xmi:id="_FOpXmxKFEeSKnL0WW6YsKw">
+                           <client xmi:idref="_RJLFWhKEEeSKnL0WW6YsKw"/>
+                           <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-niem-core.xmi#_niem-niem-core-3.0-niem-core-packagedElement-416"/>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Realization" xmi:id="_FOpXnxKFEeSKnL0WW6YsKw">
+                           <client xmi:idref="_RUCRghKEEeSKnL0WW6YsKw"/>
+                           <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-niem-core.xmi#_niem-niem-core-3.0-niem-core-LocationType"/>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Realization" xmi:id="_FOpXoRKFEeSKnL0WW6YsKw">
+                           <client xmi:idref="_RJIpFxKEEeSKnL0WW6YsKw"/>
+                           <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-niem-core.xmi#_niem-niem-core-3.0-niem-core-TextType"/>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Realization" xmi:id="_FOp-oBKFEeSKnL0WW6YsKw">
+                           <client xmi:idref="_RUAcUxKEEeSKnL0WW6YsKw"/>
+                           <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-niem-core.xmi#_niem-niem-core-3.0-niem-core-ActivityType"/>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Realization" xmi:id="_FOp-ohKFEeSKnL0WW6YsKw">
+                           <client xmi:idref="_RJIpExKEEeSKnL0WW6YsKw"/>
+                           <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-niem-core.xmi#_niem-niem-core-3.0-niem-core-PersonNameTextType"/>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Realization" xmi:id="_FOp-pBKFEeSKnL0WW6YsKw">
+                           <client xmi:idref="_RUEGsxKEEeSKnL0WW6YsKw"/>
+                           <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-niem-core.xmi#_niem-niem-core-3.0-niem-core-AssociationType"/>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Realization" xmi:id="_FOp-qBKFEeSKnL0WW6YsKw">
+                           <client xmi:idref="_RJJQJBKEEeSKnL0WW6YsKw"/>
+                           <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-niem-core.xmi#_niem-niem-core-3.0-niem-core-packagedElement-416"/>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Realization" xmi:id="_FOp-qhKFEeSKnL0WW6YsKw">
+                           <client xmi:idref="_RUC4kBKEEeSKnL0WW6YsKw"/>
+                           <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-niem-core.xmi#_niem-niem-core-3.0-niem-core-AddressType"/>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Realization" xmi:id="_FOp-rBKFEeSKnL0WW6YsKw">
+                           <client xmi:idref="_RUBqcRKEEeSKnL0WW6YsKw"/>
+                           <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-niem-core.xmi#_niem-niem-core-3.0-niem-core-IncidentType"/>
+                        </packagedElement>
+                        <packagedElement xmi:type="uml:Realization" xmi:id="_FOp-sBKFEeSKnL0WW6YsKw">
+                           <client xmi:idref="_RUDfrBKEEeSKnL0WW6YsKw"/>
+                           <supplier href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-Reference/NIEM-Reference-niem-core.xmi#_niem-niem-core-3.0-niem-core-packagedElement-416"/>
+                        </packagedElement>
+                     </packagedElement>
+                  </packagedElement>
+               </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_RJAGNRKEEeSKnL0WW6YsKw" name="Incident_Summary_Document">
+               <elementImport xmi:type="uml:ElementImport" xmi:id="_RJAGNhKEEeSKnL0WW6YsKw" importedElement="_RI9p9RKEEeSKnL0WW6YsKw"/>
+               <elementImport xmi:type="uml:ElementImport" xmi:id="_RJAGNxKEEeSKnL0WW6YsKw" importedElement="_RI-RAxKEEeSKnL0WW6YsKw"/>
+               <packagedElement xmi:type="uml:Class" xmi:id="_RUF74xKEEeSKnL0WW6YsKw" name="IncidentSummaryType">
+                  <ownedComment xmi:type="uml:Comment" xmi:id="_RUF75BKEEeSKnL0WW6YsKw" body="A data type for a relationship between an incident and a person who was a witness to the incident.">
+                     <annotatedElement xmi:idref="_RUF74xKEEeSKnL0WW6YsKw"/>
+                  </ownedComment>
+                  <ownedAttribute xmi:type="uml:Property" xmi:id="_RUF75RKEEeSKnL0WW6YsKw" name="Person" aggregation="shared" type="_RJDwkxKEEeSKnL0WW6YsKw" association="_RUGi9BKEEeSKnL0WW6YsKw">
+                     <ownedComment xmi:type="uml:Comment" xmi:id="_RUF75hKEEeSKnL0WW6YsKw" body="A human being.">
+                        <annotatedElement xmi:idref="_RUF75RKEEeSKnL0WW6YsKw"/>
+                     </ownedComment>
+                     <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RUF76BKEEeSKnL0WW6YsKw" value="*"/>
+                  </ownedAttribute>
+                  <ownedAttribute xmi:type="uml:Property" xmi:id="_RUHKABKEEeSKnL0WW6YsKw" name="Incident" aggregation="shared" type="_RUIYKBKEEeSKnL0WW6YsKw" association="_RUKNUBKEEeSKnL0WW6YsKw">
+                     <ownedComment xmi:type="uml:Comment" xmi:id="_RUHKARKEEeSKnL0WW6YsKw" body="An incident.">
+                        <annotatedElement xmi:idref="_RUHKABKEEeSKnL0WW6YsKw"/>
+                     </ownedComment>
+                  </ownedAttribute>
+                  <ownedAttribute xmi:type="uml:Property" xmi:id="_RUKNVBKEEeSKnL0WW6YsKw" name="IncidentVictimAssociation" aggregation="shared" type="_RUK0axKEEeSKnL0WW6YsKw" association="_RUNQpBKEEeSKnL0WW6YsKw">
+                     <ownedComment xmi:type="uml:Comment" xmi:id="_RUKNVRKEEeSKnL0WW6YsKw" body="A data type for a relationship between an incident and a person who is a victim as a result of the incident.">
+                        <annotatedElement xmi:idref="_RUKNVBKEEeSKnL0WW6YsKw"/>
+                     </ownedComment>
+                     <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RUKNVhKEEeSKnL0WW6YsKw"/>
+                     <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RUKNVxKEEeSKnL0WW6YsKw" value="*"/>
+                  </ownedAttribute>
+                  <ownedAttribute xmi:type="uml:Property" xmi:id="_RUNQqBKEEeSKnL0WW6YsKw" name="IncidentWitnessAssociation" aggregation="shared" type="_RUOewxKEEeSKnL0WW6YsKw" association="_RUQ7AhKEEeSKnL0WW6YsKw">
+                     <ownedComment xmi:type="uml:Comment" xmi:id="_RUNQqRKEEeSKnL0WW6YsKw" body=" a relationship between an incident and a person who was a witness to the incident.">
+                        <annotatedElement xmi:idref="_RUNQqBKEEeSKnL0WW6YsKw"/>
+                     </ownedComment>
+                     <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RUNQqhKEEeSKnL0WW6YsKw"/>
+                     <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RUN3sBKEEeSKnL0WW6YsKw" value="*"/>
+                  </ownedAttribute>
+               </packagedElement>
+               <packagedElement xmi:type="uml:Realization" xmi:id="_RUGi8hKEEeSKnL0WW6YsKw">
+                  <client xmi:idref="_RUF75RKEEeSKnL0WW6YsKw"/>
+                  <supplier xmi:idref="_RUFU1BKEEeSKnL0WW6YsKw"/>
+               </packagedElement>
+               <packagedElement xmi:type="uml:Association" xmi:id="_RUGi9BKEEeSKnL0WW6YsKw">
+                  <memberEnd xmi:idref="_RUF75RKEEeSKnL0WW6YsKw"/>
+                  <memberEnd xmi:idref="_RUGi9RKEEeSKnL0WW6YsKw"/>
+                  <ownedEnd xmi:type="uml:Property" xmi:id="_RUGi9RKEEeSKnL0WW6YsKw" isUnique="false" type="_RUF74xKEEeSKnL0WW6YsKw" association="_RUGi9BKEEeSKnL0WW6YsKw">
+                     <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RUGi9hKEEeSKnL0WW6YsKw"/>
+                  </ownedEnd>
+               </packagedElement>
+               <packagedElement xmi:type="uml:Realization" xmi:id="_RUJmRxKEEeSKnL0WW6YsKw">
+                  <client xmi:idref="_RUHKABKEEeSKnL0WW6YsKw"/>
+                  <supplier xmi:idref="_RUHxERKEEeSKnL0WW6YsKw"/>
+               </packagedElement>
+               <packagedElement xmi:type="uml:Association" xmi:id="_RUKNUBKEEeSKnL0WW6YsKw">
+                  <memberEnd xmi:idref="_RUHKABKEEeSKnL0WW6YsKw"/>
+                  <memberEnd xmi:idref="_RUKNURKEEeSKnL0WW6YsKw"/>
+                  <ownedEnd xmi:type="uml:Property" xmi:id="_RUKNURKEEeSKnL0WW6YsKw" isUnique="false" type="_RUF74xKEEeSKnL0WW6YsKw" association="_RUKNUBKEEeSKnL0WW6YsKw">
+                     <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RUKNUhKEEeSKnL0WW6YsKw"/>
+                  </ownedEnd>
+               </packagedElement>
+               <packagedElement xmi:type="uml:Realization" xmi:id="_RUNQohKEEeSKnL0WW6YsKw">
+                  <client xmi:idref="_RUKNVBKEEeSKnL0WW6YsKw"/>
+                  <supplier xmi:idref="_RUK0YhKEEeSKnL0WW6YsKw"/>
+               </packagedElement>
+               <packagedElement xmi:type="uml:Association" xmi:id="_RUNQpBKEEeSKnL0WW6YsKw">
+                  <memberEnd xmi:idref="_RUKNVBKEEeSKnL0WW6YsKw"/>
+                  <memberEnd xmi:idref="_RUNQpRKEEeSKnL0WW6YsKw"/>
+                  <ownedEnd xmi:type="uml:Property" xmi:id="_RUNQpRKEEeSKnL0WW6YsKw" isUnique="false" type="_RUF74xKEEeSKnL0WW6YsKw" association="_RUNQpBKEEeSKnL0WW6YsKw">
+                     <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RUNQphKEEeSKnL0WW6YsKw"/>
+                  </ownedEnd>
+               </packagedElement>
+               <packagedElement xmi:type="uml:Realization" xmi:id="_RUQ7ABKEEeSKnL0WW6YsKw">
+                  <client xmi:idref="_RUNQqBKEEeSKnL0WW6YsKw"/>
+                  <supplier xmi:idref="_RUN3thKEEeSKnL0WW6YsKw"/>
+               </packagedElement>
+               <packagedElement xmi:type="uml:Association" xmi:id="_RUQ7AhKEEeSKnL0WW6YsKw">
+                  <memberEnd xmi:idref="_RUNQqBKEEeSKnL0WW6YsKw"/>
+                  <memberEnd xmi:idref="_RUQ7AxKEEeSKnL0WW6YsKw"/>
+                  <ownedEnd xmi:type="uml:Property" xmi:id="_RUQ7AxKEEeSKnL0WW6YsKw" isUnique="false" type="_RUF74xKEEeSKnL0WW6YsKw" association="_RUQ7AhKEEeSKnL0WW6YsKw">
+                     <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RUQ7BBKEEeSKnL0WW6YsKw"/>
+                  </ownedEnd>
+               </packagedElement>
+               <packagedElement xmi:type="uml:Class" xmi:id="_RUQ7BhKEEeSKnL0WW6YsKw" name="NamespaceElementPropertyHolder">
+                  <ownedAttribute xmi:type="uml:Property" xmi:id="_RUQ7BxKEEeSKnL0WW6YsKw" name="IncidentSummary" aggregation="shared" type="_RUF74xKEEeSKnL0WW6YsKw">
+                     <ownedComment xmi:type="uml:Comment" xmi:id="_RUQ7CBKEEeSKnL0WW6YsKw" body="A document that contains high-level details of an incident">
+                        <annotatedElement xmi:idref="_RUQ7BxKEEeSKnL0WW6YsKw"/>
+                     </ownedComment>
+                     <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RUQ7CRKEEeSKnL0WW6YsKw"/>
+                     <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RUQ7ChKEEeSKnL0WW6YsKw" value="*"/>
+                  </ownedAttribute>
+               </packagedElement>
+            </packagedElement>
+         </packagedElement>
+         <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_RI9C4RKEEeSKnL0WW6YsKw">
+            <appliedProfile href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_PIM_Profile"/>
+         </profileApplication>
+         <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_RI9p8BKEEeSKnL0WW6YsKw">
+            <appliedProfile href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-UML-Profile.xmi#NIEM_UML_Profile-Model_Package_Description_Profile"/>
+         </profileApplication>
+         <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_RI9p8RKEEeSKnL0WW6YsKw">
+            <appliedProfile href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_Common_Profile"/>
+         </profileApplication>
+         <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_RI9p8hKEEeSKnL0WW6YsKw">
+            <appliedProfile href="http://www.omg.org/spec/NIEM-UML/20120501/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_PSM_Profile"/>
+         </profileApplication>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_17_0_5_1_2aa0151_1406132178800_45322_69738" name="niem">
+         <packagedElement xmi:type="uml:Package" xmi:id="_17_0_5_1_2aa0151_1406132178804_319824_69739" name="codes"/>
+         <packagedElement xmi:type="uml:Package" xmi:id="_17_0_5_1_2aa0151_1406132178810_199528_69740" name="domains"/>
+         <packagedElement xmi:type="uml:Package" xmi:id="_17_0_5_1_2aa0151_1406132178813_160520_69741" name="adapters"/>
+         <packagedElement xmi:type="uml:Package" xmi:id="_17_0_5_1_2aa0151_1406132178813_559884_69742" name="external"/>
+         <packagedElement xmi:type="uml:Package" xmi:id="_17_0_5_1_2aa0151_1406132178814_656983_69743" name="niem-core"/>
+      </packagedElement>
+   </uml:Model>
+   <NIEM_Common_Profile:References xmi:id="_FOpXohKFEeSKnL0WW6YsKw" base_Realization="_FOpXoRKFEeSKnL0WW6YsKw"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RJNhnBKEEeSKnL0WW6YsKw" base_Property="_RJNhmhKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_Common_Profile:PropertyHolder xmi:id="_RUTXQhKEEeSKnL0WW6YsKw" base_Class="_RUTXQRKEEeSKnL0WW6YsKw"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RJNhkxKEEeSKnL0WW6YsKw" base_Property="_RJNhkRKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_Common_Profile:References xmi:id="_FOp-sxKFEeSKnL0WW6YsKw" base_Realization="_FOp-shKFEeSKnL0WW6YsKw"/>
+   <NIEM_Common_Profile:References xmi:id="_FOpXlhKFEeSKnL0WW6YsKw" base_Realization="_FOpXlRKFEeSKnL0WW6YsKw"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RUSJLRKEEeSKnL0WW6YsKw" base_Property="_RUSJKxKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_Common_Profile:References xmi:id="_FOpXnhKFEeSKnL0WW6YsKw" base_Realization="_FOpXnRKFEeSKnL0WW6YsKw"/>
+   <NIEM_Common_Profile:References xmi:id="_FOpXkhKFEeSKnL0WW6YsKw" base_Realization="_FOpXkRKFEeSKnL0WW6YsKw"/>
+   <NIEM_PIM_Profile:InformationModel xmi:id="_RI-4ERKEEeSKnL0WW6YsKw" base_Package="_RI9p-hKEEeSKnL0WW6YsKw" isConformant="true" version="1" targetNamespace="http://release.niem.gov/niem/domains/jxdm/5.0/" defaultPurpose="subset"/>
+   <NIEM_Common_Profile:References xmi:id="_RJM6ixKEEeSKnL0WW6YsKw" base_Realization="_RJM6ihKEEeSKnL0WW6YsKw"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RJM6hRKEEeSKnL0WW6YsKw" base_Property="_RJM6gRKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_Common_Profile:References xmi:id="_RUQT9hKEEeSKnL0WW6YsKw" base_Realization="_RUQT9RKEEeSKnL0WW6YsKw"/>
+   <NIEM_Common_Profile:References xmi:id="_FOpXlBKFEeSKnL0WW6YsKw" base_Realization="_FOpXkxKFEeSKnL0WW6YsKw"/>
+   <NIEM_PIM_Profile:InformationModel xmi:id="_RI-4HBKEEeSKnL0WW6YsKw" base_Package="_RI9p9RKEEeSKnL0WW6YsKw" isConformant="false" version="1" targetNamespace="http://local/gov/extensions/1.0" defaultPurpose="extension"/>
+   <NIEM_Common_Profile:References xmi:id="_FOp-oRKFEeSKnL0WW6YsKw" base_Realization="_FOp-oBKFEeSKnL0WW6YsKw"/>
+   <NIEM_Common_Profile:References xmi:id="_FOowjRKFEeSKnL0WW6YsKw" base_Realization="_FOowjBKFEeSKnL0WW6YsKw"/>
+   <Model_Package_Description_Profile:ModelPackageDescription xmi:id="_RJBUUxKEEeSKnL0WW6YsKw" base_Component="_RI9p8xKEEeSKnL0WW6YsKw" mpdVersionID="IEPD" mpdClassCode="iepd" mpdBaseURI="http://myiepd.org/Incident_Summary_Document/" descriptionText=""/>
+   <NIEM_Common_Profile:References xmi:id="_FOowjxKFEeSKnL0WW6YsKw" base_Realization="_FOowjhKFEeSKnL0WW6YsKw"/>
+   <NIEM_Common_Profile:PropertyHolder xmi:id="_RUTXQBKEEeSKnL0WW6YsKw" base_Class="_RUSJKhKEEeSKnL0WW6YsKw"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RUF76RKEEeSKnL0WW6YsKw" base_Property="_RUF75RKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_Common_Profile:PropertyHolder xmi:id="_RUUlZxKEEeSKnL0WW6YsKw" base_Class="_RUTXQxKEEeSKnL0WW6YsKw"/>
+   <NIEM_Common_Profile:References xmi:id="_FOp-qRKFEeSKnL0WW6YsKw" base_Realization="_FOp-qBKFEeSKnL0WW6YsKw"/>
+   <NIEM_Common_Profile:References xmi:id="_FOowkRKFEeSKnL0WW6YsKw" base_Realization="_FOowkBKFEeSKnL0WW6YsKw"/>
+   <NIEM_Common_Profile:PropertyHolder xmi:id="_RUIYIhKEEeSKnL0WW6YsKw" base_Class="_RUHxEBKEEeSKnL0WW6YsKw"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RJOvsRKEEeSKnL0WW6YsKw" base_Property="_RJOIqxKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_Common_Profile:AugmentationType xmi:id="_RUAcUhKEEeSKnL0WW6YsKw" base_Class="_RJNhmBKEEeSKnL0WW6YsKw"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RUUlYBKEEeSKnL0WW6YsKw" base_Property="_RUT-WRKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_Common_Profile:References xmi:id="_RUQ7ARKEEeSKnL0WW6YsKw" base_Realization="_RUQ7ABKEEeSKnL0WW6YsKw"/>
+   <NIEM_Common_Profile:References xmi:id="_RJLsbBKEEeSKnL0WW6YsKw" base_Realization="_RJLsaxKEEeSKnL0WW6YsKw"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RUCRiBKEEeSKnL0WW6YsKw" base_Property="_RUCRhBKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_Common_Profile:References xmi:id="_FOpXnBKFEeSKnL0WW6YsKw" base_Realization="_FOpXmxKFEeSKnL0WW6YsKw"/>
+   <NIEM_Common_Profile:References xmi:id="_FOp-sRKFEeSKnL0WW6YsKw" base_Realization="_FOp-sBKFEeSKnL0WW6YsKw"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RUK0ZhKEEeSKnL0WW6YsKw" base_Property="_RUK0YhKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_Common_Profile:PropertyHolder xmi:id="_RJDJhxKEEeSKnL0WW6YsKw" base_Class="_RJDJghKEEeSKnL0WW6YsKw"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RJDwmRKEEeSKnL0WW6YsKw" base_Property="_RJDwlRKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_Common_Profile:References xmi:id="_FOp-pxKFEeSKnL0WW6YsKw" base_Realization="_FOp-phKFEeSKnL0WW6YsKw"/>
+   <NIEM_Common_Profile:References xmi:id="_FOqlsBKFEeSKnL0WW6YsKw" base_Realization="_FOp-tBKFEeSKnL0WW6YsKw"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RUSJIhKEEeSKnL0WW6YsKw" base_Property="_RUSJIBKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RUQ7DBKEEeSKnL0WW6YsKw" base_Property="_RUQ7BxKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_Common_Profile:References xmi:id="_FOqlshKFEeSKnL0WW6YsKw" base_Realization="_FOqlsRKFEeSKnL0WW6YsKw"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RJMTdxKEEeSKnL0WW6YsKw" base_Property="_RJMTcxKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RUSwNxKEEeSKnL0WW6YsKw" base_Property="_RUSwNRKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_Common_Profile:References xmi:id="_FOp-qxKFEeSKnL0WW6YsKw" base_Realization="_FOp-qhKFEeSKnL0WW6YsKw"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RUOeyhKEEeSKnL0WW6YsKw" base_Property="_RUOexhKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_Common_Profile:PropertyHolder xmi:id="_RUQ7CxKEEeSKnL0WW6YsKw" base_Class="_RUQ7BhKEEeSKnL0WW6YsKw"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RUBDYBKEEeSKnL0WW6YsKw" base_Property="_RUAcVRKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_Common_Profile:References xmi:id="_FOpXmhKFEeSKnL0WW6YsKw" base_Realization="_FOpXmRKFEeSKnL0WW6YsKw"/>
+   <NIEM_Common_Profile:References xmi:id="_RUMCgRKEEeSKnL0WW6YsKw" base_Realization="_RUMCgBKEEeSKnL0WW6YsKw"/>
+   <NIEM_Common_Profile:References xmi:id="_RUJmSBKEEeSKnL0WW6YsKw" base_Realization="_RUJmRxKEEeSKnL0WW6YsKw"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RJGM0BKEEeSKnL0WW6YsKw" base_Property="_RJE-uxKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_Common_Profile:References xmi:id="_RUGi8xKEEeSKnL0WW6YsKw" base_Realization="_RUGi8hKEEeSKnL0WW6YsKw"/>
+   <NIEM_Common_Profile:References xmi:id="_FOpXkBKFEeSKnL0WW6YsKw" base_Realization="_FOowkhKFEeSKnL0WW6YsKw"/>
+   <NIEM_Common_Profile:References xmi:id="_FOp-pRKFEeSKnL0WW6YsKw" base_Realization="_FOp-pBKFEeSKnL0WW6YsKw"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RUEtwRKEEeSKnL0WW6YsKw" base_Property="_RUEGthKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <Model_Package_Description_Profile:ModelPackageDescriptionFile xmi:id="_RJAtSBKEEeSKnL0WW6YsKw" base_Usage="_RJAtRxKEEeSKnL0WW6YsKw" descriptionText="Extension schema" natureCode="xsd" purposeCode="extension_schema" relativePathName=""/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RULbdhKEEeSKnL0WW6YsKw" base_Property="_RULbchKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_Common_Profile:References xmi:id="_FOp-oxKFEeSKnL0WW6YsKw" base_Realization="_FOp-ohKFEeSKnL0WW6YsKw"/>
+   <NIEM_Common_Profile:References xmi:id="_RUNQoxKEEeSKnL0WW6YsKw" base_Realization="_RUNQohKEEeSKnL0WW6YsKw"/>
+   <NIEM_Common_Profile:References xmi:id="_RJPWxBKEEeSKnL0WW6YsKw" base_Realization="_RJPWwxKEEeSKnL0WW6YsKw"/>
+   <NIEM_Common_Profile:References xmi:id="_RUMplhKEEeSKnL0WW6YsKw" base_Realization="_RUMplRKEEeSKnL0WW6YsKw"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RJCidxKEEeSKnL0WW6YsKw" base_Property="_RJCicxKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RUIYIxKEEeSKnL0WW6YsKw" base_Property="_RUHxERKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_Common_Profile:AssociationType xmi:id="_RUQT-xKEEeSKnL0WW6YsKw" base_Class="_RUOewxKEEeSKnL0WW6YsKw"/>
+   <NIEM_Common_Profile:References xmi:id="_FOp-rRKFEeSKnL0WW6YsKw" base_Realization="_FOp-rBKFEeSKnL0WW6YsKw"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RUT-UhKEEeSKnL0WW6YsKw" base_Property="_RUT-UBKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_Common_Profile:References xmi:id="_FOpXoBKFEeSKnL0WW6YsKw" base_Realization="_FOpXnxKFEeSKnL0WW6YsKw"/>
+   <NIEM_Common_Profile:AssociationType xmi:id="_RUEGtRKEEeSKnL0WW6YsKw" base_Class="_RUEGsxKEEeSKnL0WW6YsKw"/>
+   <NIEM_Common_Profile:References xmi:id="_FOowiRKFEeSKnL0WW6YsKw" base_Realization="_FOowiBKFEeSKnL0WW6YsKw"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RUBqeBKEEeSKnL0WW6YsKw" base_Property="_RUBqdBKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RJP90BKEEeSKnL0WW6YsKw" base_Property="_RJPWyRKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_Common_Profile:AssociationType xmi:id="_RUNQoRKEEeSKnL0WW6YsKw" base_Class="_RUK0axKEEeSKnL0WW6YsKw"/>
+   <NIEM_Common_Profile:References xmi:id="_FOp-rxKFEeSKnL0WW6YsKw" base_Realization="_FOp-rhKFEeSKnL0WW6YsKw"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RUN3sRKEEeSKnL0WW6YsKw" base_Property="_RUNQqBKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RUDfpxKEEeSKnL0WW6YsKw" base_Property="_RUDfoxKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RJQk5BKEEeSKnL0WW6YsKw" base_Property="_RJQk4hKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RJLsZRKEEeSKnL0WW6YsKw" base_Property="_RJLsYRKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_Common_Profile:References xmi:id="_FOpXmBKFEeSKnL0WW6YsKw" base_Realization="_FOpXlxKFEeSKnL0WW6YsKw"/>
+   <NIEM_Common_Profile:References xmi:id="_FOowhxKFEeSKnL0WW6YsKw" base_Realization="_FOowhhKFEeSKnL0WW6YsKw"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RJJ3MRKEEeSKnL0WW6YsKw" base_Property="_RJJQKBKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RUN3uhKEEeSKnL0WW6YsKw" base_Property="_RUN3thKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RUQT8BKEEeSKnL0WW6YsKw" base_Property="_RUPs4RKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RJKeRhKEEeSKnL0WW6YsKw" base_Property="_RJKeQhKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RJGz5xKEEeSKnL0WW6YsKw" base_Property="_RJGz4xKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RUKNWBKEEeSKnL0WW6YsKw" base_Property="_RUKNVBKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RUFU2BKEEeSKnL0WW6YsKw" base_Property="_RUFU1BKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RJB7ZRKEEeSKnL0WW6YsKw" base_Property="_RJB7YBKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_PIM_Profile:InformationModel xmi:id="_RJAGOBKEEeSKnL0WW6YsKw" base_Package="_RJAGNRKEEeSKnL0WW6YsKw" isConformant="false" version="1" targetNamespace="http://local.gov/IncidentSummary/1.0" defaultPurpose="extension"/>
+   <NIEM_Common_Profile:PropertyHolder xmi:id="_RUSJKRKEEeSKnL0WW6YsKw" base_Class="_RURiExKEEeSKnL0WW6YsKw"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RJE-thKEEeSKnL0WW6YsKw" base_Property="_RJE-shKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_PIM_Profile:InformationModel xmi:id="_RI-RBBKEEeSKnL0WW6YsKw" base_Package="_RI-RAxKEEeSKnL0WW6YsKw" isConformant="true" version="1" targetNamespace="http://release.niem.gov/niem/niem-core/3.0/" defaultPurpose="subset"/>
+   <NIEM_Common_Profile:References xmi:id="_RUPF1RKEEeSKnL0WW6YsKw" base_Realization="_RUPF1BKEEeSKnL0WW6YsKw"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RUMpkBKEEeSKnL0WW6YsKw" base_Property="_RUMChhKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RJICAhKEEeSKnL0WW6YsKw" base_Property="_RJHa-hKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_Common_Profile:PropertyHolder xmi:id="_RJB7ZBKEEeSKnL0WW6YsKw" base_Class="_RJBUXBKEEeSKnL0WW6YsKw"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RUHKBBKEEeSKnL0WW6YsKw" base_Property="_RUHKABKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_PSM_Profile:XSDProperty xmi:id="_RJDJiBKEEeSKnL0WW6YsKw" base_Property="_RJDJgxKEEeSKnL0WW6YsKw" nillable="false" kind="element"/>
+   <NIEM_Common_Profile:References xmi:id="_FOowixKFEeSKnL0WW6YsKw" base_Realization="_FOowihKFEeSKnL0WW6YsKw"/>
+   <Model_Package_Description_Profile:ModelPackageDescriptionFile xmi:id="_RI_fKBKEEeSKnL0WW6YsKw" base_Usage="_RI_fJxKEEeSKnL0WW6YsKw" descriptionText="Extension schema" natureCode="xsd" purposeCode="extension_schema" relativePathName=""/>
+</xmi:XMI>

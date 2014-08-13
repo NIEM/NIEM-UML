@@ -1,0 +1,1328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="_0" nsURI="http://release.niem.gov/niem/codes/iso_3166-1/3.0/"
+    nsPrefix="_0">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+    <details key="documentation" value="Source: International Standards Organization (ISO); &#xA;Publication: Codes for the representation of names of countries -- Part 1: Country codes; &#xA;Date: 2 Aug 2012; &#xA;Source Updates: VI-13; &#xA;http://www.iso.org/iso/country_codes.htm"/>
+  </eAnnotations>
+  <eAnnotations>
+    <details key="appinfo" value="&#xD;&#xA;      &lt;term:LocalTerm definition=&quot;Two-letter&quot; term=&quot;Alpha2&quot; xmlns:term=&quot;http://release.niem.gov/niem/localTerminology/3.0/&quot;/>&#xD;&#xA;      &lt;term:LocalTerm definition=&quot;Three-letter&quot; term=&quot;Alpha3&quot; xmlns:term=&quot;http://release.niem.gov/niem/localTerminology/3.0/&quot;/>&#xD;&#xA;    "/>
+  </eAnnotations>
+  <eAnnotations source="http://release.niem.gov/niem/conformanceTargets/3.0/">
+    <details key="conformanceTargets" value="http://reference.niem.gov/niem/specification/naming-and-design-rules/3.0/#ReferenceSchemaDocument"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EEnum" name="CountryAlpha2CodeSimpleType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A data type for country, territory, or dependency codes."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="CountryAlpha2CodeSimpleType"/>
+    </eAnnotations>
+    <eLiterals name="AD">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="ANDORRA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AE" value="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="UNITED ARAB EMIRATES"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AF" value="2">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="AFGHANISTAN"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AG" value="3">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="ANTIGUA AND BARBUDA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AI" value="4">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="ANGUILLA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AL" value="5">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="ALBANIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AM" value="6">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="ARMENIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AO" value="7">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="ANGOLA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AQ" value="8">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="ANTARCTICA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AR" value="9">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="ARGENTINA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AS" value="10">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="AMERICAN SAMOA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AT" value="11">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="AUSTRIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AU" value="12">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="AUSTRALIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AW" value="13">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="ARUBA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AX" value="14">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="ÅLAND ISLANDS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AZ" value="15">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="AZERBAIJAN"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BA" value="16">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="BOSNIA AND HERZEGOVINA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BB" value="17">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="BARBADOS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BD" value="18">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="BANGLADESH"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BE" value="19">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="BELGIUM"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BF" value="20">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="BURKINA FASO"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BG" value="21">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="BULGARIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BH" value="22">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="BAHRAIN"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BI" value="23">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="BURUNDI"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BJ" value="24">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="BENIN"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BL" value="25">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SAINT BARTHÉLEMY"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BM" value="26">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="BERMUDA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BN" value="27">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="BRUNEI DARUSSALAM"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BO" value="28">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="BOLIVIA, PLURINATIONAL STATE OF"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BQ" value="29">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="BONAIRE, SINT EUSTATIUS AND SABA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BR" value="30">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="BRAZIL"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BS" value="31">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="BAHAMAS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BT" value="32">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="BHUTAN"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BV" value="33">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="BOUVET ISLAND"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BW" value="34">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="BOTSWANA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BY" value="35">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="BELARUS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BZ" value="36">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="BELIZE"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CA" value="37">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="CANADA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CC" value="38">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="COCOS (KEELING) ISLANDS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CD" value="39">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="CONGO, THE DEMOCRATIC REPUBLIC OF THE"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CF" value="40">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="CENTRAL AFRICAN REPUBLIC"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CG" value="41">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="CONGO"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CH" value="42">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SWITZERLAND"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CI" value="43">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="CÔTE D'IVOIRE"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CK" value="44">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="COOK ISLANDS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CL" value="45">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="CHILE"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CM" value="46">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="CAMEROON"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CN" value="47">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="CHINA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CO" value="48">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="COLOMBIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CR" value="49">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="COSTA RICA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CU" value="50">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="CUBA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CV" value="51">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="CAPE VERDE"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CW" value="52">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="CURAÇAO"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CX" value="53">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="CHRISTMAS ISLAND"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CY" value="54">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="CYPRUS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="CZ" value="55">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="CZECH REPUBLIC"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="DE" value="56">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="GERMANY"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="DJ" value="57">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="DJIBOUTI"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="DK" value="58">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="DENMARK"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="DM" value="59">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="DOMINICA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="DO" value="60">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="DOMINICAN REPUBLIC"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="DZ" value="61">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="ALGERIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="EC" value="62">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="ECUADOR"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="EE" value="63">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="ESTONIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="EG" value="64">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="EGYPT"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="EH" value="65">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="WESTERN SAHARA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ER" value="66">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="ERITREA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ES" value="67">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SPAIN"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ET" value="68">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="ETHIOPIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="FI" value="69">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="FINLAND"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="FJ" value="70">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="FIJI"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="FK" value="71">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="FALKLAND ISLANDS (MALVINAS)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="FM" value="72">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MICRONESIA, FEDERATED STATES OF"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="FO" value="73">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="FAROE ISLANDS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="FR" value="74">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="FRANCE"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GA" value="75">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="GABON"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GB" value="76">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="UNITED KINGDOM"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GD" value="77">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="GRENADA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GE" value="78">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="GEORGIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GF" value="79">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="FRENCH GUIANA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GG" value="80">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="GUERNSEY"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GH" value="81">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="GHANA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GI" value="82">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="GIBRALTAR"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GL" value="83">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="GREENLAND"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GM" value="84">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="GAMBIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GN" value="85">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="GUINEA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GP" value="86">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="GUADELOUPE"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GQ" value="87">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="EQUATORIAL GUINEA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GR" value="88">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="GREECE"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GS" value="89">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GT" value="90">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="GUATEMALA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GU" value="91">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="GUAM"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GW" value="92">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="GUINEA-BISSAU"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="GY" value="93">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="GUYANA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="HK" value="94">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="HONG KONG"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="HM" value="95">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="HEARD ISLAND AND MCDONALD ISLANDS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="HN" value="96">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="HONDURAS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="HR" value="97">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="CROATIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="HT" value="98">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="HAITI"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="HU" value="99">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="HUNGARY"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ID" value="100">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="INDONESIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="IE" value="101">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="IRELAND"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="IL" value="102">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="ISRAEL"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="IM" value="103">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="ISLE OF MAN"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="IN" value="104">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="INDIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="IO" value="105">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="BRITISH INDIAN OCEAN TERRITORY"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="IQ" value="106">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="IRAQ"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="IR" value="107">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="IRAN, ISLAMIC REPUBLIC OF"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="IS" value="108">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="ICELAND"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="IT" value="109">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="ITALY"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="JE" value="110">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="JERSEY"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="JM" value="111">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="JAMAICA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="JO" value="112">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="JORDAN"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="JP" value="113">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="JAPAN"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="KE" value="114">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="KENYA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="KG" value="115">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="KYRGYZSTAN"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="KH" value="116">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="CAMBODIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="KI" value="117">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="KIRIBATI"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="KM" value="118">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="COMOROS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="KN" value="119">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SAINT KITTS AND NEVIS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="KP" value="120">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="KOREA, DEMOCRATIC PEOPLE'S REPUBLIC OF"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="KR" value="121">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="KOREA, REPUBLIC OF"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="KW" value="122">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="KUWAIT"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="KY" value="123">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="CAYMAN ISLANDS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="KZ" value="124">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="KAZAKHSTAN"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="LA" value="125">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="LAO PEOPLE'S DEMOCRATIC REPUBLIC"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="LB" value="126">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="LEBANON"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="LC" value="127">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SAINT LUCIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="LI" value="128">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="LIECHTENSTEIN"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="LK" value="129">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SRI LANKA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="LR" value="130">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="LIBERIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="LS" value="131">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="LESOTHO"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="LT" value="132">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="LITHUANIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="LU" value="133">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="LUXEMBOURG"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="LV" value="134">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="LATVIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="LY" value="135">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="LIBYA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MA" value="136">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MOROCCO"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MC" value="137">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MONACO"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MD" value="138">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MOLDOVA, REPUBLIC OF"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ME" value="139">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MONTENEGRO"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MF" value="140">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SAINT MARTIN (FRENCH PART)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MG" value="141">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MADAGASCAR"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MH" value="142">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MARSHALL ISLANDS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MK" value="143">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MACEDONIA, THE FORMER YUGOSLAV REPUBLIC OF"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ML" value="144">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MALI"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MM" value="145">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MYANMAR"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MN" value="146">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MONGOLIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MO" value="147">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MACAO"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MP" value="148">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="NORTHERN MARIANA ISLANDS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MQ" value="149">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MARTINIQUE"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MR" value="150">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MAURITANIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MS" value="151">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MONTSERRAT"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MT" value="152">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MALTA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MU" value="153">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MAURITIUS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MV" value="154">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MALDIVES"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MW" value="155">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MALAWI"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MX" value="156">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MEXICO"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MY" value="157">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MALAYSIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="MZ" value="158">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MOZAMBIQUE"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NA" value="159">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="NAMIBIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NC" value="160">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="NEW CALEDONIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NE" value="161">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="NIGER"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NF" value="162">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="NORFOLK ISLAND"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NG" value="163">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="NIGERIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NI" value="164">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="NICARAGUA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NL" value="165">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="NETHERLANDS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NO" value="166">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="NORWAY"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NP" value="167">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="NEPAL"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NR" value="168">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="NAURU"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NU" value="169">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="NIUE"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NZ" value="170">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="NEW ZEALAND"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="OM" value="171">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="OMAN"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PA" value="172">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="PANAMA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PE" value="173">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="PERU"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PF" value="174">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="FRENCH POLYNESIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PG" value="175">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="PAPUA NEW GUINEA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PH" value="176">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="PHILIPPINES"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PK" value="177">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="PAKISTAN"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PL" value="178">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="POLAND"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PM" value="179">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SAINT PIERRE AND MIQUELON"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PN" value="180">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="PITCAIRN"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PR" value="181">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="PUERTO RICO"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PS" value="182">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="PALESTINE, STATE OF"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PT" value="183">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="PORTUGAL"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PW" value="184">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="PALAU"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PY" value="185">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="PARAGUAY"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="QA" value="186">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="QATAR"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="RE" value="187">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="RÉUNION"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="RO" value="188">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="ROMANIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="RS" value="189">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SERBIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="RU" value="190">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="RUSSIAN FEDERATION"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="RW" value="191">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="RWANDA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SA" value="192">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SAUDI ARABIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SB" value="193">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SOLOMON ISLANDS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SC" value="194">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SEYCHELLES"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SD" value="195">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SUDAN"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SE" value="196">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SWEDEN"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SG" value="197">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SINGAPORE"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SH" value="198">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SAINT HELENA, ASCENSION AND TRISTAN DA CUNHA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SI" value="199">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SLOVENIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SJ" value="200">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SVALBARD AND JAN MAYEN"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SK" value="201">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SLOVAKIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SL" value="202">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SIERRA LEONE"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SM" value="203">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SAN MARINO"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SN" value="204">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SENEGAL"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SO" value="205">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SOMALIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SR" value="206">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SURINAME"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SS" value="207">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SOUTH SUDAN"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ST" value="208">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SAO TOME AND PRINCIPE"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SV" value="209">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="EL SALVADOR"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SX" value="210">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SINT MAARTEN (DUTCH PART)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SY" value="211">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SYRIAN ARAB REPUBLIC"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="SZ" value="212">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SWAZILAND"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="TC" value="213">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="TURKS AND CAICOS ISLANDS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="TD" value="214">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="CHAD"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="TF" value="215">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="FRENCH SOUTHERN TERRITORIES"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="TG" value="216">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="TOGO"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="TH" value="217">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="THAILAND"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="TJ" value="218">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="TAJIKISTAN"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="TK" value="219">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="TOKELAU"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="TL" value="220">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="TIMOR-LESTE"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="TM" value="221">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="TURKMENISTAN"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="TN" value="222">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="TUNISIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="TO" value="223">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="TONGA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="TR" value="224">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="TURKEY"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="TT" value="225">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="TRINIDAD AND TOBAGO"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="TV" value="226">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="TUVALU"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="TW" value="227">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="TAIWAN, PROVINCE OF CHINA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="TZ" value="228">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="TANZANIA, UNITED REPUBLIC OF"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="UA" value="229">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="UKRAINE"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="UG" value="230">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="UGANDA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="UM" value="231">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="UNITED STATES MINOR OUTLYING ISLANDS"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="US" value="232">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="UNITED STATES"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="UY" value="233">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="URUGUAY"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="UZ" value="234">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="UZBEKISTAN"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="VA" value="235">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="HOLY SEE (VATICAN CITY STATE)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="VC" value="236">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SAINT VINCENT AND THE GRENADINES"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="VE" value="237">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="VENEZUELA, BOLIVARIAN REPUBLIC OF"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="VG" value="238">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="VIRGIN ISLANDS, BRITISH"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="VI" value="239">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="VIRGIN ISLANDS, U.S."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="VN" value="240">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="VIET NAM"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="VU" value="241">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="VANUATU"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="WF" value="242">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="WALLIS AND FUTUNA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="WS" value="243">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SAMOA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="YE" value="244">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="YEMEN"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="YT" value="245">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="MAYOTTE"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ZA" value="246">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="SOUTH AFRICA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ZM" value="247">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="ZAMBIA"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ZW" value="248">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="ZIMBABWE"/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="CountryAlpha2CodeSimpleTypeObject"
+      instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="CountryAlpha2CodeSimpleType:Object"/>
+      <details key="baseType" value="CountryAlpha2CodeSimpleType"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CountryAlpha2CodeType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A data type for country, territory, or dependency codes."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="CountryAlpha2CodeType"/>
+      <details key="kind" value="simple"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//CountryAlpha2CodeSimpleType"
+        unsettable="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value=":0"/>
+        <details key="kind" value="simple"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//ID"
+        iD="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="id"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metadata" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREFS">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="metadata"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREF">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="ref"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="relationshipMetadata" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREFS">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="relationshipMetadata"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anyAttribute" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attributeWildcard"/>
+        <details key="wildcards" value="urn:us:gov:ic:ism urn:us:gov:ic:ntk"/>
+        <details key="name" value=":5"/>
+        <details key="processing" value="lax"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>

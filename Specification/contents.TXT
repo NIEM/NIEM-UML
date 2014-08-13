@@ -1,1 +1,0 @@
-This folder is intended to hold the evolving NIEM-UML-3 specification. It will start with the "phase-1" materials developed in 2013.

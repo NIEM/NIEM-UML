@@ -1,0 +1,1347 @@
+/*
+NIEM UML 
+Copyright � 2011, ModelDriven.org and Tom Digre, all rights reserved worldwide.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0-standalone.html.
+
+There are also commercial licenses available for this software.
+Contact ModelDriven.org for more information.
+*/
+//import niemcommon;
+import NIEMplatformBinding;
+
+modeltype ECORE  uses 'http://www.eclipse.org/emf/2002/Ecore';
+modeltype XSD  uses 'http://www.eclipse.org/xsd/2002/XSD';
+modeltype CAT  uses 'http://reference.niem.gov/niem/resource/mpd/catalog/1.0/';
+//modeltype CAT  uses 'urn:oasis:names:tc:entity:xmlns:xml:catalog';
+
+
+transformation mpdSchemaCompare(in cat:CAT,in catTarget:CAT,inout blackboxAdapter:ECORE)
+	extends transformation NIEMplatformBinding;
+//	extends transformation niemcommon;
+	main() {
+		blackboxHook:=blackboxAdapter.objectsOfType(ECORE::EPackage)->asSequence()->first();
+		// input catalogs serve to identify one or more schemas, we get transitive closure of each
+		var originalCatalog:CAT::CatalogType=cat.objectsOfType(CAT::CatalogType)->asSequence()->first();
+		var targetCatalog:CAT::CatalogType=catTarget.objectsOfType(CAT::CatalogType)->asSequence()->first();
+		//log('source catalog '+originalCatalog.repr()+', target catalog '+targetCatalog.repr());
+		/*
+		originalCatalog.artifact->forEach(artifact){
+			log('source artifact '+artifact.repr());
+		};
+		targetCatalog.artifact->forEach(artifact){
+			log('target artifact '+artifact.repr());
+		};
+		*/
+		var originalSchemas:Set(XSD::XSDSchema)=originalCatalog.getAllSchemas();
+		var targetSchemas:Set(XSD::XSDSchema)=targetCatalog.getAllSchemas();
+		log('source schemas: '+originalSchemas->size().repr()+', target schemas: '+targetSchemas->size().repr());
+		originalSchemas->forEach(schema){
+			log('source schema '+schema.targetNamespace);
+		};
+		targetSchemas->forEach(schema){
+			log('target schema '+schema.targetNamespace);
+		};
+		// check for non-matches
+		originalSchemas->select(s|targetSchemas.targetNamespace->select(n|n=s.targetNamespace)->isEmpty())->forEach(originalSchema){
+			log('no target schemas for original '+originalSchema.targetNamespace);
+		};
+		targetSchemas->select(s|originalSchemas.targetNamespace->select(n|n=s.targetNamespace)->isEmpty())->forEach(originalSchema){
+			log('no original schemas for target '+originalSchema.targetNamespace);
+		};
+		// compare each schema
+		originalSchemas->forEach(originalSchema){
+			targetSchemas->select(s|s.targetNamespace=originalSchema.targetNamespace)->forEach(targetSchema){
+				originalSchema.compare(targetSchema);
+			};
+		};
+	}
+property IGNORE_IRRELEVANT_MISMATCH:Boolean=true;	
+helper 	XSD::XSDSchema::compare(target:XSD::XSDSchema){
+	log('compare schemas '+self.targetNamespace);
+	if(IGNORE_IRRELEVANT_MISMATCH)then{}else{
+	// does not matter 
+		self.attributeFormDefault.compare(target.attributeFormDefault);
+	// does not matter 
+		self.elementFormDefault.compare(target.elementFormDefault);
+	}endif;
+	if(self.version<>target.version)then{
+		log('ERROR: version mismatch '+self.version+' ? '+target.version);
+	}else{}endif;
+	// contents: for each entry find matching
+	// check for mismatches
+	self.contents->select(c|not(c.oclIsKindOf(XSD::XSDAnnotation)))->forEach(baseElement){
+		var targetElement:XSD::XSDConcreteComponent=baseElement.findMatch(target.contents);
+		if(((targetElement=null)or targetElement.oclIsUndefined())and  not(baseElement.isSourceIgnored()))then{
+			log('ERROR: failed to match schema source content '+baseElement.getQualifiedName());
+		}else{}endif;
+	};
+	target.contents->select(c|not(c.oclIsKindOf(XSD::XSDAnnotation)))->forEach(baseElement){
+		var targetElement:XSD::XSDConcreteComponent=baseElement.findMatch(self.contents);
+		if(((targetElement=null)or targetElement.oclIsUndefined())and not(baseElement.isTargetIgnored()))then{
+			log('ERROR: failed to match schema target content '+baseElement.getQualifiedName());
+		}else{}endif;
+	};
+	self.contents->select(c|not(c.oclIsKindOf(XSD::XSDAnnotation)))->forEach(originalContent){
+		var targetContent:XSD::XSDConcreteComponent=originalContent.findMatch(target.contents);
+		if(((targetContent=null)or targetContent.oclIsUndefined()))then{}else{
+				originalContent.compare(targetContent);
+		}endif;
+	};
+	// for annotations, look at composite results
+//	log('TEST '+self.annotations->size().repr()+', '+self.contents->select(c|c.oclIsKindOf(XSD::XSDAnnotation))->size().repr());
+	var sourceAnnotations:OrderedSet(XSD::XSDAnnotation)=self.contents->select(c|c.oclIsKindOf(XSD::XSDAnnotation)).oclAsType(XSD::XSDAnnotation)->asOrderedSet();
+	var targetAnnotations:OrderedSet(XSD::XSDAnnotation)=target.contents->select(c|c.oclIsKindOf(XSD::XSDAnnotation)).oclAsType(XSD::XSDAnnotation)->asOrderedSet();
+	
+
+	sourceAnnotations.getApplicationInformation()->forEach(baseElement){
+//		var targetElement:ECORE::EAnnotation=baseElement.findMatch(targetAnnotations.getApplicationInformation()->asOrderedSet(),self);
+		var targetElement:OclAny=baseElement.findMatch(targetAnnotations.getApplicationInformation()->asOrderedSet(),self);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+//			log('ERROR: failed to match schema source annotation applicationInformation '+baseElement.getApplicationInformationNamespace()+' : '+baseElement.getApplicationInformationName()+', in context '+self.getQualifiedName());
+			log('ERROR: failed to match schema source annotation applicationInformation '+baseElement.getElementNamespace()+' : '+baseElement.getElementName()+', in context '+self.getQualifiedName());
+		}else{}endif;
+		
+	};
+	targetAnnotations.getApplicationInformation()->asSet()->forEach(baseElement){
+//		var targetElement:ECORE::EAnnotation=baseElement.findMatch(sourceAnnotations.getApplicationInformation()->asOrderedSet(),self);
+		var targetElement:OclAny=baseElement.findMatch(sourceAnnotations.getApplicationInformation()->asOrderedSet(),self);
+		if(((targetElement=null)or targetElement.oclIsUndefined()))then{
+			if(IGNORE_IRRELEVANT_MISMATCH)then{}else{
+			log('ERROR: failed to match schema target annotation applicationInformation '+baseElement.repr()+' for  '+self.getQualifiedName());
+			}endif;
+		}else{}endif;
+	};
+	sourceAnnotations.getApplicationInformation()->asSet()->forEach(originalContent){
+//		var targetContent:ECORE::EAnnotation=originalContent.findMatch(targetAnnotations.getApplicationInformation()->asOrderedSet(),self);
+		var targetContent:OclAny=originalContent.findMatch(targetAnnotations.getApplicationInformation()->asOrderedSet(),self);
+		if(((targetContent=null)or targetContent.oclIsUndefined()))then{}else{
+				originalContent.compare(targetContent,self);
+		}endif;
+	};
+	sourceAnnotations.getUserInformation()->forEach(baseElement){
+//		var targetElement:ECORE::EAnnotation=baseElement.findMatch(targetAnnotations.getUserInformation()->asOrderedSet(),self);
+		var targetElement:OclAny=baseElement.findMatch(targetAnnotations.getUserInformation()->asOrderedSet(),self);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match schema source annotation userInformation '+baseElement.repr()+' for '+self.getQualifiedName());
+		}else{}endif;
+	};
+	targetAnnotations.getUserInformation()->forEach(baseElement){
+//		var targetElement:ECORE::EAnnotation=baseElement.findMatch(sourceAnnotations.getUserInformation()->asOrderedSet(),self);
+		var targetElement:OclAny=baseElement.findMatch(sourceAnnotations.getUserInformation()->asOrderedSet(),self);
+		if(((targetElement=null)or targetElement.oclIsUndefined()))then{
+			if(IGNORE_IRRELEVANT_MISMATCH)then{}else{
+			log('ERROR: failed to match schema target annotation userInformation '+baseElement.repr()+' for '+self.getQualifiedName());
+			}endif;
+		}else{}endif;
+	};
+	sourceAnnotations.getUserInformation()->forEach(originalContent){
+//		var targetContent:ECORE::EAnnotation=originalContent.findMatch(targetAnnotations.getUserInformation()->asOrderedSet(),self);
+		var targetContent:OclAny=originalContent.findMatch(targetAnnotations.getUserInformation()->asOrderedSet(),self);
+		if(((targetContent=null)or targetContent.oclIsUndefined()))then{}else{
+				originalContent.compare(targetContent,self);
+		}endif;
+	};
+	/* do attributes at next level of compare
+	sourceAnnotations.attributes->select(a|not(a.isXmlnsAttr()))->forEach(baseElement){
+		var targetElement:ECORE::EAnnotation=baseElement.findMatch(targetAnnotations.attributes->asOrderedSet());
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match schema source annotation attributes '+baseElement.repr());
+		}else{}endif;
+	};
+	targetAnnotations.attributes->select(a|not(a.isXmlnsAttr()))->forEach(baseElement){
+		var targetElement:ECORE::EAnnotation=baseElement.findMatch(sourceAnnotations.attributes->asOrderedSet());
+		if(((targetElement=null)or targetElement.oclIsUndefined()))then{
+			log('ERROR: failed to match schema target annotation attributes '+baseElement.repr());
+		}else{}endif;
+	};
+	sourceAnnotations.attributes->select(a|not(a.isXmlnsAttr()))->forEach(originalContent){
+		var targetContent:ECORE::EAnnotation=originalContent.findMatch(targetAnnotations.attributes->asOrderedSet());
+		if(((targetContent=null)or targetContent.oclIsUndefined()))then{}else{
+				originalContent.compare(targetContent);
+		}endif;
+	};
+*/
+/* TODO	
+	*/
+	//  finalDefault
+	self.finalDefault->forEach(baseElement){
+		var targetElement:XSD::XSDProhibitedSubstitutions=baseElement.findMatch(target.finalDefault);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match schema source finalDefault '+baseElement.repr());
+		}else{}endif;
+	};
+	target.finalDefault->forEach(baseElement){
+		var targetElement:XSD::XSDProhibitedSubstitutions=baseElement.findMatch(self.finalDefault);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match schema target finalDefault '+baseElement.repr());
+		}else{}endif;
+	};
+	//   blockDefault
+	self.blockDefault->forEach(baseElement){
+		var targetElement:XSD::XSDDisallowedSubstitutions=baseElement.findMatch(target.blockDefault);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match schema source blockDefault '+baseElement.repr());
+		}else{}endif;
+	};
+	target.blockDefault->forEach(baseElement){
+		var targetElement:XSD::XSDDisallowedSubstitutions=baseElement.findMatch(self.blockDefault);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match schema target blockDefault '+baseElement.repr());
+		}else{}endif;
+	};
+}
+/*
+helper 	XSD::XSDScope::compare(target:XSD::XSDScope){
+	log('ERROR: did not handle scope '+self.metaClassName()+', '+self.oclAsType(ECORE::EObject).eClass().name);
+}
+*/
+helper 	XSD::XSDConcreteComponent::compare(target:XSD::XSDConcreteComponent){
+	log('ERROR: did not handle  content '+self.metaClassName());
+}
+helper 	XSD::XSDModelGroup::compare(targetIn:XSD::XSDConcreteComponent){
+	var target:XSD::XSDModelGroup=targetIn.oclAsType(XSD::XSDModelGroup);
+	if(self.compositor<>target.compositor)then{
+		log('ERROR: failed to match ModelGroup compositor '+self.compositor.repr()+' ? '+target.compositor.repr()+' at source '+self.getQualifiedName());
+	}else{}endif;
+	if(self.annotation.oclIsUndefined() and target.annotation.oclIsUndefined())then{
+	}else{
+		if(self.annotation.oclIsUndefined() or target.annotation.oclIsUndefined())then{
+			log('ERROR: annotation mismatch for ModelGroup '+if(self.annotation.oclIsUndefined())then 'UNDEFINED' else self.annotation.repr() endif+' ? '+target.annotation.repr());
+		}else{
+			self.annotation.compare(target.annotation);
+		}endif;
+	}endif;
+	if(self.contents->size()<>target.contents->size())then{
+			log('ERROR: failed to match modelGroup contents size '+self.contents->size().repr()+' ? '+target.contents->size().repr()+' for source '+self.getQualifiedName());
+	}else{
+		self.contents->forEach(originalContent){
+			var targetContent:XSD::XSDConcreteComponent=target.contents->at(self.contents->indexOf(originalContent));
+			originalContent.compare(targetContent);
+			
+		};
+	}endif;
+	/*
+	if(self.particles->size()<>target.particles->size())then{
+			log('ERROR: failed to match modelGroup particles size '+self.particles->size().repr()+' ? '+target.particles->size().repr()+' for source '+self.getQualifiedName());
+	}else{
+		self.particles->forEach(originalContent){
+			var targetContent:XSD::XSDConcreteComponent=target.particles->at(self.particles->indexOf(originalContent));
+			originalContent.compare(targetContent);
+			
+		};
+	}endif;
+	*/
+	return;
+}
+	
+helper 	XSD::XSDParticle::compare(targetIn:XSD::XSDConcreteComponent){
+	var target:XSD::XSDParticle=targetIn.oclAsType(XSD::XSDParticle);
+	if(self.minOccurs<>target.minOccurs)then{
+		log('ERROR: failed to match Particle minOccurs '+self.minOccurs.repr()+' ? '+target.minOccurs.repr()+' for source '+self.getQualifiedName());
+	}else{}endif;
+	if(self.maxOccurs<>target.maxOccurs)then{
+		log('ERROR: failed to match Particle maxOccurs '+self.maxOccurs.repr()+' ? '+target.maxOccurs.repr()+' for source '+self.getQualifiedName());
+	}else{}endif;
+	if(self.content.oclIsUndefined() and target.content.oclIsUndefined())then{
+	}else{
+		if(self.content.oclIsUndefined() or target.content.oclIsUndefined() or (self.content.metaClassName()<>target.content.metaClassName()))then{
+			log('ERROR: content mismatch for Particle '+if(self.content.oclIsUndefined())then 'UNDEFINED' else self.content.getQualifiedName() endif+' ? '+target.content.getQualifiedName());
+		}else{
+			self.content.compare(target.content);
+		}endif;
+	}endif;
+	return;
+}
+	
+helper 	XSD::XSDComplexTypeDefinition::compare(targetIn:XSD::XSDConcreteComponent){
+	var target:XSD::XSDComplexTypeDefinition=targetIn.oclAsType(XSD::XSDComplexTypeDefinition);
+	self.compareTypeDefinition(target);
+	
+	if(self.derivationMethod<>target.derivationMethod)then{
+		log('ERROR: failed to match ComplexTypeDefinition derivationMethod '+self.derivationMethod.repr()+' ? '+target.derivationMethod.repr()+' at source '+self.getQualifiedName());
+	}else{}endif;
+	if(self._abstract<>target._abstract)then{
+		log('ERROR: failed to match ComplexTypeDefinition _abstract '+self._abstract.repr()+' ? '+target._abstract.repr()+' for source '+self.getQualifiedName());
+	}else{}endif;
+	if(self.mixed<>target.mixed)then{
+		log('ERROR: failed to match ComplexTypeDefinition mixed '+self.mixed.repr()+' ? '+target.mixed.repr());
+	}else{}endif;
+	
+	self.lexicalFinal->forEach(baseElement){
+		var targetElement:XSD::XSDComplexFinal=baseElement.findMatch(target.lexicalFinal);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match ComplexTypeDefinition source lexicalFinal '+baseElement.repr()+' at source '+self.getQualifiedName());
+		}else{}endif;
+	};
+	target.lexicalFinal->forEach(baseElement){
+		var targetElement:XSD::XSDComplexFinal=baseElement.findMatch(self.lexicalFinal);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match ComplexTypeDefinition target lexicalFinal '+baseElement.repr());
+		}else{}endif;
+	};
+	self.block->forEach(baseElement){
+		var targetElement:XSD::XSDProhibitedSubstitutions=baseElement.findMatch(target.block);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match ComplexTypeDefinition source block '+baseElement.repr());
+		}else{}endif;
+	};
+	target.block->forEach(baseElement){
+		var targetElement:XSD::XSDProhibitedSubstitutions=baseElement.findMatch(self.block);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match ComplexTypeDefinition target block '+baseElement.repr());
+		}else{}endif;
+	};
+	if(self.contentAnnotation.oclIsUndefined() and target.contentAnnotation.oclIsUndefined())then{
+	}else{
+		if(self.contentAnnotation.oclIsUndefined() or target.contentAnnotation.oclIsUndefined())then{
+			log('ERROR: contentAnnotation mismatch for ComplexTypeDefinition '+if(self.contentAnnotation.oclIsUndefined())then 'UNDEFINED' else self.contentAnnotation.repr() endif+' ? '+target.contentAnnotation.repr()+' for '+self.name);
+		}else{
+			self.contentAnnotation.compare(target.annotation);
+		}endif;
+	}endif;
+	if(self.baseTypeDefinition.oclIsUndefined() and target.baseTypeDefinition.oclIsUndefined())then{
+	}else{
+		if(self.baseTypeDefinition.oclIsUndefined() or target.baseTypeDefinition.oclIsUndefined())then{
+			log('ERROR: baseTypeDefinition mismatch for ComplexTypeDefinition '+self.baseTypeDefinition.repr()+' ? '+target.baseTypeDefinition.repr());
+		}else{
+			if(IGNORE_IRRELEVANT_MISMATCH and (
+				(self.baseTypeDefinition.name='ComplexObjectType')
+				and (self.baseTypeDefinition.schema.targetNamespace.isStructuresSchemaNamespace())
+				and (target.baseTypeDefinition.schema.targetNamespace.isStructuresSchemaNamespace())
+			))then{}else{
+			self.baseTypeDefinition.compareReference(target.baseTypeDefinition,self,'baseTypeDefinition');
+			}endif;
+		}endif;
+	}endif;
+	if(self.content.oclIsUndefined() and target.content.oclIsUndefined())then{
+	}else{
+		if(self.content.oclIsUndefined() 
+			or target.content.oclIsUndefined() 
+			or (self.content.metaClassName()<>target.content.metaClassName())
+			)then{
+				// allow source to be undefined and target to be empty particle
+				if(IGNORE_IRRELEVANT_MISMATCH and (
+					(self.content.oclIsUndefined() 
+						and target.content.oclIsKindOf(XSD::XSDParticle) 
+						and target.content.oclAsType(XSD::XSDParticle).content.oclIsKindOf(XSD::XSDModelGroup)
+						and target.content.oclAsType(XSD::XSDParticle).content.oclAsType(XSD::XSDModelGroup).contents->isEmpty()
+					)
+					or (
+					
+						// source is simpletype ref to proxy and target is complextype ref to same proxy
+						self.content.oclIsKindOf(XSD::XSDSimpleTypeDefinition)
+						and target.content.oclIsUndefined()
+						and not(self.baseTypeDefinition.oclIsUndefined())
+						and not(target.baseTypeDefinition.oclIsUndefined())
+						and (self.baseTypeDefinition.name=target.baseTypeDefinition.name)
+						and (self.baseTypeDefinition.schema.targetNamespace=target.baseTypeDefinition.schema.targetNamespace)
+					
+					)
+				))then{}else{
+					log('ERROR: content mismatch for ComplexTypeDefinition '+if(self.content.oclIsUndefined())then 'UNDEFINED' else self.content.getQualifiedName() endif+' ? '+if(target.content.oclIsUndefined())then 'UNDEFINED' else target.content.getQualifiedName() endif);
+					/*
+//					if(self.content.oclIsKindOf(XSD::XSDSimpleTypeDefinition) and not(self.content.oclAsType(XSD::XSDSimpleTypeDefinition).baseTypeDefinition.oclIsUndefined()))then{
+					if(self.content.oclIsKindOf(XSD::XSDSimpleTypeDefinition) and not(self.baseTypeDefinition.oclIsUndefined()))then{
+//						log('TEST '+self.content.oclAsType(XSD::XSDSimpleTypeDefinition).baseTypeDefinition.getQualifiedName());
+						log('TEST '+self.baseTypeDefinition.getQualifiedName());
+					}else{}endif;
+					*/
+			}endif;
+		}else{
+			self.content.compare(target.content);
+		}endif;
+	}endif;
+	self.attributeContents->forEach(baseElement){
+		var targetElement:XSD::XSDConcreteComponent=baseElement.findMatch(target.attributeContents);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match ComplexTypeDefinition source attributeContents '+baseElement.getQualifiedName());
+		}else{}endif;
+	};
+	target.attributeContents->forEach(baseElement){
+		var targetElement:XSD::XSDConcreteComponent=baseElement.findMatch(self.attributeContents);
+		if(((targetElement=null)or targetElement.oclIsUndefined())and not(baseElement.isTargetIgnored()))then{
+			log('ERROR: failed to match ComplexTypeDefinition target attributeContents '+baseElement.getQualifiedName());
+		}else{}endif;
+	};
+	self.attributeContents->forEach(originalContent){
+		var targetContent:XSD::XSDConcreteComponent=originalContent.findMatch(target.attributeContents);
+		if(((targetContent=null)or targetContent.oclIsUndefined()))then{}else{
+				originalContent.compare(targetContent);
+		}endif;
+	};
+	if(self.attributeWildcardContent.oclIsUndefined() and target.attributeWildcardContent.oclIsUndefined())then{
+	}else{
+		if(self.attributeWildcardContent.oclIsUndefined() or target.attributeWildcardContent.oclIsUndefined())then{
+			log('ERROR: attributeWildcardContent mismatch for ComplexTypeDefinition '+self.attributeWildcardContent.repr()+' ? '+target.attributeWildcardContent.repr());
+		}else{
+			self.attributeWildcardContent.compare(target.attributeWildcardContent);
+		}endif;
+	}endif;
+	/* this does not work consistently
+	if(self.syntheticParticle.oclIsUndefined() and target.syntheticParticle.oclIsUndefined())then{
+	}else{
+		if(self.syntheticParticle.oclIsUndefined() or target.syntheticParticle.oclIsUndefined())then{
+			log('ERROR: syntheticParticle mismatch for ComplexTypeDefinition '+if(self.syntheticParticle.oclIsUndefined())then 'UNDEFINED' else self.syntheticParticle.repr() endif+' ? '+target.syntheticParticle.repr()+' for '+self.name);
+		}else{
+			self.syntheticParticle.compare(target.content);
+		}endif;
+	}endif;
+	*/
+	if(self.syntheticWildcard.oclIsUndefined() and target.syntheticWildcard.oclIsUndefined())then{
+	}else{
+		if(self.syntheticWildcard.oclIsUndefined() or target.syntheticWildcard.oclIsUndefined())then{
+			log('ERROR: syntheticWildcard mismatch for ComplexTypeDefinition '+if(self.syntheticWildcard.oclIsUndefined())then 'UNDEFINED' else self.syntheticWildcard.repr() endif+' ? '+target.syntheticWildcard.repr()+' for '+self.name);
+		}else{
+			self.syntheticWildcard.compare(target.content);
+		}endif;
+	}endif;
+	return;
+}
+helper 	XSD::XSDFacet::compare(targetIn:XSD::XSDConcreteComponent){
+	var target:XSD::XSDFacet=targetIn.oclAsType(XSD::XSDFacet);
+	if(self.lexicalValue<>target.lexicalValue)then{
+		log('ERROR: failed to match facet lexicalValue '+self.lexicalValue+' ? '+target.lexicalValue);
+	}else{}endif;
+	return;
+}
+	
+helper 	OclAny::compare(target:OclAny,context:XSD::XSDConcreteComponent){
+	if(self.getElementName()<>target.getElementName())then{
+		log('ERROR: failed to match element name '+self.getElementName()+' ? '+target.getElementName());
+	}else{}endif;
+	if(self.getElementNamespace()<>target.getElementNamespace())then{
+		log('ERROR: failed to match element namespace '+self.getElementNamespace()+' ? '+target.getElementNamespace());
+	}else{}endif;
+	if(IGNORE_IRRELEVANT_MISMATCH)then{}else{
+//		if(self.getApplicationInformationBody().trim()<>target.getApplicationInformationBody().trim())then{
+		if(self.getXSDElementValue().trim()<>target.getXSDElementValue().trim())then{
+			log('ERROR: failed to match element body '+self.getXSDElementValue().trim()+' ? '+target.getXSDElementValue().trim());
+		}else{}endif;
+	}endif;	
+	
+//	self.getAttributes()->forEach(baseElement){
+	self.getElementAttributes()->select(a|a.getAttributeName()!='xmlns')->forEach(baseElement){
+//		var targetElement:ECORE::EAnnotation=baseElement.findMatch(target.getAttributes(),context);
+		var targetElement:OclAny=baseElement.findMatch(target.getElementAttributes()->select(a|a.getAttributeName()!='xmlns'),context);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match element source attributes '+baseElement.getAttributeNamespace()+' : '+baseElement.getAttributeName()+' = '+baseElement.getAttributeValue()+', in context '+context.getQualifiedName());
+		}else{}endif;
+	};
+//	target.getAttributes()->forEach(baseElement){
+	target.getElementAttributes()->select(a|a.getAttributeName()!='xmlns')->forEach(baseElement){
+//		var targetElement:ECORE::EAnnotation=baseElement.findMatch(self.getAttributes(),context);
+		var targetElement:OclAny=baseElement.findMatch(self.getElementAttributes()->select(a|a.getAttributeName()!='xmlns'),context);
+		if(((targetElement=null)or targetElement.oclIsUndefined()))then{
+			// ok if default namespace
+//			if((baseElement.getApplicationInformationName()='namespace')
+//				and(baseElement.getApplicationInformationNamespace()='http://niem.gov/niem/appinfo/2.0')
+			if((baseElement.getAttributeName()='namespace')
+				and(baseElement.getAttributeNamespace().isAppinfoNamespace())
+				and(baseElement.getAttributeValue()=context.schema.targetNamespace)
+			)then{}else{
+			log('ERROR: failed to match element target attributes '+baseElement.getAttributeNamespace()+' : '+baseElement.getAttributeName()+' = '+baseElement.getAttributeValue()+', in context '+context.getQualifiedName());
+			}endif;
+		}else{}endif;
+	};
+//	self.getAttributes()->forEach(originalContent){
+	self.getElementAttributes()->select(a|a.getAttributeName()!='xmlns')->forEach(originalContent){
+//		var targetContent:ECORE::EAnnotation=originalContent.findMatch(target.getAttributes(),context);
+		var targetContent:OclAny=originalContent.findMatch(target.getElementAttributes()->select(a|a.getAttributeName()!='xmlns'),context);
+		if(((targetContent=null)or targetContent.oclIsUndefined()))then{}else{
+				originalContent.compare(targetContent,context);
+		}endif;
+	};
+	
+	var sourceAnnotations:OrderedSet(OclAny)=self.getElementElements();
+	var targetAnnotations:OrderedSet(OclAny)=target.getElementElements();
+	
+
+	sourceAnnotations->forEach(baseElement){
+//		var targetElement:ECORE::EAnnotation=baseElement.findMatch(targetAnnotations.getApplicationInformation()->asOrderedSet(),self);
+		var targetElement:OclAny=baseElement.findMatch(targetAnnotations,context);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+//			log('ERROR: failed to match schema source annotation applicationInformation '+baseElement.getApplicationInformationNamespace()+' : '+baseElement.getApplicationInformationName()+', in context '+self.getQualifiedName());
+			log('ERROR: failed to match schema source annotation applicationInformation '+baseElement.getElementNamespace()+' : '+baseElement.getElementName()+', in context '+context.getQualifiedName());
+		}else{}endif;
+		
+	};
+	targetAnnotations->forEach(baseElement){
+//		var targetElement:ECORE::EAnnotation=baseElement.findMatch(sourceAnnotations.getApplicationInformation()->asOrderedSet(),self);
+		var targetElement:OclAny=baseElement.findMatch(sourceAnnotations,context);
+		if(((targetElement=null)or targetElement.oclIsUndefined()))then{
+			if(IGNORE_IRRELEVANT_MISMATCH)then{}else{
+			log('ERROR: failed to match schema target annotation applicationInformation '+baseElement.repr()+' for  '+context.getQualifiedName());
+			}endif;
+		}else{}endif;
+	};
+	sourceAnnotations->forEach(originalContent){
+//		var targetContent:ECORE::EAnnotation=originalContent.findMatch(targetAnnotations.getApplicationInformation()->asOrderedSet(),self);
+		var targetContent:OclAny=originalContent.findMatch(targetAnnotations,context);
+		if(((targetContent=null)or targetContent.oclIsUndefined()))then{}else{
+				originalContent.compare(targetContent,context);
+		}endif;
+	};
+	
+	return;
+}
+/*	
+helper 	ECORE::EAnnotation::compare(target:ECORE::EAnnotation,context:XSD::XSDConcreteComponent){
+	if(self.getApplicationInformationName()<>target.getApplicationInformationName())then{
+		log('ERROR: failed to match element name '+self.getApplicationInformationName()+' ? '+target.getApplicationInformationName());
+	}else{}endif;
+	if(self.getApplicationInformationNamespace()<>target.getApplicationInformationNamespace())then{
+		log('ERROR: failed to match element namespace '+self.getApplicationInformationNamespace()+' ? '+target.getApplicationInformationNamespace());
+	}else{}endif;
+	if(IGNORE_IRRELEVANT_MISMATCH)then{}else{
+		if(self.getApplicationInformationBody().trim()<>target.getApplicationInformationBody().trim())then{
+			log('ERROR: failed to match element body '+self.getApplicationInformationBody().trim()+' ? '+target.getApplicationInformationBody().trim());
+		}else{}endif;
+	}endif;	
+	
+	self.getAttributes()->forEach(baseElement){
+		var targetElement:ECORE::EAnnotation=baseElement.findMatch(target.getAttributes(),context);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match element source attributes '+baseElement.repr());
+		}else{}endif;
+	};
+	target.getAttributes()->forEach(baseElement){
+		var targetElement:ECORE::EAnnotation=baseElement.findMatch(self.getAttributes(),context);
+		if(((targetElement=null)or targetElement.oclIsUndefined()))then{
+			// ok if default namespace
+			if((baseElement.getApplicationInformationName()='namespace')
+				and(baseElement.getApplicationInformationNamespace()='http://niem.gov/niem/appinfo/2.0')
+				and(baseElement.getAttributeValue()=context.schema.targetNamespace)
+			)then{}else{
+			log('ERROR: failed to match element target attributes '+baseElement.getApplicationInformationNamespace()+' : '+baseElement.getApplicationInformationName()+' = '+baseElement.getAttributeValue()+', in context '+context.getQualifiedName());
+			}endif;
+		}else{}endif;
+	};
+	self.getAttributes()->forEach(originalContent){
+		var targetContent:ECORE::EAnnotation=originalContent.findMatch(target.getAttributes(),context);
+		if(((targetContent=null)or targetContent.oclIsUndefined()))then{}else{
+				originalContent.compare(targetContent,context);
+		}endif;
+	};
+	return;
+}
+*/
+	/* TODO
+	*/
+/* TODO
+helper 	XSD::DOMAttr::compare(target:XSD::DOMAttr){
+	if(self.getAttributeName()<>target.getAttributeName())then{
+		log('ERROR: failed to match attribute name '+self.getAttributeName()+' ? '+target.getAttributeName());
+	}else{}endif;
+	if(self.getAttributeNamespace()<>target.getAttributeNamespace())then{
+		log('ERROR: failed to match attribute namespace '+self.getAttributeNamespace()+' ? '+target.getAttributeNamespace());
+	}else{}endif;
+		if(self.getAttributeValue()<>target.getAttributeValue())then{
+		log('ERROR: failed to match attribute value '+self.getAttributeValue()+' ? '+target.getAttributeValue());
+	}else{}endif;
+}
+*/	
+helper 	XSD::XSDAnnotation::compare(targetIn:XSD::XSDConcreteComponent){
+	var target:XSD::XSDAnnotation=targetIn.oclAsType(XSD::XSDAnnotation);
+	self.getApplicationInformation()->forEach(baseElement){
+//		var targetElement:ECORE::EAnnotation=baseElement.findMatch(target.getApplicationInformation(),self);
+		var targetElement:OclAny=baseElement.findMatch(target.getApplicationInformation(),self);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+//			log('ERROR: failed to match Annotation source applicationInformation '+baseElement.getApplicationInformationNamespace()+' : '+baseElement.getApplicationInformationName()+', for source '+self.getQualifiedName());
+			log('ERROR: failed to match Annotation source applicationInformation '+baseElement.getElementNamespace()+' : '+baseElement.getElementName()+', for source '+self.getQualifiedName());
+		}else{}endif;
+	};
+	if(IGNORE_IRRELEVANT_MISMATCH)then{}else{// original was typically missing base or other metadata
+		target.getApplicationInformation()->forEach(baseElement){
+//			var targetElement:ECORE::EAnnotation=baseElement.findMatch(self.getApplicationInformation(),self);
+			var targetElement:OclAny=baseElement.findMatch(self.getApplicationInformation(),self);
+			if(((targetElement=null)or targetElement.oclIsUndefined()))then{
+				log('ERROR: failed to match Annotation target applicationInformation '+self.applicationInformation->size().repr()+', '+baseElement.repr()+', for target '+target.getQualifiedName());
+			}else{}endif;
+		};
+	}endif;
+	self.getApplicationInformation()->forEach(originalContent){
+//		var targetContent:ECORE::EAnnotation=originalContent.findMatch(target.getApplicationInformation(),self);
+		var targetContent:OclAny=originalContent.findMatch(target.getApplicationInformation(),self);
+		if(((targetContent=null)or targetContent.oclIsUndefined()))then{}else{
+				originalContent.compare(targetContent,self);
+		}endif;
+	};
+	self.getUserInformation()->forEach(baseElement){
+//		var targetElement:ECORE::EAnnotation=baseElement.findMatch(target.getUserInformation()->asOrderedSet(),self);
+		var targetElement:OclAny=baseElement.findMatch(target.getUserInformation()->asOrderedSet(),self);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match Annotation source userInformation '+baseElement.repr()+', source '+self.getQualifiedName());
+		}else{}endif;
+	};
+	if(IGNORE_IRRELEVANT_MISMATCH)then{}else{// original was not documented
+		target.getUserInformation()->forEach(baseElement){
+//			var targetElement:ECORE::EAnnotation=baseElement.findMatch(self.getUserInformation()->asOrderedSet(),self);
+			var targetElement:OclAny=baseElement.findMatch(self.getUserInformation()->asOrderedSet(),self);
+			if(((targetElement=null)or targetElement.oclIsUndefined()))then{
+				log('ERROR: failed to match Annotation target userInformation '+baseElement.repr()+', target '+target.getQualifiedName());
+			}else{}endif;
+		};
+	}endif;
+	self.getUserInformation()->forEach(originalContent){
+//		var targetContent:ECORE::EAnnotation=originalContent.findMatch(target.getUserInformation()->asOrderedSet(),self);
+		var targetContent:OclAny=originalContent.findMatch(target.getUserInformation()->asOrderedSet(),self);
+		if(((targetContent=null)or targetContent.oclIsUndefined()))then{}else{
+				originalContent.compare(targetContent,self);
+		}endif;
+	};
+	/* attribute check next level of compare
+	self.attributes->select(a|not(a.isXmlnsAttr()))->forEach(baseElement){
+		var targetElement:XSD::DOMAttr=baseElement.findMatch(target.attributes);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match Annotation source attributes '+baseElement.repr()+', '+self.container.repr());
+		}else{}endif;
+	};
+	target.attributes->select(a|not(a.isXmlnsAttr()))->forEach(baseElement){
+		var targetElement:XSD::DOMAttr=baseElement.findMatch(self.attributes);
+		if(((targetElement=null)or targetElement.oclIsUndefined()))then{
+			log('ERROR: failed to match Annotation target attributes '+baseElement.repr()+', '+target.container.repr());
+		}else{}endif;
+	};
+	self.attributes->select(a|not(a.isXmlnsAttr()))->forEach(originalContent){
+		var targetContent:XSD::DOMAttr=originalContent.findMatch(target.attributes);
+		if(((targetContent=null)or targetContent.oclIsUndefined()))then{}else{
+				originalContent.compare(targetContent);
+		}endif;
+	};
+	*/
+	/* TODO
+	*/
+	return;
+}
+helper 	XSD::XSDSimpleTypeDefinition::compare(targetIn:XSD::XSDConcreteComponent){
+	var target:XSD::XSDSimpleTypeDefinition=targetIn.oclAsType(XSD::XSDSimpleTypeDefinition);
+	self.compareTypeDefinition(target);
+	self.lexicalFinal->forEach(baseElement){
+		var targetElement:XSD::XSDSimpleFinal=baseElement.findMatch(target.lexicalFinal);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match SimpleTypeDefinition source lexicalFinal '+baseElement.repr());
+		}else{}endif;
+	};
+	target.lexicalFinal->forEach(baseElement){
+		var targetElement:XSD::XSDSimpleFinal=baseElement.findMatch(self.lexicalFinal);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match SimpleTypeDefinition target lexicalFinal '+baseElement.repr());
+		}else{}endif;
+	};
+	self.validFacets->forEach(baseElement){
+		var targetElement:String=baseElement.findMatch(target.validFacets);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match SimpleTypeDefinition source validFacets '+baseElement.repr());
+		}else{}endif;
+	};
+	target.validFacets->forEach(baseElement){
+		var targetElement:String=baseElement.findMatch(self.validFacets);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match SimpleTypeDefinition target validFacets '+baseElement.repr());
+		}else{}endif;
+	};
+
+	self.contents->forEach(baseElement){
+		var targetElement:XSD::XSDConcreteComponent=baseElement.findMatch(target.contents);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match SimpleTypeDefinition source content '+baseElement.repr());
+		}else{}endif;
+	};
+	target.contents->forEach(baseElement){
+		var targetElement:XSD::XSDConcreteComponent=baseElement.findMatch(self.contents);
+		if(((targetElement=null)or targetElement.oclIsUndefined())and not(baseElement.isTargetIgnored()))then{
+			log('ERROR: failed to match SimpleTypeDefinition target content '+baseElement.repr());
+		}else{}endif;
+	};
+	self.contents->forEach(originalContent){
+		var targetContent:XSD::XSDConcreteComponent=originalContent.findMatch(target.contents);
+		if(((targetContent=null)or targetContent.oclIsUndefined()))then{}else{
+				originalContent.compare(targetContent);
+		}endif;
+	};
+	if(self.facetContents->size()>20)then{
+		log('WARNING: skipping facet compare '+self.facetContents->size().repr()+' for source '+self.getQualifiedName());
+	}else{
+	self.facetContents->forEach(baseElement){
+		var targetElement:XSD::XSDConcreteComponent=baseElement.findMatch(target.facetContents);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match SimpleTypeDefinition source facetContents '+baseElement.getQualifiedName());
+		}else{}endif;
+	};
+	target.facetContents->forEach(baseElement){
+		var targetElement:XSD::XSDConcreteComponent=baseElement.findMatch(self.facetContents);
+		if(((targetElement=null)or targetElement.oclIsUndefined())and not(baseElement.isTargetIgnored()))then{
+			log('ERROR: failed to match SimpleTypeDefinition target facetContents '+baseElement.getQualifiedName());
+		}else{}endif;
+	};
+	self.facetContents->forEach(originalContent){
+		var targetContent:XSD::XSDConcreteComponent=originalContent.findMatch(target.facetContents);
+		if(((targetContent=null)or targetContent.oclIsUndefined()))then{}else{
+				originalContent.compare(targetContent);
+		}endif;
+	};
+	}endif;
+	self.memberTypeDefinitions->forEach(baseElement){
+		var targetElement:XSD::XSDConcreteComponent=baseElement.findMatch(target.memberTypeDefinitions);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match SimpleTypeDefinition source memberTypeDefinitions '+baseElement.repr());
+		}else{}endif;
+	};
+	target.memberTypeDefinitions->forEach(baseElement){
+		var targetElement:XSD::XSDConcreteComponent=baseElement.findMatch(self.memberTypeDefinitions);
+		if(((targetElement=null)or targetElement.oclIsUndefined())and not(baseElement.isTargetIgnored()))then{
+			log('ERROR: failed to match SimpleTypeDefinition target memberTypeDefinitions '+baseElement.repr());
+		}else{}endif;
+	};
+	self.memberTypeDefinitions->forEach(originalContent){
+		var targetContent:XSD::XSDConcreteComponent=originalContent.findMatch(target.memberTypeDefinitions);
+		if(((targetContent=null)or targetContent.oclIsUndefined()))then{}else{
+				originalContent.compareReference(targetContent,self,'memberTypeDefinition');
+		}endif;
+	};
+	if(self.baseTypeDefinition.oclIsUndefined() and target.baseTypeDefinition.oclIsUndefined())then{
+	}else{
+		if(self.baseTypeDefinition.oclIsUndefined() or target.baseTypeDefinition.oclIsUndefined())then{
+			log('ERROR: baseTypeDefinition mismatch for SimpleTypeDefinition '+self.baseTypeDefinition.repr()+' ? '+target.baseTypeDefinition.repr());
+		}else{
+			self.baseTypeDefinition.compareReference(target.baseTypeDefinition,self,'baseTypeDefinition');
+		}endif;
+	}endif;
+	if(self.primitiveTypeDefinition.oclIsUndefined() and target.primitiveTypeDefinition.oclIsUndefined())then{
+	}else{
+		if(self.primitiveTypeDefinition.oclIsUndefined() or target.primitiveTypeDefinition.oclIsUndefined())then{
+			log('ERROR: primitiveTypeDefinition mismatch for SimpleTypeDefinition '+self.primitiveTypeDefinition.repr()+' ? '+target.primitiveTypeDefinition.repr());
+		}else{
+			self.primitiveTypeDefinition.compareReference(target.primitiveTypeDefinition,self,'primitiveTypeDefinition');
+		}endif;
+	}endif;
+	if(self.itemTypeDefinition.oclIsUndefined() and target.itemTypeDefinition.oclIsUndefined())then{
+	}else{
+		if(self.itemTypeDefinition.oclIsUndefined() or target.itemTypeDefinition.oclIsUndefined())then{
+			log('ERROR: itemTypeDefinition mismatch for SimpleTypeDefinition '+self.itemTypeDefinition.repr()+' ? '+target.itemTypeDefinition.repr());
+		}else{
+			self.itemTypeDefinition.compareReference(target.itemTypeDefinition,self,'itemTypeDefinition');
+		}endif;
+	}endif;
+	return;
+}
+	
+helper 	XSD::XSDElementDeclaration::compare(targetIn:XSD::XSDConcreteComponent){
+	var target:XSD::XSDElementDeclaration=targetIn.oclAsType(XSD::XSDElementDeclaration);
+	self.compareFeature(target);
+	if(self.nillable<>target.nillable)then{
+		log('ERROR: nillable mismatch for ElementDeclaration '+self.nillable.repr()+' ? '+target.nillable.repr()+' at source '+self.getQualifiedName());
+	}else{}endif;
+	if(self._abstract<>target._abstract)then{
+		log('ERROR: _abstract mismatch for ElementDeclaration '+self._abstract.repr()+' ? '+target._abstract.repr()+' for source '+self.getQualifiedName());
+	}else{}endif;
+	self.lexicalFinal->forEach(baseElement){
+		var targetElement:XSD::XSDProhibitedSubstitutions=baseElement.findMatch(target.lexicalFinal);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match ElementDeclaration source lexicalFinal '+baseElement.repr());
+		}else{}endif;
+	};
+	target.lexicalFinal->forEach(baseElement){
+		var targetElement:XSD::XSDProhibitedSubstitutions=baseElement.findMatch(self.lexicalFinal);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match ElementDeclaration target lexicalFinal '+baseElement.repr());
+		}else{}endif;
+	};
+	self.block->forEach(baseElement){
+		var targetElement:XSD::XSDDisallowedSubstitutions=baseElement.findMatch(target.block);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match ElementDeclaration source block '+baseElement.repr());
+		}else{}endif;
+	};
+	target.block->forEach(baseElement){
+		var targetElement:XSD::XSDDisallowedSubstitutions=baseElement.findMatch(self.block);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match ElementDeclaration target block '+baseElement.repr());
+		}else{}endif;
+	};
+	if(self.annotation.oclIsUndefined() and target.annotation.oclIsUndefined())then{
+	}else{
+		if(self.annotation.oclIsUndefined() or target.annotation.oclIsUndefined())then{
+			// if source annotated and target not and source is not root then do not log the error
+			if(IGNORE_IRRELEVANT_MISMATCH 
+					and not(self.annotation.oclIsUndefined()) 
+					and target.annotation.oclIsUndefined()
+					and self.elementDeclarationReference	
+					)then{}else{
+			
+			log('ERROR: annotation mismatch for ElementDeclaration '+if(self.annotation.oclIsUndefined())then 'UNDEFINED' else self.annotation.getQualifiedName() endif+' ? '+if(target.annotation.oclIsUndefined())then 'UNDEFINED' else target.annotation.getQualifiedName() endif );
+			}endif;
+		}else{
+			self.annotation.compare(target.annotation);
+		}endif;
+	}endif;
+	if(self.anonymousTypeDefinition.oclIsUndefined() and target.anonymousTypeDefinition.oclIsUndefined())then{
+	}else{
+		if(self.anonymousTypeDefinition.oclIsUndefined() or target.anonymousTypeDefinition.oclIsUndefined())then{
+			log('ERROR: anonymousTypeDefinition mismatch for ElementDeclaration '+self.anonymousTypeDefinition.repr()+' ? '+target.anonymousTypeDefinition.repr());
+		}else{
+			self.anonymousTypeDefinition.compare(target.anonymousTypeDefinition);
+		}endif;
+	}endif;
+	if(self.typeDefinition.oclIsUndefined() and target.typeDefinition.oclIsUndefined())then{
+	}else{
+		if(self.typeDefinition.oclIsUndefined() or target.typeDefinition.oclIsUndefined())then{
+			log('ERROR: typeDefinition mismatch for ElementDeclaration '+self.typeDefinition.repr()+' ? '+target.typeDefinition.repr()+' for source '+self.getQualifiedName());
+		}else{
+			self.typeDefinition.compareReference(target.typeDefinition,self,'typeDefinition');
+		}endif;
+	}endif;
+	self.identityConstraintDefinitions->forEach(baseElement){
+		var targetElement:XSD::XSDConcreteComponent=baseElement.findMatch(target.identityConstraintDefinitions);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match ElementDeclaration source identityConstraintDefinitions '+baseElement.repr());
+		}else{}endif;
+	};
+	target.identityConstraintDefinitions->forEach(baseElement){
+		var targetElement:XSD::XSDConcreteComponent=baseElement.findMatch(self.identityConstraintDefinitions);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match ElementDeclaration target identityConstraintDefinitions '+baseElement.repr());
+		}else{}endif;
+	};
+	self.identityConstraintDefinitions->forEach(originalContent){
+		var targetContent:XSD::XSDConcreteComponent=originalContent.findMatch(target.identityConstraintDefinitions);
+		if(((targetContent=null)or targetContent.oclIsUndefined()))then{}else{
+				originalContent.compare(targetContent);
+		}endif;
+	};
+	
+	if(self.resolvedElementDeclaration.oclIsUndefined() and target.resolvedElementDeclaration.oclIsUndefined())then{
+	}else{
+		if(self.resolvedElementDeclaration.oclIsUndefined() or target.resolvedElementDeclaration.oclIsUndefined())then{
+			log('ERROR: resolvedElementDeclaration mismatch for ElementDeclaration '+self.resolvedElementDeclaration.repr()+' ? '+target.resolvedElementDeclaration.repr());
+		}else{
+			self.resolvedElementDeclaration.compareReference(target.resolvedElementDeclaration,self,'resolvedElementDeclaration');
+		}endif;
+	}endif;
+	if(self.substitutionGroupAffiliation.oclIsUndefined() and target.substitutionGroupAffiliation.oclIsUndefined())then{
+	}else{
+		if(self.substitutionGroupAffiliation.oclIsUndefined() or target.substitutionGroupAffiliation.oclIsUndefined())then{
+			if(IGNORE_IRRELEVANT_MISMATCH and (
+				self.substitutionGroupAffiliation.oclIsUndefined()
+				and (target.substitutionGroupAffiliation.name='Augmentation')
+				and (target.substitutionGroupAffiliation.schema.targetNamespace.isStructuresSchemaNamespace())
+				))then{}else{
+			log('ERROR: substitutionGroupAffiliation mismatch for ElementDeclaration '+if(self.substitutionGroupAffiliation.oclIsUndefined()) then 'UNDEFINED' else self.substitutionGroupAffiliation.getQualifiedName() endif +' ? '+if(target.substitutionGroupAffiliation.oclIsUndefined()) then 'UNDEFINED' else target.substitutionGroupAffiliation.getQualifiedName() endif +' source context '+self.getQualifiedName());
+			}endif;
+		}else{
+			self.substitutionGroupAffiliation.compareReference(target.substitutionGroupAffiliation,self,'substitutionGroupAffiliation');
+		}endif;
+	}endif;
+	/*
+	self.substitutionGroup->forEach(baseElement){
+		var targetElement:XSD::XSDConcreteComponent=baseElement.findMatch(target.substitutionGroup);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match ElementDeclaration source substitutionGroup '+baseElement.getQualifiedName());
+		}else{}endif;
+	};
+	target.substitutionGroup->forEach(baseElement){
+		var targetElement:XSD::XSDConcreteComponent=baseElement.findMatch(self.substitutionGroup);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match ElementDeclaration target substitutionGroup '+baseElement.getQualifiedName()+' for target '+target.getQualifiedName());
+		}else{}endif;
+	};
+	self.substitutionGroup->forEach(originalContent){
+		var targetContent:XSD::XSDConcreteComponent=originalContent.findMatch(target.substitutionGroup);
+		if(((targetContent=null)or targetContent.oclIsUndefined()))then{}else{
+				originalContent.compareReference(targetContent,self,'substitutionGroup');
+		}endif;
+	};
+	*/
+	return;
+}
+	
+helper 	XSD::XSDAttributeUse::compare(targetIn:XSD::XSDConcreteComponent){
+	var target:XSD::XSDAttributeUse=targetIn.oclAsType(XSD::XSDAttributeUse);
+	if(self.required<>target.required)then{
+		log('ERROR: required mismatch for AttributeUse '+self.required.repr()+' ? '+target.required.repr());
+	}else{}endif;
+	if(self.lexicalValue<>target.lexicalValue)then{
+		log('ERROR: lexicalValue mismatch for AttributeUse '+self.lexicalValue.repr()+' ? '+target.lexicalValue.repr());
+	}else{}endif;
+	if(self.constraint<>target.constraint)then{
+		log('ERROR: constraint mismatch for AttributeUse '+self.constraint.repr()+' ? '+target.constraint.repr());
+	}else{}endif;
+	if(self.use<>target.use)then{
+		log('ERROR: use mismatch for AttributeUse '+self.use.repr()+' ? '+target.use.repr());
+	}else{}endif;
+	self.content.compare(target.content);
+	return;
+}
+	
+helper 	XSD::XSDAttributeGroupDefinition::compare(targetIn:XSD::XSDConcreteComponent){
+	var target:XSD::XSDAttributeGroupDefinition=targetIn.oclAsType(XSD::XSDAttributeGroupDefinition);
+	if(self.annotation.oclIsUndefined() and target.annotation.oclIsUndefined())then{
+	}else{
+		if(self.annotation.oclIsUndefined() or target.annotation.oclIsUndefined())then{
+			log('ERROR: annotation mismatch for AttributeGroupDefinition '+if(self.annotation.oclIsUndefined())then 'UNDEFINED' else self.annotation.getQualifiedName() endif+' ? '+if(target.annotation.oclIsUndefined())then 'UNDEFINED' else target.annotation.getQualifiedName() endif);
+		}else{
+			self.annotation.compare(target.annotation);
+		}endif;
+	}endif;
+	if(self.attributeWildcardContent.oclIsUndefined() and target.attributeWildcardContent.oclIsUndefined())then{
+	}else{
+		if(self.attributeWildcardContent.oclIsUndefined() or target.attributeWildcardContent.oclIsUndefined())then{
+			log('ERROR: attributeWildcardContent mismatch for AttributeGroupDefinition '+self.attributeWildcardContent.repr()+' ? '+target.attributeWildcardContent.repr());
+		}else{
+			self.attributeWildcardContent.compare(target.attributeWildcardContent);
+		}endif;
+	}endif;
+	if(self.syntheticWildcard.oclIsUndefined() and target.syntheticWildcard.oclIsUndefined())then{
+	}else{
+		if(self.syntheticWildcard.oclIsUndefined() or target.syntheticWildcard.oclIsUndefined())then{
+			log('ERROR: syntheticWildcard mismatch for AttributeGroupDefinition '+self.syntheticWildcard.repr()+' ? '+target.syntheticWildcard.repr());
+		}else{
+			self.syntheticWildcard.compare(target.syntheticWildcard);
+		}endif;
+	}endif;
+	if(self.resolvedAttributeGroupDefinition.oclIsUndefined() and target.resolvedAttributeGroupDefinition.oclIsUndefined())then{
+	}else{
+		if(self.resolvedAttributeGroupDefinition.oclIsUndefined() or target.resolvedAttributeGroupDefinition.oclIsUndefined())then{
+			log('ERROR: resolvedAttributeGroupDefinition mismatch for AttributeGroupDefinition '+self.resolvedAttributeGroupDefinition.repr()+' ? '+target.resolvedAttributeGroupDefinition.repr());
+		}else{
+			self.resolvedAttributeGroupDefinition.compareReference(target.resolvedAttributeGroupDefinition,self,'resolvedAttributeGroupDefinition');
+		}endif;
+	}endif;
+	self.contents->forEach(baseElement){
+		var targetElement:XSD::XSDConcreteComponent=baseElement.findMatch(target.contents);
+		if((targetElement=null)or targetElement.oclIsUndefined())then{
+			log('ERROR: failed to match AttributeGroupDefinition source content '+baseElement.repr());
+		}else{}endif;
+	};
+	target.contents->forEach(baseElement){
+		var targetElement:XSD::XSDConcreteComponent=baseElement.findMatch(self.contents);
+		if(((targetElement=null)or targetElement.oclIsUndefined())and not(baseElement.isTargetIgnored()))then{
+			log('ERROR: failed to match AttributeGroupDefinition target content '+baseElement.repr());
+		}else{}endif;
+	};
+	self.contents->forEach(originalContent){
+		var targetContent:XSD::XSDConcreteComponent=originalContent.findMatch(target.contents);
+		if(((targetContent=null)or targetContent.oclIsUndefined()))then{}else{
+				originalContent.compare(targetContent);
+		}endif;
+	};
+	return;
+}
+helper 	XSD::XSDImport::compare(targetIn:XSD::XSDConcreteComponent){
+	var target:XSD::XSDImport=targetIn.oclAsType(XSD::XSDImport);
+	if(self.namespace<>target.namespace)then{
+		log('ERROR: namespace mismatch for Import '+self.namespace+' ? '+target.namespace);
+	}else{}endif;
+	if(self.annotation.oclIsUndefined() and target.annotation.oclIsUndefined())then{
+	}else{
+		if(self.annotation.oclIsUndefined() or target.annotation.oclIsUndefined())then{
+			log('ERROR: annotation mismatch for Import '+if(self.annotation.oclIsUndefined())then 'UNDEFINED' else self.annotation.getQualifiedName() endif+' ? '+target.annotation.getQualifiedName());
+		}else{
+			self.annotation.compare(target.annotation);
+		}endif;
+	}endif;
+	if(self.resolvedSchema.targetNamespace<>target.resolvedSchema.targetNamespace)then{
+		log('ERROR: resolved schema mismatch for Import '+self.resolvedSchema.targetNamespace+' ? '+target.resolvedSchema.targetNamespace);
+	}else{}endif;
+}
+helper 	XSD::XSDAttributeDeclaration::compare(targetIn:XSD::XSDConcreteComponent){
+	var target:XSD::XSDAttributeDeclaration=targetIn.oclAsType(XSD::XSDAttributeDeclaration);
+	self.compareFeature(target);
+	if(self.typeDefinition.oclIsUndefined() and target.typeDefinition.oclIsUndefined())then{
+	}else{
+		if(self.typeDefinition.oclIsUndefined() or target.typeDefinition.oclIsUndefined())then{
+			log('ERROR: typeDefinition mismatch for AttributeDeclaration '+self.typeDefinition.repr()+' ? '+target.typeDefinition.repr());
+		}else{
+			self.typeDefinition.compareReference(target.typeDefinition,self,'typeDefinition');
+		}endif;
+	}endif;
+	if(self.resolvedAttributeDeclaration.oclIsUndefined() and target.resolvedAttributeDeclaration.oclIsUndefined())then{
+	}else{
+		if(self.resolvedAttributeDeclaration.oclIsUndefined() or target.resolvedAttributeDeclaration.oclIsUndefined())then{
+			log('ERROR: resolvedAttributeDeclaration mismatch for AttributeDeclaration '+self.resolvedAttributeDeclaration.repr()+' ? '+target.resolvedAttributeDeclaration.repr());
+		}else{
+			self.resolvedAttributeDeclaration.compareReference(target.resolvedAttributeDeclaration,self,'resolvedAttributeDeclaration');
+		}endif;
+	}endif;
+	if(self.anonymousTypeDefinition.oclIsUndefined() and target.anonymousTypeDefinition.oclIsUndefined())then{
+	}else{
+		if(self.anonymousTypeDefinition.oclIsUndefined() or target.anonymousTypeDefinition.oclIsUndefined())then{
+			log('ERROR: anonymousTypeDefinition mismatch for AttributeDeclaration '+self.anonymousTypeDefinition.getQualifiedName()+' ? '+if(target.anonymousTypeDefinition.oclIsUndefined())then 'UNDEFINED' else target.anonymousTypeDefinition.getQualifiedName() endif);
+		}else{
+			self.anonymousTypeDefinition.compare(target.anonymousTypeDefinition);
+		}endif;
+	}endif;
+	if(self.annotation.oclIsUndefined() and target.annotation.oclIsUndefined())then{
+	}else{
+		if(self.annotation.oclIsUndefined() or target.annotation.oclIsUndefined())then{
+			log('ERROR: annotation mismatch for AttributeDeclaration '+self.annotation.getQualifiedName()+' ? '+if(target.annotation.oclIsUndefined())then 'UNDEFINED' else target.annotation.getQualifiedName() endif);
+		}else{
+			self.annotation.compare(target.annotation);
+		}endif;
+	}endif;
+ 
+}
+
+helper 	XSD::XSDTypeDefinition::compareTypeDefinition(target:XSD::XSDTypeDefinition){
+	if(self.annotation.oclIsUndefined() and target.annotation.oclIsUndefined())then{
+	}else{
+		if(self.annotation.oclIsUndefined() or target.annotation.oclIsUndefined())then{
+			if(IGNORE_IRRELEVANT_MISMATCH and self.annotation.oclIsUndefined())then{}else{
+
+			log('ERROR: annotation mismatch for TypeDefinition '+if (self.annotation.oclIsUndefined()) then 'UNDEFINED' else self.annotation.getQualifiedName() endif +' ? '+if(target.annotation.oclIsUndefined())then 'UNDEFINED' else target.annotation.getQualifiedName() endif+' for source '+self.getQualifiedName()		);
+			}endif;
+		}else{
+			self.annotation.compare(target.annotation);
+		}endif;
+	}endif;
+	if(self.derivationAnnotation.oclIsUndefined() and target.derivationAnnotation.oclIsUndefined())then{
+	}else{
+		if(self.derivationAnnotation.oclIsUndefined() or target.derivationAnnotation.oclIsUndefined())then{
+			log('ERROR: derivationAnnotation mismatch for TypeDefinition '+self.derivationAnnotation.repr()+' ? '+target.derivationAnnotation.repr());
+		}else{
+			self.derivationAnnotation.compare(target.derivationAnnotation);
+		}endif;
+	}endif;
+	/*
+	if(self.rootType.oclIsUndefined() and target.rootType.oclIsUndefined())then{
+	}else{
+		if(self.rootType.oclIsUndefined() or target.rootType.oclIsUndefined())then{
+			log('ERROR: rootType mismatch for TypeDefinition '+self.rootType.repr()+' ? '+target.rootType.repr());
+		}else{
+			self.rootType.compareReference(target.rootType,self,'rootType');
+		}endif;
+	}endif;
+	*/
+ }
+	
+helper 	XSD::XSDFeature::compareFeature(target:XSD::XSDFeature){
+	if(self.lexicalValue<>target.lexicalValue)then{
+		log('ERROR: lexicalValue mismatch for Feature '+self.lexicalValue+' ? '+target.lexicalValue);
+	}else{}endif;
+	if(self.constraint<>target.constraint)then{
+		log('ERROR: constraint mismatch for Feature '+self.constraint.repr()+' ? '+target.constraint.repr());
+	}else{}endif;
+	if(self.form<>target.form)then{
+		log('ERROR: form mismatch for Feature '+self.form.repr()+' ? '+target.form.repr());
+	}else{}endif;
+	if(self.scope.oclIsUndefined() and target.scope.oclIsUndefined())then{
+	}else{
+		if(self.scope.oclIsUndefined() or target.scope.oclIsUndefined())then{
+			log('ERROR: scope mismatch for Feature '+self.scope.repr()+' ? '+target.scope.repr());
+		}else{
+			self.scope.compareReference(target.scope,self,'scope');
+		}endif;
+	}endif;
+ }
+helper 	XSD::XSDConcreteComponent::compareReference(target:XSD::XSDConcreteComponent,context:XSD::XSDConcreteComponent,referenceName:String){
+	if((self.metaClassName()<>target.metaClassName())
+		or(self.oclIsKindOf(XSD::XSDSchema) and (self.oclAsType(XSD::XSDSchema).targetNamespace<>target.oclAsType(XSD::XSDSchema).targetNamespace))
+		or(self.oclIsKindOf(XSD::XSDNamedComponent) and (
+			(self.oclAsType(XSD::XSDNamedComponent).name<>target.oclAsType(XSD::XSDNamedComponent).name)
+			or (self.oclAsType(XSD::XSDNamedComponent).schema.targetNamespace<>target.oclAsType(XSD::XSDNamedComponent).schema.targetNamespace)
+			)
+			)
+		)then{
+			if(IGNORE_IRRELEVANT_MISMATCH and (
+				// simple type for xml schema type vs complex type ref to proxy counterpart
+				(self.oclIsKindOf(XSD::XSDSimpleTypeDefinition) and target.oclIsKindOf(XSD::XSDComplexTypeDefinition)
+					and (self.schema.targetNamespace=schemaForSchemaNamespace)
+					and (target.schema.targetNamespace.isProxySchemaNamespace())
+					and (self.oclAsType(XSD::XSDNamedComponent).name=target.oclAsType(XSD::XSDNamedComponent).name)
+					)
+				// niem-core AssociationType vs structures ComplexObjectType
+				or(self.oclIsKindOf(XSD::XSDComplexTypeDefinition) and target.oclIsKindOf(XSD::XSDComplexTypeDefinition)
+					and (self.schema.targetNamespace=niemCoreSchemaNamespace)
+					and (target.schema.targetNamespace.isStructuresSchemaNamespace())
+					and (self.oclAsType(XSD::XSDNamedComponent).name='AssociationType')
+					and (target.oclAsType(XSD::XSDNamedComponent).name='ComplexObjectType')
+				
+				)
+			))then{}else{
+			log('ERROR: mismatch for reference '+referenceName+' : '+self.getQualifiedName()+' ? '+target.getQualifiedName()+' in source context '+context.getQualifiedName());
+		}endif;
+	}else{
+	}endif;
+ }
+/*
+query OclAny::reprAny():String {
+	if(self.oclIsUndefined())then {return 'UNDEFINED';}else{}endif;
+	return self.repr();
+}
+*/
+query XSD::XSDConcreteComponent::isTargetIgnored():Boolean {
+	if(IGNORE_IRRELEVANT_MISMATCH)then{
+		if(self.oclIsKindOf(XSD::XSDImport) and (
+			(self.oclAsType(XSD::XSDImport).namespace.isAppinfoNamespace())
+			or (self.oclAsType(XSD::XSDImport).namespace.isProxySchemaNamespace())
+			))then{return true;}else{}endif;
+		if(self.oclIsKindOf(XSD::XSDImport))then{return true;}else{}endif;
+		if( (
+			 (self.schema.targetNamespace.isProxySchemaNamespace())
+			))then{return true;}else{}endif;
+	}else{}endif;	
+	return false;
+}
+query XSD::XSDConcreteComponent::isSourceIgnored():Boolean {
+	if(IGNORE_IRRELEVANT_MISMATCH)then{
+		if(self.oclIsKindOf(XSD::XSDComplexTypeDefinition) and (
+			(self.oclAsType(XSD::XSDComplexTypeDefinition).schema.targetNamespace=niemCoreSchemaNamespace)
+			and (self.oclAsType(XSD::XSDComplexTypeDefinition).name='AssociationType')
+			))then{return true;}else{}endif;
+		// probably an unused element from source	
+		if(self.oclIsKindOf(XSD::XSDElementDeclaration))then{return true;}else{}endif;
+	}else{}endif;	
+	return false;
+}
+	
+query XSD::XSDComplexFinal::findMatch(targets:OrderedSet(XSD::XSDComplexFinal)):XSD::XSDComplexFinal{
+	// match by type; then by name
+	var matches:Set(XSD::XSDComplexFinal)=targets->select(t|t=self);
+	if(matches->size()>1)then{
+		log('ERROR: did not resolve match for ComplexFinal '+self.repr()+', matches: '+matches->size().repr());
+	}else{}endif;
+	return matches->asSequence()->first();
+}
+	
+query XSD::XSDSimpleFinal::findMatch(targets:OrderedSet(XSD::XSDSimpleFinal)):XSD::XSDSimpleFinal{
+	// match by type; then by name
+	var matches:Set(XSD::XSDSimpleFinal)=targets->select(t|t=self);
+	if(matches->size()>1)then{
+		log('ERROR: did not resolve match for SimpleFinal '+self.repr()+', matches: '+matches->size().repr());
+	}else{}endif;
+	return matches->asSequence()->first();
+}
+
+/* TODO	
+query OclAny::findMatchAttr(targets:Sequence(OclAny)):XSD::DOMAttr{
+	log('ERROR: did not handle findMatch for '+self.repr());	
+}
+query XSD::DOMAttr::findMatchAttr(targets:Sequence(OclAny)):XSD::DOMAttr{
+	var matches:Sequence(XSD::DOMAttr)=targets->select(t|t=self).oclAsType(XSD::DOMAttr);
+	if(matches->size()>1)then{
+		log('ERROR: did not resolve match for DOMAttr '+self.repr()+', matches: '+matches->size().repr());
+	}else{}endif;
+	return matches->asSequence()->first();
+}
+*/
+/* TODO
+query XSD::DOMAttr::isXmlnsAttr():Boolean{
+	return self.getAttributeNamespace()='http://www.w3.org/2000/xmlns/';
+}
+	
+query XSD::DOMAttr::findMatch(targets:OrderedSet(XSD::DOMAttr)):XSD::DOMAttr{
+	// match by name
+	var matches:OrderedSet(XSD::DOMAttr)=targets->select(t|t.getAttributeName()=self.getAttributeName());
+	if(matches->size()>1)then{
+		log('ERROR: did not resolve match for DOMAttr '+self.repr()+', matches: '+matches->size().repr());
+	}else{}endif;
+	return matches->asSequence()->first();
+}
+	
+query XSD::DOMElement::findMatch(targets:OrderedSet(XSD::DOMElement),context:XSD::XSDConcreteComponent):XSD::DOMElement{
+	// match by type; then by name
+	var matches:OrderedSet(XSD::DOMElement)=targets->select(t|t.getApplicationInformationName()=self.getApplicationInformationName());
+	if(matches->size()>1)then{
+		log('ERROR: did not resolve match for DOMElement '+self.repr()+', matches: '+matches->size().repr()+', context '+context.getQualifiedName());
+	}else{}endif;
+	return matches->asSequence()->first();
+}
+*/
+// as DOMElement	
+query OclAny::findMatch(targets:OrderedSet(OclAny),context:XSD::XSDConcreteComponent):OclAny{
+	// match by name and namespace; may need to look at attributes and/or text content as well
+	var matches:OrderedSet(OclAny)=targets
+		->select(t|
+			(t.getElementName()=self.getElementName())
+			and (t.getElementNamespace()=self.getElementNamespace())
+			and self.matchesAppliesTo(t)
+		);
+	if(matches->size()>1)then{
+//		log('ERROR: did not resolve match for DOM node '+self.getElementNamespace()+' : '+self.getElementName()+', matches: '+matches->size().repr()+', context '+context.getQualifiedName());
+		log('ERROR: did not resolve match for DOM node '+self.getElementNamespace()+' : '+self.getElementName()+', matches: '+matches->size().repr()+', context '+context.getQualifiedName());
+	}else{}endif;
+	return matches->asSequence()->first();
+}
+query OclAny::matchesAppliesTo(target:OclAny):Boolean{
+	if(self.getElementName()='AppliesTo')then{
+		// check name and namespace attributes
+		return (self.getAppInfoName()=target.getAppInfoName()) and (self.getAppInfoNamespace()=target.getAppInfoNamespace());
+	}else{}endif;
+	return true;
+}
+
+/*	
+query ECORE::EAnnotation::findMatch(targets:OrderedSet(ECORE::EAnnotation),context:XSD::XSDConcreteComponent):ECORE::EAnnotation{
+	// match by name and namespace; may need to look at attributes and/or text content as well
+	var matches:OrderedSet(ECORE::EAnnotation)=targets
+		->select(t|
+			(t.getApplicationInformationName()=self.getApplicationInformationName())
+			and (t.getApplicationInformationNamespace()=self.getApplicationInformationNamespace())
+			and self.matchesAppliesTo(t)
+		);
+	if(matches->size()>1)then{
+		log('ERROR: did not resolve match for DOM node '+self.getApplicationInformationNamespace()+' : '+self.getApplicationInformationName()+', matches: '+matches->size().repr()+', context '+context.getQualifiedName());
+	}else{}endif;
+	return matches->asSequence()->first();
+}
+
+query ECORE::EAnnotation::matchesAppliesTo(target:ECORE::EAnnotation):Boolean{
+	if(self.getApplicationInformationName()='AppliesTo')then{
+		// check name and namespace attributes
+		return (self.getAppInfoName()=target.getAppInfoName()) and (self.getAppInfoNamespace()=target.getAppInfoNamespace());
+	}else{}endif;
+	return true;
+}
+*/	
+query String::findMatch(targets:OrderedSet(String)):String{
+	// match by type; then by name
+	var matches:OrderedSet(String)=targets->select(t|t=self);
+	if(matches->size()>1)then{
+		log('ERROR: did not resolve match for String '+self.repr()+', matches: '+matches->size().repr());
+	}else{}endif;
+	return matches->asSequence()->first();
+}
+	
+query XSD::XSDDisallowedSubstitutions::findMatch(targets:OrderedSet(XSD::XSDDisallowedSubstitutions)):XSD::XSDDisallowedSubstitutions{
+	// match by type; then by name
+	var matches:Set(XSD::XSDDisallowedSubstitutions)=targets->select(t|t=self);
+	if(matches->size()>1)then{
+		log('ERROR: did not resolve match for DisallowedSubstitutions '+self.repr()+', matches: '+matches->size().repr());
+	}else{}endif;
+	return matches->asSequence()->first();
+}
+query XSD::XSDProhibitedSubstitutions::findMatch(targets:OrderedSet(XSD::XSDProhibitedSubstitutions)):XSD::XSDProhibitedSubstitutions{
+	// match by type; then by name
+	var matches:Set(XSD::XSDProhibitedSubstitutions)=targets->select(t|t=self);
+	if(matches->size()>1)then{
+		log('ERROR: did not resolve match for ProhibitedSubstitutions '+self.repr()+', matches: '+matches->size().repr());
+	}else{}endif;
+	return matches->asSequence()->first();
+}
+query XSD::XSDConcreteComponent::findMatch(targets:OrderedSet(XSD::XSDConcreteComponent)):XSD::XSDConcreteComponent{
+//query XSD::XSDSchemaContent::findMatch(targets:Set(XSD::XSDSchemaContent)):XSD::XSDSchemaContent{
+	// match by type; then by name
+	var matches:Set(XSD::XSDConcreteComponent)=targets
+		->select(t|(t.metaClassName()=self.metaClassName()) and (t.schema.targetNamespace=self.schema.targetNamespace))->asSet();
+	if(self.oclIsKindOf(XSD::XSDNamedComponent))then{
+		matches:=matches->select(t| (t.oclAsType(XSD::XSDNamedComponent).name=self.oclAsType(XSD::XSDNamedComponent).name))->asSet();
+	}else{}endif;
+	if(self.oclIsKindOf(XSD::XSDImport))then{
+		matches:=matches->select(t| (t.oclAsType(XSD::XSDImport).namespace=self.oclAsType(XSD::XSDImport).namespace))->asSet();
+	}else{}endif;
+	if(self.oclIsKindOf(XSD::XSDAttributeUse))then{
+		matches:=matches->select(t|(
+			(t.oclAsType(XSD::XSDAttributeUse).attributeDeclaration.resolvedAttributeDeclaration.name=self.oclAsType(XSD::XSDAttributeUse).attributeDeclaration.resolvedAttributeDeclaration.name)
+			and (t.oclAsType(XSD::XSDAttributeUse).attributeDeclaration.resolvedAttributeDeclaration.schema.targetNamespace=self.oclAsType(XSD::XSDAttributeUse).attributeDeclaration.resolvedAttributeDeclaration.schema.targetNamespace)
+			))->asSet();
+	}else{}endif;
+	if(self.oclIsKindOf(XSD::XSDFacet))then{
+		matches:=matches->select(t|(
+			(t.oclAsType(XSD::XSDFacet).lexicalValue=self.oclAsType(XSD::XSDFacet).lexicalValue)
+			))->asSet();
+	}else{}endif;
+	
+	if(matches->size()>1)then{
+		log('ERROR: did not resolve match for '+self.getQualifiedName()+', matches: '+matches->size().repr());
+	}else{}endif;
+	return matches->asSequence()->first();
+}
+
+helper 	XSD::XSDForm::compare(target:XSD::XSDForm){
+	if(self<>target)then{
+		log('ERROR: form mismatch '+self.repr()+' ? '+target.repr());
+	}else{}endif;
+}
+query XSD::XSDConcreteComponent::getQualifiedName():String{
+	return '('+self.metaClassName()+')'+self.getBaseQualifiedName();
+}
+	
+query XSD::XSDNamedComponent::getQualifiedName():String{
+	return '('+self.metaClassName()+')'+self.getBaseQualifiedName();
+}
+query XSD::XSDConcreteComponent::getBaseQualifiedName():String{
+	return self.container.getBaseQualifiedName()+'::['+self.metaClassName()+']';
+}
+query XSD::XSDSchema::getBaseQualifiedName():String{
+	return self.targetNamespace;
+}
+	
+query XSD::XSDNamedComponent::getBaseQualifiedName():String{
+	return self.container.getBaseQualifiedName()+'::'+self.name;
+}
+query XSD::XSDImport::getBaseQualifiedName():String{
+	return self.container.getBaseQualifiedName()+'::'+self.namespace;
+}
+
+helper 	CAT::CatalogType::getAllSchemas():Set(XSD::XSDSchema)
+{
+	var allSchemas:Set(XSD::XSDSchema)=Set{};
+	self.artifact->select(f|f.oclIsKindOf(CAT::FileType)).oclAsType(CAT::FileType).getAllSchemas()->forEach(file){
+			allSchemas+=file;
+	};
+	self.artifact->select(f|f.oclIsKindOf(CAT::FileSetType)).oclAsType(CAT::FileSetType).file.getAllSchemas()->forEach(file){
+			allSchemas+=file;
+	};
+	return allSchemas;
+}
+
+helper 	CAT::FileType::getAllSchemas():Set(XSD::XSDSchema)
+{
+	var allSchemas:Set(XSD::XSDSchema)=Set{};
+	if(self.relativePathName.endsWith('.xsd'))then{
+		// load and process the schema at the relative location
+		var schema:XSD::XSDSchema=self.oclAsType(ECORE::EObject).getSchemaAtRelativeURI(self.relativePathName).oclAsType(XSD::XSDSchema);
+		if(schema.oclIsUndefined())then{
+			log('ERROR: failed to load schema at '+self.relativePathName);	
+		}else{
+			schema.getAllSchemas(Set{})->forEach(aSchema){
+				allSchemas+=aSchema;
+			};
+		}endif;
+	}else{
+	}endif;
+	return allSchemas;
+}
+helper 	XSD::XSDSchema::getAllSchemas(didThat:Set(XSD::XSDSchema)):Set(XSD::XSDSchema)
+{
+	if(didThat->includes(self))then{return Set{};}else{}endif;
+	var allSchemas:Set(XSD::XSDSchema)=Set{self};
+	//log('schema '+self.targetNamespace+', '+self.schemaForSchema.targetNamespace);
+	self.contents->select(c|c.oclIsKindOf(XSD::XSDSchemaDirective)).oclAsType(XSD::XSDSchemaDirective)
+		->forEach(schemaDirective){
+			if(schemaDirective.oclIsKindOf(xsd::XSDImport))then{
+				schemaDirective.oclAsType(xsd::XSDImport).importSchema();
+			}else{}endif;
+			if((schemaDirective.resolvedSchema=null)or schemaDirective.resolvedSchema.oclIsUndefined())then{
+				log('schemaDirective unresolved '+schemaDirective.schemaLocation+' from '+self.schemaLocation);
+			}else{
+				allSchemas+=schemaDirective.resolvedSchema.getAllSchemas(allSchemas->union(didThat));
+			}endif;
+		};
+	/*
+	self.contents->select(c|c.oclIsKindOf(XSD::XSDSchemaDirective)).oclAsType(XSD::XSDSchemaDirective).resolvedSchema
+		->select(s|(s<>null)and not(s.oclIsUndefined())).getAllSchemas()
+		->forEach(schema){
+		log('adding schema '+schema.targetNamespace);
+		allSchemas+=schema;
+	};
+	*/
+	/*
+	log('schema done '+self.targetNamespace+', '+allSchemas->size().repr()
+		+', '+self.contents->select(c|c.oclIsKindOf(XSD::XSDSchemaDirective))->size().repr()
+		+', '+self.contents->select(c|c.oclIsKindOf(XSD::XSDSchemaDirective)).oclAsType(XSD::XSDSchemaDirective).resolvedSchema->size().repr());
+	*/	
+	return allSchemas;
+}

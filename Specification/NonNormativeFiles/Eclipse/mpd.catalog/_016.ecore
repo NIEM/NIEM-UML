@@ -1,0 +1,942 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="_0" nsURI="http://release.niem.gov/niem/codes/census_commodity/3.0/"
+    nsPrefix="_0">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+    <details key="documentation" value="Census and Dept of Transportation.&#xA;Publication: CFS-1200 - SCTG COMMODITY CODES; &#xA;Date: 11-15-2011"/>
+  </eAnnotations>
+  <eAnnotations source="http://release.niem.gov/niem/conformanceTargets/3.0/">
+    <details key="conformanceTargets" value="http://reference.niem.gov/niem/specification/naming-and-design-rules/3.0/#ReferenceSchemaDocument"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EEnum" name="ConveyanceCategoryCodeSimpleType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A data type for a kind of conveyance."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ConveyanceCategoryCodeSimpleType"/>
+    </eAnnotations>
+    <eLiterals name="_36000" literal="36000">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Motorized and Other Vehicles (includes parts)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_36100" value="1" literal="36100">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Vehicles for fewer than 10 people"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_36101" value="2" literal="36101">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Automobiles and vans for fewer than 10 people (includes military jeeps and automobiles lightly armored) or powered by an electric motor (EV), hybrid vehicles that use a battery powered electric motor in addition to gasoline powered engine for improved efficiency (excludes all-terrain vehicles, racing cars, ambulances, hearses, prison vans, and motor homes, see 36109; vehicle parts, see Motor vehicle parts, 364xx)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_36109" value="3" literal="36109">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Other motor vehicles for fewer than 10 people, not elsewhere classified (includes all-terrain vehicles, racing cars, ambulances, hearses, prison vans, and motor homes) (excludes vehicle parts, see 364xx; and snowmobiles, golf carts, in-plant personnel carriers, see 36399; motorcycles, see 36351; and armored fighting vehicles, see 36391)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_36200" value="4" literal="36200">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Motor vehicles for the transport of goods and road tractors for semi-trailers (excludes parts)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_36210" value="5" literal="36210">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Motor vehicles for transporting goods, (includes vehicles used in construction, mining, agriculture, military and armored commercial trucks)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_36220" value="6" literal="36220">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Road tractors for semi-trailers (excludes parts, see 364xx)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_36300" value="7" literal="36300">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Other vehicles"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_36310" value="8" literal="36310">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Tractors (includes farm, lawn-and-garden, and track-laying tractors) (excludes road tractors and work tractors; tractor parts, see 364xx, or tractors of 34511)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_36320" value="9" literal="36320">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Motor vehicles with a seating capacity of 10 or more persons (excludes parts, see 364xx)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_36330" value="10" literal="36330">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Special-purpose motor vehicles (includes mobile cranes, drilling derricks, concrete mixers, and firefighting vehicles) (excludes parts, see 364xx)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_36340" value="11" literal="36340">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Chassis fitted with engines, and separate bodies, for motor vehicles"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_36351" value="12" literal="36351">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Motorcycles, motor scooters, and mopeds, and their parts (includes side cars)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_36359" value="13" literal="36359">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Bicycles and other cycles (includes unicycles and tricycles, and their parts)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_36360" value="14" literal="36360">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Trailers and semi-trailers and parts (includes camping and library trailers)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_36391" value="15" literal="36391">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Armored fighting vehicles and their parts"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_36399" value="16" literal="36399">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Other vehicles, not elsewhere classified (includes snowmobiles; golf carts and in-plant personnel carriers, segways) (excludes their parts, see 364xx; and hand-carts, grocery carts, wheelbarrows, and their parts)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_36400" value="17" literal="36400">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Motor vehicle parts (excludes motorcycles and armored fighting vehicles)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_36401" value="18" literal="36401">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Brakes (excludes unmounted brake linings and pads, see 31994)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_36402" value="19" literal="36402">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gear boxes (excludes parts, see 36409)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_36403" value="20" literal="36403">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Road wheels"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_36404" value="21" literal="36404">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Metal, stampings such as bumper, fender, door, hood, trim, and hub cap"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_36409" value="22" literal="36409">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Other parts for motor vehicles, not elsewhere classified (includes seat belts and seat covers, trims, plastics grilles, suspension shock-absorbers, radiators, mufflers, exhaust pipes, clutches, axles, bumpers, and steering wheels) (excludes parts for motorcycles, mopeds and armored fighting vehicles, see 36351 and 36391; engines and engine parts, see 341xx; pumps for liquids, see 34310; filters, see 34999; tires, see 24310; glass, see 313xx; lighting and signaling equipment, see 35992; ignition and starting equipment, see 35991; windshield wipers and defrosters, see 35992; seats, see 39029; and catalytic converters, see 34999)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_37000" value="23" literal="37000">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Transportation Equipment, not elsewhere classified"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_37100" value="24" literal="37100">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Railway equipment"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_37101" value="25" literal="37101">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Railway or tramway locomotives and self-propelled rolling-stock (excludes maintenance or service vehicles, see 37102)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_37102" value="26" literal="37102">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Railway or tramway maintenance or service vehicles (includes self-propelled), and passenger coaches and freight cars (excludes self-propelled)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_37103" value="27" literal="37103">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Parts of locomotives and rolling stock (excludes engines, see 341xx; electric motors and generators, see 35110; pumps for liquids, see 34310; and lighting equipment, see 39030)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_37104" value="28" literal="37104">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Track fixtures and fittings and their parts, mechanical signaling, safety, or traffic-control equipment, and containers specially designed and equipped for carriage by one or more transport modes"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_37200" value="29" literal="37200">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Aircraft and spacecraft"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_37210" value="30" literal="37210">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Aircraft (excludes parts, see below)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_37220" value="31" literal="37220">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Spacecraft (includes satellites and suborbital and spacecraft launch vehicles, but not their parts)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_37230" value="32" literal="37230">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Parts of aircraft and spacecraft (excludes internal combustion engines, see 341xx; turbines, see 34212; other engines and motors, see 34222; tires, see 24310; pumps for liquids, see 34310; filters, see 34999; plastics, see 24229; glass, see 313xx; lighting equipment, see 39030; ignition and starting equipment, see 35991; windshield wipers and defrosters, see 35992; and seats, see 39029)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_37240" value="33" literal="37240">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Parachutes, rotochutes, aircraft-launching gear, deck-arresters, and flight simulators"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_37300" value="34" literal="37300">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ships, boats, and floating structures"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_37310" value="35" literal="37310">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Pleasure or sporting vessels, and rowing boats (parts, except for hulls, should be classified according to what the article is)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_37320" value="36" literal="37320">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Commercial ships and boats and other floating structures (includes drilling or production platforms, lifeboats, inflatable rafts, buoys, and beacons) (parts, except for hulls, should be classified according to what the article is)"/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="ConveyanceCategoryCodeSimpleTypeObject"
+      instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ConveyanceCategoryCodeSimpleType:Object"/>
+      <details key="baseType" value="ConveyanceCategoryCodeSimpleType"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConveyanceCategoryCodeType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A data type for a kind of conveyance."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ConveyanceCategoryCodeType"/>
+      <details key="kind" value="simple"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//ConveyanceCategoryCodeSimpleType"
+        unsettable="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value=":0"/>
+        <details key="kind" value="simple"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//ID"
+        iD="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="id"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metadata" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREFS">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="metadata"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREF">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="ref"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="relationshipMetadata" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREFS">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="relationshipMetadata"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anyAttribute" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attributeWildcard"/>
+        <details key="wildcards" value="urn:us:gov:ic:ism urn:us:gov:ic:ntk"/>
+        <details key="name" value=":5"/>
+        <details key="processing" value="lax"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ElectronicEquipmentCategoryCodeSimpleType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A data type for a kind of electronic equipment."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ElectronicEquipmentCategoryCodeSimpleType"/>
+    </eAnnotations>
+    <eLiterals name="_35000" literal="35000">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Electronic and Other Electrical Equipment and Components, and Office Equipment"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35100" value="1" literal="35100">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Electric motors, generators, generating sets, rotary converters, transformers, static converters, and inductors"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35110" value="2" literal="35110">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Electric motors, generators, generating sets, rotary converters, transformers, static converters, and inductors Electric motors, generators, generating sets, and rotary converters"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35120" value="3" literal="35120">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Electric or electronic transformers, static converters (includes rectifiers, inductors, and power supplies for small appliances and computers)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35200" value="4" literal="35200">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Electric, electro-thermic, or electro-mechanical domestic appliances"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35210" value="5" literal="35210">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Electric, electro-thermic, or electro-mechanical domestic appliances Electric cooking appliances (includes stoves, ranges, grills, deep-fat fryers, and microwave ovens)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35220" value="6" literal="35220">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Electro-thermic or electro-mechanical domestic appliances such as vacuum cleaners, food grinders, blenders, juicers, coffee maker, can openers, electrical heating resistors (excludes carbon, see 35995), and personal appliances such as shavers, and toothbrushes (excludes dishwashers, see 34910; refrigerators, see 34421; air conditioners, see 34410; fans and range hoods, see 34330; or non-electric cooking or heating appliances such as radiators or wood stoves, see 33999)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35300" value="7" literal="35300">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Line telephone or telegraph apparatus"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35310" value="8" literal="35310">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Line telephone or telegraph apparatus and electronic entertainment products Line telephone and telegraph switching apparatus (excludes parts, see 35390)."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35390" value="9" literal="35390">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Other line telephone and telegraph communication apparatus, not elsewhere classified (includes telephones, fax machines, ISDN apparatus, modems, and parts for telephone switching apparatus) (excludes cellular telephones, see 35700)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35400" value="10" literal="35400">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Electronic entertainment products (includes televisions, radio broadcast receivers including satellite, disc players, digital recorders and playback devices, amplifiers, speakers, and digital cameras) (excludes parts of these goods, see 35820)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35500" value="11" literal="35500">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Computer and office equipment"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35510" value="12" literal="35510">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Computer equipment (includes mainframes, laptop units, processing units, monitors, and other data input and output devices such as fax/modem, and electronic reading devices, but not their parts)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35520" value="13" literal="35520">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Office equipment (includes point-of-sale devices, and word-processing machines, calculators, shredders, banknote dispensers) (excludes photocopiers, see 38220, and facsimile machines, see 35390)."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35600" value="14" literal="35600">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Prepared unrecorded or pre-recorded media"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35610" value="15" literal="35610">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Unrecorded media (includes blank tapes, disks, or other mediums for audio, video, computer data, or other use) (excludes photographic film, see 23400)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35621" value="16" literal="35621">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Computer software"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35629" value="17" literal="35629">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Other pre-recorded media, not elsewhere classified (includes records, tapes, and compact disks, but excludes software, see 35621, and photographic film, see 23400)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35700" value="18" literal="35700">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Transmission apparatus for radio or TV broadcasting; radio transmission and reception apparatus; radar apparatus; radio navigational- aid apparatus; and radio remote-control apparatus (includes cordless microphones, CB radios, cell-phones, pagers, GPS receivers, and television cameras) (excludes radio or television broadcast receivers, see 35400, or parts for these products, see 35820)."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35800" value="19" literal="35800">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Electronic components and parts"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35811" value="20" literal="35811">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Capacitors (includes power, resistors except heating but includes variable resistor switches, and thermionic, cold-cathode, or photo-cathode valves and tubes, includes vacuum, vapor, gas-filled, mercury-arc rectifying, cathode-ray, and television-camera) (excludes heating resistors, see 35220 or 35995)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35812" value="21" literal="35812">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Printed circuits"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35813" value="22" literal="35813">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Diodes, transistors, and similar semiconductor devices, photosensitive semiconductor devices (includes photovoltaic cells, light-emitting diodes, mounted piezoelectric crystals, and chemical elements and components doped for use in electronics)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35814" value="23" literal="35814">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Electronic integrated circuits and micro-assemblies (includes memory chips)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35820" value="24" literal="35820">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Parts for goods in SCTGs 35400, 35811, 35812, 35813, and 35814 above (includes cabinets)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35900" value="25" literal="35900">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Other Electronic components and parts"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35912" value="26" literal="35912">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Secondary cells and storage batteries (includes motor vehicle and nickel-cadmium batteries)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35920" value="27" literal="35920">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Apparatus for switching or protecting electrical circuits or for making connections to or in electrical circuits, and boards, panels, consoles, desks, cabinets, or similar bases equipped with these apparatus"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35991" value="28" literal="35991">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ignition or starting equipment used for spark-ignition or compression-ignition internal combustion engines; generators (includes dynamos and alternators) cutouts used with internal combustion engines; spark plugs; and wiring sets used in vehicles, aircraft, or ships"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35992" value="29" literal="35992">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Electrical lighting or signaling equipment, windshield wipers, or defrosters and demisters, used for motor vehicles or bicycles (excludes filament or discharge light bulbs, see 35993)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35993" value="30" literal="35993">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Electric filament or discharge light bulbs, ultra-violet or infra-red bulbs, and arc-lamps, sealed beam lamp units for vehicles, and photographic flashbulb"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35994" value="31" literal="35994">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Insulated electric conductors (includes wire), co-axial cables, and optical fiber cables (excludes vehicle wiring sets, see 35991)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35995" value="32" literal="35995">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Artificial graphite, colloidal or semi-colloidal graphite, preparations based on graphite or carbon, and articles of graphite or carbon (includes electric heating resistors of carbon battery carbons, lamp carbons, packing rings and seals, electrodes, and brushes)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_35999" value="33" literal="35999">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Other electronic and electrical equipment and components, not elsewhere classified (includes electric conduits and fittings) (excludes musical instruments, see 40992)"/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="ElectronicEquipmentCategoryCodeSimpleTypeObject"
+      instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ElectronicEquipmentCategoryCodeSimpleType:Object"/>
+      <details key="baseType" value="ElectronicEquipmentCategoryCodeSimpleType"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ElectronicEquipmentCategoryCodeType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A data type for a kind of electronic equipment."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ElectronicEquipmentCategoryCodeType"/>
+      <details key="kind" value="simple"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//ElectronicEquipmentCategoryCodeSimpleType"
+        unsettable="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value=":0"/>
+        <details key="kind" value="simple"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//ID"
+        iD="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="id"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metadata" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREFS">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="metadata"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREF">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="ref"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="relationshipMetadata" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREFS">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="relationshipMetadata"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anyAttribute" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attributeWildcard"/>
+        <details key="wildcards" value="urn:us:gov:ic:ism urn:us:gov:ic:ntk"/>
+        <details key="name" value=":5"/>
+        <details key="processing" value="lax"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ElectronicInstrumentCategoryCodeSimpleType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A data type for a kind of electronic instrument."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ElectronicInstrumentCategoryCodeSimpleType"/>
+    </eAnnotations>
+    <eLiterals name="_38000" literal="38000">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Precision Instruments and Apparatus"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_38100" value="1" literal="38100">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Optical elements, instruments, and apparatus"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_38101" value="2" literal="38101">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Eyewear (includes contact lenses and other lenses, goggles, and frames)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_38109" value="3" literal="38109">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Other optical elements, instruments, and apparatus, not elsewhere classified (excludes photographic, cinematographic, and photocopying equipment, see 38210 or 38220)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_38200" value="4" literal="38200">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Photographic and photocopying machines"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_38210" value="5" literal="38210">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Photographic (includes cinematographic cameras, image projectors, enlargers, reducers, and projection screens; negatoscopes, and apparatus and equipment for film developing) (excludes video, and digital cameras, see 35400)  . . . . ."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_38220" value="6" literal="38220">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Photocopying and thermo-copying machines  . . ."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_38300" value="7" literal="38300">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Surveying, hydrographic, oceanographic, hydrological, geophysical, drawing, or length- measuring instruments and appliances, and navigational and meteorological instruments and appliances (excludes radar and other radio-type apparatus)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_38310" value="8" literal="38310">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Navigational instruments and appliances (excludes radar and radio navigational-aid apparatus, see 35700) ."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_38320" value="9" literal="38320">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Surveying, hydrographic, oceanographic, hydrological, meteorological, geophysical, drawing, mathematical calculating and length measuring hand instruments and appliances (excludes radar apparatus, see 35700)."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_38400" value="10" literal="38400">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Instruments and apparatus for medical, dental, veterinary, or similar purposes"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_38410" value="11" literal="38410">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Apparatus based on the use of X-rays oralpha, beta, or gamma radiation"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_38420" value="12" literal="38420">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Electro-medical equipment (excludes pacemakers, see 38491)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_38491" value="13" literal="38491">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Orthopedic appliances; fracture appliances; artificial body parts; and appliances that are worn, carried, or implanted in the body to compensate for a medical condition"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_38492" value="14" literal="38492">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Surgical and medical instruments and apparatus"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_38499" value="15" literal="38499">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Other instruments, apparatus, and appliances for medical, surgical, dental, or veterinary sciences, or for similar purposes, not elsewhere classified (excludes furniture, see 39021; wheelchairs, see 40999; and wadding, bandages, etc., see 21000)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_38500" value="16" literal="38500">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Instruments and apparatus for measuring, checking, testing, or controlling"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_38510" value="17" literal="38510">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Instruments and apparatus for measuring or checking electrical quantities"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_38520" value="18" literal="38520">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Industrial process control instruments"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_38591" value="19" literal="38591">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Instruments and appliances for testing mechanical properties of materials"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_38592" value="20" literal="38592">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Instruments and appliances for measuring or detecting ionizing radiations"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_38593" value="21" literal="38593">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gas or liquid supply or production meters"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_38599" value="22" literal="38599">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Other instruments and apparatus for measuring, checking, testing, or controlling, not elsewhere classified"/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="ElectronicInstrumentCategoryCodeSimpleTypeObject"
+      instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ElectronicInstrumentCategoryCodeSimpleType:Object"/>
+      <details key="baseType" value="ElectronicInstrumentCategoryCodeSimpleType"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ElectronicInstrumentCategoryCodeType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A data type for a kind of electronic instrument."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ElectronicInstrumentCategoryCodeType"/>
+      <details key="kind" value="simple"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//ElectronicInstrumentCategoryCodeSimpleType"
+        unsettable="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value=":0"/>
+        <details key="kind" value="simple"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//ID"
+        iD="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="id"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metadata" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREFS">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="metadata"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREF">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="ref"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="relationshipMetadata" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREFS">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="relationshipMetadata"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anyAttribute" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attributeWildcard"/>
+        <details key="wildcards" value="urn:us:gov:ic:ism urn:us:gov:ic:ntk"/>
+        <details key="name" value=":5"/>
+        <details key="processing" value="lax"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MachineryCategoryCodeSimpleType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A data type for a kind of machinery."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="MachineryCategoryCodeSimpleType"/>
+    </eAnnotations>
+    <eLiterals name="_34000" literal="34000">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Machinery"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34100" value="1" literal="34100">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Internal combustion engines"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34110" value="2" literal="34110">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Spark-ignition reciprocating internal-combustion engines for motor vehicles, of a cylinder capacity exceeding 1000 cc"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34120" value="3" literal="34120">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Other internal-combustion piston engines (includes compression engines such as diesel and semi-diesel engines)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34130" value="4" literal="34130">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Parts of internal combustion piston engines (excludes pumps for liquids, see 34310; filters, see 34999; crankshafts and camshafts, see 34972; and bearings, see 3497x)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34200" value="5" literal="34200">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Turbines, boilers, and other non-electric motors and engines"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34211" value="6" literal="34211">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Steam, other vapor, or hydraulic turbines"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34212" value="7" literal="34212">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Turbo-jets, turbo-propellers, and other gas turbines (includes for aircraft)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34221" value="8" literal="34221">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Boilers, power or heating, and nuclear reactors"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34222" value="9" literal="34222">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Other non-electric engines and motors, not elsewhere classified (includes fluid power, windmills, spring- or weight-operated engines and motors, and missile and rocket reaction engines)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34300" value="10" literal="34300">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Pumps, compressors, and fans, and ventilating or recycling hoods incorporating a fan"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34310" value="11" literal="34310">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Pumps for liquids and liquid elevators (includes fluid power, vehicle, and service station pumps)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34320" value="12" literal="34320">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Air or vacuum pumps and air or other gas compressors (includes compressors for refrigerating and air conditioning equipment)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34330" value="13" literal="34330">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Fans (includes blowers) and ventilating or recycling hoods incorporating a fan"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34400" value="14" literal="34400">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Air-conditioning, refrigerating, or freezing equipment"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34410" value="15" literal="34410">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Air conditioning equipment (excludes compressors, see 34320, and evaporative air coolers, see 34999)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34421" value="16" literal="34421">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Household refrigerating or freezing equipment (excludes compressors, see 34320)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34422" value="17" literal="34422">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Commercial or industrial-type refrigerating or freezing equipment (excludes compressors, see 34320)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34500" value="18" literal="34500">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Materials-handling, excavating, boring, and related machinery and equipment"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34511" value="19" literal="34511">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Work trucks and tractors designed for lifting or for short distance transport of goods in factories, warehouses, docks, or airports (excludes trailers, see 36360)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34519" value="20" literal="34519">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Other lifting, handling, loading, or unloading machinery, not elsewhere classified (excludes cranes for road use, see 36330)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34520" value="21" literal="34520">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Moving, grading, leveling, scraping, excavating, tamping, compacting, extracting, or boring machinery for earth, minerals, or ores, pile drivers and extractors, and snow ploughs and blowers (excludes motor vehicles for transporting goods, see 36220; tractors, see 36310; special purpose motor vehicles such as mobile drilling derricks, see 36330; parts for the vehicles listed above, see 3640x; powered hand tools, see 34950; and machinery for screening, mixing, etc., and minerals for drying, paving, etc., see 34999)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34900" value="22" literal="34900">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Other mechanical machinery"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34910" value="23" literal="34910">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Dish-washing machines, machinery for cleaning or drying bottles or other containers, machinery for aerating beverages, and packing or wrapping machinery"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34920" value="24" literal="34920">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Agricultural, horticultural, forestry, and poultry or bee-keeping machinery (excludes powered hand tools, see 34950; tractors, see 36310; trailers and wagons, see 36360; and machinery for spraying or drying, see 34999)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34930" value="25" literal="34930">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Textile manufacturing machines; laundry machines (includes dryers and sewing machines)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34940" value="26" literal="34940">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Machine-tools for working hard materials (includes metal-working) (excludes other machines for working hard materials, such as woodworking presses; machines for working with metal wire; and machines for use in metallurgy, in foundries, or in metal rolling mills, see 34999 and in semiconductor manufacturing, see 34995)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34950" value="27" literal="34950">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Powered hand-tools, pneumatic, hydraulic, or with a self-contained electric or non-electric motor (includes tools for lawn or construction use)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34960" value="28" literal="34960">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Machines and apparatus for soldering, brazing or welding, for surface tempering, or for hot spraying of metals; and wire, rods, electrodes, and similar products for use with such machines and apparatus"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34971" value="29" literal="34971">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ball and roller bearings (includes mounted)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34972" value="30" literal="34972">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Transmission shafts and cranks, clutches, bearing housings and plain shaft bearings, gears and gearing, ball and roller screws, gear boxes and other speed changers, flywheels and pulleys, and shaft couplings (excludes gear motors, see 35110; and roller and similar chain, see 33999)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34991" value="31" literal="34991">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Machinery for making pulp, paper, or paperboard (includes dryers and calendering machines)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34992" value="32" literal="34992">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Book-binding, type-founding, type-setting, or printing machinery"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34993" value="33" literal="34993">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Molding boxes for metal foundry, mold bases, molding patterns, and molds for metal carbides, glass, minerals, rubber, plastics, or metal (excludes ingot molds, see 34999)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34994" value="34" literal="34994">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Taps, cocks, valves, and similar appliances for pipes, boiler shells, tanks and vats, or the like, (includes those for use in plumbing)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34995" value="35" literal="34995">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Semiconductor manufacturing machinery"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="_34999" value="36" literal="34999">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Other machinery, not elsewhere classified"/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="MachineryCategoryCodeSimpleTypeObject"
+      instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="MachineryCategoryCodeSimpleType:Object"/>
+      <details key="baseType" value="MachineryCategoryCodeSimpleType"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MachineryCategoryCodeType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A data type for a kind of machinery."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="MachineryCategoryCodeType"/>
+      <details key="kind" value="simple"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//MachineryCategoryCodeSimpleType"
+        unsettable="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value=":0"/>
+        <details key="kind" value="simple"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//ID"
+        iD="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="id"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metadata" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREFS">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="metadata"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREF">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="ref"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="relationshipMetadata" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//IDREFS">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="relationshipMetadata"/>
+        <details key="namespace" value="http://release.niem.gov/niem/structures/3.0/"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anyAttribute" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attributeWildcard"/>
+        <details key="wildcards" value="urn:us:gov:ic:ism urn:us:gov:ic:ntk"/>
+        <details key="name" value=":5"/>
+        <details key="processing" value="lax"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>
