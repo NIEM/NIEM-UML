@@ -13,7 +13,9 @@ import uml2ndrPlatformBinding;
 import uml2xsdPlatformBinding;
 */
 //modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.1.2';
-modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+//modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+//modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.5';
+modeltype UML uses 'http://www.omg.org/spec/UML/20131001';
 
 modeltype CMOF  uses 'http://www.eclipse.org/emf/2002/Ecore';
 modeltype XSD  uses 'http://www.eclipse.org/xsd/2002/XSD';
@@ -97,11 +99,16 @@ query XSD::XSDSchemaContent::schemaContentOrder():String{
 	return 'd'+self.repr();
 }
 helper catalog(){
-		var documentRoot:CAT::DocumentRoot:=new CAT::DocumentRoot();
+		var documentRoot:CAT::DocumentRoot:=new CAT::DocumentRoot@cat();
 		documentRoot.catalog+=mpdComponent.map ModelPackageDescription();
 
-		var oasisDocumentRoot:OASIS::DocumentRoot:=new OASIS::DocumentRoot();
-		oasisDocumentRoot.catalog+=mpdComponent.map OasisCatalog();
+		// OASIS catalog, do one for base-xsd, optionally constraint-xsd
+		var rootPackage:UML::Package=mpdComponent.getNearestPackage().getNearesProfileApplication(niemXsdProfile);
+		var basePackage:UML::Package=rootPackage.nestedPackage->select(p|p.name='base-xsd')->asSequence()->first();
+		if(not(basePackage.oclIsUndefined()))then{
+			var oasisDocumentRoot:OASIS::DocumentRoot:=new OASIS::DocumentRoot@oasis();
+			oasisDocumentRoot.catalog+=mpdComponent.map OasisCatalog(basePackage);
+		}endif;
 		// dummy changelog
 		// moved to platform specific
 		/*
@@ -118,21 +125,34 @@ helper catalog(){
 		return;
 }
 //////////////////////OASIS
-mapping UML::Component	::OasisCatalog():OASIS::Catalog
+//mapping UML::Component	::OasisCatalog():OASIS::Catalog
+mapping UML::InstanceSpecification	::OasisCatalog(basePackage:UML::Package):OASIS::Catalog@oasis
 {
-	self.clientDependency
-		->select(t|t.isStereotypeApplied(NIEMModelPackageDescriptionFileStereotype)).oclAsType(UML::Usage)
-		.map Uri(result);
+//	var pimmpd:Stdlib::Element=self.getStereotypeApplication(prompdStereotype).oclAsType(Stdlib::Element);
+	var pimmpd:UML::InstanceSpecification=self;
+	pimmpd.getMpdFileUsages()
+		->union(pimmpd.getInstanceValues('IEPConformanceTarget').getInstanceValues('ValidityConstraintWithContext').getMpdFileUsages())
+		.map Uri(basePackage,result);
+//	self.clientDependency
+//		->select(t|t.isStereotypeApplied(NIEMModelPackageDescriptionFileStereotype)).oclAsType(UML::Usage)
+//		.map Uri(result);
 }
-mapping UML::Usage::Uri(inout catalog:OASIS::Catalog):OASIS::Uri
+mapping UML::Usage::Uri(basePackage:UML::Package,inout catalog:OASIS::Catalog):OASIS::Uri@oasis
 	when{self.supplier->select(s|s.oclIsKindOf(UML::Package) and s.oclAsType(UML::Package).isNIEMNamespace())->notEmpty()}
 {
 	catalog.uri+=result;
 	var schemaPackage:UML::Package=self.supplier
 		->select(s|s.oclIsKindOf(UML::Package) and s.oclAsType(UML::Package).isNIEMNamespace()).oclAsType(UML::Package)
 		->asSequence()->first();
-	uri:=schemaPackage.toRelativePathName(schemaPackage.getNearestPackage().getNearesProfileApplication(niemXsdProfile),result);
-	var pimmpd:Stdlib::Element=self.getStereotypeApplication(NIEMModelPackageDescriptionFileStereotype).oclAsType(Stdlib::Element);
+//	uri:=schemaPackage.toRelativePathName(schemaPackage.getNearestPackage().getNearesProfileApplication(niemXsdProfile),result);
+	uri:=schemaPackage.toRelativePathName(basePackage,result);
+	if(result.uri.oclIsUndefined())then{
+		uri:='../'+schemaPackage.toRelativePathName(basePackage.nestingPackage,result);
+	}endif;
+//	var pimmpd:Stdlib::Element=self.getStereotypeApplication(NIEMModelPackageDescriptionFileStereotype).oclAsType(Stdlib::Element);
+//	var pimmpd:Stdlib::Element=self.client->asSequence()->first().oclAsType(Stdlib::Element);
+//	var pimmpd:UML::InstanceSpecification=self.client->asSequence()->first().oclAsType(UML::InstanceSpecification);
+	var pimmpd:Stdlib::Element=self.getStereotypeApplication(NIEMFileType).oclAsType(Stdlib::Element);
 	var explicitRelativePathName:String =pimmpd.getFileTypeRelativePathName();
 	if(not(explicitRelativePathName.oclIsUndefined()) and (explicitRelativePathName<>''))then{
 		uri:=explicitRelativePathName;
@@ -144,41 +164,106 @@ mapping String::TextType(context:UML::NamedElement):NC::TextType
 {
 	value:=self;
 }
-mapping UML::Component	::ModelPackageDescription():CAT::CatalogType
+mapping String::PersonNameType(context:UML::NamedElement):NC::PersonNameType
+{
+	personFullName+=self.map PersonNameTextType(context);
+}
+
+mapping String::ProperNameTextType(context:UML::NamedElement):NC::ProperNameTextType
+	inherits String::TextType
+{
+}
+mapping String::PersonNameTextType(context:UML::NamedElement):NC::PersonNameTextType
+	inherits String::ProperNameTextType
+{
+}
+//mapping UML::Component	::ModelPackageDescription():CAT::CatalogType
+mapping UML::InstanceSpecification	::ModelPackageDescription():CAT::CatalogType@cat
 {
 	mpdComponent:=self;
 	self.getTopNiemFolders().nestedPackage.mapAbstractPackage();
 	log('processCatalog start ');
 		
+//	var md:CAT::MPDType=new CAT::MPDType();
+//	mPD:=md;
+	mPD:=self.map MPDType();
+//	var pimmpd:Stdlib::Element=self.getStereotypeApplication(prompdStereotype).oclAsType(Stdlib::Element);
+	var pimmpd:UML::InstanceSpecification=self;
+//	pimmpd.getMpdFileUsages().map AbstractModelPackageDescriptionFile(result);
+	pimmpd.getMpdFileUsages().map AbstractModelPackageDescriptionFile(result.mPD);
+//	self.clientDependency
+//		->select(t|t.isStereotypeApplied(NIEMModelPackageDescriptionFileStereotype)).oclAsType(UML::Usage)
+//		.map ModelPackageDescriptionFile(result);
+	log('processCatalog complete ');
+}
+//mapping UML::Component	::MPDType():CAT::MPDType
+mapping UML::InstanceSpecification	::MPDType():CAT::MPDType@cat
+{
 	// mpd
-	var pimmpd:Stdlib::Element=self.getStereotypeApplication(prompdStereotype).oclAsType(Stdlib::Element);
-	var md:CAT::MPDType=new CAT::MPDType();
-	mPD:=md;
-	self.packagedElement
-		->select(t|t.isStereotypeApplied(NIEMModelPackageDescriptionFileSetStereotype))
-		.oclAsType(UML::Component)
-//		.map ModelPackageDescriptionFileSet(result);
-		.map SchemaDocumentSetType(md);
+//	var pimmpd:Stdlib::Element=self.getStereotypeApplication(prompdStereotype).oclAsType(Stdlib::Element);
+	var pimmpd:UML::InstanceSpecification=self;
+	pimmpd.getMpdFileSets().map SchemaDocumentSetType(result);
+//	self.packagedElement
+//		->select(t|t.isStereotypeApplied(NIEMModelPackageDescriptionFileSetStereotype))
+//		.oclAsType(UML::Component)
+//		.map SchemaDocumentSetType(result);
 	
 //	var md:CAT::MetadataType=new CAT::MetadataType();
 //	metadata:=md;
 //	var ncDescriptionText:NC::TextType=new NC::TextType();
 //	ncDescriptionText.value:=pimmpd.getMpdDescriptionText();
 //	md.descriptionText:=ncDescriptionText;
-	md.descriptionText:=pimmpd.getMpdDescriptionText().map TextType(self);
+//	descriptionText:=pimmpd.getMpdDescriptionText().map TextType(self);
+	descriptionText:=pimmpd.getDescriptionText().map TextType(self);
 	
 	//mPD:=md;
 	
-	// TODO: IEPConformanceTarget
-	// TODO: ArtifactOrArtifactSet
-	var mpdInformationType:CAT::MPDInformationType=new CAT::MPDInformationType();
-	md.mPDInformation:=mpdInformationType;
-	md.mpdURI:=pimmpd.getMpdBaseURI();
-	md.mpdName:=md.mpdURI.getLastSegment();
-	md.mpdVersionID:=pimmpd.getMpdVersionID();
+	//  IEPConformanceTarget
+	pimmpd.getIEPConformanceTargets().map IEPConformanceTarget(result);
+	
+	
+	// ArtifactOrArtifactSet
+	pimmpd.getArtifactOrArtifactSetInstances().ArtifactOrArtifactSet(result);
+	
+//	var mpdInformationType:CAT::MPDInformationType=new CAT::MPDInformationType();
+//	mPDInformation:=mpdInformationType;
+	mPDInformation:=self.map MPDInformationType();
+	mpdURI:=pimmpd.getMpdBaseURI();
+//	mpdName:=md.mpdURI.getLastSegment();
+	mpdName:=result.mpdURI.getLastSegment();
+	mpdVersionID:=pimmpd.getMpdVersionID();
+	
 	// TODO:  mpdClassCode
-	md.mpdClassCode:=null;// TODO
-		
+	//mpdClassCode:=null;// TODO
+	
+//	var classURIs:Sequence(String)=Sequence{};	
+//	classURIs+='http://reference.niem.gov/niem/specification/model-package-description/3.0/#MPD';	
+	result.oclAsType(Stdlib::Element).addListValue('mpdClassURIList','http://reference.niem.gov/niem/specification/model-package-description/3.0/#MPD');
+	var mpdClassCode:String=pimmpd.getMpdClassCode();
+	switch{
+		case(false){}
+		else{
+//			classURIs+='http://reference.niem.gov/niem/specification/model-package-description/3.0/#IEPD';	
+			result.oclAsType(Stdlib::Element).addListValue('mpdClassURIList','http://reference.niem.gov/niem/specification/model-package-description/3.0/#IEPD');
+		};
+	};
+	
+	// TODO: check if this is only problem
+	//mpdClassURIList:=classURIs;
+	
+/*		
+	mpdClassURIList:=Sequence{};	
+	mpdClassURIList+='http://reference.niem.gov/niem/specification/model-package-description/3.0/#MPD';	
+	var mpdClassCode:String=pimmpd.getMpdClassCode();
+	switch{
+		case(false){}
+		else{
+			mpdClassURIList+='http://reference.niem.gov/niem/specification/model-package-description/3.0/#IEPD';	
+		};
+	};
+	
+ */
+//	      http://reference.niem.gov/niem/specification/model-package-description/3.0/#IEPD	
 /*
 <xs:element ref="c:AuthoritativeSource" minOccurs="0"/>
             <xs:element ref="c:CreationDate" minOccurs="0"/>
@@ -213,14 +298,422 @@ mapping UML::Component	::ModelPackageDescription():CAT::CatalogType
 	md.exchangePatternText:=pimmpd.getMpdExchangePatternText();
 	md.exchangePartnerName:=pimmpd.getMpdExchangePartnerName();
 	*/
-	mpdInformationType.creationDate:=self.getAnyValue(prompdStereotype,'CreationDate').getAnyValue().oclAsType(String)
-		.map ProxyDate(pimmpd,'creationDate')->first();
+	
+//	pimmpd.map EntityType(mpdInformationType,self);
+	pimmpd.map EntityType(mPDInformation,self);
+	
+	
+	// TODO: aSAddressTExt
+	// TODO: aSWebSiteURL
+	/*
+	as.aSName:=pimmpd.getMpdASName();
+	as.aSAddressText:=pimmpd.getMpdASAddressText();
+	as.aSWebSiteURL:=pimmpd.getMpdASWebSiteURL();
+	*/
+//	self.clientDependency.map ModelPackageDescriptionRelationship(md);
+//	self.clientDependency.map ModelPackageDescriptionRelationship(mpdInformationType);
+//if(false)then{// test debug
+	self.clientDependency.map ModelPackageDescriptionRelationship(result.mPDInformation);
+//}endif;	
+}
+mapping UML::InstanceSpecification	::IEPConformanceTarget(inout mpdType:CAT::MPDType):CAT::IEPConformanceTargetType@cat
+{
+	mpdType.iEPConformanceTarget+=result;
+	self.getValidityConstraintWithContext().ValidityConstraintWithContext(result);
+	descriptionText:=self.getDescriptionText().map TextType(self);
+	
+	// ArtifactOrArtifactSet
+	self.getArtifactOrArtifactSetInstances().ArtifactOrArtifactSet(result);
+//	self.getMpdFileUsages().map AbstractModelPackageDescriptionFileCT(result);
+	self.getMpdFileUsages().map AbstractModelPackageDescriptionFile(result);
+	
+	/*
+	var umlIEPConformanceTargetList:UML::Slot=pimmpd.getIEPConformanceTargetList();
+	self.iEPConformanceTarget->forEach(iepConformanceTarget){
+		var umlIEPConformanceTarget:UML::InstanceSpecification=umlIEPConformanceTargetList.createInstance();
+		umlIEPConformanceTarget.setDescriptionText(iepConformanceTarget.descriptionText.value);
+		iepConformanceTarget.ValidityConstraintWithContext(umlIEPConformanceTarget);
+		umlIEPConformanceTarget.ArtifactOrArtifactSet(iepConformanceTarget);
+    };
+	*/
+}
+/*
+mapping UML::Usage::AbstractModelPackageDescriptionFileCT(inout catalog:Stdlib::Element):CAT::FileType
+	disjuncts 
+		UML::Usage::ApplicationInfoCT,
+		UML::Usage::BusinessRulesArtifactCT,
+		UML::Usage::ConformanceAssertionCT,
+		UML::Usage::ConformanceReportCT,
+		UML::Usage::DocumentationCT,
+		UML::Usage::ExtensionSchemaDocumentFileCT,
+		UML::Usage::ExternalSchemaDocumentFileCT,
+		UML::Usage::FileCT,
+		UML::Usage::IEPSampleXMLDocumentCT,
+		UML::Usage::MPDChangeLogCT,
+		UML::Usage::ReadMeCT,
+		UML::Usage::ReferenceSchemaDocumentFileCT,
+		UML::Usage::RelaxNGSchemaCT,
+		UML::Usage::RequiredFileCT,
+		UML::Usage::SchematronSchemaCT,
+		UML::Usage::SubsetSchemaDocumentFileCT,
+		UML::Usage::WantlistCT,
+		UML::Usage::XMLCatalogCT,
+		UML::Usage::XMLSchemaDocumentCT,
+
+		UML::Usage::ModelPackageDescriptionFileCT
+	{}
+mapping UML::Usage::ExternalSchemaDocumentFileCT(inout catalog:Stdlib::Element):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommonCT
+	when{self.stereotypedBy('ExternalSchemaDocument')}
+{
+	catalog.addExternalSchemaDocument(result);
+}
+mapping UML::Usage::ExtensionSchemaDocumentFileCT(inout catalog:CAT::IEPConformanceTargetType):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommonCT
+	when{self.stereotypedBy('ExtensionSchemaDocument')}
+{
+	catalog.addExtensionSchemaDocument(result);
+}
+mapping UML::Usage::ReferenceSchemaDocumentFileCT(inout catalog:CAT::IEPConformanceTargetType):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommonCT
+	when{self.stereotypedBy('ReferenceSchemaDocument')}
+{
+	catalog.addReferenceSchemaDocument(result);
+}
+	
+mapping UML::Usage::SubsetSchemaDocumentFileCT(inout catalog:CAT::IEPConformanceTargetType):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommonCT
+	when{self.stereotypedBy('SubsetSchemaDocument')}
+{
+	catalog.addSubsetSchemaDocument(result);
+}
+mapping UML::Usage::XMLCatalogCT(inout catalog:CAT::IEPConformanceTargetType):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommonCT
+	when{self.stereotypedBy('XMLCatalog')}
+	{
+	catalog.addXMLCatalog(result);
+}	
+mapping UML::Usage::XMLSchemaDocumentCT(inout catalog:CAT::IEPConformanceTargetType):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommonCT
+	when{self.stereotypedBy('XMLSchemaDocument')}
+	{
+	catalog.addXMLSchemaDocument(result);
+}	
+mapping UML::Usage::RequiredFileCT(inout catalog:CAT::IEPConformanceTargetType):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommonCT
+	when{self.stereotypedBy('RequiredFile')}
+	{
+	catalog.addRequiredFile(result);
+}	
+mapping UML::Usage::SchematronSchemaCT(inout catalog:CAT::IEPConformanceTargetType):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommonCT
+	when{self.stereotypedBy('SchematronSchema')}
+	{
+	catalog.addSchematronSchema(result);
+}	
+mapping UML::Usage::WantlistCT(inout catalog:CAT::IEPConformanceTargetType):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommonCT
+	when{self.stereotypedBy('Wantlist')}
+	{
+	catalog.addWantlist(result);
+}	
+mapping UML::Usage::MPDChangeLogCT(inout catalog:CAT::IEPConformanceTargetType):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommonCT
+	when{self.stereotypedBy('MPDChangeLog')}
+	{
+	catalog.addMPDChangeLog(result);
+}	
+mapping UML::Usage::ReadMeCT(inout catalog:CAT::IEPConformanceTargetType):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommonCT
+	when{self.stereotypedBy('ReadMe')}
+	{
+	catalog.addReadMe(result);
+}	
+mapping UML::Usage::RelaxNGSchemaCT(inout catalog:CAT::IEPConformanceTargetType):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommonCT
+	when{self.stereotypedBy('RelaxNGSchema')}
+	{
+	catalog.addRelaxNGSchema(result);
+}	
+mapping UML::Usage::DocumentationCT(inout catalog:CAT::IEPConformanceTargetType):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommonCT
+	when{self.stereotypedBy('Documentation')}
+	{
+	catalog.addDocumentation(result);
+}	
+mapping UML::Usage::FileCT(inout catalog:CAT::IEPConformanceTargetType):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommonCT
+	when{self.stereotypedBy('File')}
+	{
+	catalog.addFile(result);
+}	
+mapping UML::Usage::IEPSampleXMLDocumentCT(inout catalog:CAT::IEPConformanceTargetType):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommonCT
+	when{self.stereotypedBy('IEPSampleXMLDocument')}
+	{
+	catalog.addIEPSampleXMLDocument(result);
+}	
+mapping UML::Usage::BusinessRulesArtifactCT(inout catalog:CAT::IEPConformanceTargetType):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommonCT
+	when{self.stereotypedBy('BusinessRulesArtifact')}
+	{
+	catalog.addBusinessRulesArtifact(result);
+}	
+mapping UML::Usage::ConformanceAssertionCT(inout catalog:CAT::IEPConformanceTargetType):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommonCT
+	when{self.stereotypedBy('ConformanceAssertion')}
+	{
+	catalog.addConformanceAssertion(result);
+}	
+mapping UML::Usage::ConformanceReportCT(inout catalog:CAT::IEPConformanceTargetType):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommonCT
+	when{self.stereotypedBy('ConformanceReport')}
+	{
+	catalog.addConformanceReport(result);
+}	
+	
+	
+mapping UML::Usage::ApplicationInfoCT(inout catalog:CAT::IEPConformanceTargetType):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommonCT
+	when{self.stereotypedBy('ApplicationInfo')}
+	{
+	catalog.addApplicationInfo(result);
+}	
+mapping UML::Usage::ModelPackageDescriptionFileCommonCT(inout catalog:CAT::IEPConformanceTargetType):CAT::FileType@cat
+	{
+	var schemaPackage:UML::NamedElement=self.supplier->asSequence()->first();
+//	relativePathName:=schemaPackage.toRelativePathName(schemaPackage.getNearestPackage().getNearesProfileApplication(niemXsdProfile),result);
+	pathURI:=schemaPackage.toRelativePathName(schemaPackage.getNearestPackage().getNearesProfileApplication(niemXsdProfile),result);
+//	var pimmpd:Stdlib::Element=self.getStereotypeApplication(NIEMModelPackageDescriptionFileStereotype).oclAsType(Stdlib::Element);
+//	var pimmpd:Stdlib::Element=self.client->asSequence()->first().oclAsType(Stdlib::Element);
+//	var pimmpd:UML::InstanceSpecification=self.client->asSequence()->first().oclAsType(UML::InstanceSpecification);
+	var pimmpd:Stdlib::Element=self.getStereotypeApplication(NIEMFileType).oclAsType(Stdlib::Element);
+	var explicitRelativePathName:String =pimmpd.getFileTypeRelativePathName();
+	if(not(explicitRelativePathName.oclIsUndefined()) and (explicitRelativePathName<>''))then{
+//		relativePathName:=explicitRelativePathName;
+		pathURI:=explicitRelativePathName;
+		
+	}endif;
+//	descriptionText:=pimmpd.getFileDescriptionText();
+//	descriptionText:=pimmpd.getFileDescriptionText().map TextType(self);
+	descriptionText:=pimmpd.getDescriptionText().map TextType(self);
+	id:=self.getFileId();
+//	externalURI:=pimmpd.getFileTypeExternalURI();
+	externalURI:=pimmpd.getExternalURI();
+	mimeMediaTypeText:=pimmpd.getMimeMediaTypeText();
+	// not in NIEM3
+	//natureURI:=pimmpd.getFileTypeNatureURI();
+	//purposeURI:=pimmpd.getFileTypePurposeURI();
+}
+mapping UML::Usage::ModelPackageDescriptionFileCT(inout catalog:CAT::IEPConformanceTargetType):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommonCT
+	when{self.stereotypedBy('FileType')}
+	{
+	catalog.addCatalogFile(result);
+}
+*/
+mapping UML::Usage::FileSetFile(inout fileSet:CAT::FileSetType):CAT::FileType@cat{
+	//fileSet.file+=result;
+	fileSet.addFileSetFile(result);
+	
+	var schemaPackage:UML::NamedElement=self.supplier->asSequence()->first();
+
+//	relativePathName:=schemaPackage.toRelativePathName(schemaPackage.getNearestPackage().getNearesProfileApplication(niemXsdProfile),result);
+	pathURI:=schemaPackage.toRelativePathName(schemaPackage.getNearestPackage().getNearesProfileApplication(niemXsdProfile),result);
+//	var pimmpd:Stdlib::Element=self.getStereotypeApplication(NIEMModelPackageDescriptionFileStereotype);
+//	var pimmpd:Stdlib::Element=self.client->asSequence()->first().oclAsType(Stdlib::Element);
+//	var pimmpd:UML::InstanceSpecification=self.client->asSequence()->first().oclAsType(UML::InstanceSpecification);
+	var pimmpd:Stdlib::Element=self.getStereotypeApplication(NIEMFileType);
+	var explicitRelativePathName:String =pimmpd.getFileTypeRelativePathName();
+	if(not(explicitRelativePathName.oclIsUndefined()) and (explicitRelativePathName<>''))then{
+//		relativePathName:=explicitRelativePathName;
+		pathURI:=explicitRelativePathName;
+	}endif;
+//	descriptionText:=pimmpd.getFileDescriptionText();
+//	descriptionText:=pimmpd.getFileDescriptionText().map TextType(self);
+	descriptionText:=pimmpd.getDescriptionText().map TextType(self);
+	
+	id:=self.getFileId();
+//	externalURI:=pimmpd.getFileTypeExternalURI();
+	externalURI:=pimmpd.getExternalURI();
+	
+	// not in NIEM3
+	//natureURI:=pimmpd.getFileTypeNatureURI();
+	//purposeURI:=pimmpd.getFileTypePurposeURI();
+}
+mapping UML::Usage::SubsetSchemaDocument(inout fileSet:CAT::SchemaDocumentSetType):CAT::FileType@cat
+	inherits UML::Usage::FileSetFile
+{
+//	fileSet.xMLSchemaDocument+=result;
+//	fileSet.artifactOrArtifactSet+=result;
+	fileSet.oclAsType(CMOF::EObject).add('artifactOrArtifactSetGroup','subsetSchemaDocument',result.oclAsType(CMOF::EObject));
+	
+}
+
+helper UML::InstanceSpecification	::ValidityConstraintWithContext(inout iepConformanceTargetType:CAT::IEPConformanceTargetType)
+{
+	// TODO
+//            <xs:element ref="c:ValidityConstraintWithContext" minOccurs="0" maxOccurs="unbounded"/>
+//    <xs:element name="ValidityConstraintWithContext" abstract="true">
+//    <xs:element name="ValidityConstraint" abstract="true" substitutionGroup="c:ValidityConstraintWithContext">
+//    <xs:element name="ValidityContext" type="c:ValidityContextType" substitutionGroup="c:ValidityConstraintWithContext">
+//    <xs:element name="HasDocumentElement" type="c:QualifiedNamesType" substitutionGroup="c:ValidityConstraintWithContext">
+
+//<xs:element name="ValidToXPath" type="c:XPathType" substitutionGroup="c:ValidityConstraint">
+//<xs:element name="XMLSchemaValid" type="c:XMLSchemaType" substitutionGroup="c:ValidityConstraint">
+//    <xs:element name="SchematronValid" type="c:SchematronValidationType" substitutionGroup="c:ValidityConstraint">
+//    <xs:element name="RelaxNGValid" type="c:RelaxNGValidationType" substitutionGroup="c:ValidityConstraint">
+//    <xs:element name="ConformsToConformanceTarget" type="c:ConformanceTargetType" substitutionGroup="c:ValidityConstraint">
+//    <xs:element name="ConformsToRule" type="c:TextRuleType" substitutionGroup="c:ValidityConstraint">
+        
+	var names:Sequence(String)=self.classifier.name;
+			switch{
+				case(names->includes('ValidityContextType'))
+					iepConformanceTargetType.oclAsType(CMOF::EObject).add('validityConstraintWithContextGroup','validityContext',self.map ValidityContextType().oclAsType(CMOF::EObject));
+				case(names->includes('QualifiedNamesType'))
+					iepConformanceTargetType.oclAsType(CMOF::EObject).add('validityConstraintWithContextGroup','hasDocumentElement',self.map QualifiedNamesType().oclAsType(CMOF::EObject));
+				case(names->includes('XPathType'))
+					iepConformanceTargetType.oclAsType(CMOF::EObject).add('validityConstraintWithContextGroup','validToXPath',self.map XPathType().oclAsType(CMOF::EObject));
+				case(names->includes('XMLSchemaType'))
+					iepConformanceTargetType.oclAsType(CMOF::EObject).add('validityConstraintWithContextGroup','xMLSchemaValid',self.map XMLSchemaType().oclAsType(CMOF::EObject));
+				case(names->includes('SchematronValidationType'))
+					iepConformanceTargetType.oclAsType(CMOF::EObject).add('validityConstraintWithContextGroup','schematronValid',self.map SchematronValidationType().oclAsType(CMOF::EObject));
+				case(names->includes('RelaxNGValidationType'))
+					iepConformanceTargetType.oclAsType(CMOF::EObject).add('validityConstraintWithContextGroup','relaxNGValid',self.map RelaxNGValidationType().oclAsType(CMOF::EObject));
+				case(names->includes('ConformanceTargetType'))
+					iepConformanceTargetType.oclAsType(CMOF::EObject).add('validityConstraintWithContextGroup','conformsToConformanceTarget',self.map ConformanceTargetType().oclAsType(CMOF::EObject));
+				case(names->includes('TextRuleType'))
+					iepConformanceTargetType.oclAsType(CMOF::EObject).add('validityConstraintWithContextGroup','conformsToRule',self.map TextRuleType().oclAsType(CMOF::EObject));
+	
+				else{
+					log('ValidityConstraintWithContext not recognized: '+self.repr());
+				}
+			};
+}
+mapping UML::InstanceSpecification::ValidityContextType():CAT::ValidityContextType{
+//            <xs:element ref="nc:DescriptionText" minOccurs="0"/>
+//            <xs:element ref="c:ValidityConstraint" maxOccurs="unbounded"/>
+//          </xs:sequence>
+//          <xs:attribute ref="c:xPathText" use="required"/>
+	descriptionText:=self.getDescriptionText().map TextType(self);
+	xPathText:=self.getXPathText();
+	
+	self.getValidityConstraintWithContext()->forEach(validityConstraint){
+		var names:Sequence(String)=validityConstraint.classifier.name;
+			switch{
+				case(names->includes('XPathType'))
+					result.oclAsType(CMOF::EObject).add('ValidityConstraintGroup','ValidToXPath',self.map XPathType().oclAsType(CMOF::EObject));
+				case(names->includes('XMLSchemaType'))
+					result.oclAsType(CMOF::EObject).add('ValidityConstraintGroup','XMLSchemaValid',self.map XMLSchemaType().oclAsType(CMOF::EObject));
+				case(names->includes('SchematronValidationType'))
+					result.oclAsType(CMOF::EObject).add('ValidityConstraintGroup','SchematronValid',self.map SchematronValidationType().oclAsType(CMOF::EObject));
+				case(names->includes('RelaxNGValidationType'))
+					result.oclAsType(CMOF::EObject).add('ValidityConstraintGroup','RelaxNGValid',self.map RelaxNGValidationType().oclAsType(CMOF::EObject));
+				case(names->includes('ConformanceTargetType'))
+					result.oclAsType(CMOF::EObject).add('ValidityConstraintGroup','ConformsToConformanceTarget',self.map ConformanceTargetType().oclAsType(CMOF::EObject));
+				case(names->includes('TextRuleType'))
+					result.oclAsType(CMOF::EObject).add('ValidityConstraintGroup','ConformsToRule',self.map TextRuleType().oclAsType(CMOF::EObject));
+	
+				else{
+					log('ValidityContextType not recognized: '+validityConstraint.repr());
+				}
+			};	
+	};
+} 
+mapping UML::InstanceSpecification::QualifiedNamesType():CAT::QualifiedNamesType{
+//	            <xs:element ref="nc:DescriptionText" minOccurs="0"/>
+//          <xs:attribute ref="c:qualifiedNameList" use="required"/>
+//    <xs:attribute name="qualifiedNameList" type="c:QualifiedNameListSimpleType">
+//    <xs:simpleType name="QualifiedNameListSimpleType">
+//      <xs:list itemType="xs:QName"/>
+//    </xs:simpleType>
+	descriptionText:=self.getDescriptionText().map TextType(self);
+	/* TODO
+	qualifiedNameList+=self.getQualifiedNameList().toQName();
+	*/
+} 
+mapping UML::InstanceSpecification::XPathType():CAT::XPathType{
+//            <xs:element ref="nc:DescriptionText" minOccurs="0"/>
+//          <xs:attribute ref="c:xPathText" use="required"/>
+	descriptionText:=self.getDescriptionText().map TextType(self);
+	xPathText:=self.getXPathText();
+} 
+mapping UML::InstanceSpecification::XMLSchemaType():CAT::XMLSchemaType{
+//            <xs:element ref="nc:DescriptionText"  minOccurs="0"/>
+//            <xs:element ref="c:XMLCatalog"          minOccurs="0" maxOccurs="unbounded"/>
+//            <xs:element ref="c:XMLSchemaDocument" minOccurs="0" maxOccurs="unbounded"/>
+	descriptionText:=self.getDescriptionText().map TextType(self);
+	self.getMpdFileUsages().map AbstractXMLSchemaDocument(result);
+	
+	/* TODO; not sure what this actually means
+	self.xMLCatalog.map XMLCatalog(result);// usage
+	self.xMLSchemaDocument.map XMLSchemaDocument(result);// usage
+	*/
+	/* Usage
+	var xMLCatalogList:UML::Slot=result.getXMLCatalogList();
+	self.xMLCatalog->forEach(xmlCatalog){
+		xMLCatalogList.instance:=xmlCatalog.oclAsType(CAT::XMLCatalogType).map XMLCatalogType();
+	};
+	var xMLSchemaDocumentList:UML::Slot=result.getXMLSchemaDocumentList();
+	self.xMLSchemaDocument->forEach(xmlSchemaDocument){
+		xmlSchemaDocument.instance:=xmlSchemaDocument.oclAsType(CAT::XMLSchemaDocumentType).map XMLSchemaDocumentType();
+	};
+*/
+} 
+mapping UML::InstanceSpecification::SchematronValidationType():CAT::SchematronValidationType{
+//            <xs:element ref="nc:DescriptionText" minOccurs="0"/>
+//            <xs:element ref="c:SchematronSchema"/>
+	descriptionText:=self.getDescriptionText().map TextType(self);
+	// TODO: not yet supporting Schematron
+	//self.schematronSchema.map SchematronSchema(result);// Usage
+	//result.setSchematronSchema(self.schematronSchema.value);// Usage
+} 
+mapping UML::InstanceSpecification::RelaxNGValidationType():CAT::RelaxNGValidationType{
+//            <xs:element ref="nc:DescriptionText" minOccurs="0"/>
+//            <xs:element ref="c:RelaxNGSchema"/>
+	descriptionText:=self.getDescriptionText().map TextType(self);
+	// TODO: not yet supporting RelaxNG
+	//self.relaxNGSchema.map RelaxNGSchema(result);
+	//result.setRelaxNGSchema(self.relaxNGSchema.value);// Usage
+	
+
+} 
+mapping UML::InstanceSpecification::ConformanceTargetType():CAT::ConformanceTargetType{
+//            <xs:element ref="nc:DescriptionText" minOccurs="0"/>
+//          <xs:attribute ref="c:conformanceTargetURI" use="required"/>
+	descriptionText:=self.getDescriptionText().map TextType(self);
+	conformanceTargetURI:=self.getConformanceTargetURI();
+} 
+mapping UML::InstanceSpecification::TextRuleType():CAT::TextRuleType{
+//            <xs:element ref="nc:DescriptionText" minOccurs="0"/>
+//            <xs:element ref="c:RuleText"/>
+	descriptionText:=self.getDescriptionText().map TextType(self);
+	ruleText:=self.getRuleText().map TextType(self);
+
+} 
+
+
+
+helper UML::InstanceSpecification	::ArtifactOrArtifactSet(owner:OclAny)
+{
+	// TODO
+}
+//mapping UML::Component	::MPDInformationType():CAT::MPDInformationType
+mapping UML::InstanceSpecification	::MPDInformationType():CAT::MPDInformationType@cat
+{
+	// mpd
+//	var pimmpd:Stdlib::Element=self.getStereotypeApplication(prompdStereotype).oclAsType(Stdlib::Element);
+	var pimmpd:UML::InstanceSpecification=self;
+//	creationDate:=self.getAnyValue(prompdStereotype,'CreationDate').getAnyValue().oclAsType(String)
+	creationDate:=self.getAnyValue('CreationDate').oclAsType(String)
+		.map ProxyDate(pimmpd,'creationDate')->asSequence()->first();
 		//.oclAsType(XSD::Date);
-	mpdInformationType.lastRevisionDate:=self.getAnyValue(prompdStereotype,'LastRevisionDate').getAnyValue().oclAsType(String)
-		.map ProxyDate(pimmpd,'lastRevisionDate')->first();
+//	lastRevisionDate:=self.getAnyValue(prompdStereotype,'LastRevisionDate').getAnyValue().oclAsType(String)
+	lastRevisionDate:=self.getAnyValue('LastRevisionDate').oclAsType(String)
+		.map ProxyDate(pimmpd,'lastRevisionDate')->asSequence()->first();
 	//.oclAsType(String).oclAsType(XSD::Date);
 //	mpdInformationType.statusText:=pimmpd.getMpdStatusText();
-	mpdInformationType.statusText:=pimmpd.getMpdStatusText().map ProxyString(pimmpd,'statusText');
+	statusText:=pimmpd.getMpdStatusText().map ProxyString(pimmpd,'statusText');
 	
 //	mpdInformationType.keywordText+=pimmpd.getMpdKeywordText();
 //	mpdInformationType.domainText+=pimmpd.getMpdDomainText();
@@ -230,44 +723,56 @@ mapping UML::Component	::ModelPackageDescription():CAT::CatalogType
 //	mpdInformationType.extendedInformation+=pimmpd.getMpdExtendedInformation();
 
 
-	mpdInformationType.keywordText+=pimmpd.getMpdKeywordText().map ProxyString(pimmpd,'keywordText');
-	mpdInformationType.domainText+=pimmpd.getMpdDomainText().map ProxyString(pimmpd,'domainText');
-	mpdInformationType.purposeText+=pimmpd.getMpdPurposeText().map ProxyString(pimmpd,'purposeText');
-	mpdInformationType.exchangePatternText+=pimmpd.getMpdExchangePatternText().map ProxyString(pimmpd,'exchangePatternText');
-	mpdInformationType.exchangePartnerName+=pimmpd.getMpdExchangePartnerName().map ProxyString(pimmpd,'exchangePartnerName');
+	keywordText+=pimmpd.getMpdKeywordText().map ProxyString(pimmpd,'keywordText');
+	domainText+=pimmpd.getMpdDomainText().map ProxyString(pimmpd,'domainText');
+	purposeText+=pimmpd.getMpdPurposeText().map ProxyString(pimmpd,'purposeText');
+	exchangePatternText+=pimmpd.getMpdExchangePatternText().map ProxyString(pimmpd,'exchangePatternText');
+	exchangePartnerName+=pimmpd.getMpdExchangePartnerName().map ProxyString(pimmpd,'exchangePartnerName');
 	// extendedInformation is abstract, and there is no substitution
 	//mpdInformationType.extendedInformation+=pimmpd.getMpdExtendedInformation().map ProxyString(pimmpd,'extendedInformation');
 	
-	pimmpd.map EntityType(mpdInformationType,self);
-	// TODO: aSAddressTExt
-	// TODO: aSWebSiteURL
-	/*
-	as.aSName:=pimmpd.getMpdASName();
-	as.aSAddressText:=pimmpd.getMpdASAddressText();
-	as.aSWebSiteURL:=pimmpd.getMpdASWebSiteURL();
-	*/
-//	self.clientDependency.map ModelPackageDescriptionRelationship(md);
-	self.clientDependency.map ModelPackageDescriptionRelationship(mpdInformationType);
 	
-	self.clientDependency
-		->select(t|t.isStereotypeApplied(NIEMModelPackageDescriptionFileStereotype)).oclAsType(UML::Usage)
-		.map ModelPackageDescriptionFile(result);
 }
-mapping Stdlib::Element::EntityType(inout mpdInformationType:CAT::MPDInformationType,context:UML::NamedElement):NC::EntityType{
+/*
+mapping 	UML::InstanceSpecification::AbstractEntityRepresentation(inout mpdInformationType:CAT::MPDInformationType,context:UML::NamedElement):NC::EntityType
+	disjuncts 
+		UML::InstanceSpecification::PersonType,
+		UML::InstanceSpecification::OrganizationType,
+		UML::InstanceSpecification::EntityType
+	{}
+*/
+mapping UML::InstanceSpecification::EntityType(inout mpdInformationType:CAT::MPDInformationType,context:UML::NamedElement):NC::EntityType{
 	mpdInformationType.authoritativeSource:=result;
-	self.map OrganizationType(result,context);
+	var entityRepresentations:Sequence(InstanceSpecification)=
+		self.getAuthoritativeSourceList().value->select(v|v.oclIsKindOf(InstanceValue)).oclAsType(InstanceValue).instance;
+	entityRepresentations->forEach(entityRepresentation){
+		var isOrganization:Boolean=entityRepresentation.classifier.name->includes('OrganizationType');
+		if(isOrganization)then{
+	//		self.map OrganizationType(result,context);
+			entityRepresentation.map OrganizationType(result,context);
+		}else{
+			result.addEntityPerson(entityRepresentation.map PersonType(context));
+		}endif;
+	};	
 }
-mapping Stdlib::Element::OrganizationType(inout entityType:NC::EntityType,context:UML::NamedElement):NC::OrganizationType{
+//mapping UML::InstanceSpecification::PersonType(inout entityType:NC::EntityType,context:UML::NamedElement):NC::PersonType{
+mapping UML::InstanceSpecification::PersonType(context:UML::NamedElement):NC::PersonType{
+	//entityType.addEntityPerson(result);
+	personName+=self.getNames().map PersonNameType(context);
+}
+	
+mapping UML::InstanceSpecification::OrganizationType(inout entityType:NC::EntityType,context:UML::NamedElement):NC::OrganizationType{
 	// entityRepresentation
 	//entityType.entityOrganization+=result;
 	entityType.addEntityOrganization(result);
-	organizationName+=self.getMpdASName().map TextType(context);
-	self.getMpdPOC()->forEach(poc){
+//	organizationName+=self.getMpdASName().map TextType(context);
+	organizationName+=self.getNames().map TextType(context);
+	self.getOrganizationPrimaryContactInformation()->forEach(poc){
 		poc.map ContactInformationType(result,context);
 		//as.pOC+=POC;
 	};
 }
-mapping Stdlib::Element::ContactInformationType(inout organizationType:NC::OrganizationType,context:UML::NamedElement):NC::ContactInformationType{
+mapping UML::InstanceSpecification::ContactInformationType(inout organizationType:NC::OrganizationType,context:UML::NamedElement):NC::ContactInformationType{
 		// TODO: point of contact information  OrganizationPrimaryContactInformation?
 		// TODO: POC, pOCName,pOCEmail, pOCTelephone
 		/*
@@ -277,12 +782,70 @@ mapping Stdlib::Element::ContactInformationType(inout organizationType:NC::Organ
 		POC.pOCTelephone:=poc.getPOCTelephone();
 		*/
 		organizationType.organizationPrimaryContactInformation+=result;
+		/*
 		self.getPOCName().map ContactEntityType(result,context);
 		self.getPOCEmail().map ProxyString(self,'contactEmailID').addContactEmailID(result);
 		self.getPOCTelephone()
 			.map ProxyString(self,'contactTelephoneNumber')
 			.map TelephoneNumberType().addContactTelephoneNumber(result);
+			*/
+		// find max length of sequences, add as many ContactMeans to include all 	
+		var contactEmailID:Sequence(String):=self.contactEmailID();
+		var contactMailingAddress:Sequence(String):=self.contactMailingAddress();
+		var contactTelephoneNumber:Sequence(String):=self.contactTelephoneNumber();
+		var contactWebsiteURI:Sequence(String):=self.contactWebsiteURI();
+//		contactMeans+=contactEmailID.map ContactEmailID(result);
+		/*
+		var maxSize:Integer=contactEmailID->size().max(
+			contactMailingAddress->size().max(
+			contactTelephoneNumber->size().max(
+			contactWebsiteURI->size())));
+		var index:Integer=1;
+		while(index<=maxSize){
+			contactMeans+=result.map ContactMeans(index,contactEmailID,contactMailingAddress,contactTelephoneNumber,contactWebsiteURI);
+			index:=index+1;
+		};
+		*/
+		//contactEmailID->forEach(value){result.oclAsType(CMOF::EObject).add('contactMeans','contactEmailID',value);};
+		contactEmailID.map ProxyString(self,'contactEmailID').addContactEmailID(result);
+//		contactMailingAddress.map ProxyString(self,'contactMailingAddress').map AddressType().addContactMailingAddress(result);
+		contactMailingAddress.map TextType(self).map AddressType(self).addContactMailingAddress(result);
+		contactTelephoneNumber.map ProxyString(self,'contactTelephoneNumber').map TelephoneNumberType().addContactTelephoneNumber(result);
+		contactWebsiteURI.map ProxyAnyURI(self,'contactWebsiteURI').addContactWebsiteURI(result);
+		
+		contactEntity+=self.getContactEntity().map ContactEntity(result,context);
+		contactResponder+=self.getContactResponder().map PersonType(context);
+	
+		/*
+          <xs:element ref="nc:ContactMeans" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="nc:ContactEntity" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="nc:ContactResponder" minOccurs="0" maxOccurs="unbounded"/>
+			*/
 }
+	
+	
+mapping UML::InstanceSpecification::ContactEntity(inout contactInformationType:NC::ContactInformationType,context:UML::NamedElement):NC::EntityType{
+	contactInformationType.contactEntity+=result;
+	
+		var isOrganization:Boolean=self.classifier.name->includes('OrganizationType');
+		log('ContactEntity '+isOrganization.repr()+', '+self.repr());
+		if(isOrganization)then{
+	//		self.map OrganizationType(result,context);
+			log('ContactEntity organization '+result.repr()+', '+context.repr());
+			self.map OrganizationType(result,context);
+		}else{
+			result.addEntityPerson(self.map PersonType(context));
+		}endif;
+	
+}
+
+
+
+mapping NC::TextType::AddressType(context:UML::NamedElement):NC::AddressType{
+//	addressFullText=self.map TextType(context);
+	addressFullText+=self;
+}
+
 mapping PROXY::_String::TelephoneNumberType():NC::TelephoneNumberType{
 	result.addFullTelephoneNumberType(self.map FullTelephoneNumberType());
 }
@@ -300,6 +863,10 @@ mapping String::ContactOrganizationType(inout entityType:NC::EntityType,context:
 	organizationName+=self.map TextType(context);
 }
 
+mapping String::ProxyAnyURI(context:Stdlib::Element,feature:String):PROXY::AnyURI{
+	value:=self;
+}
+	
 mapping String::ProxyString(context:Stdlib::Element,feature:String):PROXY::_String{
 	value:=self;
 }
@@ -309,12 +876,16 @@ mapping String::ProxyDate(context:Stdlib::Element,feature:String):PROXY::Date{
 	result.setProxyDateValue(self);
 }
 //mapping UML::Dependency::ModelPackageDescriptionRelationship(inout md:CAT::MetadataType):CAT::RelationshipType
-mapping UML::Dependency::ModelPackageDescriptionRelationship(inout md:CAT::MPDInformationType):CAT::RelationshipType
+mapping UML::Dependency::ModelPackageDescriptionRelationship(inout md:CAT::MPDInformationType):CAT::RelationshipType@cat
 	when{self.isStereotypeApplied(NIEMModelPackageDescriptionRelationshipStereotype)}
 {
+		md.relationship+=result;
+//if(false)then{// debug test		
 		var relationshipType:Stdlib::Element=self.getStereotypeApplication(NIEMModelPackageDescriptionRelationshipStereotype).oclAsType(Stdlib::Element);
 //		descriptionText:=relationshipType.getRelationshipDescriptionText();
-	descriptionText:=relationshipType.getRelationshipDescriptionText().map TextType(self);
+//	descriptionText:=relationshipType.getRelationshipDescriptionText().map TextType(self);
+	var descriptionTextValue:String=relationshipType.getDescriptionText();
+	descriptionText:=descriptionTextValue.map TextType(self);
 		var code:String=relationshipType.getRelationshipCode();
 		relationshipCode:=switch{
 			case(code='versionOf') CAT::RelationshipCodeSimpleType::versionOf;
@@ -324,23 +895,178 @@ mapping UML::Dependency::ModelPackageDescriptionRelationship(inout md:CAT::MPDIn
 			case(code='deprecates') CAT::RelationshipCodeSimpleType::deprecates;
 			case(code='adapts') CAT::RelationshipCodeSimpleType::adapts;
 			case(code='updates') CAT::RelationshipCodeSimpleType::updates;
+			case(code='derives_from') CAT::RelationshipCodeSimpleType::derivesFrom;
 			else CAT::RelationshipCodeSimpleType::conformsTo;
 			};
-		md.relationship+=result;
+//}endif;		
+	self.supplier->forEach(supplier){
+		if(supplier.oclIsKindOf(UML::Package))then{
+			resourceURI:=supplier.oclAsType(UML::Package).URI;
+			//setResourceURI(inout relationship:CAT::RelationshipType);
+		}endif;
+	};
+		
 }
 
-mapping UML::Usage::SubsetSchemaDocument(inout catalog:CAT::CatalogType):CAT::FileType
-	inherits UML::Usage::ModelPackageDescriptionFile
+//mapping UML::Usage::AbstractModelPackageDescriptionFile(inout catalog:CAT::CatalogType):CAT::FileType
+mapping UML::Usage::AbstractModelPackageDescriptionFile(inout catalog:Stdlib::Element):CAT::FileType
+	disjuncts 
+		UML::Usage::ApplicationInfo,
+		UML::Usage::BusinessRulesArtifact,
+		UML::Usage::ConformanceAssertion,
+		UML::Usage::ConformanceReport,
+		UML::Usage::Documentation,
+		//UML::Usage::ExtensionSchemaDocumentFile,
+		//UML::Usage::ExternalSchemaDocumentFile,
+		UML::Usage::File,
+		UML::Usage::IEPSampleXMLDocument,
+		UML::Usage::MPDChangeLog,
+		UML::Usage::ReadMe,
+		//UML::Usage::ReferenceSchemaDocumentFile,
+		UML::Usage::RelaxNGSchema,
+		UML::Usage::RequiredFile,
+		UML::Usage::SchematronSchema,
+		//UML::Usage::SubsetSchemaDocumentFile,
+		UML::Usage::Wantlist,
+		UML::Usage::XMLCatalog,
+		//UML::Usage::XMLSchemaDocument,
+		UML::Usage::AbstractXMLSchemaDocument,
+		UML::Usage::ModelPackageDescriptionFile
+	{}
+mapping UML::Usage::AbstractXMLSchemaDocument(inout catalog:Stdlib::Element):CAT::FileType
+	disjuncts 
+		UML::Usage::ExtensionSchemaDocumentFile,
+		UML::Usage::ExternalSchemaDocumentFile,
+		UML::Usage::ReferenceSchemaDocumentFile,
+		UML::Usage::SubsetSchemaDocumentFile,
+		UML::Usage::XMLSchemaDocument
+	{}
+mapping UML::Usage::ExternalSchemaDocumentFile(inout catalog:Stdlib::Element):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommon
+	when{self.stereotypedBy('ExternalSchemaDocument')}
+{
+	catalog.addExternalSchemaDocument(result);
+}
+mapping UML::Usage::ExtensionSchemaDocumentFile(inout catalog:Stdlib::Element):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommon
+	when{self.stereotypedBy('ExtensionSchemaDocument')}
+{
+	catalog.addExtensionSchemaDocument(result);
+}
+mapping UML::Usage::ReferenceSchemaDocumentFile(inout catalog:Stdlib::Element):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommon
+	when{self.stereotypedBy('ReferenceSchemaDocument')}
+{
+	catalog.addReferenceSchemaDocument(result);
+}
+	
+mapping UML::Usage::SubsetSchemaDocumentFile(inout catalog:Stdlib::Element):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommon
+	when{self.stereotypedBy('SubsetSchemaDocument')}
 {
 	catalog.addSubsetSchemaDocument(result);
-	
 }
-mapping UML::Usage::ModelPackageDescriptionFile(inout catalog:CAT::CatalogType):CAT::FileType{
-	catalog.addCatalogFile(result);
+mapping UML::Usage::XMLCatalog(inout catalog:Stdlib::Element):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommon
+	when{self.stereotypedBy('XMLCatalog')}
+	{
+	catalog.addXMLCatalog(result);
+}	
+mapping UML::Usage::XMLSchemaDocument(inout catalog:Stdlib::Element):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommon
+	when{self.stereotypedBy('XMLSchemaDocument')}
+	{
+	catalog.addXMLSchemaDocument(result);
+}	
+mapping UML::Usage::RequiredFile(inout catalog:Stdlib::Element):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommon
+	when{self.stereotypedBy('RequiredFile')}
+	{
+	catalog.addRequiredFile(result);
+}	
+mapping UML::Usage::SchematronSchema(inout catalog:Stdlib::Element):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommon
+	when{self.stereotypedBy('SchematronSchema')}
+	{
+	catalog.addSchematronSchema(result);
+}	
+mapping UML::Usage::Wantlist(inout catalog:Stdlib::Element):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommon
+	when{self.stereotypedBy('Wantlist')}
+	{
+	catalog.addWantlist(result);
+}	
+mapping UML::Usage::MPDChangeLog(inout catalog:Stdlib::Element):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommon
+	when{self.stereotypedBy('MPDChangeLog')}
+	{
+	catalog.addMPDChangeLog(result);
+}	
+mapping UML::Usage::ReadMe(inout catalog:Stdlib::Element):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommon
+	when{self.stereotypedBy('ReadMe')}
+	{
+	catalog.addReadMe(result);
+}	
+mapping UML::Usage::RelaxNGSchema(inout catalog:Stdlib::Element):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommon
+	when{self.stereotypedBy('RelaxNGSchema')}
+	{
+	catalog.addRelaxNGSchema(result);
+}	
+mapping UML::Usage::Documentation(inout catalog:Stdlib::Element):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommon
+	when{self.stereotypedBy('Documentation')}
+	{
+	catalog.addDocumentation(result);
+}	
+mapping UML::Usage::File(inout catalog:Stdlib::Element):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommon
+	when{self.stereotypedBy('File')}
+	{
+	catalog.addFile(result);
+}	
+mapping UML::Usage::IEPSampleXMLDocument(inout catalog:Stdlib::Element):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommon
+	when{self.stereotypedBy('IEPSampleXMLDocument')}
+	{
+	catalog.addIEPSampleXMLDocument(result);
+}	
+mapping UML::Usage::BusinessRulesArtifact(inout catalog:Stdlib::Element):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommon
+	when{self.stereotypedBy('BusinessRulesArtifact')}
+	{
+	catalog.addBusinessRulesArtifact(result);
+}	
+mapping UML::Usage::ConformanceAssertion(inout catalog:Stdlib::Element):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommon
+	when{self.stereotypedBy('ConformanceAssertion')}
+	{
+	catalog.addConformanceAssertion(result);
+}	
+mapping UML::Usage::ConformanceReport(inout catalog:Stdlib::Element):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommon
+	when{self.stereotypedBy('ConformanceReport')}
+	{
+	catalog.addConformanceReport(result);
+}	
+	
+	
+mapping UML::Usage::ApplicationInfo(inout catalog:Stdlib::Element):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommon
+	when{self.stereotypedBy('ApplicationInfo')}
+	{
+	catalog.addApplicationInfo(result);
+}	
+mapping UML::Usage::ModelPackageDescriptionFileCommon(inout catalog:Stdlib::Element):CAT::FileType@cat
+	{
 	var schemaPackage:UML::NamedElement=self.supplier->asSequence()->first();
 //	relativePathName:=schemaPackage.toRelativePathName(schemaPackage.getNearestPackage().getNearesProfileApplication(niemXsdProfile),result);
 	pathURI:=schemaPackage.toRelativePathName(schemaPackage.getNearestPackage().getNearesProfileApplication(niemXsdProfile),result);
-	var pimmpd:Stdlib::Element=self.getStereotypeApplication(NIEMModelPackageDescriptionFileStereotype).oclAsType(Stdlib::Element);
+//	var pimmpd:Stdlib::Element=self.getStereotypeApplication(NIEMModelPackageDescriptionFileStereotype).oclAsType(Stdlib::Element);
+//	var pimmpd:Stdlib::Element=self.client->asSequence()->first().oclAsType(Stdlib::Element);
+//	var pimmpd:UML::InstanceSpecification=self.client->asSequence()->first().oclAsType(UML::InstanceSpecification);
+	var pimmpd:Stdlib::Element=self.getStereotypeApplication(NIEMFileType).oclAsType(Stdlib::Element);
 	var explicitRelativePathName:String =pimmpd.getFileTypeRelativePathName();
 	if(not(explicitRelativePathName.oclIsUndefined()) and (explicitRelativePathName<>''))then{
 //		relativePathName:=explicitRelativePathName;
@@ -348,66 +1074,87 @@ mapping UML::Usage::ModelPackageDescriptionFile(inout catalog:CAT::CatalogType):
 		
 	}endif;
 //	descriptionText:=pimmpd.getFileDescriptionText();
-	descriptionText:=pimmpd.getFileDescriptionText().map TextType(self);
+//	descriptionText:=pimmpd.getFileDescriptionText().map TextType(self);
+	descriptionText:=pimmpd.getDescriptionText().map TextType(self);
 	id:=self.getFileId();
-	externalURI:=pimmpd.getFileTypeExternalURI();
+//	externalURI:=pimmpd.getFileTypeExternalURI();
+	externalURI:=pimmpd.getExternalURI();
+	mimeMediaTypeText:=pimmpd.getMimeMediaTypeText();
 	// not in NIEM3
 	//natureURI:=pimmpd.getFileTypeNatureURI();
 	//purposeURI:=pimmpd.getFileTypePurposeURI();
 }
-mapping UML::Usage::FileSetFile(inout fileSet:CAT::FileSetType):CAT::FileType{
-	//fileSet.file+=result;
+mapping UML::Usage::ModelPackageDescriptionFile(inout catalog:Stdlib::Element):CAT::FileType@cat
+	inherits UML::Usage::ModelPackageDescriptionFileCommon
+	when{self.stereotypedBy('FileType')}
+	{
+	catalog.addCatalogFile(result);
+}
+/*
+mapping UML::Usage::FileSetFile(inout fileSet:CAT::FileSetType):CAT::FileType@cat{
 	fileSet.addFileSetFile(result);
-	
 	var schemaPackage:UML::NamedElement=self.supplier->asSequence()->first();
-
-//	relativePathName:=schemaPackage.toRelativePathName(schemaPackage.getNearestPackage().getNearesProfileApplication(niemXsdProfile),result);
 	pathURI:=schemaPackage.toRelativePathName(schemaPackage.getNearestPackage().getNearesProfileApplication(niemXsdProfile),result);
-	var pimmpd:Stdlib::Element=self.getStereotypeApplication(NIEMModelPackageDescriptionFileStereotype);
+	var pimmpd:Stdlib::Element=self.getStereotypeApplication(NIEMFileType);
 	var explicitRelativePathName:String =pimmpd.getFileTypeRelativePathName();
 	if(not(explicitRelativePathName.oclIsUndefined()) and (explicitRelativePathName<>''))then{
-//		relativePathName:=explicitRelativePathName;
 		pathURI:=explicitRelativePathName;
 	}endif;
-//	descriptionText:=pimmpd.getFileDescriptionText();
-	descriptionText:=pimmpd.getFileDescriptionText().map TextType(self);
+	descriptionText:=pimmpd.getDescriptionText().map TextType(self);
 	
 	id:=self.getFileId();
-	externalURI:=pimmpd.getFileTypeExternalURI();
-	// not in NIEM3
-	//natureURI:=pimmpd.getFileTypeNatureURI();
-	//purposeURI:=pimmpd.getFileTypePurposeURI();
+	externalURI:=pimmpd.getExternalURI();
 }
-mapping UML::Usage::SubsetSchemaDocument(inout fileSet:CAT::SchemaDocumentSetType):CAT::FileType
+*/
+/*
+mapping UML::Usage::SubsetSchemaDocument(inout fileSet:CAT::SchemaDocumentSetType):CAT::FileType@cat
 	inherits UML::Usage::FileSetFile
 {
-	fileSet.xMLSchemaDocument+=result;
+//	fileSet.xMLSchemaDocument+=result;
+//	fileSet.artifactOrArtifactSet+=result;
+	fileSet.oclAsType(CMOF::EObject).add('artifactOrArtifactSetGroup','subsetSchemaDocument',result.oclAsType(CMOF::EObject));
 }
+*/
 //mapping UML::Component::SchemaDocumentSetType(inout catalog:CAT::CatalogType):CAT::SchemaDocumentSetType
-mapping UML::Component::SchemaDocumentSetType(inout catalog:CAT::MPDType):CAT::SchemaDocumentSetType
-	inherits UML::Component::ModelPackageDescriptionFileSet
+//mapping UML::Component::SchemaDocumentSetType(inout catalog:CAT::MPDType):CAT::SchemaDocumentSetType
+mapping UML::InstanceSpecification::SchemaDocumentSetType(inout catalog:CAT::MPDType):CAT::SchemaDocumentSetType@cat
+	inherits UML::InstanceSpecification::ModelPackageDescriptionFileSet
 {
 	catalog.addSchemaDocumentSet(result);
-	self.clientDependency->select(e|e.isStereotypeApplied(NIEMModelPackageDescriptionFileStereotype))
-		.oclAsType(UML::Usage).map SubsetSchemaDocument(result);
+//	var pimmpd:Stdlib::Element=self.getStereotypeApplication(prompdStereotype).oclAsType(Stdlib::Element);
+	var pimmpd:UML::InstanceSpecification=self;
+	pimmpd.getMpdFileUsages().map SubsetSchemaDocument(result);	
+	//self.clientDependency->select(e|e.isStereotypeApplied(NIEMModelPackageDescriptionFileStereotype))
+	//	.oclAsType(UML::Usage).map SubsetSchemaDocument(result);
 }
-mapping UML::Component::ModelPackageDescriptionFileSet(inout catalog:CAT::MPDType):CAT::FileSetType{
+//mapping UML::Component::ModelPackageDescriptionFileSet(inout catalog:CAT::MPDType):CAT::FileSetType{
+mapping UML::InstanceSpecification::ModelPackageDescriptionFileSet(inout catalog:CAT::MPDType):CAT::FileSetType@cat{
 	catalog.addCatalogFileSet(result);
-	self.elementImport.importedElement->select(e|e.isStereotypeApplied(NIEMModelPackageDescriptionFileStereotype))
-		.oclAsType(UML::Usage)->forEach(fileType){result.addFileSetFiles(fileType.getFileId());};
+//	self.elementImport.importedElement->select(e|e.isStereotypeApplied(NIEMModelPackageDescriptionFileStereotype))
+//		.oclAsType(UML::Usage)->forEach(fileType){result.addFileSetFiles(fileType.getFileId());};
+//	self.elementImport.importedElement->select(e|e.isStereotypeApplied(NIEMModelPackageDescriptionFileStereotype))
+//		.oclAsType(UML::Usage)->forEach(fileType){result.addFileSetFiles(fileType.getFileId());};
+//	self.oclAsType(Stdlib::Element).getMpdFileUsages()->forEach(fileType){result.addFileSetFiles(fileType.getFileId());};	
+	self.getMpdFileUsages()->forEach(fileType){result.addFileSetFiles(fileType.getFileId());};	
 //	self.clientDependency->select(e|e.isStereotypeApplied(NIEMModelPackageDescriptionFileStereotype))
 //		.oclAsType(UML::Usage).map ModelPackageDescriptionFile(result);
 		
 
-	var pimMpdFileSetStereotypeInstance:Stdlib::Element=self.getStereotypeApplication(NIEMModelPackageDescriptionFileSetStereotype).oclAsType(Stdlib::Element);
+//	var pimMpdFileSetStereotypeInstance:Stdlib::Element=self.getStereotypeApplication(NIEMModelPackageDescriptionFileSetStereotype).oclAsType(Stdlib::Element);
+//	var pimMpdFileSetStereotypeInstance:Stdlib::Element=self.oclAsType(Stdlib::Element);
+	var pimMpdFileSetStereotypeInstance:UML::InstanceSpecification=self.oclAsType(UML::InstanceSpecification);
+	
 	// not in NIEM3
 	//natureURI:=natureFilesetURI;
 	//purposeURI:=pimMpdFileSetStereotypeInstance.getFileSetTypePurposeCode();
 	id:='fs_'+self.getFileId();
-	externalURI:=pimMpdFileSetStereotypeInstance.getFileSetExternalURI();
+//	externalURI:=pimMpdFileSetStereotypeInstance.getFileSetExternalURI();
+	externalURI:=pimMpdFileSetStereotypeInstance.getExternalURI();
+	
 //	var ncDescriptionText:NC::DescriptionTextType=new NC::DescriptionTextType();
 //	descriptionText:=pimMpdFileSetStereotypeInstance.getFileSetDescriptionText();
-	descriptionText:=pimMpdFileSetStereotypeInstance.getFileSetDescriptionText().map TextType(self);
+//	descriptionText:=pimMpdFileSetStereotypeInstance.getFileSetDescriptionText().map TextType(self);
+	descriptionText:=pimMpdFileSetStereotypeInstance.getDescriptionText().map TextType(self);
 
 }
 /*
@@ -528,6 +1275,7 @@ helper 	XSD::XSDSchema::wantlistType(inout topWantList:WANTLIST::WantListType){/
 	if(prefix.oclIsUndefined()) then {return;}endif;
 	self.typeDefinitions
 	->select(a|a.targetNamespace=self.targetNamespace)
+	->select(t|not(t.name.oclIsUndefined()))
 	->forEach(type){
 	//log('wantlistType '+type.repr());
 		var typeType:WANTLIST::TypeType=new WANTLIST::TypeType@wantlist();

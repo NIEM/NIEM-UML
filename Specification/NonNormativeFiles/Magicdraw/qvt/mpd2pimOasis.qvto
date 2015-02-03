@@ -20,7 +20,9 @@ Contact ModelDriven.org for more information.
 */
 import NIEMmpdartifact2model;
 
-modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+//modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+//modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.5';
+modeltype UML uses 'http://www.omg.org/spec/UML/20131001';
 //modeltype ECORE  uses 'http://www.eclipse.org/emf/2002/Ecore';
 modeltype CMOF  uses 'http://www.eclipse.org/emf/2002/Ecore';
 modeltype XSD  uses 'http://www.eclipse.org/xsd/2002/XSD';
@@ -52,6 +54,8 @@ helper mpd2pim_run() {
 		NIEMmpd2pim_run();
 		// we could try to populate xml instances now
 		gatherAllSchemas(mpdRootPackage);
+		//mpdComponent.importSampleInstanceDocuments();// suppress for now
+/*		
 		mpdComponent.clientDependency
 		->select(d|d.isStereotypeApplied(NIEMModelPackageDescriptionFileStereotype) 
 			and (d.getStereotypeApplication(NIEMModelPackageDescriptionFileStereotype).getFileTypePurposeURI()=purposeSampleInstanceURI))
@@ -63,13 +67,44 @@ helper mpd2pim_run() {
 				domDocument.xmlInstanceDocumentTopElement(xmlInstancePackage);
 			};
 		};
-		
+*/		
 		
 		mapInit();
 		// remove component if reference model
 		log('mpd2pim end ');
 	}
 ///////////////////
+// TODO
+// UML Packages representing sample document instances; as referenced from mpd catalog;
+// assumes magic draw FileType instances can be clients of dependencies
+//  but we also need to find all those FileType instances --- via <<Mpd>> on component
+//	can we assume that all dependencies owned by component?
+//  break this into recover of fileTypes, break down fileTypes to xmlDocs, find dependencies
+//		later we can migrate to instances
+//		
+/* suppress for now
+helper UML::Component::importSampleInstanceDocuments(){
+	self.getSampleInstanceFileTypes().clientDependency.supplier
+		->select(s|s.oclIsKindOf(Package)).oclAsType(Package)
+		->forEach(xmlInstancePackage){
+				var relativePathName:String=xmlInstancePackage.getMpdRelativePathForPackage(mpdRootPackage);
+				var domDocument:OclAny=catalog.oclAsType(CMOF::EObject).getDocumentAtRelativeURI(relativePathName);
+				log('sample instance '+xmlInstancePackage.qualifiedName+', '+relativePathName+', '+domDocument.repr());
+				domDocument.xmlInstanceDocumentTopElement(xmlInstancePackage);
+			};
+	return;	
+}	
+helper UML::Component::getSampleInstanceFileTypes():Set(UML::InstanceSpecification)
+	=self.getFileTypes()->select(t|t.isInstanceOf('IEPSampleXMLDocument'));
+	*/
+helper UML::InstanceSpecification::isInstanceOf(classifierName:String):Boolean
+	=self.classifier->exists(c|c.isInstanceOf(classifierName));
+helper UML::Classifier::isInstanceOf(classifierName:String):Boolean
+	=(self.name=classifierName) or self.general->exists(g|g.isInstanceOf(classifierName));
+	
+
+
+
 helper 		gatherAllSchemas(mpdRootPackage:UML::Package){
 		mpdRootPackage.allSubobjectsOfType(UML::Package).oclAsType(UML::Package)
 			->select(p|p.isStereotypeApplied(NIEMSchemaStereotype))
@@ -452,7 +487,7 @@ helper 		gatherCatalogedSchemas(mpdRootPackage:UML::Package){
 				log('Schema proxy for '+schemaTuple.targetNamespace+', '+schemaTuple.schema.qualifiedName);		
 				schemaTargetNamespaces+=schemaTuple;		
 			};
-		log('schemaTuple proxies '+schemaTargetNamespaces->size().repr());	
+		log('schemaTuple proxies '+schemaTargetNamespaces->size().repr()+' catalog '+catalog.repr());	
 		mapInit();
 		catalog.map CatalogType();
 		return;
@@ -469,6 +504,8 @@ mapping 	CAT::Catalog::CatalogType():UML::Model@pimUml
 	// there is no longer an mpdName: extract from directory name
 //	mpdRootPackage.name:=self.mpdName;
 	mpdRootPackage.name:=self.getMpdName();
+	log('CatalogType  '+mpdRootPackage.qualifiedName);	
+	
 	result.applyProfile(logicalProfile);
 	result.applyProfile(provisioningProfile);
 	result.applyProfile(structureProfile);
@@ -491,8 +528,43 @@ query CMOF::EObject::getDirectoryName():String{
 	var baseName:String=self.getModelDirectoryName();
 	return baseName;
 }
-mapping 	CAT::Catalog::MpdCatalog_ProvisioningComponent(
-	inout newPackage:UML::Package):UML::Component@pimUml{
+// don't know exactly what the nature/purpose is, but should be at least an XMLSchemaDocument
+//mapping CAT::Uri::XMLSchemaDocument(pimmpd:Stdlib::Element,umlArtifactOrArtifactSetList:Stdlib::Element):UML::InstanceSpecification{
+	
+//mapping CAT::Uri::XMLSchemaDocument(umlArtifactOrArtifactSetList:UML::Slot):UML::InstanceSpecification{
+	
+mapping CAT::Uri::XMLSchemaDocument(pimmpd:UML::InstanceSpecification):UML::InstanceSpecification{
+	var umlArtifactOrArtifactSetList:UML::Slot=pimmpd.getArtifactOrArtifactSetList().oclAsType(UML::Slot);
+
+	// set info if possible, hook up to mpd
+		var psmpocInstanceValue:UML::InstanceValue=createInstanceValue(umlArtifactOrArtifactSetList);
+		psmpocInstanceValue.instance:=result;
+//	result.oclAsType(Stdlib::Element).setPathURI(self.uri);
+	result.setPathURI(self.uri);
+//   	umlArtifactOrArtifactSetList.createFileInstance(result,'xMLSchemaDocument','XMLSchemaDocument');
+   	//umlArtifactOrArtifactSetList.createFileInstance(result,'XMLSchemaDocument',self);
+}
+
+/*
+//helper  Stdlib::Element::createFileInstance(mpdCatalogType:UML::InstanceSpecification,umlFeatureName:String,umlClassName:String){
+// context is list of ArtifactOrArtifactSet (e.g., Slot)
+helper  UML::Slot::createFileInstance(mpdCatalogTypeInstance:UML::InstanceSpecification,umlClassName:String,catUri:CAT::Uri){
+//	mpdCatalogType.getFeatureMapValue('artifactOrArtifactSetGroup',umlFeatureName).oclAsType(CAT::FileType)->forEach(fileType){
+		var psmpocInstanceValue:UML::InstanceValue=createInstanceValue(self);
+		psmpocInstanceValue.instance:=mpdCatalogTypeInstance;
+		self.createArtifactInstance(umlClassName).populateFileInstance(catUri);
+ //   };
+	return;
+}
+helper  Stdlib::Element::populateFileInstance(catUri:CAT::Uri){
+	var umlArtifact:Stdlib::Element=self;
+	catUri:CAT::Uri
+	return;
+}
+*/
+//mapping 	CAT::Catalog::MpdCatalog_ProvisioningComponent(inout newPackage:UML::Package):UML::Component@pimUml{
+	
+mapping 	CAT::Catalog::MpdCatalog_ProvisioningComponent(inout newPackage:UML::Package):UML::InstanceSpecification@pimUml{
 	
 	newPackage.packagedElement+=result;
 	mpdComponent:=result;
@@ -502,11 +574,20 @@ mapping 	CAT::Catalog::MpdCatalog_ProvisioningComponent(
 	name:=baseModelName;
 	// process all content
 	// create the items, establish containment, set stereotypes and apply tags discretely
+//	var pimmpd:Stdlib::Element=result.applyStereotype(prompdStereotype);
+	var pimmpd:UML::InstanceSpecification=result;
+//	var umlArtifactOrArtifactSetList:UML::Slot=pimmpd.getArtifactOrArtifactSetList().oclAsType(UML::Slot);
+//	var umlArtifactOrArtifactSetList:UML::Slot=pimmpd.getArtifactOrArtifactSetList();
+	
 	self.uri->forEach(file){
-		file.addFileType(mpdComponent);
+//		var pimFileType:UML::NamedElement=file.map XMLSchemaDocument(pimmpd);		
+//		var pimFileType:UML::NamedElement=file.map XMLSchemaDocument(umlArtifactOrArtifactSetList);		
+//		var pimFileType:UML::NamedElement=file.map XMLSchemaDocument(result);		
+		var pimFileType:UML::InstanceSpecification=file.map XMLSchemaDocument(result);		
+		file.addFileType(mpdComponent,pimFileType);
+//		file.addFileType(mpdComponent);
 	};
 	
-	var pimmpd:Stdlib::Element=result.applyStereotype(prompdStereotype);
 	// there is no longer an mpdVersionID: extract from directory name
 //	pimmpd.setMpdVersionID(self.mpdVersionID);
 	pimmpd.setMpdVersionID(self.getMpdVersionID());
@@ -544,16 +625,20 @@ mapping 	CAT::Catalog::MpdCatalog_ProvisioningComponent(
 	*/
 }
 // map the Catalog Uri entry to a <<ModelPackageDescriptionFile>> Usage
+
 mapping 	CAT::Uri::FileType(
-	inout pimPackage:UML::NamedElement,inout pimComponent:UML::Component)
+//	inout pimPackage:UML::NamedElement,inout pimComponent:UML::Component,inout pimFileType:UML::NamedElement)
+	inout pimPackage:UML::NamedElement,inout pimComponent:UML::InstanceSpecification,inout pimFileType:UML::InstanceSpecification)
 	:UML::Usage@pimUml
 	// Catalog is no longer an entry
 	//when{not(self.purposeURI.expandURI()=purposeCatalogURI)}
 {
 	supplier+=pimPackage;
-	client+=pimComponent;
-	pimComponent.packagedElement+=result;
-	var pimNdrSchemaInstance:Stdlib::Element=result.applyStereotype(NIEMModelPackageDescriptionFileStereotype);
+//	client+=pimComponent;
+	client+=pimFileType;
+//	pimComponent.packagedElement+=result;
+	pimComponent.getNearestPackage().packagedElement+=result;
+//	var pimNdrSchemaInstance:Stdlib::Element=result.applyStereotype(NIEMModelPackageDescriptionFileStereotype);
 	// set version, conformant, purpose
 	/* description, externalURI, nature, purpose no longer exist
 	pimNdrSchemaInstance.setFileTypeDescriptionText(self.descriptionText);
@@ -562,11 +647,14 @@ mapping 	CAT::Uri::FileType(
 	pimNdrSchemaInstance.setFileTypePurposeCode(self.purposeURI.expandURI());
 	*/
 	// we have placed elements at their relative locations, no need to set relative path
-	pimNdrSchemaInstance.setFileTypeRelativePathName('');
+//	pimNdrSchemaInstance.setFileTypeRelativePathName('');
+//	pimFileType.oclAsType(Stdlib::Element).setPathURI('');
+	pimFileType.setPathURI('');
 	//log("FileType "+self.natureURI.expandURI()+", "+natureURI+self.purposeURI.expandURI()+", "+purposeURI);
 }
 // represent non-schema artifacts as a package
-mapping 	CAT::Uri::FileTypePackage(inout ownerPackage:UML::Package,inout pimComponent:UML::Component):UML::Package@pimUml
+//mapping 	CAT::Uri::FileTypePackage(inout ownerPackage:UML::Package,inout pimComponent:UML::Component):UML::Package@pimUml
+mapping 	CAT::Uri::FileTypePackage(inout ownerPackage:UML::Package,inout pimComponent:UML::InstanceSpecification):UML::Package@pimUml
 {
 //	var umlPackagePath:String=self.relativePathName.toRelativeMdpLocation();
 	var umlPackagePath:String=self.uri.toRelativeMdpLocation();
@@ -574,7 +662,9 @@ mapping 	CAT::Uri::FileTypePackage(inout ownerPackage:UML::Package,inout pimComp
 	result.name:=umlPackagePath.toBaseName();
 }
 	
-helper 	CAT::Uri::addFileType(inout pimComponent:UML::Component):UML::Usage
+//helper 	CAT::Uri::addFileType(inout pimComponent:UML::Component,inout pimFileType:UML::NamedElement):UML::Usage
+//helper 	CAT::Uri::addFileType(inout pimComponent:UML::Component,inout pimFileType:UML::InstanceSpecification):UML::Usage
+helper 	CAT::Uri::addFileType(inout pimComponent:UML::InstanceSpecification,inout pimFileType:UML::InstanceSpecification):UML::Usage
 {
 	//var umlPackagePath:String=self.relativePathName.toRelativeMdpLocation();
 	var umlPackagePath:String=self.uri.toRelativeMdpLocation();
@@ -603,7 +693,8 @@ helper 	CAT::Uri::addFileType(inout pimComponent:UML::Component):UML::Usage
 		// for artifacts not recognized (not schemas) we map to a UML Package
 		fileTypePackage:=self.map FileTypePackage(ownerPackage,pimComponent);
 	}endif;
-	return self.map FileType(fileTypePackage,pimComponent);
+	
+	return self.map FileType(fileTypePackage,pimComponent,pimFileType);
 }
 /* no longer exists
 mapping 	CAT::FileSetType::FileSetType():UML::Component@pimUml

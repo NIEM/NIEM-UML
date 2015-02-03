@@ -3,7 +3,9 @@
 import NIEMplatformBinding;
 import NIEMpim2psm;
 import NIEMpsm2xsd;
-modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+//modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+//modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.5';
+modeltype UML uses 'http://www.omg.org/spec/UML/20131001';
 modeltype ECORE  uses 'http://www.eclipse.org/emf/2002/Ecore';
 
 transformation POIpim2excel(

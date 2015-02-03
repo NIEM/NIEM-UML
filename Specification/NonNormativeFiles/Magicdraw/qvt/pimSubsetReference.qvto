@@ -21,7 +21,9 @@ Contact ModelDriven.org for more information.
 //import niemcommon;
 import pimSubsetReferenceN20;
 
-modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+//modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+//modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.5';
+modeltype UML uses 'http://www.omg.org/spec/UML/20131001';
 modeltype ECORE  uses 'http://www.eclipse.org/emf/2002/Ecore';
 modeltype CMOF  uses 'http://www.eclipse.org/emf/2002/Ecore';
 
@@ -38,9 +40,11 @@ if(false)then{log('SUPPRESS all NIEM conversions');}else{
 if(false)then{log('SUPPRESS NIEM 2.0 to 2.1 conversion');}else{		
 		log('pimSubsetReference start 20 to 21');
 		niem20to21();
-		log('pimSubsetReference start 21 to 30');
-		niem21to30();
-		log('pimSubsetReference end 21 to 30');
+if(false)then{log('SUPPRESS NIEM 2.1 to 3.0 conversion');}else{		
+			log('pimSubsetReference start 21 to 30');
+			niem21to30();
+			log('pimSubsetReference end 21 to 30');
+		}endif;
 }endif;		
 		pimPackages->forEach(pimPackage){
 			var matchedReferencePackage:UML::Package=pimPackage.findMatchedReferencePackage();	
@@ -406,9 +410,13 @@ helper UML::Property::ownedAttribute(inout umlClassifier:UML::Classifier){
 helper niem21to30(){
 		// initial pass: adjust names, add types, etc.
 		// get and check Classifiers, properties
-		pimPackages.ownedType
-		->select(type|type.oclIsKindOf(UML::Classifier)).oclAsType(UML::Classifier)
-		.niem21to30Type();
+//		pimPackages.ownedType->select(type|type.oclIsKindOf(UML::Classifier)).oclAsType(UML::Classifier).niem21to30Type();
+		var classifiers:Set(UML::Classifier)=pimPackages.ownedType
+			->select(type|type.oclIsKindOf(UML::Classifier)).oclAsType(UML::Classifier)->asSet();
+if(false)then{log('SUPPRESS niem21to30Type');}else{		
+			classifiers.niem21to30Type();
+		}endif;
+			
 		// find 2.0 namespaces and adjust each; including targetNamespace
 		log('pimSubsetReference start niem21to30NamespacePreprocess');
 		pimPackages.niem21to30NamespacePreprocess();
@@ -416,6 +424,12 @@ helper niem21to30(){
 		pimPackages.niem21to30Namespace();
 		// check for lost types from associations and properties
 		log('pimSubsetReference start lost types removal');
+		var associations:Set(UML::Association)=pimPackages.ownedType
+			->select(type|type.oclIsKindOf(UML::Association)).oclAsType(UML::Association)
+			->select(a|a.memberEnd.type->select(t|((t<>null)and not(t.oclIsUndefined()))and t.isLost())->notEmpty())
+			->asSet();
+		associations.removeElement();				
+		/*
 		pimPackages.ownedType
 		->select(type|type.oclIsKindOf(UML::Association)).oclAsType(UML::Association)
 		->forEach(association){
@@ -423,6 +437,7 @@ helper niem21to30(){
 				association.removeElement();				
 			}endif;
 		};
+		*/
 		log('pimSubsetReference start lost attribute types removal');
 		pimPackages.ownedType
 		->select(type|type.oclIsKindOf(UML::Classifier)).oclAsType(UML::Classifier).attribute
@@ -450,6 +465,7 @@ helper UML::Package::niem21to30Namespace(){
 		return;
 }
 helper UML::Package::niem21to30NamespacePreprocess(){
+if(true)then{log('START niem21to30NamespacePreprocess ');}endif;		
 			// process by namespace
 		var pimNdrSchemaInstance:Stdlib::Element=self.getStereotypeApplication(NIEMSchemaStereotype).oclAsType(Stdlib::Element);
 		//log('niem21to21Namespace '+self.qualifiedName+', instance '+pimNdrSchemaInstance.repr());
@@ -457,23 +473,30 @@ helper UML::Package::niem21to30NamespacePreprocess(){
 		var namespace=self.getTargetNamespace();
 	// handle nonauth to utoffend move
 	if(namespace=niem21_nonauth_URI)then{
+if(true)then{log('SUPPRESS niem21to30NamespacePreprocess removeElement');}else{		
 		var offender:UML::Package=	niem21_ut_offender_URI.findOrCreateNamespace();
 		// check for duplicate names (i.e., propertyHolders)
+		
 		self.ownedType->select(t|t.IsStereotypeApplied(NIEMPropertyHolderStereotype))
 			->select(t|offender.ownedType->select(o|o.name=t.name)->notEmpty())
 			->forEach(type){
 				type.name:=self.name+'_'+type.name;
 			};
+		
 		offender.packagedElement+=self.packagedElement;
-		self.removeElement();
+			self.removeElement();
+		}endif;
 	}endif;
+if(true)then{log('END niem21to30NamespacePreprocess  ');}endif;		
 		return;
 }
 
 helper UML::Classifier::niem21to30Type(){
 			// process by classifier
 			// get and check properties
-				self.attribute.niem21to30Property();
+			var properties:Set(UML::Property)=self.attribute->asSet();
+			properties.niem21to30Property();
+//				self.attribute.niem21to30Property();
 	// base processing on resolved propertyName/namespace
 	var myself:UML::Classifier:=self;
 	var resolvedName:String=self.getResolvedName();
@@ -593,7 +616,7 @@ helper UML::Classifier::niem21to30Type(){
 					myself:=myself.renameClassifier('AddressType');
 			// remove AddressRepresentation, remove subsets from AddressFullText, StructuredAddress becomes Address
 		};
-		
+		/*
 		case((resolvedName='TelephoneNumberAugmentationType') and (resolvedNamespace=niem21_scr_URI)){
 			log('INFO: renaming  Classifier '+self.qualifiedName);
 			//	myself.name:='TelephoneNumberType';
@@ -620,7 +643,7 @@ helper UML::Classifier::niem21to30Type(){
 							
 		};
 		
-		
+		*/
 		
 		case(((resolvedName='FacilityCategoryCodeSimpleType')) and (resolvedNamespace=niem21_it_URI)){
 			//myself.name:='FacilityUsageCodeSimpleType';
@@ -631,6 +654,10 @@ helper UML::Classifier::niem21to30Type(){
 					myself:=myself.renameClassifier('FacilityUsageCodeType');
 			myself:=myself.changeNamespace(niem21_occs_URI);
 		};
+		case(((resolvedName='GuardianAssociationType')) and (resolvedNamespace=niem21_nc_URI)){
+					myself:=myself.renameClassifier('ParentChildAssociationType');
+			myself:=myself.changeNamespace(niem21_fs_URI);
+		};
 		
 		case(((resolvedName='SystemIdentifierType')) and (resolvedNamespace=niem21_intel_URI)){
 					myself:=myself.renameClassifier('SystemIdentificationType');
@@ -640,6 +667,12 @@ helper UML::Classifier::niem21to30Type(){
 					myself:=myself.renameClassifier('PersonUnionStatusCodeSimpleType');
 			myself:=myself.changeNamespace(niem21_nc_URI);
 		};
+		
+		case(((resolvedName='ImmediateFamilyAssociationType')) and (resolvedNamespace=niem21_nc_URI)){
+			myself:=myself.renameClassifier('ParentChildAssociationType');
+			myself:=myself.changeNamespace(niem21_fs_URI);
+		};
+	
 		case(((resolvedName='MarriageStatusCodeType')) and (resolvedNamespace=niem21_nonauth_URI)){
 					myself:=myself.renameClassifier('PersonUnionStatusCodeType');
 			myself:=myself.changeNamespace(niem21_nc_URI);
@@ -956,7 +989,7 @@ helper UML::Property::niem21to30Property(){
 	property21to3NameNamespaceSubstitutionGroup->select(ns|(ns.n21namespace=resolvedNamespace) and (ns.n21=resolvedName))->forEach(n21name){
 			log('INFO: namespace name and substitutionGroup change for Property '+self.qualifiedName);
 			myself:=myself.changeNamespace(n21name.n3,n21name.n3namespace);
-			myself.propertyWithNewSubstitutionGroup(n21name.n21,n21name.n3,n21name.sgName,n21name.sgNamespace);
+			myself:=myself.propertyWithNewSubstitutionGroup(n21name.n21,n21name.n3,n21name.sgName,n21name.sgNamespace);
 			resolvedName:=n21name.n3;
 			resolvedNamespace:=n21name.n3namespace;
 		};
@@ -1214,6 +1247,12 @@ helper UML::Property::niem21to30Property(){
 			myself:=myself.renameProperty('ProgressPaymentAmount');
 			myself.type:=findOrCreateClass('AmountType',niem21_nc_URI);
 		};
+		case((resolvedName='ElectronicAddressText') and ((resolvedNamespace=niem21_nc_URI)or(resolvedNamespace=niem21_scr_URI)) and (resolvedClassName='ElectronicAddressType')){
+			myself:=myself.renameProperty('ElectronicAddressDescriptionText');
+			// remove any dangling references to scr property holder
+			var propertyHolderElement:Set(UML::Dependency)=myself.clientDependency->asSet();
+			propertyHolderElement.removeElement();
+		};
 		case((resolvedName='SIMCard') and (resolvedNamespace=niem21_nc_URI)){
 			myself.type:=findOrCreateClass('DeviceType',niem21_nc_URI);
 		};
@@ -1294,6 +1333,8 @@ helper UML::Property::niem21to30Property(){
 		//		Tuple{n21:String='TelephoneNumberAugmentation',n21namespace:String=niem21_scr_URI,n3:String='TelephoneNumberAugmentation',n3namespace:String=niem21_scr_URI,sgName:String='TelephoneNumberAugmentationPoint',sgNamespace:String=niem21_nc_URI	},
 		case((resolvedName='TelephoneNumberAugmentation') and (resolvedNamespace=niem21_scr_URI)){
 			myself.type:=findOrCreateClass('TelephoneNumberAugmentationType',niem21_scr_URI);
+			log('INFO: TelephoneNumberAugmentation '+myself.qualifiedName+' switch to type '+myself.type.qualifiedName);
+			
 		};
 		
 		case((resolvedName='CustodyTransferProperty') and (resolvedNamespace=niem21_j_URI)){
@@ -1380,6 +1421,7 @@ helper UML::Property::niem21to30Property(){
 					myself:=myself.renameProperty('InsuranceCoveredItem');
 			myself.type:=findOrCreateClass('ItemType',niem21_nc_URI);
 		};
+		
 				//		Tuple{n21:String='ArrestInvolvedProperty',n21namespace:String=niem21_j_URI,n3:String='ArrestInvolvedItem'},
 		case((resolvedName='ArrestInvolvedProperty') and (resolvedNamespace=niem21_j_URI)){
 					myself:=myself.renameProperty('ArrestInvolvedItem');
@@ -1748,7 +1790,7 @@ helper UML::Property::niem21to30Property(){
 		};
 		
 		case((resolvedName='PreviousActivityAssociation') and (resolvedNamespace=niem21_nc_URI)){
-					myself:=myself.renameProperty('BinaryFormatText');
+			//		myself:=myself.renameProperty('BinaryFormatText');
 			// AssociationType, RelatedActivityAssociationType, PreviousActivityAssociationType
 			var AssociationType:UML::Class=findOrCreateClass('AssociationType',niem21_nc_URI);
 			var RelatedActivityAssociationType:UML::Class=findOrCreateClass('RelatedActivityAssociationType',niem21_nc_URI);
@@ -1762,6 +1804,7 @@ helper UML::Property::niem21to30Property(){
 			PreviousActivityAssociationType.conditionallyApplyStereotype(NIEMAssociationStereotype);
 			myself.type:=PreviousActivityAssociationType;
 		};
+		
 	//		Tuple{n21:String='QualityCommentText',n21namespace:String=niem21_nc_URI,n3:String='QualityComment'},
 		case((resolvedName='QualityCommentText') and (resolvedNamespace=niem21_nc_URI)){
 					myself:=myself.renameProperty('QualityComment');
@@ -1970,7 +2013,8 @@ helper UML::Property::niem21to30Property(){
 		
 		case((resolvedName='OrganizationAugmentation') and (resolvedNamespace=niem21_j_URI)){
 			
-			myself.propertyWithNewSubstitutionGroup('OrganizationAugmentation','OrganizationAugmentation','OrganizationAugmentationPoint',niem21_j_URI);
+//			myself.propertyWithNewSubstitutionGroup('OrganizationAugmentation','OrganizationAugmentation','OrganizationAugmentationPoint',niem21_j_URI);
+			myself.propertyWithNewSubstitutionGroup('OrganizationAugmentation','OrganizationAugmentation','OrganizationAugmentationPoint',niem21_nc_URI);
 		};
 		//  <xs:element name="OrganizationORIIdentification" type="nc:IdentificationType" substitutionGroup="j:OrganizationIdentificationAbstract">
 		case((resolvedName='OrganizationORIIdentification') and (resolvedNamespace=niem21_j_URI)){
@@ -2139,10 +2183,23 @@ helper UML::Property::niem21to30Property(){
 		//		Tuple{n21:String='TelephoneCategoryDescriptionText',n21namespace:String=niem21_scr_URI,n3:String='TelephoneNumberCategoryText',n3namespace:String=niem21_nc_URI},
 		//  <xs:element name="TelephoneNumberCategoryText" type="nc:TextType" substitutionGroup="nc:TelephoneNumberCategory">
 		
+		case(
+			((resolvedClassName='TelephoneNumberAugmentationType') and (resolvedNamespace=niem21_scr_URI))
+			and
+			(
+				((resolvedName='TelephoneNumberCategoryText') and (resolvedNamespace=niem21_nc_URI))
+				or
+				((resolvedName='TelephoneCategoryDescriptionText') and (resolvedNamespace=niem21_scr_URI))
+			)	
+			){
+				myself.removeElement();
+		};
+		
 		case((resolvedName='TelephoneCategoryDescriptionText') and (resolvedNamespace=niem21_scr_URI)){
 			myself.changeNamespace('TelephoneNumberCategoryText',niem21_nc_URI);
 			myself.propertyWithNewSubstitutionGroup('TelephoneCategoryDescriptionText','TelephoneNumberCategoryText','TelephoneNumberCategory',niem21_nc_URI);
 		};
+		
 	//		Tuple{n21:String='PersonIssuedCourtOrderAssociation',n21namespace:String=niem21_nc_URI,n3:String='PersonIssuedCourtOrderAssociation',n3namespace:String=niem21_j_URI},
 	//  <xs:element name="PersonIssuedCourtOrderAssociation" type="nc:PersonDocumentAssociationType">
 	
@@ -2851,6 +2908,7 @@ helper UML::Property::niem21to30Property(){
 		};
 		//		Tuple{n21:String='PropertySeizureSeizingEnforcementOfficial',n21namespace:String=niem21_j_URI,n3:String='ItemSeizingEnforcementOfficial'},
 		case(((resolvedName='PropertySeizureSeizingEnforcementOfficial')) and (resolvedNamespace=niem21_j_URI)){
+			//type=j:EnforcementOfficialType
 			myself.propertyWithNewSubstitutionGroup(resolvedName,'ItemSeizingEnforcementOfficial','ItemSeizer',niem21_j_URI);
 		};
 		//		Tuple{n21:String='PropertyDispositionAugmentation',n21namespace:String=niem21_j_URI,n3:String='ItemDispositionAugmentation'},
@@ -2953,9 +3011,11 @@ helper UML::Property::niem21to30Property(){
 			myself.propertyWithNewSubstitutionGroup(resolvedName,'AddressGrid','LocationAddressAbstract',niem21_nc_URI);
 		};
 		//		Tuple{n21:String='TelephoneCategoryDescriptionText',n21namespace:String=niem21_nc_URI,n3:String='TelephoneNumberCategoryText'},
+/*		
 		case(((resolvedName='TelephoneCategoryDescriptionText')) and (resolvedNamespace=niem21_nc_URI)){
 			myself.propertyWithNewSubstitutionGroup(resolvedName,'TelephoneNumberCategoryText','TelephoneNumberCategory',niem21_nc_URI);
 		};
+		*/
 		//		Tuple{n21:String='MeasureUnitText',n21namespace:String=niem21_j_URI,n3:String='GeographicDatumText'}
 		case(((resolvedName='MeasureUnitText')) and (resolvedNamespace=niem21_j_URI)){
 
@@ -3231,33 +3291,40 @@ helper UML::Classifier::renameClassifier(newName:String):UML::Classifier{
 helper UML::Property::renameProperty(newName:String):UML::Property{
 	var myself:UML::Property=self;
 	var myNamespace:UML::String=self.getNearestPackage().getTargetNamespace();
-			// if newName already exists in same classifier, switch dependencies to existing property and remove this property
-			var existingProperty:UML::Property=self.owner
-				->select(c|c.oclIsKindOf(UML::Classifier)).oclAsType(UML::Classifier).attribute
-				->select(p|((p.name=newName)or(p.name=myself.name))and(p<>self))->asSequence()->first();
-			if(existingProperty.oclIsUndefined() and myself.isPropertyHolderElement())	then{
-				existingProperty:=findPropertyHolderProperty(myself.name,newName,myNamespace);
-				if(existingProperty=myself)then{existingProperty:=null;}endif;
-			}endif;	
-			if(existingProperty.oclIsUndefined())	then{
-					myself.name:=newName;
-					existingProperty:=myself;
-				}else{
-					/* client side should not be necessary
-					self.clientDependency->forEach(dep){
-						dep.client:=existingProperty;						
-					};
-					*/
-					self._directedRelationshipOfTarget->forEach(dep){
-						dep.target:=existingProperty;						
-					};
-					// might be substitution groups, etc?
-					if(existingProperty.subsettedProperty->isEmpty() and myself.subsettedProperty->notEmpty())then{
-						existingProperty.subsettedProperty+=myself.subsettedProperty;
-					}endif;
-					self.removeElement();
-				log('INFO: removed Duplicate Property ');
-				}endif;
+	// if newName already exists in same classifier, switch dependencies to existing property and remove this property
+	var existingProperty:UML::Property=self.owner
+		->select(c|c.oclIsKindOf(UML::Classifier)).oclAsType(UML::Classifier).attribute
+		->select(p|((p.name=newName)or(p.name=myself.name))and(p<>self))->asSequence()->first();
+	if(existingProperty.oclIsUndefined() and myself.isPropertyHolderElement())	then{
+		existingProperty:=findPropertyHolderProperty(myself.name,newName,myNamespace);
+		if(existingProperty=myself)then{existingProperty:=null;}endif;
+	}endif;	
+	if(existingProperty.oclIsUndefined())	then{
+			myself.name:=newName;
+			existingProperty:=myself;
+	}else{
+		/* client side should not be necessary
+		self.clientDependency->forEach(dep){
+			dep.client:=existingProperty;						
+		};
+		*/
+		self._directedRelationshipOfTarget->forEach(dep){
+			dep.target:=existingProperty;						
+		};
+		// might be substitution groups, etc?
+		if(existingProperty.subsettedProperty->isEmpty() and myself.subsettedProperty->notEmpty())then{
+			existingProperty.subsettedProperty+=myself.subsettedProperty;
+		}endif;
+		self.removeElement();
+		log('INFO: removed Duplicate Property ');
+	}endif;
+	// make sure any properties referencing the resolved existingProperty have the same name
+	existingProperty._directedRelationshipOfTarget
+		->select(r|(r.oclIsKindOf(UML::Realization))and r.source->forAll(c|c.oclIsKindOf(UML::Property)))
+		.source.oclAsType(UML::Property)
+		->forEach(fixedProperty){
+			fixedProperty.name:=existingProperty.name;
+	};
 	return existingProperty;
 }
 	
@@ -3346,7 +3413,7 @@ helper UML::Property::setSubstitutionGroup(substitutionGroup:String,namespaceIn:
 						var general:UML::Generalization=new UML::Generalization();
 						general.specific:=myClass;
 						general.general:=headHolder;
-						log('substitution across namespaces '+myNamespace+", "+namespaceIn+', '+(myNamespace=namespaceIn).toString()+', '+self.qualifiedName);
+						log('substitution across namespaces '+myNamespace+", "+namespaceIn+', '+(myNamespace=namespaceIn).repr()+', '+self.qualifiedName);
 						//substitution across namespaces http://niem.gov/niem/niem-core/2.0, http://niem.gov/niem/niem-core/2.0,
 					}endif;
 				}endif;
@@ -3430,6 +3497,7 @@ query UML::Classifier::isXmlPrimitive():Boolean=
 //property niem30_twpdes_URI:String=baseNiemNamespace+'twpdes/2.0'; // no match 
 
 
+property niem30_biom_URI:String=baseNiemNamespace+'biometrics/3.0/'; 
 property niem30_ansi_nist_URI:String=baseNiemNamespace+'domains/biometrics/3.0/'; 
 property niem30_ansi_d20_URI:String=baseNiemNamespace+'codes/ansi_d20/3.0/'; 
 property niem30_apco_URI:String=baseNiemNamespace+'codes/apco_event/3.0/';
@@ -3755,9 +3823,9 @@ property type21to3Remove:Sequence(Tuple(n21:String,n21namespace:String)) = Seque
 		Tuple{n21:String='FingerprintSetType',n21namespace:String=niem21_nc_URI},
 		Tuple{n21:String='FingerprintSetAugmentationType',n21namespace:String=niem21_scr_URI},
 		Tuple{n21:String='PersonFingerprintSetType',n21namespace:String=niem21_scr_URI},
-		Tuple{n21:String='ImmediateFamilyAssociationType',n21namespace:String=niem21_nc_URI},
+//		Tuple{n21:String='ImmediateFamilyAssociationType',n21namespace:String=niem21_nc_URI},
 		Tuple{n21:String='TelecommunicationDeviceType',n21namespace:String=niem21_nc_URI},
-		Tuple{n21:String='GuardianAssociationType',n21namespace:String=niem21_nc_URI},
+		//Tuple{n21:String='GuardianAssociationType',n21namespace:String=niem21_nc_URI},
 		Tuple{n21:String='AuthorityFigureAssociationType',n21namespace:String=niem21_nc_URI},
 		Tuple{n21:String='PXSCodeType',n21namespace:String=niem21_ansi_nist_URI},
 		Tuple{n21:String='PXSCodeSimpleType',n21namespace:String=niem21_ansi_nist_URI},
@@ -3888,7 +3956,7 @@ property type21to3Remove:Sequence(Tuple(n21:String,n21namespace:String)) = Seque
 		Tuple{n21:String='DriverConditionCodeType',n21namespace:String=niem21_mmucc_2_URI},
 		Tuple{n21:String='BearingOffsetMeasureType',n21namespace:String=niem21_cbrn_URI},
 		Tuple{n21:String='ImmigrationStatusAugmentationType',n21namespace:String=niem21_scr_URI},
-		Tuple{n21:String='CommercialVehicleAugmentationType',n21namespace:String=niem21_j_URI},
+		//Tuple{n21:String='CommercialVehicleAugmentationType',n21namespace:String=niem21_j_URI},
 		Tuple{n21:String='ImageType',n21namespace:String=niem21_j_URI},
 		Tuple{n21:String='DeportationDepartProofType',n21namespace:String=niem21_scr_URI},
 		Tuple{n21:String='MarriageAssociationType',n21namespace:String=niem21_im_URI},
@@ -4169,7 +4237,9 @@ property type21to3Remove:Sequence(Tuple(n21:String,n21namespace:String)) = Seque
 		Tuple{n21:String='SpouseRoleCodeSimpleType',n21namespace:String=niem21_im_URI},
 		Tuple{n21:String='RadExposureUnitsCodeSimpleType',n21namespace:String=niem21_cbrncl_URI},
 		Tuple{n21:String='RadDoseRateUnitsCodeType',n21namespace:String=niem21_cbrncl_URI},
+		
 		Tuple{n21:String='CommercialVehicleType',n21namespace:String=niem21_nc_URI},
+		
 		Tuple{n21:String='ChildType',n21namespace:String=niem21_scr_URI},
 		Tuple{n21:String='FacilityAugmentationType',n21namespace:String=niem21_it_URI},
 		Tuple{n21:String='ItemType',n21namespace:String=niem21_j_URI},
@@ -4185,7 +4255,7 @@ property type21to3Remove:Sequence(Tuple(n21:String,n21namespace:String)) = Seque
 		Tuple{n21:String='SignatureImageType',n21namespace:String=niem21_ansi_nist_URI},
 		Tuple{n21:String='EmploymentType',n21namespace:String=niem21_im_URI},
 		Tuple{n21:String='RoadwaySideRoadLanesNumberCodeType',n21namespace:String=niem21_mmucc_2_URI},
-		Tuple{n21:String='ElectronicAddressType',n21namespace:String=niem21_scr_URI},
+		//Tuple{n21:String='ElectronicAddressType',n21namespace:String=niem21_scr_URI},
 		Tuple{n21:String='DatumCodeSimpleType',n21namespace:String=niem21_nga_URI},
 		Tuple{n21:String='SpectrumDataType',n21namespace:String=niem21_cbrn_URI},
 		Tuple{n21:String='BooleanListType',n21namespace:String=niem21_cbrn_URI},
@@ -4194,7 +4264,7 @@ property type21to3Remove:Sequence(Tuple(n21:String,n21namespace:String)) = Seque
 		Tuple{n21:String='TemperatureMeasureType',n21namespace:String=niem21_it_URI},
 		Tuple{n21:String='FERCodeSimpleType',n21namespace:String=niem21_ansi_nist_URI},
 		Tuple{n21:String='PropertyType',n21namespace:String=niem21_j_URI},
-		Tuple{n21:String='PropertyType',n21namespace:String=niem21_nc_URI},
+//		Tuple{n21:String='PropertyType',n21namespace:String=niem21_nc_URI},
 		Tuple{n21:String='PositiveIntegerListSimpleType',n21namespace:String=niem21_cbrn_URI},
 		Tuple{n21:String='SLCCodeType',n21namespace:String=niem21_ansi_nist_URI},
 		Tuple{n21:String='JurisdictionType',n21namespace:String=niem21_j_URI},
@@ -4318,6 +4388,8 @@ property type21to3Remove:Sequence(Tuple(n21:String,n21namespace:String)) = Seque
 
 property type21to3WithNamespace:Sequence(Tuple(n21:String,n21namespace:String,n3namespace:String)) = Sequence{
 		Tuple{n21:String='CapabilityType',n21namespace:String=niem21_intel_URI,n3namespace:String=niem21_nc_URI	},
+		Tuple{n21:String='ElectronicAddressType',n21namespace:String=niem21_scr_URI,n3namespace:String=niem21_nc_URI	},
+		
 		Tuple{n21:String='DNALocusType',n21namespace:String=niem21_nc_URI,n3namespace:String=niem21_ansi_nist_URI	},
 //		Tuple{n21:String='DocumentStatusClassificationType',n21namespace:String=niem21_scr_URI,n3namespace:String=niem21_nc_URI	},
 		Tuple{n21:String='PersonNameCategoryCodeSimpleType',n21namespace:String=niem21_nonauth_URI,n3namespace:String=niem21_j_URI	},
@@ -4398,7 +4470,10 @@ property type21to3WithNamespace:Sequence(Tuple(n21:String,n21namespace:String,n3
 //		Tuple{n21:String='CaseDispositionDecisionCategoryCodeType',n21namespace:String=niem21_ut_offender_URI,n3namespace:String=niem21_nonauth_URI	},
 		Tuple{n21:String='MilitaryDischargeCategoryCodeSimpleType',n21namespace:String=niem21_ut_offender_URI,n3namespace:String=niem21_nonauth_URI	},
 		Tuple{n21:String='MilitaryDischargeCategoryCodeType',n21namespace:String=niem21_ut_offender_URI,n3namespace:String=niem21_nonauth_URI	},
-		Tuple{n21:String='PleaCategoryCodeSimpleType',n21namespace:String=niem21_ut_offender_URI,n3namespace:String=niem21_nonauth_URI	},
+//		Tuple{n21:String='PleaCategoryCodeSimpleType',n21namespace:String=niem21_ut_offender_URI,n3namespace:String=niem21_nonauth_URI	},
+		Tuple{n21:String='PleaCategoryCodeSimpleType',n21namespace:String=niem21_ut_offender_URI,n3namespace:String=niem30_nonauth_URI	},
+//				Tuple{prefix:String="core_misc",namespace:String="http://release.niem.gov/niem/codes/core_misc/3.0/"},
+		
 		Tuple{n21:String='PleaCategoryCodeType',n21namespace:String=niem21_ut_offender_URI,n3namespace:String=niem21_nonauth_URI	},
 		Tuple{n21:String='SupervisionLevelCodeSimpleType',n21namespace:String=niem21_ut_offender_URI,n3namespace:String=niem21_nonauth_URI	},
 		Tuple{n21:String='SupervisionLevelCodeType',n21namespace:String=niem21_ut_offender_URI,n3namespace:String=niem21_nonauth_URI	},
@@ -4576,7 +4651,7 @@ property type21to3:Sequence(Tuple(n21:String,n21namespace:String,n3:String)) = S
 		Tuple{n21:String='ActivityInvolvedPersonAssociationType',n21namespace:String=niem21_nc_URI,n3:String='ActivityPersonAssociationType'},
 //		Tuple{n21:String='ReferralProperty',n21namespace:String=niem21_nc_URI,n3:String='ReferralItem'},
 		Tuple{n21:String='TangibleItemType',n21namespace:String=niem21_nc_URI,n3:String='ItemType'},
-//		Tuple{n21:String='PropertyType',n21namespace:String=niem21_nc_URI,n3:String='ItemType'},
+		Tuple{n21:String='PropertyType',n21namespace:String=niem21_nc_URI,n3:String='ItemType'},
 		
 		Tuple{n21:String='OrganizationItemAssociationType',n21namespace:String=niem21_nc_URI,n3:String='ItemEntityAssociationType'},
 //		Tuple{n21:String='StructuredAddressType',n21namespace:String=niem21_nc_URI,n3:String='AddressType'},
@@ -4592,7 +4667,11 @@ property type21to3:Sequence(Tuple(n21:String,n21namespace:String,n3:String)) = S
 
 property property21to3Remove:Sequence(Tuple(n21:String,n21namespace:String)) = Sequence{
 	
+//		Tuple{n21:String='TelephoneCategoryDescriptionText',n21namespace:String=niem21_scr_URI},
 		Tuple{n21:String='PhysicalFeatureCategoryCode',n21namespace:String=niem21_ansi_nist_URI},
+		Tuple{n21:String='AdoptedChildAssociation',n21namespace:String=niem21_scr_URI},
+		Tuple{n21:String='AuthorityFigureAssociation',n21namespace:String=niem21_nc_URI},
+		
 		Tuple{n21:String='DNAImage',n21namespace:String=niem21_nc_URI},
 		Tuple{n21:String='DNALocus',n21namespace:String=niem21_nc_URI},
 		Tuple{n21:String='VehicleTower',n21namespace:String=niem21_nc_URI},
@@ -4622,7 +4701,7 @@ property property21to3Remove:Sequence(Tuple(n21:String,n21namespace:String)) = S
 		Tuple{n21:String='ScreeningIdentification',n21namespace:String=niem21_scr_URI},
 		Tuple{n21:String='Fingerprint',n21namespace:String=niem21_scr_URI},
 		Tuple{n21:String='EncounterDeviceID',n21namespace:String=niem21_scr_URI},
-		Tuple{n21:String='BinaryBase64Object',n21namespace:String=niem21_nc_URI},
+		//Tuple{n21:String='BinaryBase64Object',n21namespace:String=niem21_nc_URI},
 		Tuple{n21:String='DocumentStatusClassification',n21namespace:String=niem21_scr_URI},
 		Tuple{n21:String='Charge',n21namespace:String=niem21_scr_URI},
 		Tuple{n21:String='Biometric',n21namespace:String=niem21_scr_URI},
@@ -4663,7 +4742,7 @@ property property21to3Remove:Sequence(Tuple(n21:String,n21namespace:String)) = S
 		Tuple{n21:String='Disposition',n21namespace:String=niem21_j_URI},
 		Tuple{n21:String='radAbsorbedDoseUnitsCode',n21namespace:String=niem21_cbrn_URI},
 	
-		Tuple{n21:String='CommercialVehicleReference',n21namespace:String=niem21_j_URI},
+//		Tuple{n21:String='CommercialVehicleReference',n21namespace:String=niem21_j_URI},
 		Tuple{n21:String='RoadwaySideRoadLanesNumberCode',n21namespace:String=niem21_j_URI},
 		Tuple{n21:String='RoadwayMainlineLanesNumberCode',n21namespace:String=niem21_j_URI},
 		Tuple{n21:String='RoadwayDelineatorPresenceCode',n21namespace:String=niem21_j_URI},
@@ -5681,6 +5760,8 @@ property property21to3Remove:Sequence(Tuple(n21:String,n21namespace:String)) = S
 // properties having change of name within same namespace (and no extra handling)
 property property21to3:Sequence(Tuple(n21:String,n21namespace:String,n3:String)) = Sequence{
 		Tuple{n21:String='ReferralProperty',n21namespace:String=niem21_nc_URI,n3:String='ReferralItem'},
+		Tuple{n21:String='BinaryBase64Object',n21namespace:String=niem21_nc_URI,n3:String='Base64BinaryObject'},
+		Tuple{n21:String='Property',n21namespace:String=niem21_nc_URI,n3:String='Item'},
 
 		Tuple{n21:String='BirthPlaceNearLargeCityName',n21namespace:String=niem21_scr_URI,n3:String='BirthplaceNearLargeCityName'},
 		Tuple{n21:String='VisaFoilNumber',n21namespace:String=niem21_scr_URI,n3:String='VisaFoilNumberID'},
@@ -5996,6 +6077,7 @@ property property21to3:Sequence(Tuple(n21:String,n21namespace:String,n3:String))
 property property21to3NameNamespaceSubstitutionGroup:Sequence(Tuple(n21:String,n21namespace:String,n3:String,n3namespace:String,sgName:String,sgNamespace:String)) = Sequence{
 		Tuple{n21:String='AdditionalDocumentCategory',n21namespace:String=niem21_it_URI,n3:String='AdditionalDocumentCategoryCode',n3namespace:String=niem21_it_URI,sgName:String='AdditionalDocumentCategory',sgNamespace:String=niem21_it_URI	},
 		Tuple{n21:String='VehicleUseCode',n21namespace:String=niem21_j_URI,n3:String='VehicleUseCode',n3namespace:String=niem21_j_URI,sgName:String='VehicleUse',sgNamespace:String=niem21_j_URI	},
+// also needs type change		
 		Tuple{n21:String='TelephoneNumberAugmentation',n21namespace:String=niem21_scr_URI,n3:String='TelephoneNumberAugmentation',n3namespace:String=niem21_scr_URI,sgName:String='TelephoneNumberAugmentationPoint',sgNamespace:String=niem21_nc_URI	},
 		Tuple{n21:String='ConveyanceRegistrationIdentification',n21namespace:String=niem21_intel_URI,n3:String='ConveyanceRegistrationIdentification',n3namespace:String=niem21_intel_URI,sgName:String='RegistrationIdentification',sgNamespace:String=niem21_j_URI	},
 
@@ -6326,6 +6408,8 @@ property property21to3NameNamespaceSubstitutionGroup:Sequence(Tuple(n21:String,n
 property property21to3WithNamespace:Sequence(Tuple(n21:String,n21namespace:String,n3:String,n3namespace:String)) = Sequence{
 	
 		Tuple{n21:String='SystemName',n21namespace:String=niem21_intel_URI,n3:String='SystemName',n3namespace:String=niem21_nc_URI	},
+		Tuple{n21:String='GuardianAssociation',n21namespace:String=niem21_nc_URI,n3:String='GuardianWardAssociation',n3namespace:String=niem21_fs_URI	},
+		
 		Tuple{n21:String='Manifest',n21namespace:String=niem21_scr_URI,n3:String='Manifest',n3namespace:String=niem21_nc_URI	},
 		Tuple{n21:String='PatientMedicalFacility',n21namespace:String=niem21_j_URI,n3:String='PatientMedicalFacility',n3namespace:String=niem21_nc_URI	},
 		Tuple{n21:String='ContactInformation',n21namespace:String=niem21_it_URI,n3:String='ContactInformation',n3namespace:String=niem21_nc_URI	},

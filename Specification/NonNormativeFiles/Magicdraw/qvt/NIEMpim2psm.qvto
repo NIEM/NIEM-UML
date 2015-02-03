@@ -2,7 +2,9 @@ import NIEMplatformBinding;
 //modeltype UML uses 'http://www.omg.org/spec/UML/20110701';
 // platform variants for UML
 //modeltype UML uses 'http://www.eclipse.org/uml2/4.0.0/UML';
-modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+//modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+//modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.5';
+modeltype UML uses 'http://www.omg.org/spec/UML/20131001';
 
 transformation NIEMpim2psm(inout niemUml:UML)
 	extends NIEMplatformBinding;
@@ -13,7 +15,8 @@ transformation NIEMpim2psm(inout niemUml:UML)
 
 //property psmModel:UML::Model=null;
 property psmModel:UML::Package=null;
-property mpdComponent:UML::Component=null;
+//property mpdComponent:UML::Component=null;
+property mpdComponent:UML::InstanceSpecification=null;
 property psmRoot:UML::Model=null;
 
 helper pim2psmMain(){
@@ -30,9 +33,12 @@ helper pim2psmMain(){
 		topRoot.oclAsType(UML::Model).initializeProfileGlobals();
 
 //log('pim2psmMain get MPDs');
-		var allPimMpds:Set(UML::Component)=topRoot.allSubobjectsOfType(UML::Component).oclAsType(UML::Component)
+//		var allPimMpds:Set(UML::Component)=topRoot.allSubobjectsOfType(UML::Component).oclAsType(UML::Component)
+		var allPimMpds:Set(UML::InstanceSpecification)=topRoot.allSubobjectsOfType(UML::InstanceSpecification).oclAsType(UML::InstanceSpecification)
 			->select(c|
-				c.IsStereotypeApplied(prompdStereotype)
+				c.classifier->includes(prompdStereotype)
+//				c.classifier->includes(XMLSchemaTypeArtifact)
+//				c.IsStereotypeApplied(prompdStereotype)
 				and c.isEditable()
 				)->asSet();
 		// gather all pim schemas, then use to create psm schemas, then types
@@ -45,7 +51,9 @@ helper pim2psmMain(){
 		log('pim2psmMain complete');
 	return;
 }
-helper  UML::Component::gatherAllPimSchemas():Set(UML::Package){
+
+//helper  UML::Component::gatherAllPimSchemas():Set(UML::Package){
+helper  UML::InstanceSpecification::gatherAllPimSchemas():Set(UML::Package){
 	gatherAllPimSchemas:=Set{};
 	/*
 	self.elementImport.importedElement.oclAsType(UML::NamedElement)->asSet()
@@ -54,6 +62,11 @@ helper  UML::Component::gatherAllPimSchemas():Set(UML::Package){
 		.gatherAllPimSchemas();
 		*/
 	self.getPimInformationModels().gatherAllPimSchemas();	
+	// need to gather via IEPConformanceTarget and ValidityConstraintWithContext as well
+/*
+	self.getInstanceValues('IEPConformanceTarget').gatherAllPimSchemas();
+	self.getInstanceValues('ValidityConstraintWithContext').gatherAllPimSchemas();
+*/
 	/*
 		self.elementImport.importedElement.oclAsType(UML::NamedElement)->asSet()
 		->union(self.clientDependency.supplier->select(p|p.oclIsKindOf(UML::Package))->asSet())
@@ -111,7 +124,7 @@ mapping UML::Element::AbstractXSDFeature(inout psmOwner:UML::Element,domainConte
 	UML::Generalization::NIEMProperty_augmentation,
 	UML::Property::NIEMAnyProperty,
 	UML::Property::NIEMProperty_associationClassEnd,
-	UML::Property::NIEMProperty_propertyAugmentation,
+	//UML::Property::NIEMProperty_propertyAugmentation,
 	UML::Property::NIEMRoleOf,
 	UML::Property::NIEMProperty
 	{}
@@ -160,15 +173,72 @@ mapping UML::Dependency::AbstractReference(inout psmOwner:UML::NamedElement,doma
 	disjuncts UML::Realization::Reference
 	{}
 mapping UML::DirectedRelationship::AbstractModelPackageDescriptionFile(
-	inout psmOwner:UML::Component,psmNiemNamespace:UML::Namespace)
+//	inout psmOwner:UML::Component,
+	inout psmOwner:UML::PackageableElement,
+	psmNiemNamespace:UML::Namespace
+//	,psmFileType:UML::NamedElement
+	)
 	:UML::DirectedRelationship@niemUml
-	disjuncts UML::Usage::ModelPackageDescriptionFile,
-		UML::ElementImport::ModelPackageDescriptionFile
+	disjuncts 
+//		UML::Usage::ReferenceSchemaDocument, // test, moved up from below
+//		UML::Usage::AbstractFileType,
+		UML::Usage::RelaxNGSchema,
+		UML::Usage::XMLCatalog,
+		UML::Usage::SchematronSchema,
+		UML::Usage::ApplicationInfo,
+		UML::Usage::Wantlist,
+		UML::Usage::MPDChangeLog,
+		UML::Usage::ReadMe,
+		UML::Usage::Documentation,
+		UML::Usage::File,
+		UML::Usage::ConformanceReport,
+		UML::Usage::ConformanceAssertion,
+		UML::Usage::BusinessRulesArtifact,
+		UML::Usage::IEPSampleXMLDocument,
+		UML::Usage::RequiredFile,
+//		UML::Usage::AbstractXMLSchemaDocument,
+		UML::Usage::ExternalSchemaDocument,
+		UML::Usage::SubsetSchemaDocument,
+		UML::Usage::ExtensionSchemaDocument,
+		UML::Usage::ReferenceSchemaDocument,
+//		UML::Usage::ModelPackageDescriptionFile
+		UML::Usage::FileType
+//		,UML::ElementImport::ModelPackageDescriptionFile
 	{}
+	/*
+mapping UML::Usage::AbstractXMLSchemaDocument(inout psmOwner:UML::PackageableElement,psmNiemNamespace:UML::Namespace):UML::Usage@niemUml
+	disjuncts
+		UML::Usage::ExternalSchemaDocument,
+		UML::Usage::SubsetSchemaDocument,
+		UML::Usage::ExtensionSchemaDocument,
+		UML::Usage::ReferenceSchemaDocument
+{
+}
+mapping UML::Usage::AbstractFileType(inout psmOwner:UML::PackageableElement,psmNiemNamespace:UML::Namespace):UML::Usage@niemUml
+	disjuncts
+		UML::Usage::RelaxNGSchema,
+		UML::Usage::XMLCatalog,
+		UML::Usage::SchematronSchema,
+		UML::Usage::ApplicationInfo,
+		UML::Usage::Wantlist,
+		UML::Usage::MPDChangeLog,
+		UML::Usage::ReadMe,
+		UML::Usage::Documentation,
+		UML::Usage::File,
+		UML::Usage::ConformanceReport,
+		UML::Usage::ConformanceAssertion,
+		UML::Usage::BusinessRulesArtifact,
+		UML::Usage::IEPSampleXMLDocument,
+		UML::Usage::RequiredFile
+{
+}	
+	*/
+	/*
 mapping UML::Element::AbstractAugmentationApplication(inout psmAttribute:UML::Property,domainContext:UML::Package):UML::Usage@niemUml
 	disjuncts UML::Dependency::NIEMAugmentationApplication,
 		UML::Generalization::NIEMAugmentationApplication_augments
 	{}
+	*/
 mapping UML::Dependency::AbstractTypeDefinition(
 	inout psmOwner:UML::DataType,domainContext:UML::Package):UML::Dependency@niemUml
 	disjuncts
@@ -281,7 +351,7 @@ mapping UML::Package::NIEMNamespace(inout psmOwner:UML::Package,domainContext:UM
 	inherits UML::NamedElement::Package_init
 	when{self.isNIEMNamespace()}
 {
-	var pimElementImport:UML::DirectedRelationship=self.getPimElementImport();
+	//var pimElementImport:UML::DirectedRelationship=self.getPimElementImport();
 	log('NIEMNamespace '+result.qualifiedName+', from pim '+self.qualifiedName);
 	var pimStereotypeInstance:Stdlib::Element=self.GetStereotypeApplication(NIEMInformationModelStereotype).oclAsType(Stdlib::Element);
 //	var purposeCode:String='exchange';
@@ -292,24 +362,75 @@ mapping UML::Package::NIEMNamespace(inout psmOwner:UML::Package,domainContext:UM
 		if(purposeCode.oclIsUndefined() or (purposeCode=''))then {purposeCode:='extension';}endif;
 	}endif;
 	if(constraintMode)then{purposeCode:='constraint';}endif;
-    if(pimElementImport.oclIsUndefined())then{
-            //log('NIEMNamespace new MPD File');
-		var mpdFileType:UML::Usage=new UML::Usage@niemUml();
-		mpdFileType.client+=mpdComponent;
-		mpdComponent.packagedElement+=mpdFileType;
-		mpdFileType.supplier+=result;
-		var psmStereotypeInstance:Stdlib::Element=mpdFileType.ApplyStereotype(NIEMModelPackageDescriptionFileStereotype);
-		psmStereotypeInstance.setFileTypeNatureCode(natureXsdURI);
-		psmStereotypeInstance.setFileTypePurposeCode(purposeURI+purposeCode+'-schema');
+	if(not(pimStereotypeInstance.getPimSchemaConformantIndicator()))then{purposeCode:='external';}endif;
+	if(self.supplierDependency
+		->select(d|
+			d.stereotypedBy('ReferenceSchemaDocument')
+			or d.stereotypedBy('SubsetSchemaDocument')
+			or d.stereotypedBy('ExtensionSchemaDocument')
+			or d.stereotypedBy('ExternalSchemaDocument')
+			)->isEmpty())then{// if a Usage does not already exist
+	//    if(pimElementImport.oclIsUndefined())then{
+	            //log('NIEMNamespace new MPD File');
+			var mpdFileType:UML::Usage=new UML::Usage@niemUml();
+	//		var fileType:UML::InstanceSpecification=result.createPsmFileType();
+	
+	//		var fileType:UML::InstanceSpecification=new UML::InstanceSpecification@niemUml();
+			var fileType:UML::InstanceSpecification=mpdComponent;
+			//var psmClassifierName:String=purposeCode;
+			
+			
+			// TODO: hook up fileType instance to mpd stereotype?
+			
+			mpdFileType.client+=fileType;
+	//		mpdFileType.client+=mpdComponent;
+	//		mpdComponent.packagedElement+=mpdFileType;
+			mpdComponent.getNearestPackage().packagedElement+=mpdFileType;
+			mpdFileType.supplier+=result;
+			var schemaDocumentStereotypeInstance:Stdlib::Element=null;
+			// apply stereotype
+			if(purposeCode='reference')then {
+				schemaDocumentStereotypeInstance:=mpdFileType.ApplyStereotype(NIEMReferenceSchemaDocument);
+			}endif;
+			if(purposeCode='subset')then {
+				schemaDocumentStereotypeInstance:=mpdFileType.ApplyStereotype(NIEMSubsetSchemaDocument);
+			}endif;
+			if(purposeCode='extension')then {
+				schemaDocumentStereotypeInstance:=mpdFileType.ApplyStereotype(NIEMExtensionSchemaDocument);
+			}endif;
+			if(purposeCode='external')then {
+				schemaDocumentStereotypeInstance:=mpdFileType.ApplyStereotype(NIEMExternalSchemaDocument);
+			}endif;
+		
+		
+//		var psmStereotypeInstance:Stdlib::Element=mpdFileType.ApplyStereotype(NIEMModelPackageDescriptionFileStereotype);
+		//psmStereotypeInstance.setFileTypeNatureCode(natureXsdURI);
+//		psmStereotypeInstance.setFileTypePurposeCode(purposeURI+purposeCode+'-schema');
 		// tjd refined comment
 		//result.ownedComment
-		result.getPimComment()
-		.body->forEach(body){psmStereotypeInstance.setFileTypeDescriptionText(body);};
-		
+			if(not(schemaDocumentStereotypeInstance.oclIsUndefined()))then{
+				result.getPimComment()
+		//		.body->forEach(body){psmStereotypeInstance.setFileTypeDescriptionText(body);};
+		//		.body->forEach(body){psmStereotypeInstance.setDescriptionText(body);};
+		//		.body->forEach(body){fileType.oclAsType(Stdlib::Element).setDescriptionText(body);};
+				.body->forEach(body){schemaDocumentStereotypeInstance.setDescriptionText(body);};
+				}endif;
+		}endif;
+/*		
 	}else{
           //      log('NIEMNamespace map MPD File');
-		pimElementImport.map AbstractModelPackageDescriptionFile(mpdComponent,result);
+          // clone of class handled by AbstractFileType
+	//var pimStereotypeInstance:Stdlib::Element=self.GetStereotypeApplication(NIEMModelPackageDescriptionFileStereotype).oclAsType(Stdlib::Element);
+	//pimStereotypeInstance.deepcloneStereotypeApplication(NIEMModelPackageDescriptionFileStereotype,result);
+          
+//          var psmFileType:UML::NamedElement=pimElementImport.source->asSequence()->first().map AbstractFileType();
+//		pimElementImport.map AbstractModelPackageDescriptionFile(mpdComponent,result,psmFileType);
+       pimElementImport.source.map AbstractArtifactOrArtifactSet()->forEach(psmFileType){
+//       		pimElementImport.map AbstractModelPackageDescriptionFile(mpdComponent,result,psmFileType);
+       		pimElementImport.map AbstractModelPackageDescriptionFile(mpdComponent,result);
+		};
 	}endif;
+*/	
 	switch{
 		case(self.IsStereotypeApplied(NIEMInformationModelStereotype)){
             //            log('NIEMNamespace clone NIEMInformationModel');
@@ -337,6 +458,417 @@ mapping UML::Package::NIEMNamespace(inout psmOwner:UML::Package,domainContext:UM
 		
 
 }
+mapping UML::Element::AbstractArtifactOrArtifactSet():UML::NamedElement@niemUml
+	disjuncts
+		UML::InstanceSpecification::FileSet,
+		UML::InstanceSpecification::SchemaDocumentSet,
+		UML::InstanceSpecification::ConstraintSchemaDocumentSet,
+//		UML::Usage::AbstractFileType,
+//		UML::Usage::ConformanceReport,
+		UML::InstanceSpecification::EXIXMLSchemaType
+//		UML::Usage::AbstractXMLSchemaDocument
+{
+}
+/*
+mapping UML::InstanceSpecification::AbstractFileType():UML::InstanceSpecification@niemUml
+	disjuncts
+		UML::InstanceSpecification::RelaxNGSchema,
+		UML::InstanceSpecification::XMLCatalog,
+		UML::InstanceSpecification::SchematronSchema,
+		UML::InstanceSpecification::ApplicationInfo,
+		UML::InstanceSpecification::Wantlist,
+		UML::InstanceSpecification::MPDChangeLog,
+		UML::InstanceSpecification::ReadMe,
+		UML::InstanceSpecification::Documentation,
+		UML::InstanceSpecification::File,
+		UML::InstanceSpecification::ConformanceReport,
+		UML::InstanceSpecification::ConformanceAssertion,
+		UML::InstanceSpecification::BusinessRulesArtifact,
+		UML::InstanceSpecification::IEPSampleXMLDocument,
+		UML::InstanceSpecification::RequiredFile
+{
+}	
+*/	
+mapping UML::Element::ArtifactOrArtifactSet():UML::InstanceSpecification@niemUml
+{
+}
+mapping UML::InstanceSpecification::DescribedType():UML::InstanceSpecification@niemUml
+{
+//	result.oclAsType(Stdlib::Element).setDescriptionText(self.oclAsType(Stdlib::Element).getDescriptionText());
+	result.setDescriptionText(self.getDescriptionText());
+}
+mapping UML::InstanceSpecification::FileSetType():UML::InstanceSpecification@niemUml
+	inherits UML::InstanceSpecification::DescribedType
+{
+//	result.oclAsType(Stdlib::Element).setExternalURI(self.oclAsType(Stdlib::Element).getExternalURI());
+//	result.oclAsType(Stdlib::Element).setPathURI(self.oclAsType(Stdlib::Element).getPathURI());
+//	result.setExternalURI(self.oclAsType(Stdlib::Element).getExternalURI());
+//	result.setPathURI(self.oclAsType(Stdlib::Element).getPathURI());
+	result.setExternalURI(self.getExternalURI());
+	result.setPathURI(self.getPathURI());
+	//result.oclAsType(Stdlib::Element).setArtifactOrArtifactSet(self.oclAsType(Stdlib::Element).getArtifactOrArtifactSet());
+//    self.oclAsType(Stdlib::Element).getArtifactOrArtifactSetList().oclAsType(UML::Slot).value
+    self.clientDependency->forEach(pimDependency){
+    			pimDependency.supplier->select(s|s.oclIsKindOf(UML::Package)).oclAsType(UML::Package)->forEach(psmPackage){
+//   					pimDependency.map AbstractModelPackageDescriptionFile(mpdComponent,psmPackage,psmFileType);
+   					pimDependency.map AbstractModelPackageDescriptionFile(mpdComponent,psmPackage);
+   				};
+   			};
+    self.getArtifactOrArtifactSetList().value
+    	->select(v|v.oclIsKindOf(UML::InstanceValue)).oclAsType(UML::InstanceValue).instance->forEach(artifact){
+    	artifact.map AbstractArtifactOrArtifactSet();
+    	/*
+    		->forEach(psmFileType){
+    		artifact.clientDependency->forEach(pimDependency){
+    			pimDependency.supplier->select(s|s.oclIsKindOf(UML::Package)).oclAsType(UML::Package)->forEach(psmPackage){
+   					pimDependency.map AbstractModelPackageDescriptionFile(mpdComponent,psmPackage,psmFileType);
+   				};
+   			};
+   		};	
+   			*/
+	};
+	
+}
+mapping UML::InstanceSpecification::FileSet():UML::InstanceSpecification@niemUml
+	inherits UML::InstanceSpecification::FileSetType
+	when{self.classifier.name->includes('FileSet')}
+{
+		'FileSet'.setInstanceClassifier(result);
+}
+
+
+mapping UML::InstanceSpecification::SchemaDocumentSet():UML::InstanceSpecification@niemUml
+	inherits UML::InstanceSpecification::FileSetType
+	when{self.classifier.name->includes('SchemaDocumentSet')}
+{
+		'SchemaDocumentSet'.setInstanceClassifier(result);
+}
+mapping UML::InstanceSpecification::SchemaDocumentSetType():UML::InstanceSpecification@niemUml
+	inherits UML::InstanceSpecification::FileSetType
+{
+}
+
+mapping UML::InstanceSpecification::ConstraintSchemaDocumentSet():UML::InstanceSpecification@niemUml
+	inherits UML::InstanceSpecification::SchemaDocumentSetType
+	when{self.classifier.name->includes('ConstraintSchemaDocumentSet')}
+{
+		'ConstraintSchemaDocumentSet'.setInstanceClassifier(result);
+}
+mapping UML::Usage::FileType(inout psmOwner:UML::PackageableElement,inout psmNiemNamespace:UML::Namespace):UML::Usage@niemUml
+//	inherits UML::InstanceSpecification::DescribedType
+	inherits UML::Usage::ModelPackageDescriptionFile
+	when{self.stereotypedBy('FileType')}
+	
+{
+	/*
+//	result.oclAsType(Stdlib::Element).setExternalURI(self.oclAsType(Stdlib::Element).getExternalURI());
+//	result.oclAsType(Stdlib::Element).setPathURI(self.oclAsType(Stdlib::Element).getPathURI());
+//	result.oclAsType(Stdlib::Element).setMimeMediaTypeText(self.oclAsType(Stdlib::Element).getMimeMediaTypeText());
+//	result.setExternalURI(self.oclAsType(Stdlib::Element).getExternalURI());
+	result.setExternalURI(self.getExternalURI());
+//	result.setPathURI(self.oclAsType(Stdlib::Element).getPathURI());
+	result.setPathURI(self.getPathURI());
+	result.setMimeMediaTypeText(self.oclAsType(Stdlib::Element).getMimeMediaTypeText());
+	//result.oclAsType(Stdlib::Element).setRequiredFile(self.oclAsType(Stdlib::Element).getRequiredFile());
+//    self.oclAsType(Stdlib::Element).getRequiredFileList().oclAsType(UML::Slot).value
+    self.getRequiredFileList().oclAsType(UML::Slot).value
+    	->select(v|v.oclIsKindOf(UML::InstanceValue)).oclAsType(UML::InstanceValue).instance->forEach(artifact){
+    	artifact.map RequiredFile();
+	};
+	*/
+}
+mapping UML::Usage::ConformanceReport(inout psmOwner:UML::InstanceSpecification,inout psmNiemNamespace:UML::Namespace):UML::Usage@niemUml
+	inherits UML::Usage::ModelPackageDescriptionFile
+	when{self.stereotypedBy('ConformanceReport')}
+{
+		self.ApplyFileTypeStereotype(NIEMConformanceReport,result);
+}
+
+mapping UML::InstanceSpecification::ValidityConstraintWithContextType():UML::InstanceSpecification@niemUml
+	inherits UML::InstanceSpecification::DescribedType
+{
+}
+mapping UML::InstanceSpecification::ValidityConstraintType():UML::InstanceSpecification@niemUml
+	inherits UML::InstanceSpecification::ValidityConstraintWithContextType
+{
+}
+
+mapping UML::InstanceSpecification::XMLSchemaType():UML::InstanceSpecification@niemUml
+	inherits UML::InstanceSpecification::ValidityConstraintType
+//	when{self.classifier.name->includes('XMLSchemaType')}
+{
+//		'XMLSchemaType'.setInstanceClassifier(result);
+//	result.oclAsType(Stdlib::Element).setXMLCatalog(self.oclAsType(Stdlib::Element).getXMLCatalog());
+//	result.oclAsType(Stdlib::Element).setXMLSchemaDocument(self.oclAsType(Stdlib::Element).getXMLSchemaDocument());
+	
+//    self.oclAsType(Stdlib::Element).getXMLCatalogList().oclAsType(UML::Slot).value
+/* this should be implicit anyway
+    self.getXMLCatalogList().oclAsType(UML::Slot).value
+    	->select(v|v.oclIsKindOf(UML::InstanceValue)).oclAsType(UML::InstanceValue).instance->forEach(artifact){
+    	artifact.map XMLCatalog();
+	};
+	*/
+	// TODO: should be implicit anyway
+    //self.getXMLCatalogList().map XMLCatalog();
+
+//    self.oclAsType(Stdlib::Element).getXMLSchemaDocumentList().oclAsType(UML::Slot).value
+/*
+    self.getXMLSchemaDocumentList().oclAsType(UML::Slot).value
+    	->select(v|v.oclIsKindOf(UML::InstanceValue)).oclAsType(UML::InstanceValue).instance->forEach(artifact){
+    	artifact.map XMLSchemaDocument();
+	};
+	*/
+	// TODO: should be implicit anyway
+    //self.getXMLSchemaDocumentList().map XMLSchemaDocument();
+    //inout psmOwner:UML::InstanceSpecification,inout psmNiemNamespace:UML::Namespace
+	
+}
+mapping UML::InstanceSpecification::EXIXMLSchemaType():UML::InstanceSpecification@niemUml
+	inherits UML::InstanceSpecification::XMLSchemaType
+	when{self.classifier.name->includes('EXIXMLSchemaType')}
+{
+		
+}
+
+mapping UML::Usage::RelaxNGSchema(inout psmOwner:UML::InstanceSpecification,inout psmNiemNamespace:UML::Namespace):UML::Usage@niemUml
+	inherits UML::Usage::ModelPackageDescriptionFile
+	when{self.stereotypedBy('RelaxNGSchema')}
+{
+		self.ApplyFileTypeStereotype(NIEMRelaxNGSchema,result);
+}
+mapping UML::Usage::XMLCatalog(inout psmOwner:UML::InstanceSpecification,inout psmNiemNamespace:UML::Namespace):UML::Usage@niemUml
+	inherits UML::Usage::ModelPackageDescriptionFile
+	when{self.stereotypedBy('XMLCatalog')}
+{
+		self.ApplyFileTypeStereotype(NIEMXMLCatalog,result);
+}
+
+mapping UML::Usage::SchematronSchema(inout psmOwner:UML::InstanceSpecification,inout psmNiemNamespace:UML::Namespace):UML::Usage@niemUml
+	inherits UML::Usage::ModelPackageDescriptionFile
+	when{self.stereotypedBy('SchematronSchema')}
+{
+		self.ApplyFileTypeStereotype(NIEMSchematronSchema,result);
+}
+mapping UML::Usage::ApplicationInfo(inout psmOwner:UML::InstanceSpecification,inout psmNiemNamespace:UML::Namespace):UML::Usage@niemUml
+	inherits UML::Usage::ModelPackageDescriptionFile
+	when{self.stereotypedBy('ApplicationInfo')}
+{
+		self.ApplyFileTypeStereotype(NIEMApplicationInfo,result);
+}
+mapping UML::Usage::Wantlist(inout psmOwner:UML::InstanceSpecification,inout psmNiemNamespace:UML::Namespace):UML::Usage@niemUml
+	inherits UML::Usage::ModelPackageDescriptionFile
+	when{self.stereotypedBy('Wantlist')}
+{
+		self.ApplyFileTypeStereotype(NIEMWantlist,result);
+}
+
+mapping UML::Usage::MPDChangeLog(inout psmOwner:UML::InstanceSpecification,inout psmNiemNamespace:UML::Namespace):UML::Usage@niemUml
+	inherits UML::Usage::ModelPackageDescriptionFile
+	when{self.stereotypedBy('MPDChangeLog')}
+{
+		self.ApplyFileTypeStereotype(NIEMMPDChangeLog,result);
+}
+
+mapping UML::Dependency::ModelPackageDescriptionRelationship(inout psmClient:UML::InstanceSpecification):UML::Dependency@niemUml
+	when{self.stereotypedBy('ModelPackageDescriptionRelationship')}
+{
+		client+=psmClient;
+		supplier+=self.supplier;
+		psmClient.getNearestPackage().packagedElement+=result;
+		var appliedSourceInstance:Stdlib::Element=self.GetStereotypeApplication(NIEMModelPackageDescriptionRelationshipStereotype);
+		var appliedTargetInstance:Stdlib::Element=result.ApplyStereotype(NIEMModelPackageDescriptionRelationshipStereotype);
+		appliedTargetInstance.setDescriptionText(appliedSourceInstance.getDescriptionText());
+		appliedTargetInstance.setRelationshipCode(appliedSourceInstance.getRelationshipCode());
+		
+}
+helper UML::Package::addPackage(name:String):UML::Package{
+	var inPackage:UML::Package=self;
+	var baseXsdPackage:UML::Package=self.nestedPackage->select(base|base.name=name)->asSequence()->first();
+	if(baseXsdPackage.oclIsUndefined())then{
+		baseXsdPackage:=new UML::Package@niemUml();
+		baseXsdPackage.name:=name;
+		inPackage.packagedElement+=baseXsdPackage;
+	}endif;
+	return baseXsdPackage;
+}
+helper UML::InstanceSpecification::ImplicitMPDR(inout mpdr:UML::Usage,conformanceURI:String,packageName:String){
+	mpdr.client+=self;
+	var basePackage:UML::Package=self.getNearestPackage();
+	basePackage.packagedElement+=mpdr;
+	var placeHolderPackage:UML::Package=basePackage.addPackage(packageName);
+	placeHolderPackage.URI:=conformanceURI;
+	mpdr.supplier+=placeHolderPackage;
+	var appliedTargetInstance:Stdlib::Element=mpdr.ApplyStereotype(NIEMModelPackageDescriptionRelationshipStereotype);
+	appliedTargetInstance.setRelationshipCode('conforms-to');
+	return;
+}
+mapping inout UML::InstanceSpecification::ImplicitMPDRndr():UML::Usage@niemUml
+{
+	self.ImplicitMPDR(result,'http://reference.niem.gov/niem/specification/naming-and-design-rules/3.0/','NIEM NDR 3.0');
+}
+mapping inout UML::InstanceSpecification::ImplicitMPDRmpd():UML::Usage@niemUml
+{
+	self.ImplicitMPDR(result,'http://reference.niem.gov/niem/specification/model-package-description/3.0/','NIEM MPD Specification 3.0');
+}
+mapping inout UML::InstanceSpecification::ImplicitMPDRtargetAttributes():UML::Usage@niemUml
+{
+	self.ImplicitMPDR(result,'http://reference.niem.gov/niem/specification/conformance-targets-attribute/3.0/','NIEM Conformance Targets Attribute Specification 3.0');
+}
+mapping inout UML::InstanceSpecification::ImplicitMPDRconformance():UML::Usage@niemUml
+{
+	self.ImplicitMPDR(result,'http://reference.niem.gov/niem/specification/conformance/3.0/','NIEM Conformance 3.0');
+}
+
+mapping inout UML::InstanceSpecification::ImplicitOasisCatalog():UML::Usage@niemUml
+{
+	client+=self;
+	var basePackage:UML::Package=self.getNearestPackage();
+	basePackage.packagedElement+=result;
+	var baseXsdPackage:UML::Package=basePackage.addPackage('base-xsd');
+	var placeHolderPackage:UML::Package=baseXsdPackage.addPackage('xml-catalog.xml');
+	supplier+=placeHolderPackage;
+	result.ApplyStereotype(NIEMXMLCatalog);
+}
+mapping inout UML::InstanceSpecification::ImplicitWantlist():UML::Usage@niemUml
+{
+	client+=self;
+	var basePackage:UML::Package=self.getNearestPackage();
+	basePackage.packagedElement+=result;
+	var baseXsdPackage:UML::Package=basePackage.addPackage('base-xsd');
+	var niemPackage:UML::Package=baseXsdPackage.addPackage('niem');
+	var placeHolderPackage:UML::Package=niemPackage.addPackage('wantlist.xml');
+	supplier+=placeHolderPackage;
+	result.ApplyStereotype(NIEMWantlist);
+}
+mapping inout UML::InstanceSpecification::ImplicitConformanceReport():UML::Usage@niemUml
+{
+	client+=self;
+	var basePackage:UML::Package=self.getNearestPackage();
+	basePackage.packagedElement+=result;
+	var placeHolderPackage:UML::Package=basePackage.addPackage('conformance-report.html');
+	supplier+=placeHolderPackage;
+	result.ApplyStereotype(NIEMConformanceReport);
+}
+mapping inout UML::InstanceSpecification::ImplicitConformanceAssertion():UML::Usage@niemUml
+{
+	client+=self;
+	var basePackage:UML::Package=self.getNearestPackage();
+	basePackage.packagedElement+=result;
+	var placeHolderPackage:UML::Package=basePackage.addPackage('conformance-assertion.html');
+	supplier+=placeHolderPackage;
+	result.ApplyStereotype(NIEMConformanceAssertion);
+}
+mapping inout UML::InstanceSpecification::ImplicitReadMe():UML::Usage@niemUml
+{
+	client+=self;
+	var basePackage:UML::Package=self.getNearestPackage();
+	basePackage.packagedElement+=result;
+	var placeHolderPackage:UML::Package=basePackage.addPackage('readme.odt');
+	supplier+=placeHolderPackage;
+	result.ApplyStereotype(NIEMReadMe);
+}
+mapping UML::Usage::ReadMe(inout psmOwner:UML::InstanceSpecification,inout psmNiemNamespace:UML::Namespace):UML::Usage@niemUml
+	inherits UML::Usage::ModelPackageDescriptionFile
+	when{self.stereotypedBy('ReadMe')}
+{
+		self.ApplyFileTypeStereotype(NIEMReadMe,result);
+}
+mapping UML::Usage::Documentation(inout psmOwner:UML::InstanceSpecification,inout psmNiemNamespace:UML::Namespace):UML::Usage@niemUml
+	inherits UML::Usage::ModelPackageDescriptionFile
+	when{self.stereotypedBy('Documentation')}
+{
+		self.ApplyFileTypeStereotype(NIEMDocumentation,result);
+}
+
+mapping UML::Usage::File(inout psmOwner:UML::InstanceSpecification,inout psmNiemNamespace:UML::Namespace):UML::Usage@niemUml
+	inherits UML::Usage::ModelPackageDescriptionFile
+	when{self.stereotypedBy('File')}
+{
+		self.ApplyFileTypeStereotype(NIEMFile,result);
+}
+mapping UML::Usage::ConformanceAssertion(inout psmOwner:UML::InstanceSpecification,inout psmNiemNamespace:UML::Namespace):UML::Usage@niemUml
+	inherits UML::Usage::ModelPackageDescriptionFile
+	when{self.stereotypedBy('ConformanceAssertion')}
+{
+		self.ApplyFileTypeStereotype(NIEMConformanceAssertion,result);
+}
+mapping UML::Usage::BusinessRulesArtifact(inout psmOwner:UML::InstanceSpecification,inout psmNiemNamespace:UML::Namespace):UML::Usage@niemUml
+	inherits UML::Usage::ModelPackageDescriptionFile
+	when{self.stereotypedBy('BusinessRulesArtifact')}
+{
+		self.ApplyFileTypeStereotype(NIEMBusinessRulesArtifact,result);
+}
+
+mapping UML::Usage::IEPSampleXMLDocument(inout psmOwner:UML::InstanceSpecification,inout psmNiemNamespace:UML::Namespace):UML::Usage@niemUml
+	inherits UML::Usage::ModelPackageDescriptionFile
+	when{self.stereotypedBy('IEPSampleXMLDocument')}
+{
+		self.ApplyFileTypeStereotype(NIEMIEPSampleXMLDocument,result);
+}
+
+mapping UML::Usage::XMLSchemaDocument(inout psmOwner:UML::InstanceSpecification,inout psmNiemNamespace:UML::Namespace):UML::Usage@niemUml
+	inherits UML::Usage::ModelPackageDescriptionFile
+//	when{self.classifier.name->includes('ExternalSchemaDocument')}
+{
+//		'ExternalSchemaDocument'.setInstanceClassifier(result);
+//		self.ApplyFileTypeStereotype(NIEMXMLSchemaDocument,result);
+}
+
+mapping UML::Usage::ExternalSchemaDocument(inout psmOwner:UML::InstanceSpecification,inout psmNiemNamespace:UML::Namespace):UML::Usage@niemUml
+	inherits UML::Usage::XMLSchemaDocument
+	when{self.stereotypedBy('ExternalSchemaDocument')}
+{
+		self.ApplyFileTypeStereotype(NIEMExternalSchemaDocument,result);
+}
+mapping UML::Usage::SubsetSchemaDocument(inout psmOwner:UML::InstanceSpecification,inout psmNiemNamespace:UML::Namespace):UML::Usage@niemUml
+	inherits UML::Usage::XMLSchemaDocument
+	when{self.stereotypedBy('SubsetSchemaDocument')}
+{
+		self.ApplyFileTypeStereotype(NIEMSubsetSchemaDocument,result);
+}
+mapping UML::Usage::ExtensionSchemaDocument(inout psmOwner:UML::InstanceSpecification,inout psmNiemNamespace:UML::Namespace):UML::Usage@niemUml
+	inherits UML::Usage::XMLSchemaDocument
+	when{self.stereotypedBy('ExtensionSchemaDocument')}
+{
+		self.ApplyFileTypeStereotype(NIEMExtensionSchemaDocument,result);
+}
+mapping UML::Usage::ReferenceSchemaDocument(inout psmOwner:UML::InstanceSpecification,inout psmNiemNamespace:UML::Namespace):UML::Usage@niemUml
+	inherits UML::Usage::XMLSchemaDocument
+	when{self.stereotypedBy('ReferenceSchemaDocument')}
+{
+		self.ApplyFileTypeStereotype(NIEMReferenceSchemaDocument,result);
+}
+
+mapping UML::Usage::RequiredFile(inout psmOwner:UML::PackageableElement,inout psmNiemNamespace:UML::Namespace):UML::Usage@niemUml
+	inherits UML::Usage::ModelPackageDescriptionFile
+	when{self.stereotypedBy('RequiredFile')}
+{
+		self.ApplyFileTypeStereotype(NIEMRequiredFile,result);
+}
+	
+//helper UML::Usage::ApplyFileTypeStereotype(fileTypeStereotype:UML::Stereotype,target:UML::Usage):Stdlib::Element{
+	
+helper UML::Usage::ApplyFileTypeStereotype(fileTypeStereotype:UML::Stereotype,target:UML::Usage){
+		var appliedSourceInstance:Stdlib::Element=self.GetStereotypeApplication(fileTypeStereotype);
+		var appliedTargetInstance:Stdlib::Element=target.ApplyStereotype(fileTypeStereotype);
+		appliedTargetInstance.setExternalURI(appliedSourceInstance.getExternalURI());
+		appliedTargetInstance.setPathURI(appliedSourceInstance.getPathURI());
+		appliedTargetInstance.setMimeMediaTypeText(appliedSourceInstance.getMimeMediaTypeText());
+		appliedTargetInstance.setDescriptionText(appliedSourceInstance.getDescriptionText());
+		// requiredFile set on the supplier side
+		/*
+    self.getRequiredFileList().oclAsType(UML::Slot).value
+    	->select(v|v.oclIsKindOf(UML::InstanceValue)).oclAsType(UML::InstanceValue).instance->forEach(artifact){
+    	artifact.map RequiredFile();
+	};
+	*/
+	/*
+    self.getRequiredFileList().map RequiredFile();
+		return appliedTargetInstance;
+		*/
+		return;
+}
+
 mapping UML::Package::AttributeGroupDefinitions(inout psmOwner:UML::Package,domainContext:UML::Package):UML::Package@niemUml
 	inherits UML::NamedElement::Package_init
 	when{self.name=attributeGroupDefinitionPackageName}
@@ -349,19 +881,33 @@ mapping UML::Class::AttributeGroupDefinition(inout psmOwner:UML::Element,domainC
 }
 
 mapping UML::Usage::ModelPackageDescriptionFile(
-	inout psmOwner:UML::Component,inout psmNiemNamespace:UML::Namespace)
+//	inout psmOwner:UML::Component,inout psmNiemNamespace:UML::Namespace,psmFileType:UML::NamedElement)
+	inout psmOwner:UML::PackageableElement,inout psmNiemNamespace:UML::Namespace
+//	,psmFileType:UML::NamedElement
+	)
 	:UML::Usage@niemUml
+//	when{self.stereotypedBy('FileType')}
+	
 {
 	client+=psmOwner;
-	psmOwner.packagedElement+=result;
+//	psmOwner.packagedElement+=result;
+	psmOwner.getNearestPackage().packagedElement+=result;
 	supplier+=psmNiemNamespace;
-	var pimStereotypeInstance:Stdlib::Element=self.GetStereotypeApplication(NIEMModelPackageDescriptionFileStereotype).oclAsType(Stdlib::Element);
-	pimStereotypeInstance.deepcloneStereotypeApplication(NIEMModelPackageDescriptionFileStereotype,result);
+	
+    self.getRequiredFileList()->forEach(requiredFile){
+    	requiredFile.map RequiredFile(psmNiemNamespace.oclAsType(UML::PackageableElement),requiredFile.supplier->asSequence()->select(s|s.oclIsKindOf(UML::Namespace)).oclAsType(UML::Namespace)->first());
+    };
+
+//	var pimStereotypeInstance:Stdlib::Element=self.GetStereotypeApplication(NIEMModelPackageDescriptionFileStereotype).oclAsType(Stdlib::Element);
+//	pimStereotypeInstance.deepcloneStereotypeApplication(NIEMModelPackageDescriptionFileStereotype,result);
 	//self.changelogCallout(pimStereotypeInstance);
 	//log('changeLogCallout '+pimStereotypeInstance.getFileTypeNatureCode()+", "+pimStereotypeInstance.getFileTypePurposeCode());
 	// if there is a <<ModelPackageDescriptionFile>> with nature,purpose for changelog then handle in platform-specific binding
-	if( (pimStereotypeInstance.getFileTypeNatureCode()=natureXmlURI)
-	 and (pimStereotypeInstance.getFileTypePurposeCode()=purposeChangelogURI)
+	/* TODO: check for changeLog, sample moved to FileType map
+	if( 
+		//(pimStereotypeInstance.getFileTypeNatureCode()=natureXmlURI)
+	 	//and 
+	 	(pimStereotypeInstance.getFileTypePurposeCode()=purposeChangelogURI)
 	 )then{
 		self.supplier->select(p|p.oclIsKindOf(UML::Package)).oclAsType(UML::Package)
 		->forEach(pimPackage){
@@ -370,41 +916,51 @@ mapping UML::Usage::ModelPackageDescriptionFile(
 			};
 	 }endif;
 	 // for a sample xml document, make sure target package ends with .xml
-	if( (pimStereotypeInstance.getFileTypeNatureCode()=natureXmlURI)
-	 and (pimStereotypeInstance.getFileTypePurposeCode()=purposeSample_instanceURI)
+	if( 
+		//(pimStereotypeInstance.getFileTypeNatureCode()=natureXmlURI)
+	 	//and 
+	 	(pimStereotypeInstance.getFileTypePurposeCode()=purposeSample_instanceURI)
 	 )then{
 	 	if(not(psmNiemNamespace.name.endsWith('.xml')))then {psmNiemNamespace.name:=psmNiemNamespace.name+'.xml';}endif;
 	 }endif;
-	 
+	 */
 }
+/*
 mapping UML::ElementImport::ModelPackageDescriptionFile(
-	inout psmOwner:UML::Component,psmNiemNamespace:UML::Namespace)
+	inout psmOwner:UML::Component,psmNiemNamespace:UML::Namespace,psmFileType:UML::NamedElement)
 	:UML::Usage@niemUml
 {
-	client+=psmOwner;
+//	client+=psmOwner;
+	client+=psmFileType;
 	psmOwner.packagedElement+=result;
 	supplier+=psmNiemNamespace;
-	var pimStereotypeInstance:Stdlib::Element=result.ApplyStereotype(NIEMModelPackageDescriptionFileStereotype);
-	pimStereotypeInstance.setFileTypeNatureCode(natureXsdURI);
+	//var pimStereotypeInstance:Stdlib::Element=result.ApplyStereotype(NIEMModelPackageDescriptionFileStereotype);
+	//pimStereotypeInstance.setFileTypeNatureCode(natureXsdURI);
+	// TODO: psmFileType classifier corresponds to old purposeCode, double check that caller passes correct psmFileType parameter
+	/ *
 	var purposeCode:String=self.importedElement.GetStereotypeApplication(NIEMInformationModelStereotype).oclAsType(Stdlib::Element).getInformationModelDefaultPurpose();
 	if(constraintMode)then{purposeCode:='constraint';}endif;
 	
 	pimStereotypeInstance.setFileTypePurposeCode(purposeURI+purposeCode+'-schema');
-
+* /
 	var foundComment:Boolean=false;
 	// tjd refined comment
 //	self.ownedComment
 	self.getPimComment()
-	.body->forEach(body){pimStereotypeInstance.setFileTypeDescriptionText(body);foundComment:=true};
+//	.body->forEach(body){pimStereotypeInstance.setFileTypeDescriptionText(body);foundComment:=true};
+	.body->forEach(body){psmFileType.oclAsType(Stdlib::Element).setDescriptionText(body);foundComment:=true};
 	if(not(foundComment))then{
 			// tjd refined comment
 //			psmNiemNamespace.ownedComment
 			psmNiemNamespace.getPimComment()
-			.body->forEach(body){pimStereotypeInstance.setFileTypeDescriptionText(body);};
+//			.body->forEach(body){pimStereotypeInstance.setFileTypeDescriptionText(body);};
+			.body->forEach(body){psmFileType.oclAsType(Stdlib::Element).setDescriptionText(body);};
 	}endif;
 	
 }
-mapping UML::Component::ModelPackageDescription(inout psmOwner:UML::Model,domainContext:UML::Package):UML::Component@niemUml
+*/
+//mapping UML::Component::ModelPackageDescription(inout psmOwner:UML::Model,domainContext:UML::Package):UML::Component@niemUml
+mapping UML::InstanceSpecification::ModelPackageDescription(inout psmOwner:UML::Model,domainContext:UML::Package):UML::InstanceSpecification@niemUml
 	inherits UML::NamedElement::Package_init
 {
 	mpdComponent:= result;
@@ -447,6 +1003,38 @@ mapping UML::Component::ModelPackageDescription(inout psmOwner:UML::Model,domain
 		isFirstComponent:=false;
 	}endif;
 	// map any explicit <<ModelPackageDefinitionFile>> Usages
+	//var allFiles:Set(UML::Usage)=
+//	self.getFileTypes().clientDependency->select(d|d.oclIsKindOf(UML::Usage))
+	var hasReadMe:Boolean=false;
+	var hasConformanceAssertion:Boolean=false;
+	var hasConformanceReport:Boolean=false;
+	var hasWantlist:Boolean=false;
+	var hasOasisCatalog:Boolean=false;
+	self.getMpdFileUsages()	
+		->forEach(mpdFile){
+			mpdFile.supplier->select(p|p.oclIsKindOf(UML::Package)).oclAsType(UML::Package)
+			->forEach(pimPackage){
+				var psmPackage:UML::Package=pimPackage.getPsmPackage(pimPackage);
+				log('map mpdFile to psmPackage '+psmPackage.qualifiedName);
+//				mpdFile.map AbstractModelPackageDescriptionFile(result,psmPackage);
+//				var psmFileType:UML::NamedElement=;
+//				mpdFile.map AbstractModelPackageDescriptionFile(result,psmPackage,psmFileType);
+//		       		mpdFile.map AbstractModelPackageDescriptionFile(result,psmPackage);
+
+		       mpdFile.source.map AbstractArtifactOrArtifactSet()->forEach(psmFileType){
+//		       		mpdFile.map AbstractModelPackageDescriptionFile(result,psmPackage,psmFileType);
+					log('map mpdFile to psmPackage xx '+psmPackage.qualifiedName);
+					hasReadMe:=hasReadMe or mpdFile.stereotypedBy('ReadMe');
+					hasConformanceAssertion:=hasConformanceAssertion or mpdFile.stereotypedBy('ConformanceAssertion');
+					hasConformanceReport:=hasConformanceReport or mpdFile.stereotypedBy('ConformanceReport');
+					hasWantlist:=hasWantlist or mpdFile.stereotypedBy('Wantlist');
+					hasOasisCatalog:=hasOasisCatalog or mpdFile.stereotypedBy('XMLCatalog');
+		       		mpdFile.map AbstractModelPackageDescriptionFile(result,psmPackage);
+				};
+				
+			};
+		};
+	/*
 	self.clientDependency
 		->select(s|s.IsStereotypeApplied(NIEMModelPackageDescriptionFileStereotype)).oclAsType(Usage)
 		->forEach(mpdFile){
@@ -457,6 +1045,7 @@ mapping UML::Component::ModelPackageDescription(inout psmOwner:UML::Model,domain
 				mpdFile.map AbstractModelPackageDescriptionFile(result,psmPackage);
 			};
 		};
+		*/
 	// process pim-specified <<InformationModel>>s and their types, (these should already have been done as part of first component above)
 	var importedPackages:Set(UML::Package)=self.getPimInformationModels();
 	/*
@@ -471,34 +1060,239 @@ mapping UML::Component::ModelPackageDescription(inout psmOwner:UML::Model,domain
 			var psmPackage:UML::Package=pimPackage.getPsmPackage(pimPackage);
 			pimPackage.ownedType.map AbstractXSDTypeDefinition(psmPackage,pimPackage);
 		};
-	var pimmpdStereotypeInstance:Stdlib::Element=self.GetStereotypeApplication(prompdStereotype).oclAsType(Stdlib::Element);
+//	var pimmpdStereotypeInstance:Stdlib::Element=self.GetStereotypeApplication(prompdStereotype).oclAsType(Stdlib::Element);
+	var pimmpdStereotypeInstance:UML::InstanceSpecification=self;
 	//log('ModelPackageDescription '+pimmpdStereotypeInstance.repr());
-	pimmpdStereotypeInstance.deepcloneStereotypeApplication(prompdStereotype,result);
+//	pimmpdStereotypeInstance.deepcloneStereotypeApplication(prompdStereotype,result);
+	pimmpdStereotypeInstance.deepcloneInstanceSpecification(prompdStereotype,result);
 	
-	
+	// map any IEPConformanceTarget to psm
+	result.getValueSpecification('IEPConformanceTarget')->select(v|v.oclIsKindOf(UML::InstanceValue)).oclAsType(UML::InstanceValue).mapAbstractIEPConformanceTarget();
 	// known filesets
-
+/*
+	var allFiles:Set(UML::Usage)=result.getFileTypes().clientDependency->select(d|d.oclIsKindOf(UML::Usage))
+		.oclAsType(UML::Usage)
+		->asSet();
 	var allFiles:Set(UML::Usage)=result.clientDependency
 		->select(d|d.IsStereotypeApplied(NIEMModelPackageDescriptionFileStereotype))
 		.oclAsType(UML::Usage)
 		->asSet();
-	var extensionSchemas:Set(UML::Usage)=allFiles->select(p|p.isPsmExtensionSchema())->asSet();
-	var exchangeSchemas:Set(UML::Usage)=allFiles->select(p|p.isPsmExchangeSchema())->asSet();
+	//var extensionSchemas:Set(UML::Usage)=allFiles->select(p|p.isPsmExtensionSchema())->asSet();
+	//var exchangeSchemas:Set(UML::Usage)=allFiles->select(p|p.isPsmExchangeSchema())->asSet();
 	var subsetSchemas:Set(UML::Usage)=allFiles->select(p|p.isPsmSubsetSchema())->asSet();
 	var referenceSchemas:Set(UML::Usage)=allFiles->select(p|p.isPsmReferenceSchema())->asSet();
-	var constraintSchemas:Set(UML::Usage)=allFiles->select(p|p.isPsmConstraintSchema())->asSet();
-	if(extensionSchemas->notEmpty())then{purposeExtensionSchemaSetURI.map MpdFileSetType(result,extensionSchemas);}else{}endif;
-	if(exchangeSchemas->notEmpty())then{purposeExchangeSchemaSetURI.map MpdFileSetType(result,exchangeSchemas);}else{}endif;
-	if(subsetSchemas->notEmpty())then{purposeSubsetSchemaSetURI.map MpdFileSetType(result,subsetSchemas);}else{}endif;
-	if(referenceSchemas->notEmpty())then{purposeReferenceSchemaSetURI.map MpdFileSetType(result,referenceSchemas);}else{}endif;
-	if(constraintSchemas->notEmpty())then{purposeConstraintSchemaSetURI.map MpdFileSetType(result,constraintSchemas);}else{}endif;
+	//var constraintSchemas:Set(UML::Usage)=allFiles->select(p|p.isPsmConstraintSchema())->asSet();
+	//if(extensionSchemas->notEmpty())then{purposeExtensionSchemaSetURI.map MpdFileSetType(result,extensionSchemas);}else{}endif;
+	//if(exchangeSchemas->notEmpty())then{purposeExchangeSchemaSetURI.map MpdFileSetType(result,exchangeSchemas);}else{}endif;
+	//if(subsetSchemas->notEmpty())then{purposeSubsetSchemaSetURI.map MpdFileSetType(result,subsetSchemas);}else{}endif;
+	//if(referenceSchemas->notEmpty())then{purposeReferenceSchemaSetURI.map MpdFileSetType(result,referenceSchemas);}else{}endif;
+//	if(constraintSchemas->notEmpty())then{purposeConstraintSchemaSetURI.map MpdFileSetType(result,constraintSchemas);}else{}endif;
+		*/
 	self.mapModelPackageDescription(psmOwner,domainContext,result);
-	log('ModelPackageDescription done: '+extensionSchemas->size().repr()+' extension schemas, '+exchangeSchemas->size().repr()+' exchange schemas, '+subsetSchemas->size().repr()+' subset schemas, '+referenceSchemas->size().repr()+' reference schemas');
+	// if no readme specified, add implicit
+//		log('ModelPackageDescription readme '+hasReadMe.repr());
+	// mpd relationships to either mpds or specifications;
+	// should be sufficient to create the dependency with existing target
+	var hasMPDRconformance:Boolean=false;
+	var hasMPDRtargetAttributes:Boolean=false;
+	var hasMPDRmpd:Boolean=false;
+	var hasMPDRndr:Boolean=false;
+//if(false)then{// debug test	
+	self.clientDependency->select(d|d.stereotypedBy('ModelPackageDescriptionRelationship'))->forEach(relationship){
+		relationship.map ModelPackageDescriptionRelationship(result);
+		var appliedSourceInstance:Stdlib::Element=relationship.GetStereotypeApplication(NIEMModelPackageDescriptionRelationshipStereotype);
+		if(appliedSourceInstance.getRelationshipCode()='conforms_to')then{
+			relationship.supplier->select(s|s.oclIsKindOf(UML::Package)).oclAsType(UML::Package)->forEach(p){
+				if(not(p.URI.oclIsUndefined()) and (p.URI='http://reference.niem.gov/niem/specification/conformance/3.0/'))then{hasMPDRconformance:=true;}endif;
+				if(not(p.URI.oclIsUndefined()) and (p.URI='http://reference.niem.gov/niem/specification/conformance-targets-attribute/3.0/'))then{hasMPDRtargetAttributes:=true;}endif;
+				if(not(p.URI.oclIsUndefined()) and (p.URI='http://reference.niem.gov/niem/specification/model-package-description/3.0/'))then{hasMPDRmpd:=true;}endif;
+				if(not(p.URI.oclIsUndefined()) and (p.URI='http://reference.niem.gov/niem/specification/naming-and-design-rules/3.0/'))then{hasMPDRndr:=true;}endif;
+			};		
+		}endif;
+/*			
+		var appliedTargetInstance:Stdlib::Element=result.ApplyStereotype(NIEMModelPackageDescriptionRelationshipStereotype);
+		appliedTargetInstance.setDescriptionText(appliedSourceInstance.getDescriptionText());
+		appliedTargetInstance.setRelationshipCode(appliedSourceInstance.getRelationshipCode());
+*/			
+			
+	};	
+//}endif;	
+	if(not(hasMPDRconformance))then{
+		result.map ImplicitMPDRconformance();
+	}endif;
+	if(not(hasMPDRtargetAttributes))then{
+		result.map ImplicitMPDRtargetAttributes();
+	}endif;
+	if(not(hasMPDRmpd))then{
+		result.map ImplicitMPDRmpd();
+	}endif;
+	if(not(hasMPDRndr))then{
+		result.map ImplicitMPDRndr();
+	}endif;
+	
+	if(not(hasOasisCatalog))then{
+		result.map ImplicitOasisCatalog();
+	}endif;
+	if(not(hasWantlist))then{
+		result.map ImplicitWantlist();
+	}endif;
+	if(not(hasConformanceReport))then{
+		result.map ImplicitConformanceReport();
+	}endif;
+	if(not(hasReadMe))then{
+		result.map ImplicitReadMe();
+	}endif;
+	if(not(hasConformanceAssertion))then{
+		result.map ImplicitConformanceAssertion();
+	}endif;
+	/*
+	log('ModelPackageDescription done: '
+		//+extensionSchemas->size().repr()+' extension schemas, '
+		//+exchangeSchemas->size().repr()		+' exchange schemas, '
+		+subsetSchemas->size().repr()+' subset schemas, '+referenceSchemas->size().repr()+' reference schemas');
+	*/	
+	
 }
-helper UML::Component::mapModelPackageDescription(inout psmOwner:UML::Model,domainContext:UML::Package,inout resultComponent:UML::Component){
+helper UML::InstanceValue::mapAbstractIEPConformanceTarget(){
+	// map the instance specification to a psm
+	var iv:UML::InstanceValue=self;
+	var psmConformantTarget:UML::InstanceSpecification=iv.instance.map IEPConformanceTarget(iv);
+	//iv.instance:=psmConformantTarget;
+	//iv.getNearestPackage().packagedElement+=iv.instance;
+	return;
+}
+mapping UML::InstanceSpecification::IEPConformanceTarget(inout psmInstanceValue:UML::InstanceValue):UML::InstanceSpecification
+	//inherits UML::InstanceSpecification::DescribedType
+	{
+		name:=self.name;
+		result.setDescriptionText(self.getDescriptionText());
+		
+		psmInstanceValue.instance:=result;
+		psmInstanceValue.getNearestPackage().packagedElement+=result;
+	self.deepcloneInstanceSpecification(IEPConformanceTarget,result);
+	result.getValueSpecification('ValidityConstraintWithContext')->select(v|v.oclIsKindOf(UML::InstanceValue)).oclAsType(UML::InstanceValue).mapAbstractValidityConstraintWithContext();
+	
+		//ValidityConstraintWithContext
+		// TODO
+		//self.getValidityConstraintWithContext()
+		//ArtifactOrArtifactSet
+		/* TODO; suppress for now
+    self.getArtifactOrArtifactSetList().value
+    	->select(v|v.oclIsKindOf(UML::InstanceValue)).oclAsType(UML::InstanceValue).instance->forEach(artifact){
+    	artifact.map AbstractArtifactOrArtifactSet();
+	};
+	*/
+	self.getMpdFileUsages()	
+		->forEach(mpdFile){
+			mpdFile.supplier->select(p|p.oclIsKindOf(UML::Package)).oclAsType(UML::Package)
+			->forEach(pimPackage){
+				var psmPackage:UML::Package=pimPackage.getPsmPackage(pimPackage);
+				log('map IEPConformanceTarget to psmPackage '+psmPackage.qualifiedName);
+	       		mpdFile.map AbstractModelPackageDescriptionFile(result,psmPackage);
+			};
+		};
+	
+	
+		
+	}
+helper UML::InstanceValue::mapAbstractValidityConstraintWithContext(){
+	// map the instance specification to a psm
+	var iv:UML::InstanceValue=self;
+	var psmConformantTarget:UML::InstanceSpecification=iv.instance.map AbstractValidityConstraintWithContextType(iv);
+	return;
+}
+mapping UML::InstanceSpecification::AbstractValidityConstraintWithContextType(inout psmInstanceValue:UML::InstanceValue):UML::InstanceSpecification
+	disjuncts
+		UML::InstanceSpecification::QualifiedNamesType,
+		UML::InstanceSpecification::XPathType,
+		UML::InstanceSpecification::XMLSchemaTypeX,// XMLSchemaValid
+		UML::InstanceSpecification::SchematronValidationType,
+		UML::InstanceSpecification::RelaxNGValidationType,
+		UML::InstanceSpecification::ConformanceTargetType,
+		UML::InstanceSpecification::TextRuleType,
+		UML::InstanceSpecification::ValidityConstraintTypeX,
+		UML::InstanceSpecification::ValidityContextType,
+		UML::InstanceSpecification::ValidityConstraintWithContext
+	{
+	}
+mapping UML::InstanceSpecification::XPathType(inout psmInstanceValue:UML::InstanceValue):UML::InstanceSpecification
+	inherits UML::InstanceSpecification::ValidityConstraintTypeX
+	when{self.classifier.name->includes('XPathType')}
+	{
+	self.deepcloneInstanceSpecification(XPathTypeArtifact,result);
+	}
+mapping UML::InstanceSpecification::XMLSchemaTypeX(inout psmInstanceValue:UML::InstanceValue):UML::InstanceSpecification
+	inherits UML::InstanceSpecification::ValidityConstraintTypeX
+	when{self.classifier.name->includes('XMLSchemaType')}
+	{
+	self.deepcloneInstanceSpecification(XMLSchemaTypeArtifact,result);
+	self.getMpdFileUsages()	
+		->forEach(mpdFile){
+			mpdFile.supplier->select(p|p.oclIsKindOf(UML::Package)).oclAsType(UML::Package)
+			->forEach(pimPackage){
+				var psmPackage:UML::Package=pimPackage.getPsmPackage(pimPackage);
+				log('map XMLSchemaTypeX to psmPackage '+psmPackage.qualifiedName);
+	       		mpdFile.map AbstractModelPackageDescriptionFile(result,psmPackage);
+			};
+		};
+	}
+mapping UML::InstanceSpecification::SchematronValidationType(inout psmInstanceValue:UML::InstanceValue):UML::InstanceSpecification
+	inherits UML::InstanceSpecification::ValidityConstraintTypeX
+	when{self.classifier.name->includes('SchematronValidationType')}
+	{
+	self.deepcloneInstanceSpecification(SchematronValidationTypeArtifact,result);
+	}
+mapping UML::InstanceSpecification::RelaxNGValidationType(inout psmInstanceValue:UML::InstanceValue):UML::InstanceSpecification
+	inherits UML::InstanceSpecification::ValidityConstraintTypeX
+	when{self.classifier.name->includes('RelaxNGValidationType')}
+	{
+	self.deepcloneInstanceSpecification(RelaxNGValidationTypeArtifact,result);
+	}
+mapping UML::InstanceSpecification::ConformanceTargetType(inout psmInstanceValue:UML::InstanceValue):UML::InstanceSpecification
+	inherits UML::InstanceSpecification::ValidityConstraintTypeX
+	when{self.classifier.name->includes('ConformanceTargetType')}
+	{
+	self.deepcloneInstanceSpecification(ConformanceTargetTypeArtifact,result);
+	}
+mapping UML::InstanceSpecification::TextRuleType(inout psmInstanceValue:UML::InstanceValue):UML::InstanceSpecification
+	inherits UML::InstanceSpecification::ValidityConstraintTypeX
+	when{self.classifier.name->includes('TextRuleType')}
+	{
+	self.deepcloneInstanceSpecification(TextRuleTypeArtifact,result);
+	}
+mapping UML::InstanceSpecification::ValidityConstraintWithContext(inout psmInstanceValue:UML::InstanceValue):UML::InstanceSpecification
+	//inherits UML::InstanceSpecification::DescribedType
+	//when{self.classifier.name->includes('ValidityConstraintWithContextType')}
+	{
+		name:=self.name;
+		result.setDescriptionText(self.getDescriptionText());
+		psmInstanceValue.instance:=result;
+		psmInstanceValue.getNearestPackage().packagedElement+=result;
+	}
+mapping UML::InstanceSpecification::QualifiedNamesType(inout psmInstanceValue:UML::InstanceValue):UML::InstanceSpecification
+	inherits UML::InstanceSpecification::ValidityConstraintWithContext
+	when{self.classifier.name->includes('QualifiedNamesType')}
+	{
+	self.deepcloneInstanceSpecification(QualifiedNamesTypeArtifact,result);
+		// TODO qualifiedNameList
+	}
+mapping UML::InstanceSpecification::ValidityConstraintTypeX(inout psmInstanceValue:UML::InstanceValue):UML::InstanceSpecification
+	inherits UML::InstanceSpecification::ValidityConstraintWithContext
+//	when{self.classifier.name->includes('ValidityConstraintType')}
+	
+	{
+	}
+mapping UML::InstanceSpecification::ValidityContextType(inout psmInstanceValue:UML::InstanceValue):UML::InstanceSpecification
+	inherits UML::InstanceSpecification::ValidityConstraintWithContext
+	when{self.classifier.name->includes('ValidityContextType')}
+	{
+	}
+	
+//helper UML::Component::mapModelPackageDescription(inout psmOwner:UML::Model,domainContext:UML::Package,inout resultComponent:UML::Component){
+helper UML::InstanceSpecification::mapModelPackageDescription(inout psmOwner:UML::Model,domainContext:UML::Package,inout resultComponent:UML::InstanceSpecification){
 	// for possible override
 }
-
+/*
 mapping String::MpdFileSetType(inout mpdModel:UML::Component,fileTypes:Set(UML::Usage)):UML::Component@niemUml{
 	mpdModel.packagedElement+=result;
 	fileTypes->forEach(fileType){
@@ -507,14 +1301,17 @@ mapping String::MpdFileSetType(inout mpdModel:UML::Component,fileTypes:Set(UML::
 		elementImport.importedElement:=fileType;
 		};
 	var stereotypeInstance:Stdlib::Element=result.ApplyStereotype(NIEMModelPackageDescriptionFileSetStereotype);
-	stereotypeInstance.setFileSetTypeNatureURI(natureFilesetURI);
+	//stereotypeInstance.setFileSetTypeNatureURI(natureFilesetURI);
 	stereotypeInstance.setFileSetTypePurposeURI(self);
 }
+*/
 helper applyAdditionalProfiles(inout model:UML::Model){}// for possible override
-mapping UML::Component::ModelPackageDescription_Model(inout psmOwner:UML::Model,domainContext:UML::Package):UML::Model@niemUml
+
+//mapping UML::Component::ModelPackageDescription_Model(inout psmOwner:UML::Model,domainContext:UML::Package):UML::Model@niemUml
+mapping UML::InstanceSpecification::ModelPackageDescription_Model(inout psmOwner:UML::Model,domainContext:UML::Package):UML::Model@niemUml
 	inherits UML::NamedElement::Package_init
 {
-	log('MPD defined by component '+self.qualifiedName);
+	log('MPD defined by instance '+self.qualifiedName);
 	psmModel:=result;
 	result.applyProfile(provisioningProfile);
 	result.applyProfile(structureProfile);
@@ -568,10 +1365,16 @@ mapping UML::Classifier::AugmentableType(inout psmOwner:UML::Element,domainConte
 	inherits UML::Classifier::NIEMComplexType
 {
 	init{}
-	// must have an AugmentationPoint; if not there then add it
-	if(self.attribute->select(p|p.isAugmentationPoint())->isEmpty())then{
-		// create an augmentation point and add to attribute
-		result.attribute+=result.map ImplicitAugmentationPoint(result,domainContext);
+	// if complexContet
+	var isComplexContent:Boolean=result.clientDependency
+		->select(d|d.stereotypedBy('XSDSimpleContent'))->isEmpty();
+		
+	if(isComplexContent)then{
+		// must have an AugmentationPoint; if not there then add it
+		if(self.attribute->select(p|p.isAugmentationPoint())->isEmpty())then{
+			// create an augmentation point and add to attribute
+			result.attribute+=result.map ImplicitAugmentationPoint(result,domainContext);
+		}endif;
 	}endif;
 }
 /*
@@ -611,7 +1414,7 @@ mapping UML::Classifier::MetadataType(inout psmOwner:UML::Element,domainContext:
 	init{}
 	result.ApplyStereotype(NIEMMetadataStereotype);
 	name:=result.name.toNIEMMetadataName();
-	self.clientDependency.map NIEMMetadataApplication(result,domainContext);
+//	self.clientDependency.map NIEMMetadataApplication(result,domainContext);
 }
 mapping UML::Class::AdapterType_class(inout psmOwner:UML::Element,domainContext:UML::Package):UML::Class@niemUml
 	inherits UML::Classifier::AdapterType
@@ -831,7 +1634,7 @@ mapping UML::Enumeration::NIEMLocalVocabulary(
 			psmComment.body:=comment.body;
 			psmComment.ApplyStereotype(NIEMDescriptionStereotype);
 			};
-		if(self.IsStereotypeApplied(NIEMLocalTermStereotype))then{
+		if(codeValue.IsStereotypeApplied(NIEMLocalTermStereotype))then{
 			var pimStereotypeInstance:Stdlib::Element=codeValue.GetStereotypeApplication(NIEMLocalTermStereotype).oclAsType(Stdlib::Element);
 			pimStereotypeInstance.deepcloneStereotypeApplication(NIEMLocalTermStereotype,psmCodeValue);
 			}endif;
@@ -879,26 +1682,32 @@ mapping UML::Enumeration::NIEMSimpleType_enumeration(
         }endif;
 		log('Enumeration NIEMSimpleType_enumeration '+isComplex.repr()+', '+self.isPimComplexTypeSimpleContent().repr()+' to '+result.qualifiedName+', count='+codeValues->size().repr());
     }endif;
-	if(self.getGeneralRestrictions()->isEmpty())then{
-	// must lead to xsd token base
-		var restriction:UML::Realization=new UML::Realization@niemUml();
-		result.getNearestPackage().packagedElement+=restriction;
-		restriction.client+=result;
-		// token from xmlLibrary
-		var type:UML::Type=umlXmlLibrary.ownedType->select(t|t.name='token')->asSequence()->first();
-
-		restriction.supplier+=type.oclAsType(UML::Classifier).getPsmClassifier(domainContext);
-		// correction to applying <<Restriction>> as part of Issue 18361: PSM Representation for XSD Complex Type with Simple Content 
-		restriction.ApplyStereotype(NIEMRestrictionStereotype);
-		// added markings for restriction from proxy, if necessary, as part of Issue 18361: PSM Representation for XSD Complex Type with Simple Content 
-		if(self.isLeaf)then{
-			var opaqueExpression:UML::OpaqueExpression=new UML::OpaqueExpression@niemUml();
-			opaqueExpression.language+='English';
-			opaqueExpression.body+='via Proxy';
-			restriction._mapping:=opaqueExpression;
+	if(self.IsStereotypeApplied(NIEMUnionTypeStereotype))then
+	{
+		result.ApplyStereotype(NIEMUnionTypeStereotype);
+		// union of
+		self.clientDependency.map AbstractTypeDefinition(result,domainContext);
+	}else{
+		if(self.getGeneralRestrictions()->isEmpty())then{
+		// must lead to xsd token base
+			var restriction:UML::Realization=new UML::Realization@niemUml();
+			result.getNearestPackage().packagedElement+=restriction;
+			restriction.client+=result;
+			// token from xmlLibrary
+			var type:UML::Type=umlXmlLibrary.ownedType->select(t|t.name='token')->asSequence()->first();
+	
+			restriction.supplier+=type.oclAsType(UML::Classifier).getPsmClassifier(domainContext);
+			// correction to applying <<Restriction>> as part of Issue 18361: PSM Representation for XSD Complex Type with Simple Content 
+			restriction.ApplyStereotype(NIEMRestrictionStereotype);
+			// added markings for restriction from proxy, if necessary, as part of Issue 18361: PSM Representation for XSD Complex Type with Simple Content 
+			if(self.isLeaf)then{
+				var opaqueExpression:UML::OpaqueExpression=new UML::OpaqueExpression@niemUml();
+				opaqueExpression.language+='English';
+				opaqueExpression.body+='via Proxy';
+				restriction._mapping:=opaqueExpression;
+			}endif;
 		}endif;
 	}endif;
-
 }
 mapping UML::Enumeration::NIEMComplexType_enumeration(
 	inout psmOwner:UML::Element,domainContext:UML::Package):UML::Class@niemUml
@@ -1009,12 +1818,18 @@ mapping UML::Generalization::NIEMProperty_augmentation(inout classifier:UML::Cla
 	aggregation:=UML::AggregationKind::shared;
 	// resolve or create top level element corresponding to augmentation element
 	var topElement:UML::Property=self.resolveImplicitPropertyReference(result,domainContext);
+	//  find or create AugmentationPoint 
+	var augmentationPoint:UML::Property=self.specific.map ImplicitAugmentationPoint(self.specific,domainContext);
+	topElement.subsettedProperty+=augmentationPoint;
+	
+	/* AugmentationApplication not in NIEM3
 	// create and apply <<AugmentationApplication>> to top level element as required
 	self.general.generalization
 		->select(g|g.IsStereotypeApplied(NIEMAugmentsStereotype))
 		->forEach(g){
 			g.map AbstractAugmentationApplication(topElement,domainContext);
 		}
+		*/
 	}
 
 mapping UML::Generalization::NIEMRoleOf_generalization(
@@ -1154,6 +1969,7 @@ mapping UML::Dependency::NIEMAppliesTo(inout psmAttribute:UML::NamedElement,doma
 		psmAttribute.getNearestPackage().packagedElement+=result;
 		supplier:=self.supplier.oclAsType(UML::Classifier).getPsmClassifier(domainContext);
 	}
+	/* not in NIEM3
 mapping UML::Dependency::NIEMAugmentationApplication(inout psmAttribute:UML::Property,domainContext:UML::Package):UML::Usage@niemUml
 	inherits UML::Dependency::NIEMAppliesTo
 	when{self.oclIsKindOf(UML::Usage)
@@ -1162,7 +1978,8 @@ mapping UML::Dependency::NIEMAugmentationApplication(inout psmAttribute:UML::Pro
 	{
 	result.ApplyStereotype(NIEMAugmentationApplicationStereotype);
 	}
-
+*/
+/*
 mapping UML::Dependency::NIEMMetadataApplication(inout psmClassifier:UML::Classifier,domainContext:UML::Package):UML::Usage@niemUml
 	inherits UML::Dependency::NIEMAppliesTo
 	when{self.oclIsKindOf(UML::Usage)
@@ -1171,6 +1988,17 @@ mapping UML::Dependency::NIEMMetadataApplication(inout psmClassifier:UML::Classi
 	{
 	result.ApplyStereotype(NIEMMetadataApplicationStereotype);
 	}
+*/	
+mapping UML::Dependency::NIEMMetadataApplication(inout psmClassifier:UML::Property,domainContext:UML::Package):UML::Usage@niemUml
+	inherits UML::Dependency::NIEMAppliesTo
+	when{self.oclIsKindOf(UML::Usage)
+//			and self.IsStereotypeApplied(appliesToStereotype)
+			and self.IsStereotypeApplied(NIEMMetadataApplicationStereotype)
+			and self.supplier->exists(s|s.oclIsKindOf(UML::Classifier)or s.oclIsKindOf(UML::Property))}
+	{
+	result.ApplyStereotype(NIEMMetadataApplicationStereotype);
+	}
+	/* AugmentationApplication not in NIEM3
 mapping UML::Generalization::NIEMAugmentationApplication_augments(inout psmAttribute:UML::Property,domainContext:UML::Package):UML::Usage@niemUml
 	{
 		client:=psmAttribute;
@@ -1184,6 +2012,7 @@ mapping UML::Property::NIEMProperty_propertyAugmentation(
 	when{self.type.IsStereotypeApplied(NIEMAugmentationStereotype)}
 	{
 	}
+	*/
 mapping UML::Property::NIEMProperty(inout classifier:UML::Classifier,domainContext:UML::Package):UML::Property@niemUml
 	inherits UML::Property::XSDFeature_init
 	{
@@ -1192,7 +2021,7 @@ mapping UML::Property::NIEMProperty(inout classifier:UML::Classifier,domainConte
         if(self.owner.oclAsType(UML::Classifier).isNIEMConformant())then{
                 if(isElement)then{
                         name:=result.name.firstToUpper();
-                        // TJD: check if association element
+                        //  check if association element
                         if(not(self.type.oclIsUndefined())
                         	and (self.type.oclIsKindOf(UML::AssociationClass) 
                         		or self.type.IsStereotypeApplied(NIEMAssociationStereotype)))then{
@@ -1200,6 +2029,25 @@ mapping UML::Property::NIEMProperty(inout classifier:UML::Classifier,domainConte
                         	if(result.name.endsWith('Association'))then{}else{
                         			result.name:=result.name+'Association';
                         	}endif;
+                        }endif;
+                        //  check if metadata element
+                        if(not(self.type.oclIsUndefined())
+                        	and self.type.isPimMetadata())then{
+	                        	// check for metadataApplication
+	     						self.clientDependency.map NIEMMetadataApplication(result,domainContext);
+	                        	
+//	                        	if(result.name.endsWith('Association'))then{}else{
+//	                        			result.name:=result.name+'Association';
+	                        	if(result.name.isMetadataName())then{}else{
+	                        			result.name:=result.name.toMetadataName();
+	                        	}endif;
+                        }endif;
+						// check if representation element
+                        if(self.type.oclIsUndefined()
+                        	and self.IsStereotypeApplied(NIEMRepresentationStereotype))then{
+	                        	if(result.name.endsWith('Representation'))then{}else{
+	                        			result.name:=result.name+'Representation';
+	                        	}endif;
                         }endif;
 	
                 }else{
@@ -1234,10 +2082,12 @@ mapping UML::Property::NIEMProperty(inout classifier:UML::Classifier,domainConte
 		};
 	};
 // moved up to previous switch	if(self.IsStereotypeApplied(NIEMSequenceIdStereotype))then{result.ApplyStereotype(NIEMSequenceIdStereotype);}endif;
+/* no augmentationApplication concept in NIEM3
 	if(not(useSelf.type.oclIsUndefined()) and useSelf.type.IsStereotypeApplied(NIEMAugmentationStereotype))then
 		{
 			useSelf.getAugmentationApplications().map AbstractAugmentationApplication(result,domainContext);
 		}endif;
+*/		
 	isDerivedUnion:=useSelf.isDerivedUnion;
 	isDerived:=useSelf.isDerived;
 	isReadOnly:=useSelf.isReadOnly;
@@ -1494,7 +2344,8 @@ query UML::Enumeration::isPimSimpleTypeDefinition():Boolean{
 
 // TODO: tjd added query for derived from simple type 
 query UML::Classifier::isDerivedFromSimpleType():Boolean=
-	self.isPimSimplePrimitiveTypeDefinition() or self.IsStereotypeApplied(NIEMListTypeStereotype)
+	self.isPimSimplePrimitiveTypeDefinition() 
+	or self.IsStereotypeApplied(NIEMListTypeStereotype)
 	or self.oclIsKindOf(UML::Enumeration)
 	or self.getGeneralRestrictions()->exists(g|g.isDerivedFromSimpleType());
 // TODO: tjd added query for any form of restriction 
@@ -1510,6 +2361,7 @@ query UML::Classifier::isPimSimplePrimitiveTypeDefinition():Boolean=false;
 query UML::PrimitiveType::isPimSimplePrimitiveTypeDefinition():Boolean=
 		self.isXmlPrimitive()
 		or self.IsStereotypeApplied(NIEMUnionTypeStereotype)
+		or self.IsStereotypeApplied(NIEMListTypeStereotype)
 		//or self.general->exists(g|g.isPimSimplePrimitiveTypeDefinition());
 		or (
 			self.getGeneralRestrictions()->exists(g|g.isPimSimplePrimitiveTypeDefinition())
@@ -1601,12 +2453,12 @@ query UML::Generalization::isExtends():Boolean=
 	not(self.IsStereotypeApplied(NIEMRoleStereotype))
 	and not(self.IsStereotypeApplied(NIEMAugmentsStereotype))
 	;
-
+/*
 query UML::Package::getPimElementImport():UML::DirectedRelationship=
 	self.getTargetDirectedRelationships()
 		->select(r|
 			r.oclIsKindOf(UML::Usage)
-			and r.IsStereotypeApplied(NIEMModelPackageDescriptionFileStereotype)
+//			and r.IsStereotypeApplied(NIEMModelPackageDescriptionFileStereotype)
 
 			)
 	->union(self.getTargetDirectedRelationships()
@@ -1614,6 +2466,7 @@ query UML::Package::getPimElementImport():UML::DirectedRelationship=
 			r.oclIsKindOf(UML::ElementImport)
 			))
 		->asSequence()->first();
+*/		
 // is a <<References>> , but not between Classifier and non-<<PropertyHolder>>, nor between <<PropertyHolder>>s, nor between Packages		
 query UML::Dependency::isValidReference():Boolean=
 	self.IsStereotypeApplied(NIEMReferencesStereotype)
@@ -1652,7 +2505,9 @@ query UML::Property::toPsmNamedElement(domainContext:UML::Package):UML::NamedEle
 		}endif;
 		return psmProperty;
 	}
-query UML::Usage::isPsmExtensionSchema():Boolean{
+/*
+	
+}query UML::Usage::isPsmExtensionSchema():Boolean{
 	return self.GetStereotypeApplication(NIEMModelPackageDescriptionFileStereotype).oclAsType(Stdlib::Element).getFileTypePurposeCode()=purposeExtensionSchemaURI;
 }
 query UML::Usage::isPsmSubsetSchema():Boolean{
@@ -1667,6 +2522,7 @@ query UML::Usage::isPsmExchangeSchema():Boolean{
 query UML::Usage::isPsmConstraintSchema():Boolean{
 	return self.GetStereotypeApplication(NIEMModelPackageDescriptionFileStereotype).oclAsType(Stdlib::Element).getFileTypePurposeCode()=purposeConstraintSchemaURI;
 }
+*/
 
 query UML::Property::isRoleOf():Boolean=
 	self.IsStereotypeApplied(NIEMRoleOfStereotype) or self.name.isRoleOfName();
@@ -1986,29 +2842,36 @@ helper UML::Package::getNiemReferenceModelPackage():UML::Package{
 }
 helper UML::Package::getConstraintPackage():UML::Package{
 	// should be XMLschemas::constraint
-	var XMLschemas:Package=self.getXMLschemasPackage();
+//	var XMLschemas:Package=self.getXMLschemasPackage();
+	var topLevel:Package=self;
 	// if it does not already exist, make it
-	var constraintPackage:Package=XMLschemas.nestedPackage->select(p|p.name='constraint')->asSequence()->first();
+//	var constraintPackage:Package=XMLschemas.nestedPackage->select(p|p.name='constraint')->asSequence()->first();
+	var constraintPackage:Package=topLevel.nestedPackage->select(p|p.name=CONSTRAINT_XSD_NAME)->asSequence()->first();
 	if(constraintPackage.oclIsUndefined())then{
 		constraintPackage:=new Package();
-		constraintPackage.name:='constraint';
-		XMLschemas.packagedElement+=constraintPackage;
+//		constraintPackage.name:='constraint';
+		constraintPackage.name:=CONSTRAINT_XSD_NAME;
+//		XMLschemas.packagedElement+=constraintPackage;
+		topLevel.packagedElement+=constraintPackage;
 	}endif;
 	return constraintPackage;
 }
+/*
 helper UML::Package::getXMLschemasPackage():UML::Package{
 	// should be XMLschemas
 	// if it does not already exist, make it
 	var topLevel:Package=self;
-	var XMLschemas:Package=topLevel.nestedPackage->select(p|p.name='XMLschemas')->asSequence()->first();
+//	var XMLschemas:Package=topLevel.nestedPackage->select(p|p.name='XMLschemas')->asSequence()->first();
+	var XMLschemas:Package=topLevel.nestedPackage->select(p|p.name=BASE_XSD_NAME)->asSequence()->first();
 	if(XMLschemas.oclIsUndefined())then{
 		XMLschemas:=new Package();
-		XMLschemas.name:='XMLschemas';
+//		XMLschemas.name:='XMLschemas';
+		XMLschemas.name:=BASE_XSD_NAME;
 		topLevel.packagedElement+=XMLschemas;
 	}endif;
 	return XMLschemas;
 }
-
+*/
 
 helper 	UML::Property::resolvePIMPropertyReference(psmContext:UML::Property,domainContext:UML::Package):UML::Property{
 	// via Reference, if it exists; otherwise self
@@ -2090,6 +2953,7 @@ helper 	UML::Property::makeTopLevelPSMProperty(psmContext:UML::Property,domainCo
 		comment.body:=body;
 		comment.ApplyStereotype(NIEMDescriptionStereotype);
 	};
+	/* not in NIEM3
 	// appliesTo Usage
 	psmContext.clientDependency->select(d|d.IsStereotypeApplied(NIEMAugmentationApplicationStereotype)).oclAsType(UML::Usage)
 		->forEach(augmentationApplication){
@@ -2099,7 +2963,7 @@ helper 	UML::Property::makeTopLevelPSMProperty(psmContext:UML::Property,domainCo
 			psmProperty.getNearestPackage().packagedElement+=topAugmentationApplication;
 			topAugmentationApplication.ApplyStereotype(NIEMAugmentationApplicationStereotype);
 		};
-
+	*/
 	return psmProperty;
 }
 helper 	UML::Package::getTopLevelPsmPropertyHolder():UML::Class{
@@ -2318,11 +3182,13 @@ query UML::Package::isConstraintModel():Boolean=
 	self.IsStereotypeApplied(NIEMInformationModelStereotype)
 	and self.GetStereotypeApplication(NIEMInformationModelStereotype).oclAsType(Stdlib::Element).getInformationModelDefaultPurpose()='constraint'
 	;
-query UML::Component::getPimInformationModels():Set(UML::Package)=
-		self.elementImport.importedElement.oclAsType(UML::NamedElement)->asSet()
-		->union(self.clientDependency.supplier->select(p|p.oclIsKindOf(UML::Package))
+//query UML::Component::getPimInformationModels():Set(UML::Package)=
+query UML::InstanceSpecification::getPimInformationModels():Set(UML::Package)=
+//		self.elementImport.importedElement.oclAsType(UML::NamedElement)->asSet()
+//		->union(self.clientDependency.supplier->select(p|p.oclIsKindOf(UML::Package))
+	self.clientDependency->select(d|d.oclIsKindOf(UML::Usage)).supplier->select(p|p.oclIsKindOf(UML::Package))
 		->select(c|c.IsStereotypeApplied(NIEMInformationModelStereotype))
-		->asSet())
+//		->asSet())
 		.oclAsType(UML::Package)
 		->asSet();
 // query returns true if Classifier represents ComplexType with Simple Content per Issue 18361: PSM Representation for XSD Complex Type with Simple Content 
@@ -2333,7 +3199,7 @@ query UML::Classifier::isPimComplexTypeSimpleContent():Boolean{
 	if(self.isProxyRestriction())then{return true;}endif;
 	// if extension is not a SimpleTypeDefinition
 	if(self.general->select(r|not(r.isPimSimpleTypeDefinition()))->size()=1) then{return true;}endif;
-	// TODO: tjd added check if this is not a simpleTypeDefinition and there is any general 
+	// check if this is not a simpleTypeDefinition and there is any general 
 	if(not(self.isPimSimpleTypeDefinition()) and self.general->notEmpty())then{return true;}endif;
 	// if restriction is a ComplexType with simple content
 	self.getRestrictions()

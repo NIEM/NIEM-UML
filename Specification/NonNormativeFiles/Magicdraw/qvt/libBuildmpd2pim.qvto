@@ -19,8 +19,11 @@ There are also commercial licenses available for this software.
 Contact ModelDriven.org for more information.
 */
 //import NIEMmpdartifact2model;
+
 import mpd2pimOasis;
-modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+//modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+//modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.5';
+modeltype UML uses 'http://www.omg.org/spec/UML/20131001';
 modeltype CMOF  uses 'http://www.eclipse.org/emf/2002/Ecore';
 modeltype XSD  uses 'http://www.eclipse.org/xsd/2002/XSD';
 //modeltype CAT  uses 'http://reference.niem.gov/niem/resource/mpd/catalog/1.0/';
@@ -109,16 +112,21 @@ transformation libBuildmpd2pim(in cat:CAT,inout pimUml:UML,inout blackboxAdapter
 		mpdRootPackage.removeElement();
 	}
 ///////////////////////////////
-helper XSD::XSDSchema::setModelInformationDefaultPurpose(fileTypePurposeURI:String,pimNdrSchemaInstance:Stdlib::Element){
-	if(not(self.getConformanceTarget().oclIsUndefined()))then{
-	pimNdrSchemaInstance.setInformationModelDefaultPurpose('reference');
-	}endif;
+//helper XSD::XSDSchema::setModelInformationDefaultPurpose(fileTypePurposeURI:String,pimNdrSchemaInstance:Stdlib::Element){
+//	if(not(self.getConformanceTarget().oclIsUndefined()))then{
+//	if(self.getConformanceTargets()->notEmpty())then{
+//	pimNdrSchemaInstance.setInformationModelDefaultPurpose('reference');
+//	}endif;
 	/* debug
 	self.getElement().getElementAttributes()->forEach(a){
 		log('schema attribute '+a.getAttributeNamespace()+" / "+a.getAttributeName());
 	};
 	*/
-	 	return;
+//	 	return;
+//	 }
+				
+helper Stdlib::Element::setInformationModelDefaultPurpose(defaultPurpose:String){
+	self.setTagEnumerationValueConditionally('defaultPurpose','reference');
 	 }
 
 	 

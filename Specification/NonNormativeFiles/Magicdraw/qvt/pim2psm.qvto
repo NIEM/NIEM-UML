@@ -2,7 +2,9 @@
 import NIEMpim2psm;
 //import niemcommonBase;
 //import niemcommonPim2psm;
-modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+//modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+//modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.5';
+modeltype UML uses 'http://www.omg.org/spec/UML/20131001';
 modeltype ECORE  uses 'http://www.eclipse.org/emf/2002/Ecore';
 modeltype CHANGELOG uses 'http://reference.niem.gov/niem/resource/mpd/changelog/1.1/';
 

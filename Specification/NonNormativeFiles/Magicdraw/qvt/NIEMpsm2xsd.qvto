@@ -2,7 +2,9 @@ import NIEMplatformBinding;
 //modeltype UML uses 'http://www.omg.org/spec/UML/20110701';
 // platform variants for UML
 //modeltype UML uses 'http://www.eclipse.org/uml2/4.0.0/UML';
-modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+//modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+//modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.5';
+modeltype UML uses 'http://www.omg.org/spec/UML/20131001';
 modeltype XSD  uses 'http://www.eclipse.org/xsd/2002/XSD';
 /*
 	Transform NIEM-UML PSM Model to NIEM target artifacts, including XSD schemas
@@ -26,7 +28,8 @@ main() {
 //
 //  Global properties for psm2mpd; most are initialized to schema components within the NIEM infrastructure schemas
 //
-property mpdComponent:UML::Component=null;// The <<ModelPackageDescription>> being transformed
+//property mpdComponent:UML::Component=null;// The <<ModelPackageDescription>> being transformed
+property mpdComponent:UML::InstanceSpecification=null;// The <<ModelPackageDescription>> being transformed
 
 property umlSchemaForStructures:XSD::XSDSchema=null;// NIEM structures schema
 //property StructuresAugmentationElement:XSD::XSDElementDeclaration=null;// augmentation element within structures schema
@@ -90,10 +93,14 @@ helper NIEMpsm2mpdMain(){
 	// initialize the profile/stereotype/type library globals
 	rootUmlModel.initializeProfileGlobals();
 	// find and transform qualifying <<ModelPackageDescription>>s
-	log('root model '+rootUmlModel.qualifiedName+', mpdStereotype: '+prompdStereotype.qualifiedName+', '
-		+rootUmlModel.allSubobjectsOfType(UML::Component).oclAsType(UML::Component)->select(c|c.IsStereotypeApplied(prompdStereotype))->size().repr());
-	rootUmlModel.allSubobjectsOfType(UML::Component).oclAsType(UML::Component)
-			->select(c|c.IsStereotypeApplied(prompdStereotype)
+//	log('root model '+rootUmlModel.qualifiedName+', mpdStereotype: '+prompdStereotype.qualifiedName+', '
+//		+rootUmlModel.allSubobjectsOfType(UML::Component).oclAsType(UML::Component)->select(c|c.IsStereotypeApplied(prompdStereotype))->size().repr());
+//	rootUmlModel.allSubobjectsOfType(UML::Component).oclAsType(UML::Component)
+//			->select(c|c.IsStereotypeApplied(prompdStereotype)
+	rootUmlModel.allSubobjectsOfType(UML::InstanceSpecification).oclAsType(UML::InstanceSpecification)
+			->select(c|
+//				c.IsStereotypeApplied(prompdStereotype)
+				c.classifier->includes(prompdStereotype)
 				and c.isEditable()
 				and not(c.getNearestPackage().getNearesProfileApplication(niemXsdProfile).oclIsUndefined())
 				and (c.getNearestPackage().getNearesProfileApplication(logicalProfile).oclIsUndefined())
@@ -125,6 +132,7 @@ mapping 	UML::Element::AbstractXSDSchemaContent(xsdContainer:XSD::XSDConcreteCom
 disjuncts
 	UML::EnumerationLiteral::XSDNotationDeclaration,
 	//UML::Property::TopLevelElement_reference, // not in NIEM 3
+	UML::Property::XSDElementDeclaration_topLevelMetaData,
 	UML::Property::TopLevelElement_declaration,
 	UML::Property::XSDAttributeDeclaration_topLevel,
 	UML::Package::AbstractXSDImport,
@@ -258,6 +266,7 @@ mapping UML::Package::XSDSchema():XSD::XSDSchema@xsd
 		var pimStereotypeInstance:Stdlib::Element=self.GetStereotypeApplication(NIEMSchemaStereotype).oclAsType(Stdlib::Element);
 		// set schema targetNamespace from <<Namespace>>
 		result.targetNamespace:=pimStereotypeInstance.getSchemaTargetNamespace();
+		
 		// set prefix to be used for Schema namespace
 			var defaultPrefix:String=pimStereotypeInstance.getSchemaDefaultPrefix();
 		
@@ -287,6 +296,7 @@ mapping UML::Package::Namespace():XSD::XSDSchema@xsd
 	//result.setPrefixForSchemaNamespace(defaultPrefix);
 
 	// determine and set Schema schemaLocation (as relative URI) based on relative UML qualifedName within an appliedProfile
+	/*
 	var catalog:UML::Package:=self.getContainingCatalog();
 	var relativePath:String='';
 	if(catalog.oclIsUndefined())then{
@@ -295,9 +305,12 @@ mapping UML::Package::Namespace():XSD::XSDSchema@xsd
 		relativePath:=self.qualifiedName.substringAfter(catalog.qualifiedName);
 	}endif;
 	relativePath:=relativePath.replace('::','/');
+	*/
+	var relativePath:String=self.getPathFromCatalog();
 	if(relativePath='')then {relativePath:='./';}else{relativePath:='.'+relativePath;}endif;
 	if(not(relativePath.endsWith('.xsd')))then{relativePath:=relativePath+'.xsd';}else{}endif;
 	// alternatively schemaLocation could be in an mpdFile relativePathName
+	/*
 	self.supplierDependency->select(d|d.IsStereotypeApplied(NIEMModelPackageDescriptionFileStereotype))
 		->forEach(mpdFile){
 			var pimmpd:Stdlib::Element=mpdFile.getStereotypeApplication(NIEMModelPackageDescriptionFileStereotype).oclAsType(Stdlib::Element);
@@ -307,6 +320,22 @@ mapping UML::Package::Namespace():XSD::XSDSchema@xsd
 			}endif;
 			
 		};
+		*/
+		// TODO: assumes instance specifications
+//	self.supplierDependency.client->select(d|d.oclIsKindOf(UML::InstanceSpecification)).oclAsType(UML::InstanceSpecification)
+	self.supplierDependency->select(d|d.stereotypedBy('FileType'))
+		->forEach(mpdFile){
+//			var pimmpd:Stdlib::Element=mpdFile.getStereotypeApplication(NIEMModelPackageDescriptionFileStereotype).oclAsType(Stdlib::Element);
+//			var pimmpd:Stdlib::Element=mpdFile;
+//			var pimmpd:UML::InstanceSpecification=mpdFile;
+			var pimmpd:Stdlib::Element=mpdFile.getStereotypeApplication(NIEMFileType).oclAsType(Stdlib::Element);
+			var explicitRelativePathName:String =pimmpd.getFileTypeRelativePathName();
+			if(not(explicitRelativePathName.oclIsUndefined()) and (explicitRelativePathName<>''))then{
+				relativePath:=explicitRelativePathName;
+			}endif;
+			
+		};
+		
 	schemaLocation:=relativePath;
 
 	// determine schema imports; always import the NIEM infrastructure schemas
@@ -352,11 +381,20 @@ mapping UML::Package::Namespace():XSD::XSDSchema@xsd
 	if(appinfoConformantIndicator.oclIsUndefined())then{appinfoConformantIndicator:=true;}endif;
 	//var schemaAnnotation:XSD::XSDAnnotation=getAnnotation(result);
 	//schemaAnnotation.setAppinfoElementValue(appinfoConformantIndicator.repr(),'i:ConformantIndicator');
+	var schemaConformanceTargets:String="";
 	if(appinfoConformantIndicator)then{
 		// TODO: we do not really know what the purpose of the schema is at psm level, and if we did then we do not know subset, exchange,constraint 
-		var conformanceTargets:String='http://reference.niem.gov/niem/specification/naming-and-design-rules/3.0/#ExtensionSchemaDocument';// TODO: this is temporary
-		result.setConformanceTargets(conformanceTargets);
+//		var conformanceTargets:String='http://reference.niem.gov/niem/specification/naming-and-design-rules/3.0/#ExtensionSchemaDocument';// TODO: this is temporary
+		schemaConformanceTargets:='http://reference.niem.gov/niem/specification/naming-and-design-rules/3.0/#ExtensionSchemaDocument';
+		//result.setConformanceTargets(conformanceTargets);
 	}endif;
+		self.getSchemaConformanceTargets()->forEach(conformanceTarget){
+			if(schemaConformanceTargets='')then{schemaConformanceTargets:=conformanceTarget;}
+				else{schemaConformanceTargets:=schemaConformanceTargets+' '+conformanceTarget;}
+				endif;
+		};
+		result.setConformanceTargets(schemaConformanceTargets);
+		
 	
 }
 /*
@@ -460,7 +498,10 @@ mapping UML::Class::MetadataType(inout psmOwner:XSD::XSDSchema):XSD::XSDComplexT
 	inherits UML::Classifier::NIEMType
 	when{self.IsStereotypeApplied(NIEMMetadataStereotype)}
 	{
-	self.setBaseNiemClassifier(result,StructuresMetadataType);
+	// if no other base, then use structures::MetadataType	
+	if(result.baseTypeDefinition.oclIsUndefined())then{
+		self.setBaseNiemClassifier(result,StructuresMetadataType);
+	}endif;
 	/* not in NIEM3; TODO: need to have similar things at element level
 	var metadataApplications:Set(UML::Classifier)=self.clientDependency
 			->select(d|d.IsStereotypeApplied(NIEMMetadataApplicationStereotype)).supplier.oclAsType(UML::Classifier)
@@ -554,10 +595,16 @@ mapping UML::DataType::Union_init(inout psmOwner:XSD::XSDSchema):XSD::XSDSimpleT
 			self.clientDependency.supplier
 			->select(d|d.oclIsKindOf(UML::Classifier)).oclAsType(UML::Classifier)
 			->forEach(member){
-				result.memberTypeDefinitions+=member.toPsmClassifierSimpleType();
-				};
+				// may be that union member is not top-level but rather an nested type
+				if(member.namespace.oclIsKindOf(UML::Classifier))then{
+					// a nested anonymous type
+					log('Union_init failed to handle anonymous union member '+member.qualifiedName);
+				}else{
+					result.memberTypeDefinitions+=member.toPsmClassifierSimpleType();
+				}endif;	
+			};// end forEach(Member)
              result.variety:=XSD::XSDVariety::union;
-		}
+		}// end of init
 }
 /*
 	mapping for a <<Union>> to an XSDSimpleTypeDefinition.
@@ -721,7 +768,11 @@ mapping UML::DataType::ValueRestriction(inout psmOwner:XSD::XSDSchema):XSD::XSDS
 */
 mapping UML::Enumeration::Enumeration(inout psmOwner:XSD::XSDSchema):XSD::XSDSimpleTypeDefinition@xsd
 	inherits UML::DataType::ValueRestriction
-	when{self.oclIsKindOf(UML::Enumeration) and not(self.IsStereotypeApplied(NIEMLocalVocabularyStereotype))}
+	when{
+		self.oclIsKindOf(UML::Enumeration) 
+		and not(self.IsStereotypeApplied(NIEMLocalVocabularyStereotype))
+		and not(self.IsStereotypeApplied(NIEMUnionTypeStereotype))
+		}
 	{
 	// process content
 	var names:OrderedSet(UML::EnumerationLiteral)=self.ownedLiteral;
@@ -1157,6 +1208,7 @@ mapping UML::Property::XSDElementDeclaration_topLevel(inout psmClass:XSD::XSDSch
 			UML::Property::XSDElementDeclaration
 {
 			self.ownedComment.mapAbstractDocumentation(result);
+			
 			/* not in NIEM3
 		self.clientDependency
 			->select(d|d.IsStereotypeApplied(NIEMAugmentationApplicationStereotype)).supplier
@@ -1189,9 +1241,41 @@ mapping UML::Property::XSDElementDeclaration_topLevel(inout psmClass:XSD::XSDSch
 		}endif;
 
 }
+
+mapping UML::Property::XSDElementDeclaration_topLevelMetaData(inout psmClass:XSD::XSDSchema):XSD::XSDElementDeclaration@xsd
+		inherits
+			UML::Property::TopLevelElement_declaration
+		when{self.isPsmXsdElement() and not(self.type.oclIsUndefined()) and self.type.IsStereotypeApplied(NIEMMetadataStereotype)}
+	{
+	// in NIEM3, metadataApplication to element or type results in corresponding appinfoAttribute			
+	var metadataApplications:Set(UML::NamedElement)=self.clientDependency
+			->select(d|d.IsStereotypeApplied(NIEMMetadataApplicationStereotype)).supplier.oclAsType(UML::NamedElement)
+			->asSet();
+	metadataApplications->forEach(metadata){
+				var xsdSchema:XSD::XSDSchema=metadata.getNearestNIEMSchemaPackage().map AbstractXSDSchema();
+				var xsdTypeDefinition:XSD::XSDNamedComponent=metadata.map AbstractXSDSchemaContent(xsdSchema).oclAsType(XSD::XSDNamedComponent);
+				//var targetNamespace:String=xsdTypeDefinition.schema.targetNamespace;
+				//var componentName:String=xsdTypeDefinition.name;
+
+//				annotation.setAppinfoElement('AppliesTo',componentName,targetNamespace);
+				// appliesToTypes is an attribute of XSDElementDeclaration which is a list of QNames to types 
+				
+				if(metadata.oclIsKindOf(UML::Classifier))then{
+//					result.addAppinfoAttribute('appliesToTypes',componentName,targetNamespace);
+					result.addAppinfoAttribute('appliesToTypes',xsdTypeDefinition);
+				}else{
+//					result.addAppinfoAttribute('appliesToElements',componentName,targetNamespace);
+					result.addAppinfoAttribute('appliesToElements',xsdTypeDefinition);
+				}endif;
+
+		};
+			
+
+}
+
 /*
 	Mapping a top level <<XSDProperty>>(kind=element) to XSDElementDeclaration.
-	'abstract' property of result XSDElementDeclaration is true if the <<XSDProperty>> is untyped.
+	'abstract' property of result XSDElementDeclaration is true if the <<XSDProperty>> is untyped or if the Property is a derived Union.
 	<<XSDProperty>> nillable tag maps to 'nillable' property of result XSDElementDeclaration.
 	<<XSDProperty>> type maps to typeDefinition of result XSDElementDeclaration.
 
@@ -1206,9 +1290,17 @@ mapping UML::Property::TopLevelElement_declaration(inout psmClass:XSD::XSDSchema
 	_abstract:=isPsmAbstract;
 
 //        nillable:=(self.getNearestPackage().getSchemaPurpose()<>purposeExchangeSchemaURI)
-        nillable:=(self.getNearestNIEMSchemaPackage().getSchemaPurpose()<>purposeExchangeSchemaURI)
-		and pimStereotypeInstance.getNIEMElementNillable();
-	typeDefinition:=self.type.oclAsType(UML::Classifier).toPsmClassifier();
+        nillable:=
+        	//(self.getNearestNIEMSchemaPackage().getSchemaPurpose()<>purposeExchangeSchemaURI)
+			//and 
+			pimStereotypeInstance.getNIEMElementNillable();
+	if(not(self.type.oclIsUndefined()))then{		
+		typeDefinition:=self.type.oclAsType(UML::Classifier).toPsmClassifier();
+	}else{
+		if(not(self.name.endsWith('AugmentationPoint')))then{
+			log('TopLevelElement untyped '+self.name);
+		}endif;
+	}endif;
 	var psmfixed:String=pimStereotypeInstance.getXSDPropertyFixed();
 	if(not(psmfixed.oclIsUndefined() and (psmfixed<>'')))then{
 		lexicalValue:=psmfixed;
@@ -1298,10 +1390,25 @@ mapping 	XSD::XSDSchema::XSDImport_infrastructure(inout xsdContainer:XSD::XSDSch
 	var schemaContents:Sequence(XSD::XSDSchemaContent)=xsdContainer.contents->asSequence();
 	xsdContainer.contents:=Sequence{result.oclAsType(XSD::XSDSchemaContent)}->union(schemaContents);
 	result.resolvedSchema:=self;
-	var referencedSchema:String='XMLschemas/'+self.schemaLocation.substringAfter('/XMLschemas/');
+//	var referencedSchema:String='XMLschemas/'+self.schemaLocation.substringAfter('/XMLschemas/');
+//	var referencedSchema:String=BASE_XSD_NAME+'/'+self.schemaLocation.substringAfter('/'+BASE_XSD_NAME+'/');
+//	var referencedSchema:String=self.schemaLocation.substringAfter('.iepd/');
+	var referencedSchema:String=self.schemaLocation;
+	if(referencedSchema.substringAfter('.iepd')<>'')then{
+		referencedSchema:='./'+referencedSchema.substringAfter('.iepd/');
+	}endif;
+	
+//	var referencedSchema:String='~/'+self.schemaLocation.substringAfter('~/');
 
+//	var thisSchema:String=xsdContainer.schemaLocation;
+//	var thisSchema:String='~/'+xsdContainer.schemaLocation.substringAfter('~/');
+//	var thisSchema:String='/'+BASE_XSD_NAME+'/'+xsdContainer.schemaLocation.substringAfter('/'+BASE_XSD_NAME+'/');
+//	var thisSchema:String=xsdContainer.schemaLocation.substringAfter('.iepd/');
 	var thisSchema:String=xsdContainer.schemaLocation;
+//	var thisSchema:String=xsdContainer.schemaLocation.substringAfter('/'+BASE_XSD_NAME+'/');
 	var relativePath:String=thisSchema.relativePathTo(referencedSchema);
+//	var relativePath:String=thisSchema.truncateLastSegment().relativePathTo(referencedSchema);
+	
 	if(relativePath.oclIsUndefined())then{
 		log('XSDSchemaDirective ERROR: failed to resolve relative path from '+thisSchema+'('+result.schema.targetNamespace+') to '+referencedSchema);
 	}else{
@@ -1354,10 +1461,10 @@ mapping 	UML::Package::XSDImport(inout xsdContainer:XSD::XSDSchema):XSD::XSDImpo
 	var xsdImport:XSD::XSDImport=result;
 	var importSchema:XSD::XSDSchema=xsdImport.resolvedSchema;
 	var importNamespace:String=importSchema.targetNamespace;
-		var appinfoConformantIndicator:Boolean=
+	var appinfoConformantIndicator:Boolean=
 			(self.GetStereotypeApplication(NIEMSchemaStereotype).oclAsType(Stdlib::Element).getPimSchemaConformantIndicator())
 		;
-		if(not(appinfoConformantIndicator))then{
+	if(not(appinfoConformantIndicator) and (importNamespace<>'http://www.w3.org/XML/1998/namespace'))then{
 			//var schemaAnnotation:XSD::XSDAnnotation=getAnnotation(result);
 			//schemaAnnotation.setAppinfoElementValue(appinfoConformantIndicator.repr(),'i:ConformantIndicator');
 			result.setAppinfoAttributeValue('externalImportIndicator','true');
@@ -2143,7 +2250,12 @@ query UML::Type::isAnonymousModelGroup():Boolean=
 	self.owner.oclIsKindOf(UML::Classifier)
 	;
 query UML::Property::isElementReference():Boolean=
-	self.isPsmXsdElement() and (self.upper<>0) and not(self.isDerived) and (self.name<>null) and not(self.name.oclIsUndefined());
+	self.isPsmXsdElement() 
+	and (self.upper<>0) 
+	and (self.name<>null) 
+	and not(self.name.oclIsUndefined()
+	and (not(self.isDerived) or self.isDerivedUnion) 
+	);
 query UML::NamedElement::getFileId():String=self.namespace.ownedMember->asSequence()->indexOf(self).repr().toNCName();
 helper XSD::XSDTypeDefinition::mapBaseTypeDefinition(inout psmOwner:XSD::XSDTypeDefinition){
 	switch{
@@ -2209,11 +2321,17 @@ query String::getPsmPackageVersionName():String{
 	}else{}endif;
 	return self;
 }
+/*
 query getSchemaImports():Set(UML::Usage)=
 	mpdComponent.clientDependency
 	->select(i|i.IsStereotypeApplied(NIEMModelPackageDescriptionFileStereotype))
 	.oclAsType(UML::Usage)->asSet();
-
+*/
+query getSchemaImports():Set(UML::Usage)=
+//	mpdComponent.getFileTypes().clientDependency
+	mpdComponent.clientDependency
+	->select(i|i.oclIsKindOf(UML::Usage))
+	.oclAsType(UML::Usage)->asSet();
 
 query UML::Classifier::isPimAugmentationType():Boolean{
 	if(self.IsStereotypeApplied(NIEMAugmentationStereotype))then {return true;}endif;
@@ -2373,7 +2491,7 @@ query UML::Classifier::isXmlPrimitive():Boolean=
 		(self.owner.oclAsType(UML::NamedElement).name=XMLPrimitiveTypesPackageName)
 		or (self.owner.oclAsType(UML::NamedElement).name=UMLPrimitiveTypesPackageName)
 		;
-
+/*
 query UML::Package::getSchemaPurpose():String=
 	self.getPimElementImport()
 	.GetStereotypeApplication(NIEMModelPackageDescriptionFileStereotype)
@@ -2385,7 +2503,7 @@ query UML::Package::getPimElementImport():UML::Usage=
 			->select(e|(e.supplier->includes(self))
 			)
 			->asSequence()->first();
-
+*/
 helper UML::Classifier::getUmlSchemaForSchemaType():XSD::XSDSimpleTypeDefinition{
 	return umlSchemaForSchema.typeDefinitions
 	->select(t|t.oclIsKindOf(XSD::XSDSimpleTypeDefinition)and(
@@ -2413,6 +2531,18 @@ query UML::Type::getUmlProxySchemaType():XSD::XSDTypeDefinition=
 query UML::NamedElement::getContainingCatalog():UML::Package{
 	return self.getNearestPackage().getNearesProfileApplication(structureProfile);
 }
+query UML::Package::getPathFromCatalog():String{
+	var catalog:UML::Package:=self.getContainingCatalog();
+	var relativePath:String='';
+	if(catalog.oclIsUndefined())then{
+		relativePath:=self.qualifiedName;
+	}else{
+		relativePath:=self.qualifiedName.substringAfter(catalog.qualifiedName);
+	}endif;
+	relativePath:=relativePath.replace('::','/');
+	return relativePath;
+}
+
 helper  getAnnotation(inout component:XSD::XSDConcreteComponent):XSD::XSDAnnotation{
 	switch{
 		case(component.oclIsKindOf(XSD::XSDImport)){
@@ -2590,6 +2720,9 @@ property prefixToNamespace:Sequence(Tuple(prefix:String,namespace:String)) = Seq
 		Tuple{prefix:String="xsl",namespace:String="http://www.w3.org/1999/XSL/Transform"},
 		Tuple{prefix:String="fn",namespace:String="http://www.w3.org/2005/xpath-functions"},
 		Tuple{prefix:String="xs",namespace:String=schemaForSchemaNamespace},
+		Tuple{prefix:String="xsi",namespace:String="http://www.w3.org/2001/XMLSchema-instance"},
+		Tuple{prefix:String="sch",namespace:String="http://purl.oclc.org/dsdl/schematron"},
+		Tuple{prefix:String="nf",namespace:String="http://reference.niem.gov/niem/specification/naming-and-design-rules/3.0/#NDRFunctions"},
 
 		Tuple{prefix:String="xls",namespace:String="http://release.niem.gov/niem/external/ogc/xls/1.1.0/dhs-gmo/2.1.0"} 
 };
@@ -2654,10 +2787,11 @@ mapping UML::Enumeration::LocalVocabulary(inout psmOwner:XSD::XSDSchema):XSD::XS
 		var appInformation:OclAny=result.createApplicationInformation('');
 		self.ownedLiteral->forEach(enumLiteral){
 			var termInstance:Stdlib::Element=enumLiteral.GetStereotypeApplication(NIEMLocalTermStereotype).oclAsType(Stdlib::Element);
-			var term:String:=termInstance.getLocalTermTerm();
+//			var term:String:=termInstance.getLocalTermTerm();
+			var term:String:=enumLiteral.name;
 			var termLiteral:String:=termInstance.getLocalTermLiteral();
 			var termDefinition:String:=termInstance.getLocalTermDefinition();
-			var termSourceText:Sequence(String):=self.ownedComment.body->asSequence();
+			var termSourceText:Sequence(String):=enumLiteral.ownedComment.body->asSequence();
 			var sourceURIs:Sequence(String):=termInstance.getLocalTermSourceURIs();
 			
 			appInformation.addAppinfoLocalTerm(term,termLiteral,termDefinition,termSourceText,sourceURIs);
@@ -2668,10 +2802,15 @@ mapping UML::Enumeration::LocalVocabulary(inout psmOwner:XSD::XSDSchema):XSD::XS
 query UML::Comment::isDocumentation():Boolean=self.IsStereotypeApplied(NIEMDescriptionStereotype);
 query UML::Package::getNearesProfileApplication(profile:UML::Profile):UML::Package=
 	if(self.isProfileApplied(profile))then self else self.owner.getNearestPackage().getNearesProfileApplication(profile) endif;
-query UML::Component::getTopNiemFolders():Set(UML::Package)=
-	self.elementImport.importedElement.oclAsType(UML::NamedElement)->asSet()
-	->union(self.clientDependency.supplier->asSet())
-		->select(e|e.oclIsKindOf(UML::Package))
+//query UML::Component::getTopNiemFolders():Set(UML::Package)=
+//	self.elementImport.importedElement.oclAsType(UML::NamedElement)->asSet()
+//	->union(self.clientDependency.supplier->asSet())
+query UML::InstanceSpecification::getTopNiemFolders():Set(UML::Package)=
+	self.clientDependency.supplier
+		->select(e|e.oclIsKindOf(UML::Package)
+				and not(e.getNearestPackage().getNearesProfileApplication(niemXsdProfile).oclIsUndefined())
+				and (e.getNearestPackage().getNearesProfileApplication(logicalProfile).oclIsUndefined())
+		)
 		.oclAsType(UML::Package)
 		.getNearesProfileApplication(structureProfile)->asSet();
 query UML::Element::getNearestNIEMSchemaPackage():UML::Package{

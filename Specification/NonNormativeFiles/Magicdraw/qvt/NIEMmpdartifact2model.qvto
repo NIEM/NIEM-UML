@@ -2,7 +2,9 @@ import NIEMplatformBinding;
 //modeltype UML uses 'http://www.omg.org/spec/UML/20110701';
 // platform variants for UML
 //modeltype UML uses 'http://www.eclipse.org/uml2/4.0.0/UML';
-modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+//modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+//modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.5';
+modeltype UML uses 'http://www.omg.org/spec/UML/20131001';
 modeltype XSD  uses 'http://www.eclipse.org/xsd/2002/XSD';
 
 transformation NIEMmpdartifact2model(inout pimUml:UML);
@@ -131,12 +133,16 @@ helper UML::Class::adjustPropertyHolders(){
 		// remove unnecessary realizations and properties
 		log('adjustPropertyHolders removing extra realizations and properties');
 	allProperties->forEach(p){
-		p.getTargetDirectedRelationships()
+		//p.getTargetDirectedRelationships()
+		
+		p.getTargetDirectedRelationships()->asSet()->union(p.clientDependency->asSet())
+		
 		->select(r|r.oclIsKindOf(UML::Realization)).oclAsType(UML::Realization)
         		->select(r|
         			(r.isSubstitutionGroupAffiliation()
-        			or not(r.isAnotherSchema())
-        			)and p.owner.oclIsUndefined()
+        			or (not(r.isAnotherSchema()) and p.owner.oclIsUndefined()) 
+        			)
+        			//and p.owner.oclIsUndefined() // remove substitutionGroupAffiliation whether or not property removed
         			)
         		->forEach(removed){
         			removed.client:=Set{};
@@ -152,7 +158,9 @@ helper UML::Class::adjustPropertyHolders(){
 }
 
 helper UML::Class::adjustPropertyHolderRealizations(){
-	self.ownedAttribute.getTargetDirectedRelationships()
+//	self.ownedAttribute.getTargetDirectedRelationships()
+	self.ownedAttribute->forEach(a){
+		a.getTargetDirectedRelationships()->asSet()->union(a.clientDependency->asSet())
 		->select(r|r.oclIsKindOf(UML::Realization)).oclAsType(UML::Realization)
         		->select(r|
         			r.isSubstitutionGroupAffiliation()
@@ -164,6 +172,7 @@ helper UML::Class::adjustPropertyHolderRealizations(){
         			removed.removeElement();
         			//pimUml.removeElement(removed);
         		};
+  };
 	return ;	
 }
 
@@ -357,6 +366,7 @@ helper XSD::XSDSchemaContent::mapAbstractXSDSchemaContent(umlContainer:UML::Elem
 helper UML::Package::applyNIEMSchemaStereotype():Stdlib::Element{
 	return self.ApplyStereotype(NIEMInformationModelStereotype);
 }
+/*
 helper XSD::XSDSchema::setModelInformationDefaultPurpose(fileTypePurposeURI:String,pimNdrSchemaInstance:Stdlib::Element){
 	var defaultPurpose:String='extension';
 	var schemaKind:String=null;
@@ -374,10 +384,12 @@ helper XSD::XSDSchema::setModelInformationDefaultPurpose(fileTypePurposeURI:Stri
 	pimNdrSchemaInstance.setInformationModelDefaultPurpose(defaultPurpose);
 	 	return;
 	 }
+	 */
 /////////////////////////////////////////////////////////////////////////////////////
 property pimRoot:UML::Model=null;
 property mpdRootPackage:UML::Package=null;
-property mpdComponent:UML::Component=null;
+//property mpdComponent:UML::Component=null;
+property mpdComponent:UML::InstanceSpecification=null;
 
 ///////////////////
 
@@ -509,8 +521,17 @@ mapping 	XSD::XSDSchema::MPDSchema():UML::Package@pimUml
 		if(version.oclIsUndefined())then{version:="1";}endif;
 		pimNdrSchemaInstance.setSchemaVersion(version);
 		pimNdrSchemaInstance.setSchemaNamespace(self.targetNamespace);
+		pimNdrSchemaInstance.setSchemaConformanceTargets(self.getConformanceTargets());
 	
-		self.setModelInformationDefaultPurpose(null,pimNdrSchemaInstance);
+		//self.setModelInformationDefaultPurpose(null,pimNdrSchemaInstance);
+		var defaultPurpose:String='extension';
+		if(self.targetNamespace.startsWith(baseNiemNamespace)
+			or self.targetNamespace.startsWith(baseNiemNamespaceNiem2) 
+			or (self.targetNamespace='urn:us:gov:ic:ism:v2') )then{
+				defaultPurpose:='subset';
+		}endif;
+		pimNdrSchemaInstance.setInformationModelDefaultPurpose(defaultPurpose);
+		
 		//////////////
 	// process LocalTerminology
 	var localTerm:Sequence(OclAny)=self.getAnnotations().getXSDAnnotationApplicationInformation().getElementElements()->select(i|i.isLocalTermElement());
@@ -687,6 +708,10 @@ mapping XSD::XSDSimpleTypeDefinition::XSDTypeDefinition_Enumeration(umlContainer
 	when{self.isEnumeration()}
 	{
 	self.mapXSDEnumerationFacet(result);
+	if(self.isUnionType())then{
+		result.ApplyStereotype(NIEMUnionTypeStereotype);
+	}endif;	
+	
 }
 
 helper XSD::XSDSimpleTypeDefinition::mapXSDEnumerationFacet(psmOwner:UML::Enumeration){
@@ -705,6 +730,8 @@ mapping 	XSD::XSDAttributeDeclaration::NDRAttributeDeclaration(umlContainer:UML:
 {
 	var targetStereotypeInstance:Stdlib::Element=result.ApplyStereotype(NIEMPropertyStereotype);
 	targetStereotypeInstance.setNIEMPropertyKind('attribute');
+	result.setUpper(1);
+	result.setLower(1);
 }
 
 mapping 	XSD::XSDAttributeGroupDefinition::NDRAttributeGroupDefinition(umlContainer:UML::Element):UML::Class@pimUml 
@@ -807,15 +834,24 @@ query XSD::XSDSchema::appinfoConformantIndicatorNiem2():Boolean{
         return false;// default to false if not defined
 };
 
+
+query XSD::XSDSchema::getConformanceTargets():Sequence(String){
+	return self.getElement().getElementAttributes()->select(e|e.isConformanceTarget()).getAttributeListValue();
+	 }
+
+
 query XSD::XSDSchema::appinfoConformantIndicator():Boolean{
-	if(self.getConformanceTarget().oclIsUndefined())then{return self.appinfoConformantIndicatorNiem2();}endif;
+//	if(self.getConformanceTarget().oclIsUndefined())then{return self.appinfoConformantIndicatorNiem2();}endif;
+	if(self.getConformanceTargets()->isEmpty())then{return self.appinfoConformantIndicatorNiem2();}endif;
 	return true;
 	//return not(self.getConformanceTarget().oclIsUndefined());
 };
+/*
 query XSD::XSDConcreteComponent::getConformanceTarget():Stdlib::Element{
 	self.getElement().getElementAttributes()->select(e|e.isConformanceTarget())->forEach(ct){return ct;};
 	return null;
 	 }
+	 */
 query Stdlib::Element::isConformanceTarget():Boolean=
 	(self.getAttributeNamespace()=ConformanceTargetNamespace)
 	and (self.getAttributeName()=ConformanceTargetsAttributeName)
@@ -880,6 +916,7 @@ helper OclAny::assertHasAppliesToElements(context:XSD::XSDConcreteComponent):Boo
 	return true;
 	
 }
+/* not in NIEM3
 mapping OclAny::AugmentationApplication(element:UML::NamedElement,context:XSD::XSDConcreteComponent):UML::Usage@pimUml
 	when{self.assertHasAppliesToType(context)}
 {
@@ -895,7 +932,7 @@ mapping OclAny::AugmentationApplication(element:UML::NamedElement,context:XSD::X
 	client+=element;
 	result.ApplyStereotype(NIEMAugmentationApplicationStereotype);
 }
-
+*/
 mapping OclAny::MetadataApplication(element:UML::NamedElement,context:XSD::XSDConcreteComponent):UML::Usage@pimUml
 	when{self.assertHasAppliesToType(context)}
 	
@@ -1116,7 +1153,7 @@ mapping XSD::XSDComplexTypeDefinition::XSDTypeDefinition_Class_AdapterType(umlCo
 mapping XSD::XSDTypeDefinition::XSDTypeDefinition_AdapterType(umlContainer:UML::Element):UML::Classifier@pimUml 
 	{
 	init{}
-	//log('Apply adapter stereotype '+NIEMAdapterStereotype.qualifiedName);
+	log('Apply adapter stereotype '+NIEMAdapterStereotype.qualifiedName);
 	result.ApplyStereotype(NIEMAdapterStereotype);
 }
 /*
@@ -1133,6 +1170,21 @@ mapping XSD::XSDComplexTypeDefinition::XSDTypeDefinition_Class_ObjectType(umlCon
 		XSD::XSDComplexTypeDefinition::XSDTypeDefinition_Class,
 		XSD::XSDTypeDefinition::XSDTypeDefinition_ObjectType
 	{
+		/*
+	log('XSDTypeDefinition_Class_ObjectType '+result.qualifiedName);
+	log('XSDTypeDefinition_Class_ObjectType x '+self.isAppinfoExternalAdapterTypeIndicator().repr());
+	self.getElement()->forEach(e){
+		log('element '+e.repr());
+		e.getElementAttributes()->forEach(a){
+			log('attribute '+a.repr());
+			
+			log('attribute AttributeNamespace '+a.getAttributeNamespace().repr());
+			log('attribute appInfo '+a.isAppinfoAttribute().repr());
+			log('attribute name '+a.getAttributeName().repr());
+		};
+	}
+	*/
+//	self.getElement().getElementAttributes()
 }
 mapping XSD::XSDTypeDefinition::XSDTypeDefinition_ObjectType(umlContainer:UML::Element):UML::Classifier@pimUml 
 	{
@@ -1441,7 +1493,11 @@ mapping 	XSD::XSDAttributeDeclaration::XSDAttributeDeclaration(umlContainer:UML:
 		var referencedUmlAttribute:UML::Property=referencedAttributeDeclaration.resolveSchemaContentReference().oclAsType(UML::Property);
 		name:=referencedAttributeDeclaration.name;
 		if(not(referencedUmlAttribute.oclIsUndefined()))then{
-		self.reference(result,referencedUmlAttribute,'ref');
+			var ref:UML::Realization=self.reference(result,referencedUmlAttribute,'ref');
+			if(not(ref.oclIsUndefined()))then{
+				ref.ApplyStereotype(NIEMReferencesStereotype);
+			}endif;
+		
 		}endif;
 		var umlType:UML::NamedElement=referencedUmlAttribute.type;
 		// in case UML type has not yet been resolved, resolve via map from schema attribute type
@@ -1632,6 +1688,8 @@ mapping XSD::XSDModelGroup::XSDModelGroup(umlContainer:UML::Element):UML::Class@
 	init{}
 // stereotype if nillable
 	var targetStereotypeInstance:Stdlib::Element=result.ApplyStereotype(NIEMPropertyStereotype);
+	//var representationStereotypeInstance:Stdlib::Element=result.ApplyStereotype(NIEMRepresentationStereotype);
+	
 	targetStereotypeInstance.setNIEMPropertyNillable(self.resolvedElementDeclaration.nillable);
 	targetStereotypeInstance.setNIEMPropertyKind('element');
 	var resolvedElementDeclaration:XSD::XSDElementDeclaration=self.resolvedElementDeclaration;
@@ -2292,6 +2350,8 @@ helper String::getOwnerPackage(inout topPackage:UML::Package):UML::Package{
 	var topPackageName:String=self.substringBefore('/');
 	if(topPackageName.oclIsUndefined())then{return topPackage;}
 	else{}endif;
+	if(topPackageName='..')then{return self.substringAfter('/').getOwnerPackage(topPackage.nestingPackage);}endif;
+	if(topPackageName='.')then{return self.substringAfter('/').getOwnerPackage(topPackage);}endif;
 	topPackage.nestedPackage->select(p|p.name=topPackageName)->forEach(existingPackage){
 		return self.substringAfter('/').getOwnerPackage(existingPackage);
 	};

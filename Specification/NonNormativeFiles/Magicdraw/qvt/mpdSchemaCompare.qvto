@@ -23,8 +23,8 @@ import NIEMplatformBinding;
 
 modeltype ECORE  uses 'http://www.eclipse.org/emf/2002/Ecore';
 modeltype XSD  uses 'http://www.eclipse.org/xsd/2002/XSD';
-modeltype CAT  uses 'http://reference.niem.gov/niem/resource/mpd/catalog/1.0/';
-//modeltype CAT  uses 'urn:oasis:names:tc:entity:xmlns:xml:catalog';
+//modeltype CAT  uses 'http://reference.niem.gov/niem/resource/mpd/catalog/1.0/';
+modeltype CAT  uses 'urn:oasis:names:tc:entity:xmlns:xml:catalog';
 
 
 transformation mpdSchemaCompare(in cat:CAT,in catTarget:CAT,inout blackboxAdapter:ECORE)
@@ -33,9 +33,11 @@ transformation mpdSchemaCompare(in cat:CAT,in catTarget:CAT,inout blackboxAdapte
 	main() {
 		blackboxHook:=blackboxAdapter.objectsOfType(ECORE::EPackage)->asSequence()->first();
 		// input catalogs serve to identify one or more schemas, we get transitive closure of each
-		var originalCatalog:CAT::CatalogType=cat.objectsOfType(CAT::CatalogType)->asSequence()->first();
-		var targetCatalog:CAT::CatalogType=catTarget.objectsOfType(CAT::CatalogType)->asSequence()->first();
-		//log('source catalog '+originalCatalog.repr()+', target catalog '+targetCatalog.repr());
+//		var originalCatalog:CAT::CatalogType=cat.objectsOfType(CAT::CatalogType)->asSequence()->first();
+//		var targetCatalog:CAT::CatalogType=catTarget.objectsOfType(CAT::CatalogType)->asSequence()->first();
+		var originalCatalog:CAT::Catalog=cat.objectsOfType(CAT::Catalog)->asSequence()->first();
+		var targetCatalog:CAT::Catalog=catTarget.objectsOfType(CAT::Catalog)->asSequence()->first();
+		log('source catalog '+originalCatalog.repr()+', target catalog '+targetCatalog.repr());
 		/*
 		originalCatalog.artifact->forEach(artifact){
 			log('source artifact '+artifact.repr());
@@ -69,7 +71,10 @@ transformation mpdSchemaCompare(in cat:CAT,in catTarget:CAT,inout blackboxAdapte
 	}
 property IGNORE_IRRELEVANT_MISMATCH:Boolean=true;	
 helper 	XSD::XSDSchema::compare(target:XSD::XSDSchema){
+	
 	log('compare schemas '+self.targetNamespace);
+	
+	if(self.targetNamespace='http://release.niem.gov/niem/proxy/xsd/3.0/')then{log('suppress schema compare');return;}endif;
 	if(IGNORE_IRRELEVANT_MISMATCH)then{}else{
 	// does not matter 
 		self.attributeFormDefault.compare(target.attributeFormDefault);
@@ -82,16 +87,38 @@ helper 	XSD::XSDSchema::compare(target:XSD::XSDSchema){
 	// contents: for each entry find matching
 	// check for mismatches
 	self.contents->select(c|not(c.oclIsKindOf(XSD::XSDAnnotation)))->forEach(baseElement){
-		var targetElement:XSD::XSDConcreteComponent=baseElement.findMatch(target.contents);
-		if(((targetElement=null)or targetElement.oclIsUndefined())and  not(baseElement.isSourceIgnored()))then{
-			log('ERROR: failed to match schema source content '+baseElement.getQualifiedName());
-		}else{}endif;
+		// suppress check for import of well-known namespaces
+		if(baseElement.oclIsKindOf(XSD::XSDImport) and(
+			(baseElement.oclAsType(XSD::XSDImport).namespace='http://release.niem.gov/niem/appinfo/3.0/')
+			or(baseElement.oclAsType(XSD::XSDImport).namespace='http://release.niem.gov/niem/conformanceTargets/3.0/')
+			or(baseElement.oclAsType(XSD::XSDImport).namespace='http://release.niem.gov/niem/localTerminology/3.0/')
+			or(baseElement.oclAsType(XSD::XSDImport).namespace='http://release.niem.gov/niem/proxy/xsd/3.0/')
+		)
+		)then{
+			// bypass compare			
+		}else{
+			var targetElement:XSD::XSDConcreteComponent=baseElement.findMatch(target.contents);
+			if(((targetElement=null)or targetElement.oclIsUndefined())and  not(baseElement.isSourceIgnored()))then{
+				log('ERROR: failed to match schema source content '+baseElement.getQualifiedName());
+			}else{}endif;
+		}endif;
 	};
 	target.contents->select(c|not(c.oclIsKindOf(XSD::XSDAnnotation)))->forEach(baseElement){
-		var targetElement:XSD::XSDConcreteComponent=baseElement.findMatch(self.contents);
-		if(((targetElement=null)or targetElement.oclIsUndefined())and not(baseElement.isTargetIgnored()))then{
-			log('ERROR: failed to match schema target content '+baseElement.getQualifiedName());
-		}else{}endif;
+		// suppress check for import of well-known namespaces
+		if(baseElement.oclIsKindOf(XSD::XSDImport) and(
+			(baseElement.oclAsType(XSD::XSDImport).namespace='http://release.niem.gov/niem/appinfo/3.0/')
+			or(baseElement.oclAsType(XSD::XSDImport).namespace='http://release.niem.gov/niem/conformanceTargets/3.0/')
+			or(baseElement.oclAsType(XSD::XSDImport).namespace='http://release.niem.gov/niem/localTerminology/3.0/')
+			or(baseElement.oclAsType(XSD::XSDImport).namespace='http://release.niem.gov/niem/proxy/xsd/3.0/')
+		)
+		)then{
+			// bypass compare			
+		}else{
+			var targetElement:XSD::XSDConcreteComponent=baseElement.findMatch(self.contents);
+			if(((targetElement=null)or targetElement.oclIsUndefined())and not(baseElement.isTargetIgnored()))then{
+				log('ERROR: failed to match schema target content '+baseElement.getQualifiedName());
+			}else{}endif;
+		}endif;
 	};
 	self.contents->select(c|not(c.oclIsKindOf(XSD::XSDAnnotation)))->forEach(originalContent){
 		var targetContent:XSD::XSDConcreteComponent=originalContent.findMatch(target.contents);
@@ -1167,6 +1194,7 @@ query OclAny::findMatch(targets:OrderedSet(OclAny),context:XSD::XSDConcreteCompo
 			(t.getElementName()=self.getElementName())
 			and (t.getElementNamespace()=self.getElementNamespace())
 			and self.matchesAppliesTo(t)
+			and self.matchesLocalTerm(t)
 		);
 	if(matches->size()>1)then{
 //		log('ERROR: did not resolve match for DOM node '+self.getElementNamespace()+' : '+self.getElementName()+', matches: '+matches->size().repr()+', context '+context.getQualifiedName());
@@ -1178,6 +1206,13 @@ query OclAny::matchesAppliesTo(target:OclAny):Boolean{
 	if(self.getElementName()='AppliesTo')then{
 		// check name and namespace attributes
 		return (self.getAppInfoName()=target.getAppInfoName()) and (self.getAppInfoNamespace()=target.getAppInfoNamespace());
+	}else{}endif;
+	return true;
+}
+query OclAny::matchesLocalTerm(target:OclAny):Boolean{
+	if(self.getElementName()='LocalTerm')then{
+		// check term
+		return (self.getTerm()=target.getTerm());
 	}else{}endif;
 	return true;
 }
@@ -1285,26 +1320,37 @@ query XSD::XSDImport::getBaseQualifiedName():String{
 	return self.container.getBaseQualifiedName()+'::'+self.namespace;
 }
 
-helper 	CAT::CatalogType::getAllSchemas():Set(XSD::XSDSchema)
+//helper 	CAT::CatalogType::getAllSchemas():Set(XSD::XSDSchema)
+helper 	CAT::Catalog::getAllSchemas():Set(XSD::XSDSchema)
 {
 	var allSchemas:Set(XSD::XSDSchema)=Set{};
-	self.artifact->select(f|f.oclIsKindOf(CAT::FileType)).oclAsType(CAT::FileType).getAllSchemas()->forEach(file){
+	log('getAllSchemas for catalog '+self.repr());
+//	self.artifact->select(f|f.oclIsKindOf(CAT::FileType)).oclAsType(CAT::FileType).getAllSchemas()->forEach(file){
+	self.uri->select(f|f.oclIsKindOf(CAT::Uri)).oclAsType(CAT::Uri).getAllSchemas()->forEach(file){
 			allSchemas+=file;
 	};
+	/*
 	self.artifact->select(f|f.oclIsKindOf(CAT::FileSetType)).oclAsType(CAT::FileSetType).file.getAllSchemas()->forEach(file){
 			allSchemas+=file;
 	};
+	*/
 	return allSchemas;
 }
 
-helper 	CAT::FileType::getAllSchemas():Set(XSD::XSDSchema)
+//helper 	CAT::FileType::getAllSchemas():Set(XSD::XSDSchema)
+helper 	CAT::Uri::getAllSchemas():Set(XSD::XSDSchema)
 {
 	var allSchemas:Set(XSD::XSDSchema)=Set{};
-	if(self.relativePathName.endsWith('.xsd'))then{
+	log('getAllSchemas for Uri '+self.repr());
+	
+//	if(self.relativePathName.endsWith('.xsd'))then{
+	if(self.uri.endsWith('.xsd'))then{
 		// load and process the schema at the relative location
-		var schema:XSD::XSDSchema=self.oclAsType(ECORE::EObject).getSchemaAtRelativeURI(self.relativePathName).oclAsType(XSD::XSDSchema);
+//		var schema:XSD::XSDSchema=self.oclAsType(ECORE::EObject).getSchemaAtRelativeURI(self.relativePathName).oclAsType(XSD::XSDSchema);
+		var schema:XSD::XSDSchema=self.oclAsType(ECORE::EObject).getSchemaAtRelativeURI(self.uri).oclAsType(XSD::XSDSchema);
 		if(schema.oclIsUndefined())then{
-			log('ERROR: failed to load schema at '+self.relativePathName);	
+			log('ERROR: failed to load schema at '+self.uri);	
+//			log('ERROR: failed to load schema at '+self.relativePathName);	
 		}else{
 			schema.getAllSchemas(Set{})->forEach(aSchema){
 				allSchemas+=aSchema;
@@ -1318,7 +1364,7 @@ helper 	XSD::XSDSchema::getAllSchemas(didThat:Set(XSD::XSDSchema)):Set(XSD::XSDS
 {
 	if(didThat->includes(self))then{return Set{};}else{}endif;
 	var allSchemas:Set(XSD::XSDSchema)=Set{self};
-	//log('schema '+self.targetNamespace+', '+self.schemaForSchema.targetNamespace);
+	log('schema '+self.targetNamespace+', '+self.schemaForSchema.targetNamespace);
 	self.contents->select(c|c.oclIsKindOf(XSD::XSDSchemaDirective)).oclAsType(XSD::XSDSchemaDirective)
 		->forEach(schemaDirective){
 			if(schemaDirective.oclIsKindOf(xsd::XSDImport))then{

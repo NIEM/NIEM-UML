@@ -20,7 +20,10 @@ Contact ModelDriven.org for more information.
 */
 import NIEMmpdartifact2model;
 
-modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+//modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+
+//modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.5';
+modeltype UML uses 'http://www.omg.org/spec/UML/20131001';
 //modeltype ECORE  uses 'http://www.eclipse.org/emf/2002/Ecore';
 modeltype CMOF  uses 'http://www.eclipse.org/emf/2002/Ecore';
 modeltype XSD  uses 'http://www.eclipse.org/xsd/2002/XSD';
@@ -55,9 +58,16 @@ helper mpd2pim_run() {
 		NIEMmpd2pim_run();
 		// we could try to populate xml instances now
 		gatherAllSchemas(mpdRootPackage);
+		// <<mpdFile>> no longer exists, we need to consider Usages owned by component
+if(true)then{log('suppress sample instance documents');}else{		
+		mpdComponent.importSampleInstanceDocuments();
+}endif;		
+		/*
 		mpdComponent.clientDependency
-		->select(d|d.isStereotypeApplied(NIEMModelPackageDescriptionFileStereotype) 
-			and (d.getStereotypeApplication(NIEMModelPackageDescriptionFileStereotype).getFileTypePurposeURI()=purposeSampleInstanceURI))
+		->select(d|
+			d.isStereotypeApplied(NIEMModelPackageDescriptionFileStereotype) 
+			and (d.getStereotypeApplication(NIEMModelPackageDescriptionFileStereotype).getFileTypePurposeURI()=purposeSampleInstanceURI)
+			)
 		->forEach(mpdFile){
 			mpdFile.supplier->select(s|s.oclIsKindOf(Package)).oclAsType(Package)->forEach(xmlInstancePackage){
 				var relativePathName:String=xmlInstancePackage.getMpdRelativePathForPackage(mpdRootPackage);
@@ -66,13 +76,44 @@ helper mpd2pim_run() {
 				domDocument.xmlInstanceDocumentTopElement(xmlInstancePackage);
 			};
 		};
-		
-		
+		*/
+		// try to put schemas into base-xsd based on some niem 2.1 conventions
+		/* accept what you are given
+		mpdRootPackage.nestedPackage
+			->select(p|(p.name='Schema')or(p.name='artifacts'))
+			->forEach(s){s.name:='base-xsd';};
+		*/	
 		mapInit();
 		// remove component if reference model
 		log('mpd2pim end ');
 	}
 ///////////////////
+// TODO
+// UML Packages representing sample document instances; as referenced from mpd catalog;
+// assumes magic draw FileType instances can be clients of dependencies
+//  but we also need to find all those FileType instances --- via <<Mpd>> on component
+//	can we assume that all dependencies owned by component?
+//  break this into recover of fileTypes, break down fileTypes to xmlDocs, find dependencies
+//		later we can migrate to instances
+//		
+//helper UML::Component::importSampleInstanceDocuments(){
+helper UML::InstanceSpecification::importSampleInstanceDocuments(){
+//	self.getSampleInstanceFileTypes().clientDependency.supplier
+	self.clientDependency->select(d|d.getAppliedStereotypeInstances()->exists(s|s.isInstanceOf('XMLSchemaDocument'))).supplier
+//	self.clientDependency->select(d|d.appliedStereotype->exists(s|s.isInstanceOf('XMLSchemaDocument'))).supplier
+		->select(s|s.oclIsKindOf(Package)).oclAsType(Package)
+		->forEach(xmlInstancePackage){
+				var relativePathName:String=xmlInstancePackage.getMpdRelativePathForPackage(mpdRootPackage);
+				var domDocument:OclAny=catalog.oclAsType(CMOF::EObject).getDocumentAtRelativeURI(relativePathName);
+				log('sample instance '+xmlInstancePackage.qualifiedName+', '+relativePathName+', '+domDocument.repr());
+				domDocument.xmlInstanceDocumentTopElement(xmlInstancePackage);
+			};
+	return;	
+}	
+//helper UML::Component::getSampleInstanceFileTypes():Set(UML::InstanceSpecification)
+//	=self.getFileTypes()->select(t|t.isInstanceOf('XMLSchemaDocument'));
+	
+
 helper 		gatherAllSchemas(mpdRootPackage:UML::Package){
 		mpdRootPackage.allSubobjectsOfType(UML::Package).oclAsType(UML::Package)
 			->select(p|p.isStereotypeApplied(NIEMSchemaStereotype))
@@ -493,26 +534,289 @@ query CMOF::EObject::getDirectoryName():String{
 	var baseName:String=self.getModelDirectoryName();
 	return baseName;
 }
-mapping 	CAT::CatalogType::MpdCatalog_ProvisioningComponent(
-	inout newPackage:UML::Package):UML::Component@pimUml{
+//mapping 	CAT::CatalogType::MpdCatalog_ProvisioningComponent(	inout newPackage:UML::Package):UML::Component@pimUml{
+mapping 	CAT::CatalogType::MpdCatalog_ProvisioningComponent(	inout newPackage:UML::Package):UML::InstanceSpecification@pimUml{
 	
 	newPackage.packagedElement+=result;
+	classifier+=prompdStereotype;
 	mpdComponent:=result;
 	var mpd:CAT::MPDType=self.mPD;
 	// there is no longer an mpdName: extract from directory name
-//	var baseModelName:String= self.mpdName;
 	var baseModelName:String= mpd.mpdName;
-//	var baseModelName:String= self.getMpdName();
 	name:=baseModelName;
 	// process all content
 	// create the items, establish containment, set stereotypes and apply tags discretely
-//    mpd.artifactOrArtifactSet->select(f|f.oclIsKindOf(CAT::FileType)).oclAsType(CAT::FileType)->forEach(file){
-//            file.addFileType(mpdComponent);
-//    };
-    //mpd.artifactOrArtifactSetGroup->select(f|f.oclIsKindOf(CAT::FileType)).oclAsType(CAT::FileType)->forEach(file){
-    //        file.addFileType(mpdComponent);
-    //};
-    mpd.oclAsType(CMOF::EObject).getFeatureMapValue('artifactOrArtifactSetGroup','xMLSchemaDocument')->select(f|f.oclIsKindOf(CAT::FileType)).oclAsType(CAT::FileType)->forEach(file){
+//	var pimmpd:Stdlib::Element=result.applyStereotype(prompdStereotype);
+	var pimmpd:UML::InstanceSpecification=result;
+	// there is no longer an mpdVersionID: extract from directory name
+//	pimmpd.setMpdVersionID(self.mpdVersionID);
+	pimmpd.setMpdVersionID(mpd.mpdVersionID);
+	mpd.mpdClassURIList->forEach(classCode){
+		switch{
+			case(classCode='http://reference.niem.gov/niem/specification/model-package-description/3.0/#IEPD')pimmpd.setMpdClassCode('iepd');
+			else{
+				log('mpdClassURI not recognized: '+classCode.repr());
+			}
+		};	
+	};
+	pimmpd.setMpdBaseURI(mpd.mpdURI.expandURI().mpdURItoBaseMpdUri(mpd.mpdVersionID));
+//	pimmpd.setMpdDescriptionText(mpd.descriptionText.value);
+	pimmpd.setDescriptionText(mpd.descriptionText.value);
+	mpd.IEPConformanceTarget(pimmpd);	
+   	pimmpd.ArtifactOrArtifactSet(mpd);
+//	mpd.mPDInformation.MPDInformation(pimmpd,result);
+	mpd.mPDInformation.MPDInformation(result);
+}
+//helper Stdlib::Element::ArtifactOrArtifactSet(mpd:Stdlib::Element){
+helper UML::InstanceSpecification::ArtifactOrArtifactSet(mpd:Stdlib::Element){
+	// fileType refs are usages; fileSets are instances;
+	// this helper creates both
+//	var umlArtifactOrArtifactSetList:Stdlib::Element=self.getArtifactOrArtifactSetList();
+	var umlArtifactOrArtifactSetList:UML::Slot=self.getArtifactOrArtifactSetList();
+	//	mpd.artifactOrArtifactSet.oclAsType(Stdlib::Element)->forEach(artifact){
+//		var umlArtifact:Stdlib::Element=umlArtifactOrArtifactSetList.createArtifactInstance(artifact);
+//		var umlArtifact:Stdlib::Element=umlArtifactOrArtifactSetList.createArtifactOrArtifactSetInstance(artifact);
+//    	artifact.ArtifactOrArtifactSet(mpd,umlArtifact);
+
+	umlArtifactOrArtifactSetList.createFileInstance(mpd,'file','FileType');
+	umlArtifactOrArtifactSetList.createFileInstance(mpd,'xMLCatalog','XMLCatalog');
+		umlArtifactOrArtifactSetList.createFileInstance(mpd,'mPDChangeLog','MPDChangeLog');
+		umlArtifactOrArtifactSetList.createFileInstance(mpd,'readMe','ReadMe');
+		umlArtifactOrArtifactSetList.createFileInstance(mpd,'iEPSampleXMLDocument','IEPSampleXMLDocument');
+		umlArtifactOrArtifactSetList.createFileInstance(mpd,'businessRulesArtifact','BusinessRulesArtifact');
+		umlArtifactOrArtifactSetList.createFileInstance(mpd,'xMLSchemaDocument','XMLSchemaDocument');
+		umlArtifactOrArtifactSetList.createFileInstance(mpd,'externalSchemaDocument','ExternalSchemaDocument');
+		umlArtifactOrArtifactSetList.createFileInstance(mpd,'extensionSchemaDocument','ExtensionSchemaDocument');
+		umlArtifactOrArtifactSetList.createFileInstance(mpd,'subsetSchemaDocument','SubsetSchemaDocument');
+		umlArtifactOrArtifactSetList.createFileInstance(mpd,'referenceSchemaDocument','ReferenceSchemaDocument');
+    // wrong type?
+		umlArtifactOrArtifactSetList.createFileInstance(mpd,'eXIXMLSchema','EXIXMLSchemaType');
+		umlArtifactOrArtifactSetList.createFileInstance(mpd,'wantlist','Wantlist');
+		umlArtifactOrArtifactSetList.createFileInstance(mpd,'conformanceAssertion','ConformanceAssertion');
+		umlArtifactOrArtifactSetList.createFileInstance(mpd,'conformanceReport','ConformanceReport');
+		umlArtifactOrArtifactSetList.createFileInstance(mpd,'schematronSchema','SchematronSchema');
+		umlArtifactOrArtifactSetList.createFileInstance(mpd,'relaxNGSchema','RelaxNGSchema');
+		umlArtifactOrArtifactSetList.createFileInstance(mpd,'schematronSchema','SchematronSchema');
+		
+			umlArtifactOrArtifactSetList.createFileInstance(mpd,'documentation','Documentation');
+			
+			umlArtifactOrArtifactSetList.createFileSetInstance(mpd,'fileSet','FileSetType');
+			umlArtifactOrArtifactSetList.createFileSetInstance(mpd,'schemaDocumentSet','SchemaDocumentSet');
+			umlArtifactOrArtifactSetList.createFileSetInstance(mpd,'constraintSchemaDocumentSet','ConstraintSchemaDocumentSet');
+			
+			
+	
+    return;
+}
+//helper UML::InstanceSpecification::RequiredFile(fileType:CAT::FileType){
+helper UML::Usage::RequiredFile(fileType:CAT::FileType){
+	if(fileType.requiredFile->notEmpty())then{
+//		var umlRequiredFileList:UML::Slot=self.getRequiredFileList();
+		fileType.requiredFile->forEach(requiredFile){
+//			var umlRequiredFile:UML::InstanceSpecification=umlRequiredFileList.createInstance();
+//			log('WARNING: requiredFile not yet supported');
+			//umlRequiredFile.populateFileInstance(requiredFile);
+			// create Usage from the FileType Usage supplier to the referenced requiredFile,
+			//  stereotyped as <<RequiredFile>>
+			var requiredUsage:UML::Usage=new UML::Usage();
+			self.getNearestPackage().packagedElement+=requiredUsage;
+			requiredUsage.client+=self.supplier;
+//	result.supplier+=supplierIn;
+			var requiredInstance:UML::InstanceSpecification=requiredUsage.applyStereotype(provisioningProfile.getOwnedStereotype('RequiredFile')).oclAsType(UML::InstanceSpecification);
+			requiredInstance.populateFileInstance(requiredFile,requiredUsage);
+	    };
+    }endif;
+    return;
+}
+
+helper  UML::InstanceSpecification::populateFileInstance(fileType:CAT::FileType,inout usage:UML::Usage){
+	var fileInstance:UML::InstanceSpecification=self;
+	fileInstance.setDescriptionText(fileType.descriptionText.value);
+	//fileInstance.setPathURI(fileType.pathURI);// use implicit form so that we can re-align packages to niem3 structure
+	fileInstance.setMimeMediaTypeText(fileType.mimeMediaTypeText);
+	fileInstance.setExternalURI(fileType.externalURI);
+	fileInstance.name:=fileType.pathURI;
+//	umlArtifact.setRequiredFile(fileType.requiredFile);
+//	fileInstance.RequiredFile(fileType);
+	usage.RequiredFile(fileType);
+
+	// if appropriate, add file type
+	if(self.classifier.name->includes('ExtensionSchemaDocument'))then{
+            self.addFileType(fileType,usage);
+	}endif;	
+	if(self.classifier.name->includes('ExternalSchemaDocument'))then{
+            self.addFileType(fileType,usage);
+	}endif;	
+	if(self.classifier.name->includes('ReferenceSchemaDocument'))then{
+            self.addFileType(fileType,usage);
+	}endif;	
+	if(self.classifier.name->includes('SubsetSchemaDocument'))then{
+            self.addFileType(fileType,usage);
+	}endif;	
+	if(self.classifier.name->includes('XMLSchemaDocument'))then{
+            self.addFileType(fileType,usage);
+	}endif;	
+	/*
+	 mpd.oclAsType(CMOF::EObject).getFeatureMapValue('artifactOrArtifactSetGroup','xMLSchemaDocument')->select(f|f.oclIsKindOf(CAT::FileType)).oclAsType(CAT::FileType)->forEach(file){
+            file.addFileType(mpdComponent,'http://reference.niem.gov/niem/resource/mpd/lexicon/1.0/purpose#schema','http://reference.niem.gov/niem/resource/mpd/lexicon/1.0/nature#xsd');
+    };
+    mpd.oclAsType(CMOF::EObject).getFeatureMapValue('artifactOrArtifactSetGroup','externalSchemaDocument')->select(f|f.oclIsKindOf(CAT::FileType)).oclAsType(CAT::FileType)->forEach(file){
+            file.addFileType(mpdComponent,'','http://reference.niem.gov/niem/resource/mpd/lexicon/1.0/nature#xsd');
+    };
+    mpd.oclAsType(CMOF::EObject).getFeatureMapValue('artifactOrArtifactSetGroup','referenceSchemaDocument')->select(f|f.oclIsKindOf(CAT::FileType)).oclAsType(CAT::FileType)->forEach(file){
+            file.addFileType(mpdComponent,'http://reference.niem.gov/niem/resource/mpd/lexicon/1.0/purpose#reference-schema','http://reference.niem.gov/niem/resource/mpd/lexicon/1.0/nature#xsd');
+    };
+    mpd.oclAsType(CMOF::EObject).getFeatureMapValue('artifactOrArtifactSetGroup','extensionSchemaDocument')->select(f|f.oclIsKindOf(CAT::FileType)).oclAsType(CAT::FileType)->forEach(file){
+            file.addFileType(mpdComponent,'http://reference.niem.gov/niem/resource/mpd/lexicon/1.0/purpose#extension-schema','http://reference.niem.gov/niem/resource/mpd/lexicon/1.0/nature#xsd');
+    };
+    mpd.oclAsType(CMOF::EObject).getFeatureMapValue('artifactOrArtifactSetGroup','subsetSchemaDocument')->select(f|f.oclIsKindOf(CAT::FileType)).oclAsType(CAT::FileType)->forEach(file){
+            file.addFileType(mpdComponent,'http://reference.niem.gov/niem/resource/mpd/lexicon/1.0/purpose#subset-schema','http://reference.niem.gov/niem/resource/mpd/lexicon/1.0/nature#xsd');
+    };
+	*/
+	
+	return;
+}
+
+helper 	UML::InstanceSpecification::addFileType(inout fileType:CAT::FileType,inout usage:UML::Usage):UML::Usage
+{
+	var umlPackagePath:String=fileType.pathURI.toRelativeMdpLocation();
+	var ownerPackage:UML::Package=umlPackagePath.getOwnerPackage(mpdRootPackage);
+	var fileTypePackage:UML::Package=null;
+	if(fileType.pathURI.endsWith('.xsd'))then{
+		var schema:XSD::XSDSchema=fileType.oclAsType(CMOF::EObject).getSchemaAtRelativeURI(fileType.pathURI).oclAsType(XSD::XSDSchema);
+		if(not(schema.oclIsUndefined()))then{
+			// and map it as schema
+			fileTypePackage:=schema.mapAbstractXSDSchema();
+			// no mapping if proxy, structures, etc.
+			if(fileTypePackage.oclIsUndefined())then{return null;}endif;
+			ownerPackage.packagedElement+=fileTypePackage;
+			var stereotypeInstance:Stdlib::Element=fileTypePackage.getStereotypeApplication(NIEMInformationModelStereotype).oclAsType(Stdlib::Element);
+			if(not(stereotypeInstance.oclIsUndefined()))then{
+//				schema.setModelInformationDefaultPurpose(purposeURI.expandURI(),stereotypeInstance);
+				var defaultPurpose:String='extension';
+				if(schema.targetNamespace.startsWith(baseNiemNamespace)
+					or schema.targetNamespace.startsWith(baseNiemNamespaceNiem2) 
+					or (schema.targetNamespace='urn:us:gov:ic:ism:v2') )then{
+						defaultPurpose:='subset';
+				}endif;
+				stereotypeInstance.setInformationModelDefaultPurpose(defaultPurpose);
+				
+			}endif;
+		}endif;
+	}endif;	
+	if((fileTypePackage=null))then{
+		// for artifacts not recognized (not schemas) we map to a UML Package
+//		fileTypePackage:=fileType.map FileTypePackage(ownerPackage,pimComponent);
+		fileTypePackage:=fileType.map FileTypePackage(ownerPackage);
+	}endif;
+//	return fileType.map FileType(fileTypePackage,pimComponent,purposeURI,natureURI);
+//	return self.map FileType(fileTypePackage);
+	return self.mapFileType(fileTypePackage,usage);
+}
+
+// map the Catalog Uri entry to a <<ModelPackageDescriptionFile>> Usage
+//mapping 	CAT::FileType::FileType(inout pimPackage:UML::NamedElement,inout pimComponent:UML::Component,inout pimFileType:Stdlib::Element)
+//mapping 	UML::InstanceSpecification::FileType(inout pimPackage:UML::NamedElement)
+helper 	UML::InstanceSpecification::mapFileType(inout pimPackage:UML::NamedElement,inout usage:UML::Usage)
+	:UML::Usage@pimUml
+//	when{not(purposeURI.expandURI().isPurposeCatalog())}
+{
+	usage.supplier+=pimPackage;
+//	client+=pimComponent;
+//	pimComponent.packagedElement+=result;
+	usage.client+=self;
+	if(self.owner.oclIsKindOf(UML::Component))then{
+		self.owner.oclAsType(UML::Component).packagedElement+=usage;
+	}else{
+		self.getNearestPackage().packagedElement+=usage;
+	}endif;
+	/*
+	pimComponent.packagedElement+=result;
+	var pimNdrSchemaInstance:Stdlib::Element=result.applyStereotype(NIEMModelPackageDescriptionFileStereotype);
+	// set version, conformant, purpose
+	pimNdrSchemaInstance.setDescriptionText(self.descriptionText.value);
+	pimNdrSchemaInstance.setFileTypeExternalURI(self.externalURI.expandURI());
+	pimNdrSchemaInstance.setFileTypePurposeCode(purposeURI.expandURI());
+	pimFileType.setPathURI('');
+	*/
+	return usage;
+}
+
+
+// represent non-schema artifacts as a package
+//mapping 	CAT::FileType::FileTypePackage(inout ownerPackage:UML::Package,inout pimComponent:UML::Component):UML::Package@pimUml
+mapping 	CAT::FileType::FileTypePackage(inout ownerPackage:UML::Package):UML::Package@pimUml
+{
+//	var umlPackagePath:String=self.relativePathName.toRelativeMdpLocation();
+	var umlPackagePath:String=self.pathURI.toRelativeMdpLocation();
+	
+//	var umlPackagePath:String=self.uri.toRelativeMdpLocation();
+	ownerPackage.packagedElement+=result;
+	result.name:=umlPackagePath.toBaseName();
+}
+
+helper  UML::InstanceSpecification::populateFileSetInstance(fileType:CAT::FileSetType){
+	var fileSetInstance:UML::InstanceSpecification=self;
+	fileSetInstance.setDescriptionText(fileType.descriptionText.value);
+	fileSetInstance.setPathURI(fileType.pathURI);
+	fileSetInstance.setExternalURI(fileType.externalURI);
+	fileSetInstance.name:=fileType.pathURI;
+	// and realizations?
+	//umlArtifact.setArtifactOrArtifactSet(fileType.artifactOrArtifactSet);
+//   	fileSetInstance.oclAsType(Stdlib::Element).ArtifactOrArtifactSet(fileType);
+   	fileSetInstance.ArtifactOrArtifactSet(fileType);
+	return;
+}
+
+helper  UML::Slot::createFileInstance(mpdCatalogType:Stdlib::Element,umlFeatureName:String,umlClassName:String){
+//helper  UML::Slot::createFileInstance(mpdCatalogType:Stdlib::Element,umlFeatureName:String,umlClassName:String,supplier:UML::NamedElement){
+	mpdCatalogType.getFeatureMapValue('artifactOrArtifactSetGroup',umlFeatureName).oclAsType(CAT::FileType)->forEach(fileType){
+//		self.createArtifactInstance(umlClassName).populateFileInstance(fileType);
+		var client:UML::NamedElement=self.owningInstance;
+//		fileType.map FileTypeUsage(umlClassName,client,supplier);
+		fileType.map FileTypeUsage(umlClassName,client);
+//		populateFileInstance(fileType);
+    };
+	return;
+}
+
+//mapping 	CAT::FileType::FileTypeUsage(stereotypeName:String,clientIn:UML::NamedElement,supplierIn:UML::NamedElement):UML::Usage@pimUml
+mapping 	CAT::FileType::FileTypeUsage(stereotypeName:String,clientIn:UML::NamedElement):UML::Usage@pimUml
+{
+	clientIn.getNearestPackage().packagedElement+=result;
+	result.client+=clientIn;
+//	result.supplier+=supplierIn;
+	var appliedStereotype:Stdlib::Element=result.applyStereotype(provisioningProfile.getOwnedStereotype(stereotypeName));
+	appliedStereotype.oclAsType(UML::InstanceSpecification).populateFileInstance(self,result);
+//UML::InstanceSpecification::populateFileInstance(fileType:CAT::FileType){	
+}
+
+helper  UML::Slot::createFileSetInstance(mpdCatalogType:Stdlib::Element,umlFeatureName:String,umlClassName:String){
+	mpdCatalogType.getFeatureMapValue('artifactOrArtifactSetGroup',umlFeatureName).oclAsType(CAT::FileSetType)->forEach(fileType){
+		self.createArtifactInstance(umlClassName).populateFileSetInstance(fileType);
+    };
+	return;
+}
+
+
+/*
+abstract helper  Stdlib::Element::createArtifactOrArtifactSetInstance(concreteInstance:Stdlib::Element){
+	var umlArtifact:Stdlib::Element=self.createArtifactInstance(concreteInstance);
+	return;
+}
+helper  Stdlib::Element::createArtifactOrArtifactSetInstance(concreteInstance:Stdlib::Element){
+	var umlArtifact:Stdlib::Element=self.createArtifactInstance(concreteInstance);
+	return;
+}
+
+helper Stdlib::Element::ArtifactOrArtifactSet(mpd:CAT::MPDType){
+	var umlArtifactOrArtifactSetList:Stdlib::Element=self.getArtifactOrArtifactSetList();
+	mpd.artifactOrArtifactSet.oclAsType(Stdlib::Element)->forEach(artifact){
+//		var umlArtifact:Stdlib::Element=umlArtifactOrArtifactSetList.createArtifactInstance(artifact);
+		var umlArtifact:Stdlib::Element=umlArtifactOrArtifactSetList.createArtifactOrArtifactSetInstance(artifact);
+//    	artifact.ArtifactOrArtifactSet(mpd,umlArtifact);
+	/ *
+	 mpd.oclAsType(CMOF::EObject).getFeatureMapValue('artifactOrArtifactSetGroup','xMLSchemaDocument')->select(f|f.oclIsKindOf(CAT::FileType)).oclAsType(CAT::FileType)->forEach(file){
             file.addFileType(mpdComponent,'http://reference.niem.gov/niem/resource/mpd/lexicon/1.0/purpose#schema','http://reference.niem.gov/niem/resource/mpd/lexicon/1.0/nature#xsd');
     };
     mpd.oclAsType(CMOF::EObject).getFeatureMapValue('artifactOrArtifactSetGroup','externalSchemaDocument')->select(f|f.oclIsKindOf(CAT::FileType)).oclAsType(CAT::FileType)->forEach(file){
@@ -528,127 +832,283 @@ mapping 	CAT::CatalogType::MpdCatalog_ProvisioningComponent(
             file.addFileType(mpdComponent,'http://reference.niem.gov/niem/resource/mpd/lexicon/1.0/purpose#subset-schema','http://reference.niem.gov/niem/resource/mpd/lexicon/1.0/nature#xsd');
     };
     
-    
-
-    
 //	 self.artifact->select(f|f.oclIsKindOf(CAT::FileType)).oclAsType(CAT::FileType)->forEach(file){
 //            file.addFileType(mpdComponent);
 //    };
 //    self.artifact->select(f|f.oclIsKindOf(CAT::FileSetType)).oclAsType(CAT::FileSetType).map FileSetType();
     mpd.artifactOrArtifactSet->select(f|f.oclIsKindOf(CAT::FileSetType)).oclAsType(CAT::FileSetType).map FileSetType();
+    * /
+    };
+    return;
+}
+*/
+helper CAT::MPDType::IEPConformanceTarget(pimmpd:UML::InstanceSpecification){
+	if(self.iEPConformanceTarget->notEmpty())then{
+		var umlIEPConformanceTargetList:UML::Slot=pimmpd.getIEPConformanceTargetList();
+		self.iEPConformanceTarget->forEach(iepConformanceTarget){
+			var umlIEPConformanceTarget:UML::InstanceSpecification=umlIEPConformanceTargetList.createInstance();
+	//		umlIEPConformanceTarget.setConformanceTargetDescriptionText(iepConformanceTarget.descriptionText.repr());
+			umlIEPConformanceTarget.setDescriptionText(iepConformanceTarget.descriptionText.value);
+			iepConformanceTarget.ValidityConstraintWithContext(umlIEPConformanceTarget);
+	//		iepConformanceTarget.ArtifactOrArtifactSet(umlIEPConformanceTarget);
+//			umlIEPConformanceTarget.oclAsType(Stdlib::Element).ArtifactOrArtifactSet(iepConformanceTarget);
+			umlIEPConformanceTarget.ArtifactOrArtifactSet(iepConformanceTarget);
+	    };
+	}endif;
+}
+//mapping CAT::RelationshipType::ModelPackageDescriptionRelationship(inout mpd:UML::Component,relatedEntity:UML::NamedElement):UML::Dependency
+mapping CAT::RelationshipType::ModelPackageDescriptionRelationship(inout mpd:UML::InstanceSpecification,relatedEntity:UML::NamedElement):UML::Dependency
+{
+		mpd.getNearestPackage().packagedElement+=result;
+		var appliedStereotype:Stdlib::Element=result.applyStereotype(NIEMModelPackageDescriptionRelationshipStereotype);
+		appliedStereotype.setDescriptionText(self.descriptionText.value);
+		var code:String=self.relationshipCode.repr();
+		appliedStereotype.setRelationshipCode(code);
+		client+=mpd;
+		supplier+=relatedEntity;				
+}
 	
-	var pimmpd:Stdlib::Element=result.applyStereotype(prompdStereotype);
-	// there is no longer an mpdVersionID: extract from directory name
-//	pimmpd.setMpdVersionID(self.mpdVersionID);
-	pimmpd.setMpdVersionID(mpd.mpdVersionID);
-//	pimmpd.setMpdVersionID(self.getMpdVersionID());
-//	log('MpdCatalog_ProvisioningComponent mpdClassCode '+self.mpdClassCode.repr().replace('-','_'));
-//	pimmpd.setMpdClassCode(self.mpdClassCode.repr().replace('-','_'));
-	mpd.mpdClassCode.repr().replace('-','_')->forEach(classCode){
-		pimmpd.setMpdClassCode(classCode);
-	};
-//	pimmpd.setMpdBaseURI(self.mpdURI.expandURI().mpdURItoBaseMpdUri(self.mpdVersionID));
-	pimmpd.setMpdBaseURI(mpd.mpdURI.expandURI().mpdURItoBaseMpdUri(mpd.mpdVersionID));
-//	pimmpd.setMpdDescriptionText(self.descriptionText);
-	pimmpd.setMpdDescriptionText(mpd.descriptionText.value);
-//	self.metadata->forEach(metadata){
-	mpd.mPDInformation->forEach(metadata){
-		//pimmpd.setMpdSecurityMarkingText(metadata.securityMarkingText); // no longer there
-		pimmpd.setMpdCreationDate(metadata.creationDate.repr());
-		// TODO: LastRevisionDate
-		// TODO: Relationship
-		// TODO: ExtendedInformation
-		/*
-		pimmpd.setMpdStatusText(metadata.statusText);
-		pimmpd.setMpdKeywordText(metadata.keywordText);
-		pimmpd.setMpdDomainText(metadata.domainText);
-		pimmpd.setMpdPurposeText(metadata.purposeText);
-		pimmpd.setMpdExchangePatternText(metadata.exchangePatternText);
-		pimmpd.setMpdExchangePartnerName(metadata.exchangePartnerName);
-		*/
+//helper CAT::MPDInformationType::MPDInformation(pimmpd:Stdlib::Element,mpd:UML::Component){
+helper CAT::MPDInformationType::MPDInformation(pimmpd:UML::InstanceSpecification){
+		var metadata:CAT::MPDInformationType=self;
+		pimmpd.setMpdCreationDate(metadata.creationDate.value.repr());
+				log('MPDInformation creationDate: '+metadata.creationDate.value.repr());
+		
+		pimmpd.setMpdLastRevisionDate(metadata.lastRevisionDate.value.repr());
+		// Relationship
+		metadata.relationship->forEach(rel){
+//			var supplier:UML::NamedElement=mpd;// TODO: make this an MPD or some other concrete external 
+//			rel.map ModelPackageDescriptionRelationship(mpd,supplier);
+			var supplier:UML::NamedElement=pimmpd;// TODO: make this an MPD or some other concrete external 
+			rel.map ModelPackageDescriptionRelationship(pimmpd,supplier);
+		};	
 		metadata.statusText.value->forEach(text){pimmpd.setMpdStatusText(text);};
-		pimmpd.setMpdKeywordText(metadata.keywordText.value);
-		pimmpd.setMpdDomainText(metadata.domainText.value);
-		pimmpd.setMpdPurposeText(metadata.purposeText.value);
-		pimmpd.setMpdExchangePatternText(metadata.exchangePatternText.value);
-		pimmpd.setMpdExchangePartnerName(metadata.exchangePartnerName.value);
- 		
-//		metadata.authoritativeSource->forEach(authoritativeSource){
-		metadata.authoritativeSource.entityRepresentation
-			->select(e|e.oclIsKindOf(NC::OrganizationType)).oclAsType(NC::OrganizationType)
-			->forEach(authoritativeSource){
-//			pimmpd.setMpdASName(authoritativeSource.aSName);
-//			pimmpd.setMpdASAddressText(authoritativeSource.aSAddressText);
-//			pimmpd.setMpdASWebSiteURL(authoritativeSource.aSWebSiteURL);
-			authoritativeSource.organizationName.value->forEach(text){pimmpd.setMpdASName(text);};
-			
-			authoritativeSource.organizationPrimaryContactInformation.contactMeans
-				->select(m|m.oclIsKindOf(NC::AddressType)).oclAsType(NC::AddressType).addressFullText.value
-				->forEach(text){pimmpd.setMpdASAddressText(text);};
-			authoritativeSource.organizationPrimaryContactInformation.contactMeans
-				->select(m|m.oclIsKindOf(PROXY::AnyURI)).oclAsType(PROXY::AnyURI).value
-				->forEach(text){pimmpd.setMpdASWebSiteURL(text);};
+ 		if(metadata.keywordText.value->notEmpty())then{
+			pimmpd.setMpdKeywordText(metadata.keywordText.value);
+			}endif;
+ 		if(metadata.keywordText.value->notEmpty())then{
+			pimmpd.setMpdDomainText(metadata.domainText.value);
+			}endif;
+		if(metadata.keywordText.value->notEmpty())then{
+			pimmpd.setMpdPurposeText(metadata.purposeText.value);
+			}endif;
+		if(metadata.keywordText.value->notEmpty())then{
+			pimmpd.setMpdExchangePatternText(metadata.exchangePatternText.value);
+			}endif;
+		if(metadata.keywordText.value->notEmpty())then{
+			pimmpd.setMpdExchangePartnerName(metadata.exchangePartnerName.value);
+			}endif;
+		if(self.authoritativeSource.entityRepresentation->notEmpty())then{
+			var authoritativeSourceList:UML::Slot=pimmpd.getAuthoritativeSourceList();
+			self.authoritativeSource.AuthoritativeSource(authoritativeSourceList);
+		}endif;
+		
+}
+		
+helper CAT::IEPConformanceTargetType::ValidityConstraintWithContext(umlIEPConformanceTarget:UML::InstanceSpecification){
+//            <xs:element ref="c:ValidityConstraintWithContext" minOccurs="0" maxOccurs="unbounded"/>
+//    <xs:element name="ValidityConstraintWithContext" abstract="true">
+//    <xs:element name="ValidityConstraint" abstract="true" substitutionGroup="c:ValidityConstraintWithContext">
+//    <xs:element name="ValidityContext" type="c:ValidityContextType" substitutionGroup="c:ValidityConstraintWithContext">
+//    <xs:element name="HasDocumentElement" type="c:QualifiedNamesType" substitutionGroup="c:ValidityConstraintWithContext">
 
-//			pimmpd.setMpdPackageCode('release');
-			var pimPOCList:Stdlib::Element=pimmpd.getMpdPOCList();
-			authoritativeSource.organizationPrimaryContactInformation->forEach(contactInformation){
-				var pimpoc:Stdlib::Element=pimPOCList.createPOCInstance();
-				contactInformation.contactEntity.entityRepresentation
-					->select(e|e.oclIsKindOf(NC::PersonType)).oclAsType(NC::PersonType).personName.personFullName.value->forEach(personName){
-						pimpoc.setPOCPOCName(personName);
-					};
-				pimpoc.setPOCPOCEmail(contactInformation.contactMeans
-					->select(m|m.oclIsKindOf(PROXY::String)).oclAsType(PROXY::String).value);	
-				pimpoc.setPOCPOCTelephone(contactInformation.contactMeans
-					->select(m|m.oclIsKindOf(NC::TelephoneNumberType)).oclAsType(NC::TelephoneNumberType)
-						.telephoneNumberRepresentation->select(m|m.oclIsKindOf(NC::FullTelephoneNumberType)).oclAsType(NC::FullTelephoneNumberType)
-						.telephoneNumberFullID.value);
-			/*
-			authoritativeSource.pOC->forEach(poc){
-				var pimpoc:Stdlib::Element=pimPOCList.createPOCInstance();
-				pimpoc.setPOCPOCName(poc.pOCName);
-				pimpoc.setPOCPOCEmail(poc.pOCEmail);
-				pimpoc.setPOCPOCTelephone(poc.pOCTelephone);
+//<xs:element name="ValidToXPath" type="c:XPathType" substitutionGroup="c:ValidityConstraint">
+//<xs:element name="XMLSchemaValid" type="c:XMLSchemaType" substitutionGroup="c:ValidityConstraint">
+//    <xs:element name="SchematronValid" type="c:SchematronValidationType" substitutionGroup="c:ValidityConstraint">
+//    <xs:element name="RelaxNGValid" type="c:RelaxNGValidationType" substitutionGroup="c:ValidityConstraint">
+//    <xs:element name="ConformsToConformanceTarget" type="c:ConformanceTargetType" substitutionGroup="c:ValidityConstraint">
+//    <xs:element name="ConformsToRule" type="c:TextRuleType" substitutionGroup="c:ValidityConstraint">
+        
+		var umlValidityConstraintWithContextList:UML::Slot=umlIEPConformanceTarget.getValidityConstraintWithContextList();
+		self.validityConstraintWithContext->forEach(validityConstraint){
+//			var umlValidityConstraintWithContext:UML::InstanceSpecification=umlValidityConstraintWithContextList.createInstance();
+			var umlValidityConstraintWithContext:UML::InstanceValue=createInstanceValue(umlValidityConstraintWithContextList);
+			
+//			umlValidityConstraintWithContext.setValidityConstraintWithContext(iepConformanceTarget.validityConstraintWithContext);
+//			umlValidityConstraintWithContext.instance:=validityConstraint.map AbstractValidityConstraintWithContext();
+	
+			switch{
+				case(validityConstraint.oclIsKindOf(CAT::ValidityContextType))
+					umlValidityConstraintWithContext.instance:=validityConstraint.oclAsType(CAT::ValidityContextType).map ValidityContextType();
+				case(validityConstraint.oclIsKindOf(CAT::QualifiedNamesType))
+					umlValidityConstraintWithContext.instance:=validityConstraint.oclAsType(CAT::QualifiedNamesType).map QualifiedNamesType();
+				case(validityConstraint.oclIsKindOf(CAT::XPathType))
+					umlValidityConstraintWithContext.instance:=validityConstraint.oclAsType(CAT::XPathType).map XPathType();
+				case(validityConstraint.oclIsKindOf(CAT::XMLSchemaType))
+					umlValidityConstraintWithContext.instance:=validityConstraint.oclAsType(CAT::XMLSchemaType).map XMLSchemaType();
+				case(validityConstraint.oclIsKindOf(CAT::SchematronValidationType))
+					umlValidityConstraintWithContext.instance:=validityConstraint.oclAsType(CAT::SchematronValidationType).map SchematronValidationType();
+				case(validityConstraint.oclIsKindOf(CAT::RelaxNGValidationType))
+					umlValidityConstraintWithContext.instance:=validityConstraint.oclAsType(CAT::RelaxNGValidationType).map RelaxNGValidationType();
+				case(validityConstraint.oclIsKindOf(CAT::ConformanceTargetType))
+					umlValidityConstraintWithContext.instance:=validityConstraint.oclAsType(CAT::ConformanceTargetType).map ConformanceTargetType();
+				case(validityConstraint.oclIsKindOf(CAT::TextRuleType))
+					umlValidityConstraintWithContext.instance:=validityConstraint.oclAsType(CAT::TextRuleType).map TextRuleType();
+	
+				else{
+					log('ValidityConstraintWithContext not recognized: '+validityConstraint.repr());
+				}
 			};
-			*/
-			};
+		
 		};
+		
+}
+mapping CAT::ValidityContextType::ValidityContextType():UML::InstanceSpecification{
+//            <xs:element ref="nc:DescriptionText" minOccurs="0"/>
+//            <xs:element ref="c:ValidityConstraint" maxOccurs="unbounded"/>
+//          </xs:sequence>
+//          <xs:attribute ref="c:xPathText" use="required"/>
+	classifier+=ValidityContextTypeArtifact;
+	result.setDescriptionText(self.descriptionText.value);
+	result.setXPathText(self.xPathText);
+	var umlValidityConstraintList:UML::Slot=result.getValidityConstraintList();
+	self.validityConstraint->forEach(validityConstraint){
+			var umlValidityConstraintWithContext:UML::InstanceValue=createInstanceValue(umlValidityConstraintList);
+			switch{
+				case(validityConstraint.oclIsKindOf(CAT::XPathType))
+					umlValidityConstraintWithContext.instance:=validityConstraint.oclAsType(CAT::XPathType).map XPathType();
+				case(validityConstraint.oclIsKindOf(CAT::XMLSchemaType))
+					umlValidityConstraintWithContext.instance:=validityConstraint.oclAsType(CAT::XMLSchemaType).map XMLSchemaType();
+				case(validityConstraint.oclIsKindOf(CAT::SchematronValidationType))
+					umlValidityConstraintWithContext.instance:=validityConstraint.oclAsType(CAT::SchematronValidationType).map SchematronValidationType();
+				case(validityConstraint.oclIsKindOf(CAT::RelaxNGValidationType))
+					umlValidityConstraintWithContext.instance:=validityConstraint.oclAsType(CAT::RelaxNGValidationType).map RelaxNGValidationType();
+				case(validityConstraint.oclIsKindOf(CAT::ConformanceTargetType))
+					umlValidityConstraintWithContext.instance:=validityConstraint.oclAsType(CAT::ConformanceTargetType).map ConformanceTargetType();
+				case(validityConstraint.oclIsKindOf(CAT::TextRuleType))
+					umlValidityConstraintWithContext.instance:=validityConstraint.oclAsType(CAT::TextRuleType).map TextRuleType();
+	
+				else{
+					log('ValidityConstraintWithContext not recognized: '+validityConstraint.repr());
+				}
+			};
+		
+		
 	};
+
+} 
+mapping CAT::QualifiedNamesType::QualifiedNamesType():UML::InstanceSpecification{
+//	            <xs:element ref="nc:DescriptionText" minOccurs="0"/>
+//          <xs:attribute ref="c:qualifiedNameList" use="required"/>
+//    <xs:attribute name="qualifiedNameList" type="c:QualifiedNameListSimpleType">
+//    <xs:simpleType name="QualifiedNameListSimpleType">
+//      <xs:list itemType="xs:QName"/>
+//    </xs:simpleType>
+	classifier+=QualifiedNamesTypeArtifact;
+	result.setDescriptionText(self.descriptionText.value);
+	result.setQualifiedNameList(self.qualifiedNameList.repr());	
+} 
+mapping CAT::XPathType::XPathType():UML::InstanceSpecification{
+//            <xs:element ref="nc:DescriptionText" minOccurs="0"/>
+//          <xs:attribute ref="c:xPathText" use="required"/>
+	classifier+=XPathTypeArtifact;
+	result.setDescriptionText(self.descriptionText.value);
+	result.setXPathText(self.xPathText);
+} 
+mapping CAT::XMLSchemaType::XMLSchemaType():UML::InstanceSpecification{
+//            <xs:element ref="nc:DescriptionText"  minOccurs="0"/>
+//            <xs:element ref="c:XMLCatalog"          minOccurs="0" maxOccurs="unbounded"/>
+//            <xs:element ref="c:XMLSchemaDocument" minOccurs="0" maxOccurs="unbounded"/>
+	classifier+=XMLSchemaTypeArtifact;
+	result.setDescriptionText(self.descriptionText.value);
+	
+	/* TODO; not sure what this actually means
+	self.xMLCatalog.map XMLCatalog(result);// usage
+	self.xMLSchemaDocument.map XMLSchemaDocument(result);// usage
+	*/
+	/* Usage
+	var xMLCatalogList:UML::Slot=result.getXMLCatalogList();
+	self.xMLCatalog->forEach(xmlCatalog){
+		xMLCatalogList.instance:=xmlCatalog.oclAsType(CAT::XMLCatalogType).map XMLCatalogType();
+	};
+	var xMLSchemaDocumentList:UML::Slot=result.getXMLSchemaDocumentList();
+	self.xMLSchemaDocument->forEach(xmlSchemaDocument){
+		xmlSchemaDocument.instance:=xmlSchemaDocument.oclAsType(CAT::XMLSchemaDocumentType).map XMLSchemaDocumentType();
+	};
+*/
+} 
+mapping CAT::SchematronValidationType::SchematronValidationType():UML::InstanceSpecification{
+//            <xs:element ref="nc:DescriptionText" minOccurs="0"/>
+//            <xs:element ref="c:SchematronSchema"/>
+	classifier+=SchematronValidationTypeArtifact;
+	result.setDescriptionText(self.descriptionText.value);
+	// TODO: not yet supporting Schematron
+	//self.schematronSchema.map SchematronSchema(result);// Usage
+	//result.setSchematronSchema(self.schematronSchema.value);// Usage
+} 
+mapping CAT::RelaxNGValidationType::RelaxNGValidationType():UML::InstanceSpecification{
+//            <xs:element ref="nc:DescriptionText" minOccurs="0"/>
+//            <xs:element ref="c:RelaxNGSchema"/>
+	classifier+=RelaxNGValidationTypeArtifact;
+	result.setDescriptionText(self.descriptionText.value);
+	// TODO: not yet supporting RelaxNG
+	//self.relaxNGSchema.map RelaxNGSchema(result);
+	//result.setRelaxNGSchema(self.relaxNGSchema.value);// Usage
+	
+
+} 
+mapping CAT::ConformanceTargetType::ConformanceTargetType():UML::InstanceSpecification{
+//            <xs:element ref="nc:DescriptionText" minOccurs="0"/>
+//          <xs:attribute ref="c:conformanceTargetURI" use="required"/>
+	classifier+=ConformanceTargetTypeArtifact;
+	result.setDescriptionText(self.descriptionText.value);
+	result.setConformanceTargetURI(self.conformanceTargetURI);
+} 
+mapping CAT::TextRuleType::TextRuleType():UML::InstanceSpecification{
+//            <xs:element ref="nc:DescriptionText" minOccurs="0"/>
+//            <xs:element ref="c:RuleText"/>
+	classifier+=TextRuleTypeArtifact;
+	result.setDescriptionText(self.descriptionText.value);
+	result.setRuleText(self.ruleText.value);
+	
+
+} 
+/*
+helper CAT::IEPConformanceTargetType::ArtifactOrArtifactSet(umlIEPConformanceTarget:Stdlib::Element){
+		var umlArtifactOrArtifactSetList:Stdlib::Element=umlIEPConformanceTarget.getArtifactOrArtifactSetList();
+		self.artifactOrArtifactSet->forEach(artifact){
+			var umlArtifactOrArtifactSet:Stdlib::Element=umlArtifactOrArtifactSetList.createInstance();
+//			umlValidityConstraintWithContext.setValidityConstraintWithContext(iepConformanceTarget.validityConstraintWithContext);
+		};
 }
+*/
+helper NC::EntityType::AuthoritativeSource(authoritativeSourceList:UML::Slot){
+		self.entityRepresentation->select(e|e.oclIsKindOf(NC::OrganizationType)).oclAsType(NC::OrganizationType)
+			->forEach(organization){
+				var organizationInstance:UML::InstanceSpecification=authoritativeSourceList.createArtifactInstance('OrganizationType');
+	//			pimmpd.setMpdASName(organization.aSName);
+	//			pimmpd.setMpdASAddressText(organization.aSAddressText);
+	//			pimmpd.setMpdASWebSiteURL(organization.aSWebSiteURL);
+				organizationInstance.setNames(organization.organizationName.value);
+				var organizationPrimaryContactInformationList:UML::Slot=organizationInstance.getOrganizationPrimaryContactInformationList();	
+				organization.organizationPrimaryContactInformation.ContactInformationType(organizationPrimaryContactInformationList);
+		};
+}
+helper NC::ContactInformationType::ContactInformationType(organizationPrimaryContactInformationList:UML::Slot){
+		var contactInformationInstance:UML::InstanceSpecification=organizationPrimaryContactInformationList.createArtifactInstance('ContactInformationType');
+		contactInformationInstance.setContactEmailIDs(self.contactEmailID());
+		contactInformationInstance.setContactMailingAddresses(self.contactMailingAddress());
+		contactInformationInstance.setContactTelephoneNumbers(self.contactTelephoneNumber());
+		contactInformationInstance.setContactWebsiteURIs(self.contactWebsiteURI());
+		var contactEntityList:UML::Slot=contactInformationInstance.getContactEntityList();
+		self.contactEntity.AuthoritativeSource(contactEntityList);
+		
+		var contactResponderList:UML::Slot=contactInformationInstance.getContactResponderList();
+		self.contactResponder.PersonType(contactResponderList);
+		return;
+}
+
+		
+		// TODO: following, get many substitution 
+
+helper NC::PersonType::PersonType(contactResponderList:Stdlib::Element){
+		//var personInstance:Stdlib::Element=contactResponderList.createArtifactInstance('PersonType');
+		//personInstance.setNames(self.personName.personFullName.value);
+		return ;
+}
+
+/*	
 query String::isPurposeCatalog():Boolean=self.substringAfter('#')='catalog';
-// map the Catalog Uri entry to a <<ModelPackageDescriptionFile>> Usage
-mapping 	CAT::FileType::FileType(
-	inout pimPackage:UML::NamedElement,inout pimComponent:UML::Component,purposeURI:String,natureURI:String)
-	:UML::Usage@pimUml
-//	when{not(self.purposeURI.expandURI().isPurposeCatalog())}
-	when{not(purposeURI.expandURI().isPurposeCatalog())}
-	
-{
-	supplier+=pimPackage;
-	client+=pimComponent;
-	pimComponent.packagedElement+=result;
-	var pimNdrSchemaInstance:Stdlib::Element=result.applyStereotype(NIEMModelPackageDescriptionFileStereotype);
-	// set version, conformant, purpose
-	pimNdrSchemaInstance.setFileTypeDescriptionText(self.descriptionText.value);
-	pimNdrSchemaInstance.setFileTypeExternalURI(self.externalURI.expandURI());
-//	pimNdrSchemaInstance.setFileTypeNatureCode(self.natureURI.expandURI());
-//	pimNdrSchemaInstance.setFileTypePurposeCode(self.purposeURI.expandURI());
-	pimNdrSchemaInstance.setFileTypeNatureCode(natureURI.expandURI());
-	pimNdrSchemaInstance.setFileTypePurposeCode(purposeURI.expandURI());
-	// we have placed elements at their relative locations, no need to set relative path
-	pimNdrSchemaInstance.setFileTypeRelativePathName('');
-	//log("FileType "+self.natureURI.expandURI()+", "+natureURI+self.purposeURI.expandURI()+", "+purposeURI);
-}
-// represent non-schema artifacts as a package
-mapping 	CAT::FileType::FileTypePackage(inout ownerPackage:UML::Package,inout pimComponent:UML::Component):UML::Package@pimUml
-{
-//	var umlPackagePath:String=self.relativePathName.toRelativeMdpLocation();
-	var umlPackagePath:String=self.pathURI.toRelativeMdpLocation();
-	
-//	var umlPackagePath:String=self.uri.toRelativeMdpLocation();
-	ownerPackage.packagedElement+=result;
-	result.name:=umlPackagePath.toBaseName();
-}
 	
 //helper 	CAT::FileType::addFileType(inout pimComponent:UML::Component):UML::Usage
 helper 	CAT::FileType::addFileType(inout pimComponent:UML::Component,purposeURI:String,natureURI:String):UML::Usage
@@ -713,12 +1173,14 @@ mapping 	CAT::FileSetType::FileSetType():UML::Component@pimUml
 	var artifactStereotype:UML::Stereotype=NIEMModelPackageDescriptionFileSetStereotype;
 	var stereotypeInstance:Stdlib::Element=result.applyStereotype(artifactStereotype);
 
-	stereotypeInstance.setFileSetTypeDescriptionText(self.descriptionText.value);
+//	stereotypeInstance.setFileSetTypeDescriptionText(self.descriptionText.value);
+	stereotypeInstance.setDescriptionText(self.descriptionText.value);
 	stereotypeInstance.setFileSetTypeExternalURI(self.externalURI.expandURI());
 	// natureURI, purposeURI no longer exist
 	//stereotypeInstance.setFileSetTypeNatureURI(self.natureURI.expandURI());
 	//stereotypeInstance.setFileSetTypePurposeURI(self.purposeURI.expandURI());
 }	
+*/
 query String::expandURI():String{
 	if(self.oclIsUndefined())then {return self;} else{}endif;
 	

@@ -1,6 +1,8 @@
 import NIEMpim2psm;
 import NIEMpsm2xsd;
-modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+//modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+//modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.5';
+modeltype UML uses 'http://www.omg.org/spec/UML/20131001';
 modeltype ECORE  uses 'http://www.eclipse.org/emf/2002/Ecore';
 modeltype CHANGELOG uses 'http://reference.niem.gov/niem/resource/mpd/changelog/1.0/';
 modeltype SCHEMATRON uses 'http://purl.oclc.org/dsdl/schematron';
@@ -124,9 +126,20 @@ mapping 	UML::Package::InformationModelSchema(inout documentRoot:SCHEMATRON::Doc
 		
 		if(not(relativePath.endsWith('.xsd')))then{relativePath:=relativePath+'.xsd';}else{}endif;
 		// alternatively schemaLocation could be in an mpdFile relativePathName
+		/*
 		self.supplierDependency->select(d|d.IsStereotypeApplied(NIEMModelPackageDescriptionFileStereotype))
 			->forEach(mpdFile){
 				var pimmpd:Stdlib::Element=mpdFile.getStereotypeApplication(NIEMModelPackageDescriptionFileStereotype).oclAsType(Stdlib::Element);
+				var explicitRelativePathName:String =pimmpd.getFileTypeRelativePathName();
+				if(not(explicitRelativePathName.oclIsUndefined()) and (explicitRelativePathName<>''))then{
+					relativePath:=explicitRelativePathName;
+				}endif;
+				
+			};
+			*/
+		self.supplierDependency->select(d|d.IsStereotypeApplied(NIEMFileType))
+			->forEach(mpdFile){
+				var pimmpd:Stdlib::Element=mpdFile.getStereotypeApplication(NIEMFileType).oclAsType(Stdlib::Element);
 				var explicitRelativePathName:String =pimmpd.getFileTypeRelativePathName();
 				if(not(explicitRelativePathName.oclIsUndefined()) and (explicitRelativePathName<>''))then{
 					relativePath:=explicitRelativePathName;

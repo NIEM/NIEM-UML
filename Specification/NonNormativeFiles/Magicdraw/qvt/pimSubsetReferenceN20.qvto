@@ -21,7 +21,9 @@ Contact ModelDriven.org for more information.
 //import niemcommon;
 import NIEMplatformBinding;
 
-modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+//modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.4.1';
+//modeltype UML uses 'http://www.nomagic.com/magicdraw/UML/2.5';
+modeltype UML uses 'http://www.omg.org/spec/UML/20131001';
 modeltype ECORE  uses 'http://www.eclipse.org/emf/2002/Ecore';
 modeltype CMOF  uses 'http://www.eclipse.org/emf/2002/Ecore';
 
@@ -761,11 +763,12 @@ helper UML::Package::getPropertyHolder():UML::Class{
 	var propertyHolder:UML::Class=new UML::Class();
 	var myself:UML::Package=self;
 	myself.packagedElement+=propertyHolder;
-	propertyHolder.name='PropertyHolder';
+	propertyHolder.name:='PropertyHolder';
+	var propertyHolderInstance:Stdlib::Element=propertyHolder.applyStereotype(NIEMPropertyHolderStereotype);
 	return propertyHolder;		
 }
 helper String::createNamespace():UML::Package{
-	var aPackage:UML::Package=pimPackages->asSequence()->first();
+	var aPackage:UML::Package=pimPackages->select(p|not(p.nestingPackage.oclIsUndefined()))->asSequence()->first();
 	var packageName:String=self.getPackageName();
 	var newPackage:UML::Package=new UML::Package();
 	newPackage.name:=packageName;
@@ -1779,6 +1782,8 @@ property niem21_nga_URI:String=baseNiemNamespaceNiem2+'nga/2.0'; // same
 property niem21_niem_xsd_URI:String=baseNiemNamespaceNiem2+'proxy/xsd/2.0'; // same 
 property niem21_nlets_URI:String=baseNiemNamespaceNiem2+'nlets/2.1'; // 
 property niem21_nonauth_URI:String=baseNiemNamespaceNiem2+'nonauthoritative-code/2.0'; // 
+//property niem21_coremisc_URI:String='http://release.niem.gov/niem/codes/core_misc/3.0/'; // 
+
 //property niem21_ogc_URI:String=baseNiemNamespace+'external/ogc-filter/1.1.0/dhs-gmo/1.1.0'; // 
 //property niem21_om_URI:String=baseNiemNamespace+'external/ogc-observation/draft-0.14.5/om/dhs-gmo/1.0.0'; // 
 property niem21_sar_URI:String=baseNiemNamespaceNiem2+'sar/2.1'; // 
