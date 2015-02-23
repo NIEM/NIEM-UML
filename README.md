@@ -9,7 +9,7 @@ NIEM-UML is a specification. It needs to be implemented in a UML modeling tool i
 This specification has been submitted to the Object Management Group for final adoption.
 
 Please see:
-  * The specificaiton: https://github.com/NIEM/NIEM-UML/blob/master/Specification/UML%20Profile%20for%20NIEM%203.docx
+  * The specificaiton: https://github.com/NIEM/NIEM-UML/blob/master/Specification/UML%20Profile%20for%20NIEM%203.pdf
   * All machine readable files associated with the submission: https://github.com/NIEM/NIEM-UML/tree/master/Specification
   * Technology and tools specific resources, including examples: https://github.com/NIEM/NIEM-UML/tree/master/Resources
   
