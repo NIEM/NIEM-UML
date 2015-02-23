@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.omg.org/spec/UML/20131001" xmlns:NIEM_Common_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_Common_Profile" xmlns:NIEM_PSM_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_PSM_Profile" xmlns:NIEM_PIM_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_PIM_Profile">
+
+<uml:Model xmi:type="uml:Model" xmi:id="eee_1045467100313_135436_1" name="Data">
+		<ownedComment xmi:type="uml:Comment" xmi:id="_17_0_5_1_2aa0151_1403378384117_148432_3364" body="Author:tom.&#xA;Created:6/21/14 3:19 PM.&#xA;Title:.&#xA;Comment:.&#xA;">
+			<annotatedElement xmi:idref="eee_1045467100313_135436_1"/>
+		</ownedComment>
+		<packagedElement xmi:type="uml:Package" xmi:id="_niem" name="niem">
+			<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes" name="codes">
+				
+				<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes-edxl_rm" name="edxl_rm">
+					<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes-edxl_rm-3.0" name="3.0">
+						<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm" name="edxl_rm">
+							<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ownedComment" body="Source: EDXL Resource Messaging (RM) Standards Working Group (SWG); &#xA;Publication: Emergency Data Exchange Language Resource Messaging (EDXL-RM) specification; &#xA;Version: 1.0; &#xA;Date: 22 Dec 2009;   &#xA;http://docs.oasis-open.org/emerge">
+								<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm"/>
+							</ownedComment>
+							
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType" name="ContentCategoryCodeSimpleType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-ownedComment" body="A data type code indicating the purpose or kind of resource content or payload being sent">
+									<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType"/>
+								</ownedComment>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Accept" name="Accept">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Accept-ownedComment" body="In response to a resource message; &#34;I'll get back to you with an answer one way or the other (could still result in a &#34;decline&#34;)&#34;">
+										<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Accept"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Acknowledge" name="Acknowledge">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Acknowledge-ownedComment" body="In response to any resource message, &#34;I have received your message but have not yet processed it&#34;">
+										<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Acknowledge"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Cancel" name="Cancel">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Cancel-ownedComment" body="Message used to revoke any previous resource message.  NOTE:  This message may be used to &#34;cancel&#34; or &#34;recall&#34; resource:  Resource requested and perhaps en route, but no longer needed.">
+										<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Cancel"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Commit_Resource" name="Commit Resource">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Commit_Resource-ownedComment" body="Message used to agree or commit specific resource in response to a  Resource Request or Requisition, or to a &#34;Request Return&#34;">
+										<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Commit_Resource"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Decline" name="Decline">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Decline-ownedComment" body="In response to a resource message; &#34;I cannot meet your request&#34;">
+										<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Decline"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Notify_Auxiliary_Recipients" name="Notify Auxiliary Recipients">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Notify_Auxiliary_Recipients-ownedComment" body="Message used to advise or notify an auxiliary recipient (e.g. a government official) about any resource message as an &#34;FYI&#34;, where the auxiliary recipient was not included on original distribution.">
+										<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Notify_Auxiliary_Recipients"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Notify_Resource_Request_Disposition" name="Notify Resource Request Disposition">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Notify_Resource_Request_Disposition-ownedComment" body="Message used to report on the current &#34;status&#34; of any resource in relation to a Resource Requisition, Release Resource, or Request to Return Resource.">
+										<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Notify_Resource_Request_Disposition"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Offer_Unsolicited_Resources" name="Offer Unsolicited Resources">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Offer_Unsolicited_Resources-ownedComment" body="Message used to offer available resources (that have not been requested) to assist with an emergency response.">
+										<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Offer_Unsolicited_Resources"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Release_Resource" name="Release Resource">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Release_Resource-ownedComment" body="Message used by authorities at the incident to &#34;release&#34; (demobilize) resource back to its original point of assignment or to another location / assignment.">
+										<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Release_Resource"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Request_Extension" name="Request Extension">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Request_Extension-ownedComment" body="A request initiated by the requester / receiver of resource, &#34;I want to extend how long I need to keep this resource&#34;">
+										<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Request_Extension"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Request_Information_(RFI)" name="Request Information (RFI)">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Request_Information_(RFI)-ownedComment" body="Message used to ask resource questions or provide general description of situation and general resources needs.">
+										<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Request_Information_(RFI)"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Request_Quote" name="Request Quote">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Request_Quote-ownedComment" body="Message used to request a price quote from a seller or supplier.">
+										<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Request_Quote"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Request_Resource" name="Request Resource">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Request_Resource-ownedComment" body="Message used to request needed resources from one or many recipients, possibly spawning multiple responses.">
+										<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Request_Resource"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Request_Resource_Disposition" name="Request Resource Disposition">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Request_Resource_Disposition-ownedComment" body="Message used to request current &#34;status&#34; of resource in relation to a previous Resource Requisition or Release Resource.">
+										<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Request_Resource_Disposition"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Request_Return" name="Request Return">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Request_Return-ownedComment" body="Message used to request release (demobilize) of resources back to its original point of assignment or to another location / assignment (&#34;I want my stuff back&#34;).">
+										<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Request_Return"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Requisition_Resource" name="Requisition Resource">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Requisition_Resource-ownedComment" body="Message used to &#34;order&#34; specific resource, or to confirm specific resource to be &#34;ordered&#34; relating to one or more responses to a &#34;Request Resource&#34;.">
+										<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Requisition_Resource"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Response_to_Offer_Unsolicited_Resources" name="Response to Offer Unsolicited Resources">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Response_to_Offer_Unsolicited_Resources-ownedComment" body="Message used as the response to an offer of unsolicited resources, indicating accept or decline.">
+										<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Response_to_Offer_Unsolicited_Resources"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Response_to_Request_Information_(RFI)" name="Response to Request Information (RFI)">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Response_to_Request_Information_(RFI)-ownedComment" body="Message used as the response to an RFI message providing general information or to list resource that may meet the specified need.">
+										<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Response_to_Request_Information_(RFI)"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Response_to_Request_Quote" name="Response to Request Quote">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Response_to_Request_Quote-ownedComment" body="Message used as the response to a &#34;Request Quote&#34;.  Allows sender to list resource(s) which they feel represent suitable match with the request, with pricing information.">
+										<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Response_to_Request_Quote"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Response_to_Request_Resource" name="Response to Request Resource">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Response_to_Request_Resource-ownedComment" body="Message used as the response to a &#34;Request Resource&#34;.  Allows sender to list resource(s) which they feel represent suitable match with a resource request.">
+										<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Response_to_Request_Resource"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Response_to_Request_Return" name="Response to Request Return">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Response_to_Request_Return-ownedComment" body="Message used as the response to a &#34;Request Return&#34; indicating whether the resource may be released, with relevant time-line information.">
+										<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Response_to_Request_Return"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Update" name="Update">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Update-ownedComment" body="Message used to provide information superseding a previously sent Resource Message (change/modify one or more information elements of the message).  Example:  Change requested resource quantity.">
+										<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType-Update"/>
+									</ownedComment>
+								</ownedLiteral>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Class" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-NamespaceElementPropertyHolder" name="NamespaceElementPropertyHolder"/>
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeType" name="ContentCategoryCodeType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeType-ownedComment" body="A data type code indicating the purpose or kind of resource content or payload being sent">
+									<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeType"/>
+								</ownedComment>
+								<generalization xmi:type="uml:Generalization" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeType-generalization" general="_niem-codes-edxl_rm-3.0-edxl_rm-ContentCategoryCodeSimpleType"/>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ResponseCodeSimpleType" name="ResponseCodeSimpleType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ResponseCodeSimpleType-ownedComment" body="A data type code  indicating an accept or decline of a Request">
+									<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ResponseCodeSimpleType"/>
+								</ownedComment>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ResponseCodeSimpleType-Accept" name="Accept">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ResponseCodeSimpleType-Accept-ownedComment" body="Accept">
+										<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ResponseCodeSimpleType-Accept"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ResponseCodeSimpleType-Decline" name="Decline">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ResponseCodeSimpleType-Decline-ownedComment" body="Decline">
+										<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ResponseCodeSimpleType-Decline"/>
+									</ownedComment>
+								</ownedLiteral>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ResponseCodeType" name="ResponseCodeType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ResponseCodeType-ownedComment" body="A data type code  indicating an accept or decline of a Request">
+									<annotatedElement xmi:idref="_niem-codes-edxl_rm-3.0-edxl_rm-ResponseCodeType"/>
+								</ownedComment>
+								<generalization xmi:type="uml:Generalization" xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-ResponseCodeType-generalization" general="_niem-codes-edxl_rm-3.0-edxl_rm-ResponseCodeSimpleType"/>
+							</packagedElement>
+						</packagedElement>
+					</packagedElement>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-edxl_rm-profileApplication-1">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_PIM_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-edxl_rm-profileApplication-2">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-Model_Package_Description_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-edxl_rm-profileApplication-3">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_Common_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-edxl_rm-profileApplication-4">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_PSM_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+				</packagedElement>
+			</packagedElement>
+		</packagedElement>
+	</uml:Model>
+<NIEM_Common_Profile:PropertyHolder xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-NamespaceElementPropertyHolder-appliedStereotypeInstance" base_Class="_niem-codes-edxl_rm-3.0-edxl_rm-NamespaceElementPropertyHolder"/>
+<NIEM_PIM_Profile:InformationModel xmi:id="_niem-codes-edxl_rm-3.0-edxl_rm-appliedStereotypeInstance" base_Package="_niem-codes-edxl_rm-3.0-edxl_rm" isConformant="true" version="1" targetNamespace="http://release.niem.gov/niem/codes/edxl_rm/3.0/" defaultPurpose="reference"/>
+
+</xmi:XMI>

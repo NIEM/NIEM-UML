@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.omg.org/spec/UML/20131001" xmlns:NIEM_Common_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_Common_Profile" xmlns:NIEM_PSM_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_PSM_Profile" xmlns:NIEM_PIM_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_PIM_Profile">
+
+<uml:Model xmi:type="uml:Model" xmi:id="eee_1045467100313_135436_1" name="Data">
+		<ownedComment xmi:type="uml:Comment" xmi:id="_17_0_5_1_2aa0151_1403378217672_585561_3364" body="Author:tom.&#xA;Created:6/21/14 3:16 PM.&#xA;Title:.&#xA;Comment:.&#xA;">
+			<annotatedElement xmi:idref="eee_1045467100313_135436_1"/>
+		</ownedComment>
+		<packagedElement xmi:type="uml:Package" xmi:id="_niem" name="niem">
+			<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes" name="codes">
+				
+				<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes-census_commodity" name="census_commodity">
+					<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes-census_commodity-3.0" name="3.0">
+						<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes-census_commodity-3.0-census_commodity" name="census_commodity">
+							<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ownedComment" body="Census and Dept of Transportation.&#xA;Publication: CFS-1200 - SCTG COMMODITY CODES; &#xA;Date: 11-15-2011">
+								<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity"/>
+							</ownedComment>
+							
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType" name="ConveyanceCategoryCodeSimpleType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-ownedComment" body="A data type for a kind of conveyance.">
+									<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType"/>
+								</ownedComment>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36000" name="36000">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36000-ownedComment" body="Motorized and Other Vehicles (includes parts)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36000"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36100" name="36100">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36100-ownedComment" body="Vehicles for fewer than 10 people">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36100"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36101" name="36101">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36101-ownedComment" body="Automobiles and vans for fewer than 10 people (includes military jeeps and automobiles lightly armored) or powered by an electric motor (EV), hybrid vehicles that use a battery powered electric motor in addition to gasoline powered engine for improved efficiency (excludes all-terrain vehicles, racing cars, ambulances, hearses, prison vans, and motor homes, see 36109; vehicle parts, see Motor vehicle parts, 364xx)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36101"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36109" name="36109">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36109-ownedComment" body="Other motor vehicles for fewer than 10 people, not elsewhere classified (includes all-terrain vehicles, racing cars, ambulances, hearses, prison vans, and motor homes) (excludes vehicle parts, see 364xx; and snowmobiles, golf carts, in-plant personnel carriers, see 36399; motorcycles, see 36351; and armored fighting vehicles, see 36391)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36109"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36200" name="36200">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36200-ownedComment" body="Motor vehicles for the transport of goods and road tractors for semi-trailers (excludes parts)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36200"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36210" name="36210">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36210-ownedComment" body="Motor vehicles for transporting goods, (includes vehicles used in construction, mining, agriculture, military and armored commercial trucks)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36210"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36220" name="36220">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36220-ownedComment" body="Road tractors for semi-trailers (excludes parts, see 364xx)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36220"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36300" name="36300">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36300-ownedComment" body="Other vehicles">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36300"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36310" name="36310">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36310-ownedComment" body="Tractors (includes farm, lawn-and-garden, and track-laying tractors) (excludes road tractors and work tractors; tractor parts, see 364xx, or tractors of 34511)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36310"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36320" name="36320">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36320-ownedComment" body="Motor vehicles with a seating capacity of 10 or more persons (excludes parts, see 364xx)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36320"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36330" name="36330">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36330-ownedComment" body="Special-purpose motor vehicles (includes mobile cranes, drilling derricks, concrete mixers, and firefighting vehicles) (excludes parts, see 364xx)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36330"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36340" name="36340">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36340-ownedComment" body="Chassis fitted with engines, and separate bodies, for motor vehicles">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36340"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36351" name="36351">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36351-ownedComment" body="Motorcycles, motor scooters, and mopeds, and their parts (includes side cars)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36351"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36359" name="36359">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36359-ownedComment" body="Bicycles and other cycles (includes unicycles and tricycles, and their parts)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36359"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36360" name="36360">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36360-ownedComment" body="Trailers and semi-trailers and parts (includes camping and library trailers)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36360"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36391" name="36391">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36391-ownedComment" body="Armored fighting vehicles and their parts">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36391"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36399" name="36399">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36399-ownedComment" body="Other vehicles, not elsewhere classified (includes snowmobiles; golf carts and in-plant personnel carriers, segways) (excludes their parts, see 364xx; and hand-carts, grocery carts, wheelbarrows, and their parts)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36399"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36400" name="36400">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36400-ownedComment" body="Motor vehicle parts (excludes motorcycles and armored fighting vehicles)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36400"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36401" name="36401">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36401-ownedComment" body="Brakes (excludes unmounted brake linings and pads, see 31994)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36401"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36402" name="36402">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36402-ownedComment" body="Gear boxes (excludes parts, see 36409)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36402"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36403" name="36403">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36403-ownedComment" body="Road wheels">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36403"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36404" name="36404">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36404-ownedComment" body="Metal, stampings such as bumper, fender, door, hood, trim, and hub cap">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36404"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36409" name="36409">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36409-ownedComment" body="Other parts for motor vehicles, not elsewhere classified (includes seat belts and seat covers, trims, plastics grilles, suspension shock-absorbers, radiators, mufflers, exhaust pipes, clutches, axles, bumpers, and steering wheels) (excludes parts for motorcycles, mopeds and armored fighting vehicles, see 36351 and 36391; engines and engine parts, see 341xx; pumps for liquids, see 34310; filters, see 34999; tires, see 24310; glass, see 313xx; lighting and signaling equipment, see 35992; ignition and starting equipment, see 35991; windshield wipers and defrosters, see 35992; seats, see 39029; and catalytic converters, see 34999)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-36409"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37000" name="37000">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37000-ownedComment" body="Transportation Equipment, not elsewhere classified">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37000"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37100" name="37100">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37100-ownedComment" body="Railway equipment">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37100"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37101" name="37101">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37101-ownedComment" body="Railway or tramway locomotives and self-propelled rolling-stock (excludes maintenance or service vehicles, see 37102)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37101"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37102" name="37102">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37102-ownedComment" body="Railway or tramway maintenance or service vehicles (includes self-propelled), and passenger coaches and freight cars (excludes self-propelled)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37102"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37103" name="37103">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37103-ownedComment" body="Parts of locomotives and rolling stock (excludes engines, see 341xx; electric motors and generators, see 35110; pumps for liquids, see 34310; and lighting equipment, see 39030)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37103"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37104" name="37104">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37104-ownedComment" body="Track fixtures and fittings and their parts, mechanical signaling, safety, or traffic-control equipment, and containers specially designed and equipped for carriage by one or more transport modes">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37104"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37200" name="37200">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37200-ownedComment" body="Aircraft and spacecraft">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37200"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37210" name="37210">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37210-ownedComment" body="Aircraft (excludes parts, see below)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37210"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37220" name="37220">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37220-ownedComment" body="Spacecraft (includes satellites and suborbital and spacecraft launch vehicles, but not their parts)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37220"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37230" name="37230">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37230-ownedComment" body="Parts of aircraft and spacecraft (excludes internal combustion engines, see 341xx; turbines, see 34212; other engines and motors, see 34222; tires, see 24310; pumps for liquids, see 34310; filters, see 34999; plastics, see 24229; glass, see 313xx; lighting equipment, see 39030; ignition and starting equipment, see 35991; windshield wipers and defrosters, see 35992; and seats, see 39029)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37230"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37240" name="37240">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37240-ownedComment" body="Parachutes, rotochutes, aircraft-launching gear, deck-arresters, and flight simulators">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37240"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37300" name="37300">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37300-ownedComment" body="Ships, boats, and floating structures">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37300"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37310" name="37310">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37310-ownedComment" body="Pleasure or sporting vessels, and rowing boats (parts, except for hulls, should be classified according to what the article is)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37310"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37320" name="37320">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37320-ownedComment" body="Commercial ships and boats and other floating structures (includes drilling or production platforms, lifeboats, inflatable rafts, buoys, and beacons) (parts, except for hulls, should be classified according to what the article is)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType-37320"/>
+									</ownedComment>
+								</ownedLiteral>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Class" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-NamespaceElementPropertyHolder" name="NamespaceElementPropertyHolder"/>
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeType" name="ConveyanceCategoryCodeType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeType-ownedComment" body="A data type for a kind of conveyance.">
+									<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeType"/>
+								</ownedComment>
+								<generalization xmi:type="uml:Generalization" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeType-generalization" general="_niem-codes-census_commodity-3.0-census_commodity-ConveyanceCategoryCodeSimpleType"/>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType" name="ElectronicEquipmentCategoryCodeSimpleType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-ownedComment" body="A data type for a kind of electronic equipment.">
+									<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType"/>
+								</ownedComment>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35000" name="35000">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35000-ownedComment" body="Electronic and Other Electrical Equipment and Components, and Office Equipment">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35000"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35100" name="35100">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35100-ownedComment" body="Electric motors, generators, generating sets, rotary converters, transformers, static converters, and inductors">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35100"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35110" name="35110">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35110-ownedComment" body="Electric motors, generators, generating sets, rotary converters, transformers, static converters, and inductors Electric motors, generators, generating sets, and rotary converters">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35110"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35120" name="35120">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35120-ownedComment" body="Electric or electronic transformers, static converters (includes rectifiers, inductors, and power supplies for small appliances and computers)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35120"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35200" name="35200">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35200-ownedComment" body="Electric, electro-thermic, or electro-mechanical domestic appliances">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35200"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35210" name="35210">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35210-ownedComment" body="Electric, electro-thermic, or electro-mechanical domestic appliances Electric cooking appliances (includes stoves, ranges, grills, deep-fat fryers, and microwave ovens)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35210"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35220" name="35220">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35220-ownedComment" body="Electro-thermic or electro-mechanical domestic appliances such as vacuum cleaners, food grinders, blenders, juicers, coffee maker, can openers, electrical heating resistors (excludes carbon, see 35995), and personal appliances such as shavers, and toothbrushes (excludes dishwashers, see 34910; refrigerators, see 34421; air conditioners, see 34410; fans and range hoods, see 34330; or non-electric cooking or heating appliances such as radiators or wood stoves, see 33999)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35220"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35300" name="35300">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35300-ownedComment" body="Line telephone or telegraph apparatus">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35300"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35310" name="35310">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35310-ownedComment" body="Line telephone or telegraph apparatus and electronic entertainment products Line telephone and telegraph switching apparatus (excludes parts, see 35390).">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35310"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35390" name="35390">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35390-ownedComment" body="Other line telephone and telegraph communication apparatus, not elsewhere classified (includes telephones, fax machines, ISDN apparatus, modems, and parts for telephone switching apparatus) (excludes cellular telephones, see 35700)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35390"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35400" name="35400">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35400-ownedComment" body="Electronic entertainment products (includes televisions, radio broadcast receivers including satellite, disc players, digital recorders and playback devices, amplifiers, speakers, and digital cameras) (excludes parts of these goods, see 35820)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35400"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35500" name="35500">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35500-ownedComment" body="Computer and office equipment">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35500"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35510" name="35510">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35510-ownedComment" body="Computer equipment (includes mainframes, laptop units, processing units, monitors, and other data input and output devices such as fax/modem, and electronic reading devices, but not their parts)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35510"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35520" name="35520">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35520-ownedComment" body="Office equipment (includes point-of-sale devices, and word-processing machines, calculators, shredders, banknote dispensers) (excludes photocopiers, see 38220, and facsimile machines, see 35390).">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35520"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35600" name="35600">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35600-ownedComment" body="Prepared unrecorded or pre-recorded media">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35600"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35610" name="35610">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35610-ownedComment" body="Unrecorded media (includes blank tapes, disks, or other mediums for audio, video, computer data, or other use) (excludes photographic film, see 23400)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35610"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35621" name="35621">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35621-ownedComment" body="Computer software">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35621"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35629" name="35629">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35629-ownedComment" body="Other pre-recorded media, not elsewhere classified (includes records, tapes, and compact disks, but excludes software, see 35621, and photographic film, see 23400)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35629"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35700" name="35700">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35700-ownedComment" body="Transmission apparatus for radio or TV broadcasting; radio transmission and reception apparatus; radar apparatus; radio navigational- aid apparatus; and radio remote-control apparatus (includes cordless microphones, CB radios, cell-phones, pagers, GPS receivers, and television cameras) (excludes radio or television broadcast receivers, see 35400, or parts for these products, see 35820).">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35700"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35800" name="35800">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35800-ownedComment" body="Electronic components and parts">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35800"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35811" name="35811">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35811-ownedComment" body="Capacitors (includes power, resistors except heating but includes variable resistor switches, and thermionic, cold-cathode, or photo-cathode valves and tubes, includes vacuum, vapor, gas-filled, mercury-arc rectifying, cathode-ray, and television-camera) (excludes heating resistors, see 35220 or 35995)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35811"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35812" name="35812">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35812-ownedComment" body="Printed circuits">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35812"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35813" name="35813">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35813-ownedComment" body="Diodes, transistors, and similar semiconductor devices, photosensitive semiconductor devices (includes photovoltaic cells, light-emitting diodes, mounted piezoelectric crystals, and chemical elements and components doped for use in electronics)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35813"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35814" name="35814">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35814-ownedComment" body="Electronic integrated circuits and micro-assemblies (includes memory chips)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35814"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35820" name="35820">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35820-ownedComment" body="Parts for goods in SCTGs 35400, 35811, 35812, 35813, and 35814 above (includes cabinets)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35820"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35900" name="35900">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35900-ownedComment" body="Other Electronic components and parts">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35900"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35912" name="35912">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35912-ownedComment" body="Secondary cells and storage batteries (includes motor vehicle and nickel-cadmium batteries)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35912"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35920" name="35920">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35920-ownedComment" body="Apparatus for switching or protecting electrical circuits or for making connections to or in electrical circuits, and boards, panels, consoles, desks, cabinets, or similar bases equipped with these apparatus">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35920"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35991" name="35991">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35991-ownedComment" body="Ignition or starting equipment used for spark-ignition or compression-ignition internal combustion engines; generators (includes dynamos and alternators) cutouts used with internal combustion engines; spark plugs; and wiring sets used in vehicles, aircraft, or ships">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35991"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35992" name="35992">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35992-ownedComment" body="Electrical lighting or signaling equipment, windshield wipers, or defrosters and demisters, used for motor vehicles or bicycles (excludes filament or discharge light bulbs, see 35993)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35992"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35993" name="35993">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35993-ownedComment" body="Electric filament or discharge light bulbs, ultra-violet or infra-red bulbs, and arc-lamps, sealed beam lamp units for vehicles, and photographic flashbulb">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35993"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35994" name="35994">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35994-ownedComment" body="Insulated electric conductors (includes wire), co-axial cables, and optical fiber cables (excludes vehicle wiring sets, see 35991)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35994"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35995" name="35995">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35995-ownedComment" body="Artificial graphite, colloidal or semi-colloidal graphite, preparations based on graphite or carbon, and articles of graphite or carbon (includes electric heating resistors of carbon battery carbons, lamp carbons, packing rings and seals, electrodes, and brushes)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35995"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35999" name="35999">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35999-ownedComment" body="Other electronic and electrical equipment and components, not elsewhere classified (includes electric conduits and fittings) (excludes musical instruments, see 40992)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType-35999"/>
+									</ownedComment>
+								</ownedLiteral>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeType" name="ElectronicEquipmentCategoryCodeType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeType-ownedComment" body="A data type for a kind of electronic equipment.">
+									<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeType"/>
+								</ownedComment>
+								<generalization xmi:type="uml:Generalization" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeType-generalization" general="_niem-codes-census_commodity-3.0-census_commodity-ElectronicEquipmentCategoryCodeSimpleType"/>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType" name="ElectronicInstrumentCategoryCodeSimpleType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-ownedComment" body="A data type for a kind of electronic instrument.">
+									<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType"/>
+								</ownedComment>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38000" name="38000">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38000-ownedComment" body="Precision Instruments and Apparatus">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38000"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38100" name="38100">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38100-ownedComment" body="Optical elements, instruments, and apparatus">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38100"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38101" name="38101">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38101-ownedComment" body="Eyewear (includes contact lenses and other lenses, goggles, and frames)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38101"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38109" name="38109">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38109-ownedComment" body="Other optical elements, instruments, and apparatus, not elsewhere classified (excludes photographic, cinematographic, and photocopying equipment, see 38210 or 38220)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38109"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38200" name="38200">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38200-ownedComment" body="Photographic and photocopying machines">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38200"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38210" name="38210">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38210-ownedComment" body="Photographic (includes cinematographic cameras, image projectors, enlargers, reducers, and projection screens; negatoscopes, and apparatus and equipment for film developing) (excludes video, and digital cameras, see 35400)  . . . . .">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38210"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38220" name="38220">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38220-ownedComment" body="Photocopying and thermo-copying machines  . . .">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38220"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38300" name="38300">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38300-ownedComment" body="Surveying, hydrographic, oceanographic, hydrological, geophysical, drawing, or length- measuring instruments and appliances, and navigational and meteorological instruments and appliances (excludes radar and other radio-type apparatus)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38300"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38310" name="38310">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38310-ownedComment" body="Navigational instruments and appliances (excludes radar and radio navigational-aid apparatus, see 35700) .">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38310"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38320" name="38320">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38320-ownedComment" body="Surveying, hydrographic, oceanographic, hydrological, meteorological, geophysical, drawing, mathematical calculating and length measuring hand instruments and appliances (excludes radar apparatus, see 35700).">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38320"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38400" name="38400">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38400-ownedComment" body="Instruments and apparatus for medical, dental, veterinary, or similar purposes">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38400"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38410" name="38410">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38410-ownedComment" body="Apparatus based on the use of X-rays oralpha, beta, or gamma radiation">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38410"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38420" name="38420">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38420-ownedComment" body="Electro-medical equipment (excludes pacemakers, see 38491)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38420"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38491" name="38491">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38491-ownedComment" body="Orthopedic appliances; fracture appliances; artificial body parts; and appliances that are worn, carried, or implanted in the body to compensate for a medical condition">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38491"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38492" name="38492">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38492-ownedComment" body="Surgical and medical instruments and apparatus">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38492"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38499" name="38499">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38499-ownedComment" body="Other instruments, apparatus, and appliances for medical, surgical, dental, or veterinary sciences, or for similar purposes, not elsewhere classified (excludes furniture, see 39021; wheelchairs, see 40999; and wadding, bandages, etc., see 21000)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38499"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38500" name="38500">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38500-ownedComment" body="Instruments and apparatus for measuring, checking, testing, or controlling">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38500"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38510" name="38510">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38510-ownedComment" body="Instruments and apparatus for measuring or checking electrical quantities">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38510"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38520" name="38520">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38520-ownedComment" body="Industrial process control instruments">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38520"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38591" name="38591">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38591-ownedComment" body="Instruments and appliances for testing mechanical properties of materials">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38591"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38592" name="38592">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38592-ownedComment" body="Instruments and appliances for measuring or detecting ionizing radiations">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38592"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38593" name="38593">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38593-ownedComment" body="Gas or liquid supply or production meters">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38593"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38599" name="38599">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38599-ownedComment" body="Other instruments and apparatus for measuring, checking, testing, or controlling, not elsewhere classified">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType-38599"/>
+									</ownedComment>
+								</ownedLiteral>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeType" name="ElectronicInstrumentCategoryCodeType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeType-ownedComment" body="A data type for a kind of electronic instrument.">
+									<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeType"/>
+								</ownedComment>
+								<generalization xmi:type="uml:Generalization" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeType-generalization" general="_niem-codes-census_commodity-3.0-census_commodity-ElectronicInstrumentCategoryCodeSimpleType"/>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType" name="MachineryCategoryCodeSimpleType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-ownedComment" body="A data type for a kind of machinery.">
+									<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType"/>
+								</ownedComment>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34000" name="34000">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34000-ownedComment" body="Machinery">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34000"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34100" name="34100">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34100-ownedComment" body="Internal combustion engines">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34100"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34110" name="34110">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34110-ownedComment" body="Spark-ignition reciprocating internal-combustion engines for motor vehicles, of a cylinder capacity exceeding 1000 cc">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34110"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34120" name="34120">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34120-ownedComment" body="Other internal-combustion piston engines (includes compression engines such as diesel and semi-diesel engines)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34120"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34130" name="34130">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34130-ownedComment" body="Parts of internal combustion piston engines (excludes pumps for liquids, see 34310; filters, see 34999; crankshafts and camshafts, see 34972; and bearings, see 3497x)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34130"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34200" name="34200">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34200-ownedComment" body="Turbines, boilers, and other non-electric motors and engines">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34200"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34211" name="34211">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34211-ownedComment" body="Steam, other vapor, or hydraulic turbines">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34211"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34212" name="34212">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34212-ownedComment" body="Turbo-jets, turbo-propellers, and other gas turbines (includes for aircraft)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34212"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34221" name="34221">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34221-ownedComment" body="Boilers, power or heating, and nuclear reactors">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34221"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34222" name="34222">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34222-ownedComment" body="Other non-electric engines and motors, not elsewhere classified (includes fluid power, windmills, spring- or weight-operated engines and motors, and missile and rocket reaction engines)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34222"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34300" name="34300">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34300-ownedComment" body="Pumps, compressors, and fans, and ventilating or recycling hoods incorporating a fan">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34300"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34310" name="34310">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34310-ownedComment" body="Pumps for liquids and liquid elevators (includes fluid power, vehicle, and service station pumps)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34310"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34320" name="34320">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34320-ownedComment" body="Air or vacuum pumps and air or other gas compressors (includes compressors for refrigerating and air conditioning equipment)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34320"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34330" name="34330">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34330-ownedComment" body="Fans (includes blowers) and ventilating or recycling hoods incorporating a fan">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34330"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34400" name="34400">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34400-ownedComment" body="Air-conditioning, refrigerating, or freezing equipment">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34400"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34410" name="34410">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34410-ownedComment" body="Air conditioning equipment (excludes compressors, see 34320, and evaporative air coolers, see 34999)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34410"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34421" name="34421">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34421-ownedComment" body="Household refrigerating or freezing equipment (excludes compressors, see 34320)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34421"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34422" name="34422">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34422-ownedComment" body="Commercial or industrial-type refrigerating or freezing equipment (excludes compressors, see 34320)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34422"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34500" name="34500">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34500-ownedComment" body="Materials-handling, excavating, boring, and related machinery and equipment">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34500"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34511" name="34511">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34511-ownedComment" body="Work trucks and tractors designed for lifting or for short distance transport of goods in factories, warehouses, docks, or airports (excludes trailers, see 36360)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34511"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34519" name="34519">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34519-ownedComment" body="Other lifting, handling, loading, or unloading machinery, not elsewhere classified (excludes cranes for road use, see 36330)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34519"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34520" name="34520">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34520-ownedComment" body="Moving, grading, leveling, scraping, excavating, tamping, compacting, extracting, or boring machinery for earth, minerals, or ores, pile drivers and extractors, and snow ploughs and blowers (excludes motor vehicles for transporting goods, see 36220; tractors, see 36310; special purpose motor vehicles such as mobile drilling derricks, see 36330; parts for the vehicles listed above, see 3640x; powered hand tools, see 34950; and machinery for screening, mixing, etc., and minerals for drying, paving, etc., see 34999)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34520"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34900" name="34900">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34900-ownedComment" body="Other mechanical machinery">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34900"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34910" name="34910">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34910-ownedComment" body="Dish-washing machines, machinery for cleaning or drying bottles or other containers, machinery for aerating beverages, and packing or wrapping machinery">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34910"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34920" name="34920">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34920-ownedComment" body="Agricultural, horticultural, forestry, and poultry or bee-keeping machinery (excludes powered hand tools, see 34950; tractors, see 36310; trailers and wagons, see 36360; and machinery for spraying or drying, see 34999)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34920"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34930" name="34930">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34930-ownedComment" body="Textile manufacturing machines; laundry machines (includes dryers and sewing machines)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34930"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34940" name="34940">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34940-ownedComment" body="Machine-tools for working hard materials (includes metal-working) (excludes other machines for working hard materials, such as woodworking presses; machines for working with metal wire; and machines for use in metallurgy, in foundries, or in metal rolling mills, see 34999 and in semiconductor manufacturing, see 34995)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34940"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34950" name="34950">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34950-ownedComment" body="Powered hand-tools, pneumatic, hydraulic, or with a self-contained electric or non-electric motor (includes tools for lawn or construction use)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34950"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34960" name="34960">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34960-ownedComment" body="Machines and apparatus for soldering, brazing or welding, for surface tempering, or for hot spraying of metals; and wire, rods, electrodes, and similar products for use with such machines and apparatus">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34960"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34971" name="34971">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34971-ownedComment" body="Ball and roller bearings (includes mounted)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34971"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34972" name="34972">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34972-ownedComment" body="Transmission shafts and cranks, clutches, bearing housings and plain shaft bearings, gears and gearing, ball and roller screws, gear boxes and other speed changers, flywheels and pulleys, and shaft couplings (excludes gear motors, see 35110; and roller and similar chain, see 33999)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34972"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34991" name="34991">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34991-ownedComment" body="Machinery for making pulp, paper, or paperboard (includes dryers and calendering machines)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34991"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34992" name="34992">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34992-ownedComment" body="Book-binding, type-founding, type-setting, or printing machinery">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34992"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34993" name="34993">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34993-ownedComment" body="Molding boxes for metal foundry, mold bases, molding patterns, and molds for metal carbides, glass, minerals, rubber, plastics, or metal (excludes ingot molds, see 34999)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34993"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34994" name="34994">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34994-ownedComment" body="Taps, cocks, valves, and similar appliances for pipes, boiler shells, tanks and vats, or the like, (includes those for use in plumbing)">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34994"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34995" name="34995">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34995-ownedComment" body="Semiconductor manufacturing machinery">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34995"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34999" name="34999">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34999-ownedComment" body="Other machinery, not elsewhere classified">
+										<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType-34999"/>
+									</ownedComment>
+								</ownedLiteral>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeType" name="MachineryCategoryCodeType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeType-ownedComment" body="A data type for a kind of machinery.">
+									<annotatedElement xmi:idref="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeType"/>
+								</ownedComment>
+								<generalization xmi:type="uml:Generalization" xmi:id="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeType-generalization" general="_niem-codes-census_commodity-3.0-census_commodity-MachineryCategoryCodeSimpleType"/>
+							</packagedElement>
+						</packagedElement>
+					</packagedElement>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-census_commodity-profileApplication-1">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_PIM_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-census_commodity-profileApplication-2">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-Model_Package_Description_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-census_commodity-profileApplication-3">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_Common_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-census_commodity-profileApplication-4">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_PSM_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+				</packagedElement>
+			</packagedElement>
+		</packagedElement>
+	</uml:Model>
+<NIEM_Common_Profile:PropertyHolder xmi:id="_niem-codes-census_commodity-3.0-census_commodity-NamespaceElementPropertyHolder-appliedStereotypeInstance" base_Class="_niem-codes-census_commodity-3.0-census_commodity-NamespaceElementPropertyHolder"/>
+
+<NIEM_PIM_Profile:InformationModel xmi:id="_niem-codes-census_commodity-3.0-census_commodity-appliedStereotypeInstance" base_Package="_niem-codes-census_commodity-3.0-census_commodity" isConformant="true" version="1" targetNamespace="http://release.niem.gov/niem/codes/census_commodity/3.0/" defaultPurpose="reference"/>
+</xmi:XMI>

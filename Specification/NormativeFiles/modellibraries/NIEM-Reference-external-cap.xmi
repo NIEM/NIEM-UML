@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.omg.org/spec/UML/20131001" xmlns:NIEM_Common_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_Common_Profile" xmlns:NIEM_PSM_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_PSM_Profile" xmlns:NIEM_PIM_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_PIM_Profile">
+
+<uml:Model xmi:type="uml:Model" xmi:id="eee_1045467100313_135436_1" name="Data">
+		<ownedComment xmi:type="uml:Comment" xmi:id="_17_0_5_1_2aa0151_1403382729299_503531_3364" body="Author:tom.&#xA;Created:6/21/14 4:32 PM.&#xA;Title:.&#xA;Comment:.&#xA;">
+			<annotatedElement xmi:idref="eee_1045467100313_135436_1"/>
+		</ownedComment>
+		<packagedElement xmi:type="uml:Package" xmi:id="_niem" name="niem">
+			<packagedElement xmi:type="uml:Package" xmi:id="_niem-external" name="external">
+				
+				<packagedElement xmi:type="uml:Package" xmi:id="_niem-external-cap" name="cap">
+					<packagedElement xmi:type="uml:Package" xmi:id="_niem-external-cap-1.1" name="1.1">
+						<packagedElement xmi:type="uml:Package" xmi:id="_niem-external-cap-1.1-cap" name="cap">
+							
+							<packagedElement xmi:type="uml:Class" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder" name="NamespaceElementPropertyHolder">
+								<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-valueName" name="valueName" aggregation="shared">
+									<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+										
+									</type>
+									<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-valueName-lowerValue"/>
+									<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-valueName-upperValue" value="*"/>
+								</ownedAttribute>
+								<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert" name="alert" aggregation="shared" type="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert-ownedComment" body="CAP Alert Message (version 1.1)">
+										<annotatedElement xmi:idref="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert"/>
+									</ownedComment>
+									<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert-lowerValue"/>
+									<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert-upperValue" value="*"/>
+								</ownedAttribute>
+								<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-value" name="value" aggregation="shared">
+									<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+										
+									</type>
+									<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-value-lowerValue"/>
+									<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-value-upperValue" value="*"/>
+								</ownedAttribute>
+								<nestedClassifier xmi:type="uml:Class" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type" name="alert_._type">
+									<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-identifier" name="identifier" aggregation="shared">
+										<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+											
+										</type>
+										
+										
+									</ownedAttribute>
+									<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-sender" name="sender" aggregation="shared">
+										<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+											
+										</type>
+										
+										
+									</ownedAttribute>
+									<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-sent" name="sent" aggregation="shared">
+										<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-dateTime">
+											
+										</type>
+										
+										
+									</ownedAttribute>
+									<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-status" name="status" aggregation="shared" type="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-status_._type">
+										
+										
+									</ownedAttribute>
+									<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-msgType" name="msgType" aggregation="shared" type="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-msgType_._type">
+										
+										
+									</ownedAttribute>
+									<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-source" name="source" aggregation="shared">
+										<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+											
+										</type>
+										<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-source-lowerValue"/>
+										
+									</ownedAttribute>
+									<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-scope" name="scope" aggregation="shared" type="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-scope_._type">
+										
+										
+									</ownedAttribute>
+									<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-restriction" name="restriction" aggregation="shared">
+										<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+											
+										</type>
+										<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-restriction-lowerValue"/>
+										
+									</ownedAttribute>
+									<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-addresses" name="addresses" aggregation="shared">
+										<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+											
+										</type>
+										<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-addresses-lowerValue"/>
+										
+									</ownedAttribute>
+									<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-code" name="code" aggregation="shared">
+										<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+											
+										</type>
+										<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-code-lowerValue"/>
+										<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-code-upperValue" value="*"/>
+									</ownedAttribute>
+									<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-note" name="note" aggregation="shared">
+										<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+											
+										</type>
+										<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-note-lowerValue"/>
+										
+									</ownedAttribute>
+									<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-references" name="references" aggregation="shared">
+										<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+											
+										</type>
+										<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-references-lowerValue"/>
+										
+									</ownedAttribute>
+									<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-incidents" name="incidents" aggregation="shared">
+										<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+											
+										</type>
+										<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-incidents-lowerValue"/>
+										
+									</ownedAttribute>
+									<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info" name="info" aggregation="shared" type="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type">
+										<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info-lowerValue"/>
+										<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info-upperValue" value="*"/>
+									</ownedAttribute>
+									<nestedClassifier xmi:type="uml:Enumeration" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-status_._type" name="status_._type">
+										<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-status_._type-Actual" name="Actual"/>
+										<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-status_._type-Exercise" name="Exercise"/>
+										<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-status_._type-System" name="System"/>
+										<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-status_._type-Test" name="Test"/>
+										<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-status_._type-Draft" name="Draft"/>
+									</nestedClassifier>
+									<nestedClassifier xmi:type="uml:Enumeration" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-msgType_._type" name="msgType_._type">
+										<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-msgType_._type-Alert" name="Alert"/>
+										<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-msgType_._type-Update" name="Update"/>
+										<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-msgType_._type-Cancel" name="Cancel"/>
+										<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-msgType_._type-Ack" name="Ack"/>
+										<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-msgType_._type-Error" name="Error"/>
+									</nestedClassifier>
+									<nestedClassifier xmi:type="uml:Enumeration" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-scope_._type" name="scope_._type">
+										<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-scope_._type-Public" name="Public"/>
+										<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-scope_._type-Restricted" name="Restricted"/>
+										<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-scope_._type-Private" name="Private"/>
+									</nestedClassifier>
+									<nestedClassifier xmi:type="uml:Class" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type" name="info_._type">
+										<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-language" name="language" aggregation="shared">
+											<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-language">
+												
+											</type>
+											<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-language-lowerValue"/>
+											
+										</ownedAttribute>
+										<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-category" name="category" aggregation="shared" type="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-category_._type">
+											
+											<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-category-upperValue" value="*"/>
+										</ownedAttribute>
+										<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-event" name="event" aggregation="shared">
+											<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+												
+											</type>
+											
+											
+										</ownedAttribute>
+										<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-responseType" name="responseType" aggregation="shared" type="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-responseType_._type">
+											<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-responseType-lowerValue"/>
+											<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-responseType-upperValue" value="*"/>
+										</ownedAttribute>
+										<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-urgency" name="urgency" aggregation="shared" type="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-urgency_._type">
+											
+											
+										</ownedAttribute>
+										<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-severity" name="severity" aggregation="shared" type="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-severity_._type">
+											
+											
+										</ownedAttribute>
+										<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-certainty" name="certainty" aggregation="shared" type="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-certainty_._type">
+											
+											
+										</ownedAttribute>
+										<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-audience" name="audience" aggregation="shared">
+											<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+												
+											</type>
+											<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-audience-lowerValue"/>
+											
+										</ownedAttribute>
+										<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-eventCode" name="eventCode" aggregation="shared" type="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-eventCode_._type">
+											<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-eventCode-lowerValue"/>
+											<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-eventCode-upperValue" value="*"/>
+										</ownedAttribute>
+										<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-effective" name="effective" aggregation="shared">
+											<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-dateTime">
+												
+											</type>
+											<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-effective-lowerValue"/>
+											
+										</ownedAttribute>
+										<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-onset" name="onset" aggregation="shared">
+											<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-dateTime">
+												
+											</type>
+											<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-onset-lowerValue"/>
+											
+										</ownedAttribute>
+										<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-expires" name="expires" aggregation="shared">
+											<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-dateTime">
+												
+											</type>
+											<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-expires-lowerValue"/>
+											
+										</ownedAttribute>
+										<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-senderName" name="senderName" aggregation="shared">
+											<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+												
+											</type>
+											<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-senderName-lowerValue"/>
+											
+										</ownedAttribute>
+										<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-headline" name="headline" aggregation="shared">
+											<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+												
+											</type>
+											<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-headline-lowerValue"/>
+											
+										</ownedAttribute>
+										<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-description" name="description" aggregation="shared">
+											<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+												
+											</type>
+											<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-description-lowerValue"/>
+											
+										</ownedAttribute>
+										<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-instruction" name="instruction" aggregation="shared">
+											<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+												
+											</type>
+											<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-instruction-lowerValue"/>
+											
+										</ownedAttribute>
+										<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-web" name="web" aggregation="shared">
+											<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-anyURI">
+												
+											</type>
+											<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-web-lowerValue"/>
+											
+										</ownedAttribute>
+										<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-contact" name="contact" aggregation="shared">
+											<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+												
+											</type>
+											<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-contact-lowerValue"/>
+											
+										</ownedAttribute>
+										<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-parameter" name="parameter" aggregation="shared" type="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-parameter_._type">
+											<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-parameter-lowerValue"/>
+											<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-parameter-upperValue" value="*"/>
+										</ownedAttribute>
+										<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource" name="resource" aggregation="shared" type="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource_._type">
+											<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource-lowerValue"/>
+											<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource-upperValue" value="*"/>
+										</ownedAttribute>
+										<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area" name="area" aggregation="shared" type="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type">
+											<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area-lowerValue"/>
+											<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area-upperValue" value="*"/>
+										</ownedAttribute>
+										<nestedClassifier xmi:type="uml:Enumeration" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-category_._type" name="category_._type">
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-category_._type-Geo" name="Geo"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-category_._type-Met" name="Met"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-category_._type-Safety" name="Safety"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-category_._type-Security" name="Security"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-category_._type-Rescue" name="Rescue"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-category_._type-Fire" name="Fire"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-category_._type-Health" name="Health"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-category_._type-Env" name="Env"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-category_._type-Transport" name="Transport"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-category_._type-Infra" name="Infra"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-category_._type-CBRNE" name="CBRNE"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-category_._type-Other" name="Other"/>
+										</nestedClassifier>
+										<nestedClassifier xmi:type="uml:Enumeration" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-responseType_._type" name="responseType_._type">
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-responseType_._type-Shelter" name="Shelter"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-responseType_._type-Evacuate" name="Evacuate"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-responseType_._type-Prepare" name="Prepare"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-responseType_._type-Execute" name="Execute"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-responseType_._type-Monitor" name="Monitor"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-responseType_._type-Assess" name="Assess"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-responseType_._type-None" name="None"/>
+										</nestedClassifier>
+										<nestedClassifier xmi:type="uml:Enumeration" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-urgency_._type" name="urgency_._type">
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-urgency_._type-Immediate" name="Immediate"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-urgency_._type-Expected" name="Expected"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-urgency_._type-Future" name="Future"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-urgency_._type-Past" name="Past"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-urgency_._type-Unknown" name="Unknown"/>
+										</nestedClassifier>
+										<nestedClassifier xmi:type="uml:Enumeration" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-severity_._type" name="severity_._type">
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-severity_._type-Extreme" name="Extreme"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-severity_._type-Severe" name="Severe"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-severity_._type-Moderate" name="Moderate"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-severity_._type-Minor" name="Minor"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-severity_._type-Unknown" name="Unknown"/>
+										</nestedClassifier>
+										<nestedClassifier xmi:type="uml:Enumeration" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-certainty_._type" name="certainty_._type">
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-certainty_._type-Observed" name="Observed"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-certainty_._type-Likely" name="Likely"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-certainty_._type-Possible" name="Possible"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-certainty_._type-Unlikely" name="Unlikely"/>
+											<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-certainty_._type-Unknown" name="Unknown"/>
+										</nestedClassifier>
+										<nestedClassifier xmi:type="uml:Class" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-eventCode_._type" name="eventCode_._type">
+											<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-eventCode_._type-valueName" name="valueName" aggregation="shared">
+												<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+													
+												</type>
+												
+												
+											</ownedAttribute>
+											<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-eventCode_._type-value" name="value" aggregation="shared">
+												<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+													
+												</type>
+												
+												
+											</ownedAttribute>
+										</nestedClassifier>
+										<nestedClassifier xmi:type="uml:Class" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-parameter_._type" name="parameter_._type">
+											<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-parameter_._type-valueName" name="valueName" aggregation="shared">
+												<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+													
+												</type>
+												
+												
+											</ownedAttribute>
+											<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-parameter_._type-value" name="value" aggregation="shared">
+												<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+													
+												</type>
+												
+												
+											</ownedAttribute>
+										</nestedClassifier>
+										<nestedClassifier xmi:type="uml:Class" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource_._type" name="resource_._type">
+											<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource_._type-resourceDesc" name="resourceDesc" aggregation="shared">
+												<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+													
+												</type>
+												
+												
+											</ownedAttribute>
+											<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource_._type-mimeType" name="mimeType" aggregation="shared">
+												<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+													
+												</type>
+												<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource_._type-mimeType-lowerValue"/>
+												
+											</ownedAttribute>
+											<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource_._type-size" name="size" aggregation="shared">
+												<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-integer">
+													
+												</type>
+												<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource_._type-size-lowerValue"/>
+												
+											</ownedAttribute>
+											<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource_._type-uri" name="uri" aggregation="shared">
+												<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-anyURI">
+													
+												</type>
+												<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource_._type-uri-lowerValue"/>
+												
+											</ownedAttribute>
+											<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource_._type-derefUri" name="derefUri" aggregation="shared">
+												<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+													
+												</type>
+												<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource_._type-derefUri-lowerValue"/>
+												
+											</ownedAttribute>
+											<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource_._type-digest" name="digest" aggregation="shared">
+												<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+													
+												</type>
+												<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource_._type-digest-lowerValue"/>
+												
+											</ownedAttribute>
+										</nestedClassifier>
+										<nestedClassifier xmi:type="uml:Class" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type" name="area_._type">
+											<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-areaDesc" name="areaDesc" aggregation="shared">
+												<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+													
+												</type>
+												
+												
+											</ownedAttribute>
+											<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-polygon" name="polygon" aggregation="shared">
+												<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+													
+												</type>
+												<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-polygon-lowerValue"/>
+												<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-polygon-upperValue" value="*"/>
+											</ownedAttribute>
+											<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-circle" name="circle" aggregation="shared">
+												<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+													
+												</type>
+												<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-circle-lowerValue"/>
+												<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-circle-upperValue" value="*"/>
+											</ownedAttribute>
+											<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-geocode" name="geocode" aggregation="shared" type="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-geocode_._type">
+												<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-geocode-lowerValue"/>
+												<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-geocode-upperValue" value="*"/>
+											</ownedAttribute>
+											<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-altitude" name="altitude" aggregation="shared">
+												<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+													
+												</type>
+												<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-altitude-lowerValue"/>
+												
+											</ownedAttribute>
+											<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-ceiling" name="ceiling" aggregation="shared">
+												<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+													
+												</type>
+												<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-ceiling-lowerValue"/>
+												
+											</ownedAttribute>
+											<nestedClassifier xmi:type="uml:Class" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-geocode_._type" name="geocode_._type">
+												<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-geocode_._type-valueName" name="valueName" aggregation="shared">
+													<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+														
+													</type>
+													
+													
+												</ownedAttribute>
+												<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-geocode_._type-value" name="value" aggregation="shared">
+													<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+														
+													</type>
+													
+													
+												</ownedAttribute>
+											</nestedClassifier>
+										</nestedClassifier>
+									</nestedClassifier>
+								</nestedClassifier>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Realization" xmi:id="_niem-external-cap-1.1-cap-packagedElement-2">
+								<client xmi:idref="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-status_._type"/>
+								<supplier href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+									
+								</supplier>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Realization" xmi:id="_niem-external-cap-1.1-cap-packagedElement-3">
+								<client xmi:idref="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-msgType_._type"/>
+								<supplier href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+									
+								</supplier>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Realization" xmi:id="_niem-external-cap-1.1-cap-packagedElement-4">
+								<client xmi:idref="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-scope_._type"/>
+								<supplier href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+									
+								</supplier>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Realization" xmi:id="_niem-external-cap-1.1-cap-packagedElement-5">
+								<client xmi:idref="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-category_._type"/>
+								<supplier href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+									
+								</supplier>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Realization" xmi:id="_niem-external-cap-1.1-cap-packagedElement-6">
+								<client xmi:idref="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-responseType_._type"/>
+								<supplier href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+									
+								</supplier>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Realization" xmi:id="_niem-external-cap-1.1-cap-packagedElement-7">
+								<client xmi:idref="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-urgency_._type"/>
+								<supplier href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+									
+								</supplier>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Realization" xmi:id="_niem-external-cap-1.1-cap-packagedElement-8">
+								<client xmi:idref="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-severity_._type"/>
+								<supplier href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+									
+								</supplier>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Realization" xmi:id="_niem-external-cap-1.1-cap-packagedElement-9">
+								<client xmi:idref="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-certainty_._type"/>
+								<supplier href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+									
+								</supplier>
+							</packagedElement>
+						</packagedElement>
+					</packagedElement>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-external-cap-profileApplication-1">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_PIM_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-external-cap-profileApplication-2">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-Model_Package_Description_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-external-cap-profileApplication-3">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_Common_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-external-cap-profileApplication-4">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_PSM_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+				</packagedElement>
+			</packagedElement>
+		</packagedElement>
+	</uml:Model>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-parameter-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-parameter" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource_._type-mimeType-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource_._type-mimeType" nillable="false" kind="element"/>
+<NIEM_Common_Profile:PropertyHolder xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-appliedStereotypeInstance" base_Class="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-altitude-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-altitude" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-scope-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-scope" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-incidents-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-incidents" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-ceiling-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-ceiling" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-parameter_._type-value-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-parameter_._type-value" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-areaDesc-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-areaDesc" nillable="false" kind="element"/>
+<NIEM_Common_Profile:Restriction xmi:id="_niem-external-cap-1.1-cap-packagedElement-2-appliedStereotypeInstance" base_Realization="_niem-external-cap-1.1-cap-packagedElement-2"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-senderName-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-senderName" nillable="false" kind="element"/>
+<NIEM_Common_Profile:Restriction xmi:id="_niem-external-cap-1.1-cap-packagedElement-9-appliedStereotypeInstance" base_Realization="_niem-external-cap-1.1-cap-packagedElement-9"/>
+<NIEM_Common_Profile:Restriction xmi:id="_niem-external-cap-1.1-cap-packagedElement-7-appliedStereotypeInstance" base_Realization="_niem-external-cap-1.1-cap-packagedElement-7"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert" nillable="false" kind="element"/>
+
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-headline-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-headline" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-note-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-note" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-eventCode_._type-valueName-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-eventCode_._type-valueName" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-effective-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-effective" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-parameter_._type-valueName-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-parameter_._type-valueName" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-onset-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-onset" nillable="false" kind="element"/>
+<NIEM_Common_Profile:Restriction xmi:id="_niem-external-cap-1.1-cap-packagedElement-4-appliedStereotypeInstance" base_Realization="_niem-external-cap-1.1-cap-packagedElement-4"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-responseType-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-responseType" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-addresses-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-addresses" nillable="false" kind="element"/>
+<NIEM_Common_Profile:Restriction xmi:id="_niem-external-cap-1.1-cap-packagedElement-6-appliedStereotypeInstance" base_Realization="_niem-external-cap-1.1-cap-packagedElement-6"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-severity-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-severity" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-certainty-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-certainty" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-code-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-code" nillable="false" kind="element"/>
+<NIEM_PIM_Profile:InformationModel xmi:id="_niem-external-cap-1.1-cap-appliedStereotypeInstance" base_Package="_niem-external-cap-1.1-cap" isConformant="false" version="1" targetNamespace="urn:oasis:names:tc:emergency:cap:1.1"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-event-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-event" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-identifier-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-identifier" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-eventCode_._type-value-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-eventCode_._type-value" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-msgType-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-msgType" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-eventCode-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-eventCode" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-restriction-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-restriction" nillable="false" kind="element"/>
+<NIEM_Common_Profile:Restriction xmi:id="_niem-external-cap-1.1-cap-packagedElement-8-appliedStereotypeInstance" base_Realization="_niem-external-cap-1.1-cap-packagedElement-8"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-web-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-web" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource_._type-resourceDesc-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource_._type-resourceDesc" nillable="false" kind="element"/>
+<NIEM_Common_Profile:Restriction xmi:id="_niem-external-cap-1.1-cap-packagedElement-5-appliedStereotypeInstance" base_Realization="_niem-external-cap-1.1-cap-packagedElement-5"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource_._type-uri-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource_._type-uri" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-references-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-references" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-valueName-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-valueName" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-value-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-value" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource_._type-size-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource_._type-size" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-instruction-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-instruction" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-polygon-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-polygon" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-status-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-status" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-geocode-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-geocode" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-source-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-source" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-language-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-language" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-description-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-description" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-geocode_._type-valueName-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-geocode_._type-valueName" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-expires-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-expires" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-circle-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-circle" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource_._type-digest-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource_._type-digest" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-sender-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-sender" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-geocode_._type-value-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-area_._type-geocode_._type-value" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource_._type-derefUri-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-resource_._type-derefUri" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-urgency-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-urgency" nillable="false" kind="element"/>
+<NIEM_Common_Profile:Restriction xmi:id="_niem-external-cap-1.1-cap-packagedElement-3-appliedStereotypeInstance" base_Realization="_niem-external-cap-1.1-cap-packagedElement-3"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-sent-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-sent" nillable="false" kind="element"/>
+
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-audience-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-audience" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-category-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-category" nillable="false" kind="element"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-contact-appliedStereotypeInstance" base_Property="_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type-info_._type-contact" nillable="false" kind="element"/>
+</xmi:XMI>

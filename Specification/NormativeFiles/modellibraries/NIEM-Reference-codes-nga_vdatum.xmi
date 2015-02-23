@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.omg.org/spec/UML/20131001" xmlns:NIEM_Common_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_Common_Profile" xmlns:NIEM_PSM_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_PSM_Profile" xmlns:NIEM_PIM_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_PIM_Profile">
+
+<uml:Model xmi:type="uml:Model" xmi:id="eee_1045467100313_135436_1" name="Data">
+		<ownedComment xmi:type="uml:Comment" xmi:id="_17_0_2_1_2aa0151_1374941191578_344505_2142" body="Author:tom.&#xA;Created:7/27/13 12:06 PM.&#xA;Title:.&#xA;Comment:.&#xA;">
+			<annotatedElement xmi:idref="eee_1045467100313_135436_1"/>
+		</ownedComment>
+		<packagedElement xmi:type="uml:Package" xmi:id="_niem" name="niem">
+			<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes" name="codes">
+				
+				<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes-nga_vdatum" name="nga_vdatum">
+					<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes-nga_vdatum-3.0" name="3.0">
+						<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum" name="nga_vdatum">
+							<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-ownedComment" body="National Geospatial Agency">
+								<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum"/>
+							</ownedComment>
+							
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType" name="VerticalDatumCodeSimpleType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-ownedComment" body="A data type for vertical datum codes.">
+									<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType"/>
+								</ownedComment>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-approxLowestAstronomTide" name="approxLowestAstronomTide">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-approxLowestAstronomTide-ownedComment" body="Approximate Lowest Astronomical Tide: An approximate level, usually within 0.3 metres from that of lowest astronomical tide.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-approxLowestAstronomTide"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-approxMeanLowerLowWater" name="approxMeanLowerLowWater">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-approxMeanLowerLowWater-ownedComment" body="Approximate Mean Lower Low Water: An approximate level, usually within 0.3 metres from that of mean lower low water.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-approxMeanLowerLowWater"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-approxMeanLowWater" name="approxMeanLowWater">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-approxMeanLowWater-ownedComment" body="Approximate Mean Low Water: An approximate level, usually within 0.3 metres from that of mean low water.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-approxMeanLowWater"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-approxMeanLowWaterSprings" name="approxMeanLowWaterSprings">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-approxMeanLowWaterSprings-ownedComment" body="Approximate Mean Low Water Springs: An approximate level, usually within 0.3 metres from that of mean low water springs.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-approxMeanLowWaterSprings"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-approxMeanSeaLevel" name="approxMeanSeaLevel">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-approxMeanSeaLevel-ownedComment" body="Approximate Mean Sea Level: An approximate level, usually within 0.3 metres from that of mean sea level.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-approxMeanSeaLevel"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-east" name="east">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-east-ownedComment" body="East: The geographic half-octant centered on direction of east. [desc] The half-octant extends from 78.75 arc degrees to 101.25 arc degrees.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-east"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-eastNortheast" name="eastNortheast">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-eastNortheast-ownedComment" body="East-northeast: The geographic half-octant centered on the direction of east-northeast. [desc] The half-octant extends from 56.25 arc degrees to 78.75 arc degrees.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-eastNortheast"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-eastSoutheast" name="eastSoutheast">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-eastSoutheast-ownedComment" body="East-southeast: The geographic half-octant centered on the direction of east-southeast. [desc] The half-octant extends from 101.25 arc degrees to 123.75 arc degrees.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-eastSoutheast"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-equinoctialSpringLowWater" name="equinoctialSpringLowWater">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-equinoctialSpringLowWater-ownedComment" body="Equinoctial Spring Low Water: The level of low water springs near the time of an equinox.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-equinoctialSpringLowWater"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-geodetic" name="geodetic">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-geodetic-ownedComment" body="Geodetic: Referenced to the direction of the geographic North Pole.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-geodetic"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-groundLevel" name="groundLevel">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-groundLevel-ownedComment" body="Ground Level: A continuous surface over dry land and non-tidal waters (for example: lakes). [desc] In the case of non-tidal waters it is necessary to specify hydrologic conditions in order to ensure a precise reference surface specification. Over extensive areas it is often defined by a digital elevation model (for example: a matrix of elevation values or a Triangulated Irregular Network (TIN)). Over tidal waters (for example: oceans) it is usually considered to be extended to cover the remainder of the world based on a Mean Sea Level (MSL) surface.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-groundLevel"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-higherHighWater" name="higherHighWater">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-higherHighWater-ownedComment" body="Higher High Water: The highest of the high waters (or single high water) of any specified tidal day due to the declination A1 effects of the moon and sun.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-higherHighWater"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-higherHighWaterLargeTide" name="higherHighWaterLargeTide">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-higherHighWaterLargeTide-ownedComment" body="Higher High Water Large Tide: The average of the highest high waters, one from each of 19 years of observations.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-higherHighWaterLargeTide"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-highestAstronomicalTide" name="highestAstronomicalTide">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-highestAstronomicalTide-ownedComment" body="Highest Astronomical Tide: The highest tidal level, which can be predicted to occur under average meteorological conditions and under any combination of astronomical conditions.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-highestAstronomicalTide"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-highestHighWater" name="highestHighWater">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-highestHighWater-ownedComment" body="Highest High Water: The highest water level observed at a location.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-highestHighWater"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-highWater" name="highWater">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-highWater-ownedComment" body="High Water: The highest level reached at a location by the water surface in one tidal cycle. [desc] When used on inland waters it is generally defined as a level that the daily mean water level exceeds less than 5 percent of the time.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-highWater"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-highWaterSprings" name="highWaterSprings">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-highWaterSprings-ownedComment" body="High Water Springs: An arbitrary level, approximating that of mean high water springs.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-highWaterSprings"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-igld1985" name="igld1985">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-igld1985-ownedComment" body="International Great Lakes Datum 1985: A vertical reference system with its zero based on the mean water level at Rimouski/Pointe-au-Père, Quebec, over the period 1970 to 1988.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-igld1985"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-indianSpringHighWater" name="indianSpringHighWater">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-indianSpringHighWater-ownedComment" body="Indian Spring High Water: A tidal surface datum approximating the level of the mean of the higher high water at spring tides. [desc] This tidal datum approximates the highest water level observed at a location and is usually above that of the higher high water at spring tides.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-indianSpringHighWater"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-indianSpringLowWater" name="indianSpringLowWater">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-indianSpringLowWater-ownedComment" body="Indian Spring Low Water: A tidal surface datum approximating the level of the mean of the lower low water at spring tides. [desc] This tidal datum approximates the lowest water level observed at a location and is usually below that of the lower low water at spring tides.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-indianSpringLowWater"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-lowerLowWater" name="lowerLowWater">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-lowerLowWater-ownedComment" body="Lower Low Water: The lowest of the low waters (or single low water) of any specified tidal day due to the declination A1 effects of the moon and sun.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-lowerLowWater"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-lowerLowWaterLargeTide" name="lowerLowWaterLargeTide">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-lowerLowWaterLargeTide-ownedComment" body="Lower Low Water Large Tide: The average of the lowest low waters, one from each of 19 years of observations.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-lowerLowWaterLargeTide"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-lowestAstronomicalTide" name="lowestAstronomicalTide">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-lowestAstronomicalTide-ownedComment" body="Lowest Astronomical Tide: The lowest tide level that can be predicted to occur under average meteorological conditions and under any combination of astronomical conditions.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-lowestAstronomicalTide"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-lowestLowWater" name="lowestLowWater">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-lowestLowWater-ownedComment" body="Lowest Low Water: An arbitrary level conforming to the lowest tide observed at a location, or somewhat lower.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-lowestLowWater"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-lowestLowWaterSprings" name="lowestLowWaterSprings">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-lowestLowWaterSprings-ownedComment" body="Lowest Low Water Springs: An arbitrary level conforming to the lowest water level observed at a location at spring tides during a period shorter than 19 years.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-lowestLowWaterSprings"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-lowWater" name="lowWater">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-lowWater-ownedComment" body="Low Water: An approximation of mean low water adopted as the reference level for a limited region, irrespective of better determinations later. [desc] Used mostly in harbour and river engineering. Used in inland waters. It is generally defined as a level which the daily mean water level would fall below less than 5 percent of the time and by no more than 0.2 metres during the navigation season. A single level surface is usually chosen as the low water datum for a whole lake. On a river, low water datum is a sloping surface, which approximates the surface of the river at a low state.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-lowWater"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-lowWaterSprings" name="lowWaterSprings">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-lowWaterSprings-ownedComment" body="Low Water Springs: A level approximating that of mean low water springs.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-lowWaterSprings"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-magnetic" name="magnetic">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-magnetic-ownedComment" body="Magnetic: Referenced to the direction of the magnetic North Pole.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-magnetic"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanHigherHighWater" name="meanHigherHighWater">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanHigherHighWater-ownedComment" body="Mean Higher High Water: The average height of higher high waters at a location over a 19-year period.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanHigherHighWater"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanHigherHighWaterSprings" name="meanHigherHighWaterSprings">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanHigherHighWaterSprings-ownedComment" body="Mean Higher High Water Springs: The average height of higher high water at spring tides at a location.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanHigherHighWaterSprings"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanHighWater" name="meanHighWater">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanHighWater-ownedComment" body="Mean High Water: The average height of all high waters at a location over a 19-year period.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanHighWater"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanHighWaterNeaps" name="meanHighWaterNeaps">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanHighWaterNeaps-ownedComment" body="Mean High Water Neaps: The average height of the high waters of the neap tide.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanHighWaterNeaps"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanHighWaterSprings" name="meanHighWaterSprings">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanHighWaterSprings-ownedComment" body="Mean High Water Springs: The average height of the high waters of spring tides.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanHighWaterSprings"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanLowerLowWater" name="meanLowerLowWater">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanLowerLowWater-ownedComment" body="Mean Lower Low Water: The average height of the lower low waters at a location over a 19-year period.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanLowerLowWater"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanLowerLowWaterSprings" name="meanLowerLowWaterSprings">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanLowerLowWaterSprings-ownedComment" body="Mean Lower Low Water Springs: The average height of lower low water at spring tides at a location.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanLowerLowWaterSprings"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanLowWater" name="meanLowWater">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanLowWater-ownedComment" body="Mean Low Water: The average height of all low waters at a location over a 19-year period.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanLowWater"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanLowWaterNeaps" name="meanLowWaterNeaps">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanLowWaterNeaps-ownedComment" body="Mean Low Water Neaps: The average height of the low waters of the neap tide.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanLowWaterNeaps"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanLowWaterSprings" name="meanLowWaterSprings">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanLowWaterSprings-ownedComment" body="Mean Low Water Springs: The average height of the low waters of spring tides.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanLowWaterSprings"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanSeaLevel" name="meanSeaLevel">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanSeaLevel-ownedComment" body="Mean Sea Level (MSL): A continuous surface over the oceans (or its hypothetical extension under the land masses) defined by the mean of sea level surfaces approximated and observed over 19 years.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanSeaLevel"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanTideLevel" name="meanTideLevel">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanTideLevel-ownedComment" body="Mean Tide Level: The arithmetic mean of mean high water and mean low water.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanTideLevel"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanWaterLevel" name="meanWaterLevel">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanWaterLevel-ownedComment" body="Mean Water Level: The average of all hourly water levels over the available period of record.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-meanWaterLevel"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-militaryGrid" name="militaryGrid">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-militaryGrid-ownedComment" body="Military Grid: Referenced to the direction of &#34;north&#34; in a military grid established by a suitable map-projection, for example Universal Transverse Mercator (UTM).">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-militaryGrid"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-navd88" name="navd88">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-navd88-ownedComment" body="North American Vertical Datum (NAVD) 1988: A fixed reference for elevations derived from a general adjustment of the first-order terrestrial levelling nets of the United States, Canada, and Mexico. [desc] In the adjustment, only the height of the primary tidal bench mark, referenced to the International Great Lakes Datum of 1985 local mean sea level height value, at Pointe-au-Pere, Quebec, on the Gulf of St. Lawrence was held fixed, thus providing minimum constraint.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-navd88"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-neapTide" name="neapTide">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-neapTide-ownedComment" body="Neap Tide: A tide of decreased range (or tidal currents of decreased speed) occurring semi-monthly as the result of the moon being in quadrature. [desc] The neap range of the tide is the average range occurring at the time of neap tides and is most conveniently computed from the harmonic constants. It is smaller than the mean range where the type of tide is either semi-diurnal or mixed and is of no practical significance where the type of tide is predominantly diurnal.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-neapTide"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-nearlyHighestHighWater" name="nearlyHighestHighWater">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-nearlyHighestHighWater-ownedComment" body="Nearly Highest High Water: An arbitrary level approximating the highest water level observed at a location, usually equivalent to the high water springs.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-nearlyHighestHighWater"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-nearlyLowestLowWater" name="nearlyLowestLowWater">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-nearlyLowestLowWater-ownedComment" body="Nearly Lowest Low Water: A level approximating the lowest water level observed at a location, usually equivalent to Indian spring low water.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-nearlyLowestLowWater"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-ngvd29" name="ngvd29">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-ngvd29-ownedComment" body="National Geodetic Vertical Datum (NGVD) 1929: A fixed reference for elevations derived from a general adjustment in 1929 of the first-order leveling nets of both the United States and Canada. [desc] In the adjustment, mean sea level was held fixed as observed at 21 tide stations in the United States and 5 in Canada.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-ngvd29"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-noInformation" name="noInformation">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-noInformation-ownedComment" body="No Information: There is no information specified regarding the attribute value. [desc] Depending on the nature and quality of available information, the state of the data collection/update process, and other conditions, it may not be possible to populate a value due to lack of knowledge.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-noInformation"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-north" name="north">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-north-ownedComment" body="North: The geographic half-octant centered on the direction of north [desc] The half-octant extends from 348.75 (-11.25) arc degrees to 11.25 arc degrees.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-north"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-northeast" name="northeast">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-northeast-ownedComment" body="Northeast: The geographic half-octant centered on the direction of northeast. [desc] The half-octant extends from 33.75 arc degrees to 56.25 arc degrees.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-northeast"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-northNortheast" name="northNortheast">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-northNortheast-ownedComment" body="North-northeast: The geographic half-octant centered on the direction of north-northeast. [desc] The half-octant extends from 11.25 arc degrees to 33.75 arc degrees.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-northNortheast"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-northNorthwest" name="northNorthwest">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-northNorthwest-ownedComment" body="North-northwest: The geographic half-octant centered on the direction of north-northwest. [desc] The half-octant extends from 326.25 arc degrees to 348.75 arc degrees.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-northNorthwest"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-northWest" name="northWest">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-northWest-ownedComment" body="Northwest: The geographic half-octant centered on the direction of northwest. [desc] The half-octant extends from 303.75 arc degrees to 326.25 arc degrees.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-northWest"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-relative" name="relative">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-relative-ownedComment" body="Relative; Referenced to a direction established by the context of use (for example: the heading of a vessel).">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-relative"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-south" name="south">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-south-ownedComment" body="South: The geographic half-octant centered on the direction of south. [desc] The half-octant extends from 168.75 arc degrees to 191.25 arc degrees.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-south"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-southeast" name="southeast">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-southeast-ownedComment" body="Southeast: The geographic half-octant centered on the direction of southeast. [desc] The half-octant extends from 123.75 arc degrees to 146.25 arc degrees.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-southeast"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-southSoutheast" name="southSoutheast">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-southSoutheast-ownedComment" body="South-southeast: The geographic half-octant centered on the direction of south-southeast. [desc] The half-octant extends from 146.25 arc degrees to 168.75 arc degrees.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-southSoutheast"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-southSouthwest" name="southSouthwest">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-southSouthwest-ownedComment" body="South-southwest: The geographic half-octant centered on the direction of south-southwest [desc] The half-octant extends from 191.25 arc degrees to 213.75 arc degrees.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-southSouthwest"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-southwest" name="southwest">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-southwest-ownedComment" body="Southwest: The geographic half-octant centered on the direction of southwest [desc] The half-octant extends from 213.75 arc degrees to 236.25 arc degrees.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-southwest"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-springTide" name="springTide">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-springTide-ownedComment" body="Spring Tide: A tide of increased range (or tidal water currents of increased speed) occurring semi-monthly as the result of the moon being new or full. [desc] The spring range of tide is the average range occurring at the time of spring tides and is most conveniently computed from the harmonic constants. It is larger than the mean range where the type of tide is either semi-diurnal or mixed, and is of no practical significance where the type of tide is predominantly diurnal.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-springTide"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-waterLevel" name="waterLevel">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-waterLevel-ownedComment" body="Water Level: A locally observed level of the water surface. [desc] In the case of non-tidal waters (for example: lakes or rivers) it is necessary to specify hydrologic conditions in order to ensure a precise reference surface specification. Over tidal waters (for example: oceans) it is necessary to specify tidal conditions in order to ensure a precise reference surface specification.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-waterLevel"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-west" name="west">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-west-ownedComment" body="West: The geographic half-octant centered on the direction of west. [desc] The half-octant extends from 258.75 arc degrees to 281.25 arc degrees.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-west"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-westNorthwest" name="westNorthwest">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-westNorthwest-ownedComment" body="West-northwest: The geographic half-octant centered on the direction of west-northwest. [desc] The half-octant extends from 281.25 arc degrees to 303.75 arc degrees.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-westNorthwest"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-westSouthwest" name="westSouthwest">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-westSouthwest-ownedComment" body="West-southwest: The geographic half-octant centered on the direction of west-southwest [desc] The half-octant extends from 236.25 arc degrees to 258.75 arc degrees.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-westSouthwest"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-wgs84Egm08Geoid" name="wgs84Egm08Geoid">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-wgs84Egm08Geoid-ownedComment" body="WGS 84 EGM08 Geoid: The geopotential surface defined by the World Geodetic System (WGS) 1984 EGM08 Earth Gravity Model that is closely associated with the mean ocean surface.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-wgs84Egm08Geoid"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-wgs84Egm96Geoid" name="wgs84Egm96Geoid">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-wgs84Egm96Geoid-ownedComment" body="WGS 84 EGM96 Geoid: The geopotential surface defined by the World Geodetic System (WGS) 1984 EGM96 Earth Gravity Model that is closely associated with the mean ocean surface.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-wgs84Egm96Geoid"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-wgs84Ellipsoid" name="wgs84Ellipsoid">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-wgs84Ellipsoid-ownedComment" body="WGS 84 Ellipsoid: The oblate ellipsoidal figure of the Earth defined by the World Geodetic System (WGS) 1984.">
+										<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType-wgs84Ellipsoid"/>
+									</ownedComment>
+								</ownedLiteral>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Class" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-NamespaceElementPropertyHolder" name="NamespaceElementPropertyHolder"/>
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeType" name="VerticalDatumCodeType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeType-ownedComment" body="A data type for vertical datum codes.">
+									<annotatedElement xmi:idref="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeType"/>
+								</ownedComment>
+								<generalization xmi:type="uml:Generalization" xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeType-generalization" general="_niem-codes-nga_vdatum-3.0-nga_vdatum-VerticalDatumCodeSimpleType"/>
+							</packagedElement>
+						</packagedElement>
+					</packagedElement>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-nga_vdatum-profileApplication-1">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_PIM_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-nga_vdatum-profileApplication-2">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-Model_Package_Description_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-nga_vdatum-profileApplication-3">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_Common_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-nga_vdatum-profileApplication-4">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_PSM_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+				</packagedElement>
+			</packagedElement>
+		</packagedElement>
+	</uml:Model>
+<NIEM_Common_Profile:PropertyHolder xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-NamespaceElementPropertyHolder-appliedStereotypeInstance" base_Class="_niem-codes-nga_vdatum-3.0-nga_vdatum-NamespaceElementPropertyHolder"/>
+
+<NIEM_PIM_Profile:InformationModel xmi:id="_niem-codes-nga_vdatum-3.0-nga_vdatum-appliedStereotypeInstance" base_Package="_niem-codes-nga_vdatum-3.0-nga_vdatum" defaultPurpose="reference" version="beta1" isConformant="true" targetNamespace="http://release.niem.gov/niem/codes/nga_vdatum/3.0/"/>
+</xmi:XMI>

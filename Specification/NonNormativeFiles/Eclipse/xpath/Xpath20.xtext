@@ -1,0 +1,158 @@
+grammar org.w3.Xpath20 with org.eclipse.xtext.common.Terminals
+hidden(WS, COMMENT)
+generate xpath20 "http://www.w3.org/Xpath20"
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+
+XPath 	   :    	expressions=Expr;
+	
+IntegerLiteral 	   :    	value=INT;
+terminal DECIMAL 	   returns ecore::EBigDecimal:    	("."  ('0'..'9')+) | (('0'..'9')+ "." ('0'..'9')*); 
+terminal DOUBLE 	   returns ecore::EDouble:    	(("."  ('0'..'9')+) | (('0'..'9')+ "." ('0'..'9')*))('e'|'E')('+'|'-')('0'..'9')+; 
+ DecimalLiteral 	   : value=DECIMAL; 	
+ DoubleLiteral 	   :    value=DOUBLE;
+ StringLiteral 	   :    value=	STRING; 	/* ws: explicit */
+terminal COMMENT 	   :    	"(:" -> ":)"; 	/* ws: explicit */
+				/* gn: comments */
+QName	   :   	PrefixedName
+			| UnprefixedName;
+PrefixedName	   :   	(prefix=Prefix) ':' (localPart=LocalPart);
+UnprefixedName	   :   	localPart=LocalPart;
+Prefix	   :   	NCNAME;
+LocalPart	   :   	NCNAME;
+terminal NCNAME : 
+  ('a'..'z'|'A'..'Z'|'_')('a'..'z'|'A'..'Z'|'_'|'-'|'.'|'0'..'9')*;
+		
+
+	
+Expr 	   :    	expression+=ExprSingle ("," expression+=ExprSingle)*;
+ExprSingle 	   :    	ForExpr
+| QuantifiedExpr
+| IfExpr
+| OrExpr;
+	
+ForExpr 	   :    	for=SimpleForClause "return" return=ExprSingle;
+
+SimpleForClause 	   :    	
+	"for" "$" variable+=VarName "in" 
+	expression+=ExprSingle ("," "$" variable+=VarName "in" expression+=ExprSingle)*;
+VarName 	   :    	QName;
+QuantifiedExpr 	   :    quantifier=	("some" | "every") "$" 
+	variable+=VarName "in" expression+=ExprSingle ("," "$" variable+=VarName "in" expression+=ExprSingle)* 
+	"satisfies" satisfies=ExprSingle;
+	
+IfExpr 	   :    	"if" "(" if=Expr ")" "then" then=ExprSingle "else" else=ExprSingle;
+OrExpr 	   :    	or+=AndExpr ( "or" or+=AndExpr )*;
+
+AndExpr 	   :    	and+=ComparisonExpr ( "and" and+=ComparisonExpr )*;
+ComparisonExpr 	   :    	operand1=RangeExpr ( (value=ValueComp)
+	| (general=GeneralComp)
+	| (node=NodeComp) range=RangeExpr )?;
+RangeExpr 	   :    	range=AdditiveExpr ( "to" to=AdditiveExpr )?;
+enum IntersectExcept 	   :  intersect | except;
+enum Union 	   :  union | or="|";
+enum Additive 	   :  plus="+" | minus="-";
+enum GeneralComp 	   :  eq="=" | ne="!=" | lt="<" | le="<=" | gt=">" | ge=">=";
+enum ValueComp 	   :  eq | ne | lt | le| gt | ge;
+enum NodeComp 	   :  is | left="<<" | right=">>";
+AdditiveExpr 	   :    	add+=MultiplicativeExpr ( operator+=Additive add+=MultiplicativeExpr )*;
+MultiplicativeExpr 	   :    	multiply+=UnionExpr ( operator+=Multiplicative multiply+=UnionExpr )*;
+UnionExpr 	   :    	union+=IntersectExceptExpr ( operator+=Union union+=IntersectExceptExpr )*;
+IntersectExceptExpr 	   :    	intersect+=InstanceofExpr ( operator+=IntersectExcept intersect+=InstanceofExpr )*;
+InstanceofExpr 	   :    	treat=TreatExpr ( "instance" "of" instanceOf=SequenceType )?;
+TreatExpr 	   :    	castable=CastableExpr ( "treat" "as" treatAs=SequenceType )?;
+SequenceType 	   : {SequenceType}(   	("empty-sequence" "(" ")")
+	| (type=ItemType (occurrence=OccurrenceIndicator)?));
+ItemType 	   :   {ItemType} 	((kindTest=KindTest) | ("item" "(" ")") | (atomicType=AtomicType));
+AtomicType 	   :    	QName;
+
+CastableExpr 	   :    	cast=CastExpr ( "castable" "as" castableAs=SingleType )?;
+CastExpr 	   :    	cast=UnaryExpr ( "cast" "as" castAs=SingleType )?;
+
+ValueExpr 	   :    	path=PathExpr;
+SingleType 	   :    	type=AtomicType (question?="?")?;
+
+RelativePathExpr 	   :    	step+=StepExpr (separator+=Separator step+=StepExpr)*;
+enum Separator:double="//"|single="/";
+PredicateList 	   :   {PredicateList} 	(predicate+=Predicate)*;
+Predicate 	   :    	"[" predicate=Expr "]";
+ReverseStep 	   :    	(axis=ReverseAxis test=NodeTest) | (abbrev=AbbrevReverseStep);
+ReverseAxis 	   :    axis=ReverseAxisEnum "::";
+AbbrevReverseStep 	   :    	"..";
+NodeTest 	   :    	KindTest | NameTest;
+NameTest 	   :    	QName | Wildcard;
+enum ReverseAxisEnum :parent|ancestor|precedingSibling="preceding-sibling"|preceding|ancestorOrSelf="ancestor-or-self";	
+ForwardStep 	   :    	(axis=ForwardAxis test=NodeTest) | (abbrev=AbbrevForwardStep);
+ForwardAxis 	   :    	axis=ForwardAxisEnum '::';
+AbbrevForwardStep 	   :    	(at?="@")? test=NodeTest;
+
+Literal 	   :    	NumericLiteral | StringLiteral;
+NumericLiteral 	   :    	IntegerLiteral | DecimalLiteral | DoubleLiteral;
+VarRef 	   :    	"$" var=VarName;
+ParenthesizedExpr 	   :  {ParenthesizedExpr}  	"(" (expression=Expr)? ")";
+ContextItemExpr 	   :    {ContextItemExpr}	".";
+FunctionCall 	   :    	function=QName "(" (parameter+=ExprSingle ("," parameter+=ExprSingle)*)? ")" ;	
+
+KindTest 	   :    	DocumentTest
+| ElementTest
+| AttributeTest
+| SchemaElementTest
+| SchemaAttributeTest
+| PITest
+| CommentTest
+| TextTest
+| AnyKindTest;
+ElementDeclaration 	   :    	ElementName;
+AttributeName 	   :    	QName;
+ElementName 	   :    	QName;
+TypeName 	   :    	QName;
+ 	
+				
+AnyKindTest 	   :    	{AnyKindTest}("node" "(" ")");
+DocumentTest 	   :   {DocumentTest}( 	"document-node" "(" ((elementTest=ElementTest) | (schemaElementTest=SchemaElementTest))? ")");
+TextTest 	   :    	{TextTest}("text" "(" ")");
+CommentTest 	   :    	{CommentTest}("comment" "(" ")");
+PITest 	   :  {PITest}(  	"processing-instruction" "(" ((name=NCNAME) | (string=StringLiteral))? ")");
+SchemaAttributeTest 	   :    	"schema-attribute" "(" attributeDeclaration=AttributeDeclaration ")";
+AttributeDeclaration 	   :    	AttributeName;
+SchemaElementTest 	   :    	"schema-element" "(" elementDeclaration=ElementDeclaration ")";
+
+///////////////////////////////expressions with problems
+UnaryExpr 	   :    	 
+		// operator+=Additive*  // does not parse
+			unary=ValueExpr
+;
+Wildcard 	   :  
+	(prefix=NCNAME ":" "*")
+//	| ("*" ":" localName=NCNAME)
+	|(any="*")  // not parsing this 
+	;
+// following misinterprets use of "element"		
+ElementTest 	   :  {ElementTest}(  	"elementx" "(" (elementNameOrWildcard=ElementNameOrWildcard ("," typeName=TypeName (question?="?")?)?)? ")");
+// following misinterprets use of "attribute"		
+AttributeTest 	   :  {AttributeTest}(  	"attributex" "(" (attributeNameOrWildcard=AttribNameOrWildcard ("," typeName=TypeName)?)? ")");
+//enum ForwardAxisEnum :child|descendant|attribute|self|descendantOrSelf="descendant-or-self"|followingSibling="following-sibling"|following|namespace;	
+enum ForwardAxisEnum :child|descendant|attributex|self|descendantOrSelf="descendant-or-self"|followingSibling="following-sibling"|following|namespace;	
+AxisStep 	   :    	((reverseStep=ReverseStep) | (forwardStep=ForwardStep)) (predicate+=Predicate)*;
+
+
+//StepExpr 	   :    	FilterExpr | AxisStep;
+StepExpr 	   :    	 AxisStep;// ambiguous '/' vs '//'
+FilterExpr 	   :    	filter=PrimaryExpr (predicate+=Predicate)*;
+
+PathExpr 	   :    	
+	(separator="/" (relativePath=RelativePathExpr)?)
+	| (separator="//" relativePath=RelativePathExpr)
+	| 
+	(relativePath=RelativePathExpr);
+//AttribNameOrWildcard 	   :   {AttribNameOrWildcard}( 	(attributeName=AttributeName) | "*");
+//ElementNameOrWildcard 	   :  {ElementNameOrWildcard}(  	(elementName=ElementName) | "*");
+//enum OccurrenceIndicator 	   : optional="?" |many= "*" | oneOrMore="+"; 	
+//enum Multiplicative 	   :  multiply="*" | div | idiv | mod;
+AttribNameOrWildcard 	   :   {AttribNameOrWildcard}( 	(attributeName=AttributeName));
+ElementNameOrWildcard 	   :  {ElementNameOrWildcard}(  	(elementName=ElementName));
+enum OccurrenceIndicator 	   : optional="?" | oneOrMore="+"; 	
+enum Multiplicative 	   :   div | idiv | mod;
+PrimaryExpr 	   :    	Literal | VarRef | ParenthesizedExpr | ContextItemExpr | FunctionCall;
+//PrimaryExpr 	   :    	 FunctionCall;
+	

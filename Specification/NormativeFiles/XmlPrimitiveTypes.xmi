@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.omg.org/spec/UML/20131001" xmlns:NIEM_Common_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_Common_Profile" xmlns:NIEM_PSM_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_PSM_Profile" xmlns:NIEM_PIM_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_PIM_Profile">
+
+<uml:Model xmi:type="uml:Model" xmi:id="_0" name="Data">
+		
+		<packagedElement xmi:type="uml:Model" xmi:id="XMLPrimitiveTypes" name="XMLPrimitiveTypes">
+			
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-duration" name="duration">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-duration-generalization" general="XMLPrimitiveTypes-anyAtomicType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-dayTimeDuration" name="dayTimeDuration">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-dayTimeDuration-generalization" general="XMLPrimitiveTypes-duration"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-byte" name="byte">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-byte-generalization" general="XMLPrimitiveTypes-short"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-gMonth" name="gMonth">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-gMonth-generalization" general="XMLPrimitiveTypes-anyAtomicType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-anySimpleType" name="anySimpleType"/>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-anyAtomicType" name="anyAtomicType">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-anyAtomicType-generalization" general="XMLPrimitiveTypes-anySimpleType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-gYearMonth" name="gYearMonth">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-gYearMonth-generalization" general="XMLPrimitiveTypes-anyAtomicType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-dateTimeStamp" name="dateTimeStamp">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-dateTimeStamp-generalization" general="XMLPrimitiveTypes-dateTime"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-ENTITIES" name="ENTITIES">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-ENTITIES-generalization" general="XMLPrimitiveTypes-ENTITIESBase"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-ID" name="ID">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-ID-generalization" general="XMLPrimitiveTypes-NCName"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-NMTOKENS" name="NMTOKENS">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-NMTOKENS-generalization" general="XMLPrimitiveTypes-NMTOKENSBase"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-unsignedLong" name="unsignedLong">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-unsignedLong-generalization" general="XMLPrimitiveTypes-nonNegativeInteger"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-nonNegativeInteger" name="nonNegativeInteger">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-nonNegativeInteger-generalization" general="XMLPrimitiveTypes-integer"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-hexBinary" name="hexBinary">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-hexBinary-generalization" general="XMLPrimitiveTypes-anyAtomicType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-negativeInteger" name="negativeInteger">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-negativeInteger-generalization" general="XMLPrimitiveTypes-nonPositiveInteger"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-NCName" name="NCName">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-NCName-generalization" general="XMLPrimitiveTypes-Name"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-ENTITIESBase" name="ENTITIESBase">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-ENTITIESBase-generalization" general="XMLPrimitiveTypes-anySimpleType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-normalizedString" name="normalizedString">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-normalizedString-generalization" general="XMLPrimitiveTypes-string"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-NMTOKEN" name="NMTOKEN">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-NMTOKEN-generalization" general="XMLPrimitiveTypes-token"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-language" name="language">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-language-generalization" general="XMLPrimitiveTypes-token"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-time" name="time">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-time-generalization" general="XMLPrimitiveTypes-anySimpleType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-IDREFS" name="IDREFS">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-IDREFS-generalization" general="XMLPrimitiveTypes-IDREFSBase"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-IDREF" name="IDREF">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-IDREF-generalization" general="XMLPrimitiveTypes-NCName"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-date" name="date">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-date-generalization" general="XMLPrimitiveTypes-anyAtomicType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-string" name="string">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-string-generalization" general="XMLPrimitiveTypes-anyAtomicType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-gDay" name="gDay">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-gDay-generalization" general="XMLPrimitiveTypes-anyAtomicType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-boolean" name="boolean">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-boolean-generalization" general="XMLPrimitiveTypes-anyAtomicType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-NOTATION" name="NOTATION">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-NOTATION-generalization" general="XMLPrimitiveTypes-anyAtomicType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-integer" name="integer">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-integer-generalization" general="XMLPrimitiveTypes-decimal"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-QName" name="QName">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-QName-generalization" general="XMLPrimitiveTypes-anyAtomicType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-unsignedShort" name="unsignedShort">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-unsignedShort-generalization" general="XMLPrimitiveTypes-unsignedInt"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-Name" name="Name">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-Name-generalization" general="XMLPrimitiveTypes-token"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-unsignedByte" name="unsignedByte">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-unsignedByte-generalization" general="XMLPrimitiveTypes-unsignedShort"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-yearMonthDuration" name="yearMonthDuration">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-yearMonthDuration-generalization" general="XMLPrimitiveTypes-duration"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-decimal" name="decimal">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-decimal-generalization" general="XMLPrimitiveTypes-anyAtomicType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-gMonthDay" name="gMonthDay">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-gMonthDay-generalization" general="XMLPrimitiveTypes-anyAtomicType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-dateTime" name="dateTime">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-dateTime-generalization" general="XMLPrimitiveTypes-anyAtomicType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-base64Binary" name="base64Binary">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-base64Binary-generalization" general="XMLPrimitiveTypes-anyAtomicType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-IDREFSBase" name="IDREFSBase">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-IDREFSBase-generalization" general="XMLPrimitiveTypes-anySimpleType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-long" name="long">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-long-generalization" general="XMLPrimitiveTypes-integer"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-float" name="float">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-float-generalization" general="XMLPrimitiveTypes-anyAtomicType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-unsignedInt" name="unsignedInt">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-unsignedInt-generalization" general="XMLPrimitiveTypes-unsignedLong"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-nonPositiveInteger" name="nonPositiveInteger">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-nonPositiveInteger-generalization" general="XMLPrimitiveTypes-integer"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-token" name="token">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-token-generalization" general="XMLPrimitiveTypes-normalizedString"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-ENTITY" name="ENTITY">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-ENTITY-generalization" general="XMLPrimitiveTypes-NCName"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-NMTOKENSBase" name="NMTOKENSBase">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-NMTOKENSBase-generalization" general="XMLPrimitiveTypes-anySimpleType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-gYear" name="gYear">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-gYear-generalization" general="XMLPrimitiveTypes-anyAtomicType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-positiveInteger" name="positiveInteger">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-positiveInteger-generalization" general="XMLPrimitiveTypes-nonNegativeInteger"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-longObject" name="longObject">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-longObject-generalization" general="XMLPrimitiveTypes-long"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-short" name="short">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-short-generalization" general="XMLPrimitiveTypes-int"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-int" name="int">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-int-generalization" general="XMLPrimitiveTypes-long"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-double" name="double">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-double-generalization" general="XMLPrimitiveTypes-anyAtomicType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-anyURI" name="anyURI">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-anyURI-generalization" general="XMLPrimitiveTypes-anyAtomicType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-PositiveIntegerListType" name="PositiveIntegerListType">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-PositiveIntegerListType-generalization" general="XMLPrimitiveTypes-PositiveIntegerListSimpleType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-PositiveIntegerListSimpleType" name="PositiveIntegerListSimpleType">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="XMLPrimitiveTypes-PositiveIntegerListSimpleType-itemType" name="itemType" visibility="private" type="XMLPrimitiveTypes-positiveInteger"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-DecimalListType" name="DecimalListType">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-DecimalListType-generalization" general="XMLPrimitiveTypes-DecimalListSimpleType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-DecimalListSimpleType" name="DecimalListSimpleType">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="XMLPrimitiveTypes-DecimalListSimpleType-itemType" name="itemType" visibility="private" type="XMLPrimitiveTypes-decimal"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-IntegerListType" name="IntegerListType">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-IntegerListType-generalization" general="XMLPrimitiveTypes-IntegerListSimpleType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-IntegerListSimpleType" name="IntegerListSimpleType">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="XMLPrimitiveTypes-IntegerListSimpleType-itemType" name="itemType" visibility="private" type="XMLPrimitiveTypes-integer"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-DoubleListType" name="DoubleListType">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-DoubleListType-generalization" general="XMLPrimitiveTypes-DoubleListSimpleType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-DoubleListSimpleType" name="DoubleListSimpleType">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="XMLPrimitiveTypes-DoubleListSimpleType-itemType" name="itemType" visibility="private" type="XMLPrimitiveTypes-double"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-TokenListType" name="TokenListType">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-TokenListType-generalization" general="XMLPrimitiveTypes-TokenListSimpleType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-TokenListSimpleType" name="TokenListSimpleType">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="XMLPrimitiveTypes-TokenListSimpleType-itemType" name="itemType" visibility="private" type="XMLPrimitiveTypes-token"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-NonNegativeIntegerListType" name="NonNegativeIntegerListType">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-NonNegativeIntegerListType-generalization" general="XMLPrimitiveTypes-NonNegativeIntegerListSimpleType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-NonNegativeIntegerListSimpleType" name="NonNegativeIntegerListSimpleType">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="XMLPrimitiveTypes-NonNegativeIntegerListSimpleType-itemType" name="itemType" visibility="private" type="XMLPrimitiveTypes-nonNegativeInteger"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-StringListType" name="StringListType">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-StringListType-generalization" general="XMLPrimitiveTypes-StringListSimpleType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-StringListSimpleType" name="StringListSimpleType">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="XMLPrimitiveTypes-StringListSimpleType-itemType" name="itemType" visibility="private" type="XMLPrimitiveTypes-string"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-BooleanListType" name="BooleanListType">
+				<generalization xmi:type="uml:Generalization" xmi:id="XMLPrimitiveTypes-BooleanListType-generalization" general="XMLPrimitiveTypes-BooleanListSimpleType"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:PrimitiveType" xmi:id="XMLPrimitiveTypes-BooleanListSimpleType" name="BooleanListSimpleType">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="XMLPrimitiveTypes-BooleanListSimpleType-itemType" name="itemType" visibility="private" type="XMLPrimitiveTypes-boolean"/>
+			</packagedElement>
+			<profileApplication xmi:type="uml:ProfileApplication" xmi:id="XMLPrimitiveTypes-profileApplication">
+				<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_Common_Profile">
+					
+				</appliedProfile>
+			</profileApplication>
+		</packagedElement>
+	</uml:Model>
+<NIEM_Common_Profile:List xmi:id="XMLPrimitiveTypes-StringListSimpleType-appliedStereotypeInstance" base_DataType="XMLPrimitiveTypes-StringListSimpleType"/>
+<NIEM_Common_Profile:List xmi:id="XMLPrimitiveTypes-BooleanListSimpleType-appliedStereotypeInstance" base_DataType="XMLPrimitiveTypes-BooleanListSimpleType"/>
+<NIEM_Common_Profile:List xmi:id="XMLPrimitiveTypes-DecimalListSimpleType-appliedStereotypeInstance" base_DataType="XMLPrimitiveTypes-DecimalListSimpleType"/>
+<NIEM_Common_Profile:List xmi:id="XMLPrimitiveTypes-TokenListSimpleType-appliedStereotypeInstance" base_DataType="XMLPrimitiveTypes-TokenListSimpleType"/>
+<NIEM_Common_Profile:List xmi:id="XMLPrimitiveTypes-IntegerListSimpleType-appliedStereotypeInstance" base_DataType="XMLPrimitiveTypes-IntegerListSimpleType"/>
+<NIEM_Common_Profile:List xmi:id="XMLPrimitiveTypes-PositiveIntegerListSimpleType-appliedStereotypeInstance" base_DataType="XMLPrimitiveTypes-PositiveIntegerListSimpleType"/>
+
+<NIEM_Common_Profile:List xmi:id="XMLPrimitiveTypes-NonNegativeIntegerListSimpleType-appliedStereotypeInstance" base_DataType="XMLPrimitiveTypes-NonNegativeIntegerListSimpleType"/>
+<NIEM_Common_Profile:List xmi:id="XMLPrimitiveTypes-DoubleListSimpleType-appliedStereotypeInstance" base_DataType="XMLPrimitiveTypes-DoubleListSimpleType"/>
+
+<StandardProfile:ModelLibrary xmlns:StandardProfile="http://www.omg.org/spec/UML/20131001/StandardProfile" xmi:id="XMLPrimitiveTypes-appliedStereotypeInstance" base_Package="XMLPrimitiveTypes"/>
+</xmi:XMI>

@@ -1,0 +1,1122 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.omg.org/spec/UML/20131001" xmlns:NIEM_Common_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_Common_Profile" xmlns:NIEM_PSM_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_PSM_Profile" xmlns:NIEM_PIM_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_PIM_Profile">
+
+<uml:Model xmi:type="uml:Model" xmi:id="eee_1045467100313_135436_1" name="Data">
+		<ownedComment xmi:type="uml:Comment" xmi:id="_17_0_5_1_2aa0151_1403378089127_469513_3364" body="Author:tom.&#xA;Created:6/21/14 3:14 PM.&#xA;Title:.&#xA;Comment:.&#xA;">
+			<annotatedElement xmi:idref="eee_1045467100313_135436_1"/>
+		</ownedComment>
+		<packagedElement xmi:type="uml:Package" xmi:id="_niem" name="niem">
+			<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes" name="codes">
+				
+				<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes-apco_event" name="apco_event">
+					<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes-apco_event-3.0" name="3.0">
+						<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes-apco_event-3.0-apco_event" name="apco_event">
+							<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-ownedComment" body="Association of Public-Safety Communications Officials (APCO) - International, Inc.&#xA;Publication: APCO ANS 2.103.1-2012 Public Safety Communications Common Incident Types for Data Exchange; &#xA;Version: 2012; &#xA;http://www.apco911.org">
+								<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event"/>
+							</ownedComment>
+							
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventCategoryCodeSimpleType" name="AlarmEventCategoryCodeSimpleType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventCategoryCodeSimpleType-ownedComment" body="A data type for kinds of alarm events.">
+									<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-AlarmEventCategoryCodeSimpleType"/>
+								</ownedComment>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventCategoryCodeSimpleType-BURG" name="BURG">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventCategoryCodeSimpleType-BURG-ownedComment" body="Burglary">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-AlarmEventCategoryCodeSimpleType-BURG"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventCategoryCodeSimpleType-Comm" name="Comm">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventCategoryCodeSimpleType-Comm-ownedComment" body="Communication Fail">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-AlarmEventCategoryCodeSimpleType-Comm"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventCategoryCodeSimpleType-FIRE" name="FIRE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventCategoryCodeSimpleType-FIRE-ownedComment" body="Fire">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-AlarmEventCategoryCodeSimpleType-FIRE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventCategoryCodeSimpleType-Holdup" name="Holdup">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventCategoryCodeSimpleType-Holdup-ownedComment" body="Holdup / Duress">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-AlarmEventCategoryCodeSimpleType-Holdup"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventCategoryCodeSimpleType-Medical" name="Medical">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventCategoryCodeSimpleType-Medical-ownedComment" body="Medical Alarm">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-AlarmEventCategoryCodeSimpleType-Medical"/>
+									</ownedComment>
+								</ownedLiteral>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Class" xmi:id="_niem-codes-apco_event-3.0-apco_event-NamespaceElementPropertyHolder" name="NamespaceElementPropertyHolder"/>
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventCategoryCodeType" name="AlarmEventCategoryCodeType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventCategoryCodeType-ownedComment" body="A data type for kinds of alarm events.">
+									<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-AlarmEventCategoryCodeType"/>
+								</ownedComment>
+								<generalization xmi:type="uml:Generalization" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventCategoryCodeType-generalization" general="_niem-codes-apco_event-3.0-apco_event-AlarmEventCategoryCodeSimpleType"/>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventLocationCategoryCodeSimpleType" name="AlarmEventLocationCategoryCodeSimpleType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventLocationCategoryCodeSimpleType-ownedComment" body="A data type for the kinds of location at which an alarm event occurs.">
+									<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-AlarmEventLocationCategoryCodeSimpleType"/>
+								</ownedComment>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventLocationCategoryCodeSimpleType-commercial" name="commercial">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventLocationCategoryCodeSimpleType-commercial-ownedComment" body="commercial">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-AlarmEventLocationCategoryCodeSimpleType-commercial"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventLocationCategoryCodeSimpleType-residential" name="residential">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventLocationCategoryCodeSimpleType-residential-ownedComment" body="residential">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-AlarmEventLocationCategoryCodeSimpleType-residential"/>
+									</ownedComment>
+								</ownedLiteral>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventLocationCategoryCodeType" name="AlarmEventLocationCategoryCodeType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventLocationCategoryCodeType-ownedComment" body="A data type for the kinds of location at which an alarm event occurs.">
+									<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-AlarmEventLocationCategoryCodeType"/>
+								</ownedComment>
+								<generalization xmi:type="uml:Generalization" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventLocationCategoryCodeType-generalization" general="_niem-codes-apco_event-3.0-apco_event-AlarmEventLocationCategoryCodeSimpleType"/>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventResponseActionCodeSimpleType" name="AlarmEventResponseActionCodeSimpleType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventResponseActionCodeSimpleType-ownedComment" body="A data type for actions requested of an alarm event responder.">
+									<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-AlarmEventResponseActionCodeSimpleType"/>
+								</ownedComment>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventResponseActionCodeSimpleType-notify" name="notify">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventResponseActionCodeSimpleType-notify-ownedComment" body="notify">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-AlarmEventResponseActionCodeSimpleType-notify"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventResponseActionCodeSimpleType-respond" name="respond">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventResponseActionCodeSimpleType-respond-ownedComment" body="respond">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-AlarmEventResponseActionCodeSimpleType-respond"/>
+									</ownedComment>
+								</ownedLiteral>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventResponseActionCodeType" name="AlarmEventResponseActionCodeType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventResponseActionCodeType-ownedComment" body="A data type for actions requested of an alarm event responder.">
+									<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-AlarmEventResponseActionCodeType"/>
+								</ownedComment>
+								<generalization xmi:type="uml:Generalization" xmi:id="_niem-codes-apco_event-3.0-apco_event-AlarmEventResponseActionCodeType-generalization" general="_niem-codes-apco_event-3.0-apco_event-AlarmEventResponseActionCodeSimpleType"/>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType" name="IncidentCategoryCodeSimpleType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ownedComment" body="A data type for incident codes.">
+									<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType"/>
+								</ownedComment>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-911H" name="911H">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-911H-ownedComment" body="911 HANG UP - 911 hang-ups">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-911H"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-911OPN" name="911OPN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-911OPN-ownedComment" body="911 OPEN LINE - 911 open line">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-911OPN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ABDOM" name="ABDOM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ABDOM-ownedComment" body="ABDOMINAL - Abdominal pain or problems">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ABDOM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ABDUCTF" name="ABDUCTF">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ABDUCTF-ownedComment" body="ABDUCTION FAMILY - Abduction/kidnapping by family member">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ABDUCTF"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ABDUCTNF" name="ABDUCTNF">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ABDUCTNF-ownedComment" body="ABDUCTION NON-FAMILY - Abduction/kidnapping by non-family member">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ABDUCTNF"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ABUSE" name="ABUSE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ABUSE-ownedComment" body="ABUSE - Child or Elder">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ABUSE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ACCIND" name="ACCIND">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ACCIND-ownedComment" body="INDUSTRIAL ACCIDENT - Includes entrapment in major machinery, industrial disasters">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ACCIND"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ADMIN" name="ADMIN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ADMIN-ownedComment" body="ADMINISTRATIVE - Includes follow-ups, DNA collection, citizen complaints, law escorts, request extra patrol">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ADMIN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-AIR" name="AIR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-AIR-ownedComment" body="AIRCRAFT - Aircraft related incidents including reported hijacking">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-AIR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALIEN" name="ALIEN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALIEN-ownedComment" body="IMMIGRATION - Immigration violation, illegal aliens">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALIEN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALLERGIC" name="ALLERGIC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALLERGIC-ownedComment" body="ALLERGIC - Allergic reaction, insect stings">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALLERGIC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRBA" name="ALRBA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRBA-ownedComment" body="BURGLAR ALARM- Audible - Includes audible Intrusion alarms">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRBA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRBOX" name="ALRBOX">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRBOX-ownedComment" body="BOX ALARM - Pull box alarm for police, fire or EMS">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRBOX"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRBS" name="ALRBS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRBS-ownedComment" body="BURGLAR ALARM - Silent - Includes silent intrusion alarms">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRBS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRCO" name="ALRCO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRCO-ownedComment" body="FIRE ALARM - CO - Carbon Monoxide">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRCO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRCO2" name="ALRCO2">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRCO2-ownedComment" body="FIRE ALARM - CO2 - Carbon Dioxide">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRCO2"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRDEFIB" name="ALRDEFIB">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRDEFIB-ownedComment" body="DEFIBRILLATOR ALARM - Automated Implantable Cardiac Defibrillator (AICD) alarm or event">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRDEFIB"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRF" name="ALRF">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRF-ownedComment" body="FIRE ALARM - Generic fire alarm">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRF"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRGAS" name="ALRGAS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRGAS-ownedComment" body="FIRE ALARM - GAS">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRGAS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRHEAT" name="ALRHEAT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRHEAT-ownedComment" body="FIRE ALARM - HEAT">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRHEAT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRKPAD" name="ALRKPAD">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRKPAD-ownedComment" body="FIRE ALARM - KEYPAD">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRKPAD"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRMED" name="ALRMED">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRMED-ownedComment" body="MEDICAL ALARM">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRMED"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRNGAS" name="ALRNGAS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRNGAS-ownedComment" body="FIRE ALARM - NAT GAS - Natural Gas">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRNGAS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRPANA" name="ALRPANA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRPANA-ownedComment" body="PANIC ALARM AUDIBLE - Includes audible duress alarm">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRPANA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRPANS" name="ALRPANS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRPANS-ownedComment" body="PANIC ALARM SILENT - Includes silent duress alarm">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRPANS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRPROPN" name="ALRPROPN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRPROPN-ownedComment" body="FIRE ALARM - PROPANE">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRPROPN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRPULL" name="ALRPULL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRPULL-ownedComment" body="FIRE ALARM - PULL STATION">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRPULL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRROBA" name="ALRROBA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRROBA-ownedComment" body="ROBBERY ALARM AUDIBLE - Includes hold up alarms">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRROBA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRROBS" name="ALRROBS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRROBS-ownedComment" body="ROBBERY ALARM SILENT - Includes hold up alarms">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRROBS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRU" name="ALRU">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRU-ownedComment" body="ALARM UNK - Audible alarm unknown type">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRU"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRVEH" name="ALRVEH">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRVEH-ownedComment" body="VEHICLE ALARM">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRVEH"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRWTR" name="ALRWTR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRWTR-ownedComment" body="FIRE ALARM - WATER FLOW - includes sprinkler alarms">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALRWTR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALS" name="ALS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALS-ownedComment" body="ALS - Advanced Life Support">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ALS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ANIMAL" name="ANIMAL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ANIMAL-ownedComment" body="ANIMAL - Animal complaints including animal rescue">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ANIMAL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ASSAULT" name="ASSAULT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ASSAULT-ownedComment" body="ASSAULT - With or without injury">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ASSAULT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ASSIST" name="ASSIST">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ASSIST-ownedComment" body="ASSIST - Assist to other agency or request for manpower">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ASSIST"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ATL" name="ATL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ATL-ownedComment" body="ATL - Attempt to Locate, BOLO">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ATL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BACK" name="BACK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BACK-ownedComment" body="BACK PAIN - Non traumatic">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BACK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BARICADE" name="BARICADE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BARICADE-ownedComment" body="BARRICADED - Barricaded person, gunman etc">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BARICADE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BIO" name="BIO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BIO-ownedComment" body="BIOLOGICAL - Biological threat">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BIO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BITE" name="BITE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BITE-ownedComment" body="ANIMAL BITE - Animal bites or attack by an animal">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BITE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BLDCLPSE" name="BLDCLPSE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BLDCLPSE-ownedComment" body="BUILDING COLLAPSE - Collapsed building includes technical rescue incidents">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BLDCLPSE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BLEEDING" name="BLEEDING">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BLEEDING-ownedComment" body="BLEEDING - Includes rectal, vaginal, non traumatic">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BLEEDING"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BLS" name="BLS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BLS-ownedComment" body="BLS - Basic Life Support incident">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BLS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BOMB" name="BOMB">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BOMB-ownedComment" body="BOMB - Bomb threat or investigation">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BOMB"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BRGCLPSE" name="BRGCLPSE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BRGCLPSE-ownedComment" body="BRIDGE COLLAPSE">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BRGCLPSE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BURGLARY" name="BURGLARY">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BURGLARY-ownedComment" body="BURGLARY - Includes breaking and entering incidents">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BURGLARY"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BURN" name="BURN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BURN-ownedComment" body="BURNS">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-BURN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CARDIAC" name="CARDIAC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CARDIAC-ownedComment" body="CARDIAC - Cardiac related event, heart attack, chest pain">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CARDIAC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CARJACK" name="CARJACK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CARJACK-ownedComment" body="CARJACK">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CARJACK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CHEMICAL" name="CHEMICAL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CHEMICAL-ownedComment" body="CHEMICAL - Includes chemical and environmental incidents">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CHEMICAL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CHESPAIN" name="CHESPAIN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CHESPAIN-ownedComment" body="CHEST PAIN - Chest pain non cardiac">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CHESPAIN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CHOKE" name="CHOKE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CHOKE-ownedComment" body="CHOKING">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CHOKE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CITASST" name="CITASST">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CITASST-ownedComment" body="CITIZEN ASSIST - Public assistance, citizen standby, public service">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CITASST"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CIVDIS" name="CIVDIS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CIVDIS-ownedComment" body="CIVIL DISOBEDIENCE - Riot, sit-in, protests, organized actions">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CIVDIS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CIVIL" name="CIVIL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CIVIL-ownedComment" body="CIVIL - Civil matters, codes enforcement issues">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CIVIL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CNTRFT" name="CNTRFT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CNTRFT-ownedComment" body="COUNTERFEIT MONEY">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CNTRFT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CRIMPS" name="CRIMPS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CRIMPS-ownedComment" body="IMPERSONATION - Criminal impersonation of officer or public official">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CRIMPS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CRIMTRAF" name="CRIMTRAF">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CRIMTRAF-ownedComment" body="CRIMINAL TRAFFIC - Driving with suspended license, no valid operator's license">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CRIMTRAF"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CURFEW" name="CURFEW">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CURFEW-ownedComment" body="CURFEW VIOLATION">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-CURFEW"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DEATH" name="DEATH">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DEATH-ownedComment" body="DEATH - Obvious death, found body">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DEATH"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DEATHNTF" name="DEATHNTF">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DEATHNTF-ownedComment" body="DEATH NOTIFICATION">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DEATHNTF"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DIABETIC" name="DIABETIC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DIABETIC-ownedComment" body="DIABETIC">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DIABETIC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DISORD" name="DISORD">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DISORD-ownedComment" body="DISORDERLY - Disorderly conduct or disturbance">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DISORD"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DISVEH" name="DISVEH">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DISVEH-ownedComment" body="DISABLED VEHICLE">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DISVEH"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DROWN" name="DROWN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DROWN-ownedComment" body="DROWNING">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DROWN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DRUGPAR" name="DRUGPAR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DRUGPAR-ownedComment" body="DRUG PARAPHERNALIA - Possession of drug paraphernalia">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DRUGPAR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DRUGS" name="DRUGS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DRUGS-ownedComment" body="DRUGS">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DRUGS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DUI" name="DUI">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DUI-ownedComment" body="DUI - Driving while intoxicated, under the influence">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DUI"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DVA" name="DVA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DVA-ownedComment" body="DOMESTIC VIOLENT - Domestic dispute with violence, family fight, assault">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DVA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DVNA" name="DVNA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DVNA-ownedComment" body="DOMESTIC NON-VIOLENT - Domestic dispute non-violent, verbal">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-DVNA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-EDP" name="EDP">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-EDP-ownedComment" body="EMOTION DIST PERSON - EDP, emotional disturbance, abnormal behavior">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-EDP"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ELEC" name="ELEC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ELEC-ownedComment" body="ELECTROCUTION - Includes struck by lightning">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ELEC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ELECHZD" name="ELECHZD">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ELECHZD-ownedComment" body="ELECTRICAL HAZARD - Includes all electrical problems">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ELECHZD"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ELUDING" name="ELUDING">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ELUDING-ownedComment" body="ELUDING - Eluding law enforcement">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ELUDING"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ENTRAP" name="ENTRAP">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ENTRAP-ownedComment" body="ENTRAPMENT - Includes accidental entrapments, inaccessible incidents, stuck elevator">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ENTRAP"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ESCAPE" name="ESCAPE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ESCAPE-ownedComment" body="ESCAPE - Escaped prisoner">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ESCAPE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-EXPLOS" name="EXPLOS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-EXPLOS-ownedComment" body="EXPLOSION">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-EXPLOS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-EXPOSURE" name="EXPOSURE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-EXPOSURE-ownedComment" body="EXPOSURE - Heat or cold exposure">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-EXPOSURE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-EXTORT" name="EXTORT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-EXTORT-ownedComment" body="EXTORT - Includes blackmail">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-EXTORT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-EYE" name="EYE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-EYE-ownedComment" body="EYE - Eye problems or injury">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-EYE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FAIRC" name="FAIRC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FAIRC-ownedComment" body="FIRE AIRCRAFT">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FAIRC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FALL" name="FALL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FALL-ownedComment" body="FALL - Non traumatic fall">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FALL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FAPT" name="FAPT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FAPT-ownedComment" body="FIRE APARTMENT - Multi-family dwelling, apartment building">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FAPT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FARSON" name="FARSON">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FARSON-ownedComment" body="FIRE ARSON">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FARSON"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FBRUSH" name="FBRUSH">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FBRUSH-ownedComment" body="FIRE BRUSH - Includes tress, brush grass controlled burns with no structural exposure, outdoor fires">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FBRUSH"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FELEC" name="FELEC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FELEC-ownedComment" body="FIRE ELECTRICAL - Includes arcing wires, shorted electrical equipment, light ballast, transformers.">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FELEC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FFUEL" name="FFUEL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FFUEL-ownedComment" body="FIRE FUEL FACILITY - Includes gas stations, fuel refinery">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FFUEL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FIGHT" name="FIGHT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FIGHT-ownedComment" body="FIGHT - Includes verbal and physical disputes">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FIGHT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FIREWRKS" name="FIREWRKS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FIREWRKS-ownedComment" body="FIREWORKS - Illegal use of fireworks">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FIREWRKS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FMARINE" name="FMARINE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FMARINE-ownedComment" body="FIRE MARINE - Includes marine vessels &amp; boats on waterways (for boats on land use FIRE VEHICLE)">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FMARINE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FORCENTR" name="FORCENTR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FORCENTR-ownedComment" body="INACCESSIBLE INCIDENT - Includes breech, forcible entry required for structure, residential lock outs">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FORCENTR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FOTHER" name="FOTHER">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FOTHER-ownedComment" body="FIRE OTHER - Includes other types not listed">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FOTHER"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FRAUD" name="FRAUD">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FRAUD-ownedComment" body="FRAUD - Includes forgery, fraud, bad checks, identity theft">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FRAUD"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FREPORT" name="FREPORT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FREPORT-ownedComment" body="FIRE REPORT - Response to take fire report only no active fire, incident not in progress">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FREPORT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FSMOKE" name="FSMOKE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FSMOKE-ownedComment" body="FIRE SMOKE - Includes fire investigations, smoke odors no flames seen">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FSMOKE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FSTRU" name="FSTRU">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FSTRU-ownedComment" body="FIRE STRUCTURE - Includes sheds, attached garages, house fires">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FSTRU"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FTRAILER" name="FTRAILER">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FTRAILER-ownedComment" body="FIRE TRAILER - Single wide mobile home fires-double wide should use FIRE STRUCTURE">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FTRAILER"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FTRAIN" name="FTRAIN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FTRAIN-ownedComment" body="FIRE TRAIN - Any type of railway fire, locomotive, rail car, passenger car etc">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FTRAIN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FTRASH" name="FTRASH">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FTRASH-ownedComment" body="FIRE TRASH - Refuse fires, garbage cans, dumpsters">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FTRASH"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FTRUCK" name="FTRUCK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FTRUCK-ownedComment" body="FIRE TRUCK - Includes large vehicles such as RV, tractor trailers, dump trucks, buses">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FTRUCK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FUNK" name="FUNK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FUNK-ownedComment" body="FIRE UNKNOWN">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FUNK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FVEH" name="FVEH">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FVEH-ownedComment" body="FIRE VEHICLE - Includes small or medium size vehicles, passenger cars, SUV, vans, pick-up trucks">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-FVEH"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-GASLEAK" name="GASLEAK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-GASLEAK-ownedComment" body="GAS LEAK - Includes natural gas, liquid fuel or propane leaks">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-GASLEAK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-HARR" name="HARR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-HARR-ownedComment" body="HARASSMENT - Includes intimidation">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-HARR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-HAZMAT" name="HAZMAT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-HAZMAT-ownedComment" body="HAZMAT - Hazardous materials incident can include fuel spill, chemical biological radiological or nuclear (CBRN)">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-HAZMAT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-HEADACHE" name="HEADACHE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-HEADACHE-ownedComment" body="HEADACHE">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-HEADACHE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-HEMRG" name="HEMRG">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-HEMRG-ownedComment" body="HEMORRHAGE - Severe bleeding, lacerations">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-HEMRG"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-HOMICIDE" name="HOMICIDE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-HOMICIDE-ownedComment" body="HOMICIDE - Includes murder, criminally negligent homicide, manslaughter">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-HOMICIDE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-HOSTAGE" name="HOSTAGE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-HOSTAGE-ownedComment" body="HOSTAGE">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-HOSTAGE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-INDECENT" name="INDECENT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-INDECENT-ownedComment" body="INDECENT - Includes indecent exposure, indecent liberties">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-INDECENT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-INFO" name="INFO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-INFO-ownedComment" body="INFO - Informational calls">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-INFO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-INTERNET" name="INTERNET">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-INTERNET-ownedComment" body="INTERNET CRIMES - Obscene material, pornography, cyber bullying">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-INTERNET"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-INTOX" name="INTOX">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-INTOX-ownedComment" body="INTOXICATED - Intoxicated person, drunk &amp; disorderly">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-INTOX"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-INVEST" name="INVEST">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-INVEST-ownedComment" body="INVESTIGATION">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-INVEST"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-LARCENY" name="LARCENY">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-LARCENY-ownedComment" body="LARCENY - Includes larceny attempt, theft, pick-pocketing">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-LARCENY"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-LIQUOR" name="LIQUOR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-LIQUOR-ownedComment" body="LIQUOR VIOLATION - Includes selling to minors, underage drinking, over service">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-LIQUOR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-MAJORINC" name="MAJORINC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-MAJORINC-ownedComment" body="MAJOR INCIDENT - Includes large scale weather related event, weapons of mass destruction event - typically used as a code declared by incident command">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-MAJORINC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-MAYDAY" name="MAYDAY">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-MAYDAY-ownedComment" body="MAYDAY - Immediate assistance request, emergency back-up request">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-MAYDAY"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-MCI" name="MCI">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-MCI-ownedComment" body="MASS CASUALTY INCIDENT - MCI - typically used as a code declared by incident command">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-MCI"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-MISBOATR" name="MISBOATR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-MISBOATR-ownedComment" body="MISSING BOATER - Missing person(s) last seen on boat out on a waterway">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-MISBOATR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-MISCON" name="MISCON">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-MISCON-ownedComment" body="MISCONDUCT - Includes conspiracy, falsifying information, plotting, other misconduct">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-MISCON"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-MVA" name="MVA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-MVA-ownedComment" body="MVA - Motor vehicle accident no injury can be received as automated crash notification">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-MVA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-MVAHR" name="MVAHR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-MVAHR-ownedComment" body="HIT &amp; RUN - Vehicle accident hit &amp; run">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-MVAHR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-MVAINJY" name="MVAINJY">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-MVAINJY-ownedComment" body="MVA INJY - Motor Vehicle accident with injury can be received as automated crash notification, includes car pedestrian, ATV accidents">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-MVAINJY"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-MVAUNK" name="MVAUNK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-MVAUNK-ownedComment" body="MVA UNK - Motor vehicle accident unknown injury can be received as automated crash notification crash notification">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-MVAUNK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-NEGLECT" name="NEGLECT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-NEGLECT-ownedComment" body="NEGLECT">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-NEGLECT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-NOISE" name="NOISE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-NOISE-ownedComment" body="NOISE - Loud noise or music">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-NOISE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-OD" name="OD">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-OD-ownedComment" body="OD - Overdose accidental, poisoning, accidental ingestion">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-OD"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ODOR" name="ODOR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ODOR-ownedComment" body="ODOR - Odor investigation any type">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ODOR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-OPEN" name="OPEN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-OPEN-ownedComment" body="UNSECURE-BLDG - Includes Open door, open window">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-OPEN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ORDERV" name="ORDERV">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ORDERV-ownedComment" body="ORDER VIOLATION - Domestic violence writ violation, order of protection, custody disputes">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ORDERV"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PANDEMIC" name="PANDEMIC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PANDEMIC-ownedComment" body="PANDEMIC - Pandemic flu or illness outbreak, epidemic">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PANDEMIC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PARKING" name="PARKING">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PARKING-ownedComment" body="PARKING - Parking problems/complaints, handicap parking violation">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PARKING"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PERFND" name="PERFND">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PERFND-ownedComment" body="FOUND PERSON - Adults &amp; children">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PERFND"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PERMISS" name="PERMISS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PERMISS-ownedComment" body="MISSING PERSON">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PERMISS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PERSUSP" name="PERSUSP">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PERSUSP-ownedComment" body="SUSPICIOUS PERSON - Includes prowler, peeping tom">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PERSUSP"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PERUNCON" name="PERUNCON">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PERUNCON-ownedComment" body="UNCONSCIOUS - Unconscious person Includes fainting and near fainting">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PERUNCON"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PERWANT" name="PERWANT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PERWANT-ownedComment" body="WANTED PERSON - Arrest warrant, fugitive information">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PERWANT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PHANDLE" name="PHANDLE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PHANDLE-ownedComment" body="PANHANDLING">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PHANDLE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PREG" name="PREG">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PREG-ownedComment" body="PREGNANCY - Pregnancy problems, childbirth, miscarriage">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PREG"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PROPFND" name="PROPFND">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PROPFND-ownedComment" body="FOUND PROPERTY - Includes abandoned bicycles, found cell phones, purses">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PROPFND"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PROPLOST" name="PROPLOST">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PROPLOST-ownedComment" body="LOST PROPERTY">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PROPLOST"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PROPSTLN" name="PROPSTLN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PROPSTLN-ownedComment" body="STOLEN PROPERTY - Includes retention of, transferring or receiving stolen property">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PROPSTLN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PUBWKS" name="PUBWKS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PUBWKS-ownedComment" body="PUBLIC WORKS / UTILITIES - Public works, utility company requests, transportation infrastructure">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PUBWKS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PURSUIT" name="PURSUIT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PURSUIT-ownedComment" body="PURSUIT - Includes vehicle or foot pursuits">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-PURSUIT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-RADIAT" name="RADIAT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-RADIAT-ownedComment" body="RADIATION INCIDENT - Includes nuclear incidents">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-RADIAT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-RECKDRV" name="RECKDRV">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-RECKDRV-ownedComment" body="RECKLESS DRIVER - Careless driving and other driving offenses">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-RECKDRV"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-REPO" name="REPO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-REPO-ownedComment" body="REPO - Vehicle repossession">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-REPO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-RESCUE" name="RESCUE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-RESCUE-ownedComment" body="RESCUE - Includes lock-ins, high angle rescue">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-RESCUE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-RESIST" name="RESIST">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-RESIST-ownedComment" body="RESISTING ARREST">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-RESIST"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-RESP" name="RESP">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-RESP-ownedComment" body="RESPIRATORY - Difficulty breathing, shortness of breath, respiratory issue">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-RESP"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-RESPARR" name="RESPARR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-RESPARR-ownedComment" body="RESPIRATORY ARREST">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-RESPARR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ROBBERY" name="ROBBERY">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ROBBERY-ownedComment" body="ROBBERY - Includes strong arm and attempted robbery excludes car jacking">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-ROBBERY"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-RUNAWAY" name="RUNAWAY">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-RUNAWAY-ownedComment" body="RUNAWAY - Includes thrown away children">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-RUNAWAY"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SAR" name="SAR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SAR-ownedComment" body="SEARCH AND RESCUE">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SAR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SEIZURE" name="SEIZURE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SEIZURE-ownedComment" body="SEIZURE - Includes convulsions">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SEIZURE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SEXOFFNS" name="SEXOFFNS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SEXOFFNS-ownedComment" body="SEX OFFENSE - Sexual offenses, assaults, rapes, sex abuse, molestation, incest">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SEXOFFNS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SHOOT" name="SHOOT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SHOOT-ownedComment" body="SHOOTING">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SHOOT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SHOPLIFT" name="SHOPLIFT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SHOPLIFT-ownedComment" body="SHOPLIFTING">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SHOPLIFT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SICK" name="SICK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SICK-ownedComment" body="SICK - Sick person non specific, general illness, flu">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SICK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SMOKING" name="SMOKING">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SMOKING-ownedComment" body="SMOKING - Smoking violation">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SMOKING"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-STABBING" name="STABBING">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-STABBING-ownedComment" body="STABBING">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-STABBING"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-STDBY" name="STDBY">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-STDBY-ownedComment" body="AGENCY STANDBY - Police, Fire or EMS">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-STDBY"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-STROKE" name="STROKE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-STROKE-ownedComment" body="STROKE - Stroke or cerebral vascular accident (CVA)">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-STROKE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SUBJSTP" name="SUBJSTP">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SUBJSTP-ownedComment" body="SUBJECT STOP">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SUBJSTP"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SUICIDE" name="SUICIDE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SUICIDE-ownedComment" body="SUICIDE">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SUICIDE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SUICTHRT" name="SUICTHRT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SUICTHRT-ownedComment" body="SUICIDE THREATS - Attempt or threatening suicide">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SUICTHRT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SUSP" name="SUSP">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SUSP-ownedComment" body="SUSPICIOUS - Suspicious incident, circumstances, unknown problems">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-SUSP"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TERROR" name="TERROR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TERROR-ownedComment" body="TERRORIST ACTIVITY">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TERROR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-THAZ" name="THAZ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-THAZ-ownedComment" body="TRAFFIC HAZARD - Includes debris in roadway, black ice">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-THAZ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-THREATS" name="THREATS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-THREATS-ownedComment" body="THREATS">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-THREATS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TOW" name="TOW">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TOW-ownedComment" body="TOW">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TOW"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TRAIN" name="TRAIN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TRAIN-ownedComment" body="TRAIN - Incidents other than fires or derailments related to trains">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TRAIN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TRAINDRL" name="TRAINDRL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TRAINDRL-ownedComment" body="TRAIN DERAIL">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TRAINDRL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TRANSFER" name="TRANSFER">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TRANSFER-ownedComment" body="TRANSFER - Inter-facility transfer, palliative care">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TRANSFER"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TRAUMA" name="TRAUMA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TRAUMA-ownedComment" body="TRAUMA - Traumatic Injury including head injury">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TRAUMA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TRAUMAP" name="TRAUMAP">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TRAUMAP-ownedComment" body="PENETRATING TRAUMA - Other than shooting or stabbing">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TRAUMAP"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TRESPASS" name="TRESPASS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TRESPASS-ownedComment" body="TRESPASS">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TRESPASS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TROUBLE" name="TROUBLE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TROUBLE-ownedComment" body="TROUBLE - Unknown type trouble">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TROUBLE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TRUANT" name="TRUANT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TRUANT-ownedComment" body="TRUANT">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TRUANT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TSTOP" name="TSTOP">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TSTOP-ownedComment" body="TRAFFIC STOP">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-TSTOP"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-VANDAL" name="VANDAL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-VANDAL-ownedComment" body="VANDALISM - Vehicle tampering, graffiti, criminal mischief">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-VANDAL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-VEHABND" name="VEHABND">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-VEHABND-ownedComment" body="ABANDONED VEH">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-VEHABND"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-VEHASST" name="VEHASST">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-VEHASST-ownedComment" body="MOTORIST ASSIST - Assist to motorist includes vehicle lock outs">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-VEHASST"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-VEHLOCK" name="VEHLOCK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-VEHLOCK-ownedComment" body="VEHICLE LOCK OUT">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-VEHLOCK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-VEHREC" name="VEHREC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-VEHREC-ownedComment" body="RECOVERED VEHICLE - Recovered stolen vehicle">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-VEHREC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-VEHSTLN" name="VEHSTLN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-VEHSTLN-ownedComment" body="STOLEN VEHICLE - Includes Lo-Jack alerts">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-VEHSTLN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-VEHSUSP" name="VEHSUSP">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-VEHSUSP-ownedComment" body="SUSPICIOUS VEHICLE">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-VEHSUSP"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-VICE" name="VICE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-VICE-ownedComment" body="VICE - Prostitution, gambling, betting, wagering, embezzlement">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-VICE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-WARRANT" name="WARRANT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-WARRANT-ownedComment" body="SEARCH WARRANT">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-WARRANT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-WATER" name="WATER">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-WATER-ownedComment" body="WATER RESCUE - All water incidents, diving &amp; scuba accidents, boat/jet ski accident, water evacuations">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-WATER"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-WEAPON" name="WEAPON">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-WEAPON-ownedComment" body="WEAPON VIOLATION - Brandishing a weapon, CCW, illegal discharge, displaying, drive by">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-WEAPON"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-WELFARE" name="WELFARE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-WELFARE-ownedComment" body="WELFARE CHECK - man down check, welfare check">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-WELFARE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-WILDLIFE" name="WILDLIFE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-WILDLIFE-ownedComment" body="WILDLIFE VIOLATIONS - Illegal hunting, game violations, fisheries">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-WILDLIFE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-WIRES" name="WIRES">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-WIRES-ownedComment" body="WIRES DOWN">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-WIRES"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-XTRACATE" name="XTRACATE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-XTRACATE-ownedComment" body="EXTRICATION - Confined space rescue, vehicle extrication">
+										<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType-XTRACATE"/>
+									</ownedComment>
+								</ownedLiteral>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeType" name="IncidentCategoryCodeType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeType-ownedComment" body="A data type for incident codes.">
+									<annotatedElement xmi:idref="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeType"/>
+								</ownedComment>
+								<generalization xmi:type="uml:Generalization" xmi:id="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeType-generalization" general="_niem-codes-apco_event-3.0-apco_event-IncidentCategoryCodeSimpleType"/>
+							</packagedElement>
+						</packagedElement>
+					</packagedElement>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-apco_event-profileApplication-1">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_PIM_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-apco_event-profileApplication-2">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-Model_Package_Description_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-apco_event-profileApplication-3">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_Common_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-apco_event-profileApplication-4">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_PSM_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+				</packagedElement>
+			</packagedElement>
+		</packagedElement>
+	</uml:Model>
+<NIEM_Common_Profile:PropertyHolder xmi:id="_niem-codes-apco_event-3.0-apco_event-NamespaceElementPropertyHolder-appliedStereotypeInstance" base_Class="_niem-codes-apco_event-3.0-apco_event-NamespaceElementPropertyHolder"/>
+
+<NIEM_PIM_Profile:InformationModel xmi:id="_niem-codes-apco_event-3.0-apco_event-appliedStereotypeInstance" base_Package="_niem-codes-apco_event-3.0-apco_event" isConformant="true" version="1" targetNamespace="http://release.niem.gov/niem/codes/apco_event/3.0/" defaultPurpose="reference"/>
+</xmi:XMI>

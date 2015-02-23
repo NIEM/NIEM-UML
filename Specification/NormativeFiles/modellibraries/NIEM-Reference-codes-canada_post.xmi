@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.omg.org/spec/UML/20131001" xmlns:NIEM_Common_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_Common_Profile" xmlns:NIEM_PSM_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_PSM_Profile" xmlns:NIEM_PIM_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_PIM_Profile">
+
+<uml:Model xmi:type="uml:Model" xmi:id="eee_1045467100313_135436_1" name="Data">
+		<ownedComment xmi:type="uml:Comment" xmi:id="_17_0_5_1_2aa0151_1403378153582_293034_3364" body="Author:tom.&#xA;Created:6/21/14 3:15 PM.&#xA;Title:.&#xA;Comment:.&#xA;">
+			<annotatedElement xmi:idref="eee_1045467100313_135436_1"/>
+		</ownedComment>
+		<packagedElement xmi:type="uml:Package" xmi:id="_niem" name="niem">
+			<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes" name="codes">
+				
+				<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes-canada_post" name="canada_post">
+					<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes-canada_post-3.0" name="3.0">
+						<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes-canada_post-3.0-post-canada" name="post-canada">
+							<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-canada_post-3.0-post-canada-ownedComment" body="Province codes for Canada.&#xA;Publication: Canada Post Addressing Guidelines; &#xA;Date: 14 Jan 2013;   &#xA;http://www.canadapost.ca/tools/pg/manual/PGaddress-e.asp#1380608">
+								<annotatedElement xmi:idref="_niem-codes-canada_post-3.0-post-canada"/>
+							</ownedComment>
+							
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType" name="CanadianProvinceCodeSimpleType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-ownedComment" body="A data type for provinces in Canada.">
+									<annotatedElement xmi:idref="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType"/>
+								</ownedComment>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-AB" name="AB">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-AB-ownedComment" body="Alberta">
+										<annotatedElement xmi:idref="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-AB"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-BC" name="BC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-BC-ownedComment" body="British Columbia">
+										<annotatedElement xmi:idref="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-BC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-MB" name="MB">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-MB-ownedComment" body="Manitoba">
+										<annotatedElement xmi:idref="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-MB"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-NB" name="NB">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-NB-ownedComment" body="New Brunswick">
+										<annotatedElement xmi:idref="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-NB"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-NL" name="NL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-NL-ownedComment" body="Newfoundland and Labrador">
+										<annotatedElement xmi:idref="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-NL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-NS" name="NS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-NS-ownedComment" body="Nova Scotia">
+										<annotatedElement xmi:idref="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-NS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-NT" name="NT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-NT-ownedComment" body="Northwest Territories">
+										<annotatedElement xmi:idref="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-NT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-NU" name="NU">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-NU-ownedComment" body="Nunavut">
+										<annotatedElement xmi:idref="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-NU"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-ON" name="ON">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-ON-ownedComment" body="Ontario">
+										<annotatedElement xmi:idref="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-ON"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-PE" name="PE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-PE-ownedComment" body="Prince Edward Island">
+										<annotatedElement xmi:idref="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-PE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-QC" name="QC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-QC-ownedComment" body="Québec">
+										<annotatedElement xmi:idref="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-QC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-SK" name="SK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-SK-ownedComment" body="Saskatchewan">
+										<annotatedElement xmi:idref="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-SK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-YT" name="YT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-YT-ownedComment" body="Yukon">
+										<annotatedElement xmi:idref="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType-YT"/>
+									</ownedComment>
+								</ownedLiteral>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Class" xmi:id="_niem-codes-canada_post-3.0-post-canada-NamespaceElementPropertyHolder" name="NamespaceElementPropertyHolder"/>
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeType" name="CanadianProvinceCodeType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeType-ownedComment" body="A data type for provinces in Canada.">
+									<annotatedElement xmi:idref="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeType"/>
+								</ownedComment>
+								<generalization xmi:type="uml:Generalization" xmi:id="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeType-generalization" general="_niem-codes-canada_post-3.0-post-canada-CanadianProvinceCodeSimpleType"/>
+							</packagedElement>
+						</packagedElement>
+					</packagedElement>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-canada_post-profileApplication-1">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_PIM_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-canada_post-profileApplication-2">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-Model_Package_Description_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-canada_post-profileApplication-3">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_Common_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-canada_post-profileApplication-4">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_PSM_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+				</packagedElement>
+			</packagedElement>
+		</packagedElement>
+	</uml:Model>
+<NIEM_Common_Profile:PropertyHolder xmi:id="_niem-codes-canada_post-3.0-post-canada-NamespaceElementPropertyHolder-appliedStereotypeInstance" base_Class="_niem-codes-canada_post-3.0-post-canada-NamespaceElementPropertyHolder"/>
+
+<NIEM_PIM_Profile:InformationModel xmi:id="_niem-codes-canada_post-3.0-post-canada-appliedStereotypeInstance" base_Package="_niem-codes-canada_post-3.0-post-canada" isConformant="true" version="1" targetNamespace="http://release.niem.gov/niem/codes/canada_post/3.0/" defaultPurpose="reference"/>
+</xmi:XMI>

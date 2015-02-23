@@ -1,0 +1,1311 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.omg.org/spec/UML/20131001" xmlns:NIEM_Common_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_Common_Profile" xmlns:NIEM_PSM_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_PSM_Profile" xmlns:NIEM_PIM_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_PIM_Profile">
+
+<uml:Model xmi:type="uml:Model" xmi:id="eee_1045467100313_135436_1" name="Data">
+		<ownedComment xmi:type="uml:Comment" xmi:id="_17_0_5_1_2aa0151_1403380099890_11366_3364" body="Author:tom.&#xA;Created:6/21/14 3:48 PM.&#xA;Title:.&#xA;Comment:.&#xA;">
+			<annotatedElement xmi:idref="eee_1045467100313_135436_1"/>
+		</ownedComment>
+		<packagedElement xmi:type="uml:Package" xmi:id="_niem" name="niem">
+			<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes" name="codes">
+				
+				<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes-iso_3166-1" name="iso_3166-1">
+					<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes-iso_3166-1-3.0" name="3.0">
+						<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1" name="iso_3166-1">
+							<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-ownedComment" body="Source: International Standards Organization (ISO); &#xA;Publication: Codes for the representation of names of countries -- Part 1: Country codes; &#xA;Date: 2 Aug 2012; &#xA;Source Updates: VI-13; &#xA;http://www.iso.org/iso/country_codes.htm">
+								<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1"/>
+							</ownedComment>
+							
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-LocalVocabulary" name="LocalVocabulary">
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-LocalVocabulary-Alpha2" name="Alpha2"/>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-LocalVocabulary-Alpha3" name="Alpha3"/>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType" name="CountryAlpha2CodeSimpleType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ownedComment" body="A data type for country, territory, or dependency codes.">
+									<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType"/>
+								</ownedComment>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AD" name="AD">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AD-ownedComment" body="ANDORRA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AD"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AE" name="AE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AE-ownedComment" body="UNITED ARAB EMIRATES">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AF" name="AF">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AF-ownedComment" body="AFGHANISTAN">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AF"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AG" name="AG">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AG-ownedComment" body="ANTIGUA AND BARBUDA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AG"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AI" name="AI">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AI-ownedComment" body="ANGUILLA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AI"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AL" name="AL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AL-ownedComment" body="ALBANIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AM" name="AM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AM-ownedComment" body="ARMENIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AO" name="AO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AO-ownedComment" body="ANGOLA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AQ" name="AQ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AQ-ownedComment" body="ANTARCTICA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AQ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AR" name="AR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AR-ownedComment" body="ARGENTINA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AS" name="AS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AS-ownedComment" body="AMERICAN SAMOA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AT" name="AT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AT-ownedComment" body="AUSTRIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AU" name="AU">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AU-ownedComment" body="AUSTRALIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AU"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AW" name="AW">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AW-ownedComment" body="ARUBA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AW"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AX" name="AX">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AX-ownedComment" body="ÅLAND ISLANDS">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AX"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AZ" name="AZ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AZ-ownedComment" body="AZERBAIJAN">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-AZ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BA" name="BA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BA-ownedComment" body="BOSNIA AND HERZEGOVINA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BB" name="BB">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BB-ownedComment" body="BARBADOS">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BB"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BD" name="BD">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BD-ownedComment" body="BANGLADESH">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BD"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BE" name="BE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BE-ownedComment" body="BELGIUM">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BF" name="BF">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BF-ownedComment" body="BURKINA FASO">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BF"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BG" name="BG">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BG-ownedComment" body="BULGARIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BG"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BH" name="BH">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BH-ownedComment" body="BAHRAIN">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BH"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BI" name="BI">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BI-ownedComment" body="BURUNDI">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BI"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BJ" name="BJ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BJ-ownedComment" body="BENIN">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BJ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BL" name="BL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BL-ownedComment" body="SAINT BARTHÉLEMY">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BM" name="BM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BM-ownedComment" body="BERMUDA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BN" name="BN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BN-ownedComment" body="BRUNEI DARUSSALAM">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BO" name="BO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BO-ownedComment" body="BOLIVIA, PLURINATIONAL STATE OF">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BQ" name="BQ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BQ-ownedComment" body="BONAIRE, SINT EUSTATIUS AND SABA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BQ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BR" name="BR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BR-ownedComment" body="BRAZIL">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BS" name="BS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BS-ownedComment" body="BAHAMAS">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BT" name="BT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BT-ownedComment" body="BHUTAN">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BV" name="BV">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BV-ownedComment" body="BOUVET ISLAND">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BV"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BW" name="BW">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BW-ownedComment" body="BOTSWANA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BW"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BY" name="BY">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BY-ownedComment" body="BELARUS">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BY"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BZ" name="BZ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BZ-ownedComment" body="BELIZE">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-BZ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CA" name="CA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CA-ownedComment" body="CANADA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CC" name="CC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CC-ownedComment" body="COCOS (KEELING) ISLANDS">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CD" name="CD">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CD-ownedComment" body="CONGO, THE DEMOCRATIC REPUBLIC OF THE">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CD"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CF" name="CF">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CF-ownedComment" body="CENTRAL AFRICAN REPUBLIC">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CF"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CG" name="CG">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CG-ownedComment" body="CONGO">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CG"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CH" name="CH">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CH-ownedComment" body="SWITZERLAND">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CH"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CI" name="CI">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CI-ownedComment" body="CÔTE D'IVOIRE">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CI"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CK" name="CK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CK-ownedComment" body="COOK ISLANDS">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CL" name="CL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CL-ownedComment" body="CHILE">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CM" name="CM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CM-ownedComment" body="CAMEROON">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CN" name="CN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CN-ownedComment" body="CHINA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CO" name="CO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CO-ownedComment" body="COLOMBIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CR" name="CR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CR-ownedComment" body="COSTA RICA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CU" name="CU">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CU-ownedComment" body="CUBA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CU"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CV" name="CV">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CV-ownedComment" body="CAPE VERDE">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CV"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CW" name="CW">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CW-ownedComment" body="CURAÇAO">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CW"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CX" name="CX">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CX-ownedComment" body="CHRISTMAS ISLAND">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CX"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CY" name="CY">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CY-ownedComment" body="CYPRUS">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CY"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CZ" name="CZ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CZ-ownedComment" body="CZECH REPUBLIC">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-CZ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-DE" name="DE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-DE-ownedComment" body="GERMANY">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-DE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-DJ" name="DJ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-DJ-ownedComment" body="DJIBOUTI">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-DJ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-DK" name="DK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-DK-ownedComment" body="DENMARK">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-DK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-DM" name="DM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-DM-ownedComment" body="DOMINICA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-DM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-DO" name="DO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-DO-ownedComment" body="DOMINICAN REPUBLIC">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-DO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-DZ" name="DZ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-DZ-ownedComment" body="ALGERIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-DZ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-EC" name="EC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-EC-ownedComment" body="ECUADOR">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-EC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-EE" name="EE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-EE-ownedComment" body="ESTONIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-EE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-EG" name="EG">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-EG-ownedComment" body="EGYPT">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-EG"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-EH" name="EH">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-EH-ownedComment" body="WESTERN SAHARA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-EH"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ER" name="ER">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ER-ownedComment" body="ERITREA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ER"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ES" name="ES">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ES-ownedComment" body="SPAIN">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ES"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ET" name="ET">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ET-ownedComment" body="ETHIOPIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ET"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-FI" name="FI">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-FI-ownedComment" body="FINLAND">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-FI"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-FJ" name="FJ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-FJ-ownedComment" body="FIJI">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-FJ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-FK" name="FK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-FK-ownedComment" body="FALKLAND ISLANDS (MALVINAS)">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-FK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-FM" name="FM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-FM-ownedComment" body="MICRONESIA, FEDERATED STATES OF">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-FM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-FO" name="FO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-FO-ownedComment" body="FAROE ISLANDS">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-FO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-FR" name="FR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-FR-ownedComment" body="FRANCE">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-FR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GA" name="GA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GA-ownedComment" body="GABON">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GB" name="GB">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GB-ownedComment" body="UNITED KINGDOM">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GB"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GD" name="GD">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GD-ownedComment" body="GRENADA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GD"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GE" name="GE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GE-ownedComment" body="GEORGIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GF" name="GF">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GF-ownedComment" body="FRENCH GUIANA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GF"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GG" name="GG">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GG-ownedComment" body="GUERNSEY">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GG"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GH" name="GH">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GH-ownedComment" body="GHANA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GH"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GI" name="GI">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GI-ownedComment" body="GIBRALTAR">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GI"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GL" name="GL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GL-ownedComment" body="GREENLAND">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GM" name="GM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GM-ownedComment" body="GAMBIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GN" name="GN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GN-ownedComment" body="GUINEA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GP" name="GP">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GP-ownedComment" body="GUADELOUPE">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GP"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GQ" name="GQ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GQ-ownedComment" body="EQUATORIAL GUINEA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GQ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GR" name="GR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GR-ownedComment" body="GREECE">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GS" name="GS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GS-ownedComment" body="SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GT" name="GT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GT-ownedComment" body="GUATEMALA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GU" name="GU">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GU-ownedComment" body="GUAM">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GU"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GW" name="GW">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GW-ownedComment" body="GUINEA-BISSAU">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GW"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GY" name="GY">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GY-ownedComment" body="GUYANA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-GY"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-HK" name="HK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-HK-ownedComment" body="HONG KONG">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-HK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-HM" name="HM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-HM-ownedComment" body="HEARD ISLAND AND MCDONALD ISLANDS">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-HM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-HN" name="HN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-HN-ownedComment" body="HONDURAS">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-HN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-HR" name="HR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-HR-ownedComment" body="CROATIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-HR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-HT" name="HT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-HT-ownedComment" body="HAITI">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-HT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-HU" name="HU">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-HU-ownedComment" body="HUNGARY">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-HU"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ID" name="ID">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ID-ownedComment" body="INDONESIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ID"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-IE" name="IE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-IE-ownedComment" body="IRELAND">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-IE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-IL" name="IL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-IL-ownedComment" body="ISRAEL">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-IL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-IM" name="IM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-IM-ownedComment" body="ISLE OF MAN">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-IM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-IN" name="IN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-IN-ownedComment" body="INDIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-IN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-IO" name="IO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-IO-ownedComment" body="BRITISH INDIAN OCEAN TERRITORY">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-IO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-IQ" name="IQ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-IQ-ownedComment" body="IRAQ">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-IQ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-IR" name="IR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-IR-ownedComment" body="IRAN, ISLAMIC REPUBLIC OF">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-IR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-IS" name="IS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-IS-ownedComment" body="ICELAND">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-IS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-IT" name="IT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-IT-ownedComment" body="ITALY">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-IT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-JE" name="JE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-JE-ownedComment" body="JERSEY">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-JE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-JM" name="JM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-JM-ownedComment" body="JAMAICA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-JM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-JO" name="JO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-JO-ownedComment" body="JORDAN">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-JO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-JP" name="JP">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-JP-ownedComment" body="JAPAN">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-JP"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KE" name="KE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KE-ownedComment" body="KENYA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KG" name="KG">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KG-ownedComment" body="KYRGYZSTAN">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KG"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KH" name="KH">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KH-ownedComment" body="CAMBODIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KH"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KI" name="KI">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KI-ownedComment" body="KIRIBATI">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KI"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KM" name="KM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KM-ownedComment" body="COMOROS">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KN" name="KN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KN-ownedComment" body="SAINT KITTS AND NEVIS">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KP" name="KP">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KP-ownedComment" body="KOREA, DEMOCRATIC PEOPLE'S REPUBLIC OF">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KP"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KR" name="KR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KR-ownedComment" body="KOREA, REPUBLIC OF">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KW" name="KW">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KW-ownedComment" body="KUWAIT">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KW"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KY" name="KY">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KY-ownedComment" body="CAYMAN ISLANDS">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KY"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KZ" name="KZ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KZ-ownedComment" body="KAZAKHSTAN">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-KZ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LA" name="LA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LA-ownedComment" body="LAO PEOPLE'S DEMOCRATIC REPUBLIC">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LB" name="LB">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LB-ownedComment" body="LEBANON">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LB"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LC" name="LC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LC-ownedComment" body="SAINT LUCIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LI" name="LI">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LI-ownedComment" body="LIECHTENSTEIN">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LI"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LK" name="LK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LK-ownedComment" body="SRI LANKA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LR" name="LR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LR-ownedComment" body="LIBERIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LS" name="LS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LS-ownedComment" body="LESOTHO">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LT" name="LT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LT-ownedComment" body="LITHUANIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LU" name="LU">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LU-ownedComment" body="LUXEMBOURG">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LU"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LV" name="LV">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LV-ownedComment" body="LATVIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LV"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LY" name="LY">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LY-ownedComment" body="LIBYA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-LY"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MA" name="MA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MA-ownedComment" body="MOROCCO">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MC" name="MC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MC-ownedComment" body="MONACO">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MD" name="MD">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MD-ownedComment" body="MOLDOVA, REPUBLIC OF">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MD"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ME" name="ME">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ME-ownedComment" body="MONTENEGRO">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ME"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MF" name="MF">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MF-ownedComment" body="SAINT MARTIN (FRENCH PART)">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MF"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MG" name="MG">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MG-ownedComment" body="MADAGASCAR">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MG"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MH" name="MH">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MH-ownedComment" body="MARSHALL ISLANDS">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MH"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MK" name="MK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MK-ownedComment" body="MACEDONIA, THE FORMER YUGOSLAV REPUBLIC OF">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ML" name="ML">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ML-ownedComment" body="MALI">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ML"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MM" name="MM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MM-ownedComment" body="MYANMAR">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MN" name="MN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MN-ownedComment" body="MONGOLIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MO" name="MO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MO-ownedComment" body="MACAO">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MP" name="MP">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MP-ownedComment" body="NORTHERN MARIANA ISLANDS">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MP"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MQ" name="MQ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MQ-ownedComment" body="MARTINIQUE">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MQ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MR" name="MR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MR-ownedComment" body="MAURITANIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MS" name="MS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MS-ownedComment" body="MONTSERRAT">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MT" name="MT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MT-ownedComment" body="MALTA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MU" name="MU">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MU-ownedComment" body="MAURITIUS">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MU"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MV" name="MV">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MV-ownedComment" body="MALDIVES">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MV"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MW" name="MW">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MW-ownedComment" body="MALAWI">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MW"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MX" name="MX">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MX-ownedComment" body="MEXICO">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MX"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MY" name="MY">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MY-ownedComment" body="MALAYSIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MY"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MZ" name="MZ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MZ-ownedComment" body="MOZAMBIQUE">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-MZ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NA" name="NA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NA-ownedComment" body="NAMIBIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NC" name="NC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NC-ownedComment" body="NEW CALEDONIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NE" name="NE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NE-ownedComment" body="NIGER">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NF" name="NF">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NF-ownedComment" body="NORFOLK ISLAND">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NF"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NG" name="NG">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NG-ownedComment" body="NIGERIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NG"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NI" name="NI">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NI-ownedComment" body="NICARAGUA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NI"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NL" name="NL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NL-ownedComment" body="NETHERLANDS">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NO" name="NO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NO-ownedComment" body="NORWAY">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NP" name="NP">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NP-ownedComment" body="NEPAL">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NP"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NR" name="NR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NR-ownedComment" body="NAURU">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NU" name="NU">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NU-ownedComment" body="NIUE">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NU"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NZ" name="NZ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NZ-ownedComment" body="NEW ZEALAND">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-NZ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-OM" name="OM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-OM-ownedComment" body="OMAN">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-OM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PA" name="PA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PA-ownedComment" body="PANAMA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PE" name="PE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PE-ownedComment" body="PERU">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PF" name="PF">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PF-ownedComment" body="FRENCH POLYNESIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PF"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PG" name="PG">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PG-ownedComment" body="PAPUA NEW GUINEA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PG"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PH" name="PH">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PH-ownedComment" body="PHILIPPINES">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PH"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PK" name="PK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PK-ownedComment" body="PAKISTAN">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PL" name="PL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PL-ownedComment" body="POLAND">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PM" name="PM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PM-ownedComment" body="SAINT PIERRE AND MIQUELON">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PN" name="PN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PN-ownedComment" body="PITCAIRN">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PR" name="PR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PR-ownedComment" body="PUERTO RICO">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PS" name="PS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PS-ownedComment" body="PALESTINE, STATE OF">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PT" name="PT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PT-ownedComment" body="PORTUGAL">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PW" name="PW">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PW-ownedComment" body="PALAU">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PW"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PY" name="PY">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PY-ownedComment" body="PARAGUAY">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-PY"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-QA" name="QA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-QA-ownedComment" body="QATAR">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-QA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-RE" name="RE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-RE-ownedComment" body="RÉUNION">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-RE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-RO" name="RO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-RO-ownedComment" body="ROMANIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-RO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-RS" name="RS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-RS-ownedComment" body="SERBIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-RS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-RU" name="RU">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-RU-ownedComment" body="RUSSIAN FEDERATION">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-RU"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-RW" name="RW">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-RW-ownedComment" body="RWANDA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-RW"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SA" name="SA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SA-ownedComment" body="SAUDI ARABIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SB" name="SB">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SB-ownedComment" body="SOLOMON ISLANDS">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SB"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SC" name="SC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SC-ownedComment" body="SEYCHELLES">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SD" name="SD">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SD-ownedComment" body="SUDAN">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SD"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SE" name="SE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SE-ownedComment" body="SWEDEN">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SG" name="SG">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SG-ownedComment" body="SINGAPORE">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SG"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SH" name="SH">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SH-ownedComment" body="SAINT HELENA, ASCENSION AND TRISTAN DA CUNHA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SH"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SI" name="SI">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SI-ownedComment" body="SLOVENIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SI"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SJ" name="SJ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SJ-ownedComment" body="SVALBARD AND JAN MAYEN">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SJ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SK" name="SK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SK-ownedComment" body="SLOVAKIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SL" name="SL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SL-ownedComment" body="SIERRA LEONE">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SM" name="SM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SM-ownedComment" body="SAN MARINO">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SN" name="SN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SN-ownedComment" body="SENEGAL">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SO" name="SO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SO-ownedComment" body="SOMALIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SR" name="SR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SR-ownedComment" body="SURINAME">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SS" name="SS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SS-ownedComment" body="SOUTH SUDAN">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ST" name="ST">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ST-ownedComment" body="SAO TOME AND PRINCIPE">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ST"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SV" name="SV">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SV-ownedComment" body="EL SALVADOR">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SV"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SX" name="SX">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SX-ownedComment" body="SINT MAARTEN (DUTCH PART)">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SX"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SY" name="SY">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SY-ownedComment" body="SYRIAN ARAB REPUBLIC">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SY"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SZ" name="SZ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SZ-ownedComment" body="SWAZILAND">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-SZ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TC" name="TC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TC-ownedComment" body="TURKS AND CAICOS ISLANDS">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TD" name="TD">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TD-ownedComment" body="CHAD">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TD"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TF" name="TF">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TF-ownedComment" body="FRENCH SOUTHERN TERRITORIES">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TF"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TG" name="TG">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TG-ownedComment" body="TOGO">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TG"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TH" name="TH">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TH-ownedComment" body="THAILAND">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TH"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TJ" name="TJ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TJ-ownedComment" body="TAJIKISTAN">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TJ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TK" name="TK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TK-ownedComment" body="TOKELAU">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TL" name="TL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TL-ownedComment" body="TIMOR-LESTE">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TM" name="TM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TM-ownedComment" body="TURKMENISTAN">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TN" name="TN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TN-ownedComment" body="TUNISIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TO" name="TO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TO-ownedComment" body="TONGA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TR" name="TR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TR-ownedComment" body="TURKEY">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TT" name="TT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TT-ownedComment" body="TRINIDAD AND TOBAGO">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TV" name="TV">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TV-ownedComment" body="TUVALU">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TV"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TW" name="TW">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TW-ownedComment" body="TAIWAN, PROVINCE OF CHINA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TW"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TZ" name="TZ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TZ-ownedComment" body="TANZANIA, UNITED REPUBLIC OF">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-TZ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-UA" name="UA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-UA-ownedComment" body="UKRAINE">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-UA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-UG" name="UG">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-UG-ownedComment" body="UGANDA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-UG"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-UM" name="UM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-UM-ownedComment" body="UNITED STATES MINOR OUTLYING ISLANDS">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-UM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-US" name="US">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-US-ownedComment" body="UNITED STATES">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-US"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-UY" name="UY">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-UY-ownedComment" body="URUGUAY">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-UY"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-UZ" name="UZ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-UZ-ownedComment" body="UZBEKISTAN">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-UZ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-VA" name="VA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-VA-ownedComment" body="HOLY SEE (VATICAN CITY STATE)">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-VA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-VC" name="VC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-VC-ownedComment" body="SAINT VINCENT AND THE GRENADINES">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-VC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-VE" name="VE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-VE-ownedComment" body="VENEZUELA, BOLIVARIAN REPUBLIC OF">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-VE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-VG" name="VG">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-VG-ownedComment" body="VIRGIN ISLANDS, BRITISH">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-VG"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-VI" name="VI">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-VI-ownedComment" body="VIRGIN ISLANDS, U.S.">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-VI"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-VN" name="VN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-VN-ownedComment" body="VIET NAM">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-VN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-VU" name="VU">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-VU-ownedComment" body="VANUATU">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-VU"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-WF" name="WF">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-WF-ownedComment" body="WALLIS AND FUTUNA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-WF"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-WS" name="WS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-WS-ownedComment" body="SAMOA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-WS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-YE" name="YE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-YE-ownedComment" body="YEMEN">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-YE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-YT" name="YT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-YT-ownedComment" body="MAYOTTE">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-YT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ZA" name="ZA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ZA-ownedComment" body="SOUTH AFRICA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ZA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ZM" name="ZM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ZM-ownedComment" body="ZAMBIA">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ZM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ZW" name="ZW">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ZW-ownedComment" body="ZIMBABWE">
+										<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType-ZW"/>
+									</ownedComment>
+								</ownedLiteral>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Class" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-NamespaceElementPropertyHolder" name="NamespaceElementPropertyHolder"/>
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeType" name="CountryAlpha2CodeType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeType-ownedComment" body="A data type for country, territory, or dependency codes.">
+									<annotatedElement xmi:idref="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeType"/>
+								</ownedComment>
+								<generalization xmi:type="uml:Generalization" xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeType-generalization" general="_niem-codes-iso_3166-1-3.0-iso_3166-1-CountryAlpha2CodeSimpleType"/>
+							</packagedElement>
+						</packagedElement>
+					</packagedElement>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-iso_3166-1-profileApplication-1">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_PIM_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-iso_3166-1-profileApplication-2">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-Model_Package_Description_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-iso_3166-1-profileApplication-3">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_Common_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-iso_3166-1-profileApplication-4">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_PSM_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+				</packagedElement>
+			</packagedElement>
+		</packagedElement>
+	</uml:Model>
+<NIEM_Common_Profile:LocalTerm xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-LocalVocabulary-Alpha3-appliedStereotypeInstance" base_EnumerationLiteral="_niem-codes-iso_3166-1-3.0-iso_3166-1-LocalVocabulary-Alpha3" definition="Three-letter"/>
+<NIEM_PIM_Profile:InformationModel xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-appliedStereotypeInstance" base_Package="_niem-codes-iso_3166-1-3.0-iso_3166-1" isConformant="true" version="1" targetNamespace="http://release.niem.gov/niem/codes/iso_3166-1/3.0/" defaultPurpose="reference"/>
+<NIEM_Common_Profile:PropertyHolder xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-NamespaceElementPropertyHolder-appliedStereotypeInstance" base_Class="_niem-codes-iso_3166-1-3.0-iso_3166-1-NamespaceElementPropertyHolder"/>
+<NIEM_Common_Profile:LocalVocabulary xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-LocalVocabulary-appliedStereotypeInstance" base_Enumeration="_niem-codes-iso_3166-1-3.0-iso_3166-1-LocalVocabulary"/>
+<NIEM_Common_Profile:LocalTerm xmi:id="_niem-codes-iso_3166-1-3.0-iso_3166-1-LocalVocabulary-Alpha2-appliedStereotypeInstance" base_EnumerationLiteral="_niem-codes-iso_3166-1-3.0-iso_3166-1-LocalVocabulary-Alpha2" definition="Two-letter"/>
+
+</xmi:XMI>

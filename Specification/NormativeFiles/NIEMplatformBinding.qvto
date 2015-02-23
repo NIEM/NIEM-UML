@@ -1,0 +1,1315 @@
+import NIEMglobals;
+modeltype UML uses 'http://www.omg.org/spec/UML/20131001';// UML 2.5
+modeltype XSD  uses 'http://www.eclipse.org/xsd/2002/XSD';
+modeltype CAT  uses 'http://reference.niem.gov/niem/resource/mpd/catalog/3.0/';// niem3 mpd catalog
+modeltype CHANGELOG uses 'http://reference.niem.gov/niem/resource/mpd/changelog/1.1/';// niem changelog schema
+modeltype PROXY uses 'http://release.niem.gov/niem/proxy/xsd/3.0/';// niem3 proxy schema
+modeltype NC uses 'http://release.niem.gov/niem/niem-core/3.0/';// niem-core subset used for catalog
+modeltype WANTLIST uses 'http://niem.gov/niem/wantlist/2.2';// EXTRA
+
+transformation NIEMplatformBinding;
+	main() {}
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////
+//////////////////////////////////////////////////////////
+//////////////////// configuration properties
+property rootDirectory:String='~/';// rootDirectory, used to compute relative locations, may have platform-specific initial value
+// create new InstanceSpecification which is an instance of given InstanceValue and whose classifier matches umlClassName
+abstract constructor UML::InstanceSpecification::InstanceSpecification(inout instanceValue:UML::InstanceValue,umlClassName:String);
+// map an XSDAnnotation to an ownedComment of the owner UML::Element
+abstract helper 	XSD::XSDAnnotation::mapXSDAnnotation(owner:UML::Element);
+// get the applied stereotype instance for this UML Element
+abstract query UML::Element::getStereotypeApplication(stereotype:UML::Stereotype):Stdlib::Element;
+// create a DOM Element for UserInformation within this XSDAnnotation and populate with given sourceURI value
+abstract helper XSD::XSDAnnotation::createUserInformation(sourceURI:String):OclAny;
+// if necessary, apply the provided stereotype to this UML ELement, and set the string value of the specified tag for the applied stereotype 	
+abstract helper UML::Element::setValue(stereotype:UML::Stereotype,tagName:String,anyObject:String);
+// unset the value of the specified tag for the indicated Stereotype applied to this UML Element 
+abstract helper UML::Element::unsetTagValue(stereotype:UML::Stereotype,tagName:String);
+// set the value of the specified tag for the indicated Stereotype applied to this UML Element to the provided integer value 
+abstract helper UML::Element::setValue(stereotype:UML::Stereotype,tagName:String,anyObject:Integer);
+// set the value of the specified tag for the indicated Stereotype applied to this UML Element to the provided boolean value 
+abstract helper UML::Element::setValue(stereotype:UML::Stereotype,tagName:String,anyObject:Boolean);
+// set the value of the specified tag for the indicated Stereotype applied to this UML Element to the provided EnumerationLiteral value 
+abstract helper UML::Element::setValue(stereotype:UML::Stereotype,tagName:String,enumLiteral:UML::EnumerationLiteral);
+// set the value of the specified tag for the indicated Stereotype applied to this UML Element to a list of EnumerationLiterals corresponding to the list of provided names
+abstract helper UML::Element::setEnumerationValue(stereotype:UML::Stereotype,tagName:String,anyObject:Sequence(String));
+// set the value of the specified tag for the indicated Stereotype applied to this UML Element to an EnumerationLiterals corresponding to the provided names
+abstract helper UML::Element::setEnumerationValue(stereotype:UML::Stereotype,tagName:String,anyObject:String);
+// set the value of the specified tag for the indicated Stereotype applied to this UML Element to the provided list of string values
+abstract helper UML::Element::setValue(stereotype:UML::Stereotype,tagName:String,anyObject:Sequence(String));
+// set the value of the named tag on this applied Stereotype to a list of EnumerationLiterals corresponding to list of provided names	
+abstract helper Stdlib::Element::setTagEnumerationValueConditionally(tagName:String,anyObject:Sequence(String));
+// compute relative location within an MPD of the given schema
+abstract query XSD::XSDSchema::relativeMdpLocation():String;
+// resolve and parse an imported schema  
+abstract helper XSD::XSDImport::importSchema();
+// get the baseName of this extent	
+abstract helper Stdlib::Element::contextURI():String;
+// get list of Strings representing niem-core:contactEmailID for this ContactInformationType	
+abstract helper  NC::ContactInformationType::contactEmailID():Sequence(String);
+// get list of Strings representing niem-core:contactMailingAddress for this ContactInformationType	
+abstract helper  NC::ContactInformationType::contactMailingAddress():Sequence(String);
+// get list of Strings representing niem-core:contactTelephoneNumber for this ContactInformationType	
+abstract helper  NC::ContactInformationType::contactTelephoneNumber():Sequence(String);
+// get list of Strings representing niem-core:contactWebsiteURI for this ContactInformationType	
+abstract helper  NC::ContactInformationType::contactWebsiteURI():Sequence(String);
+// for this CAT::FileType, return the XSDSchema at the relativeURI provided
+abstract helper CAT::FileType::getSchemaAtRelativeURI(relativeURI:String):XSD::XSDSchema;
+	// add a xmlns declaration to this WANTLIST document for the given prefix and namespace
+abstract helper 	WANTLIST::DocumentRoot::addXmlns(in prefix:String,in namespace:String);
+// set the namespace, localPart name, and namespace prefix for this WANTLIST Attribute
+abstract helper WANTLIST::AttributeType::setWantlistAttributeName(namespace:String,localPart:String,prefix:String);
+// set the namespace, localPart name, and namespace prefix for this WANTLIST Element
+abstract helper WANTLIST::ElementType::setWantlistElementName(namespace:String,localPart:String,prefix:String);
+// set the namespace, localPart name, and namespace prefix for this WANTLIST Type
+abstract helper WANTLIST::TypeType::setWantlistTypeName(namespace:String,localPart:String,prefix:String);
+// set the namespace, localPart name, and namespace prefix for this WANTLIST Attribute within a Type (an Attribute ref)
+abstract helper WANTLIST::AttributeInTypeType::setWantlistAttributeTypeName(namespace:String,localPart:String,prefix:String);
+// set the namespace, localPart name, and namespace prefix for this WANTLIST Element within a Type (an Element ref)
+abstract helper WANTLIST::ElementInTypeType::setWantlistElementTypeName(namespace:String,localPart:String,prefix:String);
+// set the namespace, localPart name, and namespace prefix for this Union member
+abstract helper WANTLIST::UnionMemberType::setWantlistUnionMemberTypeName(namespace:String,localPart:String,prefix:String);
+// set the maxoccurs for this Element in Type
+abstract helper WANTLIST::ElementInTypeType::setWantlistElementMaxOccurs(maxOccurs:Integer);
+// get the set of UML DirectedRelationships for which this UML::Element is the target
+abstract query UML::Element::getTargetDirectedRelationships():Set(UML::DirectedRelationship);
+// get the UML Associations which have association ends typed by this type
+abstract query UML::Type::getAssociations():Set(UML::Association);
+// is this UML::Element stereotyped by a Stereotype with the given name?
+abstract query UML::Element::stereotypedBy(name:String):Boolean;
+// get the set of TypedElements for which this is the Type
+abstract query UML::Type::typedElementTypes():Set(UML::TypedElement);
+// get the Stereotypes which have been applied to this Element
+abstract query UML::Element::getAppliedStereotypes():Set(UML::Stereotype);
+// remove the named Stereotype from this UML::Element	
+abstract helper UML::Element::removeStereotype(name:String):Void;
+// does this Classifier, or any of its generals, match the provided name?	
+abstract query UML::Classifier::isStereotypeMatch(name:String):Boolean;
+// is this UML::Element editable?
+abstract helper UML::Element::isEditable():Boolean;
+// get String value of platform-model-specific detail identified by key for this Object	
+abstract query OclAny::getDetail(key:String):String;
+// set the String value of platform-model-specific detail identified by key to the specified newValue for this Object
+abstract helper OclAny::modifyDetail(key:String,newValue:String);
+// get the application information elements of this XSDAnnotation 
+abstract query XSD::XSDAnnotation::getApplicationInformation():OrderedSet(OclAny);
+// get the DOM Element serialization for this XSDConcreteComponent 
+abstract query XSD::XSDConcreteComponent::getElement():OrderedSet(OclAny);
+// get the ordered set of DOM attributes for this DOM Element
+abstract query  OclAny::getElementAttributes():OrderedSet(Stdlib::Element);
+// get the ordered set of DOM attributes for this DOM Element
+abstract query OclAny::getAttributes():OrderedSet(Stdlib::Element);
+// set the text value of this DOM Element
+abstract helper OclAny::setTextContent(value:String);
+// commit any changes to this, may be required on some models to synchronize model views (e.g., DOM vs MOF) 
+abstract helper OclAny::commitInformation();
+// add prefix/namespace map to this XSDSchema
+abstract helper XSD::XSDSchema::setQNamePrefixToNamespace(prefix:String,namespace:String);
+// create a new Element with given name, namespace and add as child to this Element
+abstract helper OclAny::createChildElementNS(name:String,namespace:String):Stdlib::Element;
+// create a new ApplicationInformation element, with given sourceURI, and add it to this XSDAnnotation
+abstract helper XSD::XSDAnnotation::createApplicationInformation(sourceURI:String):OclAny;
+// get the ordered set of "Element"s which are children of this Element
+abstract query  OclAny::getElementElements():OrderedSet(OclAny);
+// add the provided MOF object to this MOF Object, where mapFeature is a derived union and the targetFeature is the actuall feature subset to be added
+abstract helper Stdlib::Element::add(mapFeature:String,targetFeature:String,eObject:Stdlib::Element);
+// add this String to the provided object as an element of a String List for property named featureName
+abstract helper String::addToStringList(eObject:Stdlib::Element,featureName:String);
+// set the Schema for Schema prefix and namespace for this XSDSchema
+abstract helper XSD::XSDSchema::setSchemaForSchema(prefix:String,namespace:String);
+// get the model elements from the mapFeature of this Element which are in the Property subset 'targetFeature';
+abstract query Stdlib::Element::getFeatureMapValue(mapFeature:String,targetFeature:String):Sequence(Stdlib::Element);
+// apply the given Stereotype to this Element and return the instance of the applied Stereotype
+abstract helper UML::Element::applyStereotype(stereotype:UML::Stereotype):Stdlib::Element;
+// apply the given stereotype to the target UML::Element, then clone the values from the applied stereotype on this element to the applied stereotype on the target UML::Element
+abstract helper  Stdlib::Element::deepcloneStereotypeApplication(stereotype:UML::Stereotype,inout target:UML::Element):Stdlib::Element;
+// copy/clone the slots of this InstanceSpecification, for the provided stereotype, to the target InstanceSpecification
+abstract helper  UML::InstanceSpecification::deepcloneInstanceSpecification(stereotype:UML::Classifier,inout target:UML::InstanceSpecification):Stdlib::Element;
+// set the value of the property named tagName on this applied Stereotype Instance to the EnumerationLiteral named by the anyObject parameter	
+abstract helper Stdlib::Element::setTagEnumerationValueConditionally(tagName:String,anyObject:String);
+// set the instance value of the PROXY:Date Element to the provided String
+abstract helper PROXY::Date::setProxyDateValue(dateString:String);
+// add a String value to a List of Strings for the Property named propertyName on this Model Element
+abstract helper Stdlib::Element::addListValue(propertyName:String,value:String);
+// set the value of the 'lower' attribute of this MultiplicityElement
+abstract helper UML::MultiplicityElement::setLower(lower:Integer);
+// set the value of the 'upper' attribute of this MultiplicityElement
+abstract helper UML::MultiplicityElement::setUpper(upper:Integer);
+// create an attribute; set its name, namespace, and value; and add it to the DOM Element Representing this XSDConcreteComponent 
+abstract helper XSD::XSDConcreteComponent::setComponentAttributeValue(value:String,name:String,namespace:String);
+// add the term, literal, definition, text, and sourceURIs attributes to this DOM Element	
+abstract helper OclAny::addAppinfoLocalTerm(term:String,
+		termLiteral:String,termDefinition:String,termSourceText:Sequence(String),sourceURIs:Sequence(String));
+// get the String value for the given tag within this applied Stereotype
+abstract query Stdlib::Element::getStringValue(tagName:String):String;
+// get the EnumerationLiteral value for the given tag within this applied Stereotype
+abstract query Stdlib::Element::getEnumerationLiteralValue(tagName:String):UML::EnumerationLiteral;
+// get the Boolean value for the given tag within this applied Stereotype
+abstract query Stdlib::Element::getBooleanValue(tagName:String):Boolean;
+// get the value for the given tag within this applied Stereotype
+abstract query Stdlib::Element::getAnyValue(tagName:String):OclAny;
+// get the List of values for the given tag within this applied Stereotype
+abstract query Stdlib::Element::getAnyValues(tagName:String):Sequence(OclAny);
+// get the Integer value for the given tag within this applied Stereotype
+abstract query Stdlib::Element::getIntegerValue(tagName:String):Integer;
+// get the list of String values for the given tag within this applied Stereotype
+abstract query Stdlib::Element::getStringValues(tagName:String):Sequence(String);
+// set the Integer value for the given tag within this applied Stereotype
+abstract helper Stdlib::Element::setValue(tagName:String,anyObject:Integer);
+// set the String value for the given tag within this applied Stereotype
+abstract helper Stdlib::Element::setValue(tagName:String,anyObject:String);
+// set the list of String values for the given tag within this applied Stereotype
+abstract helper Stdlib::Element::setValue(tagName:String,anyObject:Sequence(String));
+// set the Boolean value for the given tag within this applied Stereotype
+abstract helper Stdlib::Element::setValue(tagName:String,anyObject:Boolean);
+// create a NIEM changelog from implementation-specific information in this Package
+abstract helper UML::Package::changelog(inout psmPackage:UML::Package);
+
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////concrete helpers which are in common
+// apply the given stereotype to this Element and return the applied Stereotype instance
+helper UML::Element::ApplyStereotype(stereotype:UML::Stereotype):Stdlib::Element=self.applyStereotype(stereotype);
+
+
+// set the Integer value for the given property within this instance
+helper UML::InstanceSpecification::setValue(tagName:String,anyObject:Integer){
+	var slot:UML::Slot=self.getSlot(tagName);
+	clearValue(slot);
+		createLiteralInteger(slot).value:=anyObject;
+		return;
+}
+
+// set the List of Strings value for the given property within this instance
+helper UML::InstanceSpecification::setValue(tagName:String,anyObject:Sequence(String)){
+	var slot:UML::Slot=self.getSlot(tagName);
+	clearValue(slot);
+	anyObject->forEach(s){
+		createLiteralString(slot).value:=s;
+	};
+}
+// create and return an Integer value and add it to the specified slot
+helper createLiteralInteger(inout slot: UML::Slot):UML::LiteralInteger{
+	var newValue:UML::LiteralInteger=new UML::LiteralInteger();
+	slot.value+=newValue;
+	return newValue;
+}
+
+
+// set the Boolean value for the given property within this instance
+helper UML::InstanceSpecification::setValue(tagName:String,anyObject:Boolean){
+	var slot:UML::Slot=self.getSlot(tagName);
+	clearValue(slot);
+	createLiteralBoolean(slot).value:=anyObject;
+	return;
+}
+
+// compute the relative path from the given MPD root package to this element
+query UML::NamedElement::toRelativePathName(mpdRootPackage:UML::Package,artifact:OclAny):String{
+	var umlPackagePath:String=self.qualifiedName.substringAfter(mpdRootPackage.qualifiedName).replace('::','/');
+	if(umlPackagePath.oclIsUndefined())then{return umlPackagePath;}endif;
+	if(umlPackagePath='')then {umlPackagePath:='./';}else{umlPackagePath:='.'+umlPackagePath;}endif;
+	if(self.isStereotypeApplied(NIEMSchemaStereotype)and not(umlPackagePath.endsWith('.xsd')))then{umlPackagePath:=umlPackagePath+'.xsd';}else{}endif;
+	return umlPackagePath;
+}
+// if this Classifier is in a <<Namespace>> Package which has appInfoConformantIndicator=true
+helper UML::Classifier::isNIEMConformant():Boolean{
+		var schemaContainer:UML::Package=self.getNearestNIEMSchemaPackage();
+		if(not(schemaContainer.oclIsUndefined()))then{
+			var pimStereotypeInstance:Stdlib::Element=schemaContainer.GetStereotypeApplication(NIEMSchemaStereotype).oclAsType(Stdlib::Element);
+			if(not(pimStereotypeInstance.oclIsUndefined()))then{
+				var appinfoConformantIndicator:Boolean=pimStereotypeInstance.getPimSchemaConformantIndicator();
+				if(appinfoConformantIndicator.oclIsUndefined())then{appinfoConformantIndicator:=true;}endif;
+				return appinfoConformantIndicator;
+			}endif;
+		}endif;
+		return false;
+}
+
+// is this Element a <<PropertyHolder>>?
+query UML::Element::isPropertyHolder():Boolean=self.IsStereotypeApplied(NIEMPropertyHolderStereotype);
+	
+// test if this is a restriction on a niem proxy (complexType), per Issue 18361: PSM Representation for XSD Complex Type with Simple Content 
+query UML::Classifier::isProxyRestriction():Boolean=false;
+// for a DataType, a proxy Restriction is a <<Restriction>> which has a _mapping defined
+query UML::DataType::isProxyRestriction():Boolean=self.getRestrictions()->exists(r|not(r._mapping.oclIsUndefined()));
+// for given Classifier context, return <<Restriction>>s , part of Issue 18361: PSM Representation for XSD Complex Type with Simple Content  		
+query UML::Classifier::getRestrictions():Set(UML::Realization)=
+		self.clientDependency
+		->select(d|d.isStereotypeApplied(NIEMRestrictionStereotype)).oclAsType(UML::Realization)
+		->asSet();
+// is this Package a <<Namespace>>?		
+query UML::Package::isNIEMNamespace():Boolean=
+	self.IsStereotypeApplied(NIEMSchemaStereotype)
+	or self.IsStereotypeApplied(NIEMInformationModelStereotype)
+	;
+// get the targetNamespace for this <<Namespace>> Package	
+query UML::Package::getTargetNamespace():String=
+	self.getStereotypeApplication(NIEMSchemaStereotype).oclAsType(Stdlib::Element).getSchemaTargetNamespace();
+		
+
+// get the Slot for the property ArtifactOrArtifactSet for this Instance
+helper  UML::InstanceSpecification::getArtifactOrArtifactSetList():UML::Slot{
+	return self.getSlot('ArtifactOrArtifactSet');
+}
+// get the Slot for the property AuthoritativeSource for this Instance
+helper  UML::InstanceSpecification::getAuthoritativeSourceList():UML::Slot{
+	return self.getSlot('AuthoritativeSource');
+}
+// get the Slot for the property ValidityConstraint for this Instance
+query  UML::InstanceSpecification::getValidityConstraintList():UML::Slot{
+	return self.getSlot('ValidityConstraint');
+}
+
+// get the Slot for the property OrganizationPrimaryContactInformation for this Instance
+helper  UML::InstanceSpecification::getOrganizationPrimaryContactInformationList():UML::Slot{
+	return self.getSlot('OrganizationPrimaryContactInformation');
+}
+// get the Slot for the property ContactEntity for this Instance
+helper  UML::InstanceSpecification::getContactEntityList():UML::Slot{
+	return self.getSlot('ContactEntity');
+}
+// get the Slot for the property ContactResponder for this Instance
+helper  UML::InstanceSpecification::getContactResponderList():UML::Slot{
+	return self.oclAsType(UML::InstanceSpecification).getSlot('ContactResponder');
+}
+
+
+// get the Slot for the property IEPConformanceTarget for this Instance
+helper  UML::InstanceSpecification::getIEPConformanceTargetList():UML::Slot{
+	return self.oclAsType(UML::InstanceSpecification).getSlot('IEPConformanceTarget');
+}
+// get the <<RequiredFile>> Usages for this Usage
+helper  UML::Usage::getRequiredFileList():Set(UML::Usage){
+	return self.supplier.clientDependency->select(d|d.stereotypedBy('RequiredFile')).oclAsType(UML::Usage)->asSet();
+}
+// get the <<XMLCatalog>> Usages for this instance
+helper  UML::InstanceSpecification::getXMLCatalogList():Set(UML::Usage){
+	return self.clientDependency->select(d|d.stereotypedBy('XMLCatalog')).oclAsType(UML::Usage)->asSet();
+}
+	
+// get the <<XMLSchemaDocument>> Usages for this instance
+helper  UML::InstanceSpecification::getXMLSchemaDocumentList():Set(UML::Usage){
+	return self.clientDependency->select(d|d.stereotypedBy('XMLSchemaDocument')).oclAsType(UML::Usage)->asSet();
+}
+
+// get the Slot for the property ValidityConstraintWithContext for this Instance
+helper  UML::InstanceSpecification::getValidityConstraintWithContextList():UML::Slot{
+	return self.oclAsType(UML::InstanceSpecification).getSlot('ValidityConstraintWithContext');
+}
+// create an Instance value and its InstanceSpecification, add to this Slot and return the new InstanceSpecification	
+helper  UML::Slot::createInstance():UML::InstanceSpecification{
+	var psmpocInstanceValue:UML::InstanceValue=createInstanceValue(self);
+	var psmpoc:UML::InstanceSpecification=new UML::InstanceSpecification(psmpocInstanceValue);
+	return psmpoc;
+}
+
+// create an Instance value and its InstanceSpecification of the specified umlClassName, add to this Slot and return the new InstanceSpecification	
+helper  UML::Slot::createArtifactInstance(umlClassName:String):UML::InstanceSpecification{
+	var psmpocInstanceValue:UML::InstanceValue=createInstanceValue(self);
+	var psmpoc:UML::InstanceSpecification=new UML::InstanceSpecification(psmpocInstanceValue,umlClassName);
+	return psmpoc;
+}
+// for the feature 'mpdClassCode' of this Instance, add a ValueSpecification which is an instance of the EnumerationLiteral whose name is the provided mpdClassCode
+helper  UML::InstanceSpecification::setMpdClassCode(mpdClassCode:String){
+	self.setEnumerationValue('mpdClassCode',mpdClassCode);
+}
+// get the list of Strings for feature ContactEmailID for this Instance
+helper UML::InstanceSpecification::contactEmailID():Sequence(String)=self.getStringValues('ContactEmailID');
+// get the list of Strings for feature ContactMailingAddress for this Instance
+helper UML::InstanceSpecification::contactMailingAddress():Sequence(String)=self.getStringValues('ContactMailingAddress');
+// get the list of Strings for feature ContactTelephoneNumber for this Instance
+helper UML::InstanceSpecification::contactTelephoneNumber():Sequence(String)=self.getStringValues('ContactTelephoneNumber');
+// get the list of Strings for feature ContactWebsiteURI for this Instance
+helper UML::InstanceSpecification::contactWebsiteURI():Sequence(String)=self.getStringValues('ContactWebsiteURI');
+// set the feature RuleText to the provided value for this Instance
+helper  UML::InstanceSpecification::setRuleText(ASName:String){
+	self.setTagValueConditionally('RuleText',ASName);
+}
+// set the feature conformanceTargetURI to the provided value for this Instance
+helper  UML::InstanceSpecification::setConformanceTargetURI(ASName:String){
+	self.setTagValueConditionally('conformanceTargetURI',ASName);
+}
+	
+// set the feature xPathText to the provided value for this Instance
+helper  UML::InstanceSpecification::setXPathText(ASName:String){
+	self.setTagValueConditionally('xPathText',ASName);
+}
+	
+// set the feature descriptionText to the provided value for this Instance
+helper  UML::InstanceSpecification::setDescriptionText(ASName:String){
+	self.setTagValueConditionally('descriptionText',ASName);
+}
+// set the feature pathURI to the provided value for this Instance
+helper  UML::InstanceSpecification::setPathURI(ASName:String){
+	self.setTagValueConditionally('pathURI',ASName);
+}
+// set the feature mimeMediaTypeText to the provided value for this Instance
+helper  UML::InstanceSpecification::setMimeMediaTypeText(ASName:String){
+	self.setTagValueConditionally('mimeMediaTypeText',ASName);
+}
+// set the feature externalURI to the provided value for this Instance
+helper  UML::InstanceSpecification::setExternalURI(ASName:String){
+	self.setTagValueConditionally('externalURI',ASName);
+}
+// get the String value for feature descriptionText for this Instance
+helper UML::InstanceSpecification::getDescriptionText():String=self.oclAsType(UML::InstanceSpecification).getStringValue('descriptionText');
+// get the String value for feature xPathText for this Instance
+helper UML::InstanceSpecification::getXPathText():String=self.oclAsType(UML::InstanceSpecification).getStringValue('xPathText');
+// get the String value for feature conformanceTargetURI for this Instance
+helper UML::InstanceSpecification::getConformanceTargetURI():String=self.oclAsType(UML::InstanceSpecification).getStringValue('conformanceTargetURI');
+// get the String value for feature ruleText for this Instance
+helper UML::InstanceSpecification::getRuleText():String=self.oclAsType(UML::InstanceSpecification).getStringValue('ruleText');
+// set the List of String values for feature ContactEmailID for this Instance
+helper  UML::InstanceSpecification::setContactEmailIDs(values:Sequence(String)){
+	self.setValue('ContactEmailID',values);
+}
+// set the List of String values for feature ContactMailingAddress for this Instance
+helper  UML::InstanceSpecification::setContactMailingAddresses(values:Sequence(String)){
+	self.setValue('ContactMailingAddress',values);
+}
+// set the List of String values for feature ContactTelephoneNumber for this Instance
+helper  UML::InstanceSpecification::setContactTelephoneNumbers(values:Sequence(String)){
+	self.setValue('ContactTelephoneNumber',values);
+}
+// set the List of String values for feature ContactWebsiteURI for this Instance
+helper  UML::InstanceSpecification::setContactWebsiteURIs(values:Sequence(String)){
+	self.setValue('ContactWebsiteURI',values);
+}
+// set the List of String values for feature qualifiedNameList for this Instance
+helper  UML::InstanceSpecification::setQualifiedNameList(values:Sequence(String)){
+	self.setValue('qualifiedNameList',values);
+}
+
+
+// get the String value for feature pathURI for this Instance
+query UML::InstanceSpecification::getPathURI():String=self.getStringValue('pathURI');
+// get the String value for feature mimeMediaTypeText for this Instance
+query UML::InstanceSpecification::getMimeMediaTypeText():String=self.getStringValue('mimeMediaTypeText');
+// get the String value for feature mpdBaseURI for this Instance
+query UML::InstanceSpecification::getMpdBaseURI():String=self.getStringValue('mpdBaseURI');
+// get the String value for feature mpdVersionID for this Instance
+query UML::InstanceSpecification::getMpdVersionID():String=self.getStringValue('mpdVersionID');
+// get the String value for feature SecurityMarkingText for this Instance
+helper UML::InstanceSpecification::getMpdSecurityMarkingText():String=self.getStringValue('SecurityMarkingText');
+// get the String value for feature StatusText for this Instance
+helper UML::InstanceSpecification::getMpdStatusText():String=self.getStringValue('StatusText');
+// get the List of String value for feature KeywordText for this Instance
+helper UML::InstanceSpecification::getMpdKeywordText():Sequence(String)=self.getStringValues('KeywordText');
+// get the List of String value for feature qualifiedNameList for this Instance
+helper UML::InstanceSpecification::getQualifiedNameList():Sequence(String)=self.getStringValues('qualifiedNameList');
+// get the List of Instance value for feature OrganizationPrimaryContactInformation for this Instance
+helper UML::InstanceSpecification::getOrganizationPrimaryContactInformation():Sequence(UML::InstanceSpecification)=self.getInstanceValues('OrganizationPrimaryContactInformation');
+// get the List of Instance value for feature ContactEntity for this Instance
+helper UML::InstanceSpecification::getContactEntity():Sequence(UML::InstanceSpecification)=self.getInstanceValues('ContactEntity');
+// get the List of Instance value for feature ContactResponder for this Instance
+helper UML::InstanceSpecification::getContactResponder():Sequence(UML::InstanceSpecification)=self.getInstanceValues('ContactResponder');
+// get the List of Instance value for feature IEPConformanceTarget for this Instance
+helper UML::InstanceSpecification::getIEPConformanceTargets():Sequence(UML::InstanceSpecification)=self.getInstanceValues('IEPConformanceTarget');
+// get the List of Instance value for feature ValidityConstraintWithContext for this Instance
+helper UML::InstanceSpecification::getValidityConstraintWithContext():Sequence(UML::InstanceSpecification)=self.getInstanceValues('ValidityConstraintWithContext');
+
+
+
+// get the List of Instance values for feature ContactMeans for this Instance
+helper UML::InstanceSpecification::getContactMeans():Sequence(UML::InstanceSpecification)=self.getInstanceValues('ContactMeans');
+// get the List of String values for feature DomainText for this Instance
+helper UML::InstanceSpecification::getMpdDomainText():Sequence(String)=self.oclAsType(UML::InstanceSpecification).getStringValues('DomainText');
+// get the List of String values for feature PurposeText for this Instance
+helper UML::InstanceSpecification::getMpdPurposeText():Sequence(String)=self.oclAsType(UML::InstanceSpecification).getStringValues('PurposeText');
+// get the List of String values for feature ExchangePatternText for this Instance
+helper UML::InstanceSpecification::getMpdExchangePatternText():Sequence(String)=self.oclAsType(UML::InstanceSpecification).getStringValues('ExchangePatternText');
+// get the List of String values for feature ExchangePartnerName for this Instance
+helper UML::InstanceSpecification::getMpdExchangePartnerName():Sequence(String)=self.oclAsType(UML::InstanceSpecification).getStringValues('ExchangePartnerName');
+// get the List of String values for feature ExtendedInformation for this Instance
+helper UML::InstanceSpecification::getMpdExtendedInformation():Sequence(String)=self.oclAsType(UML::InstanceSpecification).getStringValues('ExtendedInformation');
+// get the List of String values for feature name for this Instance
+helper UML::InstanceSpecification::getNames():Sequence(String)=self.oclAsType(UML::InstanceSpecification).getStringValues('name');
+// get the String value for feature ASAddressText for this Instance
+helper UML::InstanceSpecification::getMpdASAddressText():String=self.oclAsType(UML::InstanceSpecification).getStringValue('ASAddressText');
+// get the String value for feature ASWebSiteURL for this Instance
+helper UML::InstanceSpecification::getMpdASWebSiteURL():String=self.oclAsType(UML::InstanceSpecification).getStringValue('ASWebSiteURL');
+// get the String value for feature CreationDate for this Instance
+helper UML::InstanceSpecification::getMpdCreationDate():String=self.oclAsType(UML::InstanceSpecification).getStringValue('CreationDate');
+
+// get the String value for feature mpdClassCode for this Instance
+helper  UML::InstanceSpecification::getMpdPackageCode():String{
+	var packageCodeLiteral:String=self.oclAsType(UML::InstanceSpecification).getEnumerationLiteralValue('mpdClassCode').name;
+	if(packageCodeLiteral.oclIsUndefined())then{packageCodeLiteral:=defaultPackageCodeLiteral.name;}else{}endif;
+	return packageCodeLiteral;
+}
+// get the String value for feature externalURI for this Instance
+helper UML::InstanceSpecification::getExternalURI():String=self.oclAsType(UML::InstanceSpecification).getStringValue('externalURI');
+// is this Package used to hold (non-NIEM) model group definitions?
+query  UML::Package::isModelGroupDefinitions():Boolean{
+	return self.name=modelGroupDefinitionPackageName;
+}
+// is this Package used to hold (non-NIEM) attribute group definitions?
+query UML::Type::isAttributeGroupDefinition():Boolean=
+	self.name.endsWith('AttributeGroup');
+
+// clone this slot and add it as slot of specified InstanceSpecification
+mapping  UML::Slot::cloneSlot(inout targetStereotypeInstance:UML::InstanceSpecification):UML::Slot{
+	targetStereotypeInstance.slot+=result;
+	definingFeature:=self.definingFeature;
+	self.value->forEach(value){
+		value.map cloneValue(result);
+	}
+}
+// clone this ValueSpecification and add it as value of specified Slot
+mapping  UML::ValueSpecification::cloneValue(inout slot:UML::Slot):UML::ValueSpecification
+	disjuncts UML::InstanceValue::cloneInstanceValue,
+		UML::LiteralBoolean::cloneLiteralBoolean,
+		UML::LiteralInteger::cloneLiteralInteger,
+		UML::LiteralNull::cloneLiteralNull,
+		UML::LiteralString::cloneLiteralString,
+		UML::LiteralUnlimitedNatural::cloneLiteralUnlimitedNatural
+	{}
+// clone this InstanceValue and add it as value of specified Slot
+mapping  UML::InstanceValue::cloneInstanceValue(inout slot:UML::Slot):UML::InstanceValue
+	{
+		slot.value+=result;
+		instance:=self.instance;
+	}
+// clone this LiteralNull and add it as value of specified Slot
+mapping  UML::LiteralNull::cloneLiteralNull(inout slot:UML::Slot):UML::LiteralNull
+	{
+		slot.value+=result;
+	}
+// clone this LiteralBoolean and add it as value of specified Slot
+mapping  UML::LiteralBoolean::cloneLiteralBoolean(inout slot:UML::Slot):UML::LiteralBoolean
+	{
+		slot.value+=result;
+		value:=self.value;
+	}
+// clone this LiteralInteger and add it as value of specified Slot
+mapping  UML::LiteralInteger::cloneLiteralInteger(inout slot:UML::Slot):UML::LiteralInteger
+	{
+		slot.value+=result;
+		value:=self.value;
+	}
+// clone this LiteralUnlimitedNatural and add it as value of specified Slot
+mapping  UML::LiteralUnlimitedNatural::cloneLiteralUnlimitedNatural(inout slot:UML::Slot):UML::LiteralUnlimitedNatural
+	{
+		slot.value+=result;
+		value:=self.value;
+	}
+// clone this LiteralString and add it as value of specified Slot
+mapping  UML::LiteralString::cloneLiteralString(inout slot:UML::Slot):UML::LiteralString
+	{
+		slot.value+=result;
+		value:=self.value;
+	}
+// create an InstanceValue for feature tagName of this InstanceSpecification, whose instance value is EnumerationLiteral named anyObject	
+helper UML::InstanceSpecification::setEnumerationValue(tagName:String,anyObject:String){
+	var slot:UML::Slot=self.getSlot(tagName);
+	var enumeration:UML::Enumeration=slot.definingFeature.type.oclAsType(UML::Enumeration);
+	clearValue(slot);
+		createInstanceValue(slot,enumeration).instance:=enumeration.ownedLiteral->select(l|l.name=anyObject)->asSequence()->first();
+		return;
+}
+// remove this Element from model
+helper 	UML::Element::removeElement(){
+	var toBeRemoved:UML::Element=self;
+	if(self.oclIsKindOf(UML::Generalization))then{
+		var g:UML::Generalization=self.oclAsType(UML::Generalization);
+		g.specific:=null;
+		g.general:=null;
+		return;
+	}endif;
+	
+	if(self.oclIsKindOf(UML::Association))then{
+		self.oclAsType(UML::Association).ownedEnd.removeElement();
+		toBeRemoved.oclAsType(UML::Association).memberEnd:=Set{};
+	
+	}else{
+		
+	}endif;
+	if(self.oclIsKindOf(UML::Class))then{
+		self.oclAsType(UML::Class).ownedAttribute.removeElement();
+	}else{
+		
+	}endif;
+if(self.oclIsKindOf(UML::DataType))then{
+		self.oclAsType(UML::DataType).ownedAttribute.removeElement();
+	}else{
+		
+	}endif;	
+if(self.oclIsKindOf(UML::Classifier))then{
+		self.oclAsType(UML::Classifier).generalization.removeElement();
+	}else{
+		
+	}endif;	
+if(self.oclIsKindOf(UML::Dependency))then{
+        			toBeRemoved.oclAsType(UML::Dependency).client:=Set{};
+        			toBeRemoved.oclAsType(UML::Dependency).supplier:=Set{};
+        			toBeRemoved.oclAsType(UML::Dependency).owningPackage:=null;
+	}endif;	
+	
+if(self.oclIsKindOf(UML::Slot))then{
+		self.oclAsType(UML::Slot).value.removeElement();
+		self.oclAsType(UML::Slot).value:=Set{};
+	}endif;	
+if(self.oclIsKindOf(UML::ValueSpecification))then{
+		self.oclAsType(UML::ValueSpecification).owningSlot:=null;
+		if(self.oclIsKindOf(UML::InstanceValue))then{
+				self.oclAsType(UML::InstanceValue).instance:=null;
+			}endif;	
+	}endif;	
+	
+if(self.oclIsKindOf(UML::Property))then{
+	if(self.oclAsType(UML::Property).owningAssociation.oclIsUndefined())then{
+			self.oclAsType(UML::Property).association.removeElement();
+		}endif;
+	toBeRemoved.oclAsType(UML::Property).association:=null;		
+	toBeRemoved.oclAsType(UML::Property).subsettedProperty:=Set{};		
+	toBeRemoved.oclAsType(UML::Property)._propertyOfSubsettedProperty:=Set{};	
+	toBeRemoved.oclAsType(UML::Property)._slotOfDefiningFeature.removeElement();	
+	toBeRemoved.oclAsType(UML::Property)._slotOfDefiningFeature:=Set{};
+	toBeRemoved.oclAsType(UML::Property).type:=null;
+	toBeRemoved.oclAsType(UML::Property).name:=null;
+	}endif;	
+	// if any relations, remove those as well
+	toBeRemoved.getTargetDirectedRelationships()->forEach(relationship){relationship.removeElement();};
+	toBeRemoved._directedRelationshipOfSource->forEach(relationship){relationship.removeElement();};
+	toBeRemoved.owner:=null;
+	return;
+}
+// create an InstanceSpecification consistent with type of provided InstanceValue and make it the instance of the provided InstanceValue
+constructor UML::InstanceSpecification::InstanceSpecification(inout instanceValue:UML::InstanceValue){
+	instanceValue.instance:=result;
+	instanceValue.getNearestPackage().packagedElement+=result;
+	var type:UML::Type=instanceValue.owner.oclAsType(UML::Slot).definingFeature.type;
+	if(not(type.oclIsUndefined()))then{
+		classifier+=type.oclAsType(UML::Classifier);
+		name:=type.name;
+	}endif;	
+}
+// get the String value of an XSD Element instance
+query OclAny::getXSDElementValue():String=self.getDetail('text');
+// get the String value of an XSD Attribute instance
+query OclAny::getXSDAttributeValue():String=self.getDetail('text');
+// set the value of the relationshipCode tag  for this Stereotype Applicationto an EnumerationLiteral whose name is relationshipCode
+helper  Stdlib::Element::setRelationshipCode(relationshipCode:String){
+	self.setTagEnumerationValueConditionally('relationshipCode',relationshipCode);
+}
+	
+// set the value of the defaultPurpose tag  for this Stereotype Applicationto an EnumerationLiteral whose name is defaultPurpose
+helper  Stdlib::Element::setInformationModelDefaultPurpose(defaultPurpose:String){
+	self.setTagEnumerationValueConditionally('defaultPurpose',defaultPurpose);
+}
+
+// set the boolean value of the isConformant tag for this Stereotype Application to the provided value
+helper  Stdlib::Element::setSchemaAppinfoConformantIndicator(isConformant:Boolean){
+	self.setTagValueConditionally('isConformant',isConformant);
+}
+// set the string value of the version tag for this Stereotype Application to the provided value
+helper  Stdlib::Element::setSchemaVersion(version:String){
+	self.setTagValueConditionally('version',version);
+}
+// set the string value of the defaultPrefix tag for this Stereotype Application to the provided value
+helper  Stdlib::Element::setSchemaDefaultPrefix(defaultPrefix:String){
+	self.setTagValueConditionally('defaultPrefix',defaultPrefix);
+}
+
+// set the string value of the targetNamespace tag for this Stereotype Application to the provided value
+helper  Stdlib::Element::setSchemaNamespace(namespace:String){
+	self.setTagValueConditionally('targetNamespace',namespace);
+}
+// set the string value of the pathURI tag for this Stereotype Application to the provided value
+helper  Stdlib::Element::setPathURI(ASName:String){
+	self.setTagValueConditionally('pathURI',ASName);
+}
+// set the string value of the mimeMediaTypeText tag for this Stereotype Application to the provided value
+helper  Stdlib::Element::setMimeMediaTypeText(ASName:String){
+	self.setTagValueConditionally('mimeMediaTypeText',ASName);
+}
+// set the string value of the externalURI tag for this Stereotype Application to the provided value
+helper  Stdlib::Element::setExternalURI(ASName:String){
+	self.setTagValueConditionally('externalURI',ASName);
+}
+	
+// does this UML Element have the indicated Stereotype Applied?
+query UML::Element::IsStereotypeApplied(stereotype:UML::Stereotype):Boolean=
+	self.isStereotypeApplied(stereotype);
+
+// does this UML Element have the indicated Stereotype Applied?
+query UML::Element::isStereotypeApplied(stereotype:UML::Stereotype):Boolean=
+	self.stereotypedBy(stereotype.name);
+// get the nearest containing package which is a <<Namespace>> or a UML Primitive Library or an XML Primitive Library
+query UML::Element::getNearestNIEMSchemaPackage():UML::Package{
+	var schemaPackage:UML::Package=self.getNearestPackage();
+	if(schemaPackage.isStereotypeApplied(NIEMSchemaStereotype)) then {return schemaPackage;} endif;
+        if(schemaPackage.name=XMLPrimitiveTypesPackageName)then{return schemaPackage;}endif;
+        if(schemaPackage.name=UMLPrimitiveTypesPackageName)then{return schemaPackage;}endif;
+
+	var nestingPackage:UML::Package=schemaPackage.nestingPackage;
+	if(nestingPackage.oclIsUndefined())then{return null;}endif;
+	return nestingPackage.getNearestNIEMSchemaPackage();
+}
+// is this Classifier an <<AugmentationType>>?
+query UML::Classifier::isAugmentationType():Boolean=self.isStructuresAugmentationType() or
+	self.allParents()->select(p|p.isNIEMComplexTypeDefinition() and p.isStructuresAugmentationType())->notEmpty();
+// is this Classifier an <<AugmentationType>>?
+query UML::Classifier::isStructuresAugmentationType():Boolean=self.isPimAugmentation();
+// is this Element an <<AugmentationType>>?
+query UML::Element::isPimAugmentation():Boolean=false;
+// is this Class an <<AugmentationType>>?
+query UML::Class::isPimAugmentation():Boolean=self.IsStereotypeApplied(NIEMAugmentationStereotype);
+
+// is this Element a NIEM Complex Type?
+query UML::Element::isNIEMComplexTypeDefinition():Boolean=self.oclIsKindOf(UML::Class);
+/////////////////////////////////////////
+// get value of term attribute for this DOM Element
+query OclAny::getTermTerm():String=
+	self.getAttributes()->select(a|a.isTermTermAttribute()).getAttributeValue()->first();
+// get value of literal attribute for this DOM Element
+query OclAny::getTermLiteral():String=
+	self.getAttributes()->select(a|a.isTermLiteralAttribute()).getAttributeValue()->first();
+// get value of definition attribute for this DOM Element
+query OclAny::getTermDefinition():String=
+	self.getAttributes()->select(a|a.isTermDefinitionAttribute()).getAttributeValue()->first();
+// get value of SourceText element for this DOM Element
+query OclAny::getTermSourceText():Sequence(String)=
+	self.getElementElements()->select(a|a.isTermSourceTextElement()).getXSDElementValue()->asSequence();
+// get value of sourceURIs attribute for this DOM Element
+query OclAny::getTermSourceURIs():Sequence(String)=
+	self.getAttributes()->select(a|a.isTermSourceURIAttribute()).getAttributeListValue();
+// is this DOM Attribute the 'term' attribute?
+query OclAny::isTermTermAttribute():Boolean=(self.getAttributeName()='term');
+// is this DOM Attribute the 'literal' attribute?
+query OclAny::isTermLiteralAttribute():Boolean=(self.getAttributeName()='literal');
+// is this DOM Attribute the 'definition' attribute?
+query OclAny::isTermDefinitionAttribute():Boolean=(self.getAttributeName()='definition');
+// is this DOM Attribute the 'sourceURIs' attribute?
+query OclAny::isTermSourceURIAttribute():Boolean=(self.getAttributeName()='sourceURIs');
+// is this DOM Element the 'SourceText' element?
+query OclAny::isTermSourceTextElement():Boolean=(self.getElementName()='SourceText');
+// get the List of String values for this DOM Attribute	
+query OclAny::getAttributeListValue():Sequence(String)=self.getAttributeValue().tokenize(' ');
+// get the String value for this DOM Attribute	
+query OclAny::getAttributeValue():String=self.getDetail('value');
+// get the name for this DOM Attribute	
+query OclAny::getAttributeName():String=self.getDetail('name');
+// get the namespace for this DOM Attribute	
+query OclAny::getAttributeNamespace():String=self.getDetail('namespace');
+// get the name for this DOM Element	
+query OclAny::getElementName():String=self.getAttributeName();
+// get the value of the appinfo:name attribute within this DOM Element	(NIEM2)
+query OclAny::getAppInfoName():String=
+	self.getAttributes()->select(a|a.isAppinfoNameAttribute()).getAttributeValue()->first();
+// get the term attribute within this DOM Element
+query OclAny::getTerm():String=
+	self.getAttributes()->select(a|a.isTermAttribute()).getAttributeValue()->first();
+// is this DOM Attribute the term attribute?
+query OclAny::isTermAttribute():Boolean= (self.getAttributeName()='term');
+
+// is this DOM Attribute the appinfo name attribute?
+query OclAny::isAppinfoNameAttribute():Boolean=self.isAppinfoAttribute() and (self.getAttributeName()='name');
+// is this DOM Attribute an appinfo attribute?
+query OclAny::isAppinfoAttribute():Boolean{
+	var testNamespace:String=self.getAttributeNamespace();
+	if(testNamespace.oclIsUndefined())then{return false;}
+	else{return testNamespace.isAppinfoNamespace();}
+	endif;
+}	
+// get the ApplicationInformation elements contained by this XSDAnnotation
+query XSD::XSDAnnotation::getXSDAnnotationApplicationInformation():OrderedSet(OclAny){
+	return self.getApplicationInformation();
+}
+// get the namespace of this DOM Element
+query OclAny::getElementNamespace():String=self.getAttributeNamespace();
+// remove the last '/' and all subsequent characters from this string
+query String::truncateLastSegment():String{
+	if(self.rfind('/')>1)then{
+		return self.substring(1,self.rfind('/')-1);
+	}else{}endif;
+	return '';//self;
+}
+// is this DOM Attribute the appinfo namespace attribute?
+query OclAny::isAppinfoNamespaceAttribute():Boolean=self.isAppinfoAttribute() and (self.getAttributeName()='namespace');
+// get the value of the appinfo namespace attribute within this DOM Element
+query OclAny::getAppInfoNamespace():String=
+	// self is a DOM Element
+	self.getAttributes()->select(a|a.isAppinfoNamespaceAttribute()).getAttributeValue()->first();
+// make this string conform to a NCName	
+query String::toNCName():String=self.replace('/','_').replace(' ','')
+	.replace('<','_').replace('>','_').replace('(','_').replace(')','_').replace(',','_').replace('=','');
+// set the string value of the 'literal' tag for this applied stereotype to the provided value	
+helper  Stdlib::Element::setLocalTermLiteral(id:String){
+	self.setTagValueConditionally('literal',id);
+}
+// set the string value of the 'definition' tag for this applied stereotype to the provided value	
+helper  Stdlib::Element::setLocalTermDefinition(id:String){
+	self.setTagValueConditionally('definition',id);
+}
+	
+// if necessary, apply the provided stereotype to this UML ELement, and set the string value of the specified tag for the applied stereotype 	
+helper UML::Element::setTagValueConditionally(stereotype:UML::Stereotype,tagName:String,anyObject:String){
+	if((anyObject=null)or(anyObject.oclIsInvalid())or(anyObject.oclIsUndefined()))then{}else{
+		self.setValue(stereotype,tagName,anyObject);
+	}endif;
+}
+// get all attributes for this Classifier, includes those inherited and those expanded as choice attributes
+query UML::Classifier::getAllAttributes():OrderedSet(UML::Property){
+		var properties:OrderedSet(UML::Property)=self.attribute->asOrderedSet();
+		properties+=self.allParents().attribute;
+		return properties.expandChoiceAttributes()->asOrderedSet();
+	}
+// get the top-level property which is <<References>> from this property	
+query 	UML::Property::referencesTopLevelProperty():UML::Property=
+	self.clientDependency->select(d|d.IsStereotypeApplied(NIEMReferencesStereotype))
+	.supplier->select(s|s.oclIsKindOf(UML::Property))
+	.oclAsType(UML::Property)->asSequence()->first();
+// if the type of this Property is <<Choice>>, then return all Attributes of the <<Choice>>, otherwise return this Property	
+query UML::Property::expandChoiceAttributes():OrderedSet(UML::Property){
+		var properties:OrderedSet(UML::Property)=OrderedSet{self};
+		if(self.type.isChoice())then{
+			properties:=self.type.oclAsType(UML::Classifier).getAllAttributes();
+		}endif;
+		return properties;
+	}
+// is this type a <<Choice>>?	
+query UML::Type::isChoice():Boolean=self.isStereotypeApplied(NIEMChoiceStereotype);
+// get all Classifiers for which this Classifier is the general
+query UML::Classifier::subTypes():Set(UML::Classifier)=
+	self.getTargetDirectedRelationships()->select(t|t.oclIsKindOf(UML::Generalization))
+	.oclAsType(UML::Generalization).specific->asSet();
+// for this UML Element, return a Stereotype which has been applied and which is the Same type, or a subtype of, the provided stereotype
+query UML::Element::getAnyStereotypeApplied(stereotype:UML::Stereotype):UML::Stereotype=
+	self.getAppliedStereotypes()->select(s|s.isSubtypeOf(stereotype))->asSequence()->first();
+// is the provided stereotype, or a subtype of that stereotype, applied to this UML Element	
+query UML::Element::isAnyStereotypeApplied(stereotype:UML::Stereotype):Boolean=
+	self.getAppliedStereotypes()->exists(s|s.isSubtypeOf(stereotype));
+// can the provided stereotype be applied to this Element?	
+query UML::Element::isStereotypeApplicable(stereotype:UML::Stereotype):Boolean=
+	true;// for now assume it is
+// if necessary, apply the provided stereotype to this Element, set the value of the named tag to the provided list of Strings	
+helper UML::Element::setTagValueConditionally(stereotype:UML::Stereotype,tagName:String,anyObject:Sequence(String)){
+	if(anyObject->isEmpty())then{}else{
+		self.setValue(stereotype,tagName,anyObject);
+	}endif;
+}
+// if necessary, apply the provided stereotype to this Element, set the value of the named tag to the provided boolean value	
+helper UML::Element::setTagValueConditionally(stereotype:UML::Stereotype,tagName:String,anyObject:Boolean){
+	if((anyObject=null)or(anyObject.oclIsInvalid())or(anyObject.oclIsUndefined()))then{}else{
+		self.setValue(stereotype,tagName,anyObject);
+	}endif;
+}
+// if necessary, apply the provided stereotype to this Element, set the value of the named tag to the provided integer value	
+helper UML::Element::setTagValueConditionally(stereotype:UML::Stereotype,tagName:String,anyObject:Integer){
+	if((anyObject=null)or(anyObject.oclIsInvalid())or(anyObject.oclIsUndefined()))then{}else{
+		self.setValue(stereotype,tagName,anyObject);
+	}endif;
+}
+
+// if necessary, apply the provided stereotype to this Element, set the value of the named tag to the provided EnumerationLiteral value	
+helper UML::Element::setTagValueConditionally(stereotype:UML::Stereotype,tagName:String,anyObject:UML::EnumerationLiteral){
+	if((anyObject=null)or(anyObject.oclIsInvalid())or(anyObject.oclIsUndefined()))then{}else{
+		self.setValue(stereotype,tagName,anyObject);
+	}endif;
+}
+// if necessary, apply the provided stereotype to this Element, set the value of the named tag to a list of EnumerationLiterals named	
+helper UML::Element::setTagEnumerationValueConditionally(stereotype:UML::Stereotype,tagName:String,anyObject:Sequence(String)){
+	if(anyObject->isEmpty())then{}else{
+		self.setEnumerationValue(stereotype,tagName,anyObject);
+	}endif;
+}
+// if necessary, apply the provided stereotype to this Element, set the value of the named tag to an EnumerationLiterals having the provided name	
+helper UML::Element::setTagEnumerationValueConditionally(stereotype:UML::Stereotype,tagName:String,anyObject:String){
+	if(anyObject->isEmpty())then{}else{
+		self.setEnumerationValue(stereotype,tagName,anyObject);
+	}endif;
+}
+
+// set the value of the named tag on this InstanceSpecification to a list of EnumerationLiterals corresponding to list of provided names	
+helper UML::InstanceSpecification::setTagEnumerationValueConditionally(tagName:String,anyObject:Sequence(String)){
+		self.setEnumerationValue(tagName,anyObject);
+}
+// for this client Element, get the set of NamedElements which are suppliers of Realizations named refName  
+query UML::NamedElement::reference(refName:String):Set(UML::NamedElement)=self.clientDependency
+		->select(d|d.oclIsKindOf(UML::Realization)and not(d.name.oclIsUndefined()) and (d.name=refName)).supplier->asSet();
+// is this Property a 'RoleOf'?
+query UML::Property::isRoleOf():Boolean=self.name.startsWith('RoleOf');
+// does this String represent the name of a 'RoleOf' Property 	
+query String::isRoleOfName():Boolean=self.startsWith('RoleOf') and (self<>'RoleOf');
+
+
+// get a representation for the extent of this  element 	
+helper Stdlib::Element::extent():Stdlib::Element{
+	return self;
+	}
+// clone this <<InformationModel>> stereotype application to a <<Namespace>> stereotype application	
+helper  Stdlib::Element::cloneInformationModelToNamespace(inout targetInstanceIn:Stdlib::Element){
+	targetInstanceIn.setSchemaNamespace(self.getSchemaTargetNamespace());
+	var conformanceTargets:Sequence(String)=self.getSchemaConformanceTargets();
+	var schemaConformantIndicator:Boolean=self.getPimSchemaConformantIndicator();
+	if(conformanceTargets->isEmpty())then{
+		var defaultPurpose:String=self.getInformationModelDefaultPurpose();
+		if((defaultPurpose='reference')or(defaultPurpose='subset'))then{
+				conformanceTargets+='http://reference.niem.gov/niem/specification/naming-and-design-rules/3.0/#ReferenceSchemaDocument';
+		}else{
+			if(schemaConformantIndicator)then{
+				conformanceTargets+='http://reference.niem.gov/niem/specification/naming-and-design-rules/3.0/#ExtensionSchemaDocument';
+			}endif;
+		}endif;
+	}endif;
+	targetInstanceIn.setSchemaConformanceTargets(conformanceTargets);
+	targetInstanceIn.setSchemaAppinfoConformantIndicator(schemaConformantIndicator);
+    var version:String=self.getPimSchemaVersion();
+    if(not(version.oclIsUndefined()))then {targetInstanceIn.setSchemaVersion(version);} endif;
+    var defaultPrefix:String=self.getSchemaDefaultPrefix();
+    if(not(defaultPrefix.oclIsUndefined()))then {targetInstanceIn.setSchemaDefaultPrefix(defaultPrefix);} endif;
+	return;
+}
+// for this applied stereotype, set the value of tag conformanceTargets to the provided list of Strings 
+helper  Stdlib::Element::setSchemaConformanceTargets(value:Sequence(String)){
+	self.setTagValueConditionally('conformanceTargets',value);
+}
+
+
+// for this applied stereotype, set the value of tag mpdBaseURI to the provided String value 
+helper  Stdlib::Element::setMpdMpdBaseURI(mpdBaseURI:String){
+	self.setTagValueConditionally('mpdBaseURI',mpdBaseURI);
+}
+// for this applied stereotype, set the value of tag mpdVersionID to the provided String value 
+helper  Stdlib::Element::setMpdMpdVersionID(mpdVersionID:String){
+	self.setTagValueConditionally('mpdVersionID',mpdVersionID);
+}
+
+// for this applied stereotype, set the value of tag fractionDigits to the provided integer value 
+helper  Stdlib::Element::setNIEMSimpleTypeFractionDigits(value:Integer){
+	self.setTagValueConditionally('fractionDigits',value);
+}
+// for this applied stereotype, set the value of tag length to the provided integer value 
+helper  Stdlib::Element::setNIEMSimpleTypeLength(value:Integer){
+	self.setTagValueConditionally('length',value);
+}
+// for this applied stereotype, set the value of tag maxLength to the provided integer value 
+helper  Stdlib::Element::setNIEMSimpleTypeMaxLength(value:Integer){
+	self.setTagValueConditionally('maxLength',value);
+}
+// for this applied stereotype, set the value of tag minLength to the provided integer value 
+helper  Stdlib::Element::setNIEMSimpleTypeMinLength(value:Integer){
+	self.setTagValueConditionally('minLength',value);
+}
+// for this applied stereotype, set the value of tag maxExclusive to the provided string value 
+helper  Stdlib::Element::setNIEMSimpleTypeMaxExclusive(value:String){
+	self.setTagValueConditionally('maxExclusive',value);
+}
+// for this applied stereotype, set the value of tag maxInclusive to the provided string value 
+helper  Stdlib::Element::setNIEMSimpleTypeMaxInclusive(value:String){
+	self.setTagValueConditionally('maxInclusive',value);
+}
+// for this applied stereotype, set the value of tag minExclusive to the provided string value 
+helper  Stdlib::Element::setNIEMSimpleTypeMinExclusive(value:String){
+	self.setTagValueConditionally('minExclusive',value);
+}
+// for this applied stereotype, set the value of tag minInclusive to the provided string value 
+helper  Stdlib::Element::setNIEMSimpleTypeMinInclusive(value:String){
+	self.setTagValueConditionally('minInclusive',value);
+}
+
+// for this applied stereotype, set the value of tag totalDigits to the provided string value 
+helper  Stdlib::Element::setNIEMSimpleTypeTotalDigits(value:Integer){
+	self.setTagValueConditionally('totalDigits',value);
+}
+// for this applied stereotype, set the value of tag whiteSpace to an EnumerationLiteral whose name is the provided string value 
+helper  Stdlib::Element::setNIEMSimpleTypeWhiteSpace(value:String){
+	self.setTagEnumerationValueConditionally('whiteSpace',value);
+}
+// for this applied stereotype, set the value of tag pattern to the provided list of string values 
+helper  Stdlib::Element::setNIEMSimpleTypePattern(value:Sequence(String)){
+	self.setTagValueConditionally('pattern',value);
+}
+// for this applied stereotype, set the value of tag processContents to an EnumerationLiteral whose name is the provided string value
+helper  Stdlib::Element::setNIEMAnyPropertyProcessContents(processContents:String){
+	self.setTagEnumerationValueConditionally('processContents',processContents);
+}
+// for this applied stereotype, set the value of tag kind to an EnumerationLiteral whose name is the provided string value 
+helper  Stdlib::Element::setNIEMPropertyKind(kind:String){
+	self.setTagEnumerationValueConditionally('kind',kind);
+}
+// for this applied stereotype, set the value of tag nillable to the provided boolean value 
+helper  Stdlib::Element::setNIEMPropertyNillable(nillable:Boolean){
+	self.setTagValueConditionally('nillable',nillable);
+}
+// for this applied stereotype, set the value of tag descriptionText to the provided string value 
+helper  Stdlib::Element::setDescriptionText(ASName:String){
+	self.setTagValueConditionally('descriptionText',ASName);
+}
+// for this applied stereotype, get the value of tag externalURI as a string value 
+helper Stdlib::Element::getExternalURI():String=self.getStringValue('externalURI');
+// for this applied stereotype, get the value of tag pathURI as a string value 
+helper Stdlib::Element::getPathURI():String=self.getStringValue('pathURI');
+// for this applied stereotype, get the value of tag descriptionText as a string value 
+helper Stdlib::Element::getDescriptionText():String=self.getStringValue('descriptionText');
+// for this applied stereotype, get the value of tag fixed as a string value 
+query Stdlib::Element::getXSDPropertyFixed():String=self.getStringValue('fixed');
+// for this applied stereotype, get the value of tag NIEMName as a string value 
+query Stdlib::Element::getNIEMName():String=self.getStringValue('NIEMName');
+// for this applied stereotype, get the value of tag mimeMediaTypeText as a string value 
+query Stdlib::Element::getMimeMediaTypeText():String=self.getStringValue('mimeMediaTypeText');
+// for this applied stereotype, get the value of tag whiteSpace as a string value 
+query  Stdlib::Element::getXSDRepresentationRestrictionWhiteSpace():String=
+	self.getStringValue('whiteSpace');
+// for this applied stereotype, get the value of tag valueNamespace as a string value 
+query Stdlib::Element::getAnyPropertyNamespace():String=
+	self.getStringValue('valueNamespace');
+// for this applied stereotype, get the value of tag literal as a string value 
+query Stdlib::Element::getLocalTermLiteral():String=
+	self.getStringValue('literal');
+// for this applied stereotype, get the value of tag definition as a string value 
+query Stdlib::Element::getLocalTermDefinition():String=
+	self.getStringValue('definition');
+// for this applied stereotype, get the value of tag version as a string value 
+query Stdlib::Element::getPimSchemaVersion():String=
+	self.getStringValue('version');
+// for this applied stereotype, get the value of tag defaultPrefix as a string value 
+query Stdlib::Element::getSchemaDefaultPrefix():String=
+	self.getStringValue('defaultPrefix');
+// for this applied stereotype, get the value of tag targetNamespace as a string value 
+query Stdlib::Element::getPimSchemaNamespace():String=
+	self.getStringValue('targetNamespace');
+// for this applied stereotype, get the value of tag pathURI as a string value 
+query  Stdlib::Element::getFileTypeRelativePathName():String=
+	self.getStringValue('pathURI');
+// for this applied stereotype, get the value of tag maxExclusive as a string value 
+query  Stdlib::Element::getNIEMSimpleTypeMaxExclusive():String=
+	self.getStringValue('maxExclusive');
+// for this applied stereotype, get the value of tag maxInclusive as a string value 
+query  Stdlib::Element::getNIEMSimpleTypeMaxInclusive():String=
+	self.getStringValue('maxInclusive');
+// for this applied stereotype, get the value of tag minExclusive as a string value 
+query  Stdlib::Element::getNIEMSimpleTypeMinExclusive():String=
+	self.getStringValue('minExclusive');
+// for this applied stereotype, get the value of tag minInclusive as a string value 
+query  Stdlib::Element::getNIEMSimpleTypeMinInclusive():String=
+	self.getStringValue('minInclusive');
+
+// for this applied stereotype, get the value of tag relationshipCode as a string value 
+helper Stdlib::Element::getRelationshipCode():String=self.getEnumerationLiteralValue('relationshipCode').name;
+// for this applied stereotype, get the value of tag kind as a string value 
+query  Stdlib::Element::getNIEMPropertyKind():String=
+	self.getEnumerationLiteralValue('kind').name;
+// for this applied stereotype, get the value of tag processContents as a string value 
+query Stdlib::Element::getAnyPropertyProcessContents():String=
+	self.getEnumerationLiteralValue('processContents').name;
+// for this applied stereotype, get the value of tag defaultPurpose as a string value 
+query  Stdlib::Element::getInformationModelDefaultPurpose():String=
+	self.getEnumerationLiteralValue('defaultPurpose').name;
+// for this applied stereotype, get the value of tag isConformant as a boolean value 
+query Stdlib::Element::getPimSchemaConformantIndicator():Boolean=
+	self.getBooleanValue('isConformant');
+// for this applied stereotype, get the value of tag nillable as a boolean value 
+query  Stdlib::Element::getNIEMElementNillable():Boolean=
+	self.getBooleanValue('nillable');
+// get targetNamespace for this <<Namespace>> Package 
+query 	UML::Package::getSchemaTargetNamespace():String=self.GetStereotypeApplication(NIEMSchemaStereotype).oclAsType(Stdlib::Element).getSchemaTargetNamespace();
+// for this applied stereotype, get the value of tag targetNamespace as a string value 
+helper Stdlib::Element::getSchemaTargetNamespace():String=
+	self.getAnyValue('targetNamespace')
+	.oclAsType(String);
+// get the list of conformanceTargets for this <<Namespace>> Package 
+query 	UML::Package::getSchemaConformanceTargets():Sequence(String)=self.GetStereotypeApplication(NIEMSchemaStereotype).oclAsType(Stdlib::Element).getSchemaConformanceTargets();
+// for this applied stereotype, get the value of tag conformanceTargets as a list of string values 
+helper Stdlib::Element::getSchemaConformanceTargets():Sequence(String)=
+	self.getAnyValues('conformanceTargets')
+	.oclAsType(String);
+// add the provided SchemaDocumentSetType as element schemaDocumentSet (in substitutionGroup artifactOrArtifactSetGroup) to this MPDType	
+helper CAT::MPDType::addSchemaDocumentSet(folder:CAT::SchemaDocumentSetType){
+	self.oclAsType(Stdlib::Element).add('artifactOrArtifactSetGroup','schemaDocumentSet',folder.oclAsType(Stdlib::Element));
+}
+// add the provided OrganizationType as element entityOrganization (in substitutionGroup entityRepresentationGroup) to this EntityType	
+helper NC::EntityType::addEntityOrganization(folder:NC::OrganizationType){
+	self.oclAsType(Stdlib::Element).add('entityRepresentationGroup','entityOrganization',folder.oclAsType(Stdlib::Element));
+}
+
+// add the provided PersonType as element entityPerson (in substitutionGroup entityRepresentationGroup) to this EntityType	
+helper NC::EntityType::addEntityPerson(folder:NC::PersonType){
+	self.oclAsType(Stdlib::Element).add('entityRepresentationGroup','entityPerson',folder.oclAsType(Stdlib::Element));
+}
+	
+// add this string as element contactEmailID (in substitutionGroup contactMeansGroup) to the ContactInformationType	
+helper PROXY::_String::addContactEmailID(contactInformationType:NC::ContactInformationType){
+	contactInformationType.oclAsType(Stdlib::Element).add('contactMeansGroup','contactEmailID',self.oclAsType(Stdlib::Element));
+}
+// add this uri as element contactWebsiteURI (in substitutionGroup contactMeansGroup) to the ContactInformationType	
+helper PROXY::AnyURI::addContactWebsiteURI(contactInformationType:NC::ContactInformationType){
+	contactInformationType.oclAsType(Stdlib::Element).add('contactMeansGroup','contactWebsiteURI',self.oclAsType(Stdlib::Element));
+}
+
+// add this TelephoneNumberType as element contactTelephoneNumber (in substitutionGroup contactMeansGroup) to the ContactInformationType	
+helper NC::TelephoneNumberType::addContactTelephoneNumber(contactInformationType:NC::ContactInformationType){
+	contactInformationType.oclAsType(Stdlib::Element).add('contactMeansGroup','contactTelephoneNumber',self.oclAsType(Stdlib::Element));
+}
+
+// add provided FullTelephoneNumberType as element fullTelephoneNumber (in substitutionGroup telephoneNumberRepresentationGroup) to this TelephoneNumberType	
+helper NC::TelephoneNumberType::addFullTelephoneNumberType(fullTelephoneNumberType:NC::FullTelephoneNumberType){
+	self.oclAsType(Stdlib::Element).add('telephoneNumberRepresentationGroup','fullTelephoneNumber',fullTelephoneNumberType.oclAsType(Stdlib::Element));
+}
+// add this AddressType as element contactMailingAddress (in substitutionGroup contactMeansGroup) to the provided ContactInformationType	
+helper NC::AddressType::addContactMailingAddress(contactInformationType:NC::ContactInformationType){
+	contactInformationType.oclAsType(Stdlib::Element).add('contactMeansGroup','contactMailingAddress',self.oclAsType(Stdlib::Element));
+}
+// add the provided value to the list of strings in element files to this FileSetType	
+helper CAT::FileSetType::addFileSetFiles(value:String){
+	value.addToStringList(self.oclAsType(Stdlib::Element),'files');
+}
+
+// add this string to the list of strings in element sourceURIs for the given DOM Element	
+helper String::addTermSourceURI(element:Stdlib::Element){
+	self.addToStringList(element.oclAsType(Stdlib::Element),'sourceURIs');
+}
+
+
+// add the provided FileType as element externalSchemaDocument (in substitutionGroup xMLSchemaDocumentGroup or artifactOrArtifactSetGroup) to this Catalog Element	
+helper Stdlib::Element::addExternalSchemaDocument(folder:CAT::FileType){
+	if(self.oclIsKindOf(CAT::XMLSchemaType))then{
+		self.oclAsType(Stdlib::Element).add('xMLSchemaDocumentGroup','externalSchemaDocument',folder.oclAsType(Stdlib::Element));
+	}else{
+		self.oclAsType(Stdlib::Element).add('artifactOrArtifactSetGroup','externalSchemaDocument',folder.oclAsType(Stdlib::Element));
+	}endif;	
+}
+// add the provided FileType as element file (in substitutionGroup artifactOrArtifactSetGroup) to this Catalog Element	
+helper Stdlib::Element::addCatalogFile(folder:CAT::FileType){
+	self.oclAsType(Stdlib::Element).add('artifactOrArtifactSetGroup','file',folder.oclAsType(Stdlib::Element));
+}
+// add the provided FileType as element subsetSchemaDocument (in substitutionGroup xMLSchemaDocumentGroup or artifactOrArtifactSetGroup) to this Catalog Element	
+helper Stdlib::Element::addSubsetSchemaDocument(folder:CAT::FileType){
+	if(self.oclIsKindOf(CAT::XMLSchemaType))then{
+		self.oclAsType(Stdlib::Element).add('xMLSchemaDocumentGroup','subsetSchemaDocument',folder.oclAsType(Stdlib::Element));
+	}else{
+	self.oclAsType(Stdlib::Element).add('artifactOrArtifactSetGroup','subsetSchemaDocument',folder.oclAsType(Stdlib::Element));
+	}endif;	
+}
+// add the provided FileType as element extensionSchemaDocument (in substitutionGroup xMLSchemaDocumentGroup or artifactOrArtifactSetGroup) to this Catalog Element	
+helper Stdlib::Element::addExtensionSchemaDocument(folder:CAT::FileType){
+	if(self.oclIsKindOf(CAT::XMLSchemaType))then{
+		self.oclAsType(Stdlib::Element).add('xMLSchemaDocumentGroup','extensionSchemaDocument',folder.oclAsType(Stdlib::Element));
+	}else{
+	self.oclAsType(Stdlib::Element).add('artifactOrArtifactSetGroup','extensionSchemaDocument',folder.oclAsType(Stdlib::Element));
+	}endif;	
+}
+// add the provided FileType as element referenceSchemaDocument (in substitutionGroup xMLSchemaDocumentGroup or artifactOrArtifactSetGroup) to this Catalog Element	
+helper Stdlib::Element::addReferenceSchemaDocument(folder:CAT::FileType){
+	if(self.oclIsKindOf(CAT::XMLSchemaType))then{
+		self.oclAsType(Stdlib::Element).add('xMLSchemaDocumentGroup','referenceSchemaDocument',folder.oclAsType(Stdlib::Element));
+	}else{
+	self.oclAsType(Stdlib::Element).add('artifactOrArtifactSetGroup','referenceSchemaDocument',folder.oclAsType(Stdlib::Element));
+	}endif;	
+}
+
+
+
+// add the provided FileType as element applicationInfo (in substitutionGroup artifactOrArtifactSetGroup) to this Catalog Element	
+helper Stdlib::Element::addApplicationInfo(folder:CAT::FileType){
+	self.oclAsType(Stdlib::Element).add('artifactOrArtifactSetGroup','applicationInfo',folder.oclAsType(Stdlib::Element));
+}
+// add the provided FileType as element businessRulesArtifact (in substitutionGroup artifactOrArtifactSetGroup) to this Catalog Element	
+helper Stdlib::Element::addBusinessRulesArtifact(inout folder:CAT::FileType){
+	self.oclAsType(Stdlib::Element).add('artifactOrArtifactSetGroup','businessRulesArtifact',folder.oclAsType(Stdlib::Element));
+	if(not(folder.pathURI.oclIsUndefined())and not(folder.pathURI.endsWith('.sch')))then{folder.pathURI:=folder.pathURI+'.sch';}endif;
+}
+// add the provided FileType as element conformanceAssertion (in substitutionGroup artifactOrArtifactSetGroup) to this Catalog Element	
+helper Stdlib::Element::addConformanceAssertion(folder:CAT::FileType){
+	self.oclAsType(Stdlib::Element).add('artifactOrArtifactSetGroup','conformanceAssertion',folder.oclAsType(Stdlib::Element));
+}
+// add the provided FileType as element conformanceReport (in substitutionGroup artifactOrArtifactSetGroup) to this Catalog Element	
+helper Stdlib::Element::addConformanceReport(folder:CAT::FileType){
+	self.oclAsType(Stdlib::Element).add('artifactOrArtifactSetGroup','conformanceReport',folder.oclAsType(Stdlib::Element));
+}
+// add the provided FileType as element documentation (in substitutionGroup artifactOrArtifactSetGroup) to this Catalog Element	
+helper Stdlib::Element::addDocumentation(folder:CAT::FileType){
+	self.oclAsType(Stdlib::Element).add('artifactOrArtifactSetGroup','documentation',folder.oclAsType(Stdlib::Element));
+}
+// add the provided FileType as element file (in substitutionGroup artifactOrArtifactSetGroup) to this Catalog Element	
+helper Stdlib::Element::addFile(folder:CAT::FileType){
+	self.oclAsType(Stdlib::Element).add('artifactOrArtifactSetGroup','file',folder.oclAsType(Stdlib::Element));
+}
+// add the provided FileType as element iEPSampleXMLDocument (in substitutionGroup artifactOrArtifactSetGroup) to this Catalog Element	
+helper Stdlib::Element::addIEPSampleXMLDocument(inout folder:CAT::FileType){
+	self.oclAsType(Stdlib::Element).add('artifactOrArtifactSetGroup','iEPSampleXMLDocument',folder.oclAsType(Stdlib::Element));
+	if(not(folder.pathURI.oclIsUndefined())and not(folder.pathURI.endsWith('.xml')))then{folder.pathURI:=folder.pathURI+'.xml';}endif;
+}
+// add the provided FileType as element mPDChangeLog (in substitutionGroup artifactOrArtifactSetGroup) to this Catalog Element	
+helper Stdlib::Element::addMPDChangeLog(inout folder:CAT::FileType){
+	self.oclAsType(Stdlib::Element).add('artifactOrArtifactSetGroup','mPDChangeLog',folder.oclAsType(Stdlib::Element));
+	if(not(folder.pathURI.oclIsUndefined())and not(folder.pathURI.endsWith('.xml')))then{folder.pathURI:=folder.pathURI+'.xml';}endif;
+}
+// add the provided FileType as element readMe (in substitutionGroup artifactOrArtifactSetGroup) to this Catalog Element	
+helper Stdlib::Element::addReadMe(inout folder:CAT::FileType){
+	self.oclAsType(Stdlib::Element).add('artifactOrArtifactSetGroup','readMe',folder.oclAsType(Stdlib::Element));
+//	if(not(folder.pathURI.endsWith('.doc')))then{folder.pathURI:=folder.pathURI+'.doc';}endif;
+	if(not(folder.pathURI.oclIsUndefined())and not(folder.pathURI.endsWith('.odt')))then{folder.pathURI:=folder.pathURI+'.odt';}endif;
+}
+// add the provided FileType as element relaxNGSchema (in substitutionGroup artifactOrArtifactSetGroup) to this Catalog Element	
+helper Stdlib::Element::addRelaxNGSchema(folder:CAT::FileType){
+	self.oclAsType(Stdlib::Element).add('artifactOrArtifactSetGroup','relaxNGSchema',folder.oclAsType(Stdlib::Element));
+}
+// add the provided FileType as element requiredFile (in substitutionGroup artifactOrArtifactSetGroup) to this Catalog Element	
+helper Stdlib::Element::addRequiredFile(folder:CAT::FileType){
+	self.oclAsType(Stdlib::Element).add('artifactOrArtifactSetGroup','requiredFile',folder.oclAsType(Stdlib::Element));
+}
+// add the provided FileType as element schematronSchema (in substitutionGroup artifactOrArtifactSetGroup) to this Catalog Element	
+helper Stdlib::Element::addSchematronSchema(folder:CAT::FileType){
+	self.oclAsType(Stdlib::Element).add('artifactOrArtifactSetGroup','schematronSchema',folder.oclAsType(Stdlib::Element));
+}
+// add the provided FileType as element wantlist (in substitutionGroup artifactOrArtifactSetGroup) to this Catalog Element	
+helper Stdlib::Element::addWantlist(inout folder:CAT::FileType){
+	self.oclAsType(Stdlib::Element).add('artifactOrArtifactSetGroup','wantlist',folder.oclAsType(Stdlib::Element));
+	if(not(folder.pathURI.oclIsUndefined())and not(folder.pathURI.endsWith('.xml')))then{folder.pathURI:=folder.pathURI+'.xml';}endif;
+}
+// add the provided FileType as element xMLCatalog (in substitutionGroup artifactOrArtifactSetGroup) to this Catalog Element	
+helper Stdlib::Element::addXMLCatalog(inout folder:CAT::FileType){
+	self.oclAsType(Stdlib::Element).add('artifactOrArtifactSetGroup','xMLCatalog',folder.oclAsType(Stdlib::Element));
+	if(not(folder.pathURI.oclIsUndefined())and not(folder.pathURI.endsWith('.xml')))then{folder.pathURI:=folder.pathURI+'.xml';}endif;
+}
+// add the provided FileType as element xMLSchemaDocument (possibly in substitutionGroup artifactOrArtifactSetGroup) to this Catalog Element	
+helper Stdlib::Element::addXMLSchemaDocument(inout folder:CAT::FileType){
+	if(self.oclIsKindOf(CAT::XMLSchemaType))then{
+		self.oclAsType(CAT::XMLSchemaType).xMLSchemaDocument+=folder;
+	}else{
+		self.oclAsType(Stdlib::Element).add('artifactOrArtifactSetGroup','xMLSchemaDocument',folder.oclAsType(Stdlib::Element));
+	}endif;
+	if(not(folder.pathURI.endsWith('.xsd')))then{folder.pathURI:=folder.pathURI+'.xsd';}endif;
+}
+// add the provided FileType as element fileSet (in substitutionGroup artifactOrArtifactSetGroup) to this Catalog Element	
+helper CAT::MPDType::addCatalogFileSet(folder:CAT::FileSetType){
+	self.oclAsType(Stdlib::Element).add('artifactOrArtifactSetGroup','fileSet',folder.oclAsType(Stdlib::Element));
+}
+// add the provided FileType as element file (in substitutionGroup artifactOrArtifactSetGroup) to this Catalog Element	
+helper CAT::FileSetType::addFileSetFile(file:CAT::FileType){
+	self.oclAsType(Stdlib::Element).add('artifactOrArtifactSetGroup','file',file.oclAsType(Stdlib::Element));
+}
+// get the applied stereotype instance for this UML Element
+query UML::Element::GetStereotypeApplication(stereotype:UML::Stereotype):Stdlib::Element=self.getStereotypeApplication(stereotype);
+	
+// get the base name associated with the element; result is either the uml name provided as an argument or the <<NIEMName>> for the element 
+query UML::Element::getBaseNiemName(umlName:String ):String{
+	var niemName:String=umlName;
+	var stereotypeInstance:Stdlib::Element=self.GetStereotypeApplication(NIEMReferenceNameStereotype).oclAsType(Stdlib::Element);
+	if(self.IsStereotypeApplied(NIEMReferenceNameStereotype))then{
+		var testNiemName:String=self.GetStereotypeApplication(NIEMReferenceNameStereotype).oclAsType(Stdlib::Element).getNIEMName();
+		if(not(testNiemName.oclIsUndefined()))then{
+			niemName:=testNiemName;
+		}endif;
+	}endif;
+	return niemName;
+}
+	
+// get the base name associated with the NamedElement; result is either the uml name or the <<NIEMName>> for the element 
+query UML::NamedElement::getBaseNiemName():String=self.getBaseNiemName(self.name);
+// get the slot supporting the specified feature name for this InstanceSpecification 
+helper UML::InstanceSpecification::getSlot(tagName:String):UML::Slot{
+	var slot:UML::Slot=self.slot->select(s|s.definingFeature.name=tagName)->asSequence()->first();
+	if(slot.oclIsUndefined())then{
+		var definingProperty:UML::Property=self.classifier.getAllAttributes()->select(a|a.name=tagName)->asSequence()->first();
+		if(not(definingProperty.oclIsUndefined()))then{
+		slot:=new UML::Slot();
+		slot.owningInstance:=self;
+		slot.definingFeature:=definingProperty;
+		}endif;
+	}else{}endif;
+	return slot;
+}
+// set the value of the named Feature to the provided EnumerationLiteral for this InstanceSpecification 
+helper UML::InstanceSpecification::setValue(tagName:String,enumLiteral:UML::EnumerationLiteral){
+	var slot:UML::Slot=self.getSlot(tagName);
+	clearValue(slot);
+	createInstanceValue(slot,enumLiteral.enumeration).instance:=enumLiteral;
+	return;
+}
+
+// set the value of the named Feature to a list of EnumerationLiteral for this InstanceSpecification 
+helper UML::InstanceSpecification::setEnumerationValue(tagName:String,anyObject:Sequence(String)){
+	var slot:UML::Slot=self.getSlot(tagName);
+	var enumeration:UML::Enumeration=slot.definingFeature.type.oclAsType(UML::Enumeration);
+	clearValue(slot);
+	anyObject->forEach(s){
+		createInstanceValue(slot,enumeration).instance:=enumeration.ownedLiteral->select(l|l.name=s)->asSequence()->first();
+	};
+}
+// set the value of the named Feature to an EnumerationLiteral corresponding to the supplied name string for this InstanceSpecification 
+helper UML::InstanceSpecification::setTagValueConditionally(tagName:String,anyObject:String){
+	if((anyObject=null)or(anyObject.oclIsInvalid())or(anyObject.oclIsUndefined()))then{}else{
+		self.setValue(tagName,anyObject);
+	}endif;
+}
+// set the value of the named Feature of this InstanceSpecification to the supplied string value 
+helper UML::InstanceSpecification::setValue(tagName:String,anyObject:String){
+	var slot:UML::Slot=self.getSlot(tagName);
+	clearValue(slot);
+	createLiteralString(slot).value:=anyObject;
+	return;
+}
+// get the value of the feature fractionDigits as an Integer for this Stereotype Application 
+query  Stdlib::Element::getNIEMSimpleTypeFractionDigits():Integer=
+	self.getIntegerValue('fractionDigits');
+
+// get the value of the feature length as an Integer for this Stereotype Application 
+query  Stdlib::Element::getNIEMSimpleTypeLength():Integer=
+	self.getIntegerValue('length');
+
+// get the value of the feature maxLength as an Integer for this Stereotype Application 
+query  Stdlib::Element::getNIEMSimpleTypeMaxLength():Integer=
+	self.getIntegerValue('maxLength');
+
+// get the value of the feature minLength as an Integer for this Stereotype Application 
+query  Stdlib::Element::getNIEMSimpleTypeMinLength():Integer=
+	self.getIntegerValue('minLength');
+
+
+
+// get the value of the feature totalDigits as an Integer for this Stereotype Application 
+query  Stdlib::Element::getNIEMSimpleTypeTotalDigits():Integer=
+	self.getIntegerValue('totalDigits');
+// set the value of the feature valueNamespace to the provided String value for this Stereotype Application 
+helper  Stdlib::Element::setNIEMAnyPropertyValueNamespace(valueNamespace:String){
+	self.setValue('valueNamespace',valueNamespace);
+}
+// set the value of the feature named tagName to the provided Integer value for this Stereotype Application 
+helper Stdlib::Element::setTagValueConditionally(tagName:String,anyObject:Integer){
+	if((anyObject=null)or(anyObject.oclIsInvalid())or(anyObject.oclIsUndefined()))then{}else{
+		self.setValue(tagName,anyObject);
+	}endif;
+}
+// set the value of the feature named tagName to the provided List of string values for this Stereotype Application 
+helper Stdlib::Element::setTagValueConditionally(tagName:String,anyObject:Sequence(String)){
+	if(anyObject->isEmpty())then{}else{
+		self.setValue(tagName,anyObject);
+	}endif;
+}
+// set the value of the feature named tagName to the provided boolean value for this Stereotype Application 
+helper Stdlib::Element::setTagValueConditionally(tagName:String,anyObject:Boolean){
+	if((anyObject=null)or(anyObject.oclIsInvalid())or(anyObject.oclIsUndefined()))then{}else{
+		self.setValue(tagName,anyObject);
+	}endif;
+}
+// set the value of the feature named tagName to the provided string value for this Stereotype Application 
+helper Stdlib::Element::setTagValueConditionally(tagName:String,anyObject:String){
+	if((anyObject=null)or(anyObject.oclIsInvalid())or(anyObject.oclIsUndefined()))then{}else{
+		self.setValue(tagName,anyObject);
+	}endif;
+}
+// get the value of the feature named pattern as a list of string values for this Stereotype Application 
+query  Stdlib::Element::getNIEMSimpleTypePattern():Sequence(String)=
+	self.getStringValues('pattern');
+
+
+// get the value of the feature named sourceURIs as a list of string values for this Stereotype Application 
+query Stdlib::Element::getLocalTermSourceURIs():Sequence(String)=
+	self.getStringValues('sourceURIs');
+// add the provided string value to the list of string values in the feature named propertyName for this Stereotype Application 
+helper UML::InstanceSpecification::addListValue(propertyName:String,value:String){
+		self.oclAsType(Stdlib::Element).addListValue(propertyName,value);
+}	
+// for this Schema, return a Stdlib::Element which represents the MOF extent
+helper XSD::XSDSchema::extent():Stdlib::Element{
+	return self;
+	}
+ 		

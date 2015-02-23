@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.omg.org/spec/UML/20131001" xmlns:NIEM_Common_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_Common_Profile" xmlns:NIEM_PSM_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_PSM_Profile" xmlns:NIEM_PIM_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_PIM_Profile">
+
+<uml:Model xmi:type="uml:Model" xmi:id="eee_1045467100313_135436_1" name="Data">
+		<ownedComment xmi:type="uml:Comment" xmi:id="_18_0_2aa0151_1420846205456_229983_3986" body="Author:tom.&#xA;Created:1/9/15 6:30 PM.&#xA;Title:.&#xA;Comment:.&#xA;">
+			<annotatedElement xmi:idref="eee_1045467100313_135436_1"/>
+		</ownedComment>
+		<packagedElement xmi:type="uml:Package" xmi:id="_niem" name="niem">
+			<packagedElement xmi:type="uml:Package" xmi:id="_niem-external" name="external"/>
+			<packagedElement xmi:type="uml:Package" xmi:id="_niem-adapters" name="adapters">
+				
+				<packagedElement xmi:type="uml:Package" xmi:id="_niem-adapters-edxl-cap" name="edxl-cap">
+					<packagedElement xmi:type="uml:Package" xmi:id="_niem-adapters-edxl-cap-3.0" name="3.0">
+						<packagedElement xmi:type="uml:Package" xmi:id="_niem-adapters-edxl-cap-3.0-edxl-cap" name="edxl-cap">
+							<ownedComment xmi:type="uml:Comment" xmi:id="_niem-adapters-edxl-cap-3.0-edxl-cap-ownedComment" body="Common Alerting Protocol">
+								<annotatedElement xmi:idref="_niem-adapters-edxl-cap-3.0-edxl-cap"/>
+							</ownedComment>
+							<elementImport xmi:type="uml:ElementImport" xmi:id="_niem-adapters-edxl-cap-3.0-edxl-cap-elementImport">
+								<importedElement href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-Reference/NIEM-Reference-external-cap.xmi#_niem-external-cap-1.1-cap">
+									
+								</importedElement>
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-adapters-edxl-cap-3.0-edxl-cap-elementImport-ownedComment" body="Common Alerting Protocol (CAP) is a simple but general format for exchanging effective warning messages based on best practices identified in academic research and real-world experience.">
+									<annotatedElement xmi:idref="_niem-adapters-edxl-cap-3.0-edxl-cap-elementImport"/>
+								</ownedComment>
+							</elementImport>
+							<packagedElement xmi:type="uml:Class" xmi:id="_niem-adapters-edxl-cap-3.0-edxl-cap-AlertAdapterType" name="AlertAdapterType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-adapters-edxl-cap-3.0-edxl-cap-AlertAdapterType-ownedComment" body="A data type for a simple but general format for exchanging effective warning messages based on best practices identified in academic research and real-world experience.">
+									<annotatedElement xmi:idref="_niem-adapters-edxl-cap-3.0-edxl-cap-AlertAdapterType"/>
+								</ownedComment>
+								<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-adapters-edxl-cap-3.0-edxl-cap-AlertAdapterType-alert" name="alert" aggregation="shared" association="_niem-adapters-edxl-cap-3.0-edxl-cap-packagedElement-3">
+									<type href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-Reference/NIEM-Reference-external-cap.xmi#_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert_._type">
+										
+									</type>
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-adapters-edxl-cap-3.0-edxl-cap-AlertAdapterType-alert-ownedComment" body="CAP Alert Message (version 1.1)">
+										<annotatedElement xmi:idref="_niem-adapters-edxl-cap-3.0-edxl-cap-AlertAdapterType-alert"/>
+									</ownedComment>
+									<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-adapters-edxl-cap-3.0-edxl-cap-AlertAdapterType-alert-lowerValue"/>
+									<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_niem-adapters-edxl-cap-3.0-edxl-cap-AlertAdapterType-alert-upperValue" value="*"/>
+								</ownedAttribute>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Realization" xmi:id="_niem-adapters-edxl-cap-3.0-edxl-cap-packagedElement-2">
+								<client xmi:idref="_niem-adapters-edxl-cap-3.0-edxl-cap-AlertAdapterType-alert"/>
+								<supplier href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-Reference/NIEM-Reference-external-cap.xmi#_niem-external-cap-1.1-cap-NamespaceElementPropertyHolder-alert">
+									
+								</supplier>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Association" xmi:id="_niem-adapters-edxl-cap-3.0-edxl-cap-packagedElement-3">
+								<memberEnd xmi:idref="_niem-adapters-edxl-cap-3.0-edxl-cap-AlertAdapterType-alert"/>
+								<memberEnd xmi:idref="_niem-adapters-edxl-cap-3.0-edxl-cap-packagedElement-3-ownedEnd"/>
+								<ownedEnd xmi:type="uml:Property" xmi:id="_niem-adapters-edxl-cap-3.0-edxl-cap-packagedElement-3-ownedEnd" isUnique="false" type="_niem-adapters-edxl-cap-3.0-edxl-cap-AlertAdapterType" association="_niem-adapters-edxl-cap-3.0-edxl-cap-packagedElement-3">
+									<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-adapters-edxl-cap-3.0-edxl-cap-packagedElement-3-ownedEnd-lowerValue"/>
+									
+								</ownedEnd>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Class" xmi:id="_niem-adapters-edxl-cap-3.0-edxl-cap-NamespaceElementPropertyHolder" name="NamespaceElementPropertyHolder">
+								<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-adapters-edxl-cap-3.0-edxl-cap-NamespaceElementPropertyHolder-AlertAdapter" name="AlertAdapter" aggregation="shared" type="_niem-adapters-edxl-cap-3.0-edxl-cap-AlertAdapterType">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-adapters-edxl-cap-3.0-edxl-cap-NamespaceElementPropertyHolder-AlertAdapter-ownedComment" body="A simple but general format for exchanging effective warning messages based on best practices identified in academic research and real-world experience.">
+										<annotatedElement xmi:idref="_niem-adapters-edxl-cap-3.0-edxl-cap-NamespaceElementPropertyHolder-AlertAdapter"/>
+									</ownedComment>
+									<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-adapters-edxl-cap-3.0-edxl-cap-NamespaceElementPropertyHolder-AlertAdapter-lowerValue"/>
+									<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_niem-adapters-edxl-cap-3.0-edxl-cap-NamespaceElementPropertyHolder-AlertAdapter-upperValue" value="*"/>
+								</ownedAttribute>
+							</packagedElement>
+						</packagedElement>
+					</packagedElement>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-adapters-edxl-cap-profileApplication-1">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_PIM_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-adapters-edxl-cap-profileApplication-2">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-Model_Package_Description_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-adapters-edxl-cap-profileApplication-3">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_Common_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-adapters-edxl-cap-profileApplication-4">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_PSM_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+				</packagedElement>
+			</packagedElement>
+		</packagedElement>
+	</uml:Model>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-adapters-edxl-cap-3.0-edxl-cap-NamespaceElementPropertyHolder-AlertAdapter-appliedStereotypeInstance" base_Property="_niem-adapters-edxl-cap-3.0-edxl-cap-NamespaceElementPropertyHolder-AlertAdapter" nillable="true" kind="element"/>
+<NIEM_Common_Profile:PropertyHolder xmi:id="_niem-adapters-edxl-cap-3.0-edxl-cap-NamespaceElementPropertyHolder-appliedStereotypeInstance" base_Class="_niem-adapters-edxl-cap-3.0-edxl-cap-NamespaceElementPropertyHolder"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-adapters-edxl-cap-3.0-edxl-cap-AlertAdapterType-alert-appliedStereotypeInstance" base_Property="_niem-adapters-edxl-cap-3.0-edxl-cap-AlertAdapterType-alert" nillable="false" kind="element"/>
+<NIEM_Common_Profile:References xmi:id="_niem-adapters-edxl-cap-3.0-edxl-cap-packagedElement-2-appliedStereotypeInstance" base_Realization="_niem-adapters-edxl-cap-3.0-edxl-cap-packagedElement-2"/>
+<NIEM_Common_Profile:AdapterType xmi:id="_niem-adapters-edxl-cap-3.0-edxl-cap-AlertAdapterType-appliedStereotypeInstance" base_Class="_niem-adapters-edxl-cap-3.0-edxl-cap-AlertAdapterType"/>
+<NIEM_PIM_Profile:InformationModel xmi:id="_niem-adapters-edxl-cap-3.0-edxl-cap-appliedStereotypeInstance" base_Package="_niem-adapters-edxl-cap-3.0-edxl-cap" isConformant="true" version="1" targetNamespace="http://release.niem.gov/niem/adapters/edxl-cap/3.0/" defaultPurpose="reference"/>
+</xmi:XMI>

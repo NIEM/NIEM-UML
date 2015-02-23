@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.omg.org/spec/UML/20131001" xmlns:NIEM_Common_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_Common_Profile" xmlns:NIEM_PSM_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_PSM_Profile" xmlns:NIEM_PIM_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_PIM_Profile">
+
+<uml:Model xmi:type="uml:Model" xmi:id="eee_1045467100313_135436_1" name="Data">
+		<ownedComment xmi:type="uml:Comment" xmi:id="_17_0_5_1_2aa0151_1403383348092_349897_3364" body="Author:tom.&#xA;Created:6/21/14 4:42 PM.&#xA;Title:.&#xA;Comment:.&#xA;">
+			<annotatedElement xmi:idref="eee_1045467100313_135436_1"/>
+		</ownedComment>
+		<packagedElement xmi:type="uml:Package" xmi:id="_niem" name="niem">
+			<packagedElement xmi:type="uml:Package" xmi:id="_niem-external" name="external">
+				
+				<packagedElement xmi:type="uml:Package" xmi:id="_niem-external-xml" name="xml">
+					<packagedElement xmi:type="uml:Package" xmi:id="_niem-external-xml-1.0" name="1.0">
+						<packagedElement xmi:type="uml:Package" xmi:id="_niem-external-xml-1.0-xml" name="xml">
+							<ownedComment xmi:type="uml:Comment" xmi:id="_niem-external-xml-1.0-xml-ownedComment-1" body="&#xA;   &#xA;    About the XML namespace&#xA;&#xA;    &#xA;     &#xA;      This schema document describes the XML namespace, in a form&#xA;      suitable for import by other schema documents.&#xA;     &#xA;     &#xA;      See &#xA;      http://www.w3.org/XML/1998/namespace.html and&#xA;      &#xA;      http://www.w3.org/TR/REC-xml for information &#xA;      about this namespace.&#xA;     &#xA;     &#xA;      Note that local names in this namespace are intended to be&#xA;      defined only by the World Wide Web Consortium or its subgroups.&#xA;      The names currently defined in this namespace are listed below.&#xA;      They should not be used with conflicting semantics by any Working&#xA;      Group, specification, or document instance.&#xA;     &#xA;        &#xA;      See further below in this document for more information about how to refer to this schema document from your own&#xA;      XSD schema documents and about the&#xA;      namespace-versioning policy governing this schema document.&#xA;     &#xA;    &#xA;   &#xA;  ">
+								<annotatedElement xmi:idref="_niem-external-xml-1.0-xml"/>
+							</ownedComment>
+							<ownedComment xmi:type="uml:Comment" xmi:id="_niem-external-xml-1.0-xml-ownedComment-2" body="&#xA;   &#xA;   &#xA;    Father (in any context at all) &#xA;&#xA;    &#xA;     &#xA;      denotes Jon Bosak, the chair of &#xA;      the original XML Working Group.  This name is reserved by &#xA;      the following decision of the W3C XML Plenary and &#xA;      XML Coordination groups:&#xA;     &#xA;     &#xA;       &#xA;&#x9;In appreciation for his vision, leadership and&#xA;&#x9;dedication the W3C XML Plenary on this 10th day of&#xA;&#x9;February, 2000, reserves for Jon Bosak in perpetuity&#xA;&#x9;the XML name &#34;xml:Father&#34;.&#xA;       &#xA;     &#xA;    &#xA;   &#xA;  ">
+								<annotatedElement xmi:idref="_niem-external-xml-1.0-xml"/>
+							</ownedComment>
+							<ownedComment xmi:type="uml:Comment" xmi:id="_niem-external-xml-1.0-xml-ownedComment-3" body="&#xA;   &#xA;    About this schema document&#xA;&#xA;    &#xA;     &#xA;      This schema defines attributes and an attribute group suitable&#xA;      for use by schemas wishing to allow xml:base,&#xA;      xml:lang, xml:space or&#xA;      xml:id attributes on elements they define.&#xA;     &#xA;     &#xA;      To enable this, such a schema must import this schema for&#xA;      the XML namespace, e.g. as follows:&#xA;     &#xA;     &#xA;          &lt;schema . . .&gt;&#xA;           . . .&#xA;           &lt;import namespace=&#34;http://www.w3.org/XML/1998/namespace&#34;&#xA;                      schemaLocation=&#34;http://www.w3.org/2001/xml.xsd&#34;/&gt;&#xA;     &#xA;     &#xA;      or&#xA;     &#xA;     &#xA;           &lt;import namespace=&#34;http://www.w3.org/XML/1998/namespace&#34;&#xA;                      schemaLocation=&#34;http://www.w3.org/2009/01/xml.xsd&#34;/&gt;&#xA;     &#xA;     &#xA;      Subsequently, qualified reference to any of the attributes or the&#xA;      group defined below will have the desired effect, e.g.&#xA;     &#xA;     &#xA;          &lt;type . . .&gt;&#xA;           . . .&#xA;           &lt;attributeGroup ref=&#34;xml:specialAttrs&#34;/&gt;&#xA;     &#xA;     &#xA;      will define a type which will schema-validate an instance element&#xA;      with any of those attributes.&#xA;     &#xA;    &#xA;   &#xA;  ">
+								<annotatedElement xmi:idref="_niem-external-xml-1.0-xml"/>
+							</ownedComment>
+							<ownedComment xmi:type="uml:Comment" xmi:id="_niem-external-xml-1.0-xml-ownedComment-4" body="&#xA;   &#xA;    Versioning policy for this schema document&#xA;    &#xA;     &#xA;      In keeping with the XML Schema WG's standard versioning&#xA;      policy, this schema document will persist at&#xA;      &#xA;       http://www.w3.org/2009/01/xml.xsd.&#xA;     &#xA;     &#xA;      At the date of issue it can also be found at&#xA;      &#xA;       http://www.w3.org/2001/xml.xsd.&#xA;     &#xA;     &#xA;      The schema document at that URI may however change in the future,&#xA;      in order to remain compatible with the latest version of XML&#xA;      Schema itself, or with the XML namespace itself.  In other words,&#xA;      if the XML Schema or XML namespaces change, the version of this&#xA;      document at &#xA;       http://www.w3.org/2001/xml.xsd &#xA;       &#xA;      will change accordingly; the version at &#xA;      &#xA;       http://www.w3.org/2009/01/xml.xsd &#xA;       &#xA;      will not change.&#xA;     &#xA;     &#xA;      Previous dated (and unchanging) versions of this schema &#xA;      document are at:&#xA;     &#xA;     &#xA;      &#xA;&#x9;http://www.w3.org/2009/01/xml.xsd&#xA;      &#xA;&#x9;http://www.w3.org/2007/08/xml.xsd&#xA;      &#xA;&#x9;http://www.w3.org/2004/10/xml.xsd&#xA;      &#xA;&#x9;http://www.w3.org/2001/03/xml.xsd&#xA;     &#xA;    &#xA;   &#xA;  ">
+								<annotatedElement xmi:idref="_niem-external-xml-1.0-xml"/>
+							</ownedComment>
+							
+							<packagedElement xmi:type="uml:Class" xmi:id="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder" name="NamespaceAttributePropertyHolder">
+								<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-lang" name="lang" aggregation="shared" type="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-lang_._type">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-lang-ownedComment" body="&#xA;    &#xA;     &#xA;      lang (as an attribute name)&#xA;      &#xA;       denotes an attribute whose value&#xA;       is a language code for the natural language of the content of&#xA;       any element; its value is inherited.  This name is reserved&#xA;       by virtue of its definition in the XML specification.&#xA;     &#xA;    &#xA;    &#xA;     Notes&#xA;     &#xA;      Attempting to install the relevant ISO 2- and 3-letter&#xA;      codes as the enumerated possible values is probably never&#xA;      going to be a realistic possibility.  &#xA;     &#xA;     &#xA;      See BCP 47 at &#xA;       http://www.rfc-editor.org/rfc/bcp/bcp47.txt&#xA;      and the IANA language subtag registry at&#xA;      &#xA;       http://www.iana.org/assignments/language-subtag-registry&#xA;      for further information.&#xA;     &#xA;     &#xA;      The union allows for the 'un-declaration' of xml:lang with&#xA;      the empty string.&#xA;     &#xA;    &#xA;   ">
+										<annotatedElement xmi:idref="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-lang"/>
+									</ownedComment>
+								</ownedAttribute>
+								<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-space" name="space" aggregation="shared" type="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-space_._type">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-space-ownedComment" body="&#xA;    &#xA;     &#xA;      space (as an attribute name)&#xA;      &#xA;       denotes an attribute whose&#xA;       value is a keyword indicating what whitespace processing&#xA;       discipline is intended for the content of the element; its&#xA;       value is inherited.  This name is reserved by virtue of its&#xA;       definition in the XML specification.&#xA;     &#xA;    &#xA;   ">
+										<annotatedElement xmi:idref="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-space"/>
+									</ownedComment>
+								</ownedAttribute>
+								<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-base" name="base" aggregation="shared">
+									<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-anyURI">
+										
+									</type>
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-base-ownedComment" body="&#xA;    &#xA;     &#xA;      base (as an attribute name)&#xA;      &#xA;       denotes an attribute whose value&#xA;       provides a URI to be used as the base for interpreting any&#xA;       relative URIs in the scope of the element on which it&#xA;       appears; its value is inherited.  This name is reserved&#xA;       by virtue of its definition in the XML Base specification.&#xA;     &#xA;     &#xA;      See http://www.w3.org/TR/xmlbase/&#xA;      for information about this attribute.&#xA;     &#xA;    &#xA;   ">
+										<annotatedElement xmi:idref="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-base"/>
+									</ownedComment>
+								</ownedAttribute>
+								<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-id" name="id" aggregation="shared">
+									<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-ID">
+										
+									</type>
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-id-ownedComment" body="&#xA;    &#xA;     &#xA;      id (as an attribute name) &#xA;      &#xA;       denotes an attribute whose value&#xA;       should be interpreted as if declared to be of type ID.&#xA;       This name is reserved by virtue of its definition in the&#xA;       xml:id specification.&#xA;     &#xA;     &#xA;      See http://www.w3.org/TR/xml-id/&#xA;      for information about this attribute.&#xA;     &#xA;    &#xA;   ">
+										<annotatedElement xmi:idref="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-id"/>
+									</ownedComment>
+								</ownedAttribute>
+								<nestedClassifier xmi:type="uml:PrimitiveType" xmi:id="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-lang_._type" name="lang_._type"/>
+								<nestedClassifier xmi:type="uml:Enumeration" xmi:id="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-space_._type" name="space_._type">
+									<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-space_._type-default" name="default"/>
+									<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-space_._type-preserve" name="preserve"/>
+								</nestedClassifier>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Class" xmi:id="_niem-external-xml-1.0-xml-NamespaceElementPropertyHolder" name="NamespaceElementPropertyHolder">
+								<nestedClassifier xmi:type="uml:Enumeration" xmi:id="_niem-external-xml-1.0-xml-NamespaceElementPropertyHolder-lang_._type_._member_._1" name="lang_._type_._member_._1">
+									<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-external-xml-1.0-xml-NamespaceElementPropertyHolder-lang_._type_._member_._1-ownedLiteral"/>
+								</nestedClassifier>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Realization" xmi:id="_niem-external-xml-1.0-xml-packagedElement-3">
+								<client xmi:idref="_niem-external-xml-1.0-xml-NamespaceElementPropertyHolder-lang_._type_._member_._1"/>
+								<supplier href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-string">
+									
+								</supplier>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Usage" xmi:id="_niem-external-xml-1.0-xml-packagedElement-4" name="memberType">
+								<client xmi:idref="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-lang_._type"/>
+								<supplier xmi:idref="_niem-external-xml-1.0-xml-NamespaceElementPropertyHolder-lang_._type_._member_._1"/>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Usage" xmi:id="_niem-external-xml-1.0-xml-packagedElement-5" name="memberType">
+								<client xmi:idref="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-lang_._type"/>
+								<supplier href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-language">
+									
+								</supplier>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Realization" xmi:id="_niem-external-xml-1.0-xml-packagedElement-6">
+								<client xmi:idref="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-space_._type"/>
+								<supplier href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-NCName">
+									
+								</supplier>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Package" xmi:id="_niem-external-xml-1.0-xml-attributeGroupDefinition" name="attributeGroupDefinition">
+								
+								<packagedElement xmi:type="uml:Class" xmi:id="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs" name="specialAttrs">
+									<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-base" name="base" aggregation="shared">
+										<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-anyURI">
+											
+										</type>
+										<ownedComment xmi:type="uml:Comment" xmi:id="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-base-ownedComment" body="&#xA;    &#xA;     &#xA;      base (as an attribute name)&#xA;      &#xA;       denotes an attribute whose value&#xA;       provides a URI to be used as the base for interpreting any&#xA;       relative URIs in the scope of the element on which it&#xA;       appears; its value is inherited.  This name is reserved&#xA;       by virtue of its definition in the XML Base specification.&#xA;     &#xA;     &#xA;      See http://www.w3.org/TR/xmlbase/&#xA;      for information about this attribute.&#xA;     &#xA;    &#xA;   ">
+											<annotatedElement xmi:idref="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-base"/>
+										</ownedComment>
+										<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-base-lowerValue"/>
+										
+										<defaultValue xmi:type="uml:LiteralString" xmi:id="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-base-default" name="default"/>
+									</ownedAttribute>
+									<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-lang" name="lang" aggregation="shared" type="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-lang_._type">
+										<ownedComment xmi:type="uml:Comment" xmi:id="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-lang-ownedComment" body="&#xA;    &#xA;     &#xA;      lang (as an attribute name)&#xA;      &#xA;       denotes an attribute whose value&#xA;       is a language code for the natural language of the content of&#xA;       any element; its value is inherited.  This name is reserved&#xA;       by virtue of its definition in the XML specification.&#xA;     &#xA;    &#xA;    &#xA;     Notes&#xA;     &#xA;      Attempting to install the relevant ISO 2- and 3-letter&#xA;      codes as the enumerated possible values is probably never&#xA;      going to be a realistic possibility.  &#xA;     &#xA;     &#xA;      See BCP 47 at &#xA;       http://www.rfc-editor.org/rfc/bcp/bcp47.txt&#xA;      and the IANA language subtag registry at&#xA;      &#xA;       http://www.iana.org/assignments/language-subtag-registry&#xA;      for further information.&#xA;     &#xA;     &#xA;      The union allows for the 'un-declaration' of xml:lang with&#xA;      the empty string.&#xA;     &#xA;    &#xA;   ">
+											<annotatedElement xmi:idref="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-lang"/>
+										</ownedComment>
+										<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-lang-lowerValue"/>
+										
+										<defaultValue xmi:type="uml:LiteralString" xmi:id="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-lang-default" name="default"/>
+									</ownedAttribute>
+									<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-space" name="space" aggregation="shared" type="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-space_._type">
+										<ownedComment xmi:type="uml:Comment" xmi:id="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-space-ownedComment" body="&#xA;    &#xA;     &#xA;      space (as an attribute name)&#xA;      &#xA;       denotes an attribute whose&#xA;       value is a keyword indicating what whitespace processing&#xA;       discipline is intended for the content of the element; its&#xA;       value is inherited.  This name is reserved by virtue of its&#xA;       definition in the XML specification.&#xA;     &#xA;    &#xA;   ">
+											<annotatedElement xmi:idref="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-space"/>
+										</ownedComment>
+										<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-space-lowerValue"/>
+										
+										<defaultValue xmi:type="uml:LiteralString" xmi:id="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-space-default" name="default"/>
+									</ownedAttribute>
+									<ownedAttribute xmi:type="uml:Property" xmi:id="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-id" name="id" aggregation="shared">
+										<type href="http://www.omg.org/spec/NIEM-UML/20150201/XmlPrimitiveTypes.xmi#XMLPrimitiveTypes-ID">
+											
+										</type>
+										<ownedComment xmi:type="uml:Comment" xmi:id="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-id-ownedComment" body="&#xA;    &#xA;     &#xA;      id (as an attribute name) &#xA;      &#xA;       denotes an attribute whose value&#xA;       should be interpreted as if declared to be of type ID.&#xA;       This name is reserved by virtue of its definition in the&#xA;       xml:id specification.&#xA;     &#xA;     &#xA;      See http://www.w3.org/TR/xml-id/&#xA;      for information about this attribute.&#xA;     &#xA;    &#xA;   ">
+											<annotatedElement xmi:idref="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-id"/>
+										</ownedComment>
+										<lowerValue xmi:type="uml:LiteralInteger" xmi:id="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-id-lowerValue"/>
+										
+										<defaultValue xmi:type="uml:LiteralString" xmi:id="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-id-default" name="default"/>
+									</ownedAttribute>
+								</packagedElement>
+								<packagedElement xmi:type="uml:Realization" xmi:id="_niem-external-xml-1.0-xml-attributeGroupDefinition-packagedElement-2" name="ref">
+									<client xmi:idref="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-base"/>
+									<supplier xmi:idref="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-base"/>
+								</packagedElement>
+								<packagedElement xmi:type="uml:Realization" xmi:id="_niem-external-xml-1.0-xml-attributeGroupDefinition-packagedElement-3" name="ref">
+									<client xmi:idref="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-lang"/>
+									<supplier xmi:idref="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-lang"/>
+								</packagedElement>
+								<packagedElement xmi:type="uml:Realization" xmi:id="_niem-external-xml-1.0-xml-attributeGroupDefinition-packagedElement-4" name="ref">
+									<client xmi:idref="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-space"/>
+									<supplier xmi:idref="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-space"/>
+								</packagedElement>
+								<packagedElement xmi:type="uml:Realization" xmi:id="_niem-external-xml-1.0-xml-attributeGroupDefinition-packagedElement-5" name="ref">
+									<client xmi:idref="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-id"/>
+									<supplier xmi:idref="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-id"/>
+								</packagedElement>
+							</packagedElement>
+						</packagedElement>
+					</packagedElement>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-external-xml-profileApplication-1">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_PIM_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-external-xml-profileApplication-2">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-Model_Package_Description_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-external-xml-profileApplication-3">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_Common_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-external-xml-profileApplication-4">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_PSM_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+				</packagedElement>
+			</packagedElement>
+		</packagedElement>
+	</uml:Model>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-space-appliedStereotypeInstance" base_Property="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-space" kind="attribute"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-lang-appliedStereotypeInstance" base_Property="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-lang" kind="attribute"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-base-appliedStereotypeInstance" base_Property="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-base" kind="attribute"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-id-appliedStereotypeInstance" base_Property="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-id" kind="attribute"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-base-appliedStereotypeInstance" base_Property="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-base" kind="attribute"/>
+<NIEM_Common_Profile:Restriction xmi:id="_niem-external-xml-1.0-xml-packagedElement-3-appliedStereotypeInstance" base_Realization="_niem-external-xml-1.0-xml-packagedElement-3"/>
+<NIEM_Common_Profile:Union xmi:id="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-lang_._type-appliedStereotypeInstance" base_DataType="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-lang_._type"/>
+<NIEM_Common_Profile:PropertyHolder xmi:id="_niem-external-xml-1.0-xml-NamespaceElementPropertyHolder-appliedStereotypeInstance" base_Class="_niem-external-xml-1.0-xml-NamespaceElementPropertyHolder"/>
+<NIEM_Common_Profile:UnionOf xmi:id="_niem-external-xml-1.0-xml-packagedElement-5-appliedStereotypeInstance" base_Usage="_niem-external-xml-1.0-xml-packagedElement-5"/>
+<NIEM_Common_Profile:Restriction xmi:id="_niem-external-xml-1.0-xml-packagedElement-6-appliedStereotypeInstance" base_Realization="_niem-external-xml-1.0-xml-packagedElement-6"/>
+<NIEM_Common_Profile:UnionOf xmi:id="_niem-external-xml-1.0-xml-packagedElement-4-appliedStereotypeInstance" base_Usage="_niem-external-xml-1.0-xml-packagedElement-4"/>
+<NIEM_Common_Profile:PropertyHolder xmi:id="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder-appliedStereotypeInstance" base_Class="_niem-external-xml-1.0-xml-NamespaceAttributePropertyHolder"/>
+
+
+
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-id-appliedStereotypeInstance" base_Property="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-id" kind="attribute"/>
+
+
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-space-appliedStereotypeInstance" base_Property="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-space" kind="attribute"/>
+<NIEM_PSM_Profile:XSDProperty xmi:id="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-lang-appliedStereotypeInstance" base_Property="_niem-external-xml-1.0-xml-attributeGroupDefinition-specialAttrs-lang" kind="attribute"/>
+<NIEM_PIM_Profile:InformationModel xmi:id="_niem-external-xml-1.0-xml-appliedStereotypeInstance" base_Package="_niem-external-xml-1.0-xml" isConformant="false" version="1" targetNamespace="http://www.w3.org/XML/1998/namespace"/>
+</xmi:XMI>

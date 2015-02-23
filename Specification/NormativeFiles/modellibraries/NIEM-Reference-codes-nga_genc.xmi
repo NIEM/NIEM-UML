@@ -1,0 +1,1474 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.omg.org/spec/UML/20131001" xmlns:NIEM_Common_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_Common_Profile" xmlns:NIEM_PSM_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_PSM_Profile" xmlns:NIEM_PIM_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_PIM_Profile">
+
+<uml:Model xmi:type="uml:Model" xmi:id="eee_1045467100313_135436_1" name="Data">
+		<ownedComment xmi:type="uml:Comment" xmi:id="_17_0_5_1_2aa0151_1403380834266_154902_3364" body="Author:tom.&#xA;Created:6/21/14 4:00 PM.&#xA;Title:.&#xA;Comment:.&#xA;">
+			<annotatedElement xmi:idref="eee_1045467100313_135436_1"/>
+		</ownedComment>
+		<packagedElement xmi:type="uml:Package" xmi:id="_niem" name="niem">
+			<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes" name="codes">
+				
+				<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes-nga_genc" name="nga_genc">
+					<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes-nga_genc-3.0" name="3.0">
+						<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes-nga_genc-3.0-nga_genc" name="nga_genc">
+							<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-ownedComment" body="The Geopolitical Entities, Names, and Codes (GENC) Standard, the US Government implementation of ISO 3166.&#xA;Source: NGA; &#xA;Publication: GENC Standard; &#xA;Version: Ed 1.0; &#xA;Date: 27 Nov 2012;   &#xA;https://nsgreg.nga.mil/genc/discovery">
+								<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc"/>
+							</ownedComment>
+							
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-LocalVocabulary" name="LocalVocabulary">
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-LocalVocabulary-Alpha3" name="Alpha3"/>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType" name="CountryAlpha3CodeSimpleType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ownedComment" body="A data type for three-character country codes.">
+									<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType"/>
+								</ownedComment>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ABW" name="ABW">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ABW-ownedComment" body="Aruba">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ABW"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-AFG" name="AFG">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-AFG-ownedComment" body="Islamic Republic of Afghanistan">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-AFG"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-AGO" name="AGO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-AGO-ownedComment" body="Republic of Angola">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-AGO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-AIA" name="AIA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-AIA-ownedComment" body="Anguilla">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-AIA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ALB" name="ALB">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ALB-ownedComment" body="Republic of Albania">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ALB"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-AND" name="AND">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-AND-ownedComment" body="Principality of Andorra">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-AND"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ARE" name="ARE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ARE-ownedComment" body="United Arab Emirates">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ARE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ARG" name="ARG">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ARG-ownedComment" body="Argentine Republic">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ARG"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ARM" name="ARM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ARM-ownedComment" body="Republic of Armenia">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ARM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ASM" name="ASM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ASM-ownedComment" body="Territory of American Samoa">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ASM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ATA" name="ATA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ATA-ownedComment" body="Antarctica">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ATA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ATF" name="ATF">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ATF-ownedComment" body="French Southern and Antarctic Lands">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ATF"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ATG" name="ATG">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ATG-ownedComment" body="Antigua and Barbuda">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ATG"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-AUS" name="AUS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-AUS-ownedComment" body="Commonwealth of Australia">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-AUS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-AUT" name="AUT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-AUT-ownedComment" body="Republic of Austria">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-AUT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-AX1" name="AX1">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-AX1-ownedComment" body="Unknown">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-AX1"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-AX2" name="AX2">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-AX2-ownedComment" body="Guantanamo Bay Naval Base">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-AX2"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-AZE" name="AZE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-AZE-ownedComment" body="Republic of Azerbaijan">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-AZE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BDI" name="BDI">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BDI-ownedComment" body="Republic of Burundi">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BDI"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BEL" name="BEL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BEL-ownedComment" body="Kingdom of Belgium">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BEL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BEN" name="BEN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BEN-ownedComment" body="Republic of Benin">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BEN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BES" name="BES">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BES-ownedComment" body="Bonaire, Sint Eustatius, and Saba">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BES"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BFA" name="BFA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BFA-ownedComment" body="Burkina Faso">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BFA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BGD" name="BGD">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BGD-ownedComment" body="People's Republic of Bangladesh">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BGD"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BGR" name="BGR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BGR-ownedComment" body="Republic of Bulgaria">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BGR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BHR" name="BHR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BHR-ownedComment" body="Kingdom of Bahrain">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BHR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BHS" name="BHS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BHS-ownedComment" body="Commonwealth of The Bahamas">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BHS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BIH" name="BIH">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BIH-ownedComment" body="Bosnia and Herzegovina">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BIH"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BLM" name="BLM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BLM-ownedComment" body="Saint Barthelemy">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BLM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BLR" name="BLR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BLR-ownedComment" body="Republic of Belarus">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BLR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BLZ" name="BLZ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BLZ-ownedComment" body="Belize">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BLZ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BMU" name="BMU">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BMU-ownedComment" body="Bermuda">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BMU"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BOL" name="BOL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BOL-ownedComment" body="Plurinational State of Bolivia">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BOL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BRA" name="BRA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BRA-ownedComment" body="Federative Republic of Brazil">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BRA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BRB" name="BRB">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BRB-ownedComment" body="Barbados">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BRB"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BRN" name="BRN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BRN-ownedComment" body="Brunei Darussalam">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BRN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BTN" name="BTN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BTN-ownedComment" body="Kingdom of Bhutan">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BTN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BVT" name="BVT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BVT-ownedComment" body="Bouvet Island">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BVT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BWA" name="BWA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BWA-ownedComment" body="Republic of Botswana">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-BWA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CAF" name="CAF">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CAF-ownedComment" body="Central African Republic">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CAF"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CAN" name="CAN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CAN-ownedComment" body="Canada">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CAN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CCK" name="CCK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CCK-ownedComment" body="Territory of Cocos (Keeling) Islands">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CCK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CHE" name="CHE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CHE-ownedComment" body="Swiss Confederation">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CHE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CHL" name="CHL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CHL-ownedComment" body="Republic of Chile">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CHL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CHN" name="CHN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CHN-ownedComment" body="People's Republic of China">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CHN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CIV" name="CIV">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CIV-ownedComment" body="Republic of Côte d'Ivoire">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CIV"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CMR" name="CMR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CMR-ownedComment" body="Republic of Cameroon">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CMR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-COD" name="COD">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-COD-ownedComment" body="Democratic Republic of the Congo">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-COD"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-COG" name="COG">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-COG-ownedComment" body="Republic of the Congo">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-COG"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-COK" name="COK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-COK-ownedComment" body="Cook Islands">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-COK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-COL" name="COL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-COL-ownedComment" body="Republic of Colombia">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-COL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-COM" name="COM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-COM-ownedComment" body="Union of the Comoros">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-COM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CPT" name="CPT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CPT-ownedComment" body="Clipperton Island">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CPT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CPV" name="CPV">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CPV-ownedComment" body="Republic of Cape Verde">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CPV"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CRI" name="CRI">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CRI-ownedComment" body="Republic of Costa Rica">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CRI"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CUB" name="CUB">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CUB-ownedComment" body="Republic of Cuba">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CUB"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CUW" name="CUW">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CUW-ownedComment" body="Curaçao">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CUW"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CXR" name="CXR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CXR-ownedComment" body="Territory of Christmas Island">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CXR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CYM" name="CYM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CYM-ownedComment" body="Cayman Islands">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CYM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CYP" name="CYP">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CYP-ownedComment" body="Republic of Cyprus">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CYP"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CZE" name="CZE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CZE-ownedComment" body="Czech Republic">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-CZE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-DEU" name="DEU">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-DEU-ownedComment" body="Federal Republic of Germany">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-DEU"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-DGA" name="DGA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-DGA-ownedComment" body="Diego Garcia">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-DGA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-DJI" name="DJI">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-DJI-ownedComment" body="Republic of Djibouti">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-DJI"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-DMA" name="DMA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-DMA-ownedComment" body="Commonwealth of Dominica">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-DMA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-DNK" name="DNK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-DNK-ownedComment" body="Kingdom of Denmark">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-DNK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-DOM" name="DOM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-DOM-ownedComment" body="Dominican Republic">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-DOM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-DZA" name="DZA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-DZA-ownedComment" body="People's Democratic Republic of Algeria">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-DZA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ECU" name="ECU">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ECU-ownedComment" body="Republic of Ecuador">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ECU"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-EGY" name="EGY">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-EGY-ownedComment" body="Arab Republic of Egypt">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-EGY"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ERI" name="ERI">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ERI-ownedComment" body="State of Eritrea">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ERI"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ESH" name="ESH">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ESH-ownedComment" body="Western Sahara">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ESH"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ESP" name="ESP">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ESP-ownedComment" body="Kingdom of Spain">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ESP"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-EST" name="EST">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-EST-ownedComment" body="Republic of Estonia">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-EST"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ETH" name="ETH">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ETH-ownedComment" body="Federal Democratic Republic of Ethiopia">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ETH"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-FIN" name="FIN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-FIN-ownedComment" body="Republic of Finland">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-FIN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-FJI" name="FJI">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-FJI-ownedComment" body="Republic of Fiji">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-FJI"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-FLK" name="FLK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-FLK-ownedComment" body="Falkland Islands (Islas Malvinas)">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-FLK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-FRA" name="FRA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-FRA-ownedComment" body="French Republic">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-FRA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-FRO" name="FRO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-FRO-ownedComment" body="Faroe Islands">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-FRO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-FSM" name="FSM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-FSM-ownedComment" body="Federated States of Micronesia">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-FSM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GAB" name="GAB">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GAB-ownedComment" body="Gabonese Republic">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GAB"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GBR" name="GBR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GBR-ownedComment" body="United Kingdom of Great Britain and Northern Ireland">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GBR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GEO" name="GEO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GEO-ownedComment" body="Georgia">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GEO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GGY" name="GGY">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GGY-ownedComment" body="Bailiwick of Guernsey">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GGY"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GHA" name="GHA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GHA-ownedComment" body="Republic of Ghana">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GHA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GIB" name="GIB">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GIB-ownedComment" body="Gibraltar">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GIB"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GIN" name="GIN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GIN-ownedComment" body="Republic of Guinea">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GIN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GLP" name="GLP">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GLP-ownedComment" body="Department of Guadeloupe">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GLP"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GMB" name="GMB">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GMB-ownedComment" body="Republic of The Gambia">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GMB"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GNB" name="GNB">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GNB-ownedComment" body="Republic of Guinea-Bissau">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GNB"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GNQ" name="GNQ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GNQ-ownedComment" body="Republic of Equatorial Guinea">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GNQ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GRC" name="GRC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GRC-ownedComment" body="Hellenic Republic">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GRC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GRD" name="GRD">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GRD-ownedComment" body="Grenada">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GRD"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GRL" name="GRL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GRL-ownedComment" body="Greenland">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GRL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GTM" name="GTM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GTM-ownedComment" body="Republic of Guatemala">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GTM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GUF" name="GUF">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GUF-ownedComment" body="Department of Guiana">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GUF"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GUM" name="GUM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GUM-ownedComment" body="Territory of Guam">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GUM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GUY" name="GUY">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GUY-ownedComment" body="Co-operative Republic of Guyana">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-GUY"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-HKG" name="HKG">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-HKG-ownedComment" body="Hong Kong Special Administrative Region">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-HKG"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-HMD" name="HMD">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-HMD-ownedComment" body="Territory of Heard Island and McDonald Islands">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-HMD"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-HND" name="HND">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-HND-ownedComment" body="Republic of Honduras">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-HND"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-HRV" name="HRV">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-HRV-ownedComment" body="Republic of Croatia">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-HRV"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-HTI" name="HTI">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-HTI-ownedComment" body="Republic of Haiti">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-HTI"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-HUN" name="HUN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-HUN-ownedComment" body="Hungary">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-HUN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-IDN" name="IDN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-IDN-ownedComment" body="Republic of Indonesia">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-IDN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-IMN" name="IMN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-IMN-ownedComment" body="Isle of Man">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-IMN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-IND" name="IND">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-IND-ownedComment" body="Republic of India">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-IND"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-IOT" name="IOT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-IOT-ownedComment" body="British Indian Ocean Territory">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-IOT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-IRL" name="IRL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-IRL-ownedComment" body="Ireland">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-IRL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-IRN" name="IRN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-IRN-ownedComment" body="Islamic Republic of Iran">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-IRN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-IRQ" name="IRQ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-IRQ-ownedComment" body="Republic of Iraq">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-IRQ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ISL" name="ISL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ISL-ownedComment" body="Republic of Iceland">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ISL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ISR" name="ISR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ISR-ownedComment" body="State of Israel">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ISR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ITA" name="ITA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ITA-ownedComment" body="Italian Republic">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ITA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-JAM" name="JAM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-JAM-ownedComment" body="Jamaica">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-JAM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-JEY" name="JEY">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-JEY-ownedComment" body="Bailiwick of Jersey">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-JEY"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-JOR" name="JOR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-JOR-ownedComment" body="Hashemite Kingdom of Jordan">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-JOR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-JPN" name="JPN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-JPN-ownedComment" body="Japan">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-JPN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-KAZ" name="KAZ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-KAZ-ownedComment" body="Republic of Kazakhstan">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-KAZ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-KEN" name="KEN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-KEN-ownedComment" body="Republic of Kenya">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-KEN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-KGZ" name="KGZ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-KGZ-ownedComment" body="Kyrgyz Republic">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-KGZ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-KHM" name="KHM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-KHM-ownedComment" body="Kingdom of Cambodia">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-KHM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-KIR" name="KIR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-KIR-ownedComment" body="Republic of Kiribati">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-KIR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-KNA" name="KNA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-KNA-ownedComment" body="Federation of Saint Kitts and Nevis">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-KNA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-KOR" name="KOR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-KOR-ownedComment" body="Republic of Korea">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-KOR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-KWT" name="KWT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-KWT-ownedComment" body="State of Kuwait">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-KWT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LAO" name="LAO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LAO-ownedComment" body="Lao People's Democratic Republic">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LAO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LBN" name="LBN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LBN-ownedComment" body="Lebanese Republic">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LBN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LBR" name="LBR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LBR-ownedComment" body="Republic of Liberia">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LBR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LBY" name="LBY">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LBY-ownedComment" body="Libya">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LBY"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LCA" name="LCA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LCA-ownedComment" body="Saint Lucia">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LCA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LIE" name="LIE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LIE-ownedComment" body="Principality of Liechtenstein">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LIE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LKA" name="LKA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LKA-ownedComment" body="Democratic Socialist Republic of Sri Lanka">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LKA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LSO" name="LSO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LSO-ownedComment" body="Kingdom of Lesotho">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LSO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LTU" name="LTU">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LTU-ownedComment" body="Republic of Lithuania">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LTU"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LUX" name="LUX">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LUX-ownedComment" body="Grand Duchy of Luxembourg">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LUX"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LVA" name="LVA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LVA-ownedComment" body="Republic of Latvia">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-LVA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MAC" name="MAC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MAC-ownedComment" body="Macau Special Administrative Region">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MAC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MAF" name="MAF">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MAF-ownedComment" body="Saint Martin">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MAF"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MAR" name="MAR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MAR-ownedComment" body="Kingdom of Morocco">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MAR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MCO" name="MCO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MCO-ownedComment" body="Principality of Monaco">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MCO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MDA" name="MDA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MDA-ownedComment" body="Republic of Moldova">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MDA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MDG" name="MDG">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MDG-ownedComment" body="Republic of Madagascar">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MDG"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MDV" name="MDV">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MDV-ownedComment" body="Republic of Maldives">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MDV"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MEX" name="MEX">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MEX-ownedComment" body="United Mexican States">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MEX"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MHL" name="MHL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MHL-ownedComment" body="Republic of the Marshall Islands">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MHL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MKD" name="MKD">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MKD-ownedComment" body="Republic of Macedonia">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MKD"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MLI" name="MLI">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MLI-ownedComment" body="Republic of Mali">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MLI"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MLT" name="MLT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MLT-ownedComment" body="Republic of Malta">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MLT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MMR" name="MMR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MMR-ownedComment" body="Union of Burma">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MMR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MNE" name="MNE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MNE-ownedComment" body="Montenegro">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MNE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MNG" name="MNG">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MNG-ownedComment" body="Mongolia">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MNG"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MNP" name="MNP">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MNP-ownedComment" body="Commonwealth of the Northern Mariana Islands">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MNP"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MOZ" name="MOZ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MOZ-ownedComment" body="Republic of Mozambique">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MOZ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MRT" name="MRT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MRT-ownedComment" body="Islamic Republic of Mauritania">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MRT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MSR" name="MSR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MSR-ownedComment" body="Montserrat">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MSR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MTQ" name="MTQ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MTQ-ownedComment" body="Department of Martinique">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MTQ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MUS" name="MUS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MUS-ownedComment" body="Republic of Mauritius">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MUS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MWI" name="MWI">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MWI-ownedComment" body="Republic of Malawi">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MWI"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MYS" name="MYS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MYS-ownedComment" body="Malaysia">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MYS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MYT" name="MYT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MYT-ownedComment" body="Department of Mayotte">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-MYT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NAM" name="NAM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NAM-ownedComment" body="Republic of Namibia">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NAM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NCL" name="NCL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NCL-ownedComment" body="New Caledonia">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NCL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NER" name="NER">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NER-ownedComment" body="Republic of the Niger">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NER"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NFK" name="NFK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NFK-ownedComment" body="Territory of Norfolk Island">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NFK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NGA" name="NGA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NGA-ownedComment" body="Federal Republic of Nigeria">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NGA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NIC" name="NIC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NIC-ownedComment" body="Republic of Nicaragua">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NIC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NIU" name="NIU">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NIU-ownedComment" body="Niue">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NIU"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NLD" name="NLD">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NLD-ownedComment" body="Kingdom of the Netherlands">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NLD"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NOR" name="NOR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NOR-ownedComment" body="Kingdom of Norway">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NOR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NPL" name="NPL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NPL-ownedComment" body="Federal Democratic Republic of Nepal">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NPL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NRU" name="NRU">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NRU-ownedComment" body="Republic of Nauru">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NRU"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NZL" name="NZL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NZL-ownedComment" body="New Zealand">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-NZL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-OMN" name="OMN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-OMN-ownedComment" body="Sultanate of Oman">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-OMN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PAK" name="PAK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PAK-ownedComment" body="Islamic Republic of Pakistan">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PAK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PAN" name="PAN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PAN-ownedComment" body="Republic of Panama">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PAN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PCN" name="PCN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PCN-ownedComment" body="Pitcairn, Henderson, Ducie, and Oeno Islands">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PCN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PER" name="PER">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PER-ownedComment" body="Republic of Peru">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PER"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PHL" name="PHL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PHL-ownedComment" body="Republic of the Philippines">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PHL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PLW" name="PLW">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PLW-ownedComment" body="Republic of Palau">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PLW"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PNG" name="PNG">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PNG-ownedComment" body="Independent State of Papua New Guinea">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PNG"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-POL" name="POL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-POL-ownedComment" body="Republic of Poland">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-POL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PRI" name="PRI">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PRI-ownedComment" body="Commonwealth of Puerto Rico">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PRI"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PRK" name="PRK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PRK-ownedComment" body="Democratic People's Republic of Korea">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PRK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PRT" name="PRT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PRT-ownedComment" body="Portuguese Republic">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PRT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PRY" name="PRY">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PRY-ownedComment" body="Republic of Paraguay">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PRY"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PSE" name="PSE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PSE-ownedComment" body="Palestinian Territory">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PSE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PYF" name="PYF">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PYF-ownedComment" body="French Polynesia">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-PYF"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-QAT" name="QAT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-QAT-ownedComment" body="State of Qatar">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-QAT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-REU" name="REU">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-REU-ownedComment" body="Department of Reunion">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-REU"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ROU" name="ROU">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ROU-ownedComment" body="Romania">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ROU"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-RUS" name="RUS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-RUS-ownedComment" body="Russian Federation">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-RUS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-RWA" name="RWA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-RWA-ownedComment" body="Republic of Rwanda">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-RWA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SAU" name="SAU">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SAU-ownedComment" body="Kingdom of Saudi Arabia">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SAU"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SDN" name="SDN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SDN-ownedComment" body="Republic of the Sudan">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SDN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SEN" name="SEN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SEN-ownedComment" body="Republic of Senegal">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SEN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SGP" name="SGP">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SGP-ownedComment" body="Republic of Singapore">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SGP"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SGS" name="SGS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SGS-ownedComment" body="South Georgia and South Sandwich Islands">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SGS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SHN" name="SHN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SHN-ownedComment" body="Saint Helena, Ascension, and Tristan da Cunha">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SHN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SLB" name="SLB">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SLB-ownedComment" body="Solomon Islands">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SLB"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SLE" name="SLE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SLE-ownedComment" body="Republic of Sierra Leone">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SLE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SLV" name="SLV">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SLV-ownedComment" body="Republic of El Salvador">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SLV"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SMR" name="SMR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SMR-ownedComment" body="Republic of San Marino">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SMR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SOM" name="SOM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SOM-ownedComment" body="Somalia, Federal Republic of">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SOM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SPM" name="SPM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SPM-ownedComment" body="Territorial Collectivity of Saint Pierre and Miquelon">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SPM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SRB" name="SRB">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SRB-ownedComment" body="Republic of Serbia">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SRB"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SSD" name="SSD">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SSD-ownedComment" body="Republic of South Sudan">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SSD"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-STP" name="STP">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-STP-ownedComment" body="Democratic Republic of Sao Tome and Principe">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-STP"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SUR" name="SUR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SUR-ownedComment" body="Republic of Suriname">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SUR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SVK" name="SVK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SVK-ownedComment" body="Slovak Republic">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SVK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SVN" name="SVN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SVN-ownedComment" body="Republic of Slovenia">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SVN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SWE" name="SWE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SWE-ownedComment" body="Kingdom of Sweden">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SWE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SWZ" name="SWZ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SWZ-ownedComment" body="Kingdom of Swaziland">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SWZ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SXM" name="SXM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SXM-ownedComment" body="Sint Maarten">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SXM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SYC" name="SYC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SYC-ownedComment" body="Republic of Seychelles">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SYC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SYR" name="SYR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SYR-ownedComment" body="Syrian Arab Republic">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-SYR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TCA" name="TCA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TCA-ownedComment" body="Turks and Caicos Islands">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TCA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TCD" name="TCD">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TCD-ownedComment" body="Republic of Chad">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TCD"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TGO" name="TGO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TGO-ownedComment" body="Togolese Republic">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TGO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-THA" name="THA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-THA-ownedComment" body="Kingdom of Thailand">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-THA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TJK" name="TJK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TJK-ownedComment" body="Republic of Tajikistan">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TJK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TKL" name="TKL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TKL-ownedComment" body="Tokelau">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TKL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TKM" name="TKM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TKM-ownedComment" body="Turkmenistan">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TKM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TLS" name="TLS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TLS-ownedComment" body="Democratic Republic of Timor-Leste">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TLS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TON" name="TON">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TON-ownedComment" body="Kingdom of Tonga">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TON"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TTO" name="TTO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TTO-ownedComment" body="Republic of Trinidad and Tobago">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TTO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TUN" name="TUN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TUN-ownedComment" body="Tunisian Republic">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TUN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TUR" name="TUR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TUR-ownedComment" body="Republic of Turkey">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TUR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TUV" name="TUV">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TUV-ownedComment" body="Tuvalu">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TUV"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TWN" name="TWN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TWN-ownedComment" body="Taiwan">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TWN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TZA" name="TZA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TZA-ownedComment" body="United Republic of Tanzania">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-TZA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-UGA" name="UGA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-UGA-ownedComment" body="Republic of Uganda">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-UGA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-UKR" name="UKR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-UKR-ownedComment" body="Ukraine">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-UKR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-URY" name="URY">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-URY-ownedComment" body="Oriental Republic of Uruguay">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-URY"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-USA" name="USA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-USA-ownedComment" body="United States of America">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-USA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-UZB" name="UZB">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-UZB-ownedComment" body="Republic of Uzbekistan">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-UZB"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-VAT" name="VAT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-VAT-ownedComment" body="State of the Vatican City">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-VAT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-VCT" name="VCT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-VCT-ownedComment" body="Saint Vincent and the Grenadines">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-VCT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-VEN" name="VEN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-VEN-ownedComment" body="Bolivarian Republic of Venezuela">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-VEN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-VGB" name="VGB">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-VGB-ownedComment" body="Virgin Islands, British">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-VGB"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-VIR" name="VIR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-VIR-ownedComment" body="United States Virgin Islands">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-VIR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-VNM" name="VNM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-VNM-ownedComment" body="Socialist Republic of Vietnam">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-VNM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-VUT" name="VUT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-VUT-ownedComment" body="Republic of Vanuatu">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-VUT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-WLF" name="WLF">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-WLF-ownedComment" body="Wallis and Futuna">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-WLF"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-WSM" name="WSM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-WSM-ownedComment" body="Independent State of Samoa">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-WSM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XAC" name="XAC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XAC-ownedComment" body="Territory of Ashmore and Cartier Islands">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XAC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XAZ" name="XAZ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XAZ-ownedComment" body="Entity 1">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XAZ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XBI" name="XBI">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XBI-ownedComment" body="Bassas da India">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XBI"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XBK" name="XBK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XBK-ownedComment" body="Baker Island">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XBK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XCR" name="XCR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XCR-ownedComment" body="Entity 2">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XCR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XCS" name="XCS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XCS-ownedComment" body="Coral Sea Islands Territory">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XCS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XCY" name="XCY">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XCY-ownedComment" body="Entity 3">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XCY"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XEU" name="XEU">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XEU-ownedComment" body="Europa Island">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XEU"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XGL" name="XGL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XGL-ownedComment" body="Glorioso Islands">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XGL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XGZ" name="XGZ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XGZ-ownedComment" body="Gaza Strip">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XGZ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XHO" name="XHO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XHO-ownedComment" body="Howland Island">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XHO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XJA" name="XJA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XJA-ownedComment" body="Johnston Atoll">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XJA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XJM" name="XJM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XJM-ownedComment" body="Jan Mayen">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XJM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XJN" name="XJN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XJN-ownedComment" body="Juan de Nova Island">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XJN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XJV" name="XJV">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XJV-ownedComment" body="Jarvis Island">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XJV"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XKM" name="XKM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XKM-ownedComment" body="Entity 4">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XKM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XKN" name="XKN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XKN-ownedComment" body="Entity 5">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XKN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XKR" name="XKR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XKR-ownedComment" body="Kingman Reef">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XKR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XKS" name="XKS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XKS-ownedComment" body="Republic of Kosovo">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XKS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XMW" name="XMW">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XMW-ownedComment" body="Midway Islands">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XMW"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XNV" name="XNV">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XNV-ownedComment" body="Navassa Island">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XNV"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XPL" name="XPL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XPL-ownedComment" body="Palmyra Atoll">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XPL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XPR" name="XPR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XPR-ownedComment" body="Paracel Islands">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XPR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XQP" name="XQP">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XQP-ownedComment" body="Etorofu, Habomai, Kunashiri, and Shikotan Islands">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XQP"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XQZ" name="XQZ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XQZ-ownedComment" body="Akrotiri">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XQZ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XSP" name="XSP">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XSP-ownedComment" body="Spratly Islands">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XSP"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XSV" name="XSV">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XSV-ownedComment" body="Svalbard">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XSV"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XTR" name="XTR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XTR-ownedComment" body="Tromelin Island">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XTR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XWB" name="XWB">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XWB-ownedComment" body="West Bank">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XWB"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XWK" name="XWK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XWK-ownedComment" body="Wake Island">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XWK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XXD" name="XXD">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XXD-ownedComment" body="Dhekelia">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XXD"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XXX" name="XXX">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XXX-ownedComment" body="No Man's Land">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-XXX"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-YEM" name="YEM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-YEM-ownedComment" body="Republic of Yemen">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-YEM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ZAF" name="ZAF">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ZAF-ownedComment" body="Republic of South Africa">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ZAF"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ZMB" name="ZMB">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ZMB-ownedComment" body="Republic of Zambia">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ZMB"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ZWE" name="ZWE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ZWE-ownedComment" body="Republic of Zimbabwe">
+										<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType-ZWE"/>
+									</ownedComment>
+								</ownedLiteral>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Class" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-NamespaceElementPropertyHolder" name="NamespaceElementPropertyHolder"/>
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeType" name="CountryAlpha3CodeType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeType-ownedComment" body="A data type for three-character country codes.">
+									<annotatedElement xmi:idref="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeType"/>
+								</ownedComment>
+								<generalization xmi:type="uml:Generalization" xmi:id="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeType-generalization" general="_niem-codes-nga_genc-3.0-nga_genc-CountryAlpha3CodeSimpleType"/>
+							</packagedElement>
+						</packagedElement>
+					</packagedElement>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-nga_genc-profileApplication-1">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_PIM_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-nga_genc-profileApplication-2">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-Model_Package_Description_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-nga_genc-profileApplication-3">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_Common_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-nga_genc-profileApplication-4">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_PSM_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+				</packagedElement>
+			</packagedElement>
+		</packagedElement>
+	</uml:Model>
+<NIEM_Common_Profile:LocalVocabulary xmi:id="_niem-codes-nga_genc-3.0-nga_genc-LocalVocabulary-appliedStereotypeInstance" base_Enumeration="_niem-codes-nga_genc-3.0-nga_genc-LocalVocabulary"/>
+<NIEM_Common_Profile:PropertyHolder xmi:id="_niem-codes-nga_genc-3.0-nga_genc-NamespaceElementPropertyHolder-appliedStereotypeInstance" base_Class="_niem-codes-nga_genc-3.0-nga_genc-NamespaceElementPropertyHolder"/>
+<NIEM_Common_Profile:LocalTerm xmi:id="_niem-codes-nga_genc-3.0-nga_genc-LocalVocabulary-Alpha3-appliedStereotypeInstance" base_EnumerationLiteral="_niem-codes-nga_genc-3.0-nga_genc-LocalVocabulary-Alpha3" definition="Three-letter"/>
+
+<NIEM_PIM_Profile:InformationModel xmi:id="_niem-codes-nga_genc-3.0-nga_genc-appliedStereotypeInstance" base_Package="_niem-codes-nga_genc-3.0-nga_genc" isConformant="true" version="1" targetNamespace="http://release.niem.gov/niem/codes/nga_genc/3.0/" defaultPurpose="reference"/>
+</xmi:XMI>

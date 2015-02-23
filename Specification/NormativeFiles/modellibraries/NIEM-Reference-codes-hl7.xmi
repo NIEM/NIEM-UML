@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.omg.org/spec/UML/20131001" xmlns:NIEM_Common_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_Common_Profile" xmlns:NIEM_PSM_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_PSM_Profile" xmlns:NIEM_PIM_Profile="http://www.omg.org/spec/NIEM-UML/20150201/NIEM_PIM_Profile">
+
+<uml:Model xmi:type="uml:Model" xmi:id="eee_1045467100313_135436_1" name="Data">
+		<ownedComment xmi:type="uml:Comment" xmi:id="_17_0_5_1_2aa0151_1403380087330_124090_3364" body="Author:tom.&#xA;Created:6/21/14 3:48 PM.&#xA;Title:.&#xA;Comment:.&#xA;">
+			<annotatedElement xmi:idref="eee_1045467100313_135436_1"/>
+		</ownedComment>
+		<packagedElement xmi:type="uml:Package" xmi:id="_niem" name="niem">
+			<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes" name="codes">
+				
+				<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes-hl7" name="hl7">
+					<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes-hl7-3.0" name="3.0">
+						<packagedElement xmi:type="uml:Package" xmi:id="_niem-codes-hl7-3.0-hl7" name="hl7">
+							<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ownedComment" body="Source: Health (HL-7); &#xA;Publication: Religion-HL7 Table 0006_VD; &#xA;Date: 19 Jul 2004;   http://ushik.ahrq.gov/dr.ui.drConceptualDomain_View?System=mdr&amp;ConceptualDomainID=74288000&amp;ViewDownFile=yes&amp;DownFile=Co">
+								<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7"/>
+							</ownedComment>
+							
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType" name="ReligionCodeSimpleType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-ownedComment" body="A data type for a religion to which a person can subscribe or believe; a categorization of spiritual beliefs.">
+									<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType"/>
+								</ownedComment>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-ABC" name="ABC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-ABC-ownedComment" body="Christian: American Baptist Church">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-ABC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-AGN" name="AGN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-AGN-ownedComment" body="Agnostic">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-AGN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-AME" name="AME">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-AME-ownedComment" body="Christian: African Methodist Episcopal Zion">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-AME"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-AMT" name="AMT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-AMT-ownedComment" body="Christian: African Methodist Episcopal">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-AMT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-ANG" name="ANG">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-ANG-ownedComment" body="Christian: Anglican">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-ANG"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-AOG" name="AOG">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-AOG-ownedComment" body="Christian: Assembly of God">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-AOG"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-ATH" name="ATH">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-ATH-ownedComment" body="Atheist">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-ATH"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-BAH" name="BAH">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-BAH-ownedComment" body="Baha'i">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-BAH"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-BAP" name="BAP">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-BAP-ownedComment" body="Christian: Baptist">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-BAP"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-BMA" name="BMA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-BMA-ownedComment" body="Buddhist: Mahayana">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-BMA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-BOT" name="BOT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-BOT-ownedComment" body="Buddhist: Other">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-BOT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-BTA" name="BTA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-BTA-ownedComment" body="Buddhist: Tantrayana">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-BTA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-BTH" name="BTH">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-BTH-ownedComment" body="Buddhist: Theravada">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-BTH"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-BUD" name="BUD">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-BUD-ownedComment" body="Buddhist">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-BUD"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-CAT" name="CAT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-CAT-ownedComment" body="Christian: Roman Catholic">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-CAT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-CFR" name="CFR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-CFR-ownedComment" body="Chinese Folk Religionist">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-CFR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-CHR" name="CHR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-CHR-ownedComment" body="Christian">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-CHR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-CHS" name="CHS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-CHS-ownedComment" body="Christian: Christian Science">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-CHS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-CMA" name="CMA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-CMA-ownedComment" body="Christian: Christian Missionary Alliance">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-CMA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-CNF" name="CNF">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-CNF-ownedComment" body="Confucian">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-CNF"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-COC" name="COC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-COC-ownedComment" body="Christian: Church of Christ">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-COC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-COG" name="COG">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-COG-ownedComment" body="Christian: Church of God">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-COG"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-COI" name="COI">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-COI-ownedComment" body="Christian: Church of God in Christ">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-COI"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-COL" name="COL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-COL-ownedComment" body="Christian: Congregational">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-COL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-COM" name="COM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-COM-ownedComment" body="Christian: Community">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-COM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-COP" name="COP">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-COP-ownedComment" body="Christian: Other Pentecostal">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-COP"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-COT" name="COT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-COT-ownedComment" body="Christian: Other">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-COT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-CRR" name="CRR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-CRR-ownedComment" body="Christian: Christian Reformed">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-CRR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-EOT" name="EOT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-EOT-ownedComment" body="Christian: Eastern Orthodox">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-EOT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-EPI" name="EPI">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-EPI-ownedComment" body="Christian: Episcopalian">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-EPI"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-ERL" name="ERL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-ERL-ownedComment" body="Ethnic Religionist">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-ERL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-EVC" name="EVC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-EVC-ownedComment" body="Christian: Evangelical Church">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-EVC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-FRQ" name="FRQ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-FRQ-ownedComment" body="Christian: Friends">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-FRQ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-FWB" name="FWB">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-FWB-ownedComment" body="Christian: Free Will Baptist">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-FWB"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-GRE" name="GRE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-GRE-ownedComment" body="Christian: Greek Orthodox">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-GRE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-HIN" name="HIN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-HIN-ownedComment" body="Hindu">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-HIN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-HOT" name="HOT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-HOT-ownedComment" body="Hindu: Other">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-HOT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-HSH" name="HSH">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-HSH-ownedComment" body="Hindu: Shaivites">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-HSH"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-HVA" name="HVA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-HVA-ownedComment" body="Hindu: Vaishnavites">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-HVA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-JAI" name="JAI">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-JAI-ownedComment" body="Jain">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-JAI"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-JCO" name="JCO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-JCO-ownedComment" body="Jewish: Conservative">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-JCO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-JEW" name="JEW">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-JEW-ownedComment" body="Jewish">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-JEW"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-JOR" name="JOR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-JOR-ownedComment" body="Jewish: Orthodox">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-JOR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-JOT" name="JOT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-JOT-ownedComment" body="Jewish: Other">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-JOT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-JRC" name="JRC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-JRC-ownedComment" body="Jewish: Reconstructionist">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-JRC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-JRF" name="JRF">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-JRF-ownedComment" body="Jewish: Reform">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-JRF"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-JRN" name="JRN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-JRN-ownedComment" body="Jewish: Renewal">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-JRN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-JWN" name="JWN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-JWN-ownedComment" body="Christian: Jehovah's Witness">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-JWN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-LMS" name="LMS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-LMS-ownedComment" body="Christian: Lutheran Missouri Synod">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-LMS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-LUT" name="LUT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-LUT-ownedComment" body="Christian: Lutheran">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-LUT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-MEN" name="MEN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-MEN-ownedComment" body="Christian: Mennonite">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-MEN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-MET" name="MET">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-MET-ownedComment" body="Christian: Methodist">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-MET"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-MOM" name="MOM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-MOM-ownedComment" body="Christian: Latter-day Saints">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-MOM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-MOS" name="MOS">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-MOS-ownedComment" body="Muslim">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-MOS"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-MOT" name="MOT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-MOT-ownedComment" body="Muslim: Other">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-MOT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-MSH" name="MSH">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-MSH-ownedComment" body="Muslim: Shiite">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-MSH"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-MSU" name="MSU">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-MSU-ownedComment" body="Muslim: Sunni">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-MSU"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-NAM" name="NAM">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-NAM-ownedComment" body="Native American">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-NAM"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-NAZ" name="NAZ">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-NAZ-ownedComment" body="Christian: Church of the Nazarene">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-NAZ"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-NOE" name="NOE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-NOE-ownedComment" body="Nonreligious">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-NOE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-NRL" name="NRL">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-NRL-ownedComment" body="New Religionist">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-NRL"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-ORT" name="ORT">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-ORT-ownedComment" body="Christian: Orthodox">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-ORT"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-OTH" name="OTH">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-OTH-ownedComment" body="Other">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-OTH"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-PEN" name="PEN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-PEN-ownedComment" body="Christian: Pentecostal">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-PEN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-PRC" name="PRC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-PRC-ownedComment" body="Christian: Other Protestant">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-PRC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-PRE" name="PRE">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-PRE-ownedComment" body="Christian: Presbyterian">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-PRE"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-PRO" name="PRO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-PRO-ownedComment" body="Christian: Protestant">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-PRO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-QUA" name="QUA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-QUA-ownedComment" body="Christian: Friends">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-QUA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-REC" name="REC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-REC-ownedComment" body="Christian: Reformed Church">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-REC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-REO" name="REO">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-REO-ownedComment" body="Christian: Reorganized Church of Jesus Christ-LDS">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-REO"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-SAA" name="SAA">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-SAA-ownedComment" body="Christian: Salvation Army">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-SAA"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-SEV" name="SEV">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-SEV-ownedComment" body="Christian: Seventh Day Adventist">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-SEV"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-SHN" name="SHN">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-SHN-ownedComment" body="Shintoist">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-SHN"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-SIK" name="SIK">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-SIK-ownedComment" body="Sikh">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-SIK"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-SOU" name="SOU">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-SOU-ownedComment" body="Christian: Southern Baptist">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-SOU"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-SPI" name="SPI">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-SPI-ownedComment" body="Spiritist">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-SPI"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-UCC" name="UCC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-UCC-ownedComment" body="Christian: United Church of Christ">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-UCC"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-UMD" name="UMD">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-UMD-ownedComment" body="Christian: United Methodist">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-UMD"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-UNI" name="UNI">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-UNI-ownedComment" body="Christian: Unitarian">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-UNI"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-UNU" name="UNU">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-UNU-ownedComment" body="Christian: Unitarian Universalist">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-UNU"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-VAR" name="VAR">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-VAR-ownedComment" body="Unknown">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-VAR"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-WES" name="WES">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-WES-ownedComment" body="Christian: Wesleyan">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-WES"/>
+									</ownedComment>
+								</ownedLiteral>
+								<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-WMC" name="WMC">
+									<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-WMC-ownedComment" body="Christian: Wesleyan Methodist">
+										<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType-WMC"/>
+									</ownedComment>
+								</ownedLiteral>
+							</packagedElement>
+							<packagedElement xmi:type="uml:Class" xmi:id="_niem-codes-hl7-3.0-hl7-NamespaceElementPropertyHolder" name="NamespaceElementPropertyHolder"/>
+							<packagedElement xmi:type="uml:Enumeration" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeType" name="ReligionCodeType">
+								<ownedComment xmi:type="uml:Comment" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeType-ownedComment" body="A data type for a religion to which a person can subscribe or believe; a categorization of spiritual beliefs.">
+									<annotatedElement xmi:idref="_niem-codes-hl7-3.0-hl7-ReligionCodeType"/>
+								</ownedComment>
+								<generalization xmi:type="uml:Generalization" xmi:id="_niem-codes-hl7-3.0-hl7-ReligionCodeType-generalization" general="_niem-codes-hl7-3.0-hl7-ReligionCodeSimpleType"/>
+							</packagedElement>
+						</packagedElement>
+					</packagedElement>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-hl7-profileApplication-1">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_PIM_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-hl7-profileApplication-2">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-Model_Package_Description_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-hl7-profileApplication-3">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_Common_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+					<profileApplication xmi:type="uml:ProfileApplication" xmi:id="_niem-codes-hl7-profileApplication-4">
+						<appliedProfile href="http://www.omg.org/spec/NIEM-UML/20150201/NIEM-UML-Profile.xmi#NIEM_UML_Profile-NIEM_PSM_Profile">
+							
+						</appliedProfile>
+					</profileApplication>
+				</packagedElement>
+			</packagedElement>
+		</packagedElement>
+	</uml:Model>
+<NIEM_Common_Profile:PropertyHolder xmi:id="_niem-codes-hl7-3.0-hl7-NamespaceElementPropertyHolder-appliedStereotypeInstance" base_Class="_niem-codes-hl7-3.0-hl7-NamespaceElementPropertyHolder"/>
+<NIEM_PIM_Profile:InformationModel xmi:id="_niem-codes-hl7-3.0-hl7-appliedStereotypeInstance" base_Package="_niem-codes-hl7-3.0-hl7" isConformant="true" version="1" targetNamespace="http://release.niem.gov/niem/codes/hl7/3.0/" defaultPurpose="reference"/>
+
+</xmi:XMI>
