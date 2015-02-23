@@ -4,8 +4,15 @@ The UML Profile for NIEM (better known as NIEM-UML) is an Object Management Grou
 
 NIEM-UML is an extension of a subset of UML that is specific to NIEM. 
 
-NIEM-UML is a specification. It needs to be implemented in a UML modeling tool in order to generate NIEM-conformant XML schema.
+NIEM-UML is a specification. It needs to be implemented in a UML modeling tool in order to generate NIEM-conformant XML schema. When implemented in a tool, it generates NIEM-conformant information exchanges and can assist in domain model management!
 
-When implemented in a tool, it generates NIEM-conformant information exchanges and can assist in domain model management!
+This specification has been submitted to the Object Management Group for final adoption.
 
-The current work effort is to udpate the NIEM-UML profile to **[NIEM version 3.0](https://niem.gov/version3)**. We invite you to join the submission team as a contributor or reviewer. We expect to have conference calls every other week to discuss updates and items that require a decision. If you would like to be added to the team distribution list, please reach out to us **[here](https://niem.gov/contactus)**.
+Please see:
+  * The specificaiton: https://github.com/NIEM/NIEM-UML/blob/master/Specification/UML%20Profile%20for%20NIEM%203.docx
+  * All machine readable files associated with the submission: https://github.com/NIEM/NIEM-UML/tree/master/Specification
+  * Technology and tools specific resources, including examples: https://github.com/NIEM/NIEM-UML/tree/master/Resources
+  
+The NIEM-UML effort encourages community participation and support.
+
+
