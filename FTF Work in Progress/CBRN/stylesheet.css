@@ -1,0 +1,101 @@
+/* Javadoc style sheet */
+@media screen
+{
+/* Page background color */
+body { font-family: Arial, sans-serif; font-size: 90%; background-color: #FFFFFF; margin: .5em; }
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 { margin: .1em .1em .1em .1em; }
+h1 { font-size: 220%; font-style: normal;  border-bottom: .05em solid #000000; }
+h2 { font-size: 200%; }
+h3 { font-size: 180%; }
+h4 { font-size: 144%; }
+h5 { font-size: 114%; }
+h6 { font-size: 100%; }
+
+/* Text */
+.comment    { margin: .1em; padding: .1em; font-size: 80%; font-style: italic; color: #999999;}
+span.image  { vertical-align: middle }
+code        { font-family: Courier New, monospace }
+
+/* Hyperlink */
+a        { color: #0000FF; }
+a:hover  { color: #810081; }
+a.active { color: #0000FF; }
+
+/* Image */
+img { border: none; vertical-align: middle }
+
+/* Table colors */
+tr.heading     { background: #CCCCFF } /* Dark mauve */
+tr.subheading  { background: #EEEEFF } /* Light mauve */
+tr.row         { background: #FFFFFF } /* White */
+table          { border: 1px solid #DDDDEE; }
+th, td         { border: 1px solid #DDDDEE; }
+
+/* Font used in left-hand frame lists */
+.frametitle   { font-size: 100%; font-family: Arial, sans-serif; padding: .1em;  white-space: nowrap; }
+.frameheading { font-size:  90%; font-family: Arial, sans-serif; font-weight: bold; padding: .1em; margin: .2em 0 .2em 0; white-space: nowrap; }
+.frameitem    { font-size:  90%; font-family: Arial, sans-serif; white-space: nowrap; }
+
+/* Header */
+div#header            { padding: 0 0 4px 0; margin: 0; border-bottom: 1px solid #8C8C8C; }
+
+/* Navigation bar fonts and colors */
+ul#navbar             { display: table; table-layout: fixed; width:100%; padding: 0; margin: 0; background:#EEEEFF; float:left; }
+ul#navbar li          { display: table-cell; padding: .2em; margin: 0; float:left; }
+ul#navbar li a        { color: #0000FF; white-space: nowrap; }
+ul#navbar li a:hover  { color: #810081; }
+ul#navbar li a.active { color: #0000FF; }
+}
+
+@media print
+{
+/* Page background color */
+body { font-family: Arial, sans-serif; font-size: 90%; background-color: #FFFFFF; margin: .5em; }
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 { margin: .1em .1em .1em .1em; }
+h1 { font-size: 220%; font-style: normal;  border-bottom: .05em solid #000000; }
+h2 { font-size: 200%; }
+h3 { font-size: 180%; }
+h4 { font-size: 144%; }
+h5 { font-size: 114%; }
+h6 { font-size: 100%; }
+
+/* Text */
+.comment    { margin: .1em; padding: .1em; font-size: 80%; font-style: italic; color: #999999;}
+span.image  { vertical-align: middle }
+code        { font-family: Courier New, monospace }
+
+/* Hyperlink */
+a        { color: #0000FF; }
+a:hover  { color: #810081; }
+a.active { color: #0000FF; }
+
+/* Image */
+img { border: none; vertical-align: middle; }
+img.diagram { border: none; vertical-align: middle; width:100%; }
+
+/* Table colors */
+tr.heading     { background: #CCCCFF } /* Dark mauve */
+tr.subheading  { background: #EEEEFF } /* Light mauve */
+tr.row         { background: #FFFFFF } /* White */
+table          { border: 1px solid #DDDDEE; }
+th, td         { border: 1px solid #DDDDEE; }
+
+/* Font used in left-hand frame lists */
+.frametitle   { font-size: 100%; font-family: Arial, sans-serif; padding: .1em;  white-space: nowrap; }
+.frameheading { font-size:  90%; font-family: Arial, sans-serif; font-weight: bold; padding: .1em; margin: .2em 0 .2em 0; white-space: nowrap; }
+.frameitem    { font-size:  90%; font-family: Arial, sans-serif; white-space: nowrap; }
+
+/* Header */
+div#header            { display:none; }
+
+/* Navigation bar fonts and colors */
+ul#navbar             { display: table; table-layout: fixed; width:100%; padding: 0; margin: 0; background:#EEEEFF; float:left; }
+ul#navbar li          { display: table-cell; padding: .2em; margin: 0; float:left; }
+ul#navbar li a        { color: #0000FF; white-space: nowrap; }
+ul#navbar li a:hover  { color: #810081; }
+ul#navbar li a.active { color: #0000FF; }
+}

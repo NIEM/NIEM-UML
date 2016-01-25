@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html lang="en">
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <link rel ="stylesheet" type="text/css" href="stylesheet.css" title="style">
+   <title>The MagicDraw Web Publisher</title>
+   <script type="text/javascript">
+      targetPage = "" + window.location.search;
+      if (targetPage != "" && targetPage != "undefined")
+         targetPage = targetPage.substring(1);
+      function loadFrames() 
+      {
+         if (targetPage != "" && targetPage != "undefined")
+            top.classframe.location.href = targetPage;
+      }
+   </script>
+</head>
+<frameset cols="20%,80%" title="" onload="loadFrames()">
+   <frameset rows="35%,65%" title="" onload="loadFrames()">
+         <frame src="overview-frame.html" marginwidth ="1" name="packagelistframe" title="all packages">
+         <frame src="elements-frame.html" marginwidth ="1" name="packageframe" title="all elements">
+   </frameset>
+   <frame src="overview-summary.html" marginwidth ="1" name="classframe" title="package, and element descriptions" scrolling="yes">
+   <noframes>
+      <h2>Frame alert</h2>
+      <p>This document is designed to be viewed using the frames feature. if you see this message, you are using a non-frame-capable web client.
+      <br>Link to<a href="overview-summary.html">non-frame version.</a>
+   </noframes>
+</frameset>
+</html>
